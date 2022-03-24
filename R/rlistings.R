@@ -1,4 +1,4 @@
-#' @import formatable
+#' @import formatters
 #' @importFrom magrittr %>%
 #' @import methods
 NULL
@@ -101,7 +101,7 @@ get_keycols <- function(df) {
 }
 
 #' @export
-#' @inheritParams formatable::matrix_form
+#' @inheritParams formatters::matrix_form
 #' @rdname listings
 setMethod("matrix_form", "listing_df",
           rix_form <- function(obj, indent_rownames = FALSE) {
@@ -171,6 +171,8 @@ setMethod("matrix_form", "listing_df",
                     aligns = cbind(keycolaligns,
                                    matrix("center", nrow = nrow(fullmat),
                                           ncol = ncol(fullmat)- length(keycols))),
+                    formats = matrix(1, nrow = nrow(fullmat),
+                                     ncol = ncol(fullmat)),
                     row_info = make_row_df(obj),
                     nlines_header = 1, ## XXX this is probably wrong!!!
                     nrow_header = 1,
@@ -242,7 +244,7 @@ add_listing_col <- function(df, name, fun = NULL, format = NULL) {
 
 #' Methods for `listing_df` objects
 #'
-#' See core documentation in \code{formatable} for descriptions
+#' See core documentation in \code{formatters} for descriptions
 #' of these functions.
 #'
 #' @export
@@ -254,7 +256,7 @@ print.listing_df <- function(x, ...) {
     invisible(x)
 }
 
-#' @inheritParams formatable::make_row_df
+#' @inheritParams formatters::make_row_df
 #' @export
 #' @rdname listing_methods
 setMethod("make_row_df", "listing_df",
@@ -341,7 +343,7 @@ setMethod("prov_footer", "listing_df",
 
 #' @rdname listing_methods
 #' @param lsting listing_df. The listing to paginate.
-#' @inheritParams formatable::pag_indices_inner
+#' @inheritParams formatters::pag_indices_inner
 #' @param lpp numeric(1). Number of row lines (not counting titles and
 #'     footers) to have per page.
 #' @param colwidths  numeric. Print  widths of  columns, if  manually
