@@ -171,6 +171,8 @@ setMethod("matrix_form", "listing_df",
                     aligns = cbind(keycolaligns,
                                    matrix("center", nrow = nrow(fullmat),
                                           ncol = ncol(fullmat)- length(keycols))),
+                    formats = matrix(1, nrow = nrow(fullmat),
+                                     ncol = ncol(fullmat)),
                     row_info = make_row_df(obj),
                     nlines_header = 1, ## XXX this is probably wrong!!!
                     nrow_header = 1,
