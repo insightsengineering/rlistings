@@ -10,7 +10,7 @@ Description: Listings are often part of the submission of clinical trial data in
   We provide a framework for the specific formatting features often used when displaying large datasets
   in that context.
 License: Apache License 2.0 | file LICENSE
-Depends: formatable, magrittr, methods
+Depends: formatters, magrittr, methods
 Suggests: tinytest
 Encoding: UTF-8
 URL: http://github.com/insightsengineering/rlistings
