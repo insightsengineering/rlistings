@@ -310,6 +310,8 @@ setMethod("make_row_df", "listing_df",
 #' @export
 #' @param x listing_df. The listing.
 #' @inheritParams base::Extract
+#' @param i ANY. Passed to base `[` methods.
+#' @param j ANY. Passed to base `[` methods.
 #' @aliases [,listing_df-method
 #' @rdname listing_methods
 setMethod("[", "listing_df",

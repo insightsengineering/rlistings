@@ -76,6 +76,10 @@ set/previously known.}
 
 \item{nsibs}{integer(1). Internal detail do not set manually.}
 
+\item{i}{ANY. Passed to base `[` methods.}
+
+\item{j}{ANY. Passed to base `[` methods.}
+
 \item{drop}{For matrices and arrays.  If \code{TRUE} the result is
     coerced to the lowest possible dimension (see the examples).  This
     only works for extracting elements, not for the replacement.  See
