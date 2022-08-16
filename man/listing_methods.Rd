@@ -162,6 +162,6 @@ considerations. Defaults to none.}
 pagination breaks be shown. Defaults to \code{FALSE}.}
 }
 \description{
-See core documentation in \code{formatable} for descriptions
+See core documentation in \code{formatters} for descriptions
 of these functions.
 }

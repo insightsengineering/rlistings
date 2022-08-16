@@ -4,13 +4,13 @@ Date: 2021-10-06
 Version: 0.1.0
 Authors@R: c(
   person("Gabriel", "Becker", email = "gabembecker@gmail.com", role = c("aut", "cre")),
-  person("Adrian", "Waddell", email = "adrian.waddell@roche.com", role = "aut"),
-  person("F. Hoffmann-La Roche", role = "cph"))
+  person("Adrian", "Waddell", email = "adrian.waddell@gene.com", role = "aut"),
+  person("F. Hoffmann-La Roche AG", role = c("cph", "fnd")))
 Description: Listings are often part of the submission of clinical trial data in regulatory settings.
   We provide a framework for the specific formatting features often used when displaying large datasets
   in that context.
 License: Apache License 2.0 | file LICENSE
-Depends: formatable, magrittr, methods
+Depends: formatters, magrittr, methods
 Suggests: tinytest
 Encoding: UTF-8
 URL: http://github.com/insightsengineering/rlistings
