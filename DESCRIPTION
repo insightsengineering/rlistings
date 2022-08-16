@@ -15,4 +15,4 @@ Suggests: tinytest
 Encoding: UTF-8
 URL: http://github.com/insightsengineering/rlistings
 BugReports: http://github.com/insightsengineering/rlistings/issues
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1

@@ -64,24 +64,7 @@ set/previously known.}
 \item{indent}{integer(1). Internal detail do not set manually.}
 
 \item{path}{character.  Path  to  the (sub)table  represented  by
-    \code{tt}. Defaults to \code{character()}
-
- @details When  \code{visible_only} is  \code{TRUE} (the  default),
-    methods should  return a  data.frame with  exactly one  row per
-    visible  row in  the table-like  object.  This  is useful  when
-    reasoning about  how a table  will print, but does  not reflect
-    the full pathing space of the structure (though the paths which
-    are given will all work as is).
-
-If  supported,  when  \code{visible_only}  is  \code{FALSE},  every
-structural element of the table (in row-space) will be reflected in
-the  returned data.frame,  meaning the  full pathing-space  will be
-represented but some rows in  the layout summary will not represent
-printed rows in the table as it is displayed.
-
-Most arguments beyond \code{tt} and \code{visible_only} are present so that
-`make_row_df` methods can call `make_row_df` recursively and retain information,
-and should not be set during a top-level call}
+\code{tt}. Defaults to \code{character()}}
 
 \item{incontent}{logical(1). Internal detail do not set manually.}
 
@@ -92,52 +75,6 @@ and should not be set during a top-level call}
 \item{sibpos}{integer(1). Internal detail do not set manually.}
 
 \item{nsibs}{integer(1). Internal detail do not set manually.}
-
-\item{i}{
-    indices specifying elements to extract or replace.  Indices are
-    \code{numeric} or \code{character} vectors or empty (missing) or
-    \code{NULL}.  Numeric values are coerced to integer as by
-    \code{\link[base]{as.integer}} (and hence truncated towards zero).
-    Character vectors will be matched to the \code{\link[base]{names}} of the
-    object (or for matrices/arrays, the \code{\link[base]{dimnames}}):
-    see \sQuote{Character indices} below for further details.
-
-    For \code{[}-indexing only: \code{i}, \code{j}, \code{\dots} can be
-    logical vectors, indicating elements/slices to select.  Such vectors
-    are recycled if necessary to match the corresponding extent.
-    \code{i}, \code{j}, \code{\dots} can also be negative integers,
-    indicating elements/slices to leave out of the selection.
-
-    When indexing arrays by \code{[} a single argument \code{i} can be a
-    matrix with as many columns as there are dimensions of \code{x}; the
-    result is then a vector with elements corresponding to the sets of
-    indices in each row of \code{i}.
-
-    An index value of \code{NULL} is treated as if it were \code{integer(0)}.
-  }
-
-\item{j}{
-    indices specifying elements to extract or replace.  Indices are
-    \code{numeric} or \code{character} vectors or empty (missing) or
-    \code{NULL}.  Numeric values are coerced to integer as by
-    \code{\link[base]{as.integer}} (and hence truncated towards zero).
-    Character vectors will be matched to the \code{\link[base]{names}} of the
-    object (or for matrices/arrays, the \code{\link[base]{dimnames}}):
-    see \sQuote{Character indices} below for further details.
-
-    For \code{[}-indexing only: \code{i}, \code{j}, \code{\dots} can be
-    logical vectors, indicating elements/slices to select.  Such vectors
-    are recycled if necessary to match the corresponding extent.
-    \code{i}, \code{j}, \code{\dots} can also be negative integers,
-    indicating elements/slices to leave out of the selection.
-
-    When indexing arrays by \code{[} a single argument \code{i} can be a
-    matrix with as many columns as there are dimensions of \code{x}; the
-    result is then a vector with elements corresponding to the sets of
-    indices in each row of \code{i}.
-
-    An index value of \code{NULL} is treated as if it were \code{integer(0)}.
-  }
 
 \item{drop}{For matrices and arrays.  If \code{TRUE} the result is
     coerced to the lowest possible dimension (see the examples).  This
