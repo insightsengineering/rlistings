@@ -319,7 +319,8 @@ setMethod("[", "listing_df",
     xattr <- attributes(x)
     xattr$names <- xattr$names[j]
     res <- NextMethod()
-    attributes(res) <- xattr
+    if(!drop)
+        attributes(res) <- xattr
     res
 })
 
