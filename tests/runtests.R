@@ -1,5 +1,4 @@
-library(tinytest)
-library(formatters)
+library(testthat)
 library(rlistings)
 
-run_test_dir("./testthat")
+test_check("rlistings", reporter = "check")

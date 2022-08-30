@@ -1,5 +1,5 @@
 #' @import formatters
-#' @importFrom magrittr %>%
+#' @import dplyr
 #' @import methods
 NULL
 
@@ -15,8 +15,14 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' which should be displayed when the listing is rendered.
 #' @param key_cols character. Names of columns which should be treated as *key columns*
 #' when rendering the listing.
-#' @param title character or NULL. Title for the listing. Currently ignored.
-#' @param footer character or NULL. Footer for the listing. Currently ignored.
+#' @param main_title character(1) or NULL. The main title for the listing, or
+#'   `NULL` (the default). Must be length 1 non-NULL.
+#' @param subtitles character or NULL. A vector of subtitle(s) for the listing, or
+#'   NULL (the default).
+#' @param main_footer character or NULL. A vector of main footer lines for the
+#'   listing, or `NULL` (the default).
+#' @param prov_footer character or NULL. A vector of provenance strings for the
+#'   listing, or `NULL` (the default).
 #'
 #' @return A `listing_df` object, sorted by the key columns.
 #' @rdname listings
@@ -25,7 +31,6 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'
 #' dat <- ex_adae
 #'
-#' library(magrittr)
 #' lsting <- as_listing(dat[1:25,], key_cols = c("USUBJID", "AESOC")) %>%
 #'     add_listing_col("AETOXGR") %>%
 #'     add_listing_col("BMRKR1", format = "xx.x") %>%
@@ -38,8 +43,10 @@ setOldClass(c("MatrixPrintForm", "list"))
 as_listing <- function(df,
                        cols = key_cols,
                        key_cols = names(df)[1],
-                       title = NULL,
-                       footer = NULL
+                       main_title = NULL,
+                       subtitles = NULL,
+                       main_footer = NULL,
+                       prov_footer = NULL
                        ) {
     varlabs <- var_labels(df, fill = TRUE)
     o <- do.call(order, df[key_cols])
@@ -60,11 +67,12 @@ as_listing <- function(df,
 
 
     class(df) <- c("listing_df", class(df))
-    if(!is.null(title))
-        attr(df, "main_title") <- title
-    if(!is.null(footer))
-        attr(df, "main_footer") <- footer
-    attr(df, "listing_dispcols") <- cols
+    ## these all work even when the value is NULL
+    main_title(df) <- main_title
+    main_footer(df) <- main_footer
+    subtitles(df) <- subtitles
+    prov_footer(df) <- prov_footer
+    listing_dispcols(df) <- cols
     df
 }
 
@@ -178,13 +186,18 @@ setMethod("matrix_form", "listing_df",
                     nrow_header = 1,
                     has_topleft = FALSE,
                     has_rowlabs = FALSE,
-                    expand_newlines = TRUE)
+                    expand_newlines = TRUE,
+                    main_title = main_title(obj),
+                    subtitles = subtitles(obj),
+                    page_titles = page_titles(obj),
+                    main_footer = main_footer(obj),
+                    prov_footer = prov_footer(obj))
 })
 
 
 #' @export
 #' @rdname listings
-listing_dispcols <- function(df) attr(df, "listing_dispcols")
+listing_dispcols <- function(df) attr(df, "listing_dispcols") %||% character()
 
 #' @export
 #' @param new character. Names of columns to be added to
@@ -198,6 +211,13 @@ add_listing_dispcol <- function(df, new) {
 #' @param value character. New value.
 #' @rdname listings
 `listing_dispcols<-` <-  function(df, value) {
+    if(!is.character(value))
+        stop("dispcols must be a character vector of column names, got ",
+             "object of class: ", paste(class(value), collapse =","))
+    chk <- setdiff(value, names(df)) ## remember setdiff is not symmetrical
+    if(length(chk) > 0)
+        stop("listing display columns must be columns in the underlying data. ",
+             "Column(s) ", paste(chk, collapse = ", "), " not present in the data.")
     attr(df, "listing_dispcols") <- unique(value)
     df
 }
@@ -343,10 +363,63 @@ setMethod("main_footer", "listing_df",
 setMethod("prov_footer", "listing_df",
           function(obj) attr(obj, "prov_footer") %||% character())
 
+.chk_value <- function(val, fname, len_one = FALSE, null_ok = TRUE) {
+    if(null_ok && is.null(val))
+        return(TRUE)
+    if(!is.character(val))
+        stop("value for ", fname, " must be a character, got ",
+             "object of class: ", paste(class(val), collapse = ","),
+             call. = FALSE)
+    if(len_one && length(val) > 1)
+        stop("value for ", fname, " must be length <= 1, got ",
+             "vector of length ", length(val))
+    TRUE
+}
+
+#' @rdname listing_methods
+#' @param obj The object.
+#' @export
+setMethod("main_title<-", "listing_df",
+          function(obj, value) {
+    ## length 1 restriction is to match rtables behavior
+    ## which currently enforces this (though incompletely)
+    .chk_value(value, "main_title", len_one = TRUE)
+    attr(obj, "main_title") <- value
+    obj
+})
+
+#' @rdname listing_methods
+#' @export
+setMethod("subtitles<-", "listing_df",
+          function(obj, value) {
+    .chk_value(value, "subtitles")
+    attr(obj, "subtitles") <- value
+    obj
+})
+
+#' @rdname listing_methods
+#' @export
+setMethod("main_footer<-", "listing_df",
+          function(obj, value) {
+    .chk_value(value, "main_footer")
+    attr(obj, "main_footer") <- value
+    obj
+})
+
+#' @rdname listing_methods
+#' @export
+setMethod("prov_footer<-", "listing_df",
+          function(obj, value) {
+    .chk_value(value, "prov_footer")
+    attr(obj, "prov_footer") <- value
+    obj
+})
+
 
 #' @rdname listing_methods
 #' @param lsting listing_df. The listing to paginate.
 #' @inheritParams formatters::pag_indices_inner
+#' @inheritParams formatters::vert_pag_indices
 #' @param lpp numeric(1). Number of row lines (not counting titles and
 #'     footers) to have per page.
 #' @param colwidths  numeric. Print  widths of  columns, if  manually
@@ -354,6 +427,7 @@ setMethod("prov_footer", "listing_df",
 #'
 #' @export
 paginate_listing <- function(lsting, lpp = 15,
+                             cpp = NULL,
                              min_siblings = 2,
                              nosplitin = character(),
                              colwidths = NULL,
@@ -382,5 +456,20 @@ paginate_listing <- function(lsting, lpp = 15,
                               nosplitin = nosplitin,
                               verbose = verbose)
 
-    lapply(inds, function(i) lsting[i,])
+    ret <- lapply(inds, function(i) lsting[i,])
+    ## this is *very* similar to the relevant section of rtables::paginate_table
+    ## TODO push down into formatters to avoid duplication
+    if(!is.null(cpp)) {
+        inds <- vert_pag_indices(lsting,
+                                 cpp = cpp,
+                                 colwidths = colwidths,
+                                 verbose = verbose)
+        ret <- lapply(ret,
+                      function(oneres) {
+            lapply(inds,
+                   function(ii) oneres[, ii, drop = FALSE])
+        })
+        ret <- unlist(ret, recursive = FALSE)
+    }
+    ret
 }

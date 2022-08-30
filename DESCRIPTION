@@ -1,7 +1,7 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
 Date: 2021-10-06
-Version: 0.1.0
+Version: 0.1.0.1
 Authors@R: c(
   person("Gabriel", "Becker", email = "gabembecker@gmail.com", role = c("aut", "cre")),
   person("Adrian", "Waddell", email = "adrian.waddell@gene.com", role = "aut"),
@@ -10,8 +10,8 @@ Description: Listings are often part of the submission of clinical trial data in
   We provide a framework for the specific formatting features often used when displaying large datasets
   in that context.
 License: Apache License 2.0 | file LICENSE
-Depends: formatters (>= 0.3.2.5), magrittr, methods
-Suggests: tinytest
+Depends: formatters (>= 0.3.2.5), dplyr, methods
+Suggests: testthat
 Encoding: UTF-8
 URL: http://github.com/insightsengineering/rlistings
 BugReports: http://github.com/insightsengineering/rlistings/issues

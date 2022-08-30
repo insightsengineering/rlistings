@@ -16,8 +16,10 @@ as_listing(
   df,
   cols = key_cols,
   key_cols = names(df)[1],
-  title = NULL,
-  footer = NULL
+  main_title = NULL,
+  subtitles = NULL,
+  main_footer = NULL,
+  prov_footer = NULL
 )
 
 as_keycol(vec)
@@ -45,9 +47,17 @@ which should be displayed when the listing is rendered.}
 \item{key_cols}{character. Names of columns which should be treated as *key columns*
 when rendering the listing.}
 
-\item{title}{character or NULL. Title for the listing. Currently ignored.}
+\item{main_title}{character(1) or NULL. The main title for the listing, or
+`NULL` (the default). Must be length 1 non-NULL.}
 
-\item{footer}{character or NULL. Footer for the listing. Currently ignored.}
+\item{subtitles}{character or NULL. A vector of subtitle(s) for the listing, or
+NULL (the default).}
+
+\item{main_footer}{character or NULL. A vector of main footer lines for the
+listing, or `NULL` (the default).}
+
+\item{prov_footer}{character or NULL. A vector of provenance strings for the
+listing, or `NULL` (the default).}
 
 \item{vec}{any. A column vector from a `listing_df`}
 
@@ -87,7 +97,6 @@ Create a Listing from a data.frame or tibble
 
 dat <- ex_adae
 
-library(magrittr)
 lsting <- as_listing(dat[1:25,], key_cols = c("USUBJID", "AESOC")) \%>\%
     add_listing_col("AETOXGR") \%>\%
     add_listing_col("BMRKR1", format = "xx.x") \%>\%

@@ -9,6 +9,10 @@
 \alias{subtitles,listing_df-method}
 \alias{main_footer,listing_df-method}
 \alias{prov_footer,listing_df-method}
+\alias{main_title<-,listing_df-method}
+\alias{subtitles<-,listing_df-method}
+\alias{main_footer<-,listing_df-method}
+\alias{prov_footer<-,listing_df-method}
 \alias{paginate_listing}
 \title{Methods for `listing_df` objects}
 \usage{
@@ -38,9 +42,18 @@
 
 \S4method{prov_footer}{listing_df}(obj)
 
+\S4method{main_title}{listing_df}(obj) <- value
+
+\S4method{subtitles}{listing_df}(obj) <- value
+
+\S4method{main_footer}{listing_df}(obj) <- value
+
+\S4method{prov_footer}{listing_df}(obj) <- value
+
 paginate_listing(
   lsting,
   lpp = 15,
+  cpp = NULL,
   min_siblings = 2,
   nosplitin = character(),
   colwidths = NULL,
@@ -88,10 +101,15 @@ set/previously known.}
 
 \item{obj}{The object.}
 
+\item{value}{typically an array-like \R object of a similar class as
+    \code{x}.}
+
 \item{lsting}{listing_df. The listing to paginate.}
 
 \item{lpp}{numeric(1). Number of row lines (not counting titles and
 footers) to have per page.}
+
+\item{cpp}{numeric(1). Number of columns per page}
 
 \item{min_siblings}{numeric. Minimum sibling rows which must appear on either side of pagination row for a
 mid-subtable split to be valid. Defaults to 2.}

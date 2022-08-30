@@ -1,3 +1,4 @@
+library(dplyr)
 ## listings var labels don't get mucked up by topleft machinery #262
     anl <- ex_adsl
     anl <- anl[1:10, c("USUBJID", "ARM", "BMRKR1")]
@@ -16,18 +17,55 @@
 
 
 
-anl <- ex_adsl %>%
-    select(USUBJID, ARM, BMRKR1) %>%
-    slice(1:10)
-
+anl <- ex_adsl[1:10, c("USUBJID", "ARM", "BMRKR1")]
+var_labels(anl) <- var_labels(ex_adsl)[c("USUBJID", "ARM", "BMRKR1")]
 anl$BMRKR1[1:3] <- NA
 
-                                        # (1) Error with NA values in numeric column when apply format
+
+## (1) Error with NA values in numeric column when apply format
 lsting <- as_listing(anl, key_cols = c("ARM", "USUBJID")) %>%
     add_listing_col("ARM") %>%
     add_listing_col("USUBJID") %>%
     add_listing_col("BMRKR1", format = "xx.xx")
 
+main_title(lsting) <- "main title"
+subtitles(lsting) <- c("sub", "titles")
+main_footer(lsting) <- "main footer"
+prov_footer(lsting) <- "provenance"
+
 mat <- matrix_form(lsting)
 expect_identical(unname(mat$strings[2,3, drop = TRUE]),
                  "NA")
+## this tests that the format is applied correctly
+expect_identical(unname(mat$strings[3,3, drop = TRUE]),
+                 format_value(lsting$BMRKR1[2], "xx.xx"))
+
+expect_identical(main_title(lsting), "main title")
+expect_identical(main_title(lsting), main_title(mat))
+
+expect_identical(subtitles(lsting), c("sub", "titles"))
+expect_identical(subtitles(lsting), subtitles(mat))
+
+expect_identical(main_footer(lsting), "main footer")
+expect_identical(main_footer(lsting), main_footer(mat))
+
+expect_identical(prov_footer(lsting), "provenance")
+expect_identical(prov_footer(lsting), prov_footer(mat))
+
+expect_error({main_title(lsting) <- 1L},
+             "value for main_title .*class: integer$")
+
+expect_error({main_title(lsting) <- c("lol", "silly")},
+             "value for main_title .*got vector of length 2")
+
+expect_error({subtitles(lsting) <- 1L},
+             "value for subtitles .*class: integer$")
+
+expect_error({main_footer(lsting) <- 1L},
+             "value for main_footer .*class: integer$")
+
+expect_error({prov_footer(lsting) <- 1L},
+             "value for prov_footer .*class: integer$")
+
+main_title(lsting) <- NULL
+expect_identical(main_title(lsting), character())
