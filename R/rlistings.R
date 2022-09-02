@@ -131,16 +131,11 @@ setMethod("matrix_form", "listing_df",
 
 
     for(i in seq_along(keycols)) {
+
         kcol <- keycols[i]
         kcolvec <- listing[[kcol]]
-        if(i == 1) {
-            unqinds <- !duplicated(kcolvec)
-
-        } else {
-            spldat <- split(kcolvec, listing[keycols[1:(i-1)]])
-            unqinds <- unlist(lapply(spldat, function(xi) !duplicated(xi)))
-        }
-        bodymat[unqinds, kcol] <- kcolvec[unqinds]
+        disp <- c(TRUE, tail(kcolvec, -1) != head(kcolvec, -1))
+        bodymat[disp, kcol] <- kcolvec[disp]
     }
 
     nonkeycols <- setdiff(names(listing), keycols)
@@ -159,19 +154,6 @@ setMethod("matrix_form", "listing_df",
     keycolaligns <- rbind(rep("center", length(keycols)),
                           matrix("left", ncol = length(keycols),
                            nrow = nrow(fullmat) - 1))
-    ## ret <- structure(list(strings = fullmat,
-    ##                spans = matrix(1, nrow = nrow(fullmat),
-    ##                               ncol = ncol(fullmat)),
-    ##                ref_footnotes = list(),
-    ##                display = matrix(TRUE, nrow = nrow(fullmat),
-    ##                                 ncol = ncol(fullmat)),
-    ##                aligns = cbind(keycolaligns,
-    ##                               matrix("center", nrow = nrow(fullmat),
-    ##                                      ncol = ncol(fullmat)- length(keycols)))),
-    ##           nlines_header = 1, ## XXX this is wrong!
-    ##           nrow_header = 1,
-    ##           class = c("MatrixPrintForm", "list"))
-    ## .do_mat_expand(ret, has_topleft = FALSE)
     MatrixPrintForm(strings = fullmat,
                     spans = matrix(1, nrow = nrow(fullmat),
                                    ncol = ncol(fullmat)),
