@@ -130,11 +130,13 @@ setMethod("matrix_form", "listing_df",
     colnames(bodymat) <- names(listing)
 
 
+    curkey <- ""
     for(i in seq_along(keycols)) {
 
         kcol <- keycols[i]
         kcolvec <- listing[[kcol]]
-        disp <- c(TRUE, tail(kcolvec, -1) != head(kcolvec, -1))
+        curkey <- paste0(curkey, kcolvec)
+        disp <- c(TRUE, tail(curkey, -1) != head(curkey, -1))
         bodymat[disp, kcol] <- kcolvec[disp]
     }
 
@@ -258,6 +260,19 @@ print.listing_df <- function(x, ...) {
     invisible(x)
 }
 
+
+## because rle in base base is too much of a stickler for being atomic
+basic_run_lens <- function(x) {
+
+    n <- length(x)
+    if(n == 0) {
+        return(integer())
+    }
+
+    y <- x[-1L] != x[-n]
+    i <- c(which(y), n)
+    diff(c(0L, i))
+}
 #' @inheritParams formatters::make_row_df
 #' @export
 #' @rdname listing_methods
@@ -272,41 +287,71 @@ setMethod("make_row_df", "listing_df",
                     sibpos = NA_integer_,
                     nsibs = NA_integer_){
 
-    keycols <- get_keycols(tt)
-    tt$abs_rownumber <- seq_along(tt[[1]])
+    ## assume sortedness by keycols
 
-    tt$path <- I(lapply(1:NROW(tt),
-                    function(i) {
-        retpath <- character(2*length(keycols))
-        for(j in seq_along(keycols)) {
-            retpath[2*j - 1] <- keycols[j]
-            retpath[2*j] <- tt[i, keycols[j], drop = TRUE]
-        }
-        retpath
-    }))
-    spl <- split(tt, tt[keycols])
-    spl <- spl[vapply(spl, function(y) NROW(y) > 0, NA)]
-    dfs <- lapply(spl, function(df) {
-        df <- df[order(df$abs_rownumber),]
-        ndf <- NROW(df)
-        lapply(1:ndf, function(i) {
-            rw <- df[i,]
-            stopifnot(nrow(rw) == 1)
-            pagdfrow(nm = "",
-                     lab = "",
-                     rnum = rw$abs_rownumber,
-                     pth = NA_character_,
-                     sibpos = i,
-                     nsibs = ndf,
-                     extent = 1L,
-                     rclass = "listing_df",
-                     repind = integer())
-        })
-    })
-    ret <- do.call(rbind, unlist(dfs, recursive = FALSE))
-    ret <- ret[order(ret$abs_rownumber),]
+
+    keycols <- get_keycols(tt)
+    abs_rownumber <- seq_along(tt[[1]])
+    runlens <- basic_run_lens(tt[[tail(keycols,1)]])
+    sibpos <- unlist(lapply(runlens, seq_len))
+    nsibs <- rep(runlens, times = runlens)
+    ret <- data.frame(label = "", name = "",
+                      abs_rownumber = abs_rownumber,
+                      path = I(as.list(rep(NA_character_, NROW(tt)))),
+                      pos_in_siblings = sibpos,
+                      n_siblings = nsibs,
+                      self_extent = 1L, ## XXX this doesn't support newlines
+                      par_extent = 0L,
+                      reprint_inds = I(replicate(NROW(tt), list(integer()))),
+                      node_class = "listing_df",
+                      indent = 0L,
+                      nrowrefs = 0L, ## XXX this doesn't support footnotes
+                      ncellrefs = 0L, ## XXX this doesn't support footnotes
+                      nreflines = 0L, ## XXX this doesn't support footnotes
+                      force_page = FALSE,
+                      page_title = NA_character_,
+                      trailing_sep = NA_character_)
+    stopifnot(identical(names(ret),
+                        names(pagdfrow(nm = "", lab = "", rnum = 1L, pth = NA_character_, extent = 1L,
+                                       rclass = ""))))
     ret
 })
+
+
+##     tt$sibpos <- unlist(lapply(
+##     ## don't support pathing for now
+##     tt$path <- I(lapply(1:NROW(tt),
+##                     function(i) {
+##         retpath <- character(2*length(keycols))
+##         for(j in seq_along(keycols)) {
+##             retpath[2*j - 1] <- keycols[j]
+##             retpath[2*j] <- tt[i, keycols[j], drop = TRUE]
+##         }
+##         retpath
+##     }))
+##     spl <- split(tt, tt[keycols])
+##     spl <- spl[vapply(spl, function(y) NROW(y) > 0, NA)]
+##     dfs <- lapply(spl, function(df) {
+##         df <- df[order(df$abs_rownumber),]
+##         ndf <- NROW(df)
+##         lapply(1:ndf, function(i) {
+##             rw <- df[i,]
+##             stopifnot(nrow(rw) == 1)
+##             pagdfrow(nm = "",
+##                      lab = "",
+##                      rnum = rw$abs_rownumber,
+##                      pth = NA_character_,
+##                      sibpos = i,
+##                      nsibs = ndf,
+##                      extent = 1L,
+##                      rclass = "listing_df",
+##                      repind = integer())
+##         })
+##     })
+##     ret <- do.call(rbind, unlist(dfs, recursive = FALSE))
+##     ret <- ret[order(ret$abs_rownumber),]
+##     ret
+## })
 
 
 #' @export
