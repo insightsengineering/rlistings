@@ -273,6 +273,22 @@ basic_run_lens <- function(x) {
     i <- c(which(y), n)
     diff(c(0L, i))
 }
+
+setGeneric("vec_nlines",  function(vec) standardGeneric("vec_nlines"))
+
+setMethod("vec_nlines", "ANY", function(vec) rep(1L, length(vec)))
+
+setMethod("vec_nlines", "character", function(vec) {
+    mtchs <- gregexpr("\n", vec, fixed = TRUE)
+    1L + vapply(mtchs, function(vi) sum(vi > 0), 1L)
+})
+
+setMethod("vec_nlines", "factor", function(vec) {
+
+    lvl_nlines <- vec_nlines(levels(vec))
+    lvl_nlines[vec]
+})
+
 #' @inheritParams formatters::make_row_df
 #' @export
 #' @rdname listing_methods
@@ -288,19 +304,22 @@ setMethod("make_row_df", "listing_df",
                     nsibs = NA_integer_){
 
     ## assume sortedness by keycols
-
-
     keycols <- get_keycols(tt)
     abs_rownumber <- seq_along(tt[[1]])
     runlens <- basic_run_lens(tt[[tail(keycols,1)]])
     sibpos <- unlist(lapply(runlens, seq_len))
     nsibs <- rep(runlens, times = runlens)
+    extents <- rep(1L, nrow(tt))
+    for(col in listing_dispcols(tt)) {
+        col_ext <- vec_nlines(tt[[col]])
+        extents <- ifelse(col_ext > extents, col_ext, extents)
+    }
     ret <- data.frame(label = "", name = "",
                       abs_rownumber = abs_rownumber,
                       path = I(as.list(rep(NA_character_, NROW(tt)))),
                       pos_in_siblings = sibpos,
                       n_siblings = nsibs,
-                      self_extent = 1L, ## XXX this doesn't support newlines
+                      self_extent = extents,
                       par_extent = 0L,
                       reprint_inds = I(replicate(NROW(tt), list(integer()))),
                       node_class = "listing_df",

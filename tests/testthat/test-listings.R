@@ -69,3 +69,19 @@ expect_error({prov_footer(lsting) <- 1L},
 
 main_title(lsting) <- NULL
 expect_identical(main_title(lsting), character())
+
+
+## newline support #16
+
+mydf <- data.frame(col1 = c(1, 1, 2), col2 = c("hi\nthere", "what", "who"))
+var_labels(mydf) <- c("column\n1", "column 2")
+mylst <- as_listing(mydf, names(mydf),  key_cols = "col1")
+
+mpf <- matrix_form(mylst)
+
+expect_identical(mpf$strings[1:2, 1, drop = TRUE],
+                 c("column", "1"))
+
+rdf <- make_row_df(mylst)
+expect_identical(rdf$self_extent,
+                 c(2L, 1L, 1L))
