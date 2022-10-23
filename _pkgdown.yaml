@@ -1,12 +1,12 @@
 url: https://insightsengineering.github.io/rlistings
 
 template:
+  bootstrap: 5
   params:
-    bootswatch: cerulean
+    bootswatch: flatly
     ganalytics: UA-125641273-1
 
 navbar:
   right:
     - icon: fa-github
       href: https://github.com/insightsengineering/rlistings
-
