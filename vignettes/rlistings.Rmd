@@ -1,0 +1,112 @@
+---
+title: "Getting Started with rlistings"
+date: "2022-10-26"
+output:
+    rmarkdown::html_document:
+        theme: "spacelab"
+        highlight: "kate"
+        toc: true
+        toc_float:
+          collapsed: false
+        toc_depth: 4
+vignette: >
+    %\VignetteIndexEntry{Getting Started}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+editor_options:
+    markdown: 
+        wrap: 72
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+---------
+
+This vignette shows the general purpose and basic functionality of the `rlistings` R package.  
+The `rlistings` R package contains value formatting and ASCII rendering infrastructure for tables and listings useful for clinical trials and other statistical analysis. 
+The core functionality is built on top of the ASCII rendering [`formatters`](https://insightsengineering.github.io/formatters/) package. 
+
+Some of the main functionality that is available using the `rlistings` functions includes:
+
+- The ability to create a basic listing from a data frame object
+- 
+
+The index of all available `rlistings` functions can be found on [the rlistings website functions reference](https://insightsengineering.github.io/rlistings/reference/index.html).
+
+To create complex tables instead of the more simplified listings constructed using this package see [the `rtables` package](https://roche.github.io/rtables/).
+
+---------
+
+## Building a Listing
+
+The package provides a basic framework to create listings that are commonly used for purposes such as clinical trial and other statistical analysis.
+
+The function `as_listing` can be applied to a `data.frame` object to create a listing with specified columns displayed.
+
+In the R code below we will give a basic example of how to create a listing from a pre-constructed data frame.
+
+We first load in the `rlistings` package. We will use the dummy ADAE dataset provided within the `formatters` package as our data frame for this example, which consists of 48 columns of basic patient data for adverse events.
+
+```{r}
+library(rlistings)
+
+ADAE <- formatters::ex_adae
+```
+
+Now we will create our listing. Each row in the ADAE dataset represents data for a unique adverse event from a patient. Similarly, each row in our listing will represent one adverse event. 
+
+The `cols` argument specifies a vector of names of all columns that should be displayed in the listing. This can include any columns in the given data frame. The `label` attribute of each given variable will be displayed as column headers in the listing. If there is no associated label for a given variable then the variable name will be printed.
+
+Since the ADAE dataset consists of 1934 rows in total, we will use the `head` function to print only the first 15 rows of the listing.
+
+```{r}
+lsting <- as_listing(
+  df = ADAE,
+  cols = c("USUBJID", "AGE", "SEX", "RACE", "ARM", "AEDECOD", "AESEV", "AETOXGR")
+)
+
+head(lsting, 15)
+```
+
+#### Key Columns
+
+To tidy the listing and avoid repeatedly printing the same values in subsequent columns, the `key_cols` argument can be specified. This argument is a vector of names of columns that should be treated as key columns in a listing. Key columns are used to sort/group rows, and values will not be repeated in key columns for any subsequent rows with the same data in their key columns. You should take care to ensure that any key columns specified are also included in the `cols` argument, otherwise they will not be displayed. We will use the following as key columns in our listing: `USUBJID`, `AGE`, `SEX`, `RACE`, and `ARM`.
+
+```{r}
+lsting <- as_listing(
+  df = ADAE,
+  cols = c("USUBJID", "AGE", "SEX", "RACE", "ARM", "AEDECOD", "AESEV", "AETOXGR"),
+  key_cols = c("USUBJID", "AGE", "SEX", "RACE", "ARM")
+)
+
+head(lsting, 15)
+```
+
+#### Titles and Footnotes
+
+Additionally, an `rlistings` listing can be annotated by two types of header information (main title and subtitles) and two types of footer information (main footers and provenance footers). A single title can be set using the `main_title` argument, while one or more subtitles, main footers, and provenance footers can be set by the `subtitles`, `main_footer` and `prov_footer` arguments respectively. These are demonstrated in the amended listing below.
+
+```{r}
+lsting <- as_listing(
+  df = ADAE,
+  cols = c("USUBJID", "AGE", "SEX", "RACE", "ARM", "AEDECOD", "AESEV", "AETOXGR"),
+  key_cols = c("USUBJID", "AGE", "SEX", "RACE", "ARM"),
+  main_title = "Main Title",
+  subtitles = c("Subtitle A", "Subtitle B"),
+  main_footer = c("Main Footer A", "Main Footer B", "Main Footer C"),
+  prov_footer = c("Provenance Footer A", "Provenance Footer B")
+)
+
+head(lsting, 15)
+```
+
+---------
+
+**For more information please explore [the rlistings website](https://insightsengineering.github.io/rlistings/).**
