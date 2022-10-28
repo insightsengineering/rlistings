@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage line-rate="0.781725888324873" branch-rate="0" lines-covered="154" lines-valid="197" branches-covered="0" branches-valid="0" complexity="0" version="3.6.1" timestamp="2022-10-28 12:57:04">
+<coverage line-rate="0.781725888324873" branch-rate="0" lines-covered="154" lines-valid="197" branches-covered="0" branches-valid="0" complexity="0" version="3.6.1" timestamp="2022-10-28 13:09:38">
   <sources/>
   <packages>
     <package name="rlistings" line-rate="0.781725888324873" branch-rate="0" complexity="0">
