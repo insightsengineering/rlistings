@@ -70,8 +70,7 @@ paginate_listing(
 \item{colwidths}{numeric. Print  widths of  columns, if  manually
 set/previously known.}
 
-\item{visible_only}{logical(1). Should only visible aspects of the table structure be reflected in this summary.
-Defaults to \code{TRUE}. May not be supported by all methods.}
+\item{visible_only}{logical(1). Should only visible aspects of the table structure be reflected in this summary. Defaults to \code{TRUE}. May not be supported by all methods.}
 
 \item{rownum}{numeric(1). Internal detail do not set manually.}
 
