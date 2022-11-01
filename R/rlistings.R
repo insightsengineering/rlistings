@@ -1,6 +1,7 @@
 #' @import formatters
 #' @import dplyr
 #' @import methods
+#' @importFrom utils head tail
 NULL
 
 setOldClass(c("listing_df", "data.frame"))
