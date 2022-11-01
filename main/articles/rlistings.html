@@ -50,12 +50,6 @@
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
-<!-- start dropdown for versions --> <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle"
-          data-bs-toggle="dropdown" role="button"
-          aria-expanded="false" aria-haspopup="true"
-          id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a> </div></li>
-<!-- end dropdown for versions -->
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
@@ -81,6 +75,8 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Getting Started with rlistings</h1>
+                        <h4 data-toc-skip class="author">Emily de la Rua
+and Gabriel Becker</h4>
             
             <h4 data-toc-skip class="date">2022-10-26</h4>
       
@@ -123,6 +119,14 @@ package</a>.</p>
 <code>data.frame</code> object can be easily converted into a listing
 using the <code>as_listing</code> function with several optional
 customizations available.</p>
+<p>A listing, at its core, is a set of observation-level data which is
+to be rendered with particular formatting but without any sort of
+aggregation or further analysis. In practice, this translates to to a
+classed <code>data.frame</code> (or <code>tbl_df</code>) object with a
+specialized print method. This means that, unlike tables created with
+<code>rlistings</code>’ sibling package <code>rtables</code>, a listing
+object is fundamentally the incoming <code>data.frame</code> with a few
+annotations attached to it.</p>
 <p>In the R code below we will give a basic example of how to create an
 <code>rlistings</code> listing from a pre-processed data frame.</p>
 <p>We first load in the <code>rlistings</code> package.</p>
@@ -151,35 +155,35 @@ columns taken from the data frame that should be included in the
 listing. Column headers are set by the <code>label</code> attribute of
 each given variable. If there is no label associated with a given
 variable then the variable name will be taken as a header instead. For
-this example we will choose 8 random columns to display - 5 specific to
-the patient and 3 relating to the adverse event.</p>
+this example we will choose 8 arbitrary columns to display - 5 specific
+to the patient and 3 relating to the adverse event.</p>
 <p>Since the dataset consists of 1934 rows in total, we will use the
 <code>head</code> function to print only the first 15 rows of the
 listing.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lsting</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/listings.html">as_listing</a></span><span class="op">(</span></span>
 <span>  df <span class="op">=</span> <span class="va">adae</span>,</span>
-<span>  cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span>, <span class="st">"ARM"</span>, <span class="st">"AEDECOD"</span>, <span class="st">"AESEV"</span>, <span class="st">"AETOXGR"</span><span class="op">)</span></span>
+<span>  cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"AETOXGR"</span>, <span class="st">"ARM"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span>, <span class="st">"AEDECOD"</span>, <span class="st">"AESEV"</span><span class="op">)</span>,</span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">lsting</span>, <span class="fl">15</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Unique Subject Identifier   Age   Sex             Race              Description of Planned Arm   Dictionary-Derived Term   Severity/Intensity   Analysis Toxicity Grade</span></span>
+<span><span class="co">#&gt; Unique Subject Identifier   Analysis Toxicity Grade   Description of Planned Arm   Age   Sex             Race              Dictionary-Derived Term   Severity/Intensity</span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-134      47     M              WHITE                     A: Drug X                 dcd B.2.1.2.1             MODERATE                   3           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-134      47     M              WHITE                     A: Drug X                 dcd D.1.1.4.2             MODERATE                   3           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-134      47     M              WHITE                     A: Drug X                 dcd A.1.1.1.2             MODERATE                   2           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-134      47     M              WHITE                     A: Drug X                 dcd A.1.1.1.2             MODERATE                   2           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-141      35     F              WHITE                   C: Combination              dcd B.2.1.2.1             MODERATE                   3           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-141      35     F              WHITE                   C: Combination              dcd D.2.1.5.3               MILD                     1           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-141      35     F              WHITE                   C: Combination              dcd A.1.1.1.1               MILD                     1           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-141      35     F              WHITE                   C: Combination              dcd A.1.1.1.2             MODERATE                   2           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-141      35     F              WHITE                   C: Combination              dcd A.1.1.1.1               MILD                     1           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-141      35     F              WHITE                   C: Combination              dcd D.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-236      32     M    BLACK OR AFRICAN AMERICAN           B: Placebo                dcd B.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-236      32     M    BLACK OR AFRICAN AMERICAN           B: Placebo                dcd B.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-236      32     M    BLACK OR AFRICAN AMERICAN           B: Placebo                dcd B.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-265      25     M              WHITE                   C: Combination              dcd C.2.1.2.1             MODERATE                   2           </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-1-id-265      25     M              WHITE                   C: Combination              dcd D.1.1.4.2             MODERATE                   3</span></span></code></pre></div>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-134                 3                      A: Drug X            47     M              WHITE                  dcd B.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-134                 3                      A: Drug X            47     M              WHITE                  dcd D.1.1.4.2             MODERATE     </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-134                 2                      A: Drug X            47     M              WHITE                  dcd A.1.1.1.2             MODERATE     </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-134                 2                      A: Drug X            47     M              WHITE                  dcd A.1.1.1.2             MODERATE     </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-141                 3                    C: Combination         35     F              WHITE                  dcd B.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-141                 1                    C: Combination         35     F              WHITE                  dcd D.2.1.5.3               MILD       </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-141                 1                    C: Combination         35     F              WHITE                  dcd A.1.1.1.1               MILD       </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-141                 2                    C: Combination         35     F              WHITE                  dcd A.1.1.1.2             MODERATE     </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-141                 1                    C: Combination         35     F              WHITE                  dcd A.1.1.1.1               MILD       </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-141                 5                    C: Combination         35     F              WHITE                  dcd D.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-236                 5                      B: Placebo           32     M    BLACK OR AFRICAN AMERICAN        dcd B.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-236                 5                      B: Placebo           32     M    BLACK OR AFRICAN AMERICAN        dcd B.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-236                 5                      B: Placebo           32     M    BLACK OR AFRICAN AMERICAN        dcd B.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-265                 2                    C: Combination         25     M              WHITE                  dcd C.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-1-id-265                 3                    C: Combination         25     M              WHITE                  dcd D.1.1.4.2             MODERATE</span></span></code></pre></div>
 <p>In the listing output above you can see that there are several rows
 associated with each patient, resulting in many instances of repeated
 values over several columns. This can be neatened by setting key columns
@@ -188,43 +192,44 @@ with the <code>key_cols</code> argument.</p>
 <div class="section level2">
 <h2 id="key-columns">Key Columns<a class="anchor" aria-label="anchor" href="#key-columns"></a>
 </h2>
-<p>To tidy the listing and avoid repeatedly printing the same values in
-subsequent columns, the <code>key_cols</code> argument can take a vector
-of names of columns that should be treated as key columns in a listing.
-The data frame is sorted on the key columns and data repeated across all
-key columns for any subsequent rows will not be printed. You should note
-that any key columns set must also be included in the <code>cols</code>
-argument to be displayed in the listing. Below we implement key columns
-to clean up repeated patient-identifying information for improved
+<p>Key columns act as contextual identifiers for observations. Their
+core behavioral feature is that sequentially repeated values are not
+displayed. The <code>key_cols</code> argument takes a vector of column
+names identifying the key columns for the listing.</p>
+<p>A listing is always sorted by its key columns (with order defining
+the sort precedence). Any key columns set must also be included in the
+<code>cols</code> argument to be displayed in the listing. Below we
+specify trial arm and patient ID as key columns to improve
 readability.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lsting</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/listings.html">as_listing</a></span><span class="op">(</span></span>
 <span>  df <span class="op">=</span> <span class="va">adae</span>,</span>
-<span>  cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span>, <span class="st">"ARM"</span>, <span class="st">"AEDECOD"</span>, <span class="st">"AESEV"</span>, <span class="st">"AETOXGR"</span><span class="op">)</span>,</span>
-<span>  key_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span>, <span class="st">"ARM"</span><span class="op">)</span></span>
+<span>  cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"AETOXGR"</span>, <span class="st">"ARM"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span>, <span class="st">"AEDECOD"</span>, <span class="st">"AESEV"</span><span class="op">)</span>,</span>
+<span>  key_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="st">"USUBJID"</span>, <span class="st">"AETOXGR"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; sorting incoming data by key columns</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">lsting</span>, <span class="fl">15</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Unique Subject Identifier   Age   Sex             Race              Description of Planned Arm   Dictionary-Derived Term   Severity/Intensity   Analysis Toxicity Grade</span></span>
+<span><span class="co">#&gt; Unique Subject Identifier   Analysis Toxicity Grade   Description of Planned Arm   Age   Sex             Race              Dictionary-Derived Term   Severity/Intensity</span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
-<span><span class="co">#&gt; AB12345-BRA-1-id-134        47    M     WHITE                       A: Drug X                         dcd B.2.1.2.1             MODERATE                   3           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd D.1.1.4.2             MODERATE                   3           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd A.1.1.1.2             MODERATE                   2           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd A.1.1.1.2             MODERATE                   2           </span></span>
-<span><span class="co">#&gt; AB12345-BRA-1-id-141        35    F     WHITE                       C: Combination                    dcd B.2.1.2.1             MODERATE                   3           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd D.2.1.5.3               MILD                     1           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd A.1.1.1.1               MILD                     1           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd A.1.1.1.2             MODERATE                   2           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd A.1.1.1.1               MILD                     1           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd D.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt; AB12345-BRA-1-id-236        32    M     BLACK OR AFRICAN AMERICAN   B: Placebo                        dcd B.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd B.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd B.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt; AB12345-BRA-1-id-265        25    M     WHITE                       C: Combination                    dcd C.2.1.2.1             MODERATE                   2           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd D.1.1.4.2             MODERATE                   3</span></span></code></pre></div>
+<span><span class="co">#&gt; AB12345-BRA-1-id-134        2                                 A: Drug X            47     M              WHITE                  dcd A.1.1.1.2             MODERATE     </span></span>
+<span><span class="co">#&gt;                                                               A: Drug X            47     M              WHITE                  dcd A.1.1.1.2             MODERATE     </span></span>
+<span><span class="co">#&gt;                             3                                 A: Drug X            47     M              WHITE                  dcd B.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;                                                               A: Drug X            47     M              WHITE                  dcd D.1.1.4.2             MODERATE     </span></span>
+<span><span class="co">#&gt; AB12345-BRA-1-id-141        1                               C: Combination         35     F              WHITE                  dcd D.2.1.5.3               MILD       </span></span>
+<span><span class="co">#&gt;                                                             C: Combination         35     F              WHITE                  dcd A.1.1.1.1               MILD       </span></span>
+<span><span class="co">#&gt;                                                             C: Combination         35     F              WHITE                  dcd A.1.1.1.1               MILD       </span></span>
+<span><span class="co">#&gt;                             2                               C: Combination         35     F              WHITE                  dcd A.1.1.1.2             MODERATE     </span></span>
+<span><span class="co">#&gt;                             3                               C: Combination         35     F              WHITE                  dcd B.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;                             5                               C: Combination         35     F              WHITE                  dcd D.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt; AB12345-BRA-1-id-236        5                                 B: Placebo           32     M    BLACK OR AFRICAN AMERICAN        dcd B.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt;                                                               B: Placebo           32     M    BLACK OR AFRICAN AMERICAN        dcd B.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt;                                                               B: Placebo           32     M    BLACK OR AFRICAN AMERICAN        dcd B.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt; AB12345-BRA-1-id-265        2                               C: Combination         25     M              WHITE                  dcd C.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;                             3                               C: Combination         25     M              WHITE                  dcd D.1.1.4.2             MODERATE</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="titles-and-footnotes">Titles and Footnotes<a class="anchor" aria-label="anchor" href="#titles-and-footnotes"></a>
+<h2 id="titles-and-footers">Titles and Footers<a class="anchor" aria-label="anchor" href="#titles-and-footers"></a>
 </h2>
 <p>Additionally, an <code>rlistings</code> listing can be annotated with
 two types of header information (main title and subtitles) and two types
@@ -237,13 +242,14 @@ in the following updated listing.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lsting</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/listings.html">as_listing</a></span><span class="op">(</span></span>
 <span>  df <span class="op">=</span> <span class="va">adae</span>,</span>
-<span>  cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span>, <span class="st">"ARM"</span>, <span class="st">"AEDECOD"</span>, <span class="st">"AESEV"</span>, <span class="st">"AETOXGR"</span><span class="op">)</span>,</span>
-<span>  key_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span>, <span class="st">"ARM"</span><span class="op">)</span>,</span>
+<span>  cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"AETOXGR"</span>, <span class="st">"ARM"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span>, <span class="st">"AEDECOD"</span>, <span class="st">"AESEV"</span><span class="op">)</span>,</span>
+<span>  key_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="st">"USUBJID"</span>, <span class="st">"AETOXGR"</span><span class="op">)</span>,</span>
 <span>  main_title <span class="op">=</span> <span class="st">"Main Title"</span>,</span>
 <span>  subtitles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Subtitle A"</span>, <span class="st">"Subtitle B"</span><span class="op">)</span>,</span>
 <span>  main_footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Main Footer A"</span>, <span class="st">"Main Footer B"</span>, <span class="st">"Main Footer C"</span><span class="op">)</span>,</span>
 <span>  prov_footer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Provenance Footer A"</span>, <span class="st">"Provenance Footer B"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; sorting incoming data by key columns</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">lsting</span>, <span class="fl">15</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Main Title</span></span>
@@ -251,23 +257,23 @@ in the following updated listing.</p>
 <span><span class="co">#&gt; Subtitle B</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
-<span><span class="co">#&gt; Unique Subject Identifier   Age   Sex             Race              Description of Planned Arm   Dictionary-Derived Term   Severity/Intensity   Analysis Toxicity Grade</span></span>
+<span><span class="co">#&gt; Unique Subject Identifier   Analysis Toxicity Grade   Description of Planned Arm   Age   Sex             Race              Dictionary-Derived Term   Severity/Intensity</span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
-<span><span class="co">#&gt; AB12345-BRA-1-id-134        47    M     WHITE                       A: Drug X                         dcd B.2.1.2.1             MODERATE                   3           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd D.1.1.4.2             MODERATE                   3           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd A.1.1.1.2             MODERATE                   2           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd A.1.1.1.2             MODERATE                   2           </span></span>
-<span><span class="co">#&gt; AB12345-BRA-1-id-141        35    F     WHITE                       C: Combination                    dcd B.2.1.2.1             MODERATE                   3           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd D.2.1.5.3               MILD                     1           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd A.1.1.1.1               MILD                     1           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd A.1.1.1.2             MODERATE                   2           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd A.1.1.1.1               MILD                     1           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd D.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt; AB12345-BRA-1-id-236        32    M     BLACK OR AFRICAN AMERICAN   B: Placebo                        dcd B.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd B.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd B.1.1.1.1              SEVERE                    5           </span></span>
-<span><span class="co">#&gt; AB12345-BRA-1-id-265        25    M     WHITE                       C: Combination                    dcd C.2.1.2.1             MODERATE                   2           </span></span>
-<span><span class="co">#&gt;                                                                                                       dcd D.1.1.4.2             MODERATE                   3           </span></span>
+<span><span class="co">#&gt; AB12345-BRA-1-id-134        2                                 A: Drug X            47     M              WHITE                  dcd A.1.1.1.2             MODERATE     </span></span>
+<span><span class="co">#&gt;                                                               A: Drug X            47     M              WHITE                  dcd A.1.1.1.2             MODERATE     </span></span>
+<span><span class="co">#&gt;                             3                                 A: Drug X            47     M              WHITE                  dcd B.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;                                                               A: Drug X            47     M              WHITE                  dcd D.1.1.4.2             MODERATE     </span></span>
+<span><span class="co">#&gt; AB12345-BRA-1-id-141        1                               C: Combination         35     F              WHITE                  dcd D.2.1.5.3               MILD       </span></span>
+<span><span class="co">#&gt;                                                             C: Combination         35     F              WHITE                  dcd A.1.1.1.1               MILD       </span></span>
+<span><span class="co">#&gt;                                                             C: Combination         35     F              WHITE                  dcd A.1.1.1.1               MILD       </span></span>
+<span><span class="co">#&gt;                             2                               C: Combination         35     F              WHITE                  dcd A.1.1.1.2             MODERATE     </span></span>
+<span><span class="co">#&gt;                             3                               C: Combination         35     F              WHITE                  dcd B.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;                             5                               C: Combination         35     F              WHITE                  dcd D.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt; AB12345-BRA-1-id-236        5                                 B: Placebo           32     M    BLACK OR AFRICAN AMERICAN        dcd B.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt;                                                               B: Placebo           32     M    BLACK OR AFRICAN AMERICAN        dcd B.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt;                                                               B: Placebo           32     M    BLACK OR AFRICAN AMERICAN        dcd B.1.1.1.1              SEVERE      </span></span>
+<span><span class="co">#&gt; AB12345-BRA-1-id-265        2                               C: Combination         25     M              WHITE                  dcd C.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;                             3                               C: Combination         25     M              WHITE                  dcd D.1.1.4.2             MODERATE     </span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Main Footer A</span></span>
