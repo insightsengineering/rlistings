@@ -4,7 +4,6 @@
 \alias{listing_methods}
 \alias{print.listing_df}
 \alias{make_row_df,listing_df-method}
-\alias{[,listing_df,ANY,ANY-method}
 \alias{[,listing_df-method}
 \alias{main_title,listing_df-method}
 \alias{subtitles,listing_df-method}
@@ -33,7 +32,7 @@
   nsibs = NA_integer_
 )
 
-\S4method{[}{listing_df,ANY,ANY}(x, i, j, drop = FALSE)
+\S4method{[}{listing_df}(x, i, j, drop = FALSE)
 
 \S4method{main_title}{listing_df}(obj)
 
