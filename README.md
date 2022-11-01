@@ -16,6 +16,23 @@ The `rlistings` R package is a package that was designed to create and display l
 
 `rlistings` currently covers some of these requirements, and remains under active development.
 
+## Simple example
+
+The following example shows a simple listings and its printed format.
+
+```{r}
+library(dplyr)
+library(rlistings)
+
+# Reducing the data
+mtcars_ex <- mtcars %>% mutate("car" = rownames(mtcars)) %>% head(10)
+
+as_listing(mtcars_ex, 
+  key_cols = c("gear", "carb"), 
+  cols = c("gear", "carb", "qsec", "car"))
+  
+```
+
 ## Installation
 
 For releases from October 2022 it is recommended that you [create and use a Github PAT](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) to install the latest version of this package. Once you have the PAT, run the following:
