@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^\.github$
 ^\.gitlab-ci\.yml$
+^doc$
+^Meta$
