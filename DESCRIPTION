@@ -6,6 +6,7 @@ Authors@R: c(
   person("Gabriel", "Becker", email = "gabembecker@gmail.com", role = c("aut", "cre")),
   person("Adrian", "Waddell", email = "adrian.waddell@gene.com", role = "aut"),
   person("F. Hoffmann-La Roche AG", role = c("cph", "fnd")))
+Config/Needs/website: insightsengineering/nesttemplate
 Description: Listings are often part of the submission of clinical trial data in regulatory settings.
   We provide a framework for the specific formatting features often used when displaying large datasets
   in that context.
