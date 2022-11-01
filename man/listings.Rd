@@ -97,10 +97,10 @@ Create a Listing from a data.frame or tibble
 
 dat <- ex_adae
 
-lsting <- as_listing(dat[1:25,], key_cols = c("USUBJID", "AESOC")) \%>\%
-    add_listing_col("AETOXGR") \%>\%
-    add_listing_col("BMRKR1", format = "xx.x") \%>\%
-    add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
+lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) \%>\%
+  add_listing_col("AETOXGR") \%>\%
+  add_listing_col("BMRKR1", format = "xx.x") \%>\%
+  add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 
 
 mat <- matrix_form(lsting)
