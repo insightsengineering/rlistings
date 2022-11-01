@@ -1,10 +1,10 @@
 #' @import formatters
-#' @import dplyr
+#' @import tibble
 #' @import methods
 #' @importFrom utils head tail
 NULL
 
-setOldClass(c("listing_df", "data.frame"))
+setOldClass(c("listing_df", "tbl_df", "tbl", "data.frame"))
 setOldClass(c("MatrixPrintForm", "list"))
 #' Create a Listing from a data.frame or tibble
 #'
@@ -49,6 +49,7 @@ as_listing <- function(df,
                        main_footer = NULL,
                        prov_footer = NULL
                        ) {
+    df <- as_tibble(df)
     varlabs <- var_labels(df, fill = TRUE)
     o <- do.call(order, df[key_cols])
     if(is.unsorted(o)) {
