@@ -9,6 +9,7 @@ Authors@R: c(
 Description: Listings are often part of the submission of clinical trial data in regulatory settings.
   We provide a framework for the specific formatting features often used when displaying large datasets
   in that context.
+Language: en-US
 License: Apache License 2.0 | file LICENSE
 Depends: formatters (>= 0.3.2.5), dplyr, methods
 Suggests: knitr, testthat
