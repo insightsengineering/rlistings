@@ -54,12 +54,12 @@ The following example shows a simple listing and its printed output.
 library(rlistings)
 
 # Reducing the data
-mtcars_ex <- mtcars %>% dplyr::mutate("car" = rownames(mtcars)) %>% head(10)
+mtcars_ex <- mtcars %>% dplyr::mutate("car" = rownames(mtcars))
 
 as_listing(mtcars_ex, 
   key_cols = c("gear", "carb"), 
   cols = c("gear", "carb", "qsec", "car")
-)
+) %>% head()
 ```
 
 ## Acknowledgment
