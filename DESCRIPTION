@@ -1,21 +1,30 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Date: 2022-10-14
-Version: 0.1.1.9000
+Version: 0.1.1.9001
+Date: 2022-11-02
 Authors@R: c(
-  person("Gabriel", "Becker", email = "gabembecker@gmail.com", role = c("aut", "cre")),
-  person("Adrian", "Waddell", email = "adrian.waddell@gene.com", role = "aut"),
-  person("F. Hoffmann-La Roche AG", role = c("cph", "fnd")))
-Config/Needs/website: insightsengineering/nesttemplate
-Description: Listings are often part of the submission of clinical trial data in regulatory settings.
-  We provide a framework for the specific formatting features often used when displaying large datasets
-  in that context.
-Language: en-US
+    person("Gabriel", "Becker", , "gabembecker@gmail.com", role = c("aut", "cre")),
+    person("Adrian", "Waddell", , "adrian.waddell@gene.com", role = "aut"),
+    person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
+  )
+Description: Listings are often part of the submission of clinical trial
+    data in regulatory settings.  We provide a framework for the specific
+    formatting features often used when displaying large datasets in that
+    context.
 License: Apache License 2.0 | file LICENSE
-Depends: formatters (>= 0.3.2.5), tibble, methods
-Suggests: knitr, testthat, dplyr
-VignetteBuilder: knitr
-Encoding: UTF-8
 URL: http://github.com/insightsengineering/rlistings
 BugReports: http://github.com/insightsengineering/rlistings/issues
+Depends: 
+    formatters (>= 0.3.2.5),
+    methods,
+    tibble
+Suggests: 
+    dplyr,
+    knitr,
+    testthat
+VignetteBuilder: 
+    knitr
+Config/Needs/website: insightsengineering/nesttemplate
+Encoding: UTF-8
+Language: en-US
 RoxygenNote: 7.2.1
