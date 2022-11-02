@@ -111,7 +111,16 @@ expect_identical(
 )
 
 rdf <- make_row_df(mylst)
-expect_identical(
-  rdf$self_extent,
-  c(2L, 1L, 1L)
-)
+
+expect_identical(rdf$self_extent,
+                 c(2L, 1L, 1L))
+
+
+## regression test for keycols being lost due to head
+## causing #41
+rlst <- as_listing(mtcars,
+  key_cols = c("gear", "carb"),
+  cols = c("gear", "carb", "qsec"))
+
+expect_identical(dim(head(rlst, 5)),
+                 c(5L, ncol(mtcars)))

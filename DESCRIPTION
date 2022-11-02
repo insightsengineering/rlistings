@@ -12,8 +12,8 @@ Description: Listings are often part of the submission of clinical trial data in
   in that context.
 Language: en-US
 License: Apache License 2.0 | file LICENSE
-Depends: formatters (>= 0.3.2.5), dplyr, methods
-Suggests: knitr, testthat
+Depends: formatters (>= 0.3.2.5), tibble, methods
+Suggests: knitr, testthat, dplyr
 VignetteBuilder: knitr
 Encoding: UTF-8
 URL: http://github.com/insightsengineering/rlistings
