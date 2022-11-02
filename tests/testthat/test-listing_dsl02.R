@@ -8,7 +8,8 @@ result <- formatters::ex_adsl %>%
     SSADTM = as.POSIXct(
       strftime(TRTSDTM, format = "%Y-%m-%d %H:%M:%S"),
       format = "%Y-%m-%d",
-      tz = "UTC"),
+      tz = "UTC"
+    ),
     SSAEDY = as.numeric(ceiling(difftime(EOSDT, SSADTM, units = "days"))),
     RANDEDY = as.numeric(ceiling(difftime(EOSDT, RANDDT, units = "days"))),
   ) %>%
@@ -97,4 +98,3 @@ testthat::test_that("DSL02 attributes are correct", {
   testthat::expect_equal(attr(result_matrix, "ncols"), expected_ncols)
   testthat::expect_s3_class(result_matrix, c("MatrixPrintForm", "list"))
 })
-
