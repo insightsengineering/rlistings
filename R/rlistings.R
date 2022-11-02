@@ -47,35 +47,34 @@ as_listing <- function(df,
                        main_title = NULL,
                        subtitles = NULL,
                        main_footer = NULL,
-                       prov_footer = NULL
-                       ) {
-    df <- as_tibble(df)
-    varlabs <- var_labels(df, fill = TRUE)
-    o <- do.call(order, df[key_cols])
-    if(is.unsorted(o)) {
-        message("sorting incoming data by key columns")
-        df <- df[o,]
-    }
+                       prov_footer = NULL) {
+  df <- as_tibble(df)
+  varlabs <- var_labels(df, fill = TRUE)
+  o <- do.call(order, df[key_cols])
+  if (is.unsorted(o)) {
+    message("sorting incoming data by key columns")
+    df <- df[o, ]
+  }
 
-    ## reorder the full set of cols to ensure key columns are first
-    ordercols <- c(key_cols, setdiff(names(df), key_cols))
-    df <- df[,ordercols]
-    var_labels(df) <- varlabs[ordercols]
+  ## reorder the full set of cols to ensure key columns are first
+  ordercols <- c(key_cols, setdiff(names(df), key_cols))
+  df <- df[, ordercols]
+  var_labels(df) <- varlabs[ordercols]
 
-    for(cnm in key_cols) {
-        df[[cnm]] <- as_keycol(df[[cnm]])
-    }
-
+  for (cnm in key_cols) {
+    df[[cnm]] <- as_keycol(df[[cnm]])
+  }
 
 
-    class(df) <- c("listing_df", class(df))
-    ## these all work even when the value is NULL
-    main_title(df) <- main_title
-    main_footer(df) <- main_footer
-    subtitles(df) <- subtitles
-    prov_footer(df) <- prov_footer
-    listing_dispcols(df) <- cols
-    df
+
+  class(df) <- c("listing_df", class(df))
+  ## these all work even when the value is NULL
+  main_title(df) <- main_title
+  main_footer(df) <- main_footer
+  subtitles(df) <- subtitles
+  prov_footer(df) <- prov_footer
+  listing_dispcols(df) <- cols
+  df
 }
 
 
