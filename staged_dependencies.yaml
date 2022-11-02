@@ -5,4 +5,7 @@ upstream_repos:
   insightsengineering/formatters:
     repo: insightsengineering/formatters
     host: https://github.com
-downstream_repos: {}
+downstream_repos:
+  insightsengineering/chevron:
+    repo: insightsengineering/chevron
+    host: https://github.com

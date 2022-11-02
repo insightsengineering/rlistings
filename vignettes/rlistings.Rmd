@@ -1,0 +1,126 @@
+---
+title: "Getting Started with rlistings"
+author: "Emily de la Rua and Gabriel Becker"
+date: "2022-10-26"
+output:
+    rmarkdown::html_document:
+        theme: "spacelab"
+        highlight: "kate"
+        toc: true
+        toc_float:
+          collapsed: false
+vignette: >
+    %\VignetteIndexEntry{Getting Started}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+editor_options:
+    markdown: 
+        wrap: 72
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+---------
+
+## Introduction
+
+This vignette shows the general purpose and basic functionality of the `rlistings` R package.  
+
+The `rlistings` R package contains value formatting and ASCII rendering infrastructure for tables and listings useful for clinical trials and other statistical analysis. 
+The core functionality is built on top of the [`formatters` package](https://insightsengineering.github.io/formatters/). 
+
+Some of the key features currently available to customize listings created using the `rlistings` package include:
+
+- Key columns
+- Titles and footnotes
+
+The index of all available `rlistings` functions can be found on the [rlistings website functions reference](https://insightsengineering.github.io/rlistings/reference/index.html).
+
+The `rlistings` package is intended for use in creating simple one-dimensional listings. For construction of more complex tables see the [`rtables` package](https://roche.github.io/rtables/).
+
+---------
+
+## Building a Listing
+
+With the basic framework provided in this package, a `data.frame` object can be easily converted into a listing using the `as_listing` function with several optional customizations available.
+
+A listing, at its core, is a set of observation-level data which is to be rendered with particular formatting but without any sort of aggregation or further analysis. In practice, this translates to to a classed `data.frame` (or `tbl_df`) object with a specialized print method. This means that, unlike tables created with `rlistings`' sibling package `rtables`, a listing object is fundamentally the incoming `data.frame` with a few annotations attached to it.
+
+
+In the R code below we will give a basic example of how to create an `rlistings` listing from a pre-processed data frame.
+
+We first load in the `rlistings` package.
+
+```{r}
+library(rlistings)
+```
+
+For the purpose of this example we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient.
+
+```{r}
+adae <- formatters::ex_adae
+```
+
+Now we will create our listing.
+
+The `df` parameter sets our `data.frame` object. The `cols` argument takes a vector of names of any columns taken from the data frame that should be included in the listing. Column headers are set by the `label` attribute of each given variable. If there is no label associated with a given variable then the variable name will be taken as a header instead. For this example we will choose 8 arbitrary columns to display - 5 specific to the patient and 3 relating to the adverse event.
+
+Since the dataset consists of 1934 rows in total, we will use the `head` function to print only the first 15 rows of the listing.
+
+```{r}
+lsting <- as_listing(
+  df = adae,
+  cols = c("USUBJID", "AETOXGR", "ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
+)
+
+head(lsting, 15)
+```
+
+In the listing output above you can see that there are several rows associated with each patient, resulting in many instances of repeated values over several columns. This can be neatened by setting key columns with the `key_cols` argument.
+
+## Key Columns
+
+Key columns act as contextual identifiers for observations. Their core behavioral feature is that sequentially repeated values are not displayed. The `key_cols` argument takes a vector of column names identifying the key columns for the listing.
+
+A listing is always sorted by its key columns (with order defining the sort precedence). Any key columns set must also be included in the `cols` argument to be displayed in the listing. Below we specify trial arm and patient ID as key columns to improve readability.
+
+```{r}
+lsting <- as_listing(
+  df = adae,
+  cols = c("USUBJID", "AETOXGR", "ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
+  key_cols = c( "USUBJID", "AETOXGR")
+)
+
+head(lsting, 15)
+```
+
+## Titles and Footers
+
+Additionally, an `rlistings` listing can be annotated with two types of header information (main title and subtitles) and two types of footer information (main footers and provenance footers). A single title can be set using the `main_title` argument, while one or more subtitles, main footers, and provenance footers can be set by the `subtitles`, `main_footer` and `prov_footer` arguments respectively. These are demonstrated in the following updated listing.
+
+```{r}
+lsting <- as_listing(
+  df = adae,
+  cols = c("USUBJID", "AETOXGR", "ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
+  key_cols = c( "USUBJID", "AETOXGR"),
+  main_title = "Main Title",
+  subtitles = c("Subtitle A", "Subtitle B"),
+  main_footer = c("Main Footer A", "Main Footer B", "Main Footer C"),
+  prov_footer = c("Provenance Footer A", "Provenance Footer B")
+)
+
+head(lsting, 15)
+```
+
+---------
+
+## Summary
+
+In this vignette you have learned how to implement the basic listing framework provided by the `rlistings` package to build a simple listing. You have also seen examples demonstrating how the optional parameters of the `as_listing` function can be set to customize and annotate your listings.
+
+**For more information please explore the [rlistings website](https://insightsengineering.github.io/rlistings/).**
