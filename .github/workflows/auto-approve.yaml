@@ -12,6 +12,7 @@ jobs:
     name: Approve ✅
     steps:
       - name: Auto Approve PR
+        if: ${{ github.actor == 'gmbecker' }}
         uses: hmarr/auto-approve-action@v3
         with:
           review-message: "LGTM 🤖"
