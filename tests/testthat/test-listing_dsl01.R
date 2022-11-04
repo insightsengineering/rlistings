@@ -27,7 +27,7 @@ testthat::test_that("DSL01 listing is produced correctly", {
   ), "sorting incoming data by key columns")
 
   result_matrix <- matrix_form(head(lsting, 10))
-  expected_strings <- structure(
+  expected_strings <- matrix(
     c(
       "", "", "Center/Patient ID", "BRA-1/id-105", "BRA-1/id-134", "BRA-1/id-141", "BRA-1/id-236", "BRA-1/id-265",
       "BRA-1/id-42", "BRA-1/id-65", "BRA-1/id-93", "BRA-11/id-171", "BRA-11/id-217", "", "", "Age/Sex/Race",
@@ -39,7 +39,7 @@ testthat::test_that("DSL01 listing is produced correctly", {
       "731", "731", "494", "NA", "731", "244", "NA", "NA", "", "Discontinued", "Early from Study?", "Yes", "No", "No",
       "No", "Yes", "No", "No", "Yes", "No", "No"
     ),
-    .Dim = c(13L, 6L)
+    nrow = 13
   )
 
   testthat::expect_identical(result_matrix$strings, expected_strings)
@@ -49,16 +49,19 @@ testthat::test_that("DSL01 titles/footers are produced correctly", {
   lsting <- as_listing(
     result,
     cols = names(result),
-    main_title = "Listing of Patients with Study Drug Withdrawn Due to Adverse Events"
+    main_title = "Listing of Patients with Study Drug Withdrawn Due to Adverse Events",
+    subtitles = "Population: All Patients",
+    main_footer = c("Program: xxxx", "Output: xxxx"),
+    prov_footer = "Page 1 of 1"
   )
 
   result_matrix <- matrix_form(head(lsting, 10))
   expected_ref_footnotes <- list()
   expected_main_title <- "Listing of Patients with Study Drug Withdrawn Due to Adverse Events"
-  expected_subtitles <- character(0)
+  expected_subtitles <- "Population: All Patients"
   expected_page_titles <- NULL
-  expected_main_footer <- character(0)
-  expected_prov_footer <- character(0)
+  expected_main_footer <- c("Program: xxxx", "Output: xxxx")
+  expected_prov_footer <- "Page 1 of 1"
 
   testthat::expect_identical(result_matrix$ref_footnotes, expected_ref_footnotes)
   testthat::expect_identical(result_matrix$main_title, expected_main_title)
