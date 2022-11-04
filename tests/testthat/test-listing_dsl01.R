@@ -1,32 +1,36 @@
 library(dplyr)
 
-result <- formatters::ex_adsl %>%
-  mutate(
-    ID = paste(SITEID, SUBJID, sep = "/"),
-    ASR = paste(AGE, SEX, RACE, sep = "/"),
-    SSADM = toupper(format(as.Date(TRTSDTM), format = "%d%b%Y")),
-    STDWD = as.numeric(ceiling(difftime(TRTEDTM, TRTSDTM, units = "days"))),
-    DISCONT = ifelse(!is.na(DCSREAS) & toupper(EOSSTT) == "DISCONTINUED", "Yes", "No")
-  ) %>%
-  select(ID, ASR, ARMCD, SSADM, STDWD, DISCONT)
-
-formatters::var_labels(result) <- c(
-  ID = "Center/Patient ID",
-  ASR = "Age/Sex/Race",
-  ARMCD = "Treatment",
-  SSADM = "Date of First\nStudy Drug\nAdministration",
-  STDWD = "Study Day\nof Withdrawal",
-  DISCONT = "Discontinued\nEarly from Study?"
-)
-
 testthat::test_that("DSL01 listing is produced correctly", {
-  lsting <- testthat::expect_message(as_listing(
-    result,
-    cols = names(result),
-    main_title = "Listing of Patients with Study Drug Withdrawn Due to Adverse Events"
-  ), "sorting incoming data by key columns")
+  dsl01 <- formatters::ex_adsl %>%
+    mutate(
+      ID = paste(SITEID, SUBJID, sep = "/"),
+      ASR = paste(AGE, SEX, RACE, sep = "/"),
+      SSADM = toupper(format(as.Date(TRTSDTM), format = "%d%b%Y")),
+      STDWD = as.numeric(ceiling(difftime(TRTEDTM, TRTSDTM, units = "days"))),
+      DISCONT = ifelse(!is.na(DCSREAS) & toupper(EOSSTT) == "DISCONTINUED", "Yes", "No")
+    ) %>%
+    select(ID, ASR, ARMCD, SSADM, STDWD, DISCONT)
 
-  result_matrix <- matrix_form(head(lsting, 10))
+  formatters::var_labels(dsl01) <- c(
+    ID = "Center/Patient ID",
+    ASR = "Age/Sex/Race",
+    ARMCD = "Treatment",
+    SSADM = "Date of First\nStudy Drug\nAdministration",
+    STDWD = "Study Day\nof Withdrawal",
+    DISCONT = "Discontinued\nEarly from Study?"
+  )
+
+  result <- testthat::expect_message(as_listing(
+    dsl01,
+    cols = names(dsl01),
+    main_title = "Listing of Patients with Study Drug Withdrawn Due to Adverse Events",
+    subtitles = "Population: All Patients",
+    main_footer = c("Program: xxxx", "Output: xxxx"),
+    prov_footer = "Page 1 of 1"
+  ), "sorting incoming data by key columns")
+  result_matrix <- matrix_form(head(result, 10))
+
+  # Test DSL01 listing contents
   expected_strings <- matrix(
     c(
       "", "", "Center/Patient ID", "BRA-1/id-105", "BRA-1/id-134", "BRA-1/id-141", "BRA-1/id-236", "BRA-1/id-265",
@@ -41,51 +45,27 @@ testthat::test_that("DSL01 listing is produced correctly", {
     ),
     nrow = 13
   )
+  testthat::expect_identical(mf_strings(result_matrix), expected_strings)
 
-  testthat::expect_identical(result_matrix$strings, expected_strings)
-})
-
-testthat::test_that("DSL01 titles/footers are produced correctly", {
-  lsting <- as_listing(
-    result,
-    cols = names(result),
-    main_title = "Listing of Patients with Study Drug Withdrawn Due to Adverse Events",
-    subtitles = "Population: All Patients",
-    main_footer = c("Program: xxxx", "Output: xxxx"),
-    prov_footer = "Page 1 of 1"
-  )
-
-  result_matrix <- matrix_form(head(lsting, 10))
-  expected_ref_footnotes <- list()
+  # Test DSL01 headers/footers
   expected_main_title <- "Listing of Patients with Study Drug Withdrawn Due to Adverse Events"
   expected_subtitles <- "Population: All Patients"
-  expected_page_titles <- NULL
   expected_main_footer <- c("Program: xxxx", "Output: xxxx")
   expected_prov_footer <- "Page 1 of 1"
 
-  testthat::expect_identical(result_matrix$ref_footnotes, expected_ref_footnotes)
-  testthat::expect_identical(result_matrix$main_title, expected_main_title)
-  testthat::expect_identical(result_matrix$subtitles, expected_subtitles)
-  testthat::expect_identical(result_matrix$page_titles, expected_page_titles)
-  testthat::expect_identical(result_matrix$main_footer, expected_main_footer)
-  testthat::expect_identical(result_matrix$prov_footer, expected_prov_footer)
-})
+  testthat::expect_identical(main_title(result), expected_main_title)
+  testthat::expect_identical(subtitles(result), expected_subtitles)
+  testthat::expect_identical(main_footer(result), expected_main_footer)
+  testthat::expect_identical(prov_footer(result), expected_prov_footer)
 
-testthat::test_that("DSL01 attributes are correct", {
-  lsting <- as_listing(
-    result,
-    cols = names(result),
-    main_title = "Listing of Patients with Study Drug Withdrawn Due to Adverse Events"
-  )
-
-  result_matrix <- matrix_form(head(lsting, 10))
-  expected_nlines_header <- 3
-  expected_nrow_header <- 1
-  expected_ncols <- 6
+  # Test DSL01 attributes
+  expected_rfnotes <- list()
+  expected_nlheader <- 3
+  expected_nrheader <- 1
   expected_class <- c("MatrixPrintForm", "list")
 
-  testthat::expect_equal(attr(result_matrix, "nlines_header"), expected_nlines_header)
-  testthat::expect_equal(attr(result_matrix, "nrow_header"), expected_nrow_header)
-  testthat::expect_equal(attr(result_matrix, "ncols"), expected_ncols)
+  testthat::expect_identical(mf_rfnotes(result_matrix), expected_rfnotes)
+  testthat::expect_equal(mf_nlheader(result_matrix), expected_nlheader)
+  testthat::expect_equal(mf_nrheader(result_matrix), expected_nrheader)
   testthat::expect_s3_class(result_matrix, c("MatrixPrintForm", "list"))
 })
