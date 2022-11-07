@@ -47,7 +47,8 @@ A list of listings' objects that are meant to be on separated pages.
 dat <- ex_adae
 
 lsting <- as_listing(dat[1:25, ],
-                     key_cols = c("USUBJID", "AGE", "AESOC")) \%>\%
+  key_cols = c("USUBJID", "AGE", "AESOC")
+) \%>\%
   add_listing_col("AETOXGR") \%>\%
   add_listing_col("BMRKR1", format = "xx.x") \%>\%
   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
