@@ -12,16 +12,23 @@
 #' @param colwidths  numeric. Print  widths of  columns, if  manually
 #'     set/previously known.
 #'
-#' @examples
+#' @returns A list of listings' objects that are meant to be on separated pages.
 #'
+#' @examples
+#' # Create a standard listing
 #' dat <- ex_adae
 #'
 #' lsting <- as_listing(dat[1:25, ],
 #'                      key_cols = c("USUBJID", "AGE", "AESOC")) %>%
 #'   add_listing_col("AETOXGR") %>%
-#'   add_listing_col("BMRKR1", format = "xx.x")
+#'   add_listing_col("BMRKR1", format = "xx.x") %>%
+#'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 #'
+#' # Vertical pagination
 #' paginate_listing(lsting, lpp = 10)
+#'
+#' # Horizontal pagination
+#' # paginate_listing(lsting, cpp = 10, lpp = 40)
 #'
 #' @export
 paginate_listing <- function(lsting, lpp = 15,
@@ -30,6 +37,10 @@ paginate_listing <- function(lsting, lpp = 15,
                              nosplitin = character(),
                              colwidths = NULL,
                              verbose = FALSE) {
+  # Input checks
+  checkmate::assert_count(lpp)
+  checkmate::assert_count(cpp)
+
   ## XXX TODO this is duplciated form pag_tt_indices
   ## refactor so its not
   dheight <- divider_height(lsting)

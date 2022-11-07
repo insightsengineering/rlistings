@@ -16,6 +16,7 @@ URL: http://github.com/insightsengineering/rlistings
 BugReports: http://github.com/insightsengineering/rlistings/issues
 Depends: 
     formatters (>= 0.3.2.5),
+    checkmate,
     methods,
     tibble
 Suggests: 
