@@ -1,6 +1,11 @@
 ADAE
+Forkers
 FormatSpec
+Github
 MatrixPrintForm
+README
+WIP
+csv
 customizations
 df
 dof
@@ -8,7 +13,9 @@ dplyr
 droppage
 instea
 magrittr
+pagesize
 pre
+repo
 sprintf
 subtable
 tibble
