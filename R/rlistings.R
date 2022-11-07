@@ -2,6 +2,7 @@
 #' @import tibble
 #' @import methods
 #' @importFrom utils head tail
+#' @importFrom lifecycle badge
 NULL
 
 setOldClass(c("listing_df", "tbl_df", "tbl", "data.frame"))
@@ -28,7 +29,7 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' @return A `listing_df` object, sorted by the key columns.
 #' @rdname listings
 #' @examples
-#'
+#' library(dplyr)
 #'
 #' dat <- ex_adae
 #'

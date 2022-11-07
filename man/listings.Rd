@@ -93,7 +93,7 @@ display during rendering.
 Create a Listing from a data.frame or tibble
 }
 \examples{
-
+library(dplyr)
 
 dat <- ex_adae
 
