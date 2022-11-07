@@ -40,7 +40,7 @@ paginate_listing <- function(lsting, lpp = 15,
                              verbose = FALSE) {
   # Input checks
   checkmate::assert_count(lpp)
-  checkmate::assert_count(cpp)
+  checkmate::assert_count(cpp, null.ok = TRUE)
 
   ## XXX TODO this is duplciated form pag_tt_indices
   ## refactor so its not
