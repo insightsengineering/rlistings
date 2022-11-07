@@ -44,6 +44,7 @@ A list of listings' objects that are meant to be on separated pages.
 }
 \examples{
 # Create a standard listing
+library(dplyr)
 dat <- ex_adae
 
 lsting <- as_listing(dat[1:25, ],

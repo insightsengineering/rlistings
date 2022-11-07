@@ -16,6 +16,7 @@
 #'
 #' @examples
 #' # Create a standard listing
+#' library(dplyr)
 #' dat <- ex_adae
 #'
 #' lsting <- as_listing(dat[1:25, ],
