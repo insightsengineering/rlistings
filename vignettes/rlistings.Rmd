@@ -93,7 +93,7 @@ A listing is always sorted by its key columns (with order defining the sort prec
 lsting <- as_listing(
   df = adae,
   cols = c("USUBJID", "AETOXGR", "ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
-  key_cols = c( "USUBJID", "AETOXGR")
+  key_cols = c("USUBJID", "AETOXGR")
 )
 
 head(lsting, 15)
@@ -107,7 +107,7 @@ Additionally, an `rlistings` listing can be annotated with two types of header i
 lsting <- as_listing(
   df = adae,
   cols = c("USUBJID", "AETOXGR", "ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
-  key_cols = c( "USUBJID", "AETOXGR"),
+  key_cols = c("USUBJID", "AETOXGR"),
   main_title = "Main Title",
   subtitles = c("Subtitle A", "Subtitle B"),
   main_footer = c("Main Footer A", "Main Footer B", "Main Footer C"),
