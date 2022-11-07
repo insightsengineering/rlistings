@@ -1,7 +1,6 @@
 #' @import formatters
 #' @import tibble
 #' @import methods
-#' @import checkmate
 #' @importFrom utils head tail
 NULL
 
