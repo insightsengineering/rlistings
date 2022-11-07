@@ -2,12 +2,12 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # rlistings
-<!-- start badges -->
-[![Code Coverage](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml)
+
+[![Code
+Coverage](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml)
 [![WIP – Initial development is in progress, but there has not yet been
 a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-<!-- end badges -->
 
 ## Listings with R
 
@@ -24,12 +24,12 @@ on CRAN.
 listings for health authority review. Some of the key requirements for
 this undertaking are listed below:
 
--   flexible formatting (pagesize, column widths, alignment, labels,
-    etc.)
--   multiple output formats (csv, out, txt)
--   repeated key columns
--   flexible pagination in both horizontal and vertical directions
--   titles and footnotes
+- flexible formatting (pagesize, column widths, alignment, labels,
+  etc.)
+- multiple output formats (csv, out, txt)
+- repeated key columns
+- flexible pagination in both horizontal and vertical directions
+- titles and footnotes
 
 `rlistings` currently covers some of these requirements, and remains
 under active development.
@@ -64,36 +64,24 @@ The following example shows a simple listing and its printed output.
 ``` r
 library(rlistings)
 #> Loading required package: formatters
-#> Loading required package: dplyr
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
+#> Loading required package: tibble
 
 # Reducing the data
-mtcars_ex <- mtcars %>% dplyr::mutate("car" = rownames(mtcars)) %>% head(10)
+mtcars_ex <- mtcars %>% dplyr::mutate("car" = rownames(mtcars))
 
-as_listing(mtcars_ex, 
-  key_cols = c("gear", "carb"), 
+as_listing(mtcars_ex,
+  key_cols = c("gear", "carb"),
   cols = c("gear", "carb", "qsec", "car")
-)
+) %>% head()
 #> sorting incoming data by key columns
 #> gear   carb   qsec           car       
 #> ———————————————————————————————————————
 #> 3      1      19.44    Hornet 4 Drive  
 #>               20.22        Valiant     
+#>               20.01     Toyota Corona  
 #>        2      17.02   Hornet Sportabout
-#>        4      15.84      Duster 360    
-#> 4      1      18.61      Datsun 710    
-#>        2       20         Merc 240D    
-#>               22.9        Merc 230     
-#>        4      16.46       Mazda RX4    
-#>               17.02     Mazda RX4 Wag  
-#>               18.3        Merc 280
+#>               16.87   Dodge Challenger 
+#>               17.3       AMC Javelin
 ```
 
 ## Acknowledgment
