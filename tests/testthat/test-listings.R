@@ -1,45 +1,44 @@
-library(dplyr)
-## listings var labels don't get mucked up by topleft machinery #262
-anl <- ex_adsl
-anl <- anl[1:10, c("USUBJID", "ARM", "BMRKR1")]
-anl <- var_relabel(anl,
-  USUBJID = "Unique\nSubject\nIdentifier",
-  ARM = "Description\nOf\nPlanned Arm"
-)
+testthat::test_that("Column labels are the same", {
+  lsting <- as_listing(anl, key_cols = c("USUBJID")) %>%
+    add_listing_col("ARM")
 
-lsting <- as_listing(anl, key_cols = c("USUBJID")) %>%
-  add_listing_col("ARM")
-expect_identical(var_labels(anl), var_labels(lsting))
+  testthat::expect_identical(var_labels(anl), var_labels(lsting))
 
-matform <- matrix_form(lsting)
-expect_identical(
-  matform$strings[1:3, 1, drop = TRUE],
-  c("Unique", "Subject", "Identifier")
-)
+  matform <- matrix_form(lsting)
 
+  testthat::expect_identical(
+    matform$strings[1:3, 1, drop = TRUE],
+    c("Unique", "Subject", "Identifier")
+  )
+  testthat::expect_identical(
+    matform$strings[1:3, 2, drop = TRUE],
+    c("Description", "Of", "Planned Arm")
+  )
+})
 
 
-anl <- ex_adsl[1:10, c("USUBJID", "ARM", "BMRKR1")]
-var_labels(anl) <- var_labels(ex_adsl)[c("USUBJID", "ARM", "BMRKR1")]
-anl$BMRKR1[1:3] <- NA
+testthat::test_that("Error with NA values in numeric column when apply format", {
+  anl_tmp <- anl
+  var_labels(anl_tmp) <- var_labels(formatters::ex_adsl)[c("USUBJID", "ARM", "BMRKR1")]
+  anl_tmp$BMRKR1[1:3] <- NA
 
+  lsting <- as_listing(anl_tmp, key_cols = c("ARM", "USUBJID")) %>%
+    add_listing_col("ARM") %>%
+    add_listing_col("USUBJID") %>%
+    add_listing_col("BMRKR1", format = "xx.xx")
 
-## (1) Error with NA values in numeric column when apply format
-lsting <- as_listing(anl, key_cols = c("ARM", "USUBJID")) %>%
-  add_listing_col("ARM") %>%
-  add_listing_col("USUBJID") %>%
-  add_listing_col("BMRKR1", format = "xx.xx")
+  main_title(lsting) <- "main title"
+  subtitles(lsting) <- c("sub", "titles")
+  main_footer(lsting) <- "main footer"
+  prov_footer(lsting) <- "provenance"
 
-main_title(lsting) <- "main title"
-subtitles(lsting) <- c("sub", "titles")
-main_footer(lsting) <- "main footer"
-prov_footer(lsting) <- "provenance"
+  mat <- matrix_form(lsting)
+  expect_identical(
+    unname(mat$strings[2, 3, drop = TRUE]),
+    "NA"
+  )
+})
 
-mat <- matrix_form(lsting)
-expect_identical(
-  unname(mat$strings[2, 3, drop = TRUE]),
-  "NA"
-)
 ## this tests that the format is applied correctly
 expect_identical(
   unname(mat$strings[3, 3, drop = TRUE]),
