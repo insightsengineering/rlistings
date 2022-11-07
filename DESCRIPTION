@@ -21,7 +21,8 @@ Depends:
 Suggests: 
     dplyr,
     knitr,
-    testthat
+    testthat,
+    spelling
 VignetteBuilder: 
     knitr
 Config/Needs/website: insightsengineering/nesttemplate
