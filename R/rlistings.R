@@ -2,7 +2,6 @@
 #' @import tibble
 #' @import methods
 #' @importFrom utils head tail
-#' @importFrom lifecycle badge
 NULL
 
 setOldClass(c("listing_df", "tbl_df", "tbl", "data.frame"))

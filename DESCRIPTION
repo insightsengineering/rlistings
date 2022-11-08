@@ -19,14 +19,15 @@ Depends:
     formatters (>= 0.3.2.5)
 Imports:
     checkmate,
-    lifecycle,
     methods,
     tibble
 Suggests: 
     dplyr,
+    lifecycle,
     knitr,
+    spelling,
     testthat,
-    spelling
+    utils
 VignetteBuilder: 
     knitr
 Config/Needs/website: insightsengineering/nesttemplate
