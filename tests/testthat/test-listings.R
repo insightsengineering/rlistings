@@ -20,7 +20,7 @@ testthat::test_that("Column labels are the same", {
 testthat::test_that("listings work well with different formats and attributes", {
   # (1) Error with NA values in numeric column when apply format
   anl_tmp <- anl
-  var_labels(anl_tmp) <- var_labels(formatters::ex_adsl)[c("USUBJID", "ARM", "BMRKR1")]
+  var_labels(anl_tmp) <- var_labels(ex_adsl)[c("USUBJID", "ARM", "BMRKR1")]
   anl_tmp$BMRKR1[1:3] <- NA
 
   lsting <- as_listing(anl_tmp, key_cols = c("ARM", "USUBJID")) %>%

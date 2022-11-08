@@ -1,6 +1,6 @@
 testthat::test_that("pagination works vertically", {
   # pre-processing and ordering
-  tmp_data <- formatters::ex_adae %>%
+  tmp_data <- ex_adae %>%
     dplyr::select(USUBJID, AGE, BMRKR1) %>%
     dplyr::slice(1:30) %>%
     distinct()
