@@ -34,58 +34,58 @@ testthat::test_that("listings work well with different formats and attributes", 
   prov_footer(lsting) <- "provenance"
 
   mat <- matrix_form(lsting)
-  expect_identical(
+  testthat::expect_identical(
     unname(mat$strings[2, 3, drop = TRUE]),
     "NA"
   )
 
   ## this tests that the format is applied correctly
-  expect_identical(
+  testthat::expect_identical(
     unname(mat$strings[3, 3, drop = TRUE]),
     format_value(lsting$BMRKR1[2], "xx.xx")
   )
 
-  expect_identical(main_title(lsting), "main title")
-  expect_identical(main_title(lsting), main_title(mat))
+  testthat::expect_identical(main_title(lsting), "main title")
+  testthat::expect_identical(main_title(lsting), main_title(mat))
 
-  expect_identical(subtitles(lsting), c("sub", "titles"))
-  expect_identical(subtitles(lsting), subtitles(mat))
+  testthat::expect_identical(subtitles(lsting), c("sub", "titles"))
+  testthat::expect_identical(subtitles(lsting), subtitles(mat))
 
-  expect_identical(main_footer(lsting), "main footer")
-  expect_identical(main_footer(lsting), main_footer(mat))
+  testthat::expect_identical(main_footer(lsting), "main footer")
+  testthat::expect_identical(main_footer(lsting), main_footer(mat))
 
-  expect_identical(prov_footer(lsting), "provenance")
-  expect_identical(prov_footer(lsting), prov_footer(mat))
+  testthat::expect_identical(prov_footer(lsting), "provenance")
+  testthat::expect_identical(prov_footer(lsting), prov_footer(mat))
 
-  expect_error(
+  testthat::expect_error(
     {
       main_title(lsting) <- 1L
     },
     "value for main_title .*class: integer$"
   )
 
-  expect_error(
+  testthat::expect_error(
     {
       main_title(lsting) <- c("lol", "silly")
     },
     "value for main_title .*got vector of length 2"
   )
 
-  expect_error(
+  testthat::expect_error(
     {
       subtitles(lsting) <- 1L
     },
     "value for subtitles .*class: integer$"
   )
 
-  expect_error(
+  testthat::expect_error(
     {
       main_footer(lsting) <- 1L
     },
     "value for main_footer .*class: integer$"
   )
 
-  expect_error(
+  testthat::expect_error(
     {
       prov_footer(lsting) <- 1L
     },
@@ -93,7 +93,7 @@ testthat::test_that("listings work well with different formats and attributes", 
   )
 
   main_title(lsting) <- NULL
-  expect_identical(main_title(lsting), character())
+  testthat::expect_identical(main_title(lsting), character())
 })
 
 testthat::test_that("Content of listings supports newlines", {
@@ -105,14 +105,14 @@ testthat::test_that("Content of listings supports newlines", {
 
   mpf <- matrix_form(mylst)
 
-  expect_identical(
+  testthat::expect_identical(
     mpf$strings[1:2, 1, drop = TRUE],
     c("column", "1")
   )
 
   rdf <- make_row_df(mylst)
 
-  expect_identical(
+  testthat::expect_identical(
     rdf$self_extent,
     c(2L, 1L, 1L)
   )
@@ -125,7 +125,7 @@ testthat::test_that("regression test for keycols being lost due to `head()`", {
     cols = c("gear", "carb", "qsec")
   )
 
-  expect_identical(
+  testthat::expect_identical(
     dim(head(rlst, 5)),
     c(5L, ncol(mtcars))
   )
