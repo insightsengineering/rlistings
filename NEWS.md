@@ -1,6 +1,7 @@
 # rlistings 0.1.1.9006
- * Added `test-paginate_listing.R` and improved file organization and test 
-   standards.
+
+### Enhancements
+ * Improved source and test file organization.
  * Polished `DESCRIPTION` file.
  * Add Get Started vignette.
  * Update README.
