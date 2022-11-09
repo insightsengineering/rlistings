@@ -15,9 +15,9 @@ paginate_listing(
 )
 }
 \arguments{
-\item{lsting}{listing_df. The listing to paginate.}
+\item{lsting}{(`listing_df`)\cr the listing to paginate.}
 
-\item{lpp}{numeric(1). Number of row lines (not counting titles and
+\item{lpp}{(`number`)\cr number of row lines (not counting titles and
 footers) to have per page.}
 
 \item{cpp}{numeric(1). Number of columns per page}
@@ -28,7 +28,7 @@ mid-subtable split to be valid. Defaults to 2.}
 \item{nosplitin}{character. List of names of sub-tables where page-breaks are not allowed, regardless of other
 considerations. Defaults to none.}
 
-\item{colwidths}{numeric. Print  widths of  columns, if  manually
+\item{colwidths}{(`numeric`)\cr print widths of columns, if manually
 set/previously known.}
 
 \item{verbose}{logical(1). Should additional informative messages about the search for
