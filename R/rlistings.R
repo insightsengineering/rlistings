@@ -6,29 +6,31 @@ NULL
 
 setOldClass(c("listing_df", "tbl_df", "tbl", "data.frame"))
 setOldClass(c("MatrixPrintForm", "list"))
-#' Create a Listing from a data.frame or tibble
+
+#' @rdname listings
+#' @title Create a Listing from a `data.frame` or `tibble`
 #'
+#' @description `r lifecycle::badge("experimental")`
+#'   Creates listings by using `cols` and `key_cols` to produce a compact and
+#'   elegant representation of the `data.frame` or `tibble` in input.
 #'
-#'
-#' @export
-#' @param df data.frame. The (non-listing) data.frame to be converted to a listing
-#' @param cols character. Names of columns (including but not limited to key columns)
-#' which should be displayed when the listing is rendered.
-#' @param key_cols character. Names of columns which should be treated as *key columns*
-#' when rendering the listing.
-#' @param main_title character(1) or NULL. The main title for the listing, or
-#'   `NULL` (the default). Must be length 1 non-NULL.
-#' @param subtitles character or NULL. A vector of subtitle(s) for the listing, or
-#'   NULL (the default).
-#' @param main_footer character or NULL. A vector of main footer lines for the
-#'   listing, or `NULL` (the default).
-#' @param prov_footer character or NULL. A vector of provenance strings for the
-#'   listing, or `NULL` (the default).
+#' @param df (`data.frame`)\cr the (non-listing) `data.frame` to be converted to a listing.
+#' @param cols (`character`)\cr names of columns (including but not limited to key columns)
+#'   which should be displayed when the listing is rendered.
+#' @param key_cols (`character`)\cr names of columns which should be treated as *key columns*
+#'   when rendering the listing.
+#' @param main_title (`string` or `NULL`)\cr the main title for the listing.
+#' @param subtitles (`character` or `NULL`)\cr a vector of subtitle(s) for the
+#'   listing.
+#' @param main_footer (`character` or `NULL`)\cr a vector of main footer lines
+#'   for the listing.
+#' @param prov_footer (`character` or `NULL`)\cr a vector of provenance strings
+#'   for the listing.
 #'
 #' @return A `listing_df` object, sorted by the key columns.
-#' @rdname listings
+#'
 #' @examples
-#' library(dplyr)
+#' library(tibble)
 #'
 #' dat <- ex_adae
 #'
@@ -37,10 +39,11 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   add_listing_col("BMRKR1", format = "xx.x") %>%
 #'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 #'
-#'
 #' mat <- matrix_form(lsting)
 #'
 #' cat(toString(mat))
+#'
+#' @export
 as_listing <- function(df,
                        cols = key_cols,
                        key_cols = names(df)[1],

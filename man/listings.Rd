@@ -10,7 +10,7 @@
 \alias{add_listing_dispcol}
 \alias{listing_dispcols<-}
 \alias{add_listing_col}
-\title{Create a Listing from a data.frame or tibble}
+\title{Create a Listing from a `data.frame` or `tibble`}
 \usage{
 as_listing(
   df,
@@ -41,23 +41,22 @@ add_listing_col(df, name, fun = NULL, format = NULL)
 \arguments{
 \item{df}{listing_df. The listing to modify.}
 
-\item{cols}{character. Names of columns (including but not limited to key columns)
+\item{cols}{(`character`)\cr names of columns (including but not limited to key columns)
 which should be displayed when the listing is rendered.}
 
-\item{key_cols}{character. Names of columns which should be treated as *key columns*
+\item{key_cols}{(`character`)\cr names of columns which should be treated as *key columns*
 when rendering the listing.}
 
-\item{main_title}{character(1) or NULL. The main title for the listing, or
-`NULL` (the default). Must be length 1 non-NULL.}
+\item{main_title}{(`string` or `NULL`)\cr the main title for the listing.}
 
-\item{subtitles}{character or NULL. A vector of subtitle(s) for the listing, or
-NULL (the default).}
+\item{subtitles}{(`character` or `NULL`)\cr a vector of subtitle(s) for the
+listing.}
 
-\item{main_footer}{character or NULL. A vector of main footer lines for the
-listing, or `NULL` (the default).}
+\item{main_footer}{(`character` or `NULL`)\cr a vector of main footer lines
+for the listing.}
 
-\item{prov_footer}{character or NULL. A vector of provenance strings for the
-listing, or `NULL` (the default).}
+\item{prov_footer}{(`character` or `NULL`)\cr a vector of provenance strings
+for the listing.}
 
 \item{vec}{any. A column vector from a `listing_df`}
 
@@ -90,10 +89,12 @@ A `listing_df` object, sorted by the key columns.
 display during rendering.
 }
 \description{
-Create a Listing from a data.frame or tibble
+`r lifecycle::badge("experimental")`
+  Creates listings by using `cols` and `key_cols` to produce a compact and
+  elegant representation of the `data.frame` or `tibble` in input.
 }
 \examples{
-library(dplyr)
+library(tibble)
 
 dat <- ex_adae
 
@@ -102,8 +103,8 @@ lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) \%>\%
   add_listing_col("BMRKR1", format = "xx.x") \%>\%
   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 
-
 mat <- matrix_form(lsting)
 
 cat(toString(mat))
+
 }
