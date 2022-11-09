@@ -1,7 +1,7 @@
 library(dplyr)
 
 testthat::test_that("DSL01 listing is produced correctly", {
-  dsl01 <- formatters::ex_adsl %>%
+  dsl01 <- ex_adsl %>%
     mutate(
       ID = paste(SITEID, SUBJID, sep = "/"),
       ASR = paste(AGE, SEX, RACE, sep = "/"),
@@ -62,10 +62,8 @@ testthat::test_that("DSL01 listing is produced correctly", {
   expected_rfnotes <- list()
   expected_nlheader <- 3
   expected_nrheader <- 1
-  expected_class <- c("MatrixPrintForm", "list")
 
   testthat::expect_identical(mf_rfnotes(result_matrix), expected_rfnotes)
   testthat::expect_equal(mf_nlheader(result_matrix), expected_nlheader)
   testthat::expect_equal(mf_nrheader(result_matrix), expected_nrheader)
-  testthat::expect_s3_class(result_matrix, c("MatrixPrintForm", "list"))
 })
