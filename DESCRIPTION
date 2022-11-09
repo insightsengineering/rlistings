@@ -15,7 +15,7 @@ License: Apache License 2.0 | file LICENSE
 URL: http://github.com/insightsengineering/rlistings
 BugReports: http://github.com/insightsengineering/rlistings/issues
 Depends: 
-    R (>= 4.0),
+    R,
     formatters (>= 0.3.2.5)
 Imports:
     checkmate,
@@ -25,7 +25,6 @@ Suggests:
     dplyr,
     lifecycle,
     knitr,
-    spelling,
     testthat,
     utils
 VignetteBuilder: 
