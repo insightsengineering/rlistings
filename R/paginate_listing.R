@@ -7,9 +7,10 @@
 #' @param lsting (`listing_df`)\cr the listing to paginate.
 #' @inheritParams formatters::pag_indices_inner
 #' @inheritParams formatters::vert_pag_indices
-#' @param lpp (`number`)\cr number of row lines (not counting titles and
-#'   footers) to have per page.
-#' @param colwidths (`numeric`)\cr print widths of columns, if manually
+#' @param lpp (`number` or `NULL`)\cr number of row lines (not counting titles and
+#'   footers) to have per page. Standard is `15` while `NULL` disables vertical
+#'   pagination.
+#' @param colwidths (`numeric` or `NULL`)\cr print widths of columns, if manually
 #'   set/previously known.
 #'
 #' @returns A list of listings' objects that are meant to be on separated pages.
