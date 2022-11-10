@@ -1,8 +1,11 @@
 # rlistings 0.1.1.9007
 
 ### Enhancements
- * Improved source and test file organization.
- * Polished `DESCRIPTION` file.
+ * Add test for `paginate_listing`.
+ * Add development cycle with `lifecycle` support. Add of experimental badges.
+ * Now all functions have `markdown` support.
+ * Add initial installments for `checkmate` assertion support.
+ * Add of main package page with all the relevant imports and descriptions (`rlistings-package`).
  * Add Get Started vignette and update README.
  * Add regression tests.
 
