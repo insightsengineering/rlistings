@@ -111,13 +111,15 @@ get_keycols <- function(df) {
 
 #' @export
 #' @inheritParams formatters::matrix_form
+#' @param indent_rownames logical(1). Silently ignored, as listings do not have row names
+#' nor indenting structure.
 #' @rdname listings
 setMethod(
   "matrix_form", "listing_df",
   rix_form <- function(obj, indent_rownames = FALSE) {
-    if (indent_rownames) {
-      stop("indenting rownames is not supported for listings")
-    }
+    ##  we intentionally silently ignore indent_rownames because listings have
+    ## no rownames, but formatters::vert_pag_indices calls matrix_form(obj, TRUE)
+    ## unconditionally.
     cols <- attr(obj, "listing_dispcols")
     listing <- obj[, cols]
     atts <- attributes(obj)

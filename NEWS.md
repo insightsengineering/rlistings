@@ -1,4 +1,6 @@
-# rlistings 0.1.1.9007
+# rlistings 0.1.1.9008
+ * `matrix_form(lsting, TRUE)` is no longer an error, now silently has the same behavior as 
+   `matrix_form(lsting, FALSE)`
 
 ## rlistings 0.1.1
  * add title, subtitle, and (main and prov) footer support
