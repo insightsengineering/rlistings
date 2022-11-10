@@ -15,10 +15,10 @@ paginate_listing(
 )
 }
 \arguments{
-\item{lsting}{(`listing_df`)\cr the listing to paginate.}
+\item{lsting}{(\code{listing_df})\cr the listing to paginate.}
 
-\item{lpp}{(`number` or `NULL`)\cr number of row lines (not counting titles and
-footers) to have per page. Standard is `15` while `NULL` disables vertical
+\item{lpp}{(\code{number} or \code{NULL})\cr number of row lines (not counting titles and
+footers) to have per page. Standard is \code{15} while \code{NULL} disables vertical
 pagination.}
 
 \item{cpp}{numeric(1). Number of columns per page}
@@ -29,7 +29,7 @@ mid-subtable split to be valid. Defaults to 2.}
 \item{nosplitin}{character. List of names of sub-tables where page-breaks are not allowed, regardless of other
 considerations. Defaults to none.}
 
-\item{colwidths}{(`numeric`)\cr print widths of columns, if manually
+\item{colwidths}{(\code{numeric} or \code{NULL})\cr print widths of columns, if manually
 set/previously known.}
 
 \item{verbose}{logical(1). Should additional informative messages about the search for
@@ -39,9 +39,10 @@ pagination breaks be shown. Defaults to \code{FALSE}.}
 A list of listings' objects that are meant to be on separated pages.
 }
 \description{
-`r lifecycle::badge("experimental")`
-  Pagination of a listing. This can be vertical for long listings with many
-  rows or horizontal if there are many columns.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
+Pagination of a listing. This can be vertical for long listings with many
+rows or horizontal if there are many columns.
 }
 \examples{
 # Create a standard listing

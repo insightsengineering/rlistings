@@ -13,7 +13,7 @@
 \alias{subtitles<-,listing_df-method}
 \alias{main_footer<-,listing_df-method}
 \alias{prov_footer<-,listing_df-method}
-\title{Methods for `listing_df` objects}
+\title{Methods for \code{listing_df} objects}
 \usage{
 \method{print}{listing_df}(x, ...)
 
@@ -78,9 +78,9 @@ Defaults to \code{TRUE}. May not be supported by all methods.}
 
 \item{nsibs}{integer(1). Internal detail do not set manually.}
 
-\item{i}{ANY. Passed to base `[` methods.}
+\item{i}{ANY. Passed to base \code{[} methods.}
 
-\item{j}{ANY. Passed to base `[` methods.}
+\item{j}{ANY. Passed to base \code{[} methods.}
 
 \item{drop}{For matrices and arrays.  If \code{TRUE} the result is
     coerced to the lowest possible dimension (see the examples).  This

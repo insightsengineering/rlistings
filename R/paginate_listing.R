@@ -1,8 +1,9 @@
 #' Paginate listings
 #'
 #' @description `r lifecycle::badge("experimental")`
-#'   Pagination of a listing. This can be vertical for long listings with many
-#'   rows or horizontal if there are many columns.
+#'
+#' Pagination of a listing. This can be vertical for long listings with many
+#' rows or horizontal if there are many columns.
 #'
 #' @param lsting (`listing_df`)\cr the listing to paginate.
 #' @inheritParams formatters::pag_indices_inner
