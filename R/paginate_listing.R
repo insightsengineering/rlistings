@@ -18,7 +18,6 @@
 #'
 #' @examples
 #' # Create a standard listing
-#' library(tibble)
 #' dat <- ex_adae
 #'
 #' lsting <- as_listing(dat[1:25, ],
@@ -42,7 +41,7 @@ paginate_listing <- function(lsting, lpp = 15,
                              colwidths = NULL,
                              verbose = FALSE) {
   # Input checks
-  checkmate::assert_count(lpp)
+  checkmate::assert_count(lpp, null.ok = TRUE)
   checkmate::assert_count(cpp, null.ok = TRUE)
 
   ## XXX TODO this is duplciated form pag_tt_indices

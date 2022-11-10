@@ -1,4 +1,6 @@
 testthat::test_that("Column labels are the same", {
+
+  ## listings var labels don't get mucked up by topleft machinery #262
   lsting <- as_listing(anl, key_cols = c("USUBJID")) %>%
     add_listing_col("ARM")
 

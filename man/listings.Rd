@@ -94,8 +94,6 @@ Creates listings by using \code{cols} and \code{key_cols} to produce a compact a
 elegant representation of the \code{data.frame} or \code{tibble} in input.
 }
 \examples{
-library(tibble)
-
 dat <- ex_adae
 
 lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) \%>\%

@@ -15,17 +15,17 @@ License: Apache License 2.0 | file LICENSE
 URL: http://github.com/insightsengineering/rlistings
 BugReports: http://github.com/insightsengineering/rlistings/issues
 Depends: 
-    formatters (>= 0.3.2.5)
-Imports:
-    checkmate,
+    formatters (>= 0.3.2.5),
     methods,
     tibble
+Imports:
+    checkmate,
+    utils
 Suggests: 
     dplyr,
     lifecycle,
     knitr,
-    testthat,
-    utils
+    testthat
 VignetteBuilder: 
     knitr
 Config/Needs/website: insightsengineering/nesttemplate

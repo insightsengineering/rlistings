@@ -24,8 +24,6 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' @return A `listing_df` object, sorted by the key columns.
 #'
 #' @examples
-#' library(tibble)
-#'
 #' dat <- ex_adae
 #'
 #' lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) %>%
