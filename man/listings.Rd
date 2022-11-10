@@ -79,7 +79,7 @@ returns the vector for a new column, which is added to \code{df} as
 a listing column}
 
 \item{format}{FormatSpec. A format specification (format string,
-function, or sprintf format) for use when displaying the column
+function, or \code{sprintf} format) for use when displaying the column
 during rendering.}
 }
 \value{

@@ -238,7 +238,7 @@ add_listing_dispcol <- function(df, new) {
 #' \code{name}, or NULL if marking an existing column as
 #' a listing column
 #' @param format FormatSpec. A format specification (format string,
-#' function, or sprintf format) for use when displaying the column
+#' function, or `sprintf` format) for use when displaying the column
 #' during rendering.
 #'
 #' @return `df`, with `name` created (if necessary) and marked for

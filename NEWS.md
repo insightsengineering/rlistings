@@ -11,7 +11,7 @@
 
 ## rlistings 0.1.1
  * Add title, subtitle, and (main and prov) footer support.
- * Now depends on dplyr instead of magrittr to hopefully avoid `var_labels` droppage issues.
+ * Now depends on `dplyr` instead of `magrittr` to hopefully avoid `var_labels` droppage issues.
  * `paginate_listing` now supports pagination in both directions.
 
 ## rlistings 0.1.0
