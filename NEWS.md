@@ -1,10 +1,10 @@
-# rlistings 0.1.1.9006
+# rlistings 0.1.1.9007
 
 ### Enhancements
  * Improved source and test file organization.
  * Polished `DESCRIPTION` file.
- * Add Get Started vignette.
- * Update README.
+ * Add Get Started vignette and update README.
+ * Add regression tests.
 
 ## rlistings 0.1.1
  * Add title, subtitle, and (main and prov) footer support.
