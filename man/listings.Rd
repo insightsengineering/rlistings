@@ -41,21 +41,21 @@ add_listing_col(df, name, fun = NULL, format = NULL)
 \arguments{
 \item{df}{listing_df. The listing to modify.}
 
-\item{cols}{(\code{character})\cr names of columns (including but not limited to key columns)
+\item{cols}{(\code{character}) names of columns (including but not limited to key columns)
 which should be displayed when the listing is rendered.}
 
-\item{key_cols}{(\code{character})\cr names of columns which should be treated as \emph{key columns}
+\item{key_cols}{(\code{character}) names of columns which should be treated as \emph{key columns}
 when rendering the listing.}
 
-\item{main_title}{(\code{string} or \code{NULL})\cr the main title for the listing.}
+\item{main_title}{(\code{string} or \code{NULL}) the main title for the listing.}
 
-\item{subtitles}{(\code{character} or \code{NULL})\cr a vector of subtitle(s) for the
+\item{subtitles}{(\code{character} or \code{NULL}) a vector of subtitle(s) for the
 listing.}
 
-\item{main_footer}{(\code{character} or \code{NULL})\cr a vector of main footer lines
+\item{main_footer}{(\code{character} or \code{NULL}) a vector of main footer lines
 for the listing.}
 
-\item{prov_footer}{(\code{character} or \code{NULL})\cr a vector of provenance strings
+\item{prov_footer}{(\code{character} or \code{NULL}) a vector of provenance strings
 for the listing.}
 
 \item{vec}{any. A column vector from a \code{listing_df}}
@@ -90,6 +90,7 @@ display during rendering.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 Creates listings by using \code{cols} and \code{key_cols} to produce a compact and
 elegant representation of the \code{data.frame} or \code{tibble} in input.
 }
