@@ -18,11 +18,11 @@ Depends:
     formatters (>= 0.3.2.5)
 Imports:
     checkmate,
-    lifecycle,
     methods,
     tibble
 Suggests: 
     dplyr,
+    lifecycle,
     knitr,
     testthat,
     utils
