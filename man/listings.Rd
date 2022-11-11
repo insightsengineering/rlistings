@@ -62,8 +62,8 @@ for the listing.}
 
 \item{obj}{ANY. Object to be transformed into a ready-to-render form (a MatrixPrintForm object)}
 
-\item{indent_rownames}{logical(1), if TRUE the column with the row names in the `strings` matrix of has indented row
-names (strings pre-fixed)}
+\item{indent_rownames}{logical(1). Silently ignored, as listings do not have row names
+nor indenting structure.}
 
 \item{new}{character. Names of columns to be added to
 the set of display columns.}
