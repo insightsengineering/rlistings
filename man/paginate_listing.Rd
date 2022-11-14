@@ -17,7 +17,7 @@ paginate_listing(
 \arguments{
 \item{lsting}{listing_df. The listing to paginate.}
 
-\item{lpp}{numeric(1) or \code{NULL}. Number of row lines (not counting titles and
+\item{lpp}{numeric(1) or NULL. Number of row lines (not counting titles and
 footers) to have per page. Standard is \code{15} while \code{NULL} disables vertical
 pagination.}
 

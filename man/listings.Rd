@@ -47,16 +47,17 @@ which should be displayed when the listing is rendered.}
 \item{key_cols}{character. Names of columns which should be treated as \emph{key columns}
 when rendering the listing.}
 
-\item{main_title}{character(1) or NULL. The main title for the listing.}
+\item{main_title}{character(1) or NULL. The main title for the listing, or
+\code{NULL} (the default). Must be length 1 non-NULL.}
 
 \item{subtitles}{character or NULL. A vector of subtitle(s) for the
-listing.}
+listing, or \code{NULL} (the default).}
 
 \item{main_footer}{character or NULL. A vector of main footer lines
-for the listing.}
+for the listing, or \code{NULL} (the default).}
 
 \item{prov_footer}{character or NULL. A vector of provenance strings
-for the listing.}
+for the listing, or \code{NULL} (the default).}
 
 \item{vec}{any. A column vector from a \code{listing_df}}
 

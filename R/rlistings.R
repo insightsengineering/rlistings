@@ -14,13 +14,14 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   which should be displayed when the listing is rendered.
 #' @param key_cols character. Names of columns which should be treated as *key columns*
 #'   when rendering the listing.
-#' @param main_title character(1) or NULL. The main title for the listing.
+#' @param main_title character(1) or NULL. The main title for the listing, or
+#'   `NULL` (the default). Must be length 1 non-NULL.
 #' @param subtitles character or NULL. A vector of subtitle(s) for the
-#'   listing.
+#'   listing, or `NULL` (the default).
 #' @param main_footer character or NULL. A vector of main footer lines
-#'   for the listing.
+#'   for the listing, or `NULL` (the default).
 #' @param prov_footer character or NULL. A vector of provenance strings
-#'   for the listing.
+#'   for the listing, or `NULL` (the default).
 #'
 #' @return A `listing_df` object, sorted by the key columns.
 #'
