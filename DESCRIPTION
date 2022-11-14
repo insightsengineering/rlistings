@@ -1,7 +1,7 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Version: 0.1.1.9009
-Date: 2022-11-10
+Version: 0.1.1.9010
+Date: 2022-11-14
 Authors@R: c(
     person("Gabriel", "Becker", , "gabembecker@gmail.com", role = c("aut", "cre")),
     person("Adrian", "Waddell", , "adrian.waddell@gene.com", role = "aut"),
@@ -23,8 +23,8 @@ Imports:
     utils
 Suggests: 
     dplyr,
-    lifecycle,
     knitr,
+    lifecycle,
     testthat
 VignetteBuilder: 
     knitr
