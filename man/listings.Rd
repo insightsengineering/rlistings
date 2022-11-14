@@ -10,7 +10,7 @@
 \alias{add_listing_dispcol}
 \alias{listing_dispcols<-}
 \alias{add_listing_col}
-\title{Create a Listing from a data.frame or tibble}
+\title{Create a Listing from a \code{data.frame} or \code{tibble}}
 \usage{
 as_listing(
   df,
@@ -44,22 +44,22 @@ add_listing_col(df, name, fun = NULL, format = NULL)
 \item{cols}{character. Names of columns (including but not limited to key columns)
 which should be displayed when the listing is rendered.}
 
-\item{key_cols}{character. Names of columns which should be treated as *key columns*
+\item{key_cols}{character. Names of columns which should be treated as \emph{key columns}
 when rendering the listing.}
 
 \item{main_title}{character(1) or NULL. The main title for the listing, or
-`NULL` (the default). Must be length 1 non-NULL.}
+\code{NULL} (the default). Must be length 1 non-NULL.}
 
-\item{subtitles}{character or NULL. A vector of subtitle(s) for the listing, or
-NULL (the default).}
+\item{subtitles}{character or NULL. A vector of subtitle(s) for the
+listing, or \code{NULL} (the default).}
 
-\item{main_footer}{character or NULL. A vector of main footer lines for the
-listing, or `NULL` (the default).}
+\item{main_footer}{character or NULL. A vector of main footer lines
+for the listing, or \code{NULL} (the default).}
 
-\item{prov_footer}{character or NULL. A vector of provenance strings for the
-listing, or `NULL` (the default).}
+\item{prov_footer}{character or NULL. A vector of provenance strings
+for the listing, or \code{NULL} (the default).}
 
-\item{vec}{any. A column vector from a `listing_df`}
+\item{vec}{any. A column vector from a \code{listing_df}}
 
 \item{obj}{ANY. Object to be transformed into a ready-to-render form (a MatrixPrintForm object)}
 
@@ -80,21 +80,22 @@ returns the vector for a new column, which is added to \code{df} as
 a listing column}
 
 \item{format}{FormatSpec. A format specification (format string,
-function, or sprintf format) for use when displaying the column
+function, or \code{sprintf} format) for use when displaying the column
 during rendering.}
 }
 \value{
-A `listing_df` object, sorted by the key columns.
+A \code{listing_df} object, sorted by the key columns.
 
-`df`, with `name` created (if necessary) and marked for
+\code{df}, with \code{name} created (if necessary) and marked for
 display during rendering.
 }
 \description{
-Create a Listing from a data.frame or tibble
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
+Creates listings by using \code{cols} and \code{key_cols} to produce a compact and
+elegant representation of the \code{data.frame} or \code{tibble} in input.
 }
 \examples{
-
-
 dat <- ex_adae
 
 lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) \%>\%
@@ -102,8 +103,8 @@ lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) \%>\%
   add_listing_col("BMRKR1", format = "xx.x") \%>\%
   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 
-
 mat <- matrix_form(lsting)
 
 cat(toString(mat))
+
 }

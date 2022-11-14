@@ -13,8 +13,7 @@
 \alias{subtitles<-,listing_df-method}
 \alias{main_footer<-,listing_df-method}
 \alias{prov_footer<-,listing_df-method}
-\alias{paginate_listing}
-\title{Methods for `listing_df` objects}
+\title{Methods for \code{listing_df} objects}
 \usage{
 \method{print}{listing_df}(x, ...)
 
@@ -49,16 +48,6 @@
 \S4method{main_footer}{listing_df}(obj) <- value
 
 \S4method{prov_footer}{listing_df}(obj) <- value
-
-paginate_listing(
-  lsting,
-  lpp = 15,
-  cpp = NULL,
-  min_siblings = 2,
-  nosplitin = character(),
-  colwidths = NULL,
-  verbose = FALSE
-)
 }
 \arguments{
 \item{x}{listing_df. The listing.}
@@ -67,8 +56,7 @@ paginate_listing(
 
 \item{tt}{ANY. Object representing the table-like object to be summarized.}
 
-\item{colwidths}{numeric. Print  widths of  columns, if  manually
-set/previously known.}
+\item{colwidths}{numeric. Internal detail do not set manually.}
 
 \item{visible_only}{logical(1). Should only visible aspects of the table structure be reflected in this summary.
 Defaults to \code{TRUE}. May not be supported by all methods.}
@@ -90,9 +78,9 @@ Defaults to \code{TRUE}. May not be supported by all methods.}
 
 \item{nsibs}{integer(1). Internal detail do not set manually.}
 
-\item{i}{ANY. Passed to base `[` methods.}
+\item{i}{ANY. Passed to base \code{[} methods.}
 
-\item{j}{ANY. Passed to base `[` methods.}
+\item{j}{ANY. Passed to base \code{[} methods.}
 
 \item{drop}{For matrices and arrays.  If \code{TRUE} the result is
     coerced to the lowest possible dimension (see the examples).  This
@@ -104,22 +92,6 @@ Defaults to \code{TRUE}. May not be supported by all methods.}
 
 \item{value}{typically an array-like \R object of a similar class as
     \code{x}.}
-
-\item{lsting}{listing_df. The listing to paginate.}
-
-\item{lpp}{numeric(1). Number of row lines (not counting titles and
-footers) to have per page.}
-
-\item{cpp}{numeric(1). Number of columns per page}
-
-\item{min_siblings}{numeric. Minimum sibling rows which must appear on either side of pagination row for a
-mid-subtable split to be valid. Defaults to 2.}
-
-\item{nosplitin}{character. List of names of sub-tables where page-breaks are not allowed, regardless of other
-considerations. Defaults to none.}
-
-\item{verbose}{logical(1). Should additional informative messages about the search for
-pagination breaks be shown. Defaults to \code{FALSE}.}
 }
 \description{
 See core documentation in \code{formatters} for descriptions

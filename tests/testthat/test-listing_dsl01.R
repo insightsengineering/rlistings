@@ -1,5 +1,3 @@
-library(dplyr)
-
 testthat::test_that("DSL01 listing is produced correctly", {
   dsl01 <- ex_adsl %>%
     mutate(

@@ -18,8 +18,12 @@ Depends:
     formatters (>= 0.3.2.5),
     methods,
     tibble
+Imports:
+    checkmate,
+    utils
 Suggests: 
     dplyr,
+    lifecycle,
     knitr,
     testthat
 VignetteBuilder: 
@@ -27,4 +31,5 @@ VignetteBuilder:
 Config/Needs/website: insightsengineering/nesttemplate
 Encoding: UTF-8
 Language: en-US
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1

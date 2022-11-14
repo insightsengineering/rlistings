@@ -9,9 +9,9 @@ csv
 customizations
 df
 dof
-dplyr
 droppage
 fnd
+funder
 Forkers
 FormatSpec
 formatters
@@ -23,6 +23,7 @@ Hoffmann
 http
 insightsengineering
 instea
+lifecycle
 knitr
 magrittr
 MatrixPrintForm

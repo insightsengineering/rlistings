@@ -63,7 +63,7 @@ library(rlistings)
 For the purpose of this example we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient.
 
 ```{r}
-adae <- formatters::ex_adae
+adae <- ex_adae
 ```
 
 Now we will create our listing.

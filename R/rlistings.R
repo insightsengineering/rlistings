@@ -1,35 +1,31 @@
-#' @import formatters
-#' @import tibble
-#' @import methods
-#' @importFrom utils head tail
-NULL
-
 setOldClass(c("listing_df", "tbl_df", "tbl", "data.frame"))
 setOldClass(c("MatrixPrintForm", "list"))
-#' Create a Listing from a data.frame or tibble
+
+#' @rdname listings
+#' @title Create a Listing from a `data.frame` or `tibble`
 #'
+#' @description `r lifecycle::badge("experimental")`
 #'
+#' Creates listings by using `cols` and `key_cols` to produce a compact and
+#' elegant representation of the `data.frame` or `tibble` in input.
 #'
-#' @export
-#' @param df data.frame. The (non-listing) data.frame to be converted to a listing
+#' @param df data.frame. The (non-listing) data.frame to be converted to a listing.
 #' @param cols character. Names of columns (including but not limited to key columns)
-#' which should be displayed when the listing is rendered.
+#'   which should be displayed when the listing is rendered.
 #' @param key_cols character. Names of columns which should be treated as *key columns*
-#' when rendering the listing.
+#'   when rendering the listing.
 #' @param main_title character(1) or NULL. The main title for the listing, or
 #'   `NULL` (the default). Must be length 1 non-NULL.
-#' @param subtitles character or NULL. A vector of subtitle(s) for the listing, or
-#'   NULL (the default).
-#' @param main_footer character or NULL. A vector of main footer lines for the
+#' @param subtitles character or NULL. A vector of subtitle(s) for the
 #'   listing, or `NULL` (the default).
-#' @param prov_footer character or NULL. A vector of provenance strings for the
-#'   listing, or `NULL` (the default).
+#' @param main_footer character or NULL. A vector of main footer lines
+#'   for the listing, or `NULL` (the default).
+#' @param prov_footer character or NULL. A vector of provenance strings
+#'   for the listing, or `NULL` (the default).
 #'
 #' @return A `listing_df` object, sorted by the key columns.
-#' @rdname listings
+#'
 #' @examples
-#'
-#'
 #' dat <- ex_adae
 #'
 #' lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) %>%
@@ -37,10 +33,11 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   add_listing_col("BMRKR1", format = "xx.x") %>%
 #'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 #'
-#'
 #' mat <- matrix_form(lsting)
 #'
 #' cat(toString(mat))
+#'
+#' @export
 as_listing <- function(df,
                        cols = key_cols,
                        key_cols = names(df)[1],
@@ -245,7 +242,7 @@ add_listing_dispcol <- function(df, new) {
 #' \code{name}, or NULL if marking an existing column as
 #' a listing column
 #' @param format FormatSpec. A format specification (format string,
-#' function, or sprintf format) for use when displaying the column
+#' function, or `sprintf` format) for use when displaying the column
 #' during rendering.
 #'
 #' @return `df`, with `name` created (if necessary) and marked for
@@ -520,68 +517,3 @@ setMethod(
     obj
   }
 )
-
-
-#' @rdname listing_methods
-#' @param lsting listing_df. The listing to paginate.
-#' @inheritParams formatters::pag_indices_inner
-#' @inheritParams formatters::vert_pag_indices
-#' @param lpp numeric(1). Number of row lines (not counting titles and
-#'     footers) to have per page.
-#' @param colwidths  numeric. Print  widths of  columns, if  manually
-#'     set/previously known.
-#'
-#' @export
-paginate_listing <- function(lsting, lpp = 15,
-                             cpp = NULL,
-                             min_siblings = 2,
-                             nosplitin = character(),
-                             colwidths = NULL,
-                             verbose = FALSE) {
-  ## XXX TODO this is duplciated form pag_tt_indices
-  ## refactor so its not
-  dheight <- divider_height(lsting)
-
-  cinfo_lines <- 1L
-  if (any(nzchar(all_titles(lsting)))) {
-    tlines <- length(all_titles(lsting)) + dheight + 1L
-  } else {
-    tlines <- 0
-  }
-  flines <- length(all_footers(lsting))
-  if (flines > 0) {
-    flines <- flines + dheight + 1L
-  }
-  ## row lines per page
-  rlpp <- lpp - cinfo_lines - tlines - flines
-  pagdf <- make_row_df(lsting, colwidths)
-
-  inds <- pag_indices_inner(pagdf,
-    rlpp = rlpp,
-    min_siblings = min_siblings,
-    nosplitin = nosplitin,
-    verbose = verbose
-  )
-
-  ret <- lapply(inds, function(i) lsting[i, ])
-  ## this is *very* similar to the relevant section of rtables::paginate_table
-  ## TODO push down into formatters to avoid duplication
-  if (!is.null(cpp)) {
-    inds <- vert_pag_indices(lsting,
-      cpp = cpp,
-      colwidths = colwidths,
-      verbose = verbose
-    )
-    ret <- lapply(
-      ret,
-      function(oneres) {
-        lapply(
-          inds,
-          function(ii) oneres[, ii, drop = FALSE]
-        )
-      }
-    )
-    ret <- unlist(ret, recursive = FALSE)
-  }
-  ret
-}
