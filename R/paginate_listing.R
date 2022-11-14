@@ -5,13 +5,13 @@
 #' Pagination of a listing. This can be vertical for long listings with many
 #' rows or horizontal if there are many columns.
 #'
-#' @param lsting (`listing_df`) the listing to paginate.
+#' @param lsting listing_df. The listing to paginate.
 #' @inheritParams formatters::pag_indices_inner
 #' @inheritParams formatters::vert_pag_indices
-#' @param lpp (`number` or `NULL`) number of row lines (not counting titles and
+#' @param lpp numeric(1) or `NULL`. Number of row lines (not counting titles and
 #'   footers) to have per page. Standard is `15` while `NULL` disables vertical
 #'   pagination.
-#' @param colwidths (`numeric` or `NULL`) print widths of columns, if manually
+#' @param colwidths numeric or NULL. Print widths of columns, if manually
 #'   set/previously known.
 #'
 #' @returns A list of listings' objects that are meant to be on separated pages.

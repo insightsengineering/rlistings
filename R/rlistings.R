@@ -9,17 +9,17 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' Creates listings by using `cols` and `key_cols` to produce a compact and
 #' elegant representation of the `data.frame` or `tibble` in input.
 #'
-#' @param df (`data.frame`) the (non-listing) `data.frame` to be converted to a listing.
-#' @param cols (`character`) names of columns (including but not limited to key columns)
+#' @param df data.frame. The (non-listing) data.frame to be converted to a listing.
+#' @param cols character. Names of columns (including but not limited to key columns)
 #'   which should be displayed when the listing is rendered.
-#' @param key_cols (`character`) names of columns which should be treated as *key columns*
+#' @param key_cols character. Names of columns which should be treated as *key columns*
 #'   when rendering the listing.
-#' @param main_title (`string` or `NULL`) the main title for the listing.
-#' @param subtitles (`character` or `NULL`) a vector of subtitle(s) for the
+#' @param main_title character(1) or NULL. The main title for the listing.
+#' @param subtitles character or NULL. A vector of subtitle(s) for the
 #'   listing.
-#' @param main_footer (`character` or `NULL`) a vector of main footer lines
+#' @param main_footer character or NULL. A vector of main footer lines
 #'   for the listing.
-#' @param prov_footer (`character` or `NULL`) a vector of provenance strings
+#' @param prov_footer character or NULL. A vector of provenance strings
 #'   for the listing.
 #'
 #' @return A `listing_df` object, sorted by the key columns.
