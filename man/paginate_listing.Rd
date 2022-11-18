@@ -21,7 +21,7 @@ paginate_listing(
 footers) to have per page. Standard is \code{15} while \code{NULL} disables vertical
 pagination.}
 
-\item{cpp}{numeric(1). Number of columns per page}
+\item{cpp}{numeric(1). Number of characters per page (width)}
 
 \item{min_siblings}{numeric. Minimum sibling rows which must appear on either side of pagination row for a
 mid-subtable split to be valid. Defaults to 2.}
