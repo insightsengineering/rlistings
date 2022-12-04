@@ -10,7 +10,7 @@ paginate_listing(
   cpp = NULL,
   min_siblings = 2,
   nosplitin = character(),
-  colwidths = NULL,
+  colwidths = propose_column_widths(lsting),
   verbose = FALSE
 )
 }

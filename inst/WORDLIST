@@ -9,12 +9,13 @@ csv
 customizations
 df
 dof
+dplyr
 droppage
 fnd
-funder
 Forkers
 FormatSpec
 formatters
+funder
 gabembecker
 Github
 github
@@ -23,8 +24,8 @@ Hoffmann
 http
 insightsengineering
 instea
-lifecycle
 knitr
+lifecycle
 magrittr
 MatrixPrintForm
 nesttemplate
@@ -33,6 +34,7 @@ pre
 README
 repo
 rlistings
+Roxygen
 RoxygenNote
 sprintf
 subtable
