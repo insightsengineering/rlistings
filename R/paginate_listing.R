@@ -38,7 +38,7 @@ paginate_listing <- function(lsting, lpp = 15,
                              cpp = NULL,
                              min_siblings = 2,
                              nosplitin = character(),
-                             colwidths = NULL,
+                             colwidths = propose_column_widths(lsting), #NULL,
                              verbose = FALSE) {
   # Input checks
   checkmate::assert_count(lpp, null.ok = TRUE)
@@ -47,8 +47,8 @@ paginate_listing <- function(lsting, lpp = 15,
   ## XXX TODO this is duplciated form pag_tt_indices
   ## refactor so its not
   dheight <- divider_height(lsting)
-
-  cinfo_lines <- 1L
+  cinfo_lines <- max(mapply(nlines, x = var_labels(lsting)[listing_dispcols(lsting)],
+                            max_width = colwidths)) + dheight
   if (any(nzchar(all_titles(lsting)))) {
     tlines <- length(all_titles(lsting)) + dheight + 1L
   } else {
@@ -75,23 +75,33 @@ paginate_listing <- function(lsting, lpp = 15,
     min_siblings = min_siblings,
     nosplitin = nosplitin,
     verbose = verbose
-  )
+    )
+    dcols <- listing_dispcols(lsting)
 
+    kcols <- get_keycols(lsting)
+    non_key_dispcols <- setdiff(dcols, kcols)
   ret <- lapply(inds, function(i) lsting[i, ])
   ## this is *very* similar to the relevant section of rtables::paginate_table
   ## TODO push down into formatters to avoid duplication
-  if (!is.null(cpp)) {
-    inds <- vert_pag_indices(lsting,
+    if (!is.null(cpp)) {
+        tmp_df <- lsting[, listing_dispcols(lsting), drop = FALSE]
+    raw_inds <- vert_pag_indices(tmp_df,
       cpp = cpp,
       colwidths = colwidths,
-      verbose = verbose
-    )
-    ret <- lapply(
+      verbose = verbose,
+      rep_cols = length(get_keycols(lsting))
+      )
+        pag_cols <- lapply(raw_inds, function(jj) dcols[jj]) ##listing_dispcols(c(kcols, non_key_dispcols[jj]))
+     ret <- lapply(
       ret,
       function(oneres) {
         lapply(
-          inds,
-          function(ii) oneres[, ii, drop = FALSE]
+          pag_cols,
+          function(cnames)  {
+            ret <- oneres[, cnames, drop = FALSE]
+            listing_dispcols(ret) <- cnames
+            ret
+        }
         )
       }
     )
