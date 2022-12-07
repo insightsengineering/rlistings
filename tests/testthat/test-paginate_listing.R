@@ -5,7 +5,7 @@ testthat::test_that("pagination works vertically", {
     dplyr::slice(1:30) %>%
     distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
-  lsting <- as_listing(tmp_data,
+  lsting <- as_listing(tmp_data, cols = NULL,
     key_cols = c("USUBJID", "AGE")
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
