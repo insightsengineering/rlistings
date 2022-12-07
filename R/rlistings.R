@@ -31,8 +31,9 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' dat <- ex_adae
 #'
 #' lsting <- as_listing(dat[1:25, ],
-#'                      key_cols = c("USUBJID", "AESOC"),
-#'                      cols = NULL) %>%
+#'   key_cols = c("USUBJID", "AESOC"),
+#'   cols = NULL
+#' ) %>%
 #'   add_listing_col("AETOXGR") %>%
 #'   add_listing_col("BMRKR1", format = "xx.x") %>%
 #'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
@@ -49,7 +50,6 @@ as_listing <- function(df,
                        subtitles = NULL,
                        main_footer = NULL,
                        prov_footer = NULL) {
-
   # Handling of key_cols that can be NULL
   has_key_cols <- TRUE
   if (is.null(key_cols)) {
@@ -81,7 +81,7 @@ as_listing <- function(df,
 
   # Adding values to show if the two sets do not intersect
   if (!checkmate::test_choice(key_cols, cols) &&
-      has_key_cols) {
+    has_key_cols) {
     cols <- c(key_cols, cols)
   }
 
