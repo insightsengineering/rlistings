@@ -98,7 +98,7 @@ as_listing <- function(df,
 
 
 #' @export
-#' @param vec vector. The column vector to be annotated as a keycolumn
+#' @param vec vector. The column vector to be annotated as a key column
 #' @rdname listings
 as_keycol <- function(vec) {
   if (is.factor(vec)) {
