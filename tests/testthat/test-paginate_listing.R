@@ -61,11 +61,11 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
   pages_listings <- paginate_listing(lsting, cpp = 70, verbose = TRUE)
   pg1_header <- strsplit(toString(matrix_form(pages_listings[[1]])), "\n")[[1]][1:2]
   pg2_header <- strsplit(toString(matrix_form(pages_listings[[2]])), "\n")[[1]][1:2]
-  pg1_header_expected <- paste0(
+  pg1_header_expected <- c(
     "Unique Subject Identifier   Age   Continous Level Biomarker 1",
     "—————————————————————————————————————————————————————————————"
   )
-  pg2_header_expected <- paste0(
+  pg2_header_expected <- c(
     "Unique Subject Identifier   Categorical Level Biomarker 2",
     "—————————————————————————————————————————————————————————"
   )
@@ -85,15 +85,15 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
   pg2_header2 <- strsplit(toString(matrix_form(pages_listings2[[2]])), "\n")[[1]][1:2]
   pg3_header2 <- strsplit(toString(matrix_form(pages_listings2[[3]])), "\n")[[1]][1:2]
 
-  pg1_header2_expected <- paste0(
+  pg1_header2_expected <- c(
     "Study Identifier   Unique Subject Identifier   Age",
     "——————————————————————————————————————————————————"
   )
-  pg2_header2_expected <- paste0(
+  pg2_header2_expected <- c(
     "Study Identifier   Continous Level Biomarker 1",
     "——————————————————————————————————————————————"
   )
-  pg3_header2_expected <- paste0(
+  pg3_header2_expected <- c(
     "Study Identifier   Categorical Level Biomarker 2",
     "————————————————————————————————————————————————"
   )
@@ -101,5 +101,5 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
   testthat::expect_equal(pg1_header2, pg1_header2_expected)
   testthat::expect_equal(pg2_header2, pg2_header2_expected)
   testthat::expect_equal(pg3_header2, pg3_header2_expected)
-  testthat::expect_equal(length(pages_listings), 3L)
+  testthat::expect_equal(length(pages_listings2), 3L)
 })
