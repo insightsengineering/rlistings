@@ -31,8 +31,8 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' dat <- ex_adae
 #'
 #' lsting <- as_listing(dat[1:25, ],
-#'   key_cols = c("USUBJID", "AESOC"),
-#'   cols = NULL
+#'   cols = NULL,
+#'   key_cols = c("USUBJID", "AESOC")
 #' ) %>%
 #'   add_listing_col("AETOXGR") %>%
 #'   add_listing_col("BMRKR1", format = "xx.x") %>%

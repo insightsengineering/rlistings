@@ -20,7 +20,7 @@
 #' # Create a standard listing
 #' dat <- ex_adae
 #'
-#' lsting <- as_listing(dat[1:25, ],
+#' lsting <- as_listing(dat[1:25, ], cols = NULL,
 #'   key_cols = c("USUBJID", "AGE", "AESOC")
 #' ) %>%
 #'   add_listing_col("AETOXGR") %>%
