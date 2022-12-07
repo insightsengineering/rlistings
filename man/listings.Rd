@@ -14,8 +14,8 @@
 \usage{
 as_listing(
   df,
-  cols = key_cols,
-  key_cols = names(df)[1],
+  cols = names(df),
+  key_cols = NULL,
   main_title = NULL,
   subtitles = NULL,
   main_footer = NULL,
@@ -41,11 +41,13 @@ add_listing_col(df, name, fun = NULL, format = NULL)
 \arguments{
 \item{df}{listing_df. The listing to modify.}
 
-\item{cols}{character. Names of columns (including but not limited to key columns)
-which should be displayed when the listing is rendered.}
+\item{cols}{character or NULL. Names of columns (including but not limited to key columns)
+which should be displayed when the listing is rendered. If not assigned,
+all columns are rendered. If \code{NULL}, only key_cols are shown.}
 
-\item{key_cols}{character. Names of columns which should be treated as \emph{key columns}
-when rendering the listing.}
+\item{key_cols}{character or NULL. Names of columns which should be treated
+as \emph{key columns} when rendering the listing. If \code{NULL} the first column will
+be used for sorting but not displayed.}
 
 \item{main_title}{character(1) or NULL. The main title for the listing, or
 \code{NULL} (the default). Must be length 1 non-NULL.}
@@ -98,7 +100,9 @@ elegant representation of the \code{data.frame} or \code{tibble} in input.
 \examples{
 dat <- ex_adae
 
-lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) \%>\%
+lsting <- as_listing(dat[1:25, ],
+                     key_cols = c("USUBJID", "AESOC"),
+                     cols = NULL) \%>\%
   add_listing_col("AETOXGR") \%>\%
   add_listing_col("BMRKR1", format = "xx.x") \%>\%
   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))

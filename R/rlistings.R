@@ -10,10 +10,12 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' elegant representation of the `data.frame` or `tibble` in input.
 #'
 #' @param df data.frame. The (non-listing) data.frame to be converted to a listing.
-#' @param cols character. Names of columns (including but not limited to key columns)
-#'   which should be displayed when the listing is rendered.
-#' @param key_cols character. Names of columns which should be treated as *key columns*
-#'   when rendering the listing.
+#' @param cols character or NULL. Names of columns (including but not limited to key columns)
+#'   which should be displayed when the listing is rendered. If not assigned,
+#'   all columns are rendered. If `NULL`, only key_cols are shown.
+#' @param key_cols character or NULL. Names of columns which should be treated
+#'   as *key columns* when rendering the listing. If `NULL` the first column will
+#'   be used for sorting but not displayed.
 #' @param main_title character(1) or NULL. The main title for the listing, or
 #'   `NULL` (the default). Must be length 1 non-NULL.
 #' @param subtitles character or NULL. A vector of subtitle(s) for the
@@ -28,7 +30,9 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' @examples
 #' dat <- ex_adae
 #'
-#' lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) %>%
+#' lsting <- as_listing(dat[1:25, ],
+#'                      key_cols = c("USUBJID", "AESOC"),
+#'                      cols = NULL) %>%
 #'   add_listing_col("AETOXGR") %>%
 #'   add_listing_col("BMRKR1", format = "xx.x") %>%
 #'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
@@ -39,12 +43,25 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'
 #' @export
 as_listing <- function(df,
-                       cols = key_cols,
-                       key_cols = names(df)[1],
+                       cols = names(df),
+                       key_cols = NULL,
                        main_title = NULL,
                        subtitles = NULL,
                        main_footer = NULL,
                        prov_footer = NULL) {
+
+  # Handling of key_cols that can be NULL
+  has_key_cols <- TRUE
+  if (is.null(key_cols)) {
+    key_cols <- names(df)[1]
+    if (!is.null(cols)) {
+      has_key_cols <- FALSE
+    } else {
+      warning("Variables cols and key_cols are both NULL. Only first column shown as key.")
+    }
+  }
+  checkmate::assert_character(key_cols)
+
   df <- as_tibble(df)
   varlabs <- var_labels(df, fill = TRUE)
   o <- do.call(order, df[key_cols])
@@ -62,6 +79,11 @@ as_listing <- function(df,
     df[[cnm]] <- as_keycol(df[[cnm]])
   }
 
+  # Adding values to show if the two sets do not intersect
+  if (!checkmate::test_choice(key_cols, cols) &&
+      has_key_cols) {
+    cols <- c(key_cols, cols)
+  }
 
 
   class(df) <- c("listing_df", class(df))

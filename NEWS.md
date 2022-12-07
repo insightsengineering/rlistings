@@ -1,4 +1,9 @@
 # rlistings 0.1.1.9012
+
+### Enhancements
+ * Corrected default behavior for `key_cols`. 
+
+### Fixes
  * `matrix_form(lsting, TRUE)` is no longer an error, now silently has the same behavior as 
    `matrix_form(lsting, FALSE)`
 
