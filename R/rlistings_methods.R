@@ -15,10 +15,10 @@
 #' See core documentation in \code{formatters} for descriptions
 #' of these functions.
 #'
-#' @export
 #' @param ... dots. Unused
 #' @method print listing_df
 #' @name listing_methods
+#' @export
 print.listing_df <- function(x, ...) {
   cat(toString(matrix_form(x)))
   invisible(x)
@@ -52,8 +52,8 @@ setMethod("vec_nlines", "factor", function(vec) {
 })
 
 #' @inheritParams formatters::make_row_df
-#' @export
 #' @rdname listing_methods
+#' @export
 setMethod(
   "make_row_df", "listing_df",
   function(tt, colwidths = NULL, visible_only = TRUE,
@@ -142,13 +142,13 @@ setMethod(
 ## })
 
 
-#' @export
+
 #' @param x listing_df. The listing.
 #' @inheritParams base::Extract
 #' @param i ANY. Passed to base `[` methods.
 #' @param j ANY. Passed to base `[` methods.
 #' @aliases [,listing_df-method
-#' @rdname listing_methods
+#' @export
 setMethod(
   "[", "listing_df",
   function(x, i, j, drop = FALSE) {

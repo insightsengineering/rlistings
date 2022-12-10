@@ -4,7 +4,6 @@
 \alias{listing_methods}
 \alias{print.listing_df}
 \alias{make_row_df,listing_df-method}
-\alias{[,listing_df-method}
 \alias{main_title,listing_df-method}
 \alias{subtitles,listing_df-method}
 \alias{main_footer,listing_df-method}
@@ -31,8 +30,6 @@
   nsibs = NA_integer_
 )
 
-\S4method{[}{listing_df}(x, i, j, drop = FALSE)
-
 \S4method{main_title}{listing_df}(obj)
 
 \S4method{subtitles}{listing_df}(obj)
@@ -50,8 +47,6 @@
 \S4method{prov_footer}{listing_df}(obj) <- value
 }
 \arguments{
-\item{x}{listing_df. The listing.}
-
 \item{...}{dots. Unused}
 
 \item{tt}{ANY. Object representing the table-like object to be summarized.}
@@ -78,20 +73,7 @@ Defaults to \code{TRUE}. May not be supported by all methods.}
 
 \item{nsibs}{integer(1). Internal detail do not set manually.}
 
-\item{i}{ANY. Passed to base \code{[} methods.}
-
-\item{j}{ANY. Passed to base \code{[} methods.}
-
-\item{drop}{For matrices and arrays.  If \code{TRUE} the result is
-    coerced to the lowest possible dimension (see the examples).  This
-    only works for extracting elements, not for the replacement.  See
-    \code{\link[base]{drop}} for further details.
-  }
-
 \item{obj}{The object.}
-
-\item{value}{typically an array-like \R object of a similar class as
-    \code{x}.}
 }
 \description{
 See core documentation in \code{formatters} for descriptions

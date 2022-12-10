@@ -45,7 +45,11 @@ add_listing_col(df, name, fun = NULL, format = NULL)
 which should be displayed when the listing is rendered.}
 
 \item{key_cols}{character. Names of columns which should be treated as \emph{key columns}
-when rendering the listing.}
+when rendering the listing. Key columns allow you to group repeat occurrences.
+For example when a patient experiences more than 1 adverse event, rather than
+listing out a separate row for each adverse event, they are able to be grouped
+together for each patient. These columns are always present in the listing even if
+not mentioned in the cols argument or add_listing_col.}
 
 \item{main_title}{character(1) or NULL. The main title for the listing, or
 \code{NULL} (the default). Must be length 1 non-NULL.}
@@ -57,7 +61,7 @@ listing, or \code{NULL} (the default).}
 for the listing, or \code{NULL} (the default).}
 
 \item{prov_footer}{character or NULL. A vector of provenance strings
-for the listing, or \code{NULL} (the default).}
+for the listing, or \code{NULL} (the default). Each string element is placed on a new line.}
 
 \item{vec}{any. A column vector from a \code{listing_df}}
 
@@ -96,15 +100,45 @@ Creates listings by using \code{cols} and \code{key_cols} to produce a compact a
 elegant representation of the \code{data.frame} or \code{tibble} in input.
 }
 \examples{
+# This example demonstrates the listing with key_cols (values are grouped by USUBJID) and
+# multiple lines in prov_footer
 dat <- ex_adae
 
-lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) \%>\%
+lsting <- as_listing(dat[1:25, ],
+  key_cols = c("USUBJID", "AESOC"),
+  main_title = "Example Title for Listing",
+  subtitles = "This is the subtitle for this Adverse Events Table",
+  main_footer = "Main footer for the listing",
+  prov_footer = c(
+    "You can even add a subfooter", "Second element is place on a new line",
+    "Third string"
+  )
+) \%>\%
   add_listing_col("AETOXGR") \%>\%
   add_listing_col("BMRKR1", format = "xx.x") \%>\%
-  add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
+  add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AEREL, sep = " / "))
 
 mat <- matrix_form(lsting)
 
 cat(toString(mat))
 
+# This example demonstrates the listing without key_cols.
+dat <- ex_adae
+
+lsting <- as_listing(dat[1:25, ],
+  main_title = "Example Title for Listing",
+  subtitles = "This is the subtitle for this Adverse Events Table",
+  main_footer = "Main footer for the listing",
+  prov_footer = c("You can even add a subfooter", "This is a test")
+) \%>\%
+  add_listing_col("AETOXGR") \%>\%
+  add_listing_col("BMRKR1", format = "xx.x") \%>\%
+  add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AEREL, sep = " / "))
+
+mat <- matrix_form(lsting)
+
+cat(toString(mat))
+}
+\seealso{
+\code{\link[formatters:matrix_form]{formatters::matrix_form()}}
 }
