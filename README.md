@@ -1,34 +1,42 @@
 
-
-<!-- start badges -->
-[![Check 🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml)
-[![Docs 📚](https://github.com/insightsengineering/rlistings/actions/workflows/docs.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/)
-[![Code Coverage 📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml)
-
-![GitHub forks](https://img.shields.io/github/forks/insightsengineering/rlistings?style=social)
-![GitHub Repo stars](https://img.shields.io/github/stars/insightsengineering/rlistings?style=social)
-
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/insightsengineering/rlistings)
-![GitHub contributors](https://img.shields.io/github/contributors/insightsengineering/rlistings)
-![GitHub last commit](https://img.shields.io/github/last-commit/insightsengineering/rlistings)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/insightsengineering/rlistings)
-![GitHub repo size](https://img.shields.io/github/repo-size/insightsengineering/rlistings)
-![GitHub language count](https://img.shields.io/github/languages/count/insightsengineering/rlistings)
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Current Version](https://img.shields.io/github/r-package/v/insightsengineering/rlistings/main?color=purple\&label=package%20version)](https://github.com/insightsengineering/rlistings/tree/main)
-[![Open Issues](https://img.shields.io/github/issues-raw/insightsengineering/rlistings?color=red\&label=open%20issues)](https://github.com/insightsengineering/rlistings/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
-<!-- end badges -->
-
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # rlistings
 
-[![Code
-Coverage](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml)
+<!-- start badges -->
+
+[![Check
+🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml)
+[![Docs
+📚](https://github.com/insightsengineering/rlistings/actions/workflows/docs.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/)
+[![Code Coverage
+📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml)
+
+![GitHub
+forks](https://img.shields.io/github/forks/insightsengineering/rlistings?style=social)
+![GitHub Repo
+stars](https://img.shields.io/github/stars/insightsengineering/rlistings?style=social)
+
+![GitHub commit
+activity](https://img.shields.io/github/commit-activity/m/insightsengineering/rlistings)
+![GitHub
+contributors](https://img.shields.io/github/contributors/insightsengineering/rlistings)
+![GitHub last
+commit](https://img.shields.io/github/last-commit/insightsengineering/rlistings)
+![GitHub pull
+requests](https://img.shields.io/github/issues-pr/insightsengineering/rlistings)
+![GitHub repo
+size](https://img.shields.io/github/repo-size/insightsengineering/rlistings)
+![GitHub language
+count](https://img.shields.io/github/languages/count/insightsengineering/rlistings)
 [![WIP – Initial development is in progress, but there has not yet been
 a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Current
+Version](https://img.shields.io/github/r-package/v/insightsengineering/rlistings/main?color=purple&label=package%20version)](https://github.com/insightsengineering/rlistings/tree/main)
+[![Open
+Issues](https://img.shields.io/github/issues-raw/insightsengineering/rlistings?color=red&label=open%20issues)](https://github.com/insightsengineering/rlistings/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+<!-- end badges -->
 
 ## Listings with R
 
@@ -45,8 +53,7 @@ on CRAN.
 listings for health authority review. Some of the key requirements for
 this undertaking are listed below:
 
-- flexible formatting (pagesize, column widths, alignment, labels,
-  etc.)
+- flexible formatting (pagesize, column widths, alignment, labels, etc.)
 - multiple output formats (csv, out, txt)
 - repeated key columns
 - flexible pagination in both horizontal and vertical directions
@@ -84,7 +91,9 @@ The following example shows a simple listing and its printed output.
 
 ``` r
 library(rlistings)
+#> Warning: package 'rlistings' was built under R version 4.2.2
 #> Loading required package: formatters
+#> Warning: package 'formatters' was built under R version 4.2.2
 #> Loading required package: tibble
 
 # Reducing the data
