@@ -10,10 +10,14 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' elegant representation of the `data.frame` or `tibble` in input.
 #'
 #' @param df data.frame. The (non-listing) data.frame to be converted to a listing.
-#' @param cols character. Names of columns (including but not limited to key columns)
-#'   which should be displayed when the listing is rendered.
 #' @param key_cols character. Names of columns which should be treated as *key columns*
 #'   when rendering the listing.
+#' @param disp_cols character or NULL. Names of non-key columns which should be displayed when
+#'   the listing is rendered. Defaults to all columns of `df` not named in `key_cols` or
+#'   `non_disp_cols`.
+#' @param non_disp_cols character or NULL. Names of non-key columns to be excluded as display
+#'   columns. All other non-key columns are then treated as display columns. Invalid if
+#'   `disp_cols` is non-NULL.
 #' @param main_title character(1) or NULL. The main title for the listing, or
 #'   `NULL` (the default). Must be length 1 non-NULL.
 #' @param subtitles character or NULL. A vector of subtitle(s) for the
@@ -24,6 +28,36 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   for the listing, or `NULL` (the default).
 #'
 #' @return A `listing_df` object, sorted by the key columns.
+#'
+#' @details At its core, a `listing_df` object is a `tbl_df` object with a customized
+#' print method  and support for the formatting and pagination machinery provided by
+#' the `formatters` package.
+#'
+#' `listing_df` objects have two 'special' types of columns: key columns and display columns.
+#'
+#' Key columns act as indexes, which means a number of things in practice.
+#'
+#' All key columns are also display columns.
+#'
+#' `listing_df` objects are always sorted by their set of key_columns at creation time.
+#' Any `listing_df` object which is not sorted by its full set of key columns (e.g.,
+#' one  whose rows have been reordered explicitly creation) is invalid and the behavior
+#' when rendering or paginating that object is undefined.
+#'
+#' Each value of a key column is printed only once per page and per unique combination of
+#' values for all higher-priority (i.e., to the left of it) key columns. Locations
+#' where a repeated value would have been printed within a key column for the same
+#' higher-priority-key combination on the same page are rendered as empty space.
+#' Note, determination of which elements to display within a key column at rendering is
+#' based on the underlying value; any non-default formatting applied to the column
+#' has no effect on this behavior.
+#'
+#' Display columns are columns which should be rendered, but are not key columns. By
+#' default this is all non-key columns in the incoming data, but in need not be.
+#' Columns in the underlying data which are neither key nor display columns remain
+#' within the object available for computations but *are not rendered during
+#' printing or export of the listing*.
+#'
 #'
 #' @examples
 #' dat <- ex_adae
@@ -39,12 +73,22 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'
 #' @export
 as_listing <- function(df,
-                       cols = key_cols,
                        key_cols = names(df)[1],
+                       disp_cols = NULL,
+                       non_disp_cols = NULL,
                        main_title = NULL,
                        subtitles = NULL,
                        main_footer = NULL,
                        prov_footer = NULL) {
+  if(length(non_disp_cols) > 0 && length(intersect(key_cols, non_disp_cols)) > 0)
+      stop("Key column also listed in non_disp_cols. All key columns are by definition display columns")
+  if(!is.null(disp_cols) && !is.null(non_disp_cols))
+      stop("Got non-null values for both disp_cols and non_disp_cols. This is not supported.")
+  else if(is.null(disp_cols))
+      cols <- setdiff(names(df), c(key_cols, non_disp_cols)) ## non_disp_cols NULL is ok here
+  else ## disp_cols non-null, non_disp_cols NULL
+      cols <- disp_cols
+
   df <- as_tibble(df)
   varlabs <- var_labels(df, fill = TRUE)
   o <- do.call(order, df[key_cols])
@@ -62,6 +106,8 @@ as_listing <- function(df,
     df[[cnm]] <- as_keycol(df[[cnm]])
   }
 
+  ## key cols must be leftmost cols
+  cols <- c(key_cols, setdiff(cols, key_cols))
 
 
   class(df) <- c("listing_df", class(df))
@@ -241,9 +287,7 @@ add_listing_dispcol <- function(df, new) {
 #' returns the vector for a new column, which is added to \code{df} as
 #' \code{name}, or NULL if marking an existing column as
 #' a listing column
-#' @param format FormatSpec. A format specification (format string,
-#' function, or `sprintf` format) for use when displaying the column
-#' during rendering.
+#' @inheritParams formatters::format_value
 #'
 #' @return `df`, with `name` created (if necessary) and marked for
 #' display during rendering.
@@ -252,7 +296,7 @@ add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
     if (!is.null(fun)) {
       vec <- fun(df)
     } else if (name %in% names(df)) {
-        vec <- df[[vec]]
+        vec <- df[[name]]
     } else {
         stop("Column '", name, "' not found. name argument must specify an existing column when ",
              "no generating function (fun argument) is specified.")
