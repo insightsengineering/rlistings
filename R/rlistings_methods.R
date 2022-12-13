@@ -15,6 +15,7 @@
 #' See core documentation in \code{formatters} for descriptions
 #' of these functions.
 #'
+#' @param x listing_df. The listing.
 #' @param ... dots. Unused
 #' @method print listing_df
 #' @name listing_methods
@@ -26,6 +27,9 @@ print.listing_df <- function(x, ...) {
 
 
 ## because rle in base base is too much of a stickler for being atomic
+#' @rdname listing_methods
+#' @param x listing_df. The listing.
+#' @export
 basic_run_lens <- function(x) {
   n <- length(x)
   if (n == 0) {
@@ -37,15 +41,23 @@ basic_run_lens <- function(x) {
   diff(c(0L, i))
 }
 
+#' @rdname listing_methods
+#' @export
 setGeneric("vec_nlines", function(vec) standardGeneric("vec_nlines"))
 
+#' @rdname listing_methods
+#' @export
 setMethod("vec_nlines", "ANY", function(vec) rep(1L, length(vec)))
 
+#' @rdname listing_methods
+#' @export
 setMethod("vec_nlines", "character", function(vec) {
   mtchs <- gregexpr("\n", vec, fixed = TRUE)
   1L + vapply(mtchs, function(vi) sum(vi > 0), 1L)
 })
 
+#' @rdname listing_methods
+#' @export
 setMethod("vec_nlines", "factor", function(vec) {
   lvl_nlines <- vec_nlines(levels(vec))
   lvl_nlines[vec]
@@ -171,18 +183,21 @@ setMethod(
 )
 
 #' @rdname listing_methods
+#' @param obj The object.
 #' @export
 setMethod(
   "subtitles", "listing_df",
   function(obj) attr(obj, "subtitles") %||% character()
 )
 #' @rdname listing_methods
+#' @param obj The object.
 #' @export
 setMethod(
   "main_footer", "listing_df",
   function(obj) attr(obj, "main_footer") %||% character()
 )
 #' @rdname listing_methods
+#' @param obj The object.
 #' @export
 setMethod(
   "prov_footer", "listing_df",

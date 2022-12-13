@@ -138,6 +138,7 @@ lsting <- as_listing(dat[1:25, ],
 mat <- matrix_form(lsting)
 
 cat(toString(mat))
+
 }
 \seealso{
 \code{\link[formatters:matrix_form]{formatters::matrix_form()}}

@@ -67,7 +67,7 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' mat <- matrix_form(lsting)
 #'
 #' cat(toString(mat))
-
+#'
 #' @export
 as_listing <- function(df,
                        cols = key_cols,
@@ -236,10 +236,11 @@ setMethod(
 
 
 #' @rdname listings
+#' @param df listing_df. The listing
 #' @export
 listing_dispcols <- function(df) attr(df, "listing_dispcols") %||% character()
 
-
+#' @param df listing_df. The listing
 #' @param new character. Names of columns to be added to
 #' the set of display columns.
 #' @rdname listings
@@ -249,7 +250,7 @@ add_listing_dispcol <- function(df, new) {
   df
 }
 
-
+#' @param df listing_df. The listing
 #' @param value character. New value.
 #' @rdname listings
 #' @export

@@ -55,10 +55,4 @@ lsting <- as_listing(dat[1:25, ],
   add_listing_col("BMRKR1", format = "xx.x") \%>\%
   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AEREL, sep = " / "))
 
-# Vertical pagination
-paginate_listing(lsting, lpp = 10)
-
-# Horizontal pagination
-# paginate_listing(lsting, cpp = 10, lpp = 40)
-
 }

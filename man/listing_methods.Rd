@@ -3,6 +3,11 @@
 \name{listing_methods}
 \alias{listing_methods}
 \alias{print.listing_df}
+\alias{basic_run_lens}
+\alias{vec_nlines}
+\alias{vec_nlines,ANY-method}
+\alias{vec_nlines,character-method}
+\alias{vec_nlines,factor-method}
 \alias{make_row_df,listing_df-method}
 \alias{main_title,listing_df-method}
 \alias{subtitles,listing_df-method}
@@ -15,6 +20,16 @@
 \title{Methods for \code{listing_df} objects}
 \usage{
 \method{print}{listing_df}(x, ...)
+
+basic_run_lens(x)
+
+vec_nlines(vec)
+
+\S4method{vec_nlines}{ANY}(vec)
+
+\S4method{vec_nlines}{character}(vec)
+
+\S4method{vec_nlines}{factor}(vec)
 
 \S4method{make_row_df}{listing_df}(
   tt,
@@ -47,6 +62,8 @@
 \S4method{prov_footer}{listing_df}(obj) <- value
 }
 \arguments{
+\item{x}{listing_df. The listing.}
+
 \item{...}{dots. Unused}
 
 \item{tt}{ANY. Object representing the table-like object to be summarized.}
