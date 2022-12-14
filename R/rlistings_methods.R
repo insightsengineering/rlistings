@@ -42,14 +42,17 @@ basic_run_lens <- function(x) {
 }
 
 #' @rdname listing_methods
+#' @param vec A vector.
 #' @export
 setGeneric("vec_nlines", function(vec) standardGeneric("vec_nlines"))
 
 #' @rdname listing_methods
+#' @param vec A vector.
 #' @export
 setMethod("vec_nlines", "ANY", function(vec) rep(1L, length(vec)))
 
 #' @rdname listing_methods
+#' @param vec A vector.
 #' @export
 setMethod("vec_nlines", "character", function(vec) {
   mtchs <- gregexpr("\n", vec, fixed = TRUE)
@@ -57,6 +60,7 @@ setMethod("vec_nlines", "character", function(vec) {
 })
 
 #' @rdname listing_methods
+#' @param vec A vector.
 #' @export
 setMethod("vec_nlines", "factor", function(vec) {
   lvl_nlines <- vec_nlines(levels(vec))
@@ -154,7 +158,7 @@ setMethod(
 ## })
 
 
-
+#' @rdname listing_methods
 #' @param x listing_df. The listing.
 #' @inheritParams base::Extract
 #' @param i ANY. Passed to base `[` methods.
@@ -225,6 +229,7 @@ setMethod(
 
 #' @rdname listing_methods
 #' @param obj The object.
+#' @param value Character string.
 #' @export
 setMethod(
   "main_title<-", "listing_df",
@@ -238,6 +243,8 @@ setMethod(
 )
 
 #' @rdname listing_methods
+#' @param obj The object.
+#' @param value Character string.
 #' @export
 setMethod(
   "subtitles<-", "listing_df",
@@ -249,6 +256,8 @@ setMethod(
 )
 
 #' @rdname listing_methods
+#' @param obj The object.
+#' @param value Character string.
 #' @export
 setMethod(
   "main_footer<-", "listing_df",
@@ -260,6 +269,8 @@ setMethod(
 )
 
 #' @rdname listing_methods
+#' @param obj The object.
+#' @param value Character string.
 #' @export
 setMethod(
   "prov_footer<-", "listing_df",
