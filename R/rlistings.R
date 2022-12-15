@@ -14,10 +14,6 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   which should be displayed when the listing is rendered.
 #' @param key_cols character. Names of columns which should be treated as *key columns*
 #'   when rendering the listing. Key columns allow you to group repeat occurrences.
-#'   For example when a patient experiences more than 1 adverse event, rather than
-#'   listing out a separate row for each adverse event, they are able to be grouped
-#'   together for each patient. These columns are always present in the listing even if
-#'   not mentioned in the cols argument or add_listing_col.
 #' @param main_title character(1) or NULL. The main title for the listing, or
 #'   `NULL` (the default). Must be length 1 non-NULL.
 #' @param subtitles character or NULL. A vector of subtitle(s) for the
@@ -28,11 +24,17 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   for the listing, or `NULL` (the default). Each string element is placed on a new line.
 #' @return A `listing_df` object, sorted by the key columns.
 #'
+#' @details
+#' key_cols is useful when a patient experiences more than 1 adverse event, rather than
+#' listing out a separate row for each adverse event, they are able to be grouped
+#' together for each patient. These columns are always present in the listing even if
+#'
+#'
 #' @examples
-#' # This example demonstrates the listing with key_cols (values are grouped by USUBJID) and
-#' # multiple lines in prov_footer
 #' dat <- ex_adae
 #'
+#' # This example demonstrates the listing with key_cols (values are grouped by USUBJID) and
+#' # multiple lines in prov_footer
 #' lsting <- as_listing(dat[1:25, ],
 #'   key_cols = c("USUBJID", "AESOC"),
 #'   main_title = "Example Title for Listing",
@@ -51,18 +53,14 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'
 #' cat(toString(mat))
 #'
-#' # This example demonstrates the listing without key_cols.
+#' # This example demonstrates the same listing table as above without key_cols.
 #' dat <- ex_adae
 #'
 #' lsting <- as_listing(dat[1:25, ],
-#'   main_title = "Example Title for Listing",
-#'   subtitles = "This is the subtitle for this Adverse Events Table",
-#'   main_footer = "Main footer for the listing",
-#'   prov_footer = c("You can even add a subfooter", "This is a test")
-#' ) %>%
+#'                      cols = c("USUBJID","AESOC")) %>%
 #'   add_listing_col("AETOXGR") %>%
 #'   add_listing_col("BMRKR1", format = "xx.x") %>%
-#'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AEREL, sep = " / "))
+#'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 #'
 #' mat <- matrix_form(lsting)
 #'
@@ -141,7 +139,7 @@ get_keycols <- function(df) {
 
 
 #' @inheritParams formatters::matrix_form
-#' @seealso [formatters::matrix_form()]
+#' @seealso [formatters::matrix_form()] This is partially inherited from formatters' function
 #' @param indent_rownames logical(1). Silently ignored, as listings do not have row names
 #' nor indenting structure.
 #' @rdname listings

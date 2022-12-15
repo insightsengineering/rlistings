@@ -25,7 +25,13 @@
 #' ) %>%
 #'   add_listing_col("AETOXGR") %>%
 #'   add_listing_col("BMRKR1", format = "xx.x") %>%
-#'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AEREL, sep = " / "))
+#'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
+#'
+#' # Vertical pagination
+#' paginate_listing(lsting, lpp = 10)
+#'
+#' #Horizontal pagination
+#' paginate_listing(lsting, cpp = 100, lpp = 40, verbose = TRUE)
 #'
 #' @export
 paginate_listing <- function(lsting, lpp = 15,
