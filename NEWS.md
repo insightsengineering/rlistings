@@ -6,7 +6,7 @@
  * pagination is now calculated based on formatted cells values (including wrapping) rather than raw cell contents
  * key columns are now guaranteed to be the leftmost columns (both stored and displayed) in `listing_df` objects.
  
-# rlistings 0.1.1.9015
+# rlistings 0.1.1.9014
  * `matrix_form(lsting, TRUE)` is no longer an error, now silently has the same behavior as 
    `matrix_form(lsting, FALSE)`
 
