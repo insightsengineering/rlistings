@@ -96,9 +96,9 @@ Creates listings by using \code{cols} and \code{key_cols} to produce a compact a
 elegant representation of the \code{data.frame} or \code{tibble} in input.
 }
 \details{
-key_cols is useful when a patient experiences more than 1 adverse event, rather than
-listing out a separate row for each adverse event, they are able to be grouped
-together for each patient. These columns are always present in the listing even if
+key_cols is useful when a subject experiences more than 1 event, rather than
+listing out a separate row for each event, they are able to be grouped
+together for each subject. These columns are always present in the listing.
 }
 \examples{
 dat <- ex_adae
