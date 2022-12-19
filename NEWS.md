@@ -1,4 +1,4 @@
-# rlistings 0.1.2.0
+# rlistings 0.1.2.1
  * `cols` argument renamed to `disp_cols` in `as_listing`
  * `as_listing` gains `non_disp_cols` argument 
  * `disp_cols` argument now defaults to all columns not included in `key_cols`
