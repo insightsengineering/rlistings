@@ -42,7 +42,7 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
     if (missing(colvec) && !(colnm %in% names(df)))
         stop("column ", colnm, " not found")
     na_str <- obj_na_str(colvec)
-    if(is.null(na_str) || all(is.na(na_str)))
+    if (is.null(na_str) || all(is.na(na_str)))
         na_str <- rep("-", max(1L, length(na_str)))
 
     strvec <- vapply(colvec, format_value, "", format = obj_format(colvec), na_str = na_str)
@@ -90,10 +90,10 @@ setMethod("make_row_df", "listing_df",
     sibpos <- unlist(lapply(runlens, seq_len))
     nsibs <- rep(runlens, times = runlens)
     extents <- rep(1L, nrow(tt))
-    if(length(colwidths) > 0 && length(colwidths) !=  length(dispcols))
+    if (length(colwidths) > 0 && length(colwidths) !=  length(dispcols))
         stop("Non-null colwidths vector must be the same length as the number of display columns.\n",
              "Got: ", length(colwidths), "(", length(dispcols), " disp cols).")
-    if(length(colwidths) > 0)
+    if (length(colwidths) > 0)
         names(colwidths) <- dispcols
     ## extents is a row-wise vector of extents, for each col, we update
     ## if that column has any rows wider than the previously recorded extent.

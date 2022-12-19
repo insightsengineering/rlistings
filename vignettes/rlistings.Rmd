@@ -116,7 +116,7 @@ are then displayed.
 lsting <- as_listing(
     df = adae,
     non_disp_cols = tail(names(adae), 8))
-head(lsting,15)
+head(lsting, 15)
 ```
 
 ## Key Columns
@@ -143,7 +143,7 @@ trial arm and patient ID as key columns to improve readability.
 ```{r}
 lsting <- as_listing(
   df = adae,
-  disp_cols = c( "ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
+  disp_cols = c("ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
   key_cols = c("USUBJID", "AETOXGR")
 )
 
@@ -163,7 +163,7 @@ respectively. These are demonstrated in the following updated listing.
 ```{r}
 lsting <- as_listing(
   df = adae,
-  disp_cols = c( "ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
+  disp_cols = c("ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
   key_cols = c("USUBJID", "AETOXGR"),
   main_title = "Main Title",
   subtitles = c("Subtitle A", "Subtitle B"),
