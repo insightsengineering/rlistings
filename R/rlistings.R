@@ -80,11 +80,11 @@ as_listing <- function(df,
                        subtitles = NULL,
                        main_footer = NULL,
                        prov_footer = NULL) {
-  if(length(non_disp_cols) > 0 && length(intersect(key_cols, non_disp_cols)) > 0)
+  if (length(non_disp_cols) > 0 && length(intersect(key_cols, non_disp_cols)) > 0)
       stop("Key column also listed in non_disp_cols. All key columns are by definition display columns")
-  if(!is.null(disp_cols) && !is.null(non_disp_cols))
+  if (!is.null(disp_cols) && !is.null(non_disp_cols))
       stop("Got non-null values for both disp_cols and non_disp_cols. This is not supported.")
-  else if(is.null(disp_cols))
+  else if (is.null(disp_cols))
       cols <- setdiff(names(df), c(key_cols, non_disp_cols)) ## non_disp_cols NULL is ok here
   else ## disp_cols non-null, non_disp_cols NULL
       cols <- disp_cols
