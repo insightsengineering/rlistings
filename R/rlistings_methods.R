@@ -86,7 +86,10 @@ setMethod("make_row_df", "listing_df",
     keycols <- get_keycols(tt)
     dispcols <- listing_dispcols(tt)
     abs_rownumber <- seq_along(tt[[1]])
-    runlens <- basic_run_lens(tt[[tail(keycols, 1)]])
+    if (length(keycols) >= 1)
+        runlens <- basic_run_lens(tt[[tail(keycols, 1)]])
+    else
+        runlens <- rep(1, NROW(tt))
     sibpos <- unlist(lapply(runlens, seq_len))
     nsibs <- rep(runlens, times = runlens)
     extents <- rep(1L, nrow(tt))
