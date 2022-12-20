@@ -6,7 +6,8 @@ testthat::test_that("pagination works vertically", {
     distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-    key_cols = c("USUBJID", "AGE")
+                       key_cols = c("USUBJID", "AGE"),
+                       disp_cols = character()
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
@@ -53,7 +54,8 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
     distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-    key_cols = c("USUBJID")
+                       key_cols = c("USUBJID"),
+                       disp_cols = character()
   ) %>%
     add_listing_col("AGE") %>%
     add_listing_col("BMRKR1", format = "xx.x") %>%
@@ -75,7 +77,8 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
   testthat::expect_equal(pg2_header, pg2_header_expected)
   testthat::expect_equal(length(pages_listings), 2L)
 
-  lsting2 <- as_listing(tmp_data) %>%
+      lsting2 <- as_listing(tmp_data,
+                            disp_cols = character()) %>%
     add_listing_col("USUBJID") %>%
     add_listing_col("AGE") %>%
     add_listing_col("BMRKR1", format = "xx.x") %>%
