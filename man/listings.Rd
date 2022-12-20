@@ -14,8 +14,9 @@
 \usage{
 as_listing(
   df,
-  cols = key_cols,
   key_cols = names(df)[1],
+  disp_cols = NULL,
+  non_disp_cols = NULL,
   main_title = NULL,
   subtitles = NULL,
   main_footer = NULL,
@@ -36,16 +37,21 @@ add_listing_dispcol(df, new)
 
 listing_dispcols(df) <- value
 
-add_listing_col(df, name, fun = NULL, format = NULL)
+add_listing_col(df, name, fun = NULL, format = NULL, na_str = "-")
 }
 \arguments{
 \item{df}{listing_df. The listing to modify.}
 
-\item{cols}{character. Names of columns (including but not limited to key columns)
-which should be displayed when the listing is rendered.}
-
 \item{key_cols}{character. Names of columns which should be treated as \emph{key columns}
 when rendering the listing. Key columns allow you to group repeat occurrences.}
+
+\item{disp_cols}{character or NULL. Names of non-key columns which should be displayed when
+the listing is rendered. Defaults to all columns of \code{df} not named in \code{key_cols} or
+\code{non_disp_cols}.}
+
+\item{non_disp_cols}{character or NULL. Names of non-key columns to be excluded as display
+columns. All other non-key columns are then treated as display columns. Invalid if
+\code{disp_cols} is non-NULL.}
 
 \item{main_title}{character(1) or NULL. The main title for the listing, or
 \code{NULL} (the default). Must be length 1 non-NULL.}
@@ -79,9 +85,10 @@ returns the vector for a new column, which is added to \code{df} as
 \code{name}, or NULL if marking an existing column as
 a listing column}
 
-\item{format}{FormatSpec. A format specification (format string,
-function, or \code{sprintf} format) for use when displaying the column
-during rendering.}
+\item{format}{character(1) or function. The format label (string) or formatter function to apply to \code{x}.}
+
+\item{na_str}{character(1). String that should be displayed when the value of \code{x} is missing.
+Defaults to \code{"NA"}.}
 }
 \value{
 A \code{listing_df} object, sorted by the key columns.
@@ -96,9 +103,34 @@ Creates listings by using \code{cols} and \code{key_cols} to produce a compact a
 elegant representation of the \code{data.frame} or \code{tibble} in input.
 }
 \details{
-key_cols is useful when a subject experiences more than 1 event, rather than
-listing out a separate row for each event, they are able to be grouped
-together for each subject. These columns are always present in the listing.
+At its core, a \code{listing_df} object is a \code{tbl_df} object with a customized
+print method  and support for the formatting and pagination machinery provided by
+the \code{formatters} package.
+
+\code{listing_df} objects have two 'special' types of columns: key columns and display columns.
+
+Key columns act as indexes, which means a number of things in practice.
+
+All key columns are also display columns.
+
+\code{listing_df} objects are always sorted by their set of key_columns at creation time.
+Any \code{listing_df} object which is not sorted by its full set of key columns (e.g.,
+one  whose rows have been reordered explicitly creation) is invalid and the behavior
+when rendering or paginating that object is undefined.
+
+Each value of a key column is printed only once per page and per unique combination of
+values for all higher-priority (i.e., to the left of it) key columns. Locations
+where a repeated value would have been printed within a key column for the same
+higher-priority-key combination on the same page are rendered as empty space.
+Note, determination of which elements to display within a key column at rendering is
+based on the underlying value; any non-default formatting applied to the column
+has no effect on this behavior.
+
+Display columns are columns which should be rendered, but are not key columns. By
+default this is all non-key columns in the incoming data, but in need not be.
+Columns in the underlying data which are neither key nor display columns remain
+within the object available for computations but \emph{are not rendered during
+printing or export of the listing}.
 }
 \examples{
 dat <- ex_adae
@@ -117,7 +149,7 @@ lsting <- as_listing(dat[1:25, ],
 ) \%>\%
   add_listing_col("AETOXGR") \%>\%
   add_listing_col("BMRKR1", format = "xx.x") \%>\%
-  add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AEREL, sep = " / "))
+  add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 
 mat <- matrix_form(lsting)
 
@@ -126,8 +158,7 @@ cat(toString(mat))
 # This example demonstrates the same listing table as above without key_cols.
 dat <- ex_adae
 
-lsting <- as_listing(dat[1:25, ],
-                     cols = c("USUBJID","AESOC")) \%>\%
+lsting <- as_listing(dat[1:25, ]) \%>\%
   add_listing_col("AETOXGR") \%>\%
   add_listing_col("BMRKR1", format = "xx.x") \%>\%
   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))

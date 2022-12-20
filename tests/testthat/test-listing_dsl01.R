@@ -20,7 +20,7 @@ testthat::test_that("DSL01 listing is produced correctly", {
 
   result <- testthat::expect_message(as_listing(
     dsl01,
-    cols = names(dsl01),
+    disp_cols = names(dsl01),
     main_title = "Listing of Patients with Study Drug Withdrawn Due to Adverse Events",
     subtitles = "Population: All Patients",
     main_footer = c("Program: xxxx", "Output: xxxx"),

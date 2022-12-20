@@ -4,10 +4,9 @@
 \alias{listing_methods}
 \alias{print.listing_df}
 \alias{basic_run_lens}
+\alias{format_colvector}
 \alias{vec_nlines}
 \alias{vec_nlines,ANY-method}
-\alias{vec_nlines,character-method}
-\alias{vec_nlines,factor-method}
 \alias{make_row_df,listing_df-method}
 \alias{[,listing_df-method}
 \alias{main_title,listing_df-method}
@@ -24,13 +23,11 @@
 
 basic_run_lens(x)
 
-vec_nlines(vec)
+format_colvector(df, colnm, colvec = df[[colnm]])
 
-\S4method{vec_nlines}{ANY}(vec)
+vec_nlines(vec, max_width = NULL)
 
-\S4method{vec_nlines}{character}(vec)
-
-\S4method{vec_nlines}{factor}(vec)
+\S4method{vec_nlines}{ANY}(vec, max_width = NULL)
 
 \S4method{make_row_df}{listing_df}(
   tt,
@@ -69,7 +66,16 @@ vec_nlines(vec)
 
 \item{...}{dots. Unused}
 
+\item{df}{listing_df. The listing.}
+
+\item{colnm}{Column name}
+
+\item{colvec}{Column values based on colnm}
+
 \item{vec}{A vector.}
+
+\item{max_width}{numeric(1) or NULL. Maximum width for title/footer
+materials.}
 
 \item{tt}{ANY. Object representing the table-like object to be summarized.}
 
