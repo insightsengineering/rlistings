@@ -127,7 +127,7 @@ testthat::test_that("listing works with no vertical pagination", {
   page1_result <- matrix_form(pages_listings[[1]])
 
   testthat::expect_equal(length(pages_listings), 1)
-  testthat::expect_equal(attr(page1_result, "ncol"), 3)
+  testthat::expect_equal(ncol(page1_result$spans), 3)
   testthat::expect_equal(nrow(page1_result$strings), 7)
 })
 
