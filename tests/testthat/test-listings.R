@@ -176,6 +176,11 @@ testthat::test_that("column inclusion and ordering stuff", {
   testthat::expect_error(as_listing(df = ex_adae, key_cols = c("USUBJID", "ARM"),
                           disp_cols = c("AEDECOD", "AETOXGR"),
                           non_disp_cols = c("RACE", "AESEV")),
-               "Got non-null values for both disp_cols and non_disp_cols")
+                         "Got non-null values for both disp_cols and non_disp_cols")
 
+  ## no-keycols is supported #73
+  lsting3 <- as_listing(
+      df = ex_adae,
+      key_cols = NULL)
+  testthat::expect_silent({str <- toString(lsting3)})
 })
