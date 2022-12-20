@@ -58,17 +58,14 @@ paginate_listing <- function(lsting, lpp = 15,
   if (flines > 0) {
     flines <- flines + dheight + 1L
   }
-
-  if (!is.null(lpp)) {
-    ## row lines per page
-    rlpp <- lpp - cinfo_lines - tlines - flines
-
-    pagdf <- make_row_df(lsting, colwidths)
-  } else {
-    pagdf <- make_row_df(lsting, colwidths)
-    rlpp <- nrow(pagdf)
+  ## row lines per page
+  pagdf <- make_row_df(lsting, colwidths)
+  if(is.null(lpp)){
+    rlpp <- sum(c(pagdf$self_extent, pagdf$nreflines))
   }
-
+  else{
+    rlpp <- lpp - cinfo_lines - tlines - flines
+  }
 
   inds <- pag_indices_inner(pagdf,
     rlpp = rlpp,

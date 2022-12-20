@@ -1,9 +1,8 @@
 testthat::test_that("pagination works vertically", {
   # pre-processing and ordering
   tmp_data <- ex_adae %>%
- ##   dplyr::select(USUBJID, AGE, BMRKR1) %>%
     dplyr::slice(1:30) %>%
-    distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
+    dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
                        key_cols = c("USUBJID", "AGE"),
@@ -111,29 +110,43 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
 testthat::test_that("listing works with no vertical pagination", {
   # pre-processing and ordering
   tmp_data <- ex_adae %>%
-    dplyr::select(USUBJID, AGE, BMRKR1) %>%
     dplyr::slice(1:30) %>%
-    distinct()
+    dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-                       key_cols = c("USUBJID", "AGE")
+                       key_cols = c("USUBJID", "AGE"),
+                       disp_cols = character()
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
-  pages_listings <- paginate_listing(lsting, lpp = NULL)
+  pages_listings <- paginate_listing(lsting, lpp = NULL, verbose = TRUE)
+  page1_result <- matrix_form(pages_listings[[1]])
 
+  testthat::expect_equal(length(pages_listings), 1)
+  testthat::expect_equal(attr(page1_result, "ncol"), 3)
+  testthat::expect_equal(nrow(page1_result$strings), 7)
+})
 
-  page1_result <- toString(matrix_form(pages_listings[[1]]))
+testthat::test_that("checking vertical pagination line calculation.", {
+  # pre-processing and ordering
+  tmp_data <- ex_adae %>%
+    dplyr::slice(1:30) %>%
+    dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
-  page1_expected <- paste0(
-    "Unique Subject Identifier   Age   Continous Level Biomarker 1\n",
-    "—————————————————————————————————————————————————————————————\n",
-    "AB12345-BRA-1-id-134        47                6.5            \n",
-    "AB12345-BRA-1-id-141        35                7.5            \n",
-    "AB12345-BRA-1-id-236        32                7.7            \n",
-    "AB12345-BRA-1-id-265        25               10.3            \n",
-    "AB12345-BRA-1-id-42         36                2.3            \n",
-    "AB12345-BRA-1-id-65         25                7.3            \n"
-  )
-  testthat::expect_equal(page1_result, page1_expected)
+  lsting <- as_listing(tmp_data,
+                       key_cols = c("USUBJID", "AGE"),
+                       disp_cols = character(),
+                       main_footer = c("Main Footer A")
+  ) %>%
+    add_listing_col("BMRKR1", format = "xx.x")
+
+  pages_listings <- paginate_listing(lsting, lpp = 8, verbose = TRUE)
+
+  # there is always a gap between the end of the table and the footer. Line calculation is correct given this behaviour
+  page1_result <- matrix_form(pages_listings[[1]])
+  page2_result <- matrix_form(pages_listings[[2]])
+
+  testthat::expect_equal(sum(nrow(page1_result$strings), length(page1_result$main_footer)), 5)
+  testthat::expect_equal(sum(nrow(page2_result$strings), length(page2_result$main_footer)), 5)
+
 })
