@@ -5,13 +5,12 @@ testthat::test_that("pagination works vertically", {
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-    key_cols = c("USUBJID", "AGE"),
-    disp_cols = character()
+                       key_cols = c("USUBJID", "AGE"),
+                       disp_cols = character()
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
   pages_listings <- paginate_listing(lsting, lpp = 4, verbose = TRUE)
-
 
   page1_result <- toString(matrix_form(pages_listings[[1]]))
   page2_result <- toString(matrix_form(pages_listings[[2]]))
@@ -56,8 +55,8 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
     distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-    key_cols = c("USUBJID"),
-    disp_cols = character()
+                       key_cols = c("USUBJID"),
+                       disp_cols = character()
   ) %>%
     add_listing_col("AGE") %>%
     add_listing_col("BMRKR1", format = "xx.x") %>%
@@ -80,7 +79,7 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
   testthat::expect_equal(length(pages_listings), 2L)
 
   lsting2 <- as_listing(tmp_data,
-    disp_cols = character()
+                        disp_cols = character()
   ) %>%
     add_listing_col("USUBJID") %>%
     add_listing_col("AGE") %>%
@@ -138,9 +137,9 @@ testthat::test_that("checking vertical pagination line calculation.", {
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-    key_cols = c("USUBJID", "AGE"),
-    disp_cols = character(),
-    main_footer = c("Main Footer A")
+                       key_cols = c("USUBJID", "AGE"),
+                       disp_cols = character(),
+                       main_footer = c("Main Footer A")
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
