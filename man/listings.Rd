@@ -155,13 +155,9 @@ mat <- matrix_form(lsting)
 
 cat(toString(mat))
 
-# This example demonstrates the same listing table as above without key_cols.
+# This example demonstrates the listing table without key_cols and specifying the cols with disp_cols.
 dat <- ex_adae
-
-lsting <- as_listing(dat[1:25, ]) \%>\%
-  add_listing_col("AETOXGR") \%>\%
-  add_listing_col("BMRKR1", format = "xx.x") \%>\%
-  add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
+lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
 
 mat <- matrix_form(lsting)
 
@@ -169,5 +165,5 @@ cat(toString(mat))
 
 }
 \seealso{
-\code{\link[formatters:matrix_form]{formatters::matrix_form()}} This is partially inherited from formatters' function
+\code{\link[formatters:matrix_form]{formatters::matrix_form()}} This is partially inherited from \code{formatters}' function
 }
