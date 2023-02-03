@@ -330,8 +330,6 @@ add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
              "no generating function (fun argument) is specified.")
     }
 
-
-
     if (!is.null(format)) {
         vec <- df[[name]]
         obj_format(vec) <- format

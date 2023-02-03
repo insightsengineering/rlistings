@@ -3,7 +3,6 @@
 \name{listing_methods}
 \alias{listing_methods}
 \alias{print.listing_df}
-\alias{basic_run_lens}
 \alias{format_colvector}
 \alias{vec_nlines}
 \alias{vec_nlines,ANY-method}
@@ -20,8 +19,6 @@
 \title{Methods for \code{listing_df} objects}
 \usage{
 \method{print}{listing_df}(x, ...)
-
-basic_run_lens(x)
 
 format_colvector(df, colnm, colvec = df[[colnm]])
 
@@ -111,9 +108,8 @@ Defaults to \code{TRUE}. May not be supported by all methods.}
     \code{\link[base]{drop}} for further details.
   }
 
-\item{obj}{The object.}
-
-\item{value}{Character string.}
+\item{value}{typically an array-like \R object of a similar class as
+    \code{x}.}
 }
 \description{
 See core documentation in \code{formatters} for descriptions

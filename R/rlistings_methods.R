@@ -25,11 +25,7 @@ print.listing_df <- function(x, ...) {
   invisible(x)
 }
 
-
-## because rle in base base is too much of a stickler for being atomic
-#' @rdname listing_methods
-#' @param x listing_df. The listing.
-#' @export
+## because rle in base is too much of a stickler for being atomic
 basic_run_lens <- function(x) {
   n <- length(x)
   if (n == 0) {
@@ -45,7 +41,6 @@ basic_run_lens <- function(x) {
 #' @param df listing_df. The listing.
 #' @param colnm Column name
 #' @param colvec Column values based on colnm
-#' @export
 format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
     if (missing(colvec) && !(colnm %in% names(df)))
         stop("column ", colnm, " not found")
@@ -82,7 +77,6 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
 ##   ret <- lvl_nlines[vec]
 ##   ret[is.na(ret)] <- format_value(NA_character
 ## })
-
 
 #' @inheritParams formatters::make_row_df
 #' @rdname listing_methods
@@ -149,7 +143,6 @@ setMethod("make_row_df", "listing_df",
   }
 )
 
-
 ##     tt$sibpos <- unlist(lapply(
 ##     ## don't support pathing for now
 ##     tt$path <- I(lapply(1:NROW(tt),
@@ -185,7 +178,6 @@ setMethod("make_row_df", "listing_df",
 ##     ret
 ## })
 
-
 #' @rdname listing_methods
 #' @param x listing_df. The listing.
 #' @inheritParams base::Extract
@@ -207,7 +199,6 @@ setMethod(
 )
 
 #' @rdname listing_methods
-#' @param obj The object.
 #' @export
 setMethod(
   "main_title", "listing_df",
@@ -215,21 +206,18 @@ setMethod(
 )
 
 #' @rdname listing_methods
-#' @param obj The object.
 #' @export
 setMethod(
   "subtitles", "listing_df",
   function(obj) attr(obj, "subtitles") %||% character()
 )
 #' @rdname listing_methods
-#' @param obj The object.
 #' @export
 setMethod(
   "main_footer", "listing_df",
   function(obj) attr(obj, "main_footer") %||% character()
 )
 #' @rdname listing_methods
-#' @param obj The object.
 #' @export
 setMethod(
   "prov_footer", "listing_df",
@@ -256,8 +244,6 @@ setMethod(
 }
 
 #' @rdname listing_methods
-#' @param obj The object.
-#' @param value Character string.
 #' @export
 setMethod(
   "main_title<-", "listing_df",
@@ -271,8 +257,6 @@ setMethod(
 )
 
 #' @rdname listing_methods
-#' @param obj The object.
-#' @param value Character string.
 #' @export
 setMethod(
   "subtitles<-", "listing_df",
@@ -284,8 +268,6 @@ setMethod(
 )
 
 #' @rdname listing_methods
-#' @param obj The object.
-#' @param value Character string.
 #' @export
 setMethod(
   "main_footer<-", "listing_df",
@@ -297,8 +279,6 @@ setMethod(
 )
 
 #' @rdname listing_methods
-#' @param obj The object.
-#' @param value Character string.
 #' @export
 setMethod(
   "prov_footer<-", "listing_df",
