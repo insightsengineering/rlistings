@@ -59,7 +59,6 @@ setGeneric("vec_nlines", function(vec, max_width = NULL) standardGeneric("vec_nl
 
 #' @rdname listing_methods
 #' @param vec A vector.
-#' @export
 setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
     strvec <- wrap_txt(format_colvector(colvec = vec), max_width = max_width, hard = TRUE)
     mtchs <- gregexpr("\n", strvec, fixed = TRUE)
