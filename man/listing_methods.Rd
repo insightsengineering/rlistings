@@ -108,6 +108,8 @@ Defaults to \code{TRUE}. May not be supported by all methods.}
     \code{\link[base]{drop}} for further details.
   }
 
+\item{obj}{The object.}
+
 \item{value}{typically an array-like \R object of a similar class as
     \code{x}.}
 }

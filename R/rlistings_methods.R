@@ -198,6 +198,7 @@ setMethod(
 )
 
 #' @rdname listing_methods
+#' @param obj The object.
 #' @export
 setMethod(
   "main_title", "listing_df",
