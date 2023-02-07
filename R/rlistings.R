@@ -27,7 +27,7 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   for the listing, or `NULL` (the default).
 #' @param prov_footer character or NULL. A vector of provenance strings
 #'   for the listing, or `NULL` (the default). Each string element is placed on a new line.
-#' @param vec any. A column vector from a `listing_df` to be annotated as a keycolumn.
+#' @param vec any. A column vector from a `listing_df` to be annotated as a key column.
 #'
 #' @return A `listing_df` object, sorted by the key columns.
 #'

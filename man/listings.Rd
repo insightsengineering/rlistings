@@ -66,7 +66,7 @@ for the listing, or \code{NULL} (the default).}
 \item{prov_footer}{character or NULL. A vector of provenance strings
 for the listing, or \code{NULL} (the default). Each string element is placed on a new line.}
 
-\item{vec}{any. A column vector from a \code{listing_df} to be annotated as a keycolumn.}
+\item{vec}{any. A column vector from a \code{listing_df} to be annotated as a key column.}
 
 \item{obj}{ANY. Object to be transformed into a ready-to-render form (a MatrixPrintForm object)}
 
