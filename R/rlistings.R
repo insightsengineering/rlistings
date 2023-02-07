@@ -9,7 +9,8 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' Creates listings by using `cols` and `key_cols` to produce a compact and
 #' elegant representation of the `data.frame` or `tibble` in input.
 #'
-#' @param df data.frame. The (non-listing) data.frame to be converted to a listing.
+#' @param df data.frame or listing_df. The (non-listing) data.frame to be converted to a listing or
+#'   the listing_df to be modified.
 #' @param key_cols character. Names of columns which should be treated as *key columns*
 #'   when rendering the listing. Key columns allow you to group repeat occurrences.
 #' @param disp_cols character or NULL. Names of non-key columns which should be displayed when
@@ -26,6 +27,8 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   for the listing, or `NULL` (the default).
 #' @param prov_footer character or NULL. A vector of provenance strings
 #'   for the listing, or `NULL` (the default). Each string element is placed on a new line.
+#' @param vec any. A column vector from a `listing_df` to be annotated as a keycolumn.
+#'
 #' @return A `listing_df` object, sorted by the key columns.
 #'
 #' @details At its core, a `listing_df` object is a `tbl_df` object with a customized
@@ -140,7 +143,6 @@ as_listing <- function(df,
 
 
 
-#' @param vec vector. The column vector to be annotated as a keycolumn
 #' @rdname listings
 #' @export
 as_keycol <- function(vec) {
@@ -155,7 +157,7 @@ as_keycol <- function(vec) {
 
 
 
-#' @param vec any. A column vector from a `listing_df`
+
 #' @rdname listings
 #' @export
 is_keycol <- function(vec) {
@@ -165,7 +167,6 @@ is_keycol <- function(vec) {
 
 
 
-#' @param df listing_df. The listing
 #' @rdname listings
 #' @export
 get_keycols <- function(df) {
@@ -269,23 +270,24 @@ setMethod(
 
 
 #' @rdname listings
-#' @param df listing_df. The listing
 #' @export
 listing_dispcols <- function(df) attr(df, "listing_dispcols") %||% character()
 
-#' @param df listing_df. The listing
-#' @param new character. Names of columns to be added to
-#' the set of display columns.
 #' @rdname listings
+#'
+#' @param new character. Names of columns to be added to
+#'   the set of display columns.
+#'
 #' @export
 add_listing_dispcol <- function(df, new) {
   listing_dispcols(df) <- c(listing_dispcols(df), new)
   df
 }
 
-#' @param df listing_df. The listing
-#' @param value character. New value.
 #' @rdname listings
+#'
+#' @param value character. New value.
+#'
 #' @export
 `listing_dispcols<-` <- function(df, value) {
   if (!is.character(value)) {
@@ -307,18 +309,19 @@ add_listing_dispcol <- function(df, new) {
 
 
 
-#' @param df listing_df. The listing to modify.
+#' @rdname listings
+#'
 #' @param name character(1). Name of the existing or new column to be
-#' displayed when the listing is rendered
+#'   displayed when the listing is rendered.
 #' @param fun function or NULL. A function which accepts \code{df} and
-#' returns the vector for a new column, which is added to \code{df} as
-#' \code{name}, or NULL if marking an existing column as
-#' a listing column
+#'   returns the vector for a new column, which is added to \code{df} as
+#'   \code{name}, or NULL if marking an existing column as
+#'   a listing column.
 #' @inheritParams formatters::format_value
 #'
 #' @return `df`, with `name` created (if necessary) and marked for
-#' display during rendering.
-#' @rdname listings
+#'   display during rendering.
+#'
 #' @export
 add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
     if (!is.null(fun)) {

@@ -40,7 +40,8 @@ listing_dispcols(df) <- value
 add_listing_col(df, name, fun = NULL, format = NULL, na_str = "-")
 }
 \arguments{
-\item{df}{listing_df. The listing to modify.}
+\item{df}{data.frame or listing_df. The (non-listing) data.frame to be converted to a listing or
+the listing_df to be modified.}
 
 \item{key_cols}{character. Names of columns which should be treated as \emph{key columns}
 when rendering the listing. Key columns allow you to group repeat occurrences.}
@@ -65,7 +66,7 @@ for the listing, or \code{NULL} (the default).}
 \item{prov_footer}{character or NULL. A vector of provenance strings
 for the listing, or \code{NULL} (the default). Each string element is placed on a new line.}
 
-\item{vec}{any. A column vector from a \code{listing_df}}
+\item{vec}{any. A column vector from a \code{listing_df} to be annotated as a keycolumn.}
 
 \item{obj}{ANY. Object to be transformed into a ready-to-render form (a MatrixPrintForm object)}
 
@@ -78,12 +79,12 @@ the set of display columns.}
 \item{value}{character. New value.}
 
 \item{name}{character(1). Name of the existing or new column to be
-displayed when the listing is rendered}
+displayed when the listing is rendered.}
 
 \item{fun}{function or NULL. A function which accepts \code{df} and
 returns the vector for a new column, which is added to \code{df} as
 \code{name}, or NULL if marking an existing column as
-a listing column}
+a listing column.}
 
 \item{format}{character(1) or function. The format label (string) or formatter function to apply to \code{x}.}
 
