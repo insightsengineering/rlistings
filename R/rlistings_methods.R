@@ -217,6 +217,7 @@ setMethod("toString", "listing_df", function(x,
       titles_txt,
       .do_inset(div, inset),
       toString(matrix_form(x0)),
+      .do_inset(div, inset),
       .do_inset(main_footer(x), inset)
       # .do_inset(txt_body, inset)#,
       # .footer_inset_helper(allfoots, div, inset)
