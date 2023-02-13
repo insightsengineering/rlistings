@@ -28,10 +28,10 @@
 export_as_txt <- function(tt, file = NULL,
                           page_type = NULL,
                           landscape = FALSE,
-                          pg_width = page_dim(page_type)[if(landscape) 2 else 1],
-                          pg_height = page_dim(page_type)[if(landscape) 1 else 2],
+                          pg_width = page_dim(page_type)[if (landscape) 2 else 1],
+                          pg_height = page_dim(page_type)[if (landscape) 1 else 2],
                           font_family = "Courier",
-                          font_size = 8,  # grid parameters
+                          font_size = 8, # grid parameters
                           paginate = .need_pag(page_type, pg_width, pg_height, lpp, cpp),
                           cpp = NULL,
                           lpp = NULL,
@@ -41,10 +41,13 @@ export_as_txt <- function(tt, file = NULL,
                           tf_wrap = paginate,
                           max_width = cpp,
                           colwidths = propose_column_widths(matrix_form(tt, TRUE))) {
-  if(!is.null(colwidths) && length(colwidths) != ncol(tt) )
-    stop("non-null colwidths argument must have length ncol(tt) [",
-         ncol(tt), "], got length ", length(colwidths))
-  if(paginate) {
+  if (!is.null(colwidths) && length(colwidths) != ncol(tt)) {
+    stop(
+      "non-null colwidths argument must have length ncol(tt) [",
+      ncol(tt), "], got length ", length(colwidths)
+    )
+  }
+  if (paginate) {
     gp_plot <- gpar(fontsize = font_size, fontfamily = font_family)
 
     pdf(file = tempfile(), width = pg_width, height = pg_height)
@@ -52,49 +55,56 @@ export_as_txt <- function(tt, file = NULL,
     grid.newpage()
     pushViewport(plotViewport(margins = c(0, 0, 0, 0), gp = gp_plot))
 
-    cur_gpar <-  get.gpar()
-    if(is.null(page_type) && is.null(pg_width) && is.null(pg_height) &&
-       (is.null(cpp) || is.null(lpp))) {
+    cur_gpar <- get.gpar()
+    if (is.null(page_type) && is.null(pg_width) && is.null(pg_height) &&
+      (is.null(cpp) || is.null(lpp))) {
       page_type <- "letter"
-      pg_width <- page_dim(page_type)[if(landscape) 2 else 1]
-      pg_height <- page_dim(page_type)[if(landscape) 1 else 2]
+      pg_width <- page_dim(page_type)[if (landscape) 2 else 1]
+      pg_height <- page_dim(page_type)[if (landscape) 1 else 2]
     }
 
     if (is.null(lpp)) {
       lpp <- floor(convertHeight(unit(1, "npc"), "lines", valueOnly = TRUE) /
-                     (cur_gpar$cex * cur_gpar$lineheight))
+        (cur_gpar$cex * cur_gpar$lineheight))
     }
-    if(is.null(cpp)) {
+    if (is.null(cpp)) {
       cpp <- floor(convertWidth(unit(1, "npc"), "inches", valueOnly = TRUE) *
-                     font_lcpi(font_family, font_size, cur_gpar$lineheight)$cpi)
+        font_lcpi(font_family, font_size, cur_gpar$lineheight)$cpi)
     }
-    if(tf_wrap && is.null(max_width))
+    if (tf_wrap && is.null(max_width)) {
       max_width <- cpp
+    }
 
-    tbls <- paginate_listing(tt, lpp = lpp, cpp = cpp,
-                             min_siblings = 2,
-                             nosplitin = character(),
-                             colwidths = propose_column_widths(lsting),
-                             verbose = FALSE)
+    tbls <- paginate_listing(tt,
+      lpp = lpp, cpp = cpp,
+      min_siblings = 2,
+      nosplitin = character(),
+      colwidths = propose_column_widths(lsting),
+      verbose = FALSE
+    )
   } else {
     tbls <- list(tt)
   }
 
-  res <- paste(mapply(function(tb, ...) {
-    ## 1 and +1 are because cwidths includes rowlabel 'column'
-    # cinds <- c(1, .figure_out_colinds(tb, tt) + 1L)
-    toString(tb, ...)
-  },
-  MoreArgs = list(hsep = hsep
-                  ),
-  SIMPLIFY = FALSE,
-  tb = tbls),
-  collapse = page_break)
+  res <- paste(
+    mapply(
+      function(tb, ...) {
+        ## 1 and +1 are because cwidths includes rowlabel 'column'
+        # cinds <- c(1, .figure_out_colinds(tb, tt) + 1L)
+        toString(tb, ...)
+      },
+      MoreArgs = list(hsep = hsep),
+      SIMPLIFY = FALSE,
+      tb = tbls
+    ),
+    collapse = page_break
+  )
 
-  if(!is.null(file))
+  if (!is.null(file)) {
     cat(res, file = file)
-  else
+  } else {
     res
+  }
 }
 
 
@@ -115,4 +125,3 @@ export_as_txt <- function(tt, file = NULL,
 .paste_no_na <- function(x, ...) {
   paste(na.omit(x), ...)
 }
-
