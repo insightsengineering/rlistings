@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rlistings <a href='https://github.com/Roche/rtables'><img src="man/figures/rlistings-logo.svg" align="right" alt=""></a>
+# rlistings <a href='https://github.com/Roche/rtables'><img src="man/figures/rlistings-logo.svg" align="right" alt="" width="180"></a>
 <!-- start badges -->
 
 [![Check
