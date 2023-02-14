@@ -101,14 +101,17 @@ as_listing <- function(df,
                        subtitles = NULL,
                        main_footer = NULL,
                        prov_footer = NULL) {
-  if (length(non_disp_cols) > 0 && length(intersect(key_cols, non_disp_cols)) > 0)
-      stop("Key column also listed in non_disp_cols. All key columns are by definition display columns")
-  if (!is.null(disp_cols) && !is.null(non_disp_cols))
-      stop("Got non-null values for both disp_cols and non_disp_cols. This is not supported.")
-  else if (is.null(disp_cols))
-      cols <- setdiff(names(df), c(key_cols, non_disp_cols)) ## non_disp_cols NULL is ok here
-  else ## disp_cols non-null, non_disp_cols NULL
-      cols <- disp_cols
+  if (length(non_disp_cols) > 0 && length(intersect(key_cols, non_disp_cols)) > 0) {
+    stop("Key column also listed in non_disp_cols. All key columns are by definition display columns")
+  }
+  if (!is.null(disp_cols) && !is.null(non_disp_cols)) {
+    stop("Got non-null values for both disp_cols and non_disp_cols. This is not supported.")
+  } else if (is.null(disp_cols)) {
+    cols <- setdiff(names(df), c(key_cols, non_disp_cols))
+  } ## non_disp_cols NULL is ok here
+  else { ## disp_cols non-null, non_disp_cols NULL
+    cols <- disp_cols
+  }
 
   df <- as_tibble(df)
   varlabs <- var_labels(df, fill = TRUE)
@@ -324,24 +327,26 @@ add_listing_dispcol <- function(df, new) {
 #'
 #' @export
 add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
-    if (!is.null(fun)) {
-      vec <- fun(df)
-    } else if (name %in% names(df)) {
-        vec <- df[[name]]
-    } else {
-        stop("Column '", name, "' not found. name argument must specify an existing column when ",
-             "no generating function (fun argument) is specified.")
-    }
+  if (!is.null(fun)) {
+    vec <- fun(df)
+  } else if (name %in% names(df)) {
+    vec <- df[[name]]
+  } else {
+    stop(
+      "Column '", name, "' not found. name argument must specify an existing column when ",
+      "no generating function (fun argument) is specified."
+    )
+  }
 
-    if (!is.null(format)) {
-        vec <- df[[name]]
-        obj_format(vec) <- format
-    }
+  if (!is.null(format)) {
+    vec <- df[[name]]
+    obj_format(vec) <- format
+  }
 
-    obj_na_str(vec) <- na_str
+  obj_na_str(vec) <- na_str
 
-    ## this works for both new and existing columns
-    df[[name]] <- vec
-    df <- add_listing_dispcol(df, name)
-    df
+  ## this works for both new and existing columns
+  df[[name]] <- vec
+  df <- add_listing_dispcol(df, name)
+  df
 }
