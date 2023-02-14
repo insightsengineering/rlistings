@@ -15,17 +15,17 @@
 #' See core documentation in \code{formatters} for descriptions
 #' of these functions.
 #'
-#' @export
+#' @param x listing_df. The listing.
 #' @param ... dots. Unused
 #' @method print listing_df
 #' @name listing_methods
+#' @export
 print.listing_df <- function(x, ...) {
   cat(toString(matrix_form(x)))
   invisible(x)
 }
 
-
-## because rle in base base is too much of a stickler for being atomic
+## because rle in base is too much of a stickler for being atomic
 basic_run_lens <- function(x) {
   n <- length(x)
   if (n == 0) {
@@ -37,7 +37,10 @@ basic_run_lens <- function(x) {
   diff(c(0L, i))
 }
 
-
+#' @rdname listing_methods
+#' @param df listing_df. The listing.
+#' @param colnm Column name
+#' @param colvec Column values based on colnm
 format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
     if (missing(colvec) && !(colnm %in% names(df)))
         stop("column ", colnm, " not found")
@@ -49,8 +52,14 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
     strvec
 }
 
+#' @rdname listing_methods
+#' @param vec A vector.
+#' @keywords internal
 setGeneric("vec_nlines", function(vec, max_width = NULL) standardGeneric("vec_nlines"))
 
+#' @rdname listing_methods
+#' @param vec A vector.
+#' @keywords internal
 setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
     strvec <- wrap_txt(format_colvector(colvec = vec), max_width = max_width, hard = TRUE)
     mtchs <- gregexpr("\n", strvec, fixed = TRUE)
@@ -70,8 +79,8 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
 ## })
 
 #' @inheritParams formatters::make_row_df
-#' @export
 #' @rdname listing_methods
+#' @export
 setMethod("make_row_df", "listing_df",
   function(tt, colwidths = NULL, visible_only = TRUE,
            rownum = 0,
@@ -134,7 +143,6 @@ setMethod("make_row_df", "listing_df",
   }
 )
 
-
 ##     tt$sibpos <- unlist(lapply(
 ##     ## don't support pathing for now
 ##     tt$path <- I(lapply(1:NROW(tt),
@@ -170,14 +178,13 @@ setMethod("make_row_df", "listing_df",
 ##     ret
 ## })
 
-
-#' @export
+#' @rdname listing_methods
 #' @param x listing_df. The listing.
 #' @inheritParams base::Extract
 #' @param i ANY. Passed to base `[` methods.
 #' @param j ANY. Passed to base `[` methods.
 #' @aliases [,listing_df-method
-#' @rdname listing_methods
+#' @export
 setMethod(
   "[", "listing_df",
   function(x, i, j, drop = FALSE) {
@@ -238,7 +245,6 @@ setMethod(
 }
 
 #' @rdname listing_methods
-#' @param obj The object.
 #' @export
 setMethod(
   "main_title<-", "listing_df",

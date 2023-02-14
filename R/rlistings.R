@@ -9,9 +9,10 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' Creates listings by using `cols` and `key_cols` to produce a compact and
 #' elegant representation of the `data.frame` or `tibble` in input.
 #'
-#' @param df data.frame. The (non-listing) data.frame to be converted to a listing.
+#' @param df data.frame or listing_df. The (non-listing) data.frame to be converted to a listing or
+#'   the listing_df to be modified.
 #' @param key_cols character. Names of columns which should be treated as *key columns*
-#'   when rendering the listing.
+#'   when rendering the listing. Key columns allow you to group repeat occurrences.
 #' @param disp_cols character or NULL. Names of non-key columns which should be displayed when
 #'   the listing is rendered. Defaults to all columns of `df` not named in `key_cols` or
 #'   `non_disp_cols`.
@@ -25,7 +26,8 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' @param main_footer character or NULL. A vector of main footer lines
 #'   for the listing, or `NULL` (the default).
 #' @param prov_footer character or NULL. A vector of provenance strings
-#'   for the listing, or `NULL` (the default).
+#'   for the listing, or `NULL` (the default). Each string element is placed on a new line.
+#' @param vec any. A column vector from a `listing_df` to be annotated as a key column.
 #'
 #' @return A `listing_df` object, sorted by the key columns.
 #'
@@ -62,10 +64,29 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' @examples
 #' dat <- ex_adae
 #'
-#' lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) %>%
+#' # This example demonstrates the listing with key_cols (values are grouped by USUBJID) and
+#' # multiple lines in prov_footer
+#' lsting <- as_listing(dat[1:25, ],
+#'   key_cols = c("USUBJID", "AESOC"),
+#'   main_title = "Example Title for Listing",
+#'   subtitles = "This is the subtitle for this Adverse Events Table",
+#'   main_footer = "Main footer for the listing",
+#'   prov_footer = c(
+#'     "You can even add a subfooter", "Second element is place on a new line",
+#'     "Third string"
+#'   )
+#' ) %>%
 #'   add_listing_col("AETOXGR") %>%
 #'   add_listing_col("BMRKR1", format = "xx.x") %>%
 #'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
+#'
+#' mat <- matrix_form(lsting)
+#'
+#' cat(toString(mat))
+#'
+#' # This example demonstrates the listing table without key_cols and specifying the cols with disp_cols.
+#' dat <- ex_adae
+#' lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
 #'
 #' mat <- matrix_form(lsting)
 #'
@@ -121,9 +142,9 @@ as_listing <- function(df,
 }
 
 
-#' @export
-#' @param vec vector. The column vector to be annotated as a keycolumn
+
 #' @rdname listings
+#' @export
 as_keycol <- function(vec) {
   if (is.factor(vec)) {
     lab <- obj_label(vec)
@@ -135,28 +156,30 @@ as_keycol <- function(vec) {
 }
 
 
-#' @export
-#' @param vec any. A column vector from a `listing_df`
-#'
+
+
 #' @rdname listings
+#' @export
 is_keycol <- function(vec) {
   inherits(vec, "listing_keycol")
 }
 
 
 
-#' @export
-#' @param df listing_df. The listing
+
 #' @rdname listings
+#' @export
 get_keycols <- function(df) {
   names(which(sapply(df, is_keycol)))
 }
 
-#' @export
+
 #' @inheritParams formatters::matrix_form
+#' @seealso [formatters::matrix_form()] This is partially inherited from `formatters`' function
 #' @param indent_rownames logical(1). Silently ignored, as listings do not have row names
 #' nor indenting structure.
 #' @rdname listings
+#' @export
 setMethod(
   "matrix_form", "listing_df",
   rix_form <- function(obj, indent_rownames = FALSE) {
@@ -245,21 +268,27 @@ setMethod(
 )
 
 
-#' @export
+
 #' @rdname listings
+#' @export
 listing_dispcols <- function(df) attr(df, "listing_dispcols") %||% character()
 
-#' @export
-#' @param new character. Names of columns to be added to
-#' the set of display columns.
 #' @rdname listings
+#'
+#' @param new character. Names of columns to be added to
+#'   the set of display columns.
+#'
+#' @export
 add_listing_dispcol <- function(df, new) {
   listing_dispcols(df) <- c(listing_dispcols(df), new)
   df
 }
-#' @export
-#' @param value character. New value.
+
 #' @rdname listings
+#'
+#' @param value character. New value.
+#'
+#' @export
 `listing_dispcols<-` <- function(df, value) {
   if (!is.character(value)) {
     stop(
@@ -279,19 +308,21 @@ add_listing_dispcol <- function(df, new) {
 }
 
 
-#' @export
-#' @param df listing_df. The listing to modify.
+
+#' @rdname listings
+#'
 #' @param name character(1). Name of the existing or new column to be
-#' displayed when the listing is rendered
+#'   displayed when the listing is rendered.
 #' @param fun function or NULL. A function which accepts \code{df} and
-#' returns the vector for a new column, which is added to \code{df} as
-#' \code{name}, or NULL if marking an existing column as
-#' a listing column
+#'   returns the vector for a new column, which is added to \code{df} as
+#'   \code{name}, or NULL if marking an existing column as
+#'   a listing column.
 #' @inheritParams formatters::format_value
 #'
 #' @return `df`, with `name` created (if necessary) and marked for
-#' display during rendering.
-#' @rdname listings
+#'   display during rendering.
+#'
+#' @export
 add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
     if (!is.null(fun)) {
       vec <- fun(df)
@@ -301,7 +332,6 @@ add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
         stop("Column '", name, "' not found. name argument must specify an existing column when ",
              "no generating function (fun argument) is specified.")
     }
-
 
     if (!is.null(format)) {
         vec <- df[[name]]
