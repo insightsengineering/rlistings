@@ -54,11 +54,12 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
 
 #' @rdname listing_methods
 #' @param vec A vector.
-#' @export
+#' @keywords internal
 setGeneric("vec_nlines", function(vec, max_width = NULL) standardGeneric("vec_nlines"))
 
 #' @rdname listing_methods
 #' @param vec A vector.
+#' @keywords internal
 setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
     strvec <- wrap_txt(format_colvector(colvec = vec), max_width = max_width, hard = TRUE)
     mtchs <- gregexpr("\n", strvec, fixed = TRUE)

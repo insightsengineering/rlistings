@@ -117,3 +117,4 @@ Defaults to \code{TRUE}. May not be supported by all methods.}
 See core documentation in \code{formatters} for descriptions
 of these functions.
 }
+\keyword{internal}
