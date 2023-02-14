@@ -5,5 +5,6 @@
 #' @import tibble
 #' @import methods
 #' @importFrom utils head tail
-#' @importFrom grid textGrob grid.newpage gpar pushViewport plotViewport unit grid.draw convertHeight convertWidth get.gpar
+#' @importFrom grid textGrob grid.newpage pushViewport plotViewport unit grid.draw
+#' @importFrom grid convertHeight convertWidth get.gpar gpar
 NULL
