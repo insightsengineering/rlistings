@@ -1,4 +1,3 @@
-
 ## #' Print a listing to the terminal
 ## #' @param x listing_df. the listing
 ## #' @param ... ANY. unused
@@ -15,17 +14,17 @@
 #' See core documentation in \code{formatters} for descriptions
 #' of these functions.
 #'
-#' @export
+#' @param x listing_df. The listing.
 #' @param ... dots. Unused
 #' @method print listing_df
 #' @name listing_methods
+#' @export
 print.listing_df <- function(x, ...) {
   cat(toString(matrix_form(x)))
   invisible(x)
 }
 
-
-## because rle in base base is too much of a stickler for being atomic
+## because rle in base is too much of a stickler for being atomic
 basic_run_lens <- function(x) {
   n <- length(x)
   if (n == 0) {
@@ -37,24 +36,35 @@ basic_run_lens <- function(x) {
   diff(c(0L, i))
 }
 
-
+#' @rdname listing_methods
+#' @param df listing_df. The listing.
+#' @param colnm Column name
+#' @param colvec Column values based on colnm
 format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
-    if (missing(colvec) && !(colnm %in% names(df)))
-        stop("column ", colnm, " not found")
-    na_str <- obj_na_str(colvec)
-    if (is.null(na_str) || all(is.na(na_str)))
-        na_str <- rep("-", max(1L, length(na_str)))
+  if (missing(colvec) && !(colnm %in% names(df))) {
+    stop("column ", colnm, " not found")
+  }
+  na_str <- obj_na_str(colvec)
+  if (is.null(na_str) || all(is.na(na_str))) {
+    na_str <- rep("-", max(1L, length(na_str)))
+  }
 
-    strvec <- vapply(colvec, format_value, "", format = obj_format(colvec), na_str = na_str)
-    strvec
+  strvec <- vapply(colvec, format_value, "", format = obj_format(colvec), na_str = na_str)
+  strvec
 }
 
+#' @rdname listing_methods
+#' @param vec A vector.
+#' @keywords internal
 setGeneric("vec_nlines", function(vec, max_width = NULL) standardGeneric("vec_nlines"))
 
+#' @rdname listing_methods
+#' @param vec A vector.
+#' @keywords internal
 setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
-    strvec <- wrap_txt(format_colvector(colvec = vec), max_width = max_width, hard = TRUE)
-    mtchs <- gregexpr("\n", strvec, fixed = TRUE)
-    1L + vapply(mtchs, function(vi) sum(vi > 0), 1L)
+  strvec <- wrap_txt(format_colvector(colvec = vec), max_width = max_width, hard = TRUE)
+  mtchs <- gregexpr("\n", strvec, fixed = TRUE)
+  1L + vapply(mtchs, function(vi) sum(vi > 0), 1L)
 })
 
 ## setMethod("vec_nlines", "character", function(vec, max_width = NULL) {
@@ -70,9 +80,10 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
 ## })
 
 #' @inheritParams formatters::make_row_df
-#' @export
 #' @rdname listing_methods
-setMethod("make_row_df", "listing_df",
+#' @export
+setMethod(
+  "make_row_df", "listing_df",
   function(tt, colwidths = NULL, visible_only = TRUE,
            rownum = 0,
            indent = 0L,
@@ -86,24 +97,29 @@ setMethod("make_row_df", "listing_df",
     keycols <- get_keycols(tt)
     dispcols <- listing_dispcols(tt)
     abs_rownumber <- seq_along(tt[[1]])
-    if (length(keycols) >= 1)
-        runlens <- basic_run_lens(tt[[tail(keycols, 1)]])
-    else
-        runlens <- rep(1, NROW(tt))
+    if (length(keycols) >= 1) {
+      runlens <- basic_run_lens(tt[[tail(keycols, 1)]])
+    } else {
+      runlens <- rep(1, NROW(tt))
+    }
     sibpos <- unlist(lapply(runlens, seq_len))
     nsibs <- rep(runlens, times = runlens)
     extents <- rep(1L, nrow(tt))
-    if (length(colwidths) > 0 && length(colwidths) !=  length(dispcols))
-        stop("Non-null colwidths vector must be the same length as the number of display columns.\n",
-             "Got: ", length(colwidths), "(", length(dispcols), " disp cols).")
-    if (length(colwidths) > 0)
-        names(colwidths) <- dispcols
+    if (length(colwidths) > 0 && length(colwidths) != length(dispcols)) {
+      stop(
+        "Non-null colwidths vector must be the same length as the number of display columns.\n",
+        "Got: ", length(colwidths), "(", length(dispcols), " disp cols)."
+      )
+    }
+    if (length(colwidths) > 0) {
+      names(colwidths) <- dispcols
+    }
     ## extents is a row-wise vector of extents, for each col, we update
     ## if that column has any rows wider than the previously recorded extent.
     for (col in dispcols) {
-        ## duplicated from matrix_form method, refactor!
-        col_ext <- vec_nlines(tt[[col]], max_width = colwidths[col])
-        extents <- ifelse(col_ext > extents, col_ext, extents)
+      ## duplicated from matrix_form method, refactor!
+      col_ext <- vec_nlines(tt[[col]], max_width = colwidths[col])
+      extents <- ifelse(col_ext > extents, col_ext, extents)
     }
     ret <- data.frame(
       label = "", name = "",
@@ -133,7 +149,6 @@ setMethod("make_row_df", "listing_df",
     ret
   }
 )
-
 
 ##     tt$sibpos <- unlist(lapply(
 ##     ## don't support pathing for now
@@ -170,14 +185,13 @@ setMethod("make_row_df", "listing_df",
 ##     ret
 ## })
 
-
-#' @export
+#' @rdname listing_methods
 #' @param x listing_df. The listing.
 #' @inheritParams base::Extract
 #' @param i ANY. Passed to base `[` methods.
 #' @param j ANY. Passed to base `[` methods.
 #' @aliases [,listing_df-method
-#' @rdname listing_methods
+#' @export
 setMethod(
   "[", "listing_df",
   function(x, i, j, drop = FALSE) {
@@ -224,8 +238,8 @@ setMethod(
   }
   if (!is.character(val)) {
     stop("value for ", fname, " must be a character, got ",
-         "object of class: ", paste(class(val), collapse = ","),
-         call. = FALSE
+      "object of class: ", paste(class(val), collapse = ","),
+      call. = FALSE
     )
   }
   if (len_one && length(val) > 1) {
@@ -238,7 +252,6 @@ setMethod(
 }
 
 #' @rdname listing_methods
-#' @param obj The object.
 #' @export
 setMethod(
   "main_title<-", "listing_df",

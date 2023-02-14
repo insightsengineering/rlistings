@@ -182,5 +182,5 @@ testthat::test_that("column inclusion and ordering stuff", {
   lsting3 <- as_listing(
       df = ex_adae,
       key_cols = NULL)
-  testthat::expect_silent({str <- toString(lsting3)})
+  testthat::expect_silent(str <- toString(lsting3))
 })
