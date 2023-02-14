@@ -2,8 +2,8 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # rlistings <a href='https://github.com/insightsengineering/rlistings'><img src="man/figures/rlistings.png" align="right" alt="" width="180"></a>
-<!-- start badges -->
 
+<!-- start badges -->
 [![Check
 🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml)
 [![Docs
