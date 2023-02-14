@@ -37,8 +37,6 @@ Version](https://img.shields.io/github/r-package/v/insightsengineering/rlistings
 Issues](https://img.shields.io/github/issues-raw/insightsengineering/rlistings?color=red&label=open%20issues)](https://github.com/insightsengineering/rlistings/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
 <!-- end badges -->
 
-
-
 ## Listings with R
 
 The `rlistings` R package is a package that was designed to create and
