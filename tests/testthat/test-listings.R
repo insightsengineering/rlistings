@@ -1,5 +1,4 @@
 testthat::test_that("Column labels are the same", {
-
   ## listings var labels don't get mucked up by topleft machinery #262
   lsting <- as_listing(anl, key_cols = c("USUBJID")) %>%
     add_listing_col("ARM")
@@ -137,50 +136,71 @@ testthat::test_that("regression test for keycols being lost due to `head()`", {
 testthat::test_that("column inclusion and ordering stuff", {
   ## key columns must be left-most k columns (#36)
   lsting <- as_listing(
-      df = ex_adae,
-      disp_cols = c("USUBJID", "AGE", "SEX", "RACE", "ARM", "AEDECOD", "AESEV", "AETOXGR"),
-      key_cols = c("ARM", "USUBJID", "AETOXGR")
+    df = ex_adae,
+    disp_cols = c("USUBJID", "AGE", "SEX", "RACE", "ARM", "AEDECOD", "AESEV", "AETOXGR"),
+    key_cols = c("ARM", "USUBJID", "AETOXGR")
   )
 
   mpfh <- matrix_form(head(lsting))
   exp <- mpfh$strings[1:4, 1:4]
   dimnames(exp) <- NULL
-  testthat::expect_equal(exp,
-               matrix(c("Description of Planned Arm", "Unique Subject Identifier", "Analysis Toxicity Grade", "Age",
-                        "A: Drug X",                  "AB12345-BRA-1-id-134",      "2",                       "47",
-                        "",                           "",                          "",                        "47",
-                        "",                           "",                          "3",                       "47"),
-                      byrow = TRUE, nrow = 4))
+  testthat::expect_equal(
+    exp,
+    matrix(
+      c(
+        "Description of Planned Arm", "Unique Subject Identifier", "Analysis Toxicity Grade", "Age",
+        "A: Drug X", "AB12345-BRA-1-id-134", "2", "47",
+        "", "", "", "47",
+        "", "", "3", "47"
+      ),
+      byrow = TRUE, nrow = 4
+    )
+  )
   ## key cols don't need to be repeated in disp_cols
   lsting2 <- as_listing(
-      df = ex_adae,
-      disp_cols = c("AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
-      key_cols = c("ARM", "USUBJID", "AETOXGR")
+    df = ex_adae,
+    disp_cols = c("AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
+    key_cols = c("ARM", "USUBJID", "AETOXGR")
   )
 
   testthat::expect_true(identical(lsting, lsting2))
 
   ## display cols default to everything thats not a key col
   lsting3 <- as_listing(df = ex_adae, key_cols = c("USUBJID", "ARM"))
-  testthat::expect_identical(listing_dispcols(lsting3),
-                   c("USUBJID", "ARM", setdiff(names(ex_adae), c("USUBJID", "ARM"))))
+  testthat::expect_identical(
+    listing_dispcols(lsting3),
+    c("USUBJID", "ARM", setdiff(names(ex_adae), c("USUBJID", "ARM")))
+  )
 
   ## non_disp_cols causes columns to be excluded
-  lsting4 <- as_listing(df = ex_adae, key_cols = c("USUBJID", "ARM"),
-                            non_disp_cols = c("RACE", "AESEV"))
-  testthat::expect_identical(listing_dispcols(lsting4),
-                   c("USUBJID", "ARM", setdiff(names(ex_adae), c("USUBJID", "ARM", "RACE", "AESEV"))))
-  testthat::expect_error(as_listing(df = ex_adae, key_cols = c("USUBJID", "ARM"),
-                          non_disp_cols = c("ARM", "RACE", "AESEV")),
-               "Key column also listed in non_disp_cols")
-  testthat::expect_error(as_listing(df = ex_adae, key_cols = c("USUBJID", "ARM"),
-                          disp_cols = c("AEDECOD", "AETOXGR"),
-                          non_disp_cols = c("RACE", "AESEV")),
-                         "Got non-null values for both disp_cols and non_disp_cols")
+  lsting4 <- as_listing(
+    df = ex_adae, key_cols = c("USUBJID", "ARM"),
+    non_disp_cols = c("RACE", "AESEV")
+  )
+  testthat::expect_identical(
+    listing_dispcols(lsting4),
+    c("USUBJID", "ARM", setdiff(names(ex_adae), c("USUBJID", "ARM", "RACE", "AESEV")))
+  )
+  testthat::expect_error(
+    as_listing(
+      df = ex_adae, key_cols = c("USUBJID", "ARM"),
+      non_disp_cols = c("ARM", "RACE", "AESEV")
+    ),
+    "Key column also listed in non_disp_cols"
+  )
+  testthat::expect_error(
+    as_listing(
+      df = ex_adae, key_cols = c("USUBJID", "ARM"),
+      disp_cols = c("AEDECOD", "AETOXGR"),
+      non_disp_cols = c("RACE", "AESEV")
+    ),
+    "Got non-null values for both disp_cols and non_disp_cols"
+  )
 
   ## no-keycols is supported #73
   lsting3 <- as_listing(
-      df = ex_adae,
-      key_cols = NULL)
+    df = ex_adae,
+    key_cols = NULL
+  )
   testthat::expect_silent(str <- toString(lsting3))
 })
