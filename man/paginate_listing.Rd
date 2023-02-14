@@ -56,7 +56,7 @@ cat(toString(mat))
 # Vertical pagination
 paginate_listing(lsting, lpp = 10)
 
-#Horizontal pagination
+# Horizontal pagination
 paginate_listing(lsting, cpp = 100, lpp = 40)
 
 # Use `verbose = TRUE` to display more descriptive warnings or errors
