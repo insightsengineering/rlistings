@@ -1,8 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rlistings
-
+# rlistings <a href='https://github.com/Roche/rtables'><img src="man/figures/rlistings-logo.svg" align="right" alt=""></a>
 <!-- start badges -->
 
 [![Check
@@ -38,7 +37,6 @@ Version](https://img.shields.io/github/r-package/v/insightsengineering/rlistings
 Issues](https://img.shields.io/github/issues-raw/insightsengineering/rlistings?color=red&label=open%20issues)](https://github.com/insightsengineering/rlistings/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
 <!-- end badges -->
 
-<img src="man/figures/rlistings-logo.svg" align="right" alt="" width="180">
 
 
 ## Listings with R
