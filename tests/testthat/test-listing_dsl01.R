@@ -43,7 +43,6 @@ testthat::test_that("DSL01 listing is produced correctly", {
     ),
     nrow = 13
   )
-
   testthat::expect_identical(mf_strings(result_matrix), expected_strings)
 
   # Test DSL01 headers/footers
