@@ -107,9 +107,10 @@ as_listing <- function(df,
   if (!is.null(disp_cols) && !is.null(non_disp_cols)) {
     stop("Got non-null values for both disp_cols and non_disp_cols. This is not supported.")
   } else if (is.null(disp_cols)) {
+    ## non_disp_cols NULL is ok here
     cols <- setdiff(names(df), c(key_cols, non_disp_cols))
-  } ## non_disp_cols NULL is ok here
-  else { ## disp_cols non-null, non_disp_cols NULL
+  } else {
+    ## disp_cols non-null, non_disp_cols NULL
     cols <- disp_cols
   }
 
