@@ -2,7 +2,8 @@
 #'
 #' @inheritParams paginate_listing
 #' @param file character(1). File to write.
-#' @param paginate logical(1). Should \code{tt} be paginated before writing the file. Defaults to `TRUE` if any sort of page dimension is specified.
+#' @param paginate logical(1). Should \code{tt} be paginated before writing the file.
+#' Defaults to `TRUE` if any sort of page dimension is specified.
 #' @param \dots Passed directly to \code{\link{paginate_listing}}
 #' @param page_break character(1). Page break symbol (defaults to outputting \code{"\\s"}).
 #' @return \code{file} (this function is called for the side effect of writing the file.

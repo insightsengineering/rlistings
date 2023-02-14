@@ -28,7 +28,8 @@ export_as_txt(
 \arguments{
 \item{file}{character(1). File to write.}
 
-\item{paginate}{logical(1). Should \code{tt} be paginated before writing the file. Defaults to \code{TRUE} if any sort of page dimension is specified.}
+\item{paginate}{logical(1). Should \code{tt} be paginated before writing the file.
+Defaults to \code{TRUE} if any sort of page dimension is specified.}
 
 \item{cpp}{numeric(1). Number of characters per page (width)}
 
