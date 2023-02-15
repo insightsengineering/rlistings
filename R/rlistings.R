@@ -267,7 +267,6 @@ setMethod(
 )
 
 
-
 #' @export
 #' @rdname listings
 listing_dispcols <- function(df) attr(df, "listing_dispcols") %||% character()

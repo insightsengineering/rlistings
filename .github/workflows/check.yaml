@@ -63,10 +63,6 @@ jobs:
   licenses:
     name: License Check 🃏
     uses: insightsengineering/r.pkg.template/.github/workflows/licenses.yaml@main
-  style:
-    if: github.event_name != 'push'
-    name: Style Check 👗
-    uses: insightsengineering/r.pkg.template/.github/workflows/style.yaml@main
   grammar:
     if: github.event_name != 'push'
     name: Grammar Check 🔤
