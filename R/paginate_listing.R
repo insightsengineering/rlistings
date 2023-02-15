@@ -19,26 +19,26 @@
 #' @examples
 #' # Create a standard listing
 #' dat <- ex_adae
+#' lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
 #'
-#' lsting <- as_listing(dat[1:25, ],
-#'   key_cols = c("USUBJID", "AGE", "AESOC")
-#' ) %>%
-#'   add_listing_col("AETOXGR") %>%
-#'   add_listing_col("BMRKR1", format = "xx.x") %>%
-#'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
+#' mat <- matrix_form(lsting)
+#'
+#' cat(toString(mat))
 #'
 #' # Vertical pagination
 #' paginate_listing(lsting, lpp = 10)
 #'
 #' # Horizontal pagination
-#' # paginate_listing(lsting, cpp = 10, lpp = 40)
+#' paginate_listing(lsting, cpp = 100, lpp = 40)
 #'
+#' # Use `verbose = TRUE` to display more descriptive warnings or errors
+#' # paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)
 #' @export
 paginate_listing <- function(lsting, lpp = 15,
                              cpp = NULL,
                              min_siblings = 2,
                              nosplitin = character(),
-                             colwidths = propose_column_widths(lsting), #NULL,
+                             colwidths = propose_column_widths(lsting), # NULL,
                              verbose = FALSE) {
   # Input checks
   checkmate::assert_count(lpp, null.ok = TRUE)
@@ -48,8 +48,9 @@ paginate_listing <- function(lsting, lpp = 15,
   ## refactor so its not
   dheight <- divider_height(lsting)
   cinfo_lines <- max(mapply(nlines,
-                            x = var_labels(lsting)[listing_dispcols(lsting)],
-                            max_width = colwidths)) + dheight
+    x = var_labels(lsting)[listing_dispcols(lsting)],
+    max_width = colwidths
+  )) + dheight
   if (any(nzchar(all_titles(lsting)))) {
     tlines <- length(all_titles(lsting)) + dheight + 1L
   } else {
@@ -68,10 +69,11 @@ paginate_listing <- function(lsting, lpp = 15,
   }
 
   inds <- pag_indices_inner(pagdf,
-                            rlpp = rlpp,
-                            min_siblings = min_siblings,
-                            nosplitin = nosplitin,
-                            verbose = verbose)
+    rlpp = rlpp,
+    min_siblings = min_siblings,
+    nosplitin = nosplitin,
+    verbose = verbose
+  )
   dcols <- listing_dispcols(lsting)
 
   kcols <- get_keycols(lsting)
