@@ -318,26 +318,26 @@ add_listing_dispcol <- function(df, new) {
 #'
 #' @export
 add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
-    if (!is.null(fun)) {
-      vec <- fun(df)
-    } else if (name %in% names(df)) {
-      vec <- df[[name]]
-    } else {
-      stop(
-        "Column '", name, "' not found. name argument must specify an existing column when ",
-        "no generating function (fun argument) is specified."
-      )
-    }
+  if (!is.null(fun)) {
+    vec <- fun(df)
+  } else if (name %in% names(df)) {
+    vec <- df[[name]]
+  } else {
+    stop(
+      "Column '", name, "' not found. name argument must specify an existing column when ",
+      "no generating function (fun argument) is specified."
+    )
+  }
 
-    if (!is.null(format)) {
-      vec <- df[[name]]
-      obj_format(vec) <- format
-    }
+  if (!is.null(format)) {
+    vec <- df[[name]]
+    obj_format(vec) <- format
+  }
 
-    obj_na_str(vec) <- na_str
+  obj_na_str(vec) <- na_str
 
-    ## this works for both new and existing columns
-    df[[name]] <- vec
-    df <- add_listing_dispcol(df, name)
-    df
+  ## this works for both new and existing columns
+  df[[name]] <- vec
+  df <- add_listing_dispcol(df, name)
+  df
 }
