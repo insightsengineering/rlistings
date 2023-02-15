@@ -166,12 +166,12 @@ is_keycol <- function(vec) {
 }
 
 
+
 #' @export
 #' @rdname listings
 get_keycols <- function(df) {
   names(which(sapply(df, is_keycol)))
 }
-
 
 #' @export
 #' @inheritParams formatters::matrix_form
