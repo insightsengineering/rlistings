@@ -43,16 +43,16 @@ basic_run_lens <- function(x) {
 #' @param colnm Column name
 #' @param colvec Column values based on colnm
 format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
-    if (missing(colvec) && !(colnm %in% names(df))) {
-      stop("column ", colnm, " not found")
-    }
-    na_str <- obj_na_str(colvec)
-    if (is.null(na_str) || all(is.na(na_str))) {
-      na_str <- rep("-", max(1L, length(na_str)))
-    }
+  if (missing(colvec) && !(colnm %in% names(df))) {
+    stop("column ", colnm, " not found")
+  }
+  na_str <- obj_na_str(colvec)
+  if (is.null(na_str) || all(is.na(na_str))) {
+    na_str <- rep("-", max(1L, length(na_str)))
+  }
 
-    strvec <- vapply(colvec, format_value, "", format = obj_format(colvec), na_str = na_str)
-    strvec
+  strvec <- vapply(colvec, format_value, "", format = obj_format(colvec), na_str = na_str)
+  strvec
 }
 
 #' @rdname listing_methods
@@ -64,9 +64,9 @@ setGeneric("vec_nlines", function(vec, max_width = NULL) standardGeneric("vec_nl
 #' @param vec A vector.
 #' @keywords internal
 setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
-    strvec <- wrap_txt(format_colvector(colvec = vec), max_width = max_width, hard = TRUE)
-    mtchs <- gregexpr("\n", strvec, fixed = TRUE)
-    1L + vapply(mtchs, function(vi) sum(vi > 0), 1L)
+  strvec <- wrap_txt(format_colvector(colvec = vec), max_width = max_width, hard = TRUE)
+  mtchs <- gregexpr("\n", strvec, fixed = TRUE)
+  1L + vapply(mtchs, function(vi) sum(vi > 0), 1L)
 })
 
 ## setMethod("vec_nlines", "character", function(vec, max_width = NULL) {
@@ -84,7 +84,8 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
 #' @export
 #' @inheritParams formatters::make_row_df
 #' @rdname listing_methods
-setMethod("make_row_df", "listing_df",
+setMethod(
+  "make_row_df", "listing_df",
   function(tt, colwidths = NULL, visible_only = TRUE,
            rownum = 0,
            indent = 0L,
@@ -118,9 +119,9 @@ setMethod("make_row_df", "listing_df",
     ## extents is a row-wise vector of extents, for each col, we update
     ## if that column has any rows wider than the previously recorded extent.
     for (col in dispcols) {
-        ## duplicated from matrix_form method, refactor!
-        col_ext <- vec_nlines(tt[[col]], max_width = colwidths[col])
-        extents <- ifelse(col_ext > extents, col_ext, extents)
+      ## duplicated from matrix_form method, refactor!
+      col_ext <- vec_nlines(tt[[col]], max_width = colwidths[col])
+      extents <- ifelse(col_ext > extents, col_ext, extents)
     }
     ret <- data.frame(
       label = "", name = "",
@@ -239,8 +240,8 @@ setMethod(
   }
   if (!is.character(val)) {
     stop("value for ", fname, " must be a character, got ",
-         "object of class: ", paste(class(val), collapse = ","),
-         call. = FALSE
+      "object of class: ", paste(class(val), collapse = ","),
+      call. = FALSE
     )
   }
   if (len_one && length(val) > 1) {

@@ -48,8 +48,9 @@ paginate_listing <- function(lsting, lpp = 15,
   ## refactor so its not
   dheight <- divider_height(lsting)
   cinfo_lines <- max(mapply(nlines,
-                            x = var_labels(lsting)[listing_dispcols(lsting)],
-                            max_width = colwidths)) + dheight
+    x = var_labels(lsting)[listing_dispcols(lsting)],
+    max_width = colwidths
+  )) + dheight
   if (any(nzchar(all_titles(lsting)))) {
     tlines <- length(all_titles(lsting)) + dheight + 1L
   } else {
@@ -68,10 +69,11 @@ paginate_listing <- function(lsting, lpp = 15,
   }
 
   inds <- pag_indices_inner(pagdf,
-                            rlpp = rlpp,
-                            min_siblings = min_siblings,
-                            nosplitin = nosplitin,
-                            verbose = verbose)
+    rlpp = rlpp,
+    min_siblings = min_siblings,
+    nosplitin = nosplitin,
+    verbose = verbose
+  )
   dcols <- listing_dispcols(lsting)
 
   kcols <- get_keycols(lsting)
