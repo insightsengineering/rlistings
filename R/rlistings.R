@@ -146,9 +146,8 @@ as_listing <- function(df,
 }
 
 
-
-#' @rdname listings
 #' @export
+#' @rdname listings
 as_keycol <- function(vec) {
   if (is.factor(vec)) {
     lab <- obj_label(vec)
@@ -160,30 +159,26 @@ as_keycol <- function(vec) {
 }
 
 
-
-
-#' @rdname listings
 #' @export
+#' @rdname listings
 is_keycol <- function(vec) {
   inherits(vec, "listing_keycol")
 }
 
 
-
-
-#' @rdname listings
 #' @export
+#' @rdname listings
 get_keycols <- function(df) {
   names(which(sapply(df, is_keycol)))
 }
 
 
+#' @export
 #' @inheritParams formatters::matrix_form
 #' @seealso [formatters::matrix_form()] This is partially inherited from `formatters`' function
 #' @param indent_rownames logical(1). Silently ignored, as listings do not have row names
 #' nor indenting structure.
 #' @rdname listings
-#' @export
 setMethod(
   "matrix_form", "listing_df",
   rix_form <- function(obj, indent_rownames = FALSE) {
@@ -273,26 +268,22 @@ setMethod(
 
 
 
-#' @rdname listings
 #' @export
+#' @rdname listings
 listing_dispcols <- function(df) attr(df, "listing_dispcols") %||% character()
 
-#' @rdname listings
-#'
+#' @export
 #' @param new character. Names of columns to be added to
 #'   the set of display columns.
-#'
-#' @export
+#' @rdname listings
 add_listing_dispcol <- function(df, new) {
   listing_dispcols(df) <- c(listing_dispcols(df), new)
   df
 }
 
-#' @rdname listings
-#'
-#' @param value character. New value.
-#'
 #' @export
+#' @rdname listings
+#' @param value character. New value.
 `listing_dispcols<-` <- function(df, value) {
   if (!is.character(value)) {
     stop(
@@ -328,26 +319,26 @@ add_listing_dispcol <- function(df, new) {
 #'
 #' @export
 add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
-  if (!is.null(fun)) {
-    vec <- fun(df)
-  } else if (name %in% names(df)) {
-    vec <- df[[name]]
-  } else {
-    stop(
-      "Column '", name, "' not found. name argument must specify an existing column when ",
-      "no generating function (fun argument) is specified."
-    )
-  }
+    if (!is.null(fun)) {
+      vec <- fun(df)
+    } else if (name %in% names(df)) {
+      vec <- df[[name]]
+    } else {
+      stop(
+        "Column '", name, "' not found. name argument must specify an existing column when ",
+        "no generating function (fun argument) is specified."
+      )
+    }
 
-  if (!is.null(format)) {
-    vec <- df[[name]]
-    obj_format(vec) <- format
-  }
+    if (!is.null(format)) {
+      vec <- df[[name]]
+      obj_format(vec) <- format
+    }
 
-  obj_na_str(vec) <- na_str
+    obj_na_str(vec) <- na_str
 
-  ## this works for both new and existing columns
-  df[[name]] <- vec
-  df <- add_listing_dispcol(df, name)
-  df
+    ## this works for both new and existing columns
+    df[[name]] <- vec
+    df <- add_listing_dispcol(df, name)
+    df
 }
