@@ -5,7 +5,7 @@
 \title{Export as plain text with page break symbol}
 \usage{
 export_as_txt(
-  tt,
+  lst,
   file = NULL,
   page_type = NULL,
   landscape = FALSE,
@@ -22,13 +22,33 @@ export_as_txt(
   indent_size = 2,
   tf_wrap = paginate,
   max_width = cpp,
-  colwidths = propose_column_widths(matrix_form(tt, TRUE))
+  colwidths = propose_column_widths(matrix_form(lst, TRUE))
 )
 }
 \arguments{
+\item{lst}{Listing object}
+
 \item{file}{character(1). File to write.}
 
-\item{paginate}{logical(1). Should \code{tt} be paginated before writing the file.
+\item{page_type}{character(1).   Name   of  a  page  type.   See
+\code{page_types}.   Ignored when  \code{pg_width} and  \code{pg_height}
+are set directly.}
+
+\item{landscape}{logical(1). Should the  dimensions of \code{page_type}
+be inverted  for landscape?  Defaults to  \code{FALSE}, ignored when
+\code{pg_width} and \code{pg_height} are set directly.}
+
+\item{pg_width}{numeric(1). Page width in inches.}
+
+\item{pg_height}{numeric(1). Page height in inches.}
+
+\item{font_family}{character(1). Name of a font family. An error
+will be thrown if the family named is not monospaced. Defaults
+to Courier.}
+
+\item{font_size}{numeric(1). Font size, defaults to 12.}
+
+\item{paginate}{logical(1). Should \code{lst} be paginated before writing the file.
 Defaults to \code{TRUE} if any sort of page dimension is specified.}
 
 \item{cpp}{numeric(1). Number of characters per page (width)}
@@ -40,6 +60,23 @@ pagination.}
 \item{\dots}{Passed directly to \code{\link{paginate_listing}}}
 
 \item{page_break}{character(1). Page break symbol (defaults to outputting \code{"\\s"}).}
+
+\item{hsep}{character(1).   Characters  to  repeat   to  create
+header/body separator line.}
+
+\item{indent_size}{numeric(1). Indent size in characters. Ignored
+when \code{x} is already a MatrixPrintForm object in favor of information
+there.}
+
+\item{tf_wrap}{logical(1). Should  the texts for  title, subtitle,
+and footnotes be wrapped?}
+
+\item{max_width}{integer(1), character(1) or NULL. Width that title
+and   footer   (including   footnotes)  materials   should   be
+word-wrapped to. If NULL, it is  set to the current print width
+of the  session (\code{getOption("width")}). If set to \code{"auto"},
+the width of the table (plus any table inset) is used. Ignored
+completely if \code{tf_wrap} is \code{FALSE}.}
 
 \item{colwidths}{numeric or NULL. Print widths of columns, if manually
 set/previously known.}

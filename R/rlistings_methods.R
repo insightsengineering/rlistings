@@ -198,6 +198,15 @@ setMethod(
   }
 )
 
+#' toString method for listing_df object
+#' @param x listing_df object
+#' @param widths numeric (or  NULL). (proposed) widths for the columns
+#'     of \code{x}. The expected length  of this numeric vector can be
+#'     retrieved with  `ncol() + 1`  as the  column of row  names must
+#'     also be considered.
+#' @param  hsep  character(1).   Characters  to  repeat   to  create
+#'     header/body separator line.
+#' @param col_gap numeric(1). Space (in characters) between columns
 #' @exportMethod toString
 setMethod("toString", "listing_df", function(x,
                                              widths = NULL,

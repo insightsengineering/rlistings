@@ -1,8 +1,34 @@
 #' Export as plain text with page break symbol
 #'
 #' @inheritParams paginate_listing
+#' @param lst Listing object
 #' @param file character(1). File to write.
-#' @param paginate logical(1). Should \code{tt} be paginated before writing the file.
+#' @param  page_type  character(1).   Name   of  a  page  type.   See
+#'     `page_types`.   Ignored when  `pg_width` and  `pg_height`
+#'     are set directly.
+#' @param  landscape logical(1). Should the  dimensions of `page_type`
+#'     be inverted  for landscape?  Defaults to  `FALSE`, ignored when
+#'     `pg_width` and `pg_height` are set directly.
+#' @param font_family character(1). Name of a font family. An error
+#'     will be thrown if the family named is not monospaced. Defaults
+#'     to Courier.
+#' @param font_size numeric(1). Font size, defaults to 12.
+#' @param pg_width numeric(1). Page width in inches.
+#' @param pg_height numeric(1). Page height in inches.
+#' @param hsep character(1).   Characters  to  repeat   to  create
+#'     header/body separator line.
+#' @param indent_size numeric(1). Indent size in characters. Ignored
+#' when `x` is already a MatrixPrintForm object in favor of information
+#' there.
+#' @param max_width integer(1), character(1) or NULL. Width that title
+#'     and   footer   (including   footnotes)  materials   should   be
+#'     word-wrapped to. If NULL, it is  set to the current print width
+#'     of the  session (`getOption("width")`). If set to `"auto"`,
+#'     the width of the table (plus any table inset) is used. Ignored
+#'     completely if `tf_wrap` is `FALSE`.
+#' @param tf_wrap logical(1). Should  the texts for  title, subtitle,
+#'     and footnotes be wrapped?
+#' @param paginate logical(1). Should \code{lst} be paginated before writing the file.
 #' Defaults to `TRUE` if any sort of page dimension is specified.
 #' @param \dots Passed directly to \code{\link{paginate_listing}}
 #' @param page_break character(1). Page break symbol (defaults to outputting \code{"\\s"}).
@@ -26,7 +52,7 @@
 #' main_footer(lsting) <- "this is some footer"
 #' cat(export_as_txt(lsting, file = NULL, paginate = TRUE))
 #'
-export_as_txt <- function(tt, file = NULL,
+export_as_txt <- function(lst, file = NULL,
                           page_type = NULL,
                           landscape = FALSE,
                           pg_width = page_dim(page_type)[if (landscape) 2 else 1],
@@ -41,11 +67,11 @@ export_as_txt <- function(tt, file = NULL,
                           indent_size = 2,
                           tf_wrap = paginate,
                           max_width = cpp,
-                          colwidths = propose_column_widths(matrix_form(tt, TRUE))) {
-  if (!is.null(colwidths) && length(colwidths) != ncol(tt)) {
+                          colwidths = propose_column_widths(matrix_form(lst, TRUE))) {
+  if (!is.null(colwidths) && length(colwidths) != ncol(lst)) {
     stop(
-      "non-null colwidths argument must have length ncol(tt) [",
-      ncol(tt), "], got length ", length(colwidths)
+      "non-null colwidths argument must have length ncol(lst) [",
+      ncol(lst), "], got length ", length(colwidths)
     )
   }
   if (paginate) {
@@ -76,22 +102,22 @@ export_as_txt <- function(tt, file = NULL,
       max_width <- cpp
     }
 
-    tbls <- paginate_listing(tt,
+    tbls <- paginate_listing(lst,
       lpp = lpp, cpp = cpp,
       min_siblings = 2,
       nosplitin = character(),
-      colwidths = propose_column_widths(lsting),
+      colwidths = propose_column_widths(lst),
       verbose = FALSE
     )
   } else {
-    tbls <- list(tt)
+    tbls <- list(lst)
   }
 
   res <- paste(
     mapply(
       function(tb, ...) {
         ## 1 and +1 are because cwidths includes rowlabel 'column'
-        # cinds <- c(1, .figure_out_colinds(tb, tt) + 1L)
+        # cinds <- c(1, .figure_out_colinds(tb, lst) + 1L)
         toString(tb, ...)
       },
       MoreArgs = list(hsep = hsep),
@@ -125,4 +151,9 @@ export_as_txt <- function(tt, file = NULL,
 
 .paste_no_na <- function(x, ...) {
   paste(na.omit(x), ...)
+}
+
+.need_pag <- function(page_type, pg_width, pg_height, cpp, lpp) {
+  !(is.null(page_type) && is.null(pg_width) && is.null(pg_height) && is.null(cpp) && is.null(lpp))
+
 }
