@@ -3,6 +3,9 @@
 \name{listing_methods}
 \alias{listing_methods}
 \alias{print.listing_df}
+\alias{format_colvector}
+\alias{vec_nlines}
+\alias{vec_nlines,ANY-method}
 \alias{make_row_df,listing_df-method}
 \alias{[,listing_df-method}
 \alias{main_title,listing_df-method}
@@ -16,6 +19,12 @@
 \title{Methods for \code{listing_df} objects}
 \usage{
 \method{print}{listing_df}(x, ...)
+
+format_colvector(df, colnm, colvec = df[[colnm]])
+
+vec_nlines(vec, max_width = NULL)
+
+\S4method{vec_nlines}{ANY}(vec, max_width = NULL)
 
 \S4method{make_row_df}{listing_df}(
   tt,
@@ -53,6 +62,17 @@
 \item{x}{listing_df. The listing.}
 
 \item{...}{dots. Unused}
+
+\item{df}{listing_df. The listing.}
+
+\item{colnm}{Column name}
+
+\item{colvec}{Column values based on colnm}
+
+\item{vec}{A vector.}
+
+\item{max_width}{numeric(1) or NULL. Maximum width for title/footer
+materials.}
 
 \item{tt}{ANY. Object representing the table-like object to be summarized.}
 
@@ -97,3 +117,4 @@ Defaults to \code{TRUE}. May not be supported by all methods.}
 See core documentation in \code{formatters} for descriptions
 of these functions.
 }
+\keyword{internal}
