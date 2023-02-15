@@ -17,7 +17,7 @@ export_as_txt(
   cpp = NULL,
   lpp = NULL,
   ...,
-  page_break = "\\\\f",
+  page_break = "\\\\s\\\\n",
   hsep = default_hsep(),
   indent_size = 2,
   tf_wrap = paginate,
