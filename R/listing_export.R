@@ -155,5 +155,4 @@ export_as_txt <- function(lst, file = NULL,
 
 .need_pag <- function(page_type, pg_width, pg_height, cpp, lpp) {
   !(is.null(page_type) && is.null(pg_width) && is.null(pg_height) && is.null(cpp) && is.null(lpp))
-
 }
