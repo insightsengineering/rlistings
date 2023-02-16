@@ -1,4 +1,4 @@
-# rlistings 0.1.2.6
+# rlistings 0.1.2.7
 ### Enhancements
  * `cols` argument renamed to `disp_cols` in `as_listing`.
  * `as_listing` gains `non_disp_cols` argument.
