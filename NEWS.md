@@ -1,16 +1,17 @@
 # rlistings 0.1.2.6
- * `cols` argument renamed to `disp_cols` in `as_listing`
- * `as_listing` gains `non_disp_cols` argument 
- * `disp_cols` argument now defaults to all columns not included in `key_cols`
- * columns named in `key_cols` no longer need to also be listed in `disp_cols`
- * pagination is now calculated based on formatted cells values (including wrapping) rather than raw cell contents
- * key columns are now guaranteed to be the leftmost columns (both stored and displayed) in `listing_df` objects.
- 
-# rlistings 0.1.1.9014
- * `matrix_form(lsting, TRUE)` is no longer an error, now silently has the same behavior as 
-   `matrix_form(lsting, FALSE)`
-
 ### Enhancements
+ * `cols` argument renamed to `disp_cols` in `as_listing`.
+ * `as_listing` gains `non_disp_cols` argument.
+ * `disp_cols` argument now defaults to all columns not included in `key_cols`.
+ * Columns named in `key_cols` no longer need to also be listed in `disp_cols`.
+ * Pagination is now calculated based on formatted cells values (including wrapping) rather than raw cell contents.
+ * Key columns are now guaranteed to be the leftmost columns (both stored and displayed) in `listing_df` objects.
+ 
+### Bug Fixes
+ * `matrix_form(lsting, TRUE)` is no longer an error, now silently has the same 
+    behavior as `matrix_form(lsting, FALSE)`.
+
+# rlistings 0.1.2
  * Add test for `paginate_listing`.
  * Add development cycle with `lifecycle` support. Add of experimental badges.
  * Now all functions have `markdown` support.
