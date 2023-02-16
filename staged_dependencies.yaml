@@ -12,3 +12,6 @@ downstream_repos:
   insightsengineering/citril:
     repo: insightsengineering/citril
     host: https://github.com
+  insightsengineering/scda.test:
+    repo: insightsengineering/scda.test
+    host: https://github.com
