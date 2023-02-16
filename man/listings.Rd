@@ -40,10 +40,11 @@ listing_dispcols(df) <- value
 add_listing_col(df, name, fun = NULL, format = NULL, na_str = "-")
 }
 \arguments{
-\item{df}{listing_df. The listing to modify.}
+\item{df}{data.frame or listing_df. The (non-listing) data.frame to be converted to a listing or
+the listing_df to be modified.}
 
 \item{key_cols}{character. Names of columns which should be treated as \emph{key columns}
-when rendering the listing.}
+when rendering the listing. Key columns allow you to group repeat occurrences.}
 
 \item{disp_cols}{character or NULL. Names of non-key columns which should be displayed when
 the listing is rendered. Defaults to all columns of \code{df} not named in \code{key_cols} or
@@ -63,9 +64,9 @@ listing, or \code{NULL} (the default).}
 for the listing, or \code{NULL} (the default).}
 
 \item{prov_footer}{character or NULL. A vector of provenance strings
-for the listing, or \code{NULL} (the default).}
+for the listing, or \code{NULL} (the default). Each string element is placed on a new line.}
 
-\item{vec}{any. A column vector from a \code{listing_df}}
+\item{vec}{any. A column vector from a \code{listing_df} to be annotated as a key column.}
 
 \item{obj}{ANY. Object to be transformed into a ready-to-render form (a MatrixPrintForm object)}
 
@@ -78,12 +79,12 @@ the set of display columns.}
 \item{value}{character. New value.}
 
 \item{name}{character(1). Name of the existing or new column to be
-displayed when the listing is rendered}
+displayed when the listing is rendered.}
 
 \item{fun}{function or NULL. A function which accepts \code{df} and
 returns the vector for a new column, which is added to \code{df} as
 \code{name}, or NULL if marking an existing column as
-a listing column}
+a listing column.}
 
 \item{format}{character(1) or function. The format label (string) or formatter function to apply to \code{x}.}
 
@@ -135,7 +136,18 @@ printing or export of the listing}.
 \examples{
 dat <- ex_adae
 
-lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) \%>\%
+# This example demonstrates the listing with key_cols (values are grouped by USUBJID) and
+# multiple lines in prov_footer
+lsting <- as_listing(dat[1:25, ],
+  key_cols = c("USUBJID", "AESOC"),
+  main_title = "Example Title for Listing",
+  subtitles = "This is the subtitle for this Adverse Events Table",
+  main_footer = "Main footer for the listing",
+  prov_footer = c(
+    "You can even add a subfooter", "Second element is place on a new line",
+    "Third string"
+  )
+) \%>\%
   add_listing_col("AETOXGR") \%>\%
   add_listing_col("BMRKR1", format = "xx.x") \%>\%
   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
@@ -144,4 +156,15 @@ mat <- matrix_form(lsting)
 
 cat(toString(mat))
 
+# This example demonstrates the listing table without key_cols and specifying the cols with disp_cols.
+dat <- ex_adae
+lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
+
+mat <- matrix_form(lsting)
+
+cat(toString(mat))
+
+}
+\seealso{
+\code{\link[formatters:matrix_form]{formatters::matrix_form()}} This is partially inherited from \code{formatters}' function
 }
