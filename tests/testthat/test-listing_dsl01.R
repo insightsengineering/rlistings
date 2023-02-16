@@ -47,5 +47,4 @@ testthat::test_that("DSL01 listing is produced correctly", {
   testthat::expect_identical(subtitles(result), expected_subtitles)
   testthat::expect_identical(main_footer(result), expected_main_footer)
   testthat::expect_identical(prov_footer(result), expected_prov_footer)
-
 })
