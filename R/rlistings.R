@@ -84,7 +84,8 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'
 #' cat(toString(mat))
 #'
-#' # This example demonstrates the listing table without key_cols and specifying the cols with disp_cols.
+#' # This example demonstrates the listing table without key_cols
+#' # and specifying the cols with disp_cols.
 #' dat <- ex_adae
 #' lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
 #'

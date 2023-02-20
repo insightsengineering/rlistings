@@ -6,15 +6,21 @@
 #' rows or horizontal if there are many columns.
 #'
 #' @param lsting listing_df. The listing to paginate.
+#' @param lpp numeric(1) or NULL. Number of row lines (not counting titles and
+#'   footers) to have per page. Standard is `70` while `NULL` disables vertical
+#'   pagination.
+#' @param cpp numeric(1) or NULL. Width (in characters) of the pages for
+#'   horizontal pagination. `NULL` (the default) indicates no horizontal
+#'   pagination should be done.
 #' @inheritParams formatters::pag_indices_inner
 #' @inheritParams formatters::vert_pag_indices
-#' @param lpp numeric(1) or NULL. Number of row lines (not counting titles and
-#'   footers) to have per page. Standard is `15` while `NULL` disables vertical
-#'   pagination.
-#' @param colwidths numeric or NULL. Print widths of columns, if manually
-#'   set/previously known.
+#' @inheritParams formatters::page_lcpp
+#' @inheritParams formatters::toString
 #'
 #' @returns A list of listings' objects that are meant to be on separated pages.
+#'   For `pag_tt_indices` a list of paginated-groups of row-indices of `lsting`.
+#'
+#' @rdname paginate
 #'
 #' @examples
 #' # Create a standard listing
@@ -34,62 +40,104 @@
 #' # Use `verbose = TRUE` to display more descriptive warnings or errors
 #' # paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)
 #' @export
-paginate_listing <- function(lsting, lpp = 15,
-                             cpp = NULL,
+paginate_listing <- function(lsting,
+                             page_type = "letter",
+                             font_family = "Courier",
+                             font_size = 12,
+                             lineheight = 1,
+                             landscape = FALSE,
+                             pg_width = NULL,
+                             pg_height = NULL,
+                             margins = c(top = .5, bottom = .5, left = .75, right = .75),
+                             lpp,
+                             cpp,
                              min_siblings = 2,
                              nosplitin = character(),
-                             colwidths = propose_column_widths(lsting), # NULL,
+                             colwidths = propose_column_widths(lsting),
+                             tf_wrap = FALSE,
+                             max_width = NULL,
                              verbose = FALSE) {
-  # Input checks
-  checkmate::assert_count(lpp, null.ok = TRUE)
-  checkmate::assert_count(cpp, null.ok = TRUE)
+  checkmate::assert_class(lsting, "listing_df")
+  checkmate::assert_character(nosplitin)
+  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
+  checkmate::assert_set_equal(names(colwidths), listing_dispcols(lsting))
+  checkmate::assert_flag(tf_wrap)
+  checkmate::assert_count(max_width, null.ok = TRUE)
+  checkmate::assert_flag(verbose)
 
-  ## XXX TODO this is duplciated form pag_tt_indices
-  ## refactor so its not
-  dheight <- divider_height(lsting)
-  cinfo_lines <- max(mapply(nlines,
-    x = var_labels(lsting)[listing_dispcols(lsting)],
-    max_width = colwidths
-  )) + dheight
-  if (any(nzchar(all_titles(lsting)))) {
-    tlines <- length(all_titles(lsting)) + dheight + 1L
+  if (missing(lpp) && missing(cpp) && !is.null(page_type) ||
+    (!is.null(pg_width) && !is.null(pg_height))) {
+    pg_lcpp <- page_lcpp(
+      page_type = page_type,
+      landscape = landscape,
+      font_family = font_family,
+      font_size = font_size,
+      lineheight = lineheight,
+      margins = margins,
+      pg_width = pg_width,
+      pg_height = pg_height
+    )
+    if (missing(lpp)) {
+      lpp <- pg_lcpp$lpp
+    }
+    if (missing(cpp)) {
+      cpp <- pg_lcpp$cpp
+    }
   } else {
-    tlines <- 0
+    if (missing(cpp)) {
+      cpp <- NULL
+    }
+    if (missing(lpp)) {
+      lpp <- 70
+    }
   }
-  flines <- length(all_footers(lsting))
-  if (flines > 0) {
-    flines <- flines + dheight + 1L
+
+  if (is.null(colwidths)) {
+    colwidths <- propose_column_widths(matrix_form(lsting, indent_rownames = TRUE))
   }
-  ## row lines per page
-  pagdf <- make_row_df(lsting, colwidths)
-  if (is.null(lpp)) {
-    rlpp <- sum(c(pagdf$self_extent, pagdf$nreflines))
+
+  if (!tf_wrap) {
+    if (!is.null(max_width)) {
+      warning("tf_wrap is FALSE - ignoring non-null max_width value.")
+    }
+    max_width <- NULL
+  } else if (is.null(max_width)) {
+    max_width <- cpp
+  } else if (identical(max_width, "auto")) {
+    # this 3 is column separator width.
+    max_width <- sum(colwidths) + 3 * (length(colwidths) - 1)
+  }
+  if (!is.null(cpp) && !is.null(max_width) && max_width > cpp) {
+    warning("max_width specified is wider than characters per page width (cpp).")
+  }
+
+  # row-space pagination.
+  ret <- if (!is.null(lpp)) {
+    inds <- pag_tt_indices(
+      lsting = lsting,
+      lpp = lpp,
+      min_siblings = min_siblings,
+      nosplitin = nosplitin,
+      colwidths = colwidths,
+      verbose = verbose,
+      max_width = max_width
+    )
+    lapply(inds, function(i) lsting[i, ])
   } else {
-    rlpp <- lpp - cinfo_lines - tlines - flines
+    list(lsting)
   }
 
-  inds <- pag_indices_inner(pagdf,
-    rlpp = rlpp,
-    min_siblings = min_siblings,
-    nosplitin = nosplitin,
-    verbose = verbose
-  )
-  dcols <- listing_dispcols(lsting)
-
-  kcols <- get_keycols(lsting)
-  non_key_dispcols <- setdiff(dcols, kcols)
-  ret <- lapply(inds, function(i) lsting[i, ])
-  ## this is *very* similar to the relevant section of rtables::paginate_table
-  ## TODO push down into formatters to avoid duplication
+  # column-space pagination.
   if (!is.null(cpp)) {
-    tmp_df <- lsting[, listing_dispcols(lsting), drop = FALSE]
-    raw_inds <- vert_pag_indices(tmp_df,
+    inds <- vert_pag_indices(
+      lsting,
       cpp = cpp,
       colwidths = colwidths,
       verbose = verbose,
       rep_cols = length(get_keycols(lsting))
     )
-    pag_cols <- lapply(raw_inds, function(jj) dcols[jj]) ## listing_dispcols(c(kcols, non_key_dispcols[jj]))
+    dispcols <- listing_dispcols(lsting)
+    pag_cols <- lapply(inds, function(i) dispcols[i])
     ret <- lapply(
       ret,
       function(oneres) {
@@ -106,4 +154,41 @@ paginate_listing <- function(lsting, lpp = 15,
     ret <- unlist(ret, recursive = FALSE)
   }
   ret
+}
+
+#' @rdname paginate
+#' @export
+pag_tt_indices <- function(lsting,
+                           lpp = 15,
+                           min_siblings = 2,
+                           nosplitin = character(),
+                           colwidths = NULL,
+                           max_width = NULL,
+                           verbose = FALSE) {
+  dheight <- divider_height(lsting)
+  dcols <- listing_dispcols(lsting)
+  cinfo_lines <- max(
+    mapply(nlines, x = var_labels(lsting)[dcols], max_width = colwidths[dcols])
+  ) + dheight
+  tlines <- if (any(nzchar(all_titles(lsting)))) {
+    length(all_titles(lsting)) + dheight + 1L
+  } else {
+    0
+  }
+  flines <- length(all_footers(lsting))
+  if (flines > 0) {
+    flines <- flines + dheight + 1L
+  }
+  rlpp <- lpp - cinfo_lines - tlines - flines
+
+  pagdf <- make_row_df(lsting, colwidths)
+  pag_indices_inner(
+    pagdf = pagdf,
+    rlpp = rlpp,
+    min_siblings = min_siblings,
+    nosplitin = nosplitin,
+    verbose = verbose,
+    have_col_fnotes = FALSE,
+    div_height = dheight
+  )
 }

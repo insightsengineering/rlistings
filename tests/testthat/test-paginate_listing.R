@@ -5,8 +5,8 @@ testthat::test_that("pagination works vertically", {
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-                       key_cols = c("USUBJID", "AGE"),
-                       disp_cols = character()
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = character()
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
@@ -55,8 +55,8 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
     distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-                       key_cols = c("USUBJID"),
-                       disp_cols = character()
+    key_cols = c("USUBJID"),
+    disp_cols = character()
   ) %>%
     add_listing_col("AGE") %>%
     add_listing_col("BMRKR1", format = "xx.x") %>%
@@ -79,7 +79,7 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
   testthat::expect_equal(length(pages_listings), 2L)
 
   lsting2 <- as_listing(tmp_data,
-                        disp_cols = character()
+    disp_cols = character()
   ) %>%
     add_listing_col("USUBJID") %>%
     add_listing_col("AGE") %>%
@@ -137,18 +137,53 @@ testthat::test_that("checking vertical pagination line calculation.", {
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-                       key_cols = c("USUBJID", "AGE"),
-                       disp_cols = character(),
-                       main_footer = c("Main Footer A")
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = character(),
+    main_footer = c("Main Footer A")
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
   pages_listings <- paginate_listing(lsting, lpp = 8, verbose = TRUE)
 
-  # there is always a gap between the end of the table and the footer. Line calculation is correct given this behaviour
+  # there is always a gap between the end of the table and the footer. Line calculation is correct given this behavior
   page1_result <- matrix_form(pages_listings[[1]])
   page2_result <- matrix_form(pages_listings[[2]])
 
   testthat::expect_equal(sum(nrow(page1_result$strings), length(page1_result$main_footer)), 5)
   testthat::expect_equal(sum(nrow(page2_result$strings), length(page2_result$main_footer)), 5)
+})
+
+testthat::test_that("pagination: lpp and cpp correctly computed for pg_width and pg_height", {
+  lsting <- h_lsting_adae()
+  pag <- paginate_listing(lsting, lpp = 24, cpp = 135)
+  res <- paginate_listing(lsting, pg_width = 15, pg_height = 5)
+  expect_identical(res, pag)
+})
+
+testthat::test_that("pagination: lpp and cpp correctly computed for font_size", {
+  lsting <- h_lsting_adae()
+  pag <- paginate_listing(lsting, lpp = 90, cpp = 105)
+  res <- paginate_listing(lsting, font_size = 8)
+  expect_identical(res, pag)
+})
+
+testthat::test_that("pagination: lpp and cpp correctly computed for lineheight", {
+  lsting <- h_lsting_adae()
+  pag <- paginate_listing(lsting, lpp = 20, cpp = 70)
+  res <- paginate_listing(lsting, lineheight = 3)
+  expect_identical(res, pag)
+})
+
+testthat::test_that("pagination: lpp and cpp correctly computed for landscape", {
+  lsting <- h_lsting_adae()
+  pag <- paginate_listing(lsting, lpp = 45, cpp = 95)
+  res <- paginate_listing(lsting, landscape = TRUE)
+  expect_identical(res, pag)
+})
+
+testthat::test_that("pagination: lpp and cpp correctly computed for margins", {
+  lsting <- h_lsting_adae()
+  pag <- paginate_listing(lsting, lpp = 42, cpp = 65)
+  res <- paginate_listing(lsting, margins = c(top = 2, bottom = 2, left = 1, right = 1))
+  expect_identical(res, pag)
 })
