@@ -2,7 +2,7 @@
 % Please edit documentation in R/paginate_listing.R
 \name{paginate_listing}
 \alias{paginate_listing}
-\alias{pag_tt_indices}
+\alias{pag_lsting_indices}
 \title{Paginate listings}
 \usage{
 paginate_listing(
@@ -17,19 +17,15 @@ paginate_listing(
   margins = c(top = 0.5, bottom = 0.5, left = 0.75, right = 0.75),
   lpp,
   cpp,
-  min_siblings = 2,
-  nosplitin = character(),
   colwidths = propose_column_widths(lsting),
   tf_wrap = FALSE,
   max_width = NULL,
   verbose = FALSE
 )
 
-pag_tt_indices(
+pag_lsting_indices(
   lsting,
   lpp = 15,
-  min_siblings = 2,
-  nosplitin = character(),
   colwidths = NULL,
   max_width = NULL,
   verbose = FALSE
@@ -70,12 +66,6 @@ pagination.}
 \item{cpp}{numeric(1) or NULL. Width (in characters) of the pages for
 horizontal pagination. \code{NULL} (the default) indicates no horizontal
 pagination should be done.}
-
-\item{min_siblings}{numeric. Minimum sibling rows which must appear on either side of pagination row for a
-mid-subtable split to be valid. Defaults to 2.}
-
-\item{nosplitin}{character. List of names of sub-tables where page-breaks are not allowed, regardless of other
-considerations. Defaults to none.}
 
 \item{colwidths}{numeric vector.  Column widths (in characters) for
 use with vertical pagination.}

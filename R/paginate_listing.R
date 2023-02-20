@@ -51,14 +51,11 @@ paginate_listing <- function(lsting,
                              margins = c(top = .5, bottom = .5, left = .75, right = .75),
                              lpp,
                              cpp,
-                             min_siblings = 2,
-                             nosplitin = character(),
                              colwidths = propose_column_widths(lsting),
                              tf_wrap = FALSE,
                              max_width = NULL,
                              verbose = FALSE) {
   checkmate::assert_class(lsting, "listing_df")
-  checkmate::assert_character(nosplitin)
   checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
   checkmate::assert_set_equal(names(colwidths), listing_dispcols(lsting))
   checkmate::assert_flag(tf_wrap)
@@ -113,11 +110,9 @@ paginate_listing <- function(lsting,
 
   # row-space pagination.
   ret <- if (!is.null(lpp)) {
-    inds <- pag_tt_indices(
+    inds <- pag_lsting_indices(
       lsting = lsting,
       lpp = lpp,
-      min_siblings = min_siblings,
-      nosplitin = nosplitin,
       colwidths = colwidths,
       verbose = verbose,
       max_width = max_width
@@ -158,13 +153,11 @@ paginate_listing <- function(lsting,
 
 #' @rdname paginate
 #' @export
-pag_tt_indices <- function(lsting,
-                           lpp = 15,
-                           min_siblings = 2,
-                           nosplitin = character(),
-                           colwidths = NULL,
-                           max_width = NULL,
-                           verbose = FALSE) {
+pag_lsting_indices <- function(lsting,
+                               lpp = 15,
+                               colwidths = NULL,
+                               max_width = NULL,
+                               verbose = FALSE) {
   dheight <- divider_height(lsting)
   dcols <- listing_dispcols(lsting)
   cinfo_lines <- max(
@@ -185,8 +178,7 @@ pag_tt_indices <- function(lsting,
   pag_indices_inner(
     pagdf = pagdf,
     rlpp = rlpp,
-    min_siblings = min_siblings,
-    nosplitin = nosplitin,
+    min_siblings = 0,
     verbose = verbose,
     have_col_fnotes = FALSE,
     div_height = dheight
