@@ -158,6 +158,12 @@ pag_lsting_indices <- function(lsting,
                                colwidths = NULL,
                                max_width = NULL,
                                verbose = FALSE) {
+  checkmate::assert_class(lsting, "listing_df")
+  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
+  checkmate::assert_set_equal(names(colwidths), listing_dispcols(lsting))
+  checkmate::assert_count(max_width, null.ok = TRUE)
+  checkmate::assert_flag(verbose)
+
   dheight <- divider_height(lsting)
   dcols <- listing_dispcols(lsting)
   cinfo_lines <- max(
@@ -173,6 +179,9 @@ pag_lsting_indices <- function(lsting,
     flines <- flines + dheight + 1L
   }
   rlpp <- lpp - cinfo_lines - tlines - flines
+  if (verbose) {
+    message("Adjusted Lines Per Page: ", rlpp, " (original lpp: ", lpp, ")")
+  }
 
   pagdf <- make_row_df(lsting, colwidths)
   pag_indices_inner(

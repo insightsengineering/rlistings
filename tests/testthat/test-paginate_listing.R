@@ -160,20 +160,15 @@ testthat::test_that("pagination: lpp and cpp correctly computed for pg_width and
   expect_identical(res, pag)
 })
 
-testthat::test_that("pagination: lpp and cpp correctly computed for page_type", {
+testthat::test_that("pagination: lpp and cpp correctly computed for page_type and font_size", {
   lsting <- h_lsting_adae()
-  pag <- paginate_listing(lsting)
-  res1 <- paginate_listing(lsting, page_type = "a4")
-  res2 <- paginate_listing(lsting, page_type = "legal")
-  expect_identical(res1, pag)
-  expect_identical(res2, pag)
-})
+  pag1 <- paginate_listing(lsting, lpp = 69, cpp = 73)
+  res1 <- paginate_listing(lsting, page_type = "a4", font_size = 11)
+  expect_identical(res1, pag1)
 
-testthat::test_that("pagination: lpp and cpp correctly computed for font_size", {
-  lsting <- h_lsting_adae()
-  pag <- paginate_listing(lsting, lpp = 90, cpp = 105)
-  res <- paginate_listing(lsting, font_size = 8)
-  expect_identical(res, pag)
+  pag2 <- paginate_listing(lsting, lpp = 85, cpp = 76)
+  res2 <- paginate_listing(lsting, page_type = "legal", font_size = 11)
+  expect_identical(res2, pag2)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for lineheight", {
