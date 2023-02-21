@@ -2,7 +2,7 @@
 % Please edit documentation in R/paginate_listing.R
 \name{paginate_listing}
 \alias{paginate_listing}
-\alias{pag_lsting_indices}
+\alias{pag_listing_indices}
 \title{Paginate listings}
 \usage{
 paginate_listing(
@@ -23,7 +23,7 @@ paginate_listing(
   verbose = FALSE
 )
 
-pag_lsting_indices(
+pag_listing_indices(
   lsting,
   lpp = 15,
   colwidths = NULL,

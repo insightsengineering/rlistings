@@ -110,7 +110,7 @@ paginate_listing <- function(lsting,
 
   # row-space pagination.
   ret <- if (!is.null(lpp)) {
-    inds <- pag_lsting_indices(
+    inds <- pag_listing_indices(
       lsting = lsting,
       lpp = lpp,
       colwidths = colwidths,
@@ -153,11 +153,11 @@ paginate_listing <- function(lsting,
 
 #' @rdname paginate
 #' @export
-pag_lsting_indices <- function(lsting,
-                               lpp = 15,
-                               colwidths = NULL,
-                               max_width = NULL,
-                               verbose = FALSE) {
+pag_listing_indices <- function(lsting,
+                                lpp = 15,
+                                colwidths = NULL,
+                                max_width = NULL,
+                                verbose = FALSE) {
   checkmate::assert_class(lsting, "listing_df")
   checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
   checkmate::assert_set_equal(names(colwidths), listing_dispcols(lsting))
