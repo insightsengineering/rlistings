@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage line-rate="0.892215568862275" branch-rate="0" lines-covered="298" lines-valid="334" branches-covered="0" branches-valid="0" complexity="0" version="3.6.1" timestamp="2023-02-21 17:52:31">
+<coverage line-rate="0.892215568862275" branch-rate="0" lines-covered="298" lines-valid="334" branches-covered="0" branches-valid="0" complexity="0" version="3.6.1" timestamp="2023-02-21 19:42:44">
   <sources/>
   <packages>
     <package name="rlistings" line-rate="0.892215568862275" branch-rate="0" complexity="0">
@@ -85,7 +85,7 @@
                 <line number="151" hits="18" branch="false"/>
               </lines>
             </method>
-            <method name="pag_lsting_indices" signature="" line-rate="0.966666666666667" branch-rate="0">
+            <method name="pag_listing_indices" signature="" line-rate="0.966666666666667" branch-rate="0">
               <lines>
                 <line number="161" hits="17" branch="false"/>
                 <line number="162" hits="17" branch="false"/>
