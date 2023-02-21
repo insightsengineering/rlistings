@@ -14,7 +14,7 @@ rows or horizontal if there are many columns."><!-- mathjax --><script src="http
     
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9016</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9017</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,12 +31,6 @@ rows or horizontal if there are many columns."><!-- mathjax --><script src="http
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
-<!-- start dropdown for versions --> <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle"
-          data-bs-toggle="dropdown" role="button"
-          aria-expanded="false" aria-haspopup="true"
-          id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a> </div></li>
-<!-- end dropdown for versions -->
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -55,7 +49,7 @@ rows or horizontal if there are many columns."><!-- mathjax --><script src="http
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Paginate listings</h1>
       <small class="dont-index">Source: <a href="http://github.com/insightsengineering/rlistings/blob/HEAD/R/paginate_listing.R" class="external-link"><code>R/paginate_listing.R</code></a></small>
-      <div class="d-none name"><code>paginate_listing.Rd</code></div>
+      <div class="d-none name"><code>paginate.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
@@ -68,11 +62,27 @@ rows or horizontal if there are many columns.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">paginate_listing</span><span class="op">(</span></span>
 <span>  <span class="va">lsting</span>,</span>
-<span>  lpp <span class="op">=</span> <span class="fl">15</span>,</span>
-<span>  cpp <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  min_siblings <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>  nosplitin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  page_type <span class="op">=</span> <span class="st">"letter"</span>,</span>
+<span>  font_family <span class="op">=</span> <span class="st">"Courier"</span>,</span>
+<span>  font_size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>  lineheight <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  landscape <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  pg_width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  pg_height <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  margins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>top <span class="op">=</span> <span class="fl">0.5</span>, bottom <span class="op">=</span> <span class="fl">0.5</span>, left <span class="op">=</span> <span class="fl">0.75</span>, right <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span>,</span>
+<span>  <span class="va">lpp</span>,</span>
+<span>  <span class="va">cpp</span>,</span>
 <span>  colwidths <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/formatters/man/propose_column_widths.html" class="external-link">propose_column_widths</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span>,</span>
+<span>  tf_wrap <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  max_width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">pag_listing_indices</span><span class="op">(</span></span>
+<span>  <span class="va">lsting</span>,</span>
+<span>  lpp <span class="op">=</span> <span class="fl">15</span>,</span>
+<span>  colwidths <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max_width <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -83,29 +93,76 @@ rows or horizontal if there are many columns.</p>
 <dd><p>listing_df. The listing to paginate.</p></dd>
 
 
+<dt>page_type</dt>
+<dd><p>character(1).   Name   of  a  page  type.   See
+<code>page_types</code>.   Ignored when  <code>pg_width</code> and  <code>pg_height</code>
+are set directly.</p></dd>
+
+
+<dt>font_family</dt>
+<dd><p>character(1). Name of a font family. An error
+will be thrown if the family named is not monospaced. Defaults
+to Courier.</p></dd>
+
+
+<dt>font_size</dt>
+<dd><p>numeric(1). Font size, defaults to 12.</p></dd>
+
+
+<dt>lineheight</dt>
+<dd><p>numeric(1). Line height, defaults to 1.</p></dd>
+
+
+<dt>landscape</dt>
+<dd><p>logical(1). Should the  dimensions of <code>page_type</code>
+be inverted  for landscape?  Defaults to  <code>FALSE</code>, ignored when
+<code>pg_width</code> and <code>pg_height</code> are set directly.</p></dd>
+
+
+<dt>pg_width</dt>
+<dd><p>numeric(1). Page width in inches.</p></dd>
+
+
+<dt>pg_height</dt>
+<dd><p>numeric(1). Page height in inches.</p></dd>
+
+
+<dt>margins</dt>
+<dd><p>numeric(4). Named numeric vector containing <code>'top'</code>,
+<code>'bottom'</code>, <code>'left'</code>, and <code>'right'</code> margins in inches. Defaults
+to <code>.5</code> inches for both vertical margins and <code>.75</code> for both
+horizontal margins.</p></dd>
+
+
 <dt>lpp</dt>
 <dd><p>numeric(1) or NULL. Number of row lines (not counting titles and
-footers) to have per page. Standard is <code>15</code> while <code>NULL</code> disables vertical
+footers) to have per page. Standard is <code>70</code> while <code>NULL</code> disables vertical
 pagination.</p></dd>
 
 
 <dt>cpp</dt>
-<dd><p>numeric(1). Number of characters per page (width)</p></dd>
-
-
-<dt>min_siblings</dt>
-<dd><p>numeric. Minimum sibling rows which must appear on either side of pagination row for a
-mid-subtable split to be valid. Defaults to 2.</p></dd>
-
-
-<dt>nosplitin</dt>
-<dd><p>character. List of names of sub-tables where page-breaks are not allowed, regardless of other
-considerations. Defaults to none.</p></dd>
+<dd><p>numeric(1) or NULL. Width (in characters) of the pages for
+horizontal pagination. <code>NULL</code> (the default) indicates no horizontal
+pagination should be done.</p></dd>
 
 
 <dt>colwidths</dt>
-<dd><p>numeric or NULL. Print widths of columns, if manually
-set/previously known.</p></dd>
+<dd><p>numeric vector.  Column widths (in characters) for
+use with vertical pagination.</p></dd>
+
+
+<dt>tf_wrap</dt>
+<dd><p>logical(1). Should  the texts for  title, subtitle,
+and footnotes be wrapped?</p></dd>
+
+
+<dt>max_width</dt>
+<dd><p>integer(1), character(1) or NULL. Width that title
+and   footer   (including   footnotes)  materials   should   be
+word-wrapped to. If NULL, it is  set to the current print width
+of the  session (<code>getOption("width")</code>). If set to <code>"auto"</code>,
+the width of the table (plus any table inset) is used. Ignored
+completely if <code>tf_wrap</code> is <code>FALSE</code>.</p></dd>
 
 
 <dt>verbose</dt>
@@ -117,7 +174,8 @@ pagination breaks be shown. Defaults to <code>FALSE</code>.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A list of listings' objects that are meant to be on separated pages.</p>
+<p>A list of listings' objects that are meant to be on separated pages.
+For <code>pag_tt_indices</code> a list of paginated-groups of row-indices of <code>lsting</code>.</p>
     </div>
 
     <div class="section level2">
@@ -192,13 +250,13 @@ pagination breaks be shown. Defaults to <code>FALSE</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl C              BLACK OR AFRICAN AMERICAN              2                   2.26753940777848      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl A              BLACK OR AFRICAN AMERICAN              2                   2.26753940777848      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl B              BLACK OR AFRICAN AMERICAN              1                   2.26753940777848      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl A              BLACK OR AFRICAN AMERICAN              2                   2.26753940777848      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl B              BLACK OR AFRICAN AMERICAN              5                   2.26753940777848      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[4]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study Identifier   Unique Subject Identifier   Primary System Organ Class             Race              Analysis Toxicity Grade   Continous Level Biomarker 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AB12345               AB12345-BRA-1-id-42                 cl A              BLACK OR AFRICAN AMERICAN              2                   2.26753940777848      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl B              BLACK OR AFRICAN AMERICAN              5                   2.26753940777848      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl A              BLACK OR AFRICAN AMERICAN              2                   2.26753940777848      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Horizontal pagination</span></span></span>
