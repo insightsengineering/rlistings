@@ -68,12 +68,7 @@ export_as_txt <- function(lst, file = NULL,
                           tf_wrap = paginate,
                           max_width = cpp,
                           colwidths = propose_column_widths(matrix_form(lst, TRUE))) {
-  if (!is.null(colwidths) && length(colwidths) != ncol(lst)) {
-    stop(
-      "non-null colwidths argument must have length ncol(lst) [",
-      ncol(lst), "], got length ", length(colwidths)
-    )
-  }
+
   if (paginate) {
     gp_plot <- gpar(fontsize = font_size, fontfamily = font_family)
 
