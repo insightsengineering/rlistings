@@ -12,7 +12,7 @@
 #' @param font_family character(1). Name of a font family. An error
 #'     will be thrown if the family named is not monospaced. Defaults
 #'     to Courier.
-#' @param font_size numeric(1). Font size, defaults to 12.
+#' @param font_size numeric(1). Font size, defaults to 8.
 #' @param pg_width numeric(1). Page width in inches.
 #' @param pg_height numeric(1). Page height in inches.
 #' @param hsep character(1).   Characters  to  repeat   to  create

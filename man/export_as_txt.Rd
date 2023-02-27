@@ -46,7 +46,7 @@ be inverted  for landscape?  Defaults to  \code{FALSE}, ignored when
 will be thrown if the family named is not monospaced. Defaults
 to Courier.}
 
-\item{font_size}{numeric(1). Font size, defaults to 12.}
+\item{font_size}{numeric(1). Font size, defaults to 8.}
 
 \item{paginate}{logical(1). Should \code{lst} be paginated before writing the file.
 Defaults to \code{TRUE} if any sort of page dimension is specified.}
