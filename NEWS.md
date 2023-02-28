@@ -9,6 +9,7 @@
  * Key columns are now guaranteed to be the leftmost columns (both stored and displayed) in `listing_df` objects.
  * `matrix_form(lsting, TRUE)` is no longer an error, now silently has the same 
     behavior as `matrix_form(lsting, FALSE)`.
+ * New function `export_as_txt` to support output saved in plain text.
 
 ### Enhancements
  * Add test for `paginate_listing`.
