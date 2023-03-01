@@ -1,7 +1,7 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Version: 0.1.1.9018
-Date: 2023-02-21
+Version: 0.1.1.9019
+Date: 2023-03-01
 Authors@R: c(
     person("Gabriel", "Becker", , "gabembecker@gmail.com", role = c("aut", "cre")),
     person("Adrian", "Waddell", , "adrian.waddell@gene.com", role = "aut"),
@@ -20,10 +20,10 @@ Depends:
     tibble
 Imports:
     checkmate,
-    utils,
+    grDevices,
     grid,
     stats,
-    grDevices
+    utils
 Suggests: 
     dplyr,
     knitr,
