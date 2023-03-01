@@ -15,12 +15,15 @@ License: Apache License 2.0 | file LICENSE
 URL: http://github.com/insightsengineering/rlistings
 BugReports: http://github.com/insightsengineering/rlistings/issues
 Depends: 
-    formatters (>= 0.3.4.12),
+    formatters (>= 0.3.4.21),
     methods,
     tibble
 Imports:
     checkmate,
-    utils
+    utils,
+    grid,
+    stats,
+    grDevices
 Suggests: 
     dplyr,
     knitr,
