@@ -25,6 +25,9 @@
     <loc>https://insightsengineering.github.io/rlistings/main/news/index.html</loc>
   </url>
   <url>
+    <loc>https://insightsengineering.github.io/rlistings/main/reference/export_as_txt.html</loc>
+  </url>
+  <url>
     <loc>https://insightsengineering.github.io/rlistings/main/reference/index.html</loc>
   </url>
   <url>
@@ -38,5 +41,8 @@
   </url>
   <url>
     <loc>https://insightsengineering.github.io/rlistings/main/reference/rlistings-package.html</loc>
+  </url>
+  <url>
+    <loc>https://insightsengineering.github.io/rlistings/main/reference/toString-listing_df-method.html</loc>
   </url>
 </urlset>
