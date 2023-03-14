@@ -4,7 +4,6 @@
  * Extend page-size machinery in pagination by allowing the page specification (page_type, pg_width,
    pg_height, font_family, font_size) to be transformed into lpp (lines per page) and cpp (characters per page).
  * New function `export_as_txt` to support output saved in plain text.
-
  * `cols` argument renamed to `disp_cols` in `as_listing`.
  * `as_listing` gains `non_disp_cols` argument.
  * `disp_cols` argument now defaults to all columns not included in `key_cols`.
