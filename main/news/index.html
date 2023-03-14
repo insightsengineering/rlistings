@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9018</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2.9019</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +27,6 @@
 <li class="active nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
-<!-- start dropdown for versions --> <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle"
-          data-bs-toggle="dropdown" role="button"
-          aria-expanded="false" aria-haspopup="true"
-          id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a> </div></li>
-<!-- end dropdown for versions -->
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -54,8 +48,11 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.1.1.9018" id="rlistings-0119018">rlistings 0.1.1.9018<a class="anchor" aria-label="anchor" href="#rlistings-0119018"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.1.2.9019" id="rlistings-0129019">rlistings 0.1.2.9019<a class="anchor" aria-label="anchor" href="#rlistings-0129019"></a></h2>
+<div class="section level3">
+<h3 id="enhancements-0-1-2-9019">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-0-1-2-9019"></a></h3>
 <ul><li>Extend page-size machinery in pagination by allowing the page specification (page_type, pg_width, pg_height, font_family, font_size) to be transformed into lpp (lines per page) and cpp (characters per page).</li>
+<li>New function <code>export_as_txt</code> to support output saved in plain text.</li>
 <li>
 <code>cols</code> argument renamed to <code>disp_cols</code> in <code>as_listing</code>.</li>
 <li>
@@ -67,10 +64,7 @@
 <li>Key columns are now guaranteed to be the leftmost columns (both stored and displayed) in <code>listing_df</code> objects.</li>
 <li>
 <code>matrix_form(lsting, TRUE)</code> is no longer an error, now silently has the same behavior as <code>matrix_form(lsting, FALSE)</code>.</li>
-<li>New function <code>export_as_txt</code> to support output saved in plain text.</li>
-</ul><div class="section level4">
-<h4 id="enhancements-0-1-1-9018">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-0-1-1-9018"></a></h4>
-<ul><li>Add test for <code>paginate_listing</code>.</li>
+<li>Add test for <code>paginate_listing</code>.</li>
 <li>Add development cycle with <code>lifecycle</code> support. Add of experimental badges.</li>
 <li>Now all functions have <code>markdown</code> support.</li>
 <li>Add initial installments for <code>checkmate</code> assertion support.</li>
@@ -78,18 +72,18 @@
 <li>Add Get Started vignette and update README.</li>
 <li>Add regression tests.</li>
 </ul></div>
-<div class="section level3">
-<h3 id="rlistings-0-1-1-9018">rlistings 0.1.1<a class="anchor" aria-label="anchor" href="#rlistings-0-1-1-9018"></a></h3>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.1" id="rlistings-011">rlistings 0.1.1<a class="anchor" aria-label="anchor" href="#rlistings-011"></a></h2>
 <ul><li>Add title, subtitle, and (main and prov) footer support.</li>
 <li>Now depends on <code>dplyr</code> instead of <code>magrittr</code> to hopefully avoid <code>var_labels</code> droppage issues.</li>
 <li>
 <code>paginate_listing</code> now supports pagination in both directions.</li>
 </ul></div>
-<div class="section level3">
-<h3 id="rlistings-0-1-1-9018-1">rlistings 0.1.0<a class="anchor" aria-label="anchor" href="#rlistings-0-1-1-9018-1"></a></h3>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.0" id="rlistings-010">rlistings 0.1.0<a class="anchor" aria-label="anchor" href="#rlistings-010"></a></h2>
 <ul><li>Initial experimental rlistings API. Everything subject to change.</li>
 </ul></div>
-</div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
