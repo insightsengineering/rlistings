@@ -1,8 +1,8 @@
-# rlistings 0.1.2.9019
+# rlistings 0.1.2.9001
   
   ### Enhancements
 
-# rlistings 0.1.1.9019
+# rlistings 0.1.2
  * Extend page-size machinery in pagination by allowing the page specification (page_type, pg_width,
    pg_height, font_family, font_size) to be transformed into lpp (lines per page) and cpp (characters per page).
  * `cols` argument renamed to `disp_cols` in `as_listing`.
