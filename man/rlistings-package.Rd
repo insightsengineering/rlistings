@@ -17,12 +17,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Joe Zhu \email{joe.zhu@roche.com}
+\strong{Maintainer}: Gabriel Becker \email{gabembecker@gmail.com}
 
 Authors:
 \itemize{
-  \item Gabriel Becker \email{gabembecker@gmail.com}
   \item Adrian Waddell \email{adrian.waddell@gene.com}
+  \item Joe Zhu \email{joe.zhu@roche.com}
 }
 
 Other contributors:

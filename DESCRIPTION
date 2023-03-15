@@ -3,9 +3,9 @@ Title: Clinical Trial Style Data Readout Listings
 Version: 0.2.0
 Date: 2023-03-01
 Authors@R: c(
-    person("Gabriel", "Becker", , "gabembecker@gmail.com", role = "aut"),
+    person("Gabriel", "Becker", , "gabembecker@gmail.com", role = c("aut", "cre")),
     person("Adrian", "Waddell", , "adrian.waddell@gene.com", role = "aut"),
-    person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
+    person("Joe", "Zhu", , "joe.zhu@roche.com", role = "aut"),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
 Description: Listings are often part of the submission of clinical trial
