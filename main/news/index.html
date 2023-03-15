@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2.9019</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +27,6 @@
 <li class="active nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
-<!-- start dropdown for versions --> <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle"
-          data-bs-toggle="dropdown" role="button"
-          aria-expanded="false" aria-haspopup="true"
-          id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a> </div></li>
-<!-- end dropdown for versions -->
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -54,29 +48,30 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.1.2.9019" id="rlistings-0129019">rlistings 0.1.2.9019<a class="anchor" aria-label="anchor" href="#rlistings-0129019"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.2.0" id="rlistings-020">rlistings 0.2.0<a class="anchor" aria-label="anchor" href="#rlistings-020"></a></h2>
 <div class="section level3">
-<h3 id="enhancements-0-1-2-9019">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-0-1-2-9019"></a></h3>
-<ul><li>Extend page-size machinery in pagination by allowing the page specification (page_type, pg_width, pg_height, font_family, font_size) to be transformed into lpp (lines per page) and cpp (characters per page).</li>
+<h3 id="enhancements-0-2-0">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-0-2-0"></a></h3>
+<ul><li>Extend page-size machinery in pagination by allowing the page specification (<code>page_type</code>, <code>pg_width</code>, <code>pg_height</code>, <code>font_family</code>, <code>font_size</code>) to be transformed into <code>lpp</code> (lines per page) and <code>cpp</code> (characters per page).</li>
 <li>New function <code>export_as_txt</code> to support output saved in plain text.</li>
 <li>
-<code>cols</code> argument renamed to <code>disp_cols</code> in <code>as_listing</code>.</li>
-<li>
-<code>as_listing</code> gains <code>non_disp_cols</code> argument.</li>
+<code>cols</code> argument renamed to <code>disp_cols</code> in the function <code>as_listing</code>.</li>
+<li>New argument <code>non_disp_cols</code> in the function <code>as_listing</code>.</li>
 <li>
 <code>disp_cols</code> argument now defaults to all columns not included in <code>key_cols</code>.</li>
 <li>Columns named in <code>key_cols</code> no longer need to also be listed in <code>disp_cols</code>.</li>
 <li>Pagination is now calculated based on formatted cells values (including wrapping) rather than raw cell contents.</li>
 <li>Key columns are now guaranteed to be the leftmost columns (both stored and displayed) in <code>listing_df</code> objects.</li>
-<li>
-<code>matrix_form(lsting, TRUE)</code> is no longer an error, now silently has the same behavior as <code>matrix_form(lsting, FALSE)</code>.</li>
-<li>Add test for <code>paginate_listing</code>.</li>
-<li>Add development cycle with <code>lifecycle</code> support. Add of experimental badges.</li>
-<li>Now all functions have <code>markdown</code> support.</li>
-<li>Add initial installments for <code>checkmate</code> assertion support.</li>
-<li>Add of main package page with all the relevant imports and descriptions (<code>rlistings-package</code>).</li>
-<li>Add Get Started vignette and update README.</li>
-<li>Add regression tests.</li>
+<li>Added tests for <code>paginate_listing</code>.</li>
+<li>Added development cycle with <code>lifecycle</code> support, and experimental badges.</li>
+<li>Added initial installments for <code>checkmate</code> assertion support.</li>
+<li>Added a main package page with all the relevant imports and descriptions (<code>rlistings-package</code>).</li>
+<li>Added “Get Started” vignette and updated README.</li>
+<li>Added <code>markdown</code> support to all functions.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-0-2-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-0"></a></h3>
+<ul><li>
+<code>matrix_form(lsting, TRUE)</code> no longer throws an error.</li>
 </ul></div>
 </div>
     <div class="section level2">
