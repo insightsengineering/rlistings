@@ -1,10 +1,11 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Version: 0.1.2.9019
+Version: 0.2.0
 Date: 2023-03-01
 Authors@R: c(
-    person("Gabriel", "Becker", , "gabembecker@gmail.com", role = c("aut", "cre")),
+    person("Gabriel", "Becker", , "gabembecker@gmail.com", role = "aut"),
     person("Adrian", "Waddell", , "adrian.waddell@gene.com", role = "aut"),
+    person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
 Description: Listings are often part of the submission of clinical trial
@@ -15,7 +16,7 @@ License: Apache License 2.0 | file LICENSE
 URL: http://github.com/insightsengineering/rlistings
 BugReports: http://github.com/insightsengineering/rlistings/issues
 Depends: 
-    formatters (>= 0.3.4.21),
+    formatters (>= 0.4.0),
     methods,
     tibble
 Imports:
