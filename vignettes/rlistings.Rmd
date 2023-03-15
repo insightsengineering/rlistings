@@ -32,16 +32,16 @@ knitr::opts_chunk$set(
 This vignette shows the general purpose and basic functionality of the `rlistings` R package.  
 
 The `rlistings` R package contains value formatting and ASCII rendering infrastructure for tables and listings useful for clinical trials and other statistical analysis. 
-The core functionality is built on top of the [`formatters` package](https://insightsengineering.github.io/formatters/). 
+The core functionality is built on top of the [`formatters` package](https://insightsengineering.github.io/formatters/latest-tag/).
 
 Some of the key features currently available to customize listings created using the `rlistings` package include:
 
 - Key columns
 - Titles and footnotes
 
-The index of all available `rlistings` functions can be found on the [rlistings website functions reference](https://insightsengineering.github.io/rlistings/reference/index.html).
+The index of all available `rlistings` functions can be found on the [rlistings website functions reference](https://insightsengineering.github.io/rlistings/main/reference/index.html).
 
-The `rlistings` package is intended for use in creating simple one-dimensional listings. For construction of more complex tables see the [`rtables` package](https://roche.github.io/rtables/).
+The `rlistings` package is intended for use in creating simple one-dimensional listings. For construction of more complex tables see the [`rtables` package](https://insightsengineering.github.io/rtables/).
 
 ---------
 
@@ -180,4 +180,4 @@ head(lsting, 15)
 
 In this vignette you have learned how to implement the basic listing framework provided by the `rlistings` package to build a simple listing. You have also seen examples demonstrating how the optional parameters of the `as_listing` function can be set to customize and annotate your listings.
 
-**For more information please explore the [rlistings website](https://insightsengineering.github.io/rlistings/).**
+**For more information please explore the [rlistings website](https://insightsengineering.github.io/rlistings/main/).**

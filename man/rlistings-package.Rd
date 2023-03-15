@@ -11,8 +11,8 @@ Listings are often part of the submission of clinical trial data in regulatory s
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://github.com/insightsengineering/rlistings}
-  \item Report bugs at \url{http://github.com/insightsengineering/rlistings/issues}
+  \item \url{https://github.com/insightsengineering/rlistings}
+  \item Report bugs at \url{https://github.com/insightsengineering/rlistings/issues}
 }
 
 }
@@ -27,6 +27,9 @@ Authors:
 
 Other contributors:
 \itemize{
+  \item Davide Garolini \email{davide.garolini@roche.com} [contributor]
+  \item Emily de la Rua \email{emily.de_la_rua@contractors.roche.com} [contributor]
+  \item Abinaya Yogasekaram \email{abinaya.yogasekaram@contractors.roche.com} [contributor]
   \item F. Hoffmann-La Roche AG [copyright holder, funder]
 }
 
