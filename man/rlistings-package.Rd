@@ -22,6 +22,7 @@ Useful links:
 Authors:
 \itemize{
   \item Adrian Waddell \email{adrian.waddell@gene.com}
+  \item Joe Zhu \email{joe.zhu@roche.com}
 }
 
 Other contributors:
