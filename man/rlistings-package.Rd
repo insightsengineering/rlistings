@@ -17,10 +17,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Gabriel Becker \email{gabembecker@gmail.com}
+\strong{Maintainer}: Joe Zhu \email{joe.zhu@roche.com}
 
 Authors:
 \itemize{
+  \item Gabriel Becker \email{gabembecker@gmail.com}
   \item Adrian Waddell \email{adrian.waddell@gene.com}
 }
 
