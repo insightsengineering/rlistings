@@ -3,10 +3,6 @@
 \name{listing_methods}
 \alias{listing_methods}
 \alias{print.listing_df}
-\alias{format_colvector}
-\alias{vec_nlines}
-\alias{vec_nlines,ANY-method}
-\alias{make_row_df,listing_df-method}
 \alias{[,listing_df-method}
 \alias{main_title,listing_df-method}
 \alias{subtitles,listing_df-method}
@@ -19,26 +15,6 @@
 \title{Methods for \code{listing_df} objects}
 \usage{
 \method{print}{listing_df}(x, ...)
-
-format_colvector(df, colnm, colvec = df[[colnm]])
-
-vec_nlines(vec, max_width = NULL)
-
-\S4method{vec_nlines}{ANY}(vec, max_width = NULL)
-
-\S4method{make_row_df}{listing_df}(
-  tt,
-  colwidths = NULL,
-  visible_only = TRUE,
-  rownum = 0,
-  indent = 0L,
-  path = character(),
-  incontent = FALSE,
-  repr_ext = 0L,
-  repr_inds = integer(),
-  sibpos = NA_integer_,
-  nsibs = NA_integer_
-)
 
 \S4method{[}{listing_df}(x, i, j, drop = FALSE)
 
@@ -63,41 +39,6 @@ vec_nlines(vec, max_width = NULL)
 
 \item{...}{dots. Unused}
 
-\item{df}{listing_df. The listing.}
-
-\item{colnm}{Column name}
-
-\item{colvec}{Column values based on colnm}
-
-\item{vec}{A vector.}
-
-\item{max_width}{numeric(1) or NULL. Maximum width for title/footer
-materials.}
-
-\item{tt}{ANY. Object representing the table-like object to be summarized.}
-
-\item{colwidths}{numeric. Internal detail do not set manually.}
-
-\item{visible_only}{logical(1). Should only visible aspects of the table structure be reflected in this summary.
-Defaults to \code{TRUE}. May not be supported by all methods.}
-
-\item{rownum}{numeric(1). Internal detail do not set manually.}
-
-\item{indent}{integer(1). Internal detail do not set manually.}
-
-\item{path}{character.  Path  to  the (sub)table  represented  by
-\code{tt}. Defaults to \code{character()}}
-
-\item{incontent}{logical(1). Internal detail do not set manually.}
-
-\item{repr_ext}{integer(1). Internal detail do not set manually.}
-
-\item{repr_inds}{integer. Internal detail do not set manually.}
-
-\item{sibpos}{integer(1). Internal detail do not set manually.}
-
-\item{nsibs}{integer(1). Internal detail do not set manually.}
-
 \item{i}{ANY. Passed to base \code{[} methods.}
 
 \item{j}{ANY. Passed to base \code{[} methods.}
@@ -113,8 +54,20 @@ Defaults to \code{TRUE}. May not be supported by all methods.}
 \item{value}{typically an array-like \R object of a similar class as
     \code{x}.}
 }
+\value{
+for getter methods, the value of the aspect of
+\code{obj}; for setter methods, \code{obj} with
+the relevant element of the listing updated.
+}
 \description{
 See core documentation in \code{formatters} for descriptions
 of these functions.
+}
+\examples{
+
+lsting <- as_listing(mtcars)
+main_title(lsting) <- "Hi there"
+
+main_title(lsting)
 }
 \keyword{internal}

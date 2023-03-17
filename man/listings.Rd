@@ -5,7 +5,6 @@
 \alias{as_keycol}
 \alias{is_keycol}
 \alias{get_keycols}
-\alias{matrix_form,listing_df-method}
 \alias{listing_dispcols}
 \alias{add_listing_dispcol}
 \alias{listing_dispcols<-}
@@ -28,8 +27,6 @@ as_keycol(vec)
 is_keycol(vec)
 
 get_keycols(df)
-
-\S4method{matrix_form}{listing_df}(obj, indent_rownames = FALSE)
 
 listing_dispcols(df)
 
@@ -67,11 +64,6 @@ for the listing, or \code{NULL} (the default).}
 for the listing, or \code{NULL} (the default). Each string element is placed on a new line.}
 
 \item{vec}{any. A column vector from a \code{listing_df} to be annotated as a key column.}
-
-\item{obj}{ANY. Object to be transformed into a ready-to-render form (a MatrixPrintForm object)}
-
-\item{indent_rownames}{logical(1). Silently ignored, as listings do not have row names
-nor indenting structure.}
 
 \item{new}{character. Names of columns to be added to
 the set of display columns.}
@@ -165,7 +157,4 @@ mat <- matrix_form(lsting)
 
 cat(toString(mat))
 
-}
-\seealso{
-\code{\link[formatters:matrix_form]{formatters::matrix_form()}} This is partially inherited from \code{formatters}' function
 }

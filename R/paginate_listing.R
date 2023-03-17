@@ -23,7 +23,6 @@
 #' @rdname paginate
 #'
 #' @examples
-#' # Create a standard listing
 #' dat <- ex_adae
 #' lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
 #'
@@ -31,15 +30,17 @@
 #'
 #' cat(toString(mat))
 #'
-#' # Vertical pagination
 #' paginate_listing(lsting, lpp = 10)
 #'
-#' # Horizontal pagination
 #' paginate_listing(lsting, cpp = 100, lpp = 40)
 #'
-#' # Use `verbose = TRUE` to display more descriptive warnings or errors
-#' # paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)
+#' paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)
 #' @export
+#'
+#' @return for `paginate_listing` a list containing separate
+#' `listing_df` objects for each page, for `pag_listing_indices`,
+#' a list of indices in the direction being paginated corresponding
+#' to the individual pages in that dimension.
 paginate_listing <- function(lsting,
                              page_type = "letter",
                              font_family = "Courier",

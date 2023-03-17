@@ -19,6 +19,14 @@ also be considered.}
 \item{hsep}{character(1).   Characters  to  repeat   to  create
 header/body separator line.}
 }
+\value{
+A character value containing the listing rendered into
+ASCII text.
+}
 \description{
 toString method for listing_df object
+}
+\examples{
+lsting <- as_listing(mtcars)
+toString(lsting)
 }
