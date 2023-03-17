@@ -29,7 +29,8 @@ Suggests:
     dplyr,
     knitr,
     lifecycle,
-    testthat
+    testthat,
+    rmarkdown
 VignetteBuilder: 
     knitr
 Config/Needs/website: insightsengineering/nesttemplate
