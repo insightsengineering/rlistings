@@ -86,6 +86,11 @@ pagination breaks be shown. Defaults to \code{FALSE}.}
 \value{
 A list of listings' objects that are meant to be on separated pages.
 For \code{pag_tt_indices} a list of paginated-groups of row-indices of \code{lsting}.
+
+for \code{paginate_listing} a list containing separate
+\code{listing_df} objects for each page, for \code{pag_listing_indices},
+a list of indices in the direction being paginated corresponding
+to the individual pages in that dimension.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -94,7 +99,6 @@ Pagination of a listing. This can be vertical for long listings with many
 rows or horizontal if there are many columns.
 }
 \examples{
-# Create a standard listing
 dat <- ex_adae
 lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
 
@@ -102,12 +106,9 @@ mat <- matrix_form(lsting)
 
 cat(toString(mat))
 
-# Vertical pagination
 paginate_listing(lsting, lpp = 10)
 
-# Horizontal pagination
 paginate_listing(lsting, cpp = 100, lpp = 40)
 
-# Use `verbose = TRUE` to display more descriptive warnings or errors
-# paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)
+paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)
 }

@@ -175,11 +175,17 @@ get_keycols <- function(df) {
 }
 
 #' @export
-#' @inheritParams formatters::matrix_form
-#' @seealso [formatters::matrix_form()] This is partially inherited from `formatters`' function
+#' @inherit formatters::matrix_form
+#' @seealso [formatters::matrix_form()] 
 #' @param indent_rownames logical(1). Silently ignored, as listings do not have row names
 #' nor indenting structure.
-#' @rdname listings
+#'
+#' @examples
+#'
+#' lsting <- as_listing(mtcars)
+#' mf <- matrix_form(lsting)
+#'
+#' @return a `MatrixPrintForm` object
 setMethod(
   "matrix_form", "listing_df",
   rix_form <- function(obj, indent_rownames = FALSE) {
