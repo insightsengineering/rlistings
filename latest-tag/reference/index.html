@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +33,7 @@
           aria-expanded="false" aria-haspopup="true"
           id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/latest-tag">latest-tag</a>
+<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.1">v0.2.1</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.0">v0.2.0</a> </div></li>
 <!-- end dropdown for versions -->
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -72,9 +73,19 @@
         <dd>Export as plain text with page break symbol</dd>
       </dl><dl><dt>
           
-          <code><a href="listings.html">as_listing()</a></code> <code><a href="listings.html">as_keycol()</a></code> <code><a href="listings.html">is_keycol()</a></code> <code><a href="listings.html">get_keycols()</a></code> <code><a href="listings.html">matrix_form(<i>&lt;listing_df&gt;</i>)</a></code> <code><a href="listings.html">listing_dispcols()</a></code> <code><a href="listings.html">add_listing_dispcol()</a></code> <code><a href="listings.html">`listing_dispcols&lt;-`()</a></code> <code><a href="listings.html">add_listing_col()</a></code> 
+          <code><a href="listings.html">as_listing()</a></code> <code><a href="listings.html">as_keycol()</a></code> <code><a href="listings.html">is_keycol()</a></code> <code><a href="listings.html">get_keycols()</a></code> <code><a href="listings.html">listing_dispcols()</a></code> <code><a href="listings.html">add_listing_dispcol()</a></code> <code><a href="listings.html">`listing_dispcols&lt;-`()</a></code> <code><a href="listings.html">add_listing_col()</a></code> 
         </dt>
         <dd>Create a Listing from a <code>data.frame</code> or <code>tibble</code></dd>
+      </dl><dl><dt>
+          
+          <code><a href="make_row_df-listing_df-method.html">make_row_df(<i>&lt;listing_df&gt;</i>)</a></code> 
+        </dt>
+        <dd>Make pagination dataframe for a listing</dd>
+      </dl><dl><dt>
+          
+          <code><a href="matrix_form-listing_df-method.html">matrix_form(<i>&lt;listing_df&gt;</i>)</a></code> 
+        </dt>
+        <dd>Transform rtable to a list of matrices which can be used for outputting</dd>
       </dl><dl><dt>
           
           <code><a href="paginate.html">paginate_listing()</a></code> <code><a href="paginate.html">pag_listing_indices()</a></code> 

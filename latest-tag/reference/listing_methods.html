@@ -12,7 +12,7 @@ of these functions."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
     
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +35,7 @@ of these functions."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
           aria-expanded="false" aria-haspopup="true"
           id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/latest-tag">latest-tag</a>
+<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.1">v0.2.1</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.0">v0.2.0</a> </div></li>
 <!-- end dropdown for versions -->
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -54,7 +55,7 @@ of these functions."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Methods for <code>listing_df</code> objects</h1>
-      <small class="dont-index">Source: <a href="http://github.com/insightsengineering/rlistings/blob/HEAD/R/rlistings_methods.R" class="external-link"><code>R/rlistings_methods.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/insightsengineering/rlistings/blob/HEAD/R/rlistings_methods.R" class="external-link"><code>R/rlistings_methods.R</code></a></small>
       <div class="d-none name"><code>listing_methods.Rd</code></div>
     </div>
 
@@ -67,28 +68,6 @@ of these functions.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre><code># S3 method for listing_df
 print(x, ...)
-
-format_colvector(df, colnm, colvec = df[[colnm]])
-
-vec_nlines(vec, max_width = NULL)
-
-# S4 method for ANY
-vec_nlines(vec, max_width = NULL)
-
-# S4 method for listing_df
-make_row_df(
-  tt,
-  colwidths = NULL,
-  visible_only = TRUE,
-  rownum = 0,
-  indent = 0L,
-  path = character(),
-  incontent = FALSE,
-  repr_ext = 0L,
-  repr_inds = integer(),
-  sibpos = NA_integer_,
-  nsibs = NA_integer_
-)
 
 # S4 method for listing_df
 [(x, i, j, drop = FALSE)
@@ -128,73 +107,6 @@ prov_footer(obj) &lt;- value</code></pre></div>
 <dd><p>dots. Unused</p></dd>
 
 
-<dt>df</dt>
-<dd><p>listing_df. The listing.</p></dd>
-
-
-<dt>colnm</dt>
-<dd><p>Column name</p></dd>
-
-
-<dt>colvec</dt>
-<dd><p>Column values based on colnm</p></dd>
-
-
-<dt>vec</dt>
-<dd><p>A vector.</p></dd>
-
-
-<dt>max_width</dt>
-<dd><p>numeric(1) or NULL. Maximum width for title/footer
-materials.</p></dd>
-
-
-<dt>tt</dt>
-<dd><p>ANY. Object representing the table-like object to be summarized.</p></dd>
-
-
-<dt>colwidths</dt>
-<dd><p>numeric. Internal detail do not set manually.</p></dd>
-
-
-<dt>visible_only</dt>
-<dd><p>logical(1). Should only visible aspects of the table structure be reflected in this summary.
-Defaults to <code>TRUE</code>. May not be supported by all methods.</p></dd>
-
-
-<dt>rownum</dt>
-<dd><p>numeric(1). Internal detail do not set manually.</p></dd>
-
-
-<dt>indent</dt>
-<dd><p>integer(1). Internal detail do not set manually.</p></dd>
-
-
-<dt>path</dt>
-<dd><p>character.  Path  to  the (sub)table  represented  by
-<code>tt</code>. Defaults to <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code></p></dd>
-
-
-<dt>incontent</dt>
-<dd><p>logical(1). Internal detail do not set manually.</p></dd>
-
-
-<dt>repr_ext</dt>
-<dd><p>integer(1). Internal detail do not set manually.</p></dd>
-
-
-<dt>repr_inds</dt>
-<dd><p>integer. Internal detail do not set manually.</p></dd>
-
-
-<dt>sibpos</dt>
-<dd><p>integer(1). Internal detail do not set manually.</p></dd>
-
-
-<dt>nsibs</dt>
-<dd><p>integer(1). Internal detail do not set manually.</p></dd>
-
-
 <dt>i</dt>
 <dd><p>ANY. Passed to base <code>[</code> methods.</p></dd>
 
@@ -219,7 +131,26 @@ Defaults to <code>TRUE</code>. May not be supported by all methods.</p></dd>
     <code>x</code>.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    
 
+<p>for getter methods, the value of the aspect of
+<code>obj</code>; for setter methods, <code>obj</code> with
+the relevant element of the listing updated.</p>
+    </div>
+
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">lsting</span> <span class="op">&lt;-</span> <span class="fu"><a href="listings.html">as_listing</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> sorting incoming data by key columns</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/formatters/man/title_footer.html" class="external-link">main_title</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Hi there"</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/formatters/man/title_footer.html" class="external-link">main_title</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Hi there"</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

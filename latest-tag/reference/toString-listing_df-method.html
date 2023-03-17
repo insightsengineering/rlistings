@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +33,7 @@
           aria-expanded="false" aria-haspopup="true"
           id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/latest-tag">latest-tag</a>
+<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.1">v0.2.1</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.0">v0.2.0</a> </div></li>
 <!-- end dropdown for versions -->
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -52,7 +53,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>toString method for listing_df object</h1>
-      <small class="dont-index">Source: <a href="http://github.com/insightsengineering/rlistings/blob/HEAD/R/rlistings_methods.R" class="external-link"><code>R/rlistings_methods.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/insightsengineering/rlistings/blob/HEAD/R/rlistings_methods.R" class="external-link"><code>R/rlistings_methods.R</code></a></small>
       <div class="d-none name"><code>toString-listing_df-method.Rd</code></div>
     </div>
 
@@ -88,7 +89,22 @@ also be considered.</p></dd>
 header/body separator line.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    
 
+<p>A character value containing the listing rendered into
+ASCII text.</p>
+    </div>
+
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">lsting</span> <span class="op">&lt;-</span> <span class="fu"><a href="listings.html">as_listing</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> sorting incoming data by key columns</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/formatters/man/tostring.html" class="external-link">toString</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "———————————————————————————————————————————————————————————————————————\nmpg    cyl   disp    hp    drat    wt     qsec    vs   am   gear   carb\n———————————————————————————————————————————————————————————————————————\n10.4    8     472    205   2.93   5.25    17.98   0    0     3      4  \n        8     460    215    3     5.424   17.82   0    0     3      4  \n13.3    8     350    245   3.73   3.84    15.41   0    0     3      4  \n14.3    8     360    245   3.21   3.57    15.84   0    0     3      4  \n14.7    8     440    230   3.23   5.345   17.42   0    0     3      4  \n15      8     301    335   3.54   3.57    14.6    0    1     5      8  \n15.2    8    275.8   180   3.07   3.78     18     0    0     3      3  \n        8     304    150   3.15   3.435   17.3    0    0     3      2  \n15.5    8     318    150   2.76   3.52    16.87   0    0     3      2  \n15.8    8     351    264   4.22   3.17    14.5    0    1     5      4  \n16.4    8    275.8   180   3.07   4.07    17.4    0    0     3      3  \n17.3    8    275.8   180   3.07   3.73    17.6    0    0     3      3  \n17.8    6    167.6   123   3.92   3.44    18.9    1    0     4      4  \n18.1    6     225    105   2.76   3.46    20.22   1    0     3      1  \n18.7    8     360    175   3.15   3.44    17.02   0    0     3      2  \n19.2    6    167.6   123   3.92   3.44    18.3    1    0     4      4  \n        8     400    175   3.08   3.845   17.05   0    0     3      2  \n19.7    6     145    175   3.62   2.77    15.5    0    1     5      6  \n21      6     160    110   3.9    2.62    16.46   0    1     4      4  \n        6     160    110   3.9    2.875   17.02   0    1     4      4  \n21.4    6     258    110   3.08   3.215   19.44   1    0     3      1  \n        4     121    109   4.11   2.78    18.6    1    1     4      2  \n21.5    4    120.1   97    3.7    2.465   20.01   1    0     3      1  \n22.8    4     108    93    3.85   2.32    18.61   1    1     4      1  \n        4    140.8   95    3.92   3.15    22.9    1    0     4      2  \n24.4    4    146.7   62    3.69   3.19     20     1    0     4      2  \n26      4    120.3   91    4.43   2.14    16.7    0    1     5      2  \n27.3    4     79     66    4.08   1.935   18.9    1    1     4      1  \n30.4    4    75.7    52    4.93   1.615   18.52   1    1     4      2  \n        4    95.1    113   3.77   1.513   16.9    1    1     5      2  \n32.4    4    78.7    66    4.08    2.2    19.47   1    1     4      1  \n33.9    4    71.1    65    4.22   1.835   19.9    1    1     4      1  \n\n———————————————————————————————————————————————————————————————————————\n"</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

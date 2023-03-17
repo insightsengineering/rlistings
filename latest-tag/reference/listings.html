@@ -14,7 +14,7 @@ elegant representation of the data.frame or tibble in input."><!-- mathjax --><s
     
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +37,7 @@ elegant representation of the data.frame or tibble in input."><!-- mathjax --><s
           aria-expanded="false" aria-haspopup="true"
           id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/latest-tag">latest-tag</a>
+<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.1">v0.2.1</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.0">v0.2.0</a> </div></li>
 <!-- end dropdown for versions -->
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -56,7 +57,7 @@ elegant representation of the data.frame or tibble in input."><!-- mathjax --><s
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Create a Listing from a <code>data.frame</code> or <code>tibble</code></h1>
-      <small class="dont-index">Source: <a href="http://github.com/insightsengineering/rlistings/blob/HEAD/R/rlistings.R" class="external-link"><code>R/rlistings.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/insightsengineering/rlistings/blob/HEAD/R/rlistings.R" class="external-link"><code>R/rlistings.R</code></a></small>
       <div class="d-none name"><code>listings.Rd</code></div>
     </div>
 
@@ -84,9 +85,6 @@ elegant representation of the <code>data.frame</code> or <code>tibble</code> in 
 <span><span class="fu">is_keycol</span><span class="op">(</span><span class="va">vec</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">get_keycols</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for listing_df</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/formatters/man/matrix_form.html" class="external-link">matrix_form</a></span><span class="op">(</span><span class="va">obj</span>, indent_rownames <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">listing_dispcols</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
 <span></span>
@@ -143,15 +141,6 @@ for the listing, or <code>NULL</code> (the default). Each string element is plac
 
 <dt>vec</dt>
 <dd><p>any. A column vector from a <code>listing_df</code> to be annotated as a key column.</p></dd>
-
-
-<dt>obj</dt>
-<dd><p>ANY. Object to be transformed into a ready-to-render form (a MatrixPrintForm object)</p></dd>
-
-
-<dt>indent_rownames</dt>
-<dd><p>logical(1). Silently ignored, as listings do not have row names
-nor indenting structure.</p></dd>
 
 
 <dt>new</dt>
@@ -218,10 +207,6 @@ default this is all non-key columns in the incoming data, but in need not be.
 Columns in the underlying data which are neither key nor display columns remain
 within the object available for computations but <em>are not rendered during
 printing or export of the listing</em>.</p>
-    </div>
-    <div class="section level2">
-    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/formatters/man/matrix_form.html" class="external-link">formatters::matrix_form()</a></code> This is partially inherited from <code>formatters</code>' function</p></div>
     </div>
 
     <div class="section level2">
