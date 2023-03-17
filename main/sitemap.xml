@@ -7,9 +7,6 @@
     <loc>https://insightsengineering.github.io/rlistings/main/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/main/LICENSE-text.html</loc>
-  </url>
-  <url>
     <loc>https://insightsengineering.github.io/rlistings/main/articles/index.html</loc>
   </url>
   <url>
@@ -37,6 +34,12 @@
     <loc>https://insightsengineering.github.io/rlistings/main/reference/listings.html</loc>
   </url>
   <url>
+    <loc>https://insightsengineering.github.io/rlistings/main/reference/make_row_df-listing_df-method.html</loc>
+  </url>
+  <url>
+    <loc>https://insightsengineering.github.io/rlistings/main/reference/matrix_form-listing_df-method.html</loc>
+  </url>
+  <url>
     <loc>https://insightsengineering.github.io/rlistings/main/reference/paginate.html</loc>
   </url>
   <url>
@@ -44,5 +47,8 @@
   </url>
   <url>
     <loc>https://insightsengineering.github.io/rlistings/main/reference/toString-listing_df-method.html</loc>
+  </url>
+  <url>
+    <loc>https://insightsengineering.github.io/rlistings/main/reference/vec_nlines.html</loc>
   </url>
 </urlset>

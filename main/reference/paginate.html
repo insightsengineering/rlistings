@@ -14,7 +14,7 @@ rows or horizontal if there are many columns."><!-- mathjax --><script src="http
     
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,14 +31,6 @@ rows or horizontal if there are many columns."><!-- mathjax --><script src="http
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
-<!-- start dropdown for versions --> <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle"
-          data-bs-toggle="dropdown" role="button"
-          aria-expanded="false" aria-haspopup="true"
-          id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/latest-tag">latest-tag</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.0">v0.2.0</a> </div></li>
-<!-- end dropdown for versions -->
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -56,7 +48,7 @@ rows or horizontal if there are many columns."><!-- mathjax --><script src="http
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Paginate listings</h1>
-      <small class="dont-index">Source: <a href="http://github.com/insightsengineering/rlistings/blob/HEAD/R/paginate_listing.R" class="external-link"><code>R/paginate_listing.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/insightsengineering/rlistings/blob/HEAD/R/paginate_listing.R" class="external-link"><code>R/paginate_listing.R</code></a></small>
       <div class="d-none name"><code>paginate.Rd</code></div>
     </div>
 
@@ -184,12 +176,17 @@ pagination breaks be shown. Defaults to <code>FALSE</code>.</p></dd>
 
 <p>A list of listings' objects that are meant to be on separated pages.
 For <code>pag_tt_indices</code> a list of paginated-groups of row-indices of <code>lsting</code>.</p>
+
+
+<p>for <code>paginate_listing</code> a list containing separate
+<code>listing_df</code> objects for each page, for <code>pag_listing_indices</code>,
+a list of indices in the direction being paginated corresponding
+to the individual pages in that dimension.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create a standard listing</span></span></span>
-<span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">ex_adae</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">ex_adae</span></span></span>
 <span class="r-in"><span><span class="va">lsting</span> <span class="op">&lt;-</span> <span class="fu"><a href="listings.html">as_listing</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">25</span>, <span class="op">]</span>, disp_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"AESOC"</span>, <span class="st">"RACE"</span>, <span class="st">"AETOXGR"</span>, <span class="st">"BMRKR1"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/formatters/man/matrix_form.html" class="external-link">matrix_form</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span></span></span>
@@ -223,7 +220,6 @@ For <code>pag_tt_indices</code> a list of paginated-groups of row-indices of <co
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl B              BLACK OR AFRICAN AMERICAN              5                   2.26753940777848      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl A              BLACK OR AFRICAN AMERICAN              2                   2.26753940777848      </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Vertical pagination</span></span></span>
 <span class="r-in"><span><span class="fu">paginate_listing</span><span class="op">(</span><span class="va">lsting</span>, lpp <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study Identifier   Unique Subject Identifier   Primary System Organ Class   Race    Analysis Toxicity Grade   Continous Level Biomarker 1</span>
@@ -267,7 +263,6 @@ For <code>pag_tt_indices</code> a list of paginated-groups of row-indices of <co
 <span class="r-out co"><span class="r-pr">#&gt;</span> AB12345               AB12345-BRA-1-id-42                 cl A              BLACK OR AFRICAN AMERICAN              2                   2.26753940777848      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Horizontal pagination</span></span></span>
 <span class="r-in"><span><span class="fu">paginate_listing</span><span class="op">(</span><span class="va">lsting</span>, cpp <span class="op">=</span> <span class="fl">100</span>, lpp <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study Identifier   Unique Subject Identifier   Primary System Organ Class</span>
@@ -357,8 +352,112 @@ For <code>pag_tt_indices</code> a list of paginated-groups of row-indices of <co
 <span class="r-out co"><span class="r-pr">#&gt;</span>                         2.26753940777848      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Use `verbose = TRUE` to display more descriptive warnings or errors</span></span></span>
-<span class="r-in"><span><span class="co"># paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)</span></span></span>
+<span class="r-in"><span><span class="fu">paginate_listing</span><span class="op">(</span><span class="va">lsting</span>, cpp <span class="op">=</span> <span class="fl">80</span>, lpp <span class="op">=</span> <span class="fl">40</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Adjusted Lines Per Page: 38 (original lpp: 40)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Checking pagination after row 25</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	....................... OK [25 lines]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Adjusted characters per page: 80 [original: 80, table inset: 0]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Checking pagination after column 6</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	....................... FAIL: columns take up too much space (160 characters)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Checking pagination after column 5</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	....................... FAIL: columns take up too much space (130 characters)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Checking pagination after column 4</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	....................... FAIL: columns take up too much space (104 characters)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Checking pagination after column 3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	....................... OK [76 chars]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Checking pagination after column 6</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	....................... FAIL: columns take up too much space (103 characters)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Checking pagination after column 5</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	....................... OK [73 chars]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Checking pagination after column 6</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	....................... OK [49 chars]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study Identifier   Unique Subject Identifier   Primary System Organ Class</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> —————————————————————————————————————————————————————————————————————————</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AB12345              AB12345-BRA-1-id-134                 cl B           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-134                 cl D           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-134                 cl A           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-134                 cl A           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-141                 cl B           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-141                 cl D           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-141                 cl A           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-141                 cl A           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-141                 cl A           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-141                 cl D           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-236                 cl B           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-236                 cl B           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-236                 cl B           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-265                 cl C           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-265                 cl D           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-265                 cl D           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      AB12345-BRA-1-id-265                 cl C           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl C           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl D           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl C           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl A           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl B           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl A           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl B           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       AB12345-BRA-1-id-42                 cl A           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study Identifier             Race              Analysis Toxicity Grade</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ——————————————————————————————————————————————————————————————————————</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AB12345                      WHITE                        3           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        3           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        2           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        2           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        3           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        1           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        1           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        2           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        1           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        5           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              5           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              5           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              5           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        2           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        3           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        5           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              WHITE                        4           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              2           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              5           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              2           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              2           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              1           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              2           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              5           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    BLACK OR AFRICAN AMERICAN              2           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study Identifier   Continous Level Biomarker 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ——————————————————————————————————————————————</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AB12345                 6.46299057842479      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         6.46299057842479      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         6.46299057842479      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         6.46299057842479      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         7.51607612428241      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         7.51607612428241      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         7.51607612428241      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         7.51607612428241      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         7.51607612428241      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         7.51607612428241      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         7.66300121077566      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         7.66300121077566      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         7.66300121077566      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          10.323346349886      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          10.323346349886      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          10.323346349886      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          10.323346349886      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         2.26753940777848      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         2.26753940777848      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         2.26753940777848      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         2.26753940777848      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         2.26753940777848      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         2.26753940777848      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         2.26753940777848      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         2.26753940777848      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
