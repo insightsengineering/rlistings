@@ -32,6 +32,7 @@ Suggests:
     dplyr,
     knitr,
     lifecycle,
+    rmarkdown,
     testthat
 VignetteBuilder: 
     knitr
