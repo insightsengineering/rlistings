@@ -30,7 +30,6 @@ Imports:
     utils
 Suggests: 
     dplyr,
-    knitr,
     lifecycle,
     testthat,
     knitr (>=1.34)
