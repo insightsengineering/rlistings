@@ -32,7 +32,7 @@ Suggests:
     dplyr,
     lifecycle,
     testthat,
-    knitr (>=1.34)
+    knitr (>= 1.34)
 VignetteBuilder: 
     knitr
 Config/Needs/website: insightsengineering/nesttemplate
