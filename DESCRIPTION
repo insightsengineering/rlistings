@@ -33,7 +33,7 @@ Suggests:
     knitr,
     lifecycle,
     testthat,
-    rmarkdown
+    knitr (>=1.34)
 VignetteBuilder: 
     knitr
 Config/Needs/website: insightsengineering/nesttemplate
