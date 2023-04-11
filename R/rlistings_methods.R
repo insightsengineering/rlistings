@@ -227,56 +227,6 @@ setMethod(
   }
 )
 
-#' toString method for listing_df object
-#' @param x listing_df object
-#' @param widths numeric (or  NULL). (proposed) widths for the columns
-#'     of \code{x}. The expected length  of this numeric vector can be
-#'     retrieved with  `ncol() + 1`  as the  column of row  names must
-#'     also be considered.
-#' @param  hsep  character(1).   Characters  to  repeat   to  create
-#'     header/body separator line.
-#' @param col_gap numeric(1). Space (in characters) between columns
-#' @exportMethod toString
-#'
-#' @examples
-#' lsting <- as_listing(mtcars)
-#' toString(lsting)
-#' @return A character value containing the listing rendered into
-#' ASCII text.
-setMethod("toString", "listing_df", function(x,
-                                             widths = NULL,
-                                             col_gap = 3,
-                                             hsep = default_hsep()) {
-  # gap_str <- strrep(" ", col_gap)
-  # txt_head <- .paste_no_na(names(x), collapse = gap_str)
-  #
-  if (is.null(widths)) {
-    widths <- propose_column_widths(x)
-  }
-  ncchar <- sum(widths) + (length(widths) - 1) * col_gap
-
-  div <- substr(strrep(hsep, ncchar), 1, ncchar)
-
-  inset <- 0L
-  x0 <- x
-  main_title(x0) <- NULL
-  main_footer(x0) <- NULL
-  titles_txt <- main_title(x)
-  paste0(paste(
-    c(
-      titles_txt,
-      .do_inset(div, inset),
-      toString(matrix_form(x0)),
-      .do_inset(div, inset),
-      .do_inset(main_footer(x), inset)
-      # .do_inset(txt_body, inset)#,
-      # .footer_inset_helper(allfoots, div, inset)
-    ),
-    collapse = "\n"
-  ), "\n")
-})
-
-
 #' @rdname listing_methods
 #' @param obj The object.
 #' @export
