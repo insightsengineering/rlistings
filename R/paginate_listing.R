@@ -58,7 +58,6 @@ paginate_listing <- function(lsting,
                              verbose = FALSE) {
   checkmate::assert_class(lsting, "listing_df")
   checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
-  checkmate::assert_set_equal(length(colwidths), length(listing_dispcols(lsting)))
   checkmate::assert_flag(tf_wrap)
   checkmate::assert_count(max_width, null.ok = TRUE)
   checkmate::assert_flag(verbose)
@@ -161,14 +160,13 @@ pag_listing_indices <- function(lsting,
                                 verbose = FALSE) {
   checkmate::assert_class(lsting, "listing_df")
   checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
-  checkmate::assert_set_equal(length(colwidths), length(listing_dispcols(lsting)))
   checkmate::assert_count(max_width, null.ok = TRUE)
   checkmate::assert_flag(verbose)
 
   dheight <- divider_height(lsting)
   dcols <- listing_dispcols(lsting)
   cinfo_lines <- max(
-    mapply(nlines, x = var_labels(lsting)[dcols], max_width = colwidths[dcols])
+    mapply(nlines, x = var_labels(lsting)[dcols], max_width = colwidths)
   ) + dheight
   tlines <- if (any(nzchar(all_titles(lsting)))) {
     length(all_titles(lsting)) + dheight + 1L
