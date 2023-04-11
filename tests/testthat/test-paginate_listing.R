@@ -10,7 +10,7 @@ testthat::test_that("pagination works vertically", {
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
-  pages_listings <- paginate_listing(lsting, lpp = 4, verbose = TRUE)
+  pages_listings <- suppressMessages(paginate_listing(lsting, lpp = 4, verbose = TRUE))
 
   page1_result <- toString(matrix_form(pages_listings[[1]]))
   page2_result <- toString(matrix_form(pages_listings[[2]]))
@@ -30,7 +30,7 @@ testthat::test_that("pagination works vertically", {
   testthat::expect_equal(page1_result, page1_expected)
 
   lsting2 <- lsting %>% add_listing_col("BMRKR2")
-  pages_listings2 <- paginate_listing(lsting2, lpp = 4, cpp = 70, verbose = TRUE)
+  pages_listings2 <- suppressMessages(paginate_listing(lsting2, lpp = 4, cpp = 70, verbose = TRUE))
   testthat::expect_equal(
     toString(matrix_form(pages_listings2[[1]])),
     page1_expected
@@ -62,7 +62,7 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
     add_listing_col("BMRKR1", format = "xx.x") %>%
     add_listing_col("BMRKR2")
 
-  pages_listings <- paginate_listing(lsting, cpp = 70, verbose = TRUE)
+  pages_listings <- suppressMessages(paginate_listing(lsting, cpp = 70, verbose = TRUE))
   pg1_header <- strsplit(toString(matrix_form(pages_listings[[1]])), "\n")[[1]][1:2]
   pg2_header <- strsplit(toString(matrix_form(pages_listings[[2]])), "\n")[[1]][1:2]
   pg1_header_expected <- c(
@@ -86,7 +86,7 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
     add_listing_col("BMRKR1", format = "xx.x") %>%
     add_listing_col("BMRKR2")
 
-  pages_listings2 <- paginate_listing(lsting2, cpp = 70, verbose = TRUE)
+  pages_listings2 <- paginate_listing(lsting2, cpp = 70)
   pg1_header2 <- strsplit(toString(matrix_form(pages_listings2[[1]])), "\n")[[1]][1:2]
   pg2_header2 <- strsplit(toString(matrix_form(pages_listings2[[2]])), "\n")[[1]][1:2]
   pg3_header2 <- strsplit(toString(matrix_form(pages_listings2[[3]])), "\n")[[1]][1:2]
@@ -122,7 +122,7 @@ testthat::test_that("listing works with no vertical pagination", {
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
-  pages_listings <- paginate_listing(lsting, lpp = NULL, verbose = TRUE)
+  pages_listings <- paginate_listing(lsting, lpp = NULL)
   page1_result <- matrix_form(pages_listings[[1]])
 
   testthat::expect_equal(length(pages_listings), 1)
@@ -143,7 +143,7 @@ testthat::test_that("checking vertical pagination line calculation.", {
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
-  pages_listings <- paginate_listing(lsting, lpp = 8, verbose = TRUE)
+  pages_listings <- paginate_listing(lsting, lpp = 8)
 
   # there is always a gap between the end of the table and the footer. Line calculation is correct given this behavior
   page1_result <- matrix_form(pages_listings[[1]])
@@ -157,37 +157,42 @@ testthat::test_that("pagination: lpp and cpp correctly computed for pg_width and
   lsting <- h_lsting_adae()
   pag <- paginate_listing(lsting, lpp = 24, cpp = 135)
   res <- paginate_listing(lsting, pg_width = 15, pg_height = 5)
-  expect_identical(res, pag)
+  testthat::expect_identical(res, pag)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for page_type and font_size", {
   lsting <- h_lsting_adae()
   pag1 <- paginate_listing(lsting, lpp = 69, cpp = 73)
   res1 <- paginate_listing(lsting, page_type = "a4", font_size = 11)
-  expect_identical(res1, pag1)
+  testthat::expect_identical(res1, pag1)
 
   pag2 <- paginate_listing(lsting, lpp = 85, cpp = 76)
   res2 <- paginate_listing(lsting, page_type = "legal", font_size = 11)
-  expect_identical(res2, pag2)
+  testthat::expect_identical(res2, pag2)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for lineheight", {
   lsting <- h_lsting_adae()
   pag <- paginate_listing(lsting, lpp = 20, cpp = 70)
   res <- paginate_listing(lsting, lineheight = 3)
-  expect_identical(res, pag)
+  testthat::expect_identical(res, pag)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for landscape", {
   lsting <- h_lsting_adae()
   pag <- paginate_listing(lsting, lpp = 45, cpp = 95)
   res <- paginate_listing(lsting, landscape = TRUE)
-  expect_identical(res, pag)
+  testthat::expect_identical(res, pag)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for margins", {
   lsting <- h_lsting_adae()
   pag <- paginate_listing(lsting, lpp = 42, cpp = 65)
   res <- paginate_listing(lsting, margins = c(top = 2, bottom = 2, left = 1, right = 1))
-  expect_identical(res, pag)
+  testthat::expect_identical(res, pag)
+})
+
+testthat::test_that("pagination works with col wrapping", {
+  lsting <- h_lsting_adae(disp_cols = c("USUBJID", "AESOC", "RACE"))
+  # pag <- paginate_listing(lsting, colwidths = c(15, 15, 15, 15))
 })
