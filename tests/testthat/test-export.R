@@ -20,3 +20,16 @@ testthat::test_that("Listing print correctly, with paginate", {
     export_as_txt(lsting, file = NULL, paginate = TRUE)
   })
 })
+
+testthat::test_that("Listing print correctly, with paginate and wrapping", {
+  dat <- ex_adae
+  lsting <- as_listing(dat[1:10, ],
+    key_cols = c("USUBJID", "AESOC"),
+    disp_cols = c("USUBJID", "AESOC")
+  )
+
+  main_title(lsting) <- "this is some title"
+  main_footer(lsting) <- "this is some footer"
+
+  cat(export_as_txt(matrix_form(lsting), colwidths = c(10, 10)), paginate = TRUE, lpp = 8)
+})
