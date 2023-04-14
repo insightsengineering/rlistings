@@ -27,6 +27,7 @@ print.listing_df <- function(x, ...) {
 
 #' @exportMethod toString
 #' @name listing_methods
+#' @aliases toString,listing_df-method
 setMethod("toString", "listing_df", function(x, ...) {
   toString(matrix_form(x), ...)
 })

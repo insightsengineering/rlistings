@@ -3,6 +3,7 @@
 \name{listing_methods}
 \alias{listing_methods}
 \alias{print.listing_df}
+\alias{toString,listing_df-method}
 \alias{[,listing_df-method}
 \alias{main_title,listing_df-method}
 \alias{subtitles,listing_df-method}
