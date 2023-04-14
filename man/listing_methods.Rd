@@ -16,6 +16,8 @@
 \usage{
 \method{print}{listing_df}(x, ...)
 
+\S4method{toString}{listing_df}(x, ...)
+
 \S4method{[}{listing_df}(x, i, j, drop = FALSE)
 
 \S4method{main_title}{listing_df}(obj)
@@ -37,7 +39,8 @@
 \arguments{
 \item{x}{listing_df. The listing.}
 
-\item{...}{dots. Unused}
+\item{...}{dots. See \code{toString} method in \code{formatters} for list
+of parameters.}
 
 \item{i}{ANY. Passed to base \code{[} methods.}
 

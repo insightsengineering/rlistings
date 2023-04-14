@@ -16,14 +16,20 @@
 #'
 #' @export
 #' @param x listing_df. The listing.
-#' @param ... dots. Unused
+#' @param ... dots. See `toString` method in \code{formatters} for list
+#' of parameters.
 #' @method print listing_df
 #' @name listing_methods
 print.listing_df <- function(x, ...) {
-  cat(toString(matrix_form(x)))
+  cat(toString(matrix_form(x), ...))
   invisible(x)
 }
 
+#' @exportMethod toString
+#' @name listing_methods
+setMethod("toString", "listing_df", function(x, ...) {
+  toString(matrix_form(x), ...)
+})
 
 ## because rle in base is too much of a stickler for being atomic
 basic_run_lens <- function(x) {
