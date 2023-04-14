@@ -31,5 +31,5 @@ testthat::test_that("Listing print correctly, with paginate and wrapping", {
   main_title(lsting) <- "this is some title"
   main_footer(lsting) <- "this is some footer"
 
-  cat(export_as_txt(matrix_form(lsting), colwidths = c(10, 10)), paginate = TRUE, lpp = 8)
+  cat(export_as_txt(lsting, colwidths = c(10, 10), paginate = TRUE, lpp = 15))
 })
