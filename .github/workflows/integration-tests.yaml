@@ -22,6 +22,6 @@ jobs:
     with:
       strategy: ${{ matrix.test-strategy }}
   cran-status:
-    uses: insightsengineering/cran-status-action@main
+    uses: insightsengineering/r.pkg.template/.github/workflows/cran-status.yaml@main
     with:
       issue-assignees: "shajoezhu,Melkiades,edelarua,gmbecker,ayogasekaram"
