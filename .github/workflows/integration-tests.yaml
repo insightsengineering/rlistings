@@ -21,3 +21,7 @@ jobs:
       GCHAT_WEBHOOK: ${{ secrets.GCHAT_WEBHOOK }}
     with:
       strategy: ${{ matrix.test-strategy }}
+  cran-status:
+    uses: insightsengineering/cran-status-action@main
+    with:
+      issue-assignees: "shajoezhu,Melkiades,edelarua,gmbecker,ayogasekaram"
