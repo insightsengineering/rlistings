@@ -12,18 +12,18 @@ testthat::test_that("pagination works vertically", {
 
   pages_listings <- suppressMessages(paginate_listing(lsting, lpp = 4, verbose = TRUE))
 
-  page1_result <- toString(matrix_form(pages_listings[[1]]))
-  page2_result <- toString(matrix_form(pages_listings[[2]]))
+  page1_result <- toString(matrix_form(pages_listings[[1]]), hsep = "-")
+  page2_result <- toString(matrix_form(pages_listings[[2]]), hsep = "-")
 
   page1_expected <- paste0(
     "Unique Subject Identifier   Age   Continous Level Biomarker 1\n",
-    "—————————————————————————————————————————————————————————————\n",
+    "-------------------------------------------------------------\n",
     "AB12345-BRA-1-id-134        47                6.5            \n",
     "AB12345-BRA-1-id-141        35                7.5            \n"
   )
   page2_expected <- paste0(
     "Unique Subject Identifier   Age   Continous Level Biomarker 1\n",
-    "—————————————————————————————————————————————————————————————\n",
+    "-------------------------------------------------------------\n",
     "AB12345-BRA-1-id-236        32                7.7            \n",
     "AB12345-BRA-1-id-265        25               10.3            \n"
   )
@@ -32,18 +32,18 @@ testthat::test_that("pagination works vertically", {
   lsting2 <- lsting %>% add_listing_col("BMRKR2")
   pages_listings2 <- suppressMessages(paginate_listing(lsting2, lpp = 4, cpp = 70, verbose = TRUE))
   testthat::expect_equal(
-    toString(matrix_form(pages_listings2[[1]])),
+    toString(matrix_form(pages_listings2[[1]]), hsep = "-"),
     page1_expected
   )
   testthat::expect_equal(length(pages_listings2), 6L)
   page6_expected <- paste0(
     "Unique Subject Identifier   Age   Categorical Level Biomarker 2\n",
-    "———————————————————————————————————————————————————————————————\n",
+    "---------------------------------------------------------------\n",
     "AB12345-BRA-1-id-42         36               MEDIUM            \n",
     "AB12345-BRA-1-id-65         25               MEDIUM            \n"
   )
   testthat::expect_equal(
-    toString(matrix_form(pages_listings2[[6]])),
+    toString(matrix_form(pages_listings2[[6]]), hsep = "-"),
     page6_expected
   )
 })
@@ -63,15 +63,15 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
     add_listing_col("BMRKR2")
 
   pages_listings <- suppressMessages(paginate_listing(lsting, cpp = 70, verbose = TRUE))
-  pg1_header <- strsplit(toString(matrix_form(pages_listings[[1]])), "\n")[[1]][1:2]
-  pg2_header <- strsplit(toString(matrix_form(pages_listings[[2]])), "\n")[[1]][1:2]
+  pg1_header <- strsplit(toString(matrix_form(pages_listings[[1]]), hsep = "-"), "\n")[[1]][1:2]
+  pg2_header <- strsplit(toString(matrix_form(pages_listings[[2]]), hsep = "-"), "\n")[[1]][1:2]
   pg1_header_expected <- c(
     "Unique Subject Identifier   Age   Continous Level Biomarker 1",
-    "—————————————————————————————————————————————————————————————"
+    "-------------------------------------------------------------"
   )
   pg2_header_expected <- c(
     "Unique Subject Identifier   Categorical Level Biomarker 2",
-    "—————————————————————————————————————————————————————————"
+    "---------------------------------------------------------"
   )
 
   testthat::expect_equal(pg1_header, pg1_header_expected)
@@ -87,21 +87,21 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
     add_listing_col("BMRKR2")
 
   pages_listings2 <- paginate_listing(lsting2, cpp = 70)
-  pg1_header2 <- strsplit(toString(matrix_form(pages_listings2[[1]])), "\n")[[1]][1:2]
-  pg2_header2 <- strsplit(toString(matrix_form(pages_listings2[[2]])), "\n")[[1]][1:2]
-  pg3_header2 <- strsplit(toString(matrix_form(pages_listings2[[3]])), "\n")[[1]][1:2]
+  pg1_header2 <- strsplit(toString(matrix_form(pages_listings2[[1]]), hsep = "-"), "\n")[[1]][1:2]
+  pg2_header2 <- strsplit(toString(matrix_form(pages_listings2[[2]]), hsep = "-"), "\n")[[1]][1:2]
+  pg3_header2 <- strsplit(toString(matrix_form(pages_listings2[[3]]), hsep = "-"), "\n")[[1]][1:2]
 
   pg1_header2_expected <- c(
     "Study Identifier   Unique Subject Identifier   Age",
-    "——————————————————————————————————————————————————"
+    "--------------------------------------------------"
   )
   pg2_header2_expected <- c(
     "Study Identifier   Continous Level Biomarker 1",
-    "——————————————————————————————————————————————"
+    "----------------------------------------------"
   )
   pg3_header2_expected <- c(
     "Study Identifier   Categorical Level Biomarker 2",
-    "————————————————————————————————————————————————"
+    "------------------------------------------------"
   )
 
   testthat::expect_equal(pg1_header2, pg1_header2_expected)
