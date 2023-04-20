@@ -5,11 +5,11 @@
 
 <!-- start badges -->
 [![Check
-🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml)
+🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/main/unit-test-report/)
 [![Docs
 📚](https://github.com/insightsengineering/rlistings/actions/workflows/docs.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/)
 [![Code Coverage
-📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml)
+📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://insightsengineering.github.io/rlistings/main/coverage-report/)
 
 ![GitHub
 forks](https://img.shields.io/github/forks/insightsengineering/rlistings?style=social)
@@ -103,13 +103,13 @@ as_listing(mtcars_ex,
   cols = c("gear", "carb", "qsec", "car")
 ) %>% head()
 #> sorting incoming data by key columns
-#> gear   carb   qsec           car       
+#> gear   carb   qsec           car
 #> ———————————————————————————————————————
-#> 3      1      19.44    Hornet 4 Drive  
-#>               20.22        Valiant     
-#>               20.01     Toyota Corona  
+#> 3      1      19.44    Hornet 4 Drive
+#>               20.22        Valiant
+#>               20.01     Toyota Corona
 #>        2      17.02   Hornet Sportabout
-#>               16.87   Dodge Challenger 
+#>               16.87   Dodge Challenger
 #>               17.3       AMC Javelin
 ```
 

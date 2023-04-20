@@ -1,4 +1,4 @@
-## rlistings 0.2.1.9001
+## rlistings 0.2.1.9002
 
 ### Enhancements
  * Extend page-size machinery in pagination by allowing the page specification (`page_type`, `pg_width`,
