@@ -19,7 +19,6 @@
 
 ### Bug fixes
  * `matrix_form(lsting, TRUE)` no longer throws an error.
- * Fixed pagination tests to have compatibility with non-`UTF8` coding by specifying `hsep = "-"`.
 
 ## rlistings 0.1.1
  * Add title, subtitle, and (main and prov) footer support.
