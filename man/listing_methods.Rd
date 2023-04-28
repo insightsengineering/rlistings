@@ -15,7 +15,7 @@
 \alias{prov_footer<-,listing_df-method}
 \title{Methods for \code{listing_df} objects}
 \usage{
-\method{print}{listing_df}(x, ...)
+\method{print}{listing_df}(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, ...)
 
 \S4method{toString}{listing_df}(x, ...)
 
@@ -40,8 +40,22 @@
 \arguments{
 \item{x}{listing_df. The listing.}
 
-\item{...}{dots. See \code{toString} method in \code{formatters} for list
-of parameters.}
+\item{widths}{numeric (or  NULL). (proposed) widths for the columns
+of \code{x}. The expected length  of this numeric vector can be
+retrieved with  \code{ncol() + 1}  as the  column of row  names must
+also be considered.}
+
+\item{tf_wrap}{logical(1). Should  the texts for  title, subtitle,
+and footnotes be wrapped?}
+
+\item{max_width}{integer(1), character(1) or NULL. Width that title
+and   footer   (including   footnotes)  materials   should   be
+word-wrapped to. If NULL, it is  set to the current print width
+of the  session (\code{getOption("width")}). If set to \code{"auto"},
+the width of the table (plus any table inset) is used. Ignored
+completely if \code{tf_wrap} is \code{FALSE}.}
+
+\item{...}{dots. See \code{toString} method in \code{formatters} for all parameters.}
 
 \item{i}{ANY. Passed to base \code{[} methods.}
 

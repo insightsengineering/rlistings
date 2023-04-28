@@ -15,13 +15,13 @@
 #' of these functions.
 #'
 #' @export
+#' @inheritParams formatters::toString
 #' @param x listing_df. The listing.
-#' @param ... dots. See `toString` method in \code{formatters} for list
-#' of parameters.
+#' @param ... dots. See `toString` method in \code{formatters} for all parameters.
 #' @method print listing_df
 #' @name listing_methods
-print.listing_df <- function(x, ...) {
-  cat(toString(matrix_form(x), ...))
+print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, ...) {
+  cat(toString(matrix_form(x), widths = widths, tf_wrap = tf_wrap, max_width = max_width, ...))
   invisible(x)
 }
 
