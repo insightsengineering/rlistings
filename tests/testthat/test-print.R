@@ -28,6 +28,8 @@ testthat::test_that("Listing print correctly with different widths", {
     add_listing_col("ARM")
 
   res <- strsplit(toString(matrix_form(lsting), widths = c(7, 8, 9), hsep = "-"), "\\n")[[1]]
+  res2 <- strsplit(toString(lsting, widths = c(7, 8, 9), hsep = "-"), "\\n")[[1]]
+
   exp <- c(
     "          Descript            ",
     "Unique      ion               ",
@@ -69,5 +71,7 @@ testthat::test_that("Listing print correctly with different widths", {
     "id-45                         "
   )
 
+  testthat::expect_identical(res, res2)
   testthat::expect_identical(res, exp)
+  testthat::expect_identical(res2, exp)
 })
