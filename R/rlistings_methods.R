@@ -15,15 +15,22 @@
 #' of these functions.
 #'
 #' @export
+#' @inheritParams formatters::toString
 #' @param x listing_df. The listing.
-#' @param ... dots. Unused
+#' @param ... dots. See `toString` method in \code{formatters} for all parameters.
 #' @method print listing_df
 #' @name listing_methods
-print.listing_df <- function(x, ...) {
-  cat(toString(matrix_form(x)))
+print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, ...) {
+  cat(toString(matrix_form(x), widths = widths, tf_wrap = tf_wrap, max_width = max_width, ...))
   invisible(x)
 }
 
+#' @exportMethod toString
+#' @name listing_methods
+#' @aliases toString,listing_df-method
+setMethod("toString", "listing_df", function(x, ...) {
+  toString(matrix_form(x), ...)
+})
 
 ## because rle in base is too much of a stickler for being atomic
 basic_run_lens <- function(x) {
