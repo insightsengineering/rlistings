@@ -2,12 +2,12 @@ testthat::test_that("Listing print correctly", {
   lsting <- as_listing(anl, key_cols = c("USUBJID")) %>%
     add_listing_col("ARM")
 
-  res <- strsplit(toString(matrix_form(lsting)), "\\n")[[1]]
+  res <- strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n")[[1]]
   exp <- c(
     "       Unique            Description                                ",
     "       Subject                Of                                    ",
     "     Identifier          Planned Arm     Continous Level Biomarker 1",
-    "————————————————————————————————————————————————————————————————————",
+    "--------------------------------------------------------------------",
     "AB12345-CHN-1-id-307      B: Placebo          4.57499101339464      ",
     "AB12345-CHN-11-id-220     B: Placebo          10.2627340069523      ",
     "AB12345-CHN-15-id-201   C: Combination         6.9067988141075      ",
@@ -27,8 +27,8 @@ testthat::test_that("Listing print correctly with different widths", {
   lsting <- as_listing(anl, key_cols = c("USUBJID")) %>%
     add_listing_col("ARM")
 
-  res <- strsplit(toString(matrix_form(lsting), widths = c(7, 8, 9)), "\\n")[[1]]
-  res2 <- strsplit(toString(lsting, widths = c(7, 8, 9)), "\\n")[[1]]
+  res <- strsplit(toString(matrix_form(lsting), widths = c(7, 8, 9), hsep = "-"), "\\n")[[1]]
+  res2 <- strsplit(toString(lsting, widths = c(7, 8, 9), hsep = "-"), "\\n")[[1]]
 
   exp <- c(
     "          Descript            ",
@@ -38,7 +38,7 @@ testthat::test_that("Listing print correctly with different widths", {
     "  ier       Arm        Level  ",
     "                     Biomarker",
     "                         1    ",
-    "——————————————————————————————",
+    "------------------------------",
     "AB12345      B:      4.5749910",
     "-CHN-1-   Placebo     1339464 ",
     "id-307                        ",
