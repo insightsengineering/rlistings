@@ -23,9 +23,6 @@ Depends:
     methods,
     tibble
 Imports:
-    checkmate,
-    grDevices,
-    grid,
     stats,
     utils
 Suggests: 
