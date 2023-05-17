@@ -44,16 +44,16 @@
 paginate_listing <- function(lsting,
                              page_type = "letter",
                              font_family = "Courier",
-                             font_size = 12,
+                             font_size = 8,
                              lineheight = 1,
                              landscape = FALSE,
                              pg_width = NULL,
                              pg_height = NULL,
                              margins = c(top = .5, bottom = .5, left = .75, right = .75),
-                             lpp,
-                             cpp,
+                             lpp = NA_integer_,
+                             cpp = NA_integer_,
                              colwidths = propose_column_widths(lsting),
-                             tf_wrap = FALSE,
+                             tf_wrap = !is.null(max_width),
                              max_width = NULL,
                              verbose = FALSE) {
   checkmate::assert_class(lsting, "listing_df")
@@ -62,133 +62,60 @@ paginate_listing <- function(lsting,
   checkmate::assert_count(max_width, null.ok = TRUE)
   checkmate::assert_flag(verbose)
 
-  if (missing(lpp) && missing(cpp) && !is.null(page_type) ||
-    (!is.null(pg_width) && !is.null(pg_height))) {
-    pg_lcpp <- page_lcpp(
-      page_type = page_type,
-      landscape = landscape,
-      font_family = font_family,
-      font_size = font_size,
-      lineheight = lineheight,
-      margins = margins,
-      pg_width = pg_width,
-      pg_height = pg_height
-    )
-    if (missing(lpp)) {
-      lpp <- pg_lcpp$lpp
-    }
-    if (missing(cpp)) {
-      cpp <- pg_lcpp$cpp
-    }
-  } else {
-    if (missing(cpp)) {
-      cpp <- NULL
-    }
-    if (missing(lpp)) {
-      lpp <- 70
-    }
-  }
 
-  if (is.null(colwidths)) {
-    colwidths <- propose_column_widths(matrix_form(lsting, indent_rownames = TRUE))
-  }
 
-  if (!tf_wrap) {
-    if (!is.null(max_width)) {
-      warning("tf_wrap is FALSE - ignoring non-null max_width value.")
-    }
-    max_width <- NULL
-  } else if (is.null(max_width)) {
-    max_width <- cpp
-  } else if (identical(max_width, "auto")) {
-    # this 3 is column separator width.
-    max_width <- sum(colwidths) + 3 * (length(colwidths) - 1)
-  }
-  if (!is.null(cpp) && !is.null(max_width) && max_width > cpp) {
-    warning("max_width specified is wider than characters per page width (cpp).")
-  }
 
-  # row-space pagination.
-  ret <- if (!is.null(lpp)) {
-    inds <- pag_listing_indices(
-      lsting = lsting,
-      lpp = lpp,
-      colwidths = colwidths,
-      verbose = verbose,
-      max_width = max_width
-    )
-    lapply(inds, function(i) lsting[i, ])
-  } else {
-    list(lsting)
-  }
+  indx <- paginate_indices(lsting,
+                           page_type = page_type,
+                           font_family = font_family,
+                           font_size = font_size,
+                           lineheight = lineheight,
+                           landscape = landscape,
+                           pg_width = pg_width,
+                           pg_height = pg_height,
+                           margins = margins,
+                           lpp = lpp,
+                           cpp = cpp,
+                           colwidths = colwidths,
+                           tf_wrap = tf_wrap,
+                           max_width = max_width,
+                           rep_cols = length(get_keycols(lsting)),
+                           verbose = verbose)
 
-  # column-space pagination.
-  if (!is.null(cpp)) {
-    inds <- vert_pag_indices(
-      lsting,
-      cpp = cpp,
-      colwidths = colwidths,
-      verbose = verbose,
-      rep_cols = length(get_keycols(lsting))
-    )
-    dispcols <- listing_dispcols(lsting)
-    pag_cols <- lapply(inds, function(i) dispcols[i])
-    ret <- lapply(
-      ret,
-      function(oneres) {
-        lapply(
-          pag_cols,
-          function(cnames) {
-            ret <- oneres[, cnames, drop = FALSE]
-            listing_dispcols(ret) <- cnames
-            ret
-          }
-        )
+
+  vert_pags <- lapply(indx$pag_row_indices,
+                      function(ii) lsting[ii, ])
+  dispnames <- listing_dispcols(lsting)
+  full_pag <- lapply(vert_pags,
+                     function(onepag) {
+      if (!is.null(indx$pag_col_indices)) {
+          lapply(indx$pag_col_indices,
+                 function(jj) {
+              res <- onepag[, dispnames[jj], drop = FALSE]
+              listing_dispcols(res) <- intersect(dispnames, names(res))
+              res
+          })
+      } else {
+          list(onepag)
       }
-    )
-    ret <- unlist(ret, recursive = FALSE)
-  }
+  })
+
+  ret <- unlist(full_pag, recursive = FALSE)
   ret
 }
 
-#' @rdname paginate
+#' @title Defunct functions
+#'
+#' @description
+#' These functions are defunct and their symbols will be removed entirely
+#' in a future release.
+#' @rdname defunct
+#' @inheritParams paginate_listing
 #' @export
 pag_listing_indices <- function(lsting,
                                 lpp = 15,
                                 colwidths = NULL,
                                 max_width = NULL,
                                 verbose = FALSE) {
-  checkmate::assert_class(lsting, "listing_df")
-  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
-  checkmate::assert_count(max_width, null.ok = TRUE)
-  checkmate::assert_flag(verbose)
-
-  dheight <- divider_height(lsting)
-  dcols <- listing_dispcols(lsting)
-  cinfo_lines <- max(
-    mapply(nlines, x = var_labels(lsting)[dcols], max_width = colwidths)
-  ) + dheight
-  tlines <- if (any(nzchar(all_titles(lsting)))) {
-    length(all_titles(lsting)) + dheight + 1L
-  } else {
-    0
-  }
-  flines <- length(all_footers(lsting))
-  if (flines > 0) {
-    flines <- flines + dheight + 1L
-  }
-  rlpp <- lpp - cinfo_lines - tlines - flines
-  if (verbose) {
-    message("Adjusted Lines Per Page: ", rlpp, " (original lpp: ", lpp, ")")
-  }
-
-  pagdf <- make_row_df(lsting, colwidths)
-  pag_indices_inner(
-    pagdf = pagdf,
-    rlpp = rlpp,
-    min_siblings = 0,
-    verbose = verbose,
-    have_col_fnotes = FALSE,
-    div_height = dheight
-  )
+    .Defunct("paginate_indices", package = "formatters")
 }

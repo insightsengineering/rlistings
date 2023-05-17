@@ -156,7 +156,7 @@ testthat::test_that("checking vertical pagination line calculation.", {
 testthat::test_that("pagination: lpp and cpp correctly computed for pg_width and pg_height", {
   lsting <- h_lsting_adae()
   pag <- paginate_listing(lsting, lpp = 24, cpp = 135)
-  res <- paginate_listing(lsting, pg_width = 15, pg_height = 5)
+  res <- paginate_listing(lsting, pg_width = 15, pg_height = 5, font_size = 12) # 12 no longer default!!!
   testthat::expect_identical(res, pag)
 })
 
@@ -173,22 +173,22 @@ testthat::test_that("pagination: lpp and cpp correctly computed for page_type an
 
 testthat::test_that("pagination: lpp and cpp correctly computed for lineheight", {
   lsting <- h_lsting_adae()
-  pag <- paginate_listing(lsting, lpp = 20, cpp = 70)
-  res <- paginate_listing(lsting, lineheight = 3)
+  pag <- paginate_listing(lsting, lpp = 20, cpp = 70, font_size = 12)
+  res <- paginate_listing(lsting, lineheight = 3, font_size = 12)
   testthat::expect_identical(res, pag)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for landscape", {
   lsting <- h_lsting_adae()
-  pag <- paginate_listing(lsting, lpp = 45, cpp = 95)
-  res <- paginate_listing(lsting, landscape = TRUE)
+  pag <- paginate_listing(lsting, lpp = 45, cpp = 95, font_size = 12)
+  res <- paginate_listing(lsting, landscape = TRUE, font_size = 12)
   testthat::expect_identical(res, pag)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for margins", {
   lsting <- h_lsting_adae()
-  pag <- paginate_listing(lsting, lpp = 42, cpp = 65)
-  res <- paginate_listing(lsting, margins = c(top = 2, bottom = 2, left = 1, right = 1))
+  pag <- paginate_listing(lsting, lpp = 42, cpp = 65, font_size = 12)
+  res <- paginate_listing(lsting, margins = c(top = 2, bottom = 2, left = 1, right = 1), font_size = 12)
   testthat::expect_identical(res, pag)
 })
 
@@ -196,9 +196,14 @@ testthat::test_that("pagination: lpp and cpp correctly computed for margins", {
 testthat::test_that("pagination works with col wrapping", {
   lsting <- h_lsting_adae(disp_cols = c("USUBJID", "AESOC", "RACE"))
 
-  testthat::expect_silent(pag <- paginate_listing(lsting, colwidths = c(15, 15, 15, 15)))
-  pag_no_wrapping <- paginate_listing(lsting)
+  testthat::expect_silent(pag <- paginate_listing(lsting, colwidths = c(15, 15, 15, 15), font_size = 12))
+  pag_no_wrapping <- paginate_listing(lsting, font_size = 12)
 
   testthat::expect_equal(length(pag), length(pag_no_wrapping) + 1)
   testthat::expect_error(paginate_listing(lsting, colwidths = c(12, 15)))
+})
+
+
+testthat::test_that("defunct is defunct", {
+  expect_error(pag_listing_indices(), "defunct")
 })
