@@ -2,31 +2,22 @@
 % Please edit documentation in R/paginate_listing.R
 \name{paginate_listing}
 \alias{paginate_listing}
-\alias{pag_listing_indices}
 \title{Paginate listings}
 \usage{
 paginate_listing(
   lsting,
   page_type = "letter",
   font_family = "Courier",
-  font_size = 12,
+  font_size = 8,
   lineheight = 1,
   landscape = FALSE,
   pg_width = NULL,
   pg_height = NULL,
   margins = c(top = 0.5, bottom = 0.5, left = 0.75, right = 0.75),
-  lpp,
-  cpp,
+  lpp = NA_integer_,
+  cpp = NA_integer_,
   colwidths = propose_column_widths(lsting),
-  tf_wrap = FALSE,
-  max_width = NULL,
-  verbose = FALSE
-)
-
-pag_listing_indices(
-  lsting,
-  lpp = 15,
-  colwidths = NULL,
+  tf_wrap = !is.null(max_width),
   max_width = NULL,
   verbose = FALSE
 )
