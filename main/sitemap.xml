@@ -22,7 +22,7 @@
     <loc>https://insightsengineering.github.io/rlistings/main/news/index.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/main/reference/export_as_txt.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/main/reference/defunct.html</loc>
   </url>
   <url>
     <loc>https://insightsengineering.github.io/rlistings/main/reference/index.html</loc>
@@ -41,6 +41,9 @@
   </url>
   <url>
     <loc>https://insightsengineering.github.io/rlistings/main/reference/paginate.html</loc>
+  </url>
+  <url>
+    <loc>https://insightsengineering.github.io/rlistings/main/reference/reexports.html</loc>
   </url>
   <url>
     <loc>https://insightsengineering.github.io/rlistings/main/reference/rlistings-package.html</loc>
