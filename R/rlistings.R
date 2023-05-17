@@ -176,7 +176,7 @@ get_keycols <- function(df) {
 
 #' @export
 #' @inherit formatters::matrix_form
-#' @seealso [formatters::matrix_form()] 
+#' @seealso [formatters::matrix_form()]
 #' @param indent_rownames logical(1). Silently ignored, as listings do not have row names
 #' nor indenting structure.
 #'

@@ -88,10 +88,10 @@ paginate_listing <- function(lsting,
   dispnames <- listing_dispcols(lsting)
   full_pag <- lapply(vert_pags,
                      function(onepag) {
-      if(!is.null(indx$pag_col_indices)) {
+      if (!is.null(indx$pag_col_indices)) {
           lapply(indx$pag_col_indices,
                  function(jj) {
-              res <- onepag[ , dispnames[jj], drop = FALSE]
+              res <- onepag[, dispnames[jj], drop = FALSE]
               listing_dispcols(res) <- intersect(dispnames, names(res))
               res
           })
