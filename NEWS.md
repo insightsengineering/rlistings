@@ -1,4 +1,7 @@
-## rlistings 0.2.1.9003
+## rlistings 0.2.2
+ * Moved `export_as_txt` to `formatters`. Added to reexports. 
+
+## rlistings 0.2.1
 
 ### Enhancements
  * Extend page-size machinery in pagination by allowing the page specification (`page_type`, `pg_width`,
