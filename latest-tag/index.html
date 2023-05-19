@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.2</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,9 +57,17 @@
           aria-expanded="false" aria-haspopup="true"
           id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/latest-tag">latest-tag</a>
+<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.2">v0.2.2</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.1">v0.2.1</a>
 <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.0">v0.2.0</a> </div></li>
 <!-- end dropdown for versions -->
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-reports">Reports</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-reports">
+    <a class="dropdown-item" href="coverage-report/">Coverage report</a>
+    <a class="dropdown-item" href="unit-test-report/">Unit test report</a>
+  </div>
+</li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
@@ -84,7 +92,7 @@
 <a class="anchor" aria-label="anchor" href="#rlistings-"></a>
 </h1></div>
 <!-- start badges -->
-<p><a href="https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml" class="external-link"><img src="https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg" alt="Check 🛠"></a> <a href="https://insightsengineering.github.io/rlistings/" class="external-link"><img src="https://github.com/insightsengineering/rlistings/actions/workflows/docs.yaml/badge.svg" alt="Docs 📚"></a> <a href="https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml" class="external-link"><img src="https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg" alt="Code Coverage 📔"></a></p>
+<p><a href="https://insightsengineering.github.io/rlistings/main/unit-test-report/" class="external-link"><img src="https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg" alt="Check 🛠"></a> <a href="https://insightsengineering.github.io/rlistings/" class="external-link"><img src="https://github.com/insightsengineering/rlistings/actions/workflows/docs.yaml/badge.svg" alt="Docs 📚"></a> <a href="https://insightsengineering.github.io/rlistings/main/coverage-report/" class="external-link"><img src="https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg" alt="Code Coverage 📔"></a></p>
 <p><img src="https://img.shields.io/github/forks/insightsengineering/rlistings?style=social" alt="GitHub forks"><img src="https://img.shields.io/github/stars/insightsengineering/rlistings?style=social" alt="GitHub Repo stars"></p>
 <p><img src="https://img.shields.io/github/commit-activity/m/insightsengineering/rlistings" alt="GitHub commit activity"><img src="https://img.shields.io/github/contributors/insightsengineering/rlistings" alt="GitHub contributors"><img src="https://img.shields.io/github/last-commit/insightsengineering/rlistings" alt="GitHub last commit"><img src="https://img.shields.io/github/issues-pr/insightsengineering/rlistings" alt="GitHub pull requests"><img src="https://img.shields.io/github/repo-size/insightsengineering/rlistings" alt="GitHub repo size"><img src="https://img.shields.io/github/languages/count/insightsengineering/rlistings" alt="GitHub language count"><a href="https://www.repostatus.org/#wip" class="external-link"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a> <a href="https://github.com/insightsengineering/rlistings/tree/main" class="external-link"><img src="https://img.shields.io/github/r-package/v/insightsengineering/rlistings/main?color=purple&amp;label=package%20version" alt="Current Version"></a> <a href="https://github.com/insightsengineering/rlistings/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc" class="external-link"><img src="https://img.shields.io/github/issues-raw/insightsengineering/rlistings?color=red&amp;label=open%20issues" alt="Open Issues"></a> <!-- end badges --></p>
 <div class="section level2">
@@ -104,19 +112,21 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>For releases from October 2022 it is recommended that you <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token" class="external-link">create and use a Github PAT</a> to install the latest version of this package. Once you have the PAT, run the following:</p>
+<p><code>rlistings</code> is available on CRAN and you can install the latest released version with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>GITHUB_PAT <span class="op">=</span> <span class="st">"your_access_token_here"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"insightsengineering/rlistings@*release"</span><span class="op">)</span></span></code></pre></div>
-<p>The <code>rlistings</code> package was not a part of the October 2022 stable release of all <code>NEST</code> packages, but the list of these <code>NEST</code> packages is available <a href="https://github.com/insightsengineering/depository#readme" class="external-link">here</a>.</p>
-<p>See <a href="https://insightsengineering.github.io/rlistings/main/articles/rlistings.html" class="external-link">the Get started page</a> for an introduction to creating listings using this package.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rlistings"</span><span class="op">)</span></span></code></pre></div>
+<p>or you can install the latest development version directly from GitHub with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"insightsengineering/formatters"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"insightsengineering/rlistings"</span><span class="op">)</span></span></code></pre></div>
+<p>Note you might need to set your <code>GITHUB_PAT</code> environment variable in order to be able to install from GitHub.</p>
+<p>Packaged releases (both those on CRAN and those between official CRAN releases) can be found in the <a href="https://github.com/insightsengineering/rlistings/releases" class="external-link">releases list</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>The following example shows a simple listing and its printed output.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/insightsengineering/rlistings" class="external-link">rlistings</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: package 'rlistings' was built under R version 4.2.2</span></span>
 <span><span class="co">#&gt; Loading required package: formatters</span></span>
@@ -131,13 +141,13 @@
 <span>  cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gear"</span>, <span class="st">"carb"</span>, <span class="st">"qsec"</span>, <span class="st">"car"</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; sorting incoming data by key columns</span></span>
-<span><span class="co">#&gt; gear   carb   qsec           car       </span></span>
+<span><span class="co">#&gt; gear   carb   qsec           car</span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————</span></span>
-<span><span class="co">#&gt; 3      1      19.44    Hornet 4 Drive  </span></span>
-<span><span class="co">#&gt;               20.22        Valiant     </span></span>
-<span><span class="co">#&gt;               20.01     Toyota Corona  </span></span>
+<span><span class="co">#&gt; 3      1      19.44    Hornet 4 Drive</span></span>
+<span><span class="co">#&gt;               20.22        Valiant</span></span>
+<span><span class="co">#&gt;               20.01     Toyota Corona</span></span>
 <span><span class="co">#&gt;        2      17.02   Hornet Sportabout</span></span>
-<span><span class="co">#&gt;               16.87   Dodge Challenger </span></span>
+<span><span class="co">#&gt;               16.87   Dodge Challenger</span></span>
 <span><span class="co">#&gt;               17.3       AMC Javelin</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -164,6 +174,7 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=rlistings" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/insightsengineering/rlistings/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/insightsengineering/rlistings/issues" class="external-link">Report a bug</a></li>
 </ul>
