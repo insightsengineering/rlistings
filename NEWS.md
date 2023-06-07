@@ -1,4 +1,6 @@
 ## rlistings 0.2.2.9000
+
+## rlistings 0.2.2
  * Moved `export_as_txt` to `formatters`. Added to reexports. 
 
 ## rlistings 0.2.1
