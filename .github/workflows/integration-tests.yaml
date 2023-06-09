@@ -5,12 +5,9 @@ on:
   schedule:
     - cron: '45 3 * * 0'
   workflow_dispatch:
-<<<<<<< Updated upstream
-=======
   push:
     branches:
       - min_deps
->>>>>>> Stashed changes
 
 jobs:
   dependency-test:
