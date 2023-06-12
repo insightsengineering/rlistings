@@ -32,6 +32,7 @@ Suggests:
     dplyr (>= 1.0.0),
     knitr (>= 1.42),
     lifecycle (>= 1.0.3),
+    magrittr (>= 1.5),
     testthat (>= 3.0.4)
 VignetteBuilder:
     knitr

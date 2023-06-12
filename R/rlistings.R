@@ -62,6 +62,8 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'
 #'
 #' @examples
+#' library(magrittr)
+#'
 #' dat <- ex_adae
 #'
 #' # This example demonstrates the listing with key_cols (values are grouped by USUBJID) and

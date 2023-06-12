@@ -126,6 +126,8 @@ within the object available for computations but \emph{are not rendered during
 printing or export of the listing}.
 }
 \examples{
+library(magrittr)
+
 dat <- ex_adae
 
 # This example demonstrates the listing with key_cols (values are grouped by USUBJID) and

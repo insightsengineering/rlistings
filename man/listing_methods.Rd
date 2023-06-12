@@ -4,6 +4,7 @@
 \alias{listing_methods}
 \alias{print.listing_df}
 \alias{toString,listing_df-method}
+\alias{[,listing_df,ANY,ANY,ANY-method}
 \alias{[,listing_df-method}
 \alias{main_title,listing_df-method}
 \alias{subtitles,listing_df-method}
@@ -19,7 +20,7 @@
 
 \S4method{toString}{listing_df}(x, ...)
 
-\S4method{[}{listing_df}(x, i, j, drop = FALSE)
+\S4method{[}{listing_df,ANY,ANY,ANY}(x, i, j, drop = FALSE)
 
 \S4method{main_title}{listing_df}(obj)
 
