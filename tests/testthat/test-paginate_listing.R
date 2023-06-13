@@ -52,7 +52,7 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
   # pre-processing and ordering
   tmp_data <- ex_adae %>%
     dplyr::slice(1:30) %>%
-    distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
+    dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
     key_cols = c("USUBJID"),

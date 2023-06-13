@@ -1,4 +1,4 @@
-library(dplyr)
+library(tibble) # needed to keep labels after subsetting with `[`
 
 anl <- ex_adsl
 anl <- anl[1:10, c("USUBJID", "ARM", "BMRKR1")]
