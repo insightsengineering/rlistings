@@ -106,864 +106,11 @@ table.table-condensed {
       </ul>
       <div class="tab-content" data-tabsetid="covr">
         <div class="tab-pane active" title="Files" data-value="Files" id="tab-covr-1">
-          <div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b2d2f7702a806d666089" style="width:100%;height:500px;"></div>
-          <script type="application/json" data-for="htmlwidget-b2d2f7702a806d666089">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["<a href=\"#\">R/rlistings_methods.R<\/a>","<a href=\"#\">R/rlistings.R<\/a>","<a href=\"#\">R/paginate_listing.R<\/a>"],[337,349,121],[94,118,36],[80,109,35],[14,9,1],["95","85","25"],["85.11%","92.37%","97.22%"]],"container":"<table class=\"row-border\">\n  <thead>\n    <tr>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n      <th>Coverage<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"targets":6,"createdCell":"function(td, cellData, rowData, row, col) {\n  var percent = cellData.replace(\"%\", \"\");\n  if (percent > 90) {\n    var grad = \"linear-gradient(90deg, #edfde7 \" + cellData + \", white \" + cellData + \")\";\n  } else if (percent > 75) {\n    var grad = \"linear-gradient(90deg, #f9ffe5 \" + cellData + \", white \" + cellData + \")\";\n  } else {\n    var grad = \"linear-gradient(90deg, #fcece9 \" + cellData + \", white \" + cellData + \")\";\n  }\n  $(td).css(\"background\", grad);\n}\n"},{"className":"dt-right","targets":[1,2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}"},"evals":["options.columnDefs.0.createdCell","callback"],"jsHooks":[]}</script>
+          <div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ab88ce453db27acb0545" style="width:100%;height:500px;"></div>
+          <script type="application/json" data-for="htmlwidget-ab88ce453db27acb0545">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["<a href=\"#\">R/rlistings_methods.R<\/a>","<a href=\"#\">R/rlistings.R<\/a>","<a href=\"#\">R/paginate_listing.R<\/a>"],[337,349,121],[94,118,36],[80,109,35],[14,9,1],["95","85","25"],["85.11%","92.37%","97.22%"]],"container":"<table class=\"row-border\">\n  <thead>\n    <tr>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n      <th>Coverage<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"targets":6,"createdCell":"function(td, cellData, rowData, row, col) {\n  var percent = cellData.replace(\"%\", \"\");\n  if (percent > 90) {\n    var grad = \"linear-gradient(90deg, #edfde7 \" + cellData + \", white \" + cellData + \")\";\n  } else if (percent > 75) {\n    var grad = \"linear-gradient(90deg, #f9ffe5 \" + cellData + \", white \" + cellData + \")\";\n  } else {\n    var grad = \"linear-gradient(90deg, #fcece9 \" + cellData + \", white \" + cellData + \")\";\n  }\n  $(td).css(\"background\", grad);\n}\n"},{"className":"dt-right","targets":[1,2,3,4]}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}"},"evals":["options.columnDefs.0.createdCell","callback"],"jsHooks":[]}</script>
         </div>
         <div class="tab-pane" title="Source" data-value="Source" id="tab-covr-2">
           <div id="files">
-            <div id="R/paginate_listing.R" class="hidden">
-              <table class="table-condensed">
-                <tbody>
-                  <tr class="never">
-                    <td class="num">1</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' Paginate listings</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">2</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">3</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @description `r lifecycle::badge("experimental")`</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">4</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">5</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' Pagination of a listing. This can be vertical for long listings with many</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">6</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' rows or horizontal if there are many columns.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">7</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">8</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @param lsting listing_df. The listing to paginate.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">9</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @param lpp numeric(1) or NULL. Number of row lines (not counting titles and</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">10</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'   footers) to have per page. Standard is `70` while `NULL` disables vertical</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">11</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'   pagination.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">12</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @param cpp numeric(1) or NULL. Width (in characters) of the pages for</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">13</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'   horizontal pagination. `NULL` (the default) indicates no horizontal</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">14</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'   pagination should be done.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">15</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @inheritParams formatters::pag_indices_inner</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">16</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @inheritParams formatters::vert_pag_indices</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">17</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @inheritParams formatters::page_lcpp</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">18</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @inheritParams formatters::toString</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">19</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">20</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @returns A list of listings' objects that are meant to be on separated pages.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">21</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'   For `pag_tt_indices` a list of paginated-groups of row-indices of `lsting`.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">22</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">23</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname paginate</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">24</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">25</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @examples</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">26</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' dat &lt;- ex_adae</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">27</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' lsting &lt;- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">28</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">29</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' mat &lt;- matrix_form(lsting)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">30</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">31</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' cat(toString(mat))</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">32</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">33</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' paginate_listing(lsting, lpp = 10)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">34</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">35</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' paginate_listing(lsting, cpp = 100, lpp = 40)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">36</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">37</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">38</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">39</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">40</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @return for `paginate_listing` a list containing separate</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">41</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' `listing_df` objects for each page, for `pag_listing_indices`,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">42</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' a list of indices in the direction being paginated corresponding</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">43</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' to the individual pages in that dimension.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">44</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">paginate_listing &lt;- function(lsting,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">45</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             page_type = "letter",</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">46</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             font_family = "Courier",</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">47</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             font_size = 8,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">48</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             lineheight = 1,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">49</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             landscape = FALSE,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">50</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             pg_width = NULL,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">51</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             pg_height = NULL,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">52</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             margins = c(top = .5, bottom = .5, left = .75, right = .75),</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">53</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             lpp = NA_integer_,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">54</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             cpp = NA_integer_,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">55</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             colwidths = propose_column_widths(lsting),</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">56</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             tf_wrap = !is.null(max_width),</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">57</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             max_width = NULL,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">58</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                             verbose = FALSE) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">59</td>
-                    <td class="coverage">21<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  checkmate::assert_class(lsting, "listing_df")</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">60</td>
-                    <td class="coverage">21<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">61</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  checkmate::assert_flag(tf_wrap)</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">62</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  checkmate::assert_count(max_width, null.ok = TRUE)</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">63</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  checkmate::assert_flag(verbose)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">64</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">65</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">66</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">67</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">68</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  indx &lt;- paginate_indices(lsting,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">69</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           page_type = page_type,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">70</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           font_family = font_family,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">71</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           font_size = font_size,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">72</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           lineheight = lineheight,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">73</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           landscape = landscape,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">74</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           pg_width = pg_width,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">75</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           pg_height = pg_height,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">76</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           margins = margins,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">77</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           lpp = lpp,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">78</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           cpp = cpp,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">79</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           colwidths = colwidths,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">80</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           tf_wrap = tf_wrap,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">81</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           max_width = max_width,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">82</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           rep_cols = length(get_keycols(lsting)),</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">83</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                           verbose = verbose)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">84</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">85</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">86</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  vert_pags &lt;- lapply(indx$pag_row_indices,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">87</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                      function(ii) lsting[ii, ])</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">88</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  dispnames &lt;- listing_dispcols(lsting)</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">89</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  full_pag &lt;- lapply(vert_pags,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">90</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                     function(onepag) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">91</td>
-                    <td class="coverage">30<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      if (!is.null(indx$pag_col_indices)) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">92</td>
-                    <td class="coverage">30<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          lapply(indx$pag_col_indices,</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">93</td>
-                    <td class="coverage">30<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                 function(jj) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">94</td>
-                    <td class="coverage">82<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              res &lt;- onepag[, dispnames[jj], drop = FALSE]</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">95</td>
-                    <td class="coverage">82<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              listing_dispcols(res) &lt;- intersect(dispnames, names(res))</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">96</td>
-                    <td class="coverage">82<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">              res</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">97</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          })</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">98</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      } else {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">99</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">          list(onepag)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">100</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      }</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">101</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  })</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">102</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">103</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  ret &lt;- unlist(full_pag, recursive = FALSE)</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">104</td>
-                    <td class="coverage">20<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  ret</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">105</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">106</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">107</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @title Defunct functions</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">108</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">109</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @description</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">110</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' These functions are defunct and their symbols will be removed entirely</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">111</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' in a future release.</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">112</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname defunct</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">113</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @inheritParams paginate_listing</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">114</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">115</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">pag_listing_indices &lt;- function(lsting,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">116</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                lpp = 15,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">117</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                colwidths = NULL,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">118</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                max_width = NULL,</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">119</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">                                verbose = FALSE) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">120</td>
-                    <td class="coverage">1<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    .Defunct("paginate_indices", package = "formatters")</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">121</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
             <div id="R/rlistings.R" class="hidden">
               <table class="table-condensed">
                 <tbody>
@@ -5773,6 +4920,859 @@ table.table-condensed {
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">)</pre>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="R/paginate_listing.R" class="hidden">
+              <table class="table-condensed">
+                <tbody>
+                  <tr class="never">
+                    <td class="num">1</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' Paginate listings</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">2</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">3</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @description `r lifecycle::badge("experimental")`</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">4</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">5</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' Pagination of a listing. This can be vertical for long listings with many</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">6</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' rows or horizontal if there are many columns.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">7</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">8</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @param lsting listing_df. The listing to paginate.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">9</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @param lpp numeric(1) or NULL. Number of row lines (not counting titles and</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">10</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   footers) to have per page. Standard is `70` while `NULL` disables vertical</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">11</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   pagination.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">12</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @param cpp numeric(1) or NULL. Width (in characters) of the pages for</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">13</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   horizontal pagination. `NULL` (the default) indicates no horizontal</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">14</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   pagination should be done.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">15</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @inheritParams formatters::pag_indices_inner</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">16</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @inheritParams formatters::vert_pag_indices</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">17</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @inheritParams formatters::page_lcpp</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">18</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @inheritParams formatters::toString</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">19</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">20</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @returns A list of listings' objects that are meant to be on separated pages.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">21</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'   For `pag_tt_indices` a list of paginated-groups of row-indices of `lsting`.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">22</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">23</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @rdname paginate</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">24</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">25</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @examples</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">26</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' dat &lt;- ex_adae</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">27</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' lsting &lt;- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">28</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">29</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' mat &lt;- matrix_form(lsting)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">30</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">31</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' cat(toString(mat))</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">32</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">33</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' paginate_listing(lsting, lpp = 10)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">34</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">35</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' paginate_listing(lsting, cpp = 100, lpp = 40)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">36</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">37</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">38</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @export</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">39</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">40</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @return for `paginate_listing` a list containing separate</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">41</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' `listing_df` objects for each page, for `pag_listing_indices`,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">42</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' a list of indices in the direction being paginated corresponding</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">43</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' to the individual pages in that dimension.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">44</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">paginate_listing &lt;- function(lsting,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">45</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             page_type = "letter",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">46</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             font_family = "Courier",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">47</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             font_size = 8,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">48</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             lineheight = 1,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">49</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             landscape = FALSE,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">50</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             pg_width = NULL,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">51</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             pg_height = NULL,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">52</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             margins = c(top = .5, bottom = .5, left = .75, right = .75),</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">53</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             lpp = NA_integer_,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">54</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             cpp = NA_integer_,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">55</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             colwidths = propose_column_widths(lsting),</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">56</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             tf_wrap = !is.null(max_width),</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">57</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             max_width = NULL,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">58</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                             verbose = FALSE) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">59</td>
+                    <td class="coverage">21<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  checkmate::assert_class(lsting, "listing_df")</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">60</td>
+                    <td class="coverage">21<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">61</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  checkmate::assert_flag(tf_wrap)</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">62</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  checkmate::assert_count(max_width, null.ok = TRUE)</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">63</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  checkmate::assert_flag(verbose)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">64</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">65</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">66</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">67</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">68</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  indx &lt;- paginate_indices(lsting,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">69</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           page_type = page_type,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">70</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           font_family = font_family,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">71</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           font_size = font_size,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">72</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           lineheight = lineheight,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">73</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           landscape = landscape,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">74</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           pg_width = pg_width,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">75</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           pg_height = pg_height,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">76</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           margins = margins,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">77</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           lpp = lpp,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">78</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           cpp = cpp,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">79</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           colwidths = colwidths,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">80</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           tf_wrap = tf_wrap,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">81</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           max_width = max_width,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">82</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           rep_cols = length(get_keycols(lsting)),</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">83</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                           verbose = verbose)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">84</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">85</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">86</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  vert_pags &lt;- lapply(indx$pag_row_indices,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">87</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                      function(ii) lsting[ii, ])</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">88</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  dispnames &lt;- listing_dispcols(lsting)</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">89</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  full_pag &lt;- lapply(vert_pags,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">90</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                     function(onepag) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">91</td>
+                    <td class="coverage">30<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      if (!is.null(indx$pag_col_indices)) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">92</td>
+                    <td class="coverage">30<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          lapply(indx$pag_col_indices,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">93</td>
+                    <td class="coverage">30<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                 function(jj) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">94</td>
+                    <td class="coverage">82<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              res &lt;- onepag[, dispnames[jj], drop = FALSE]</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">95</td>
+                    <td class="coverage">82<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              listing_dispcols(res) &lt;- intersect(dispnames, names(res))</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">96</td>
+                    <td class="coverage">82<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">              res</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">97</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          })</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">98</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      } else {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">99</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">          list(onepag)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">100</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">101</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  })</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">102</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">103</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  ret &lt;- unlist(full_pag, recursive = FALSE)</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">104</td>
+                    <td class="coverage">20<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  ret</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">105</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">}</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">106</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">107</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @title Defunct functions</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">108</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#'</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">109</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @description</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">110</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' These functions are defunct and their symbols will be removed entirely</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">111</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' in a future release.</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">112</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @rdname defunct</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">113</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @inheritParams paginate_listing</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">114</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @export</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">115</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">pag_listing_indices &lt;- function(lsting,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">116</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                lpp = 15,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">117</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                colwidths = NULL,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">118</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                max_width = NULL,</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">119</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">                                verbose = FALSE) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">120</td>
+                    <td class="coverage">1<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    .Defunct("paginate_indices", package = "formatters")</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">121</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">}</pre>
                     </td>
                   </tr>
                 </tbody>
