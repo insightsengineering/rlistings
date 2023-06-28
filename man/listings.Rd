@@ -78,7 +78,7 @@ returns the vector for a new column, which is added to \code{df} as
 \code{name}, or NULL if marking an existing column as
 a listing column.}
 
-\item{format}{character(1) or function. The format label (string) or formatter function to apply to \code{x}.}
+\item{format}{character(1) or function. The format label (string) or \code{formatter} function to apply to \code{x}.}
 
 \item{na_str}{character(1). String that should be displayed when the value of \code{x} is missing.
 Defaults to \code{"NA"}.}
