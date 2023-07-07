@@ -98,6 +98,8 @@ as_listing <- function(df,
                        key_cols = names(df)[1],
                        disp_cols = NULL,
                        non_disp_cols = NULL,
+                       default_formatting = list(all = fmt_config()),
+                       col_formatting = NULL,
                        main_title = NULL,
                        subtitles = NULL,
                        main_footer = NULL,
@@ -135,6 +137,23 @@ as_listing <- function(df,
   ## key cols must be leftmost cols
   cols <- c(key_cols, setdiff(cols, key_cols))
 
+  df[cols] <- lapply(cols, function(col) {
+    names(default_formatting) <- tolower(names(default_formatting))
+    col_type <- if (is.numeric(df[[col]])) "numeric" else tolower(tail(class(df[[col]]), 1))
+    col_fmt <- if (col %in% names(col_formatting)) {
+      col_formatting[[col]]
+    } else if (col_type %in% names(default_formatting)) {
+      default_formatting[[col_type]]
+    } else if ("key_cols" %in% names(default_formatting) && col %in% key_cols) {
+      default_formatting[["key_cols"]]
+    } else {
+      default_formatting[["all"]]
+    }
+    obj_format(df[[col]]) <- col_fmt@format
+    obj_na_str(df[[col]]) <- obj_na_str(col_fmt)
+    obj_align(df[[col]]) <- col_fmt@align
+    df[[col]]
+  })
 
   class(df) <- c("listing_df", class(df))
   ## these all work even when the value is NULL
@@ -222,7 +241,7 @@ setMethod(
     if (length(nonkeycols) > 0) {
       for (nonk in nonkeycols) {
         vec <- listing[[nonk]]
-        vec <- vapply(vec, format_value, "", format = obj_format(vec))
+        vec <- vapply(vec, format_value, "", format = obj_format(vec), na_str = obj_na_str(vec))
         bodymat[, nonk] <- vec
       }
     }
@@ -233,11 +252,12 @@ setMethod(
       bodymat
     )
 
-    keycolaligns <- rbind(
-      rep("center", length(keycols)),
-      matrix("left",
-        ncol = length(keycols),
-        nrow = nrow(fullmat) - 1
+    colaligns <- rbind(
+      rep("center", length(cols)),
+      matrix(sapply(listing, obj_align),
+        ncol = length(cols),
+        nrow = nrow(fullmat) - 1,
+        byrow = TRUE
       )
     )
     MatrixPrintForm(
@@ -247,13 +267,7 @@ setMethod(
         ncol = ncol(fullmat)
       ),
       ref_fnotes = list(),
-      aligns = cbind(
-        keycolaligns,
-        matrix("center",
-          nrow = nrow(fullmat),
-          ncol = ncol(fullmat) - length(keycols)
-        )
-      ),
+      aligns = colaligns,
       formats = matrix(1,
         nrow = nrow(fullmat),
         ncol = ncol(fullmat)
@@ -323,7 +337,7 @@ add_listing_dispcol <- function(df, new) {
 #'   display during rendering.
 #'
 #' @export
-add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
+add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-", align = "center") {
   if (!is.null(fun)) {
     vec <- fun(df)
   } else if (name %in% names(df)) {
@@ -341,6 +355,7 @@ add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
   }
 
   obj_na_str(vec) <- na_str
+  vec@align <- align
 
   ## this works for both new and existing columns
   df[[name]] <- vec

@@ -16,6 +16,8 @@ as_listing(
   key_cols = names(df)[1],
   disp_cols = NULL,
   non_disp_cols = NULL,
+  default_formatting = NULL,
+  col_formatting = NULL,
   main_title = NULL,
   subtitles = NULL,
   main_footer = NULL,
