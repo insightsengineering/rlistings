@@ -19,6 +19,16 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' @param non_disp_cols character or NULL. Names of non-key columns to be excluded as display
 #'   columns. All other non-key columns are then treated as display columns. Invalid if
 #'   `disp_cols` is non-NULL.
+#' @param unique_rows logical(1). Should only unique rows be included in the listing. Defaults to `FALSE`.
+#' @param default_formatting list. A named list of default column format configurations to apply when rendering the
+#'   listing. Each name-value pair consists of a name corresponding to a data type (or "numeric" for all numeric
+#'   classes) and a value of type `fmt_config` with the format configuration that should be implemented for columns
+#'   of that type. If named element "all" is included in the list, this configuration will be used for all data types
+#'   not specified. Objects of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`.
+#' @param col_formatting list. A named list of custom column formatting configuarations to apply to specific columns
+#'   when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a value of
+#'   type `fmt_config` with the formatting configuration that should be implemented for that column. Objects of type
+#'   `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`. Defaults to `NULL`.
 #' @param main_title character(1) or NULL. The main title for the listing, or
 #'   `NULL` (the default). Must be length 1 non-NULL.
 #' @param subtitles character or NULL. A vector of subtitle(s) for the
@@ -138,8 +148,8 @@ as_listing <- function(df,
   ## key cols must be leftmost cols
   cols <- c(key_cols, setdiff(cols, key_cols))
 
+  # set col format configs
   df[cols] <- lapply(cols, function(col) {
-    names(default_formatting) <- tolower(names(default_formatting))
     col_type <- if (is.numeric(df[[col]])) "numeric" else tolower(tail(class(df[[col]]), 1))
     col_fmt <- if (col %in% names(col_formatting)) {
       col_formatting[[col]]
@@ -152,7 +162,7 @@ as_listing <- function(df,
     }
     obj_format(df[[col]]) <- col_fmt@format
     obj_na_str(df[[col]]) <- obj_na_str(col_fmt)
-    obj_align(df[[col]]) <- col_fmt@align
+    obj_align(df[[col]]) <- obj_align(col_fmt)
     df[[col]]
   })
 
