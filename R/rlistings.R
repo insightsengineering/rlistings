@@ -98,6 +98,7 @@ as_listing <- function(df,
                        key_cols = names(df)[1],
                        disp_cols = NULL,
                        non_disp_cols = NULL,
+                       unique_rows = FALSE,
                        default_formatting = list(all = fmt_config()),
                        col_formatting = NULL,
                        main_title = NULL,
@@ -154,6 +155,8 @@ as_listing <- function(df,
     obj_align(df[[col]]) <- col_fmt@align
     df[[col]]
   })
+
+  if (unique_rows) df <- df[!duplicated(df[, cols]), ]
 
   class(df) <- c("listing_df", class(df))
   ## these all work even when the value is NULL

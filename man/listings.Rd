@@ -16,7 +16,8 @@ as_listing(
   key_cols = names(df)[1],
   disp_cols = NULL,
   non_disp_cols = NULL,
-  default_formatting = NULL,
+  unique_rows = FALSE,
+  default_formatting = list(all = fmt_config()),
   col_formatting = NULL,
   main_title = NULL,
   subtitles = NULL,
@@ -36,7 +37,14 @@ add_listing_dispcol(df, new)
 
 listing_dispcols(df) <- value
 
-add_listing_col(df, name, fun = NULL, format = NULL, na_str = "-")
+add_listing_col(
+  df,
+  name,
+  fun = NULL,
+  format = NULL,
+  na_str = "-",
+  align = "center"
+)
 }
 \arguments{
 \item{df}{data.frame or listing_df. The (non-listing) data.frame to be converted to a listing or
