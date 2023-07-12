@@ -103,6 +103,22 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'
 #' cat(toString(mat))
 #'
+#' # This example demonstrates a listing with format configurations specified via the default_formatting
+#' # and col_formatting arguments
+#' dat <- ex_adae
+#' dat$AENDY[3:6] <- NA
+#' lsting <- as_listing(dat[1:25, ],
+#'   key_cols = c("USUBJID", "AESOC"),
+#'   disp_cols = c("STUDYID", "SEX", "ASEQ", "RANDDT", "ASTDY", "AENDY"),
+#'   default_formatting = list(all = fmt_config(align = "left"),
+#'                             numeric = fmt_config(format = "xx.xx", na_str = "<No data>", align = "right"))
+#' ) %>%
+#'   add_listing_col("BMRKR1", format = "xx.x", align = "center")
+#'
+#' mat <- matrix_form(lsting)
+#'
+#' cat(toString(mat))
+#'
 #' @export
 as_listing <- function(df,
                        key_cols = names(df)[1],
@@ -358,7 +374,7 @@ add_listing_dispcol <- function(df, new) {
 #'   display during rendering.
 #'
 #' @export
-add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-", align = "center") {
+add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "NA", align = "center") {
   if (!is.null(fun)) {
     vec <- fun(df)
   } else if (name %in% names(df)) {

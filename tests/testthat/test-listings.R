@@ -215,3 +215,35 @@ testthat::test_that("column inclusion and ordering stuff", {
     str <- toString(lsting3)
   })
 })
+
+testthat::test_that("unique_rows removes duplicate rows from listing", {
+  # only key_col
+  lsting <- as_listing(
+    ex_adsl,
+    key_cols = "SEX",
+    disp_cols = character(0),
+    unique_rows = TRUE
+  )
+  result_strings <- matrix_form(lsting)$strings
+  expected_strings <- matrix(
+    c("Sex", "F", "M", "U", "UNDIFFERENTIATED"),
+    dimnames = list(c(), "SEX")
+  )
+  expect_equal(expected_strings, result_strings)
+
+  # key_col and disp_col
+  lsting <- as_listing(
+    ex_adsl,
+    key_cols = "ARMCD",
+    disp_cols = "SEX",
+    unique_rows = TRUE
+  )
+  result_strings <- matrix_form(lsting)$strings
+  expected_strings <- matrix(
+    c("Planned Arm Code", "ARM A", "", "", "", "ARM B", "", "", "ARM C", "", "", "",
+      "Sex", "M", "F", "UNDIFFERENTIATED", "U", "F", "M", "U", "M", "F", "U", "UNDIFFERENTIATED"),
+    ncol = 2,
+    dimnames = list(c(), c("ARMCD", "SEX"))
+  )
+  expect_equal(expected_strings, result_strings)
+})
