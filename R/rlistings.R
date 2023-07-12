@@ -21,9 +21,9 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   `disp_cols` is non-NULL.
 #' @param unique_rows logical(1). Should only unique rows be included in the listing. Defaults to `FALSE`.
 #' @param default_formatting list. A named list of default column format configurations to apply when rendering the
-#'   listing. Each name-value pair consists of a name corresponding to a data type (or "numeric" for all numeric
+#'   listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all numeric
 #'   classes) and a value of type `fmt_config` with the format configuration that should be implemented for columns
-#'   of that type. If named element "all" is included in the list, this configuration will be used for all data types
+#'   of that class. If named element "all" is included in the list, this configuration will be used for all data classes
 #'   not specified. Objects of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`.
 #' @param col_formatting list. A named list of custom column formatting configuarations to apply to specific columns
 #'   when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a value of
@@ -127,6 +127,12 @@ as_listing <- function(df,
     ## disp_cols non-null, non_disp_cols NULL
     cols <- disp_cols
   }
+  if (!all(sapply(default_formatting, is, class2 = "fmt_config"))) {
+    stop("All format configurations supplied in `default_formatting` must be of type `fmt_config`.")
+  }
+  if (!(is.null(col_formatting) || all(sapply(col_formatting, is, class2 = "fmt_config")))) {
+    stop("All format configurations supplied in `col_formatting` must be of type `fmt_config`.")
+  }
 
   df <- as_tibble(df)
   varlabs <- var_labels(df, fill = TRUE)
@@ -155,9 +161,11 @@ as_listing <- function(df,
       col_formatting[[col]]
     } else if (col_type %in% names(default_formatting)) {
       default_formatting[[col_type]]
-    } else if ("key_cols" %in% names(default_formatting) && col %in% key_cols) {
-      default_formatting[["key_cols"]]
     } else {
+      if (!"all" %in% names(default_formatting)) {
+        stop(paste("Format configurations must be supplied for all listing columns.",
+                   "To cover all remaining columns please add an 'all' configuration to `default_formatting`."))
+      }
       default_formatting[["all"]]
     }
     obj_format(df[[col]]) <- col_fmt@format
