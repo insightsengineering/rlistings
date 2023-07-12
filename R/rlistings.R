@@ -376,7 +376,7 @@ add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-", a
   }
 
   obj_na_str(vec) <- na_str
-  vec@align <- align
+  obj_align(vec) <- align
 
   ## this works for both new and existing columns
   df[[name]] <- vec
