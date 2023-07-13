@@ -25,7 +25,7 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   numeric classes) and a value of type `fmt_config` with the format configuration that should be implemented for
 #'   columns of that class. If named element "all" is included in the list, this configuration will be used for all
 #'   data classes not specified. Objects of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`.
-#' @param col_formatting list. A named list of custom column formatting configuarations to apply to specific columns
+#' @param col_formatting list. A named list of custom column formatting configurations to apply to specific columns
 #'   when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a value of
 #'   type `fmt_config` with the formatting configuration that should be implemented for that column. Objects of type
 #'   `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`. Defaults to `NULL`.
@@ -369,7 +369,7 @@ add_listing_dispcol <- function(df, new) {
 #'   returns the vector for a new column, which is added to \code{df} as
 #'   \code{name}, or NULL if marking an existing column as
 #'   a listing column.
-#' @inheritParams formatters::format_value
+#' @inheritParams formatters::fmt_config
 #'
 #' @return `df`, with `name` created (if necessary) and marked for
 #'   display during rendering.

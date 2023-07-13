@@ -69,7 +69,7 @@ numeric classes) and a value of type \code{fmt_config} with the format configura
 columns of that class. If named element "all" is included in the list, this configuration will be used for all
 data classes not specified. Objects of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}.}
 
-\item{col_formatting}{list. A named list of custom column formatting configuarations to apply to specific columns
+\item{col_formatting}{list. A named list of custom column formatting configurations to apply to specific columns
 when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a value of
 type \code{fmt_config} with the formatting configuration that should be implemented for that column. Objects of type
 \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}. Defaults to \code{NULL}.}
@@ -101,10 +101,11 @@ returns the vector for a new column, which is added to \code{df} as
 \code{name}, or NULL if marking an existing column as
 a listing column.}
 
-\item{format}{character(1) or function. The format label (string) or \code{formatter} function to apply to \code{x}.}
+\item{format}{character(1) or function. A format label (string) or \code{formatter} function.}
 
-\item{na_str}{character(1). String that should be displayed when the value of \code{x} is missing.
-Defaults to \code{"NA"}.}
+\item{na_str}{character(1). String that should be displayed in place of missing values.}
+
+\item{align}{character(1). Alignment values should be rendered with.}
 }
 \value{
 A \code{listing_df} object, sorted by the key columns.
