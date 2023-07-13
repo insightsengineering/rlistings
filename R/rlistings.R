@@ -21,10 +21,10 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   `disp_cols` is non-NULL.
 #' @param unique_rows logical(1). Should only unique rows be included in the listing. Defaults to `FALSE`.
 #' @param default_formatting list. A named list of default column format configurations to apply when rendering the
-#'   listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all numeric
-#'   classes) and a value of type `fmt_config` with the format configuration that should be implemented for columns
-#'   of that class. If named element "all" is included in the list, this configuration will be used for all data classes
-#'   not specified. Objects of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`.
+#'   listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all unspecified
+#'   numeric classes) and a value of type `fmt_config` with the format configuration that should be implemented for
+#'   columns of that class. If named element "all" is included in the list, this configuration will be used for all
+#'   data classes not specified. Objects of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`.
 #' @param col_formatting list. A named list of custom column formatting configuarations to apply to specific columns
 #'   when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a value of
 #'   type `fmt_config` with the formatting configuration that should be implemented for that column. Objects of type
@@ -172,11 +172,12 @@ as_listing <- function(df,
 
   # set col format configs
   df[cols] <- lapply(cols, function(col) {
-    col_type <- if (is.numeric(df[[col]])) "numeric" else tolower(tail(class(df[[col]]), 1))
+    col_class <- tail(class(df[[col]]), 1)
+    col_fmt_class <- if (!col_class %in% names(default_formatting) && is.numeric(df[[col]])) "numeric" else col_class
     col_fmt <- if (col %in% names(col_formatting)) {
       col_formatting[[col]]
-    } else if (col_type %in% names(default_formatting)) {
-      default_formatting[[col_type]]
+    } else if (col_fmt_class %in% names(default_formatting)) {
+      default_formatting[[col_fmt_class]]
     } else {
       if (!"all" %in% names(default_formatting)) {
         stop(paste("Format configurations must be supplied for all listing columns.",
@@ -184,9 +185,9 @@ as_listing <- function(df,
       }
       default_formatting[["all"]]
     }
-    obj_format(df[[col]]) <- col_fmt@format
-    obj_na_str(df[[col]]) <- obj_na_str(col_fmt)
-    obj_align(df[[col]]) <- obj_align(col_fmt)
+    obj_format(df[[col]]) <- slot(col_fmt, "format")
+    obj_na_str(df[[col]]) <- slot(col_fmt, "format_na_str")
+    obj_align(df[[col]]) <- slot(col_fmt, "align")
     df[[col]]
   })
 

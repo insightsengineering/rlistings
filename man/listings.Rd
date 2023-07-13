@@ -64,10 +64,10 @@ columns. All other non-key columns are then treated as display columns. Invalid 
 \item{unique_rows}{logical(1). Should only unique rows be included in the listing. Defaults to \code{FALSE}.}
 
 \item{default_formatting}{list. A named list of default column format configurations to apply when rendering the
-listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all numeric
-classes) and a value of type \code{fmt_config} with the format configuration that should be implemented for columns
-of that class. If named element "all" is included in the list, this configuration will be used for all data classes
-not specified. Objects of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}.}
+listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all unspecified
+numeric classes) and a value of type \code{fmt_config} with the format configuration that should be implemented for
+columns of that class. If named element "all" is included in the list, this configuration will be used for all
+data classes not specified. Objects of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}.}
 
 \item{col_formatting}{list. A named list of custom column formatting configuarations to apply to specific columns
 when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a value of
