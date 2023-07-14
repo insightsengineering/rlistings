@@ -16,6 +16,9 @@ as_listing(
   key_cols = names(df)[1],
   disp_cols = NULL,
   non_disp_cols = NULL,
+  unique_rows = FALSE,
+  default_formatting = list(all = fmt_config()),
+  col_formatting = NULL,
   main_title = NULL,
   subtitles = NULL,
   main_footer = NULL,
@@ -34,7 +37,14 @@ add_listing_dispcol(df, new)
 
 listing_dispcols(df) <- value
 
-add_listing_col(df, name, fun = NULL, format = NULL, na_str = "-")
+add_listing_col(
+  df,
+  name,
+  fun = NULL,
+  format = NULL,
+  na_str = "NA",
+  align = "center"
+)
 }
 \arguments{
 \item{df}{data.frame or listing_df. The (non-listing) data.frame to be converted to a listing or
@@ -50,6 +60,19 @@ the listing is rendered. Defaults to all columns of \code{df} not named in \code
 \item{non_disp_cols}{character or NULL. Names of non-key columns to be excluded as display
 columns. All other non-key columns are then treated as display columns. Invalid if
 \code{disp_cols} is non-NULL.}
+
+\item{unique_rows}{logical(1). Should only unique rows be included in the listing. Defaults to \code{FALSE}.}
+
+\item{default_formatting}{list. A named list of default column format configurations to apply when rendering the
+listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all unspecified
+numeric classes) and a value of type \code{fmt_config} with the format configuration that should be implemented for
+columns of that class. If named element "all" is included in the list, this configuration will be used for all
+data classes not specified. Objects of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}.}
+
+\item{col_formatting}{list. A named list of custom column formatting configurations to apply to specific columns
+when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a value of
+type \code{fmt_config} with the formatting configuration that should be implemented for that column. Objects of type
+\code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}. Defaults to \code{NULL}.}
 
 \item{main_title}{character(1) or NULL. The main title for the listing, or
 \code{NULL} (the default). Must be length 1 non-NULL.}
@@ -78,10 +101,11 @@ returns the vector for a new column, which is added to \code{df} as
 \code{name}, or NULL if marking an existing column as
 a listing column.}
 
-\item{format}{character(1) or function. The format label (string) or \code{formatter} function to apply to \code{x}.}
+\item{format}{character(1) or function. A format label (string) or \code{formatter} function.}
 
-\item{na_str}{character(1). String that should be displayed when the value of \code{x} is missing.
-Defaults to \code{"NA"}.}
+\item{na_str}{character(1). String that should be displayed in place of missing values.}
+
+\item{align}{character(1). Alignment values should be rendered with.}
 }
 \value{
 A \code{listing_df} object, sorted by the key columns.
@@ -152,6 +176,22 @@ cat(toString(mat))
 # and specifying the cols with disp_cols.
 dat <- ex_adae
 lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
+
+mat <- matrix_form(lsting)
+
+cat(toString(mat))
+
+# This example demonstrates a listing with format configurations specified via the default_formatting
+# and col_formatting arguments
+dat <- ex_adae
+dat$AENDY[3:6] <- NA
+lsting <- as_listing(dat[1:25, ],
+  key_cols = c("USUBJID", "AESOC"),
+  disp_cols = c("STUDYID", "SEX", "ASEQ", "RANDDT", "ASTDY", "AENDY"),
+  default_formatting = list(all = fmt_config(align = "left"),
+                            numeric = fmt_config(format = "xx.xx", na_str = "<No data>", align = "right"))
+) \%>\%
+  add_listing_col("BMRKR1", format = "xx.x", align = "center")
 
 mat <- matrix_form(lsting)
 

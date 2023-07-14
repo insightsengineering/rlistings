@@ -19,6 +19,16 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' @param non_disp_cols character or NULL. Names of non-key columns to be excluded as display
 #'   columns. All other non-key columns are then treated as display columns. Invalid if
 #'   `disp_cols` is non-NULL.
+#' @param unique_rows logical(1). Should only unique rows be included in the listing. Defaults to `FALSE`.
+#' @param default_formatting list. A named list of default column format configurations to apply when rendering the
+#'   listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all unspecified
+#'   numeric classes) and a value of type `fmt_config` with the format configuration that should be implemented for
+#'   columns of that class. If named element "all" is included in the list, this configuration will be used for all
+#'   data classes not specified. Objects of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`.
+#' @param col_formatting list. A named list of custom column formatting configurations to apply to specific columns
+#'   when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a value of
+#'   type `fmt_config` with the formatting configuration that should be implemented for that column. Objects of type
+#'   `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`. Defaults to `NULL`.
 #' @param main_title character(1) or NULL. The main title for the listing, or
 #'   `NULL` (the default). Must be length 1 non-NULL.
 #' @param subtitles character or NULL. A vector of subtitle(s) for the
@@ -93,11 +103,30 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'
 #' cat(toString(mat))
 #'
+#' # This example demonstrates a listing with format configurations specified via the default_formatting
+#' # and col_formatting arguments
+#' dat <- ex_adae
+#' dat$AENDY[3:6] <- NA
+#' lsting <- as_listing(dat[1:25, ],
+#'   key_cols = c("USUBJID", "AESOC"),
+#'   disp_cols = c("STUDYID", "SEX", "ASEQ", "RANDDT", "ASTDY", "AENDY"),
+#'   default_formatting = list(all = fmt_config(align = "left"),
+#'                             numeric = fmt_config(format = "xx.xx", na_str = "<No data>", align = "right"))
+#' ) %>%
+#'   add_listing_col("BMRKR1", format = "xx.x", align = "center")
+#'
+#' mat <- matrix_form(lsting)
+#'
+#' cat(toString(mat))
+#'
 #' @export
 as_listing <- function(df,
                        key_cols = names(df)[1],
                        disp_cols = NULL,
                        non_disp_cols = NULL,
+                       unique_rows = FALSE,
+                       default_formatting = list(all = fmt_config()),
+                       col_formatting = NULL,
                        main_title = NULL,
                        subtitles = NULL,
                        main_footer = NULL,
@@ -113,6 +142,12 @@ as_listing <- function(df,
   } else {
     ## disp_cols non-null, non_disp_cols NULL
     cols <- disp_cols
+  }
+  if (!all(sapply(default_formatting, is, class2 = "fmt_config"))) {
+    stop("All format configurations supplied in `default_formatting` must be of type `fmt_config`.")
+  }
+  if (!(is.null(col_formatting) || all(sapply(col_formatting, is, class2 = "fmt_config")))) {
+    stop("All format configurations supplied in `col_formatting` must be of type `fmt_config`.")
   }
 
   df <- as_tibble(df)
@@ -135,6 +170,28 @@ as_listing <- function(df,
   ## key cols must be leftmost cols
   cols <- c(key_cols, setdiff(cols, key_cols))
 
+  # set col format configs
+  df[cols] <- lapply(cols, function(col) {
+    col_class <- tail(class(df[[col]]), 1)
+    col_fmt_class <- if (!col_class %in% names(default_formatting) && is.numeric(df[[col]])) "numeric" else col_class
+    col_fmt <- if (col %in% names(col_formatting)) {
+      col_formatting[[col]]
+    } else if (col_fmt_class %in% names(default_formatting)) {
+      default_formatting[[col_fmt_class]]
+    } else {
+      if (!"all" %in% names(default_formatting)) {
+        stop(paste("Format configurations must be supplied for all listing columns.",
+                   "To cover all remaining columns please add an 'all' configuration to `default_formatting`."))
+      }
+      default_formatting[["all"]]
+    }
+    obj_format(df[[col]]) <- slot(col_fmt, "format")
+    obj_na_str(df[[col]]) <- slot(col_fmt, "format_na_str")
+    obj_align(df[[col]]) <- slot(col_fmt, "align")
+    df[[col]]
+  })
+
+  if (unique_rows) df <- df[!duplicated(df[, cols]), ]
 
   class(df) <- c("listing_df", class(df))
   ## these all work even when the value is NULL
@@ -222,7 +279,7 @@ setMethod(
     if (length(nonkeycols) > 0) {
       for (nonk in nonkeycols) {
         vec <- listing[[nonk]]
-        vec <- vapply(vec, format_value, "", format = obj_format(vec))
+        vec <- vapply(vec, format_value, "", format = obj_format(vec), na_str = obj_na_str(vec))
         bodymat[, nonk] <- vec
       }
     }
@@ -233,11 +290,12 @@ setMethod(
       bodymat
     )
 
-    keycolaligns <- rbind(
-      rep("center", length(keycols)),
-      matrix("left",
-        ncol = length(keycols),
-        nrow = nrow(fullmat) - 1
+    colaligns <- rbind(
+      rep("center", length(cols)),
+      matrix(sapply(listing, obj_align),
+        ncol = length(cols),
+        nrow = nrow(fullmat) - 1,
+        byrow = TRUE
       )
     )
     MatrixPrintForm(
@@ -247,13 +305,7 @@ setMethod(
         ncol = ncol(fullmat)
       ),
       ref_fnotes = list(),
-      aligns = cbind(
-        keycolaligns,
-        matrix("center",
-          nrow = nrow(fullmat),
-          ncol = ncol(fullmat) - length(keycols)
-        )
-      ),
+      aligns = colaligns,
       formats = matrix(1,
         nrow = nrow(fullmat),
         ncol = ncol(fullmat)
@@ -317,13 +369,13 @@ add_listing_dispcol <- function(df, new) {
 #'   returns the vector for a new column, which is added to \code{df} as
 #'   \code{name}, or NULL if marking an existing column as
 #'   a listing column.
-#' @inheritParams formatters::format_value
+#' @inheritParams formatters::fmt_config
 #'
 #' @return `df`, with `name` created (if necessary) and marked for
 #'   display during rendering.
 #'
 #' @export
-add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
+add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "NA", align = "center") {
   if (!is.null(fun)) {
     vec <- fun(df)
   } else if (name %in% names(df)) {
@@ -341,6 +393,7 @@ add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "-") {
   }
 
   obj_na_str(vec) <- na_str
+  obj_align(vec) <- align
 
   ## this works for both new and existing columns
   df[[name]] <- vec
