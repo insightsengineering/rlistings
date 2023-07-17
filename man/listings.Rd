@@ -175,21 +175,29 @@ cat(toString(mat))
 # This example demonstrates the listing table without key_cols
 # and specifying the cols with disp_cols.
 dat <- ex_adae
-lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
+lsting <- as_listing(dat[1:25, ],
+  disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1")
+)
 
 mat <- matrix_form(lsting)
 
 cat(toString(mat))
 
-# This example demonstrates a listing with format configurations specified via the default_formatting
-# and col_formatting arguments
+# This example demonstrates a listing with format configurations specified
+# via the default_formatting and col_formatting arguments
 dat <- ex_adae
 dat$AENDY[3:6] <- NA
 lsting <- as_listing(dat[1:25, ],
   key_cols = c("USUBJID", "AESOC"),
   disp_cols = c("STUDYID", "SEX", "ASEQ", "RANDDT", "ASTDY", "AENDY"),
-  default_formatting = list(all = fmt_config(align = "left"),
-                            numeric = fmt_config(format = "xx.xx", na_str = "<No data>", align = "right"))
+  default_formatting = list(
+    all = fmt_config(align = "left"),
+    numeric = fmt_config(
+      format = "xx.xx",
+      na_str = "<No data>",
+      align = "right"
+    )
+  )
 ) \%>\%
   add_listing_col("BMRKR1", format = "xx.x", align = "center")
 

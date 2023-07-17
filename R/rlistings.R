@@ -193,9 +193,9 @@ as_listing <- function(df,
       default_formatting[[col_fmt_class]]
     } else {
       if (!"all" %in% names(default_formatting)) {
-        stop(paste("Format configurations must be supplied for all listing columns.",
-                   "To cover all remaining columns please add an 'all' configuration",
-                   " to `default_formatting`."))
+        stop("Format configurations must be supplied for all listing columns. ",
+             "To cover all remaining columns please add an 'all' configuration",
+             " to `default_formatting`.")
       }
       default_formatting[["all"]]
     }
