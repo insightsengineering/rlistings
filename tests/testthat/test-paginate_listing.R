@@ -12,7 +12,7 @@ testthat::test_that("pagination works vertically", {
 
   pages_listings <- suppressMessages(paginate_listing(lsting, lpp = 4, verbose = TRUE))
 
-  testthat::expect_snapshot(pages_listings[1-2])
+  testthat::expect_snapshot(pages_listings[c(1, 2)])
 
   lsting2 <- lsting %>% add_listing_col("BMRKR2")
   pages_listings2 <- suppressMessages(paginate_listing(lsting2, lpp = 4, cpp = 70, verbose = TRUE))
@@ -180,4 +180,3 @@ testthat::test_that("pagination works with col wrapping", {
 testthat::test_that("defunct is defunct", {
   expect_error(pag_listing_indices(), "defunct")
 })
-
