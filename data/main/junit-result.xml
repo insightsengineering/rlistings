@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="export" timestamp="2023-07-17T14:13:36Z" hostname="08e111eaf68d" tests="2" skipped="0" failures="0" errors="1" time="2.312">
-    <testcase time="0.054" classname="export" name="Listing_print_correctly">
+  <testsuite name="export" timestamp="2023-07-17T14:17:56Z" hostname="58e1c4062c74" tests="2" skipped="0" failures="0" errors="1" time="2.993">
+    <testcase time="0.0650000000000002" classname="export" name="Listing_print_correctly">
       <error type="error" message="Error in `matrix(unlist(lapply(vec, rep, times = len)), nrow = len)`: 'data' must be of a vector type, was 'NULL' ('test-export.R:5:3')">Error in `matrix(unlist(lapply(vec, rep, times = len)), nrow = len)`: 'data' must be of a vector type, was 'NULL'
 Backtrace:
      ▆
@@ -26,11 +26,11 @@ Backtrace:
  19.                   └─formatters (local) expfun(rw, len = leni, ...)
  20.                     └─base::matrix(unlist(lapply(vec, rep, times = len)), nrow = len)</error>
     </testcase>
-    <testcase time="2.258" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="2.928" classname="export" name="Listing_print_correctly_with_paginate"/>
   </testsuite>
-  <testsuite name="listings" timestamp="2023-07-17T14:13:38Z" hostname="08e111eaf68d" tests="29" skipped="0" failures="0" errors="2" time="21.975">
-    <testcase time="0.0330000000000004" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.0299999999999998" classname="listings" name="Column_labels_are_the_same">
+  <testsuite name="listings" timestamp="2023-07-17T14:17:59Z" hostname="58e1c4062c74" tests="29" skipped="0" failures="0" errors="2" time="30.993">
+    <testcase time="0.0359999999999996" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.0350000000000001" classname="listings" name="Column_labels_are_the_same">
       <error type="error" message="Error in `(function (..., deparse.level = 1)  ('test-listings.R:8:3')">Error in `(function (..., deparse.level = 1) 
 .Internal(rbind(deparse.level, ...)))(structure(c("center", "center", 
 "center", "center", "center", "center", "center", "center", "center"
@@ -51,23 +51,23 @@ Backtrace:
  7.           ├─base::do.call(rbind, exprows)
  8.           └─base (local) `&lt;fn&gt;`(...)</error>
     </testcase>
-    <testcase time="0.052" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0579999999999998" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00100000000000033" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00099999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00099999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00099999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00200000000000022" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00099999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00099999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00100000000000033" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.000999999999999446" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00100000000000033" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00200000000000067" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.000999999999999446" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0120000000000005" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00999999999999979" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.0129999999999999" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00999999999999979" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00900000000000034" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.0169999999999999" classname="listings" name="Content_of_listings_supports_newlines">
+    <testcase time="0.00100000000000033" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0219999999999994" classname="listings" name="Content_of_listings_supports_newlines">
       <error type="error" message="Error in `matrix(unlist(lapply(vec, rep, times = len)), nrow = len)`: 'data' must be of a vector type, was 'NULL' ('test-listings.R:107:3')">Error in `matrix(unlist(lapply(vec, rep, times = len)), nrow = len)`: 'data' must be of a vector type, was 'NULL'
 Backtrace:
      ▆
@@ -82,41 +82,41 @@ Backtrace:
   9.               └─formatters (local) expfun(rw, len = leni, ...)
  10.                 └─base::matrix(unlist(lapply(vec, rep, times = len)), nrow = len)</error>
     </testcase>
-    <testcase time="0.0420000000000003" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
-    <testcase time="0.0299999999999998" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0180000000000002" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0179999999999998" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0169999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0110000000000001" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.00599999999999978" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="21.595" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0180000000000007" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
-    <testcase time="0.027000000000001" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.0440000000000005" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
+    <testcase time="0.0359999999999996" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0209999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0230000000000006" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0249999999999995" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00999999999999979" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00700000000000056" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="30.545" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0249999999999986" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.0379999999999967" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
   </testsuite>
-  <testsuite name="paginate_listing" timestamp="2023-07-17T14:14:00Z" hostname="08e111eaf68d" tests="24" skipped="0" failures="0" errors="1" time="1.961">
-    <testcase time="0.101999999999997" classname="paginate_listing" name="pagination_works_vertically"/>
-    <testcase time="0.0570000000000022" classname="paginate_listing" name="pagination_works_vertically"/>
-    <testcase time="0.00199999999999889" classname="paginate_listing" name="pagination_works_vertically"/>
-    <testcase time="0.0180000000000007" classname="paginate_listing" name="pagination_works_vertically"/>
-    <testcase time="0.190000000000001" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.000999999999997669" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00200000000000244" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.0990000000000002" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.000999999999997669" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00199999999999889" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00100000000000122" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.0530000000000008" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
-    <testcase time="0.00100000000000122" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+  <testsuite name="paginate_listing" timestamp="2023-07-17T14:18:30Z" hostname="58e1c4062c74" tests="24" skipped="0" failures="0" errors="1" time="2.728">
+    <testcase time="0.134" classname="paginate_listing" name="pagination_works_vertically"/>
+    <testcase time="0.0740000000000052" classname="paginate_listing" name="pagination_works_vertically"/>
+    <testcase time="0.00900000000000034" classname="paginate_listing" name="pagination_works_vertically"/>
+    <testcase time="0.0139999999999958" classname="paginate_listing" name="pagination_works_vertically"/>
+    <testcase time="0.231999999999999" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00100000000000477" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00199999999999534" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.125" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00100000000000477" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00199999999999534" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00100000000000477" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.0699999999999932" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.00200000000000244" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
     <testcase time="0.000999999999997669" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
-    <testcase time="0.0650000000000013" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
-    <testcase time="0.00199999999999889" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
-    <testcase time="0.198" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
-    <testcase time="0.219999999999999" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
-    <testcase time="0.194000000000003" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
-    <testcase time="0.225999999999999" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
-    <testcase time="0.210000000000001" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
-    <testcase time="0.224" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
-    <testcase time="0.0629999999999988" classname="paginate_listing" name="pagination_works_with_col_wrapping">
+    <testcase time="0.0870000000000033" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
+    <testcase time="0.00200000000000244" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
+    <testcase time="0.277999999999999" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
+    <testcase time="0.314" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.286999999999999" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.322000000000003" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
+    <testcase time="0.305" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
+    <testcase time="0.338999999999999" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
+    <testcase time="0.0889999999999986" classname="paginate_listing" name="pagination_works_with_col_wrapping">
       <error type="error" message="Error in `matrix(unlist(lapply(vec, rep, times = len)), nrow = len)`: 'data' must be of a vector type, was 'NULL' ('test-paginate_listing.R:199:3')">Error in `matrix(unlist(lapply(vec, rep, times = len)), nrow = len)`: 'data' must be of a vector type, was 'NULL'
 Backtrace:
      ▆
@@ -138,10 +138,10 @@ Backtrace:
  16.               └─formatters (local) expfun(rw, len = leni, ...)
  17.                 └─base::matrix(unlist(lapply(vec, rep, times = len)), nrow = len)</error>
     </testcase>
-    <testcase time="0.0289999999999999" classname="paginate_listing" name="defunct_is_defunct"/>
+    <testcase time="0.036999999999999" classname="paginate_listing" name="defunct_is_defunct"/>
   </testsuite>
-  <testsuite name="print" timestamp="2023-07-17T14:14:02Z" hostname="08e111eaf68d" tests="6" skipped="0" failures="0" errors="3" time="0.244">
-    <testcase time="0.0590000000000011" classname="print" name="Listing_print_correctly">
+  <testsuite name="print" timestamp="2023-07-17T14:18:32Z" hostname="58e1c4062c74" tests="6" skipped="0" failures="0" errors="3" time="0.312">
+    <testcase time="0.0730000000000004" classname="print" name="Listing_print_correctly">
       <error type="error" message="Error in `h(simpleError(msg, call))`: error in evaluating the argument 'x' in selecting a method for function 'toString': number of columns of matrices must match (see arg 2) ('test-print.R:5:3')">Error in `h(simpleError(msg, call))`: error in evaluating the argument 'x' in selecting a method for function 'toString': number of columns of matrices must match (see arg 2)
 Backtrace:
      ▆
@@ -158,7 +158,7 @@ Backtrace:
  11. └─base::.handleSimpleError(...)
  12.   └─base (local) h(simpleError(msg, call))</error>
     </testcase>
-    <testcase time="0.0689999999999991" classname="print" name="Listing_print_correctly_with_different_widths">
+    <testcase time="0.0870000000000033" classname="print" name="Listing_print_correctly_with_different_widths">
       <error type="error" message="Error in `h(simpleError(msg, call))`: error in evaluating the argument 'x' in selecting a method for function 'toString': number of columns of matrices must match (see arg 2) ('test-print.R:30:3')">Error in `h(simpleError(msg, call))`: error in evaluating the argument 'x' in selecting a method for function 'toString': number of columns of matrices must match (see arg 2)
 Backtrace:
      ▆
@@ -175,10 +175,10 @@ Backtrace:
  11. └─base::.handleSimpleError(...)
  12.   └─base (local) h(simpleError(msg, call))</error>
     </testcase>
-    <testcase time="0.0509999999999984" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
-    <testcase time="0.00600000000000023" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
-    <testcase time="0.00700000000000145" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
-    <testcase time="0.0519999999999996" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified">
+    <testcase time="0.0670000000000002" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
+    <testcase time="0.0069999999999979" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
+    <testcase time="0.00999999999999801" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
+    <testcase time="0.0679999999999978" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified">
       <error type="error" message="Error in `h(simpleError(msg, call))`: error in evaluating the argument 'x' in selecting a method for function 'toString': number of columns of matrices must match (see arg 2) ('test-print.R:144:3')">Error in `h(simpleError(msg, call))`: error in evaluating the argument 'x' in selecting a method for function 'toString': number of columns of matrices must match (see arg 2)
 Backtrace:
      ▆
