@@ -173,7 +173,8 @@ as_listing <- function(df,
   # set col format configs
   df[cols] <- lapply(cols, function(col) {
     col_class <- tail(class(df[[col]]), 1)
-    col_fmt_class <- if (!col_class %in% names(default_formatting) && is.numeric(df[[col]])) "numeric" else col_class
+    col_fmt_class <- if (!col_class %in% names(default_formatting) &&
+                         is.numeric(df[[col]])) "numeric" else col_class
     col_fmt <- if (col %in% names(col_formatting)) {
       col_formatting[[col]]
     } else if (col_fmt_class %in% names(default_formatting)) {
@@ -185,9 +186,10 @@ as_listing <- function(df,
       }
       default_formatting[["all"]]
     }
-    obj_format(df[[col]]) <- slot(col_fmt, "format")
-    obj_na_str(df[[col]]) <- slot(col_fmt, "format_na_str")
-    obj_align(df[[col]]) <- slot(col_fmt, "align")
+    # ANY attr <- fmt_config slot
+    obj_format(df[[col]]) <- obj_format(col_fmt)
+    obj_na_str(df[[col]]) <- if(is.null(obj_na_str(col_fmt))) "NA" else obj_na_str(col_fmt)
+    obj_align(df[[col]]) <- if (is.null(obj_align(col_fmt))) "left" else obj_align(col_fmt)
     df[[col]]
   })
 
@@ -375,7 +377,7 @@ add_listing_dispcol <- function(df, new) {
 #'   display during rendering.
 #'
 #' @export
-add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "NA", align = "center") {
+add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "NA", align = "left") {
   if (!is.null(fun)) {
     vec <- fun(df)
   } else if (name %in% names(df)) {
