@@ -208,7 +208,7 @@ testthat::test_that("column inclusion and ordering stuff", {
 
   ## no-keycols is supported #73
   lsting3 <- as_listing(
-    df = ex_adae,
+    df = ex_adae[1:30, 1:5],
     key_cols = NULL
   )
   testthat::expect_silent({
