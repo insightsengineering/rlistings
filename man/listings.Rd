@@ -43,7 +43,7 @@ add_listing_col(
   fun = NULL,
   format = NULL,
   na_str = "NA",
-  align = "center"
+  align = "left"
 )
 }
 \arguments{
