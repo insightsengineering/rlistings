@@ -390,7 +390,12 @@ add_listing_dispcol <- function(df, new) {
 #'   display during rendering.
 #'
 #' @export
-add_listing_col <- function(df, name, fun = NULL, format = NULL, na_str = "NA", align = "left") {
+add_listing_col <- function(df,
+                            name,
+                            fun = NULL,
+                            format = NULL,
+                            na_str = "NA",
+                            align = "left") {
   if (!is.null(fun)) {
     vec <- fun(df)
   } else if (name %in% names(df)) {
