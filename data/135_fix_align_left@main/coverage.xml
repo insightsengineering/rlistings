@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "https://raw.githubusercontent.com/cobertura/cobertura/master/cobertura/src/site/htdocs/xml/coverage-04.dtd">
-<coverage line-rate="0.885135135135135" branch-rate="0" lines-covered="262" lines-valid="296" branches-covered="0" branches-valid="0" complexity="0" version="3.6.2" timestamp="2023-07-17 18:06:12.029907">
+<coverage line-rate="0.885135135135135" branch-rate="0" lines-covered="262" lines-valid="296" branches-covered="0" branches-valid="0" complexity="0" version="3.6.2" timestamp="2023-07-18 15:09:38.199442">
   <sources>
     <source>/__w/rlistings/rlistings/rlistings</source>
   </sources>
@@ -511,22 +511,22 @@
             </method>
             <method name="add_listing_col" signature="" line-rate="0.75" branch-rate="0" complexity="0">
               <lines>
-                <line number="394" hits="19" branch="false"/>
-                <line number="395" hits="1" branch="false"/>
-                <line number="396" hits="18" branch="false"/>
-                <line number="397" hits="18" branch="false"/>
-                <line number="399" hits="0" branch="false"/>
-                <line number="400" hits="0" branch="false"/>
-                <line number="401" hits="0" branch="false"/>
-                <line number="402" hits="0" branch="false"/>
-                <line number="405" hits="19" branch="false"/>
-                <line number="406" hits="7" branch="false"/>
-                <line number="407" hits="7" branch="false"/>
+                <line number="399" hits="19" branch="false"/>
+                <line number="400" hits="1" branch="false"/>
+                <line number="401" hits="18" branch="false"/>
+                <line number="402" hits="18" branch="false"/>
+                <line number="404" hits="0" branch="false"/>
+                <line number="405" hits="0" branch="false"/>
+                <line number="406" hits="0" branch="false"/>
+                <line number="407" hits="0" branch="false"/>
                 <line number="410" hits="19" branch="false"/>
-                <line number="411" hits="19" branch="false"/>
-                <line number="414" hits="19" branch="false"/>
+                <line number="411" hits="7" branch="false"/>
+                <line number="412" hits="7" branch="false"/>
                 <line number="415" hits="19" branch="false"/>
                 <line number="416" hits="19" branch="false"/>
+                <line number="419" hits="19" branch="false"/>
+                <line number="420" hits="19" branch="false"/>
+                <line number="421" hits="19" branch="false"/>
               </lines>
             </method>
           </methods>
@@ -671,22 +671,22 @@
             <line number="371" hits="0" branch="false"/>
             <line number="373" hits="123" branch="false"/>
             <line number="374" hits="123" branch="false"/>
-            <line number="394" hits="19" branch="false"/>
-            <line number="395" hits="1" branch="false"/>
-            <line number="396" hits="18" branch="false"/>
-            <line number="397" hits="18" branch="false"/>
-            <line number="399" hits="0" branch="false"/>
-            <line number="400" hits="0" branch="false"/>
-            <line number="401" hits="0" branch="false"/>
-            <line number="402" hits="0" branch="false"/>
-            <line number="405" hits="19" branch="false"/>
-            <line number="406" hits="7" branch="false"/>
-            <line number="407" hits="7" branch="false"/>
+            <line number="399" hits="19" branch="false"/>
+            <line number="400" hits="1" branch="false"/>
+            <line number="401" hits="18" branch="false"/>
+            <line number="402" hits="18" branch="false"/>
+            <line number="404" hits="0" branch="false"/>
+            <line number="405" hits="0" branch="false"/>
+            <line number="406" hits="0" branch="false"/>
+            <line number="407" hits="0" branch="false"/>
             <line number="410" hits="19" branch="false"/>
-            <line number="411" hits="19" branch="false"/>
-            <line number="414" hits="19" branch="false"/>
+            <line number="411" hits="7" branch="false"/>
+            <line number="412" hits="7" branch="false"/>
             <line number="415" hits="19" branch="false"/>
             <line number="416" hits="19" branch="false"/>
+            <line number="419" hits="19" branch="false"/>
+            <line number="420" hits="19" branch="false"/>
+            <line number="421" hits="19" branch="false"/>
           </lines>
         </class>
       </classes>
