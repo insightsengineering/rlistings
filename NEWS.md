@@ -8,6 +8,7 @@
  * Added new argument `unique_rows` to `as_listing` to remove duplicate rows from listing.
  * Default alignment is now `left` across all types. Reinstate `NA` as default.
  * Introduced `testthat` edition 3.
+ * Specify minimal version of dependent packages.
 
 ## rlistings 0.2.2
  * Moved `export_as_txt` to `formatters`. Added to reexports.
