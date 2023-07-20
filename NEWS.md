@@ -1,4 +1,4 @@
-## rlistings 0.2.2.9004
+## rlistings 0.2.3
  * Added new arguments `default_formatting` and `col_formatting` to `as_listing` to specify column format configurations.
  * Added new argument `unique_rows` to `as_listing` to remove duplicate rows from listing.
  * Default alignment is now `left` across all types. Reinstate `NA` as default.
