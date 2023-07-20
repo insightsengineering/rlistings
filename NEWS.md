@@ -1,3 +1,5 @@
+## rlistings 0.2.3.9000
+
 ## rlistings 0.2.3
  * Added new arguments `default_formatting` and `col_formatting` to `as_listing` to specify column format configurations.
  * Added new argument `unique_rows` to `as_listing` to remove duplicate rows from listing.
