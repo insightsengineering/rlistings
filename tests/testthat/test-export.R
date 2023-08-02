@@ -17,6 +17,6 @@ testthat::test_that("Listing print correctly, with paginate", {
   main_title(lsting) <- "this is some title"
   main_footer(lsting) <- "this is some footer"
   testthat::expect_silent({
-    export_as_txt(lsting, file = NULL, paginate = TRUE)
+    export_as_txt(lsting, file = NULL, paginate = TRUE, rep_cols = length(get_keycols(lsting)))
   })
 })

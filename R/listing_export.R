@@ -10,6 +10,6 @@
 #'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 #' main_title(lsting) <- "this is some title"
 #' main_footer(lsting) <- "this is some footer"
-#' cat(export_as_txt(lsting, file = NULL, paginate = TRUE))
+#' cat(export_as_txt(lsting, file = NULL, paginate = TRUE, rep_cols = length(get_keycols(lsting))))
 #'
 formatters::export_as_txt
