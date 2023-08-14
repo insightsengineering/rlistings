@@ -22,7 +22,7 @@ testthat::test_that("key columns repeat with export_as_txt", {
   listing_exp <- suppressMessages(export_as_txt(lsting, lpp = 4, verbose = TRUE,
                                                 rep_cols = length(get_keycols(lsting))))
 
-  testthat::expect_snapshot(listing_exp)
+  testthat::expect_snapshot(cat(listing_exp))
 })
 
 testthat::test_that("Listing print correctly, with paginate", {

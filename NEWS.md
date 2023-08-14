@@ -1,5 +1,5 @@
 ## rlistings 0.2.3.9000
- * Requires `formatters` version ____ or greater for export_as_txt to carry over key columns during pagination.
+ * updated export tests and snapshots to define `rep_cols` argument in`export_as_txt`.
  
 ## rlistings 0.2.3
  * Added new arguments `default_formatting` and `col_formatting` to `as_listing` to specify column format configurations.
