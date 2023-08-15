@@ -1,5 +1,5 @@
 ## rlistings 0.2.3.9000
- * updated export tests and snapshots to define `rep_cols` argument in`export_as_txt`.
+ * add `num_rep_cols` method for listings. Resolves error with key column repetition during pagination.
  
 ## rlistings 0.2.3
  * Added new arguments `default_formatting` and `col_formatting` to `as_listing` to specify column format configurations.

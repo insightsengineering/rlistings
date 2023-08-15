@@ -13,6 +13,7 @@
 \alias{subtitles<-,listing_df-method}
 \alias{main_footer<-,listing_df-method}
 \alias{prov_footer<-,listing_df-method}
+\alias{num_rep_cols,listing_df-method}
 \title{Methods for \code{listing_df} objects}
 \usage{
 \method{print}{listing_df}(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, ...)
@@ -36,6 +37,8 @@
 \S4method{main_footer}{listing_df}(obj) <- value
 
 \S4method{prov_footer}{listing_df}(obj) <- value
+
+\S4method{num_rep_cols}{listing_df}(obj)
 }
 \arguments{
 \item{x}{listing_df. The listing.}

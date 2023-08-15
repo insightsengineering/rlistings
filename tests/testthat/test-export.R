@@ -19,8 +19,7 @@ testthat::test_that("key columns repeat with export_as_txt", {
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
-  listing_exp <- suppressMessages(export_as_txt(lsting, lpp = 4, verbose = TRUE, page_break = "\n",
-                                                rep_cols = length(get_keycols(lsting))))
+  listing_exp <- suppressMessages(export_as_txt(lsting, lpp = 4, verbose = TRUE, page_break = "\n"))
 
   testthat::expect_snapshot(cat(listing_exp))
 })
@@ -35,8 +34,7 @@ testthat::test_that("key columns repeat with pagination with export_as_txt", {
   )
 
   listing <- suppressMessages(export_as_txt(tbl, lpp = 20, paginate = TRUE,
-                                            page_break = "\n",
-                                            rep_cols = length(get_keycols(tbl))))
+                                            page_break = "\n"))
 
 
   testthat::expect_snapshot(cat(listing))
