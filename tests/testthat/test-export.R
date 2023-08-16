@@ -33,7 +33,7 @@ testthat::test_that("key columns repeat with pagination with export_as_txt", {
     disp_cols = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 
-  listing <- suppressMessages(export_as_txt(tbl, lpp = 20, paginate = TRUE,
+  listing <- suppressMessages(export_as_txt(head(tbl), cpp = 50, paginate = TRUE,
                                             page_break = "\n"))
 
 
