@@ -335,3 +335,12 @@ setMethod(
     obj
   }
 )
+
+#' @rdname listing_methods
+#' @export
+setMethod(
+  "num_rep_cols", "listing_df",
+  function(obj) {
+    length(get_keycols(obj))
+  }
+)
