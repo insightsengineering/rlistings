@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "https://raw.githubusercontent.com/cobertura/cobertura/master/cobertura/src/site/htdocs/xml/coverage-04.dtd">
-<coverage line-rate="0.882154882154882" branch-rate="0" lines-covered="262" lines-valid="297" branches-covered="0" branches-valid="0" complexity="0" version="3.6.2" timestamp="2023-08-16 12:56:24.948195">
+<coverage line-rate="0.882154882154882" branch-rate="0" lines-covered="262" lines-valid="297" branches-covered="0" branches-valid="0" complexity="0" version="3.6.2" timestamp="2023-08-17 15:17:28.247034">
   <sources>
     <source>/__w/rlistings/rlistings/rlistings</source>
   </sources>
@@ -179,7 +179,7 @@
                 <line number="333" hits="32" branch="false"/>
                 <line number="334" hits="31" branch="false"/>
                 <line number="335" hits="31" branch="false"/>
-                <line number="344" hits="4" branch="false"/>
+                <line number="344" hits="3" branch="false"/>
               </lines>
             </method>
             <method name="basic_run_lens" signature="" line-rate="0.833333333333333" branch-rate="0" complexity="0">
@@ -334,7 +334,7 @@
             <line number="333" hits="32" branch="false"/>
             <line number="334" hits="31" branch="false"/>
             <line number="335" hits="31" branch="false"/>
-            <line number="344" hits="4" branch="false"/>
+            <line number="344" hits="3" branch="false"/>
           </lines>
         </class>
         <class name="rlistings.R" filename="R/rlistings.R" line-rate="0.871794871794872" branch-rate="0" complexity="0">
