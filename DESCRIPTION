@@ -1,6 +1,6 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Version: 0.2.3.9003
+Version: 0.2.4
 Date: 2023-08-21
 Authors@R: c(
     person("Gabriel", "Becker", , "gabembecker@gmail.com", role = c("aut", "cre")),
@@ -11,6 +11,7 @@ Authors@R: c(
     person("Abinaya", "Yogasekaram", , "abinaya.yogasekaram@contractors.roche.com", role = "ctb"),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
+Maintainer: Joe Zhu <joe.zhu@roche.com>
 Description: Listings are often part of the submission of clinical trial
     data in regulatory settings.  We provide a framework for the specific
     formatting features often used when displaying large datasets in that
