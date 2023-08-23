@@ -20,7 +20,7 @@ License: Apache License 2.0
 URL: https://github.com/insightsengineering/rlistings
 BugReports: https://github.com/insightsengineering/rlistings/issues
 Depends: 
-    formatters (>= 0.5.1.9003),
+    formatters (>= 0.5.2),
     methods,
     tibble
 Imports:
