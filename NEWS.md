@@ -1,4 +1,4 @@
-## rlistings 0.2.3.9003
+## rlistings 0.2.3.9004
  * add `num_rep_cols` method for listings. Resolves error with key column repetition during pagination.
  
 ## rlistings 0.2.3
