@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   rlistings: rlistings.html
-last_built: 2023-08-17T15:23Z
+last_built: 2023-08-27T14:43Z
 urls:
   reference: https://insightsengineering.github.io/rlistings/reference
   article: https://insightsengineering.github.io/rlistings/articles
