@@ -1,5 +1,6 @@
-## rlistings 0.2.3.9004
- * add `num_rep_cols` method for listings. Resolves error with key column repetition during pagination.
+## rlistings 0.2.4
+ * Added `num_rep_cols` method for listings. Resolves error with key column repetition during pagination .
+ * Fixed a bug when exporting a degenerative list, which is a data frame of a single row and a single column.
  
 ## rlistings 0.2.3
  * Added new arguments `default_formatting` and `col_formatting` to `as_listing` to specify column format configurations.
