@@ -1,4 +1,5 @@
 ## rlistings 0.2.4.9001
+ * Fixed bug in `as_listing` preventing custom formatting from being applied to key columns.
  * Updated `as_listing` to allow `NA` values in key columns.
 
 ## rlistings 0.2.4

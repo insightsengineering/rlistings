@@ -248,6 +248,19 @@ testthat::test_that("unique_rows removes duplicate rows from listing", {
   expect_equal(expected_strings, result_strings)
 })
 
+testthat::test_that("as_listing custom format works in key cols", {
+  lsting <- as_listing(
+    ex_adsl[1:20,],
+    key_cols = c("AGE", "BMRKR1"),
+    disp_cols = c("SEX", "ARM"),
+    default_formatting = list(all = fmt_config(), numeric = fmt_config(format = "xx.xx"))
+  )
+  lsting
+
+  testthat::expect_identical(matrix_form(lsting)$strings[2, 1:2], c(AGE = "24.00", BMRKR1 = "2.86"))
+  testthat::expect_identical(matrix_form(lsting)$strings[3, 1:2], c(AGE = "", BMRKR1 = "4.57"))
+})
+
 testthat::test_that("as_listing works with NA values in key cols", {
   mtcars$gear[1:5] <- NA
   mtcars$carb[6:10] <- NA
