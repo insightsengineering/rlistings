@@ -250,7 +250,7 @@ testthat::test_that("unique_rows removes duplicate rows from listing", {
 
 testthat::test_that("as_listing custom format works in key cols", {
   lsting <- as_listing(
-    ex_adsl[1:20,],
+    ex_adsl[1:10, ],
     key_cols = c("AGE", "BMRKR1"),
     disp_cols = c("SEX", "ARM"),
     default_formatting = list(all = fmt_config(), numeric = fmt_config(format = "xx.xx"))
