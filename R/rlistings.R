@@ -203,6 +203,10 @@ as_listing <- function(df,
     obj_format(df[[col]]) <- obj_format(col_fmt)
     obj_na_str(df[[col]]) <- if (is.null(obj_na_str(col_fmt))) "NA" else obj_na_str(col_fmt)
     obj_align(df[[col]]) <- if (is.null(obj_align(col_fmt))) "left" else obj_align(col_fmt)
+
+    if (is(df[[col]], "listing_keycol") && any(is.na(df[[col]]))) {
+      df[[col]][is.na(df[[col]])] <- obj_na_str(df[[col]])
+    }
     df[[col]]
   })
 

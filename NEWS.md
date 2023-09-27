@@ -1,4 +1,5 @@
 ## rlistings 0.2.4.9001
+ * Updated `as_listing` to allow `NA` values in key columns.
 
 ## rlistings 0.2.4
  * Added `num_rep_cols` method for listings. Resolves error with key column repetition during pagination .

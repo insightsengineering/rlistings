@@ -247,3 +247,34 @@ testthat::test_that("unique_rows removes duplicate rows from listing", {
   )
   expect_equal(expected_strings, result_strings)
 })
+
+testthat::test_that("as_listing works with NA values in key cols", {
+  mtcars$gear[1:5] <- NA
+  mtcars$carb[6:10] <- NA
+
+  lsting <- as_listing(
+    mtcars,
+    key_cols = c("gear", "carb"),
+    disp_cols = "qsec"
+  )
+
+  testthat::expect_identical(
+    matrix_form(lsting)$strings[29:33, ],
+    matrix(
+      c("NA", "1", "18.61", "", "", "19.44", "", "2", "17.02", "", "4", "16.46", "", "", "17.02"),
+      ncol = 3,
+      byrow = TRUE,
+      dimnames = list(c(), c("gear", "carb", "qsec"))
+    )
+  )
+
+  lsting <- as_listing(
+    mtcars,
+    key_cols = c("gear", "carb"),
+    disp_cols = "qsec",
+    default_formatting = list(all = fmt_config(), numeric = fmt_config(na_str = "<No data>"))
+  )
+
+  testthat::expect_identical(matrix_form(lsting)$strings[29, 1], c(gear = "<No data>"))
+  testthat::expect_identical(matrix_form(lsting)$strings[13, 2], c(carb = "<No data>"))
+})
