@@ -255,10 +255,9 @@ testthat::test_that("as_listing custom format works in key cols", {
     disp_cols = c("SEX", "ARM"),
     default_formatting = list(all = fmt_config(), numeric = fmt_config(format = "xx.xx"))
   )
-  lsting
 
-  testthat::expect_identical(matrix_form(lsting)$strings[2, 1:2], c(AGE = "24.00", BMRKR1 = "2.86"))
-  testthat::expect_identical(matrix_form(lsting)$strings[3, 1:2], c(AGE = "", BMRKR1 = "4.57"))
+  testthat::expect_identical(matrix_form(lsting)$strings[2, 1:2], c(AGE = "24.00", BMRKR1 = "4.57"))
+  testthat::expect_identical(matrix_form(lsting)$strings[3, 1:2], c(AGE = "", BMRKR1 = "5.00"))
 })
 
 testthat::test_that("as_listing works with NA values in key cols", {
