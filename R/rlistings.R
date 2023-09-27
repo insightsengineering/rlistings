@@ -156,8 +156,7 @@ as_listing <- function(df,
     stop("All format configurations supplied in `default_formatting`",
          " must be of type `fmt_config`.")
   }
-  if (!(is.null(col_formatting) ||
-        all(sapply(col_formatting, is, class2 = "fmt_config")))) {
+  if (!(is.null(col_formatting) || all(sapply(col_formatting, is, class2 = "fmt_config")))) {
     stop("All format configurations supplied in `col_formatting`",
          " must be of type `fmt_config`.")
   }
@@ -185,8 +184,7 @@ as_listing <- function(df,
   # set col format configs
   df[cols] <- lapply(cols, function(col) {
     col_class <- tail(class(df[[col]]), 1)
-    col_fmt_class <- if (!col_class %in% names(default_formatting) &&
-                         is.numeric(df[[col]])) "numeric" else col_class
+    col_fmt_class <- if (!col_class %in% names(default_formatting) && is.numeric(df[[col]])) "numeric" else col_class
     col_fmt <- if (col %in% names(col_formatting)) {
       col_formatting[[col]]
     } else if (col_fmt_class %in% names(default_formatting)) {
