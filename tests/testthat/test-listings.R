@@ -296,5 +296,5 @@ testthat::test_that("as_listing works with NA values in key cols", {
     mtcars,
     key_cols = c("gear", "carb"),
     disp_cols = "qsec"
-  ), "rows containing only NA"))
+  ), "rows that only contain NA"))
 })
