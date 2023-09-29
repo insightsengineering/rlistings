@@ -290,7 +290,7 @@ testthat::test_that("as_listing works with NA values in key cols", {
   testthat::expect_identical(matrix_form(lsting)$strings[29, 1], c(gear = "<No data>"))
   testthat::expect_identical(matrix_form(lsting)$strings[13, 2], c(carb = "<No data>"))
 
-  mtcars[33,] <- mtcars[32,]
+  mtcars[33, ] <- mtcars[32, ]
   mtcars[33, c(7, 10:11)] <- NA
   suppressMessages(testthat::expect_message(lsting <- as_listing(
     mtcars,
