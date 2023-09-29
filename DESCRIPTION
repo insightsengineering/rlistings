@@ -1,6 +1,6 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Version: 0.2.4.9003
+Version: 0.2.5
 Date: 2023-09-29
 Authors@R: c(
     person("Gabriel", "Becker", , "gabembecker@gmail.com", role = "aut",
@@ -20,7 +20,7 @@ License: Apache License 2.0
 URL: https://github.com/insightsengineering/rlistings
 BugReports: https://github.com/insightsengineering/rlistings/issues
 Depends:
-    formatters (>= 0.5.2),
+    formatters (>= 0.5.3),
     methods,
     tibble (>= 2.0.0)
 Imports:
