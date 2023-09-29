@@ -156,8 +156,7 @@ as_listing <- function(df,
     stop("All format configurations supplied in `default_formatting`",
          " must be of type `fmt_config`.")
   }
-  if (!(is.null(col_formatting) ||
-        all(sapply(col_formatting, is, class2 = "fmt_config")))) {
+  if (!(is.null(col_formatting) || all(sapply(col_formatting, is, class2 = "fmt_config")))) {
     stop("All format configurations supplied in `col_formatting`",
          " must be of type `fmt_config`.")
   }
@@ -182,11 +181,16 @@ as_listing <- function(df,
   ## key cols must be leftmost cols
   cols <- c(key_cols, setdiff(cols, key_cols))
 
+  row_all_na <- apply(df[cols], 1, function(x) all(is.na(x)))
+  if (any(row_all_na)) {
+    message("rows that only contain NA values have been trimmed")
+    df <- df[!row_all_na, ]
+  }
+
   # set col format configs
   df[cols] <- lapply(cols, function(col) {
     col_class <- tail(class(df[[col]]), 1)
-    col_fmt_class <- if (!col_class %in% names(default_formatting) &&
-                         is.numeric(df[[col]])) "numeric" else col_class
+    col_fmt_class <- if (!col_class %in% names(default_formatting) && is.numeric(df[[col]])) "numeric" else col_class
     col_fmt <- if (col %in% names(col_formatting)) {
       col_formatting[[col]]
     } else if (col_fmt_class %in% names(default_formatting)) {
@@ -285,6 +289,7 @@ setMethod(
     for (i in seq_along(keycols)) {
       kcol <- keycols[i]
       kcolvec <- listing[[kcol]]
+      kcolvec <- vapply(kcolvec, format_value, "", format = obj_format(kcolvec), na_str = obj_na_str(kcolvec))
       curkey <- paste0(curkey, kcolvec)
       disp <- c(TRUE, tail(curkey, -1) != head(curkey, -1))
       bodymat[disp, kcol] <- kcolvec[disp]

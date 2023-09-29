@@ -247,3 +247,54 @@ testthat::test_that("unique_rows removes duplicate rows from listing", {
   )
   expect_equal(expected_strings, result_strings)
 })
+
+testthat::test_that("as_listing custom format works in key cols", {
+  lsting <- as_listing(
+    ex_adsl[1:10, ],
+    key_cols = c("AGE", "BMRKR1"),
+    disp_cols = c("SEX", "ARM"),
+    default_formatting = list(all = fmt_config(), numeric = fmt_config(format = "xx.xx"))
+  )
+
+  testthat::expect_identical(matrix_form(lsting)$strings[2, 1:2], c(AGE = "24.00", BMRKR1 = "4.57"))
+  testthat::expect_identical(matrix_form(lsting)$strings[3, 1:2], c(AGE = "", BMRKR1 = "5.00"))
+})
+
+testthat::test_that("as_listing works with NA values in key cols", {
+  mtcars$gear[1:5] <- NA
+  mtcars$carb[6:10] <- NA
+
+  lsting <- as_listing(
+    mtcars,
+    key_cols = c("gear", "carb"),
+    disp_cols = "qsec"
+  )
+
+  testthat::expect_identical(
+    matrix_form(lsting)$strings[29:33, ],
+    matrix(
+      c("NA", "1", "18.61", "", "", "19.44", "", "2", "17.02", "", "4", "16.46", "", "", "17.02"),
+      ncol = 3,
+      byrow = TRUE,
+      dimnames = list(c(), c("gear", "carb", "qsec"))
+    )
+  )
+
+  lsting <- as_listing(
+    mtcars,
+    key_cols = c("gear", "carb"),
+    disp_cols = "qsec",
+    default_formatting = list(all = fmt_config(), numeric = fmt_config(na_str = "<No data>"))
+  )
+
+  testthat::expect_identical(matrix_form(lsting)$strings[29, 1], c(gear = "<No data>"))
+  testthat::expect_identical(matrix_form(lsting)$strings[13, 2], c(carb = "<No data>"))
+
+  mtcars[33, ] <- mtcars[32, ]
+  mtcars[33, c(7, 10:11)] <- NA
+  suppressMessages(testthat::expect_message(lsting <- as_listing(
+    mtcars,
+    key_cols = c("gear", "carb"),
+    disp_cols = "qsec"
+  ), "rows that only contain NA"))
+})
