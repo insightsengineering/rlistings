@@ -1,6 +1,7 @@
 ## rlistings 0.2.4.9002
  * Fixed bug in `as_listing` preventing custom formatting from being applied to key columns.
- * Updated `as_listing` to allow `NA` values in key columns.
+ * Updated `matrix_form` to allow `NA` values in key columns.
+ * Updated `as_listing` to trim any rows containing only NA values and print an informative message.
 
 ## rlistings 0.2.4
  * Added `num_rep_cols` method for listings. Resolves error with key column repetition during pagination .
