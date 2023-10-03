@@ -1,4 +1,4 @@
-## rlistings 0.2.4.9003
+## rlistings 0.2.5
  * Fixed bug in `as_listing` preventing custom formatting from being applied to key columns.
  * Updated `matrix_form` to allow `NA` values in key columns.
  * Updated `as_listing` to trim any rows containing only NA values and print an informative message.
