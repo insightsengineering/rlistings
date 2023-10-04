@@ -13,7 +13,7 @@ testthat::test_that("export_as_txt works", {
                prov_footer = c(
                  "You can even add a subfooter", "Second element is place on a new line",
                  "Third string"
-              ))
+               ))
   )
   pages_listings <- export_as_txt(lsting, file = NULL, paginate = TRUE, lpp = 33, cpp = 550, min_siblings = 1)
   testthat::expect_snapshot(cat(pages_listings))
