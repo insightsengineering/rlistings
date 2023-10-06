@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="export" timestamp="2023-10-06T16:04:00Z" hostname="ae051a08d227" tests="6" skipped="2" failures="0" errors="1" time="1.03">
+    <testcase time="0.261" classname="export" name="Listing_print_correctly">
+      <error type="error" message="Error in `.local(x, ...)`: The sum of the expected nrows header and nrows of content table does not match the number of rows in the string matrix. To our knowledge, this is usually of a problem in solving newline characters (\n) in the header. Please contact the maintaner or file an issue. ('test-export.R:5:3')">Error in `.local(x, ...)`: The sum of the expected nrows header and nrows of content table does not match the number of rows in the string matrix. To our knowledge, this is usually of a problem in solving newline characters (\n) in the header. Please contact the maintaner or file an issue.
+Backtrace:
+     x
+  1. +-testthat::expect_silent(...) at test-export.R:5:2
+  2. | \-testthat:::quasi_capture(enquo(object), NULL, evaluate_promise)
+  3. |   +-testthat (local) .capture(...)
+  4. |   | +-withr::with_output_sink(...)
+  5. |   | | \-base::force(code)
+  6. |   | +-base::withCallingHandlers(...)
+  7. |   | \-base::withVisible(code)
+  8. |   \-rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+  9. \-formatters::export_as_txt(lsting, file = NULL) at test-export.R:6:4
+ 10.   \-base::vapply(...)
+ 11.     +-base (local) FUN(X[[i]], ...)
+ 12.     \-formatters (local) FUN(X[[i]], ...)
+ 13.       \-formatters (local) .local(x, ...)</error>
+    </testcase>
+    <testcase time="0.277" classname="export" name="key_columns_repeat_with_export_as_txt">
+      <skipped message="Reason: On CRAN ('test-export.R:24:3')"/>
+    </testcase>
+    <testcase time="0.154" classname="export" name="key_columns_repeat_with_pagination_with_export_as_txt">
+      <skipped message="Reason: On CRAN ('test-export.R:40:3')"/>
+    </testcase>
+    <testcase time="0.326" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.00800000000000001" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.004" classname="export" name="Listing_print_correctly_with_paginate"/>
+  </testsuite>
+  <testsuite name="listings" timestamp="2023-10-06T16:04:01Z" hostname="ae051a08d227" tests="37" skipped="0" failures="0" errors="0" time="0.704">
+    <testcase time="0.026" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.0179999999999998" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.004" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.0289999999999999" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0150000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.012" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0209999999999999" classname="listings" name="Content_of_listings_supports_newlines"/>
+    <testcase time="0.00700000000000012" classname="listings" name="Content_of_listings_supports_newlines"/>
+    <testcase time="0.0129999999999999" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
+    <testcase time="0.0470000000000002" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0190000000000001" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0709999999999997" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0590000000000002" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00599999999999978" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00600000000000023" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0659999999999998" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0289999999999999" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.0230000000000001" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.032" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
+    <testcase time="0.0230000000000001" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
+    <testcase time="0.0379999999999998" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0369999999999999" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.028" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0110000000000001" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+  </testsuite>
+  <testsuite name="paginate_listing" timestamp="2023-10-06T16:04:02Z" hostname="ae051a08d227" tests="23" skipped="1" failures="0" errors="0" time="2.241">
+    <testcase time="0.114" classname="paginate_listing" name="pagination_works_vertically">
+      <skipped message="Reason: On CRAN ('test-paginate_listing.R:15:3')"/>
+    </testcase>
+    <testcase time="0.106" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.004" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.004" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.103" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.004" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.004" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.004" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.0680000000000001" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.004" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.0089999999999999" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.077" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
+    <testcase time="0.00500000000000034" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
+    <testcase time="0.234" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
+    <testcase time="0.269" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.24" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.285" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
+    <testcase time="0.242999999999999" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
+    <testcase time="0.264" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
+    <testcase time="0.0819999999999999" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.100000000000001" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.00599999999999934" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.0120000000000005" classname="paginate_listing" name="defunct_is_defunct"/>
+  </testsuite>
+  <testsuite name="print" timestamp="2023-10-06T16:04:04Z" hostname="ae051a08d227" tests="4" skipped="0" failures="0" errors="4" time="0.176">
+    <testcase time="0.0380000000000003" classname="print" name="Listing_print_correctly">
+      <error type="error" message="Error in `.local(x, ...)`: The sum of the expected nrows header and nrows of content table does not match the number of rows in the string matrix. To our knowledge, this is usually of a problem in solving newline characters (\n) in the header. Please contact the maintaner or file an issue. ('test-print.R:5:3')">Error in `.local(x, ...)`: The sum of the expected nrows header and nrows of content table does not match the number of rows in the string matrix. To our knowledge, this is usually of a problem in solving newline characters (\n) in the header. Please contact the maintaner or file an issue.
+Backtrace:
+    x
+ 1. +-base::strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n") at test-print.R:5:2
+ 2. +-base::toString(matrix_form(lsting), hsep = "-")
+ 3. \-formatters::toString(matrix_form(lsting), hsep = "-")
+ 4.   \-formatters (local) .local(x, ...)</error>
+    </testcase>
+    <testcase time="0.0429999999999993" classname="print" name="Listing_print_correctly_with_different_widths">
+      <error type="error" message="Error in `.local(x, ...)`: The sum of the expected nrows header and nrows of content table does not match the number of rows in the string matrix. To our knowledge, this is usually of a problem in solving newline characters (\n) in the header. Please contact the maintaner or file an issue. ('test-print.R:14:3')">Error in `.local(x, ...)`: The sum of the expected nrows header and nrows of content table does not match the number of rows in the string matrix. To our knowledge, this is usually of a problem in solving newline characters (\n) in the header. Please contact the maintaner or file an issue.
+Backtrace:
+    x
+ 1. +-base::strsplit(...) at test-print.R:14:2
+ 2. +-base::toString(matrix_form(lsting), widths = c(7, 8, 9), hsep = "-")
+ 3. \-formatters::toString(...)
+ 4.   \-formatters (local) .local(x, ...)</error>
+    </testcase>
+    <testcase time="0.0470000000000006" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified">
+      <error type="error" message="Error in `.local(x, ...)`: The sum of the expected nrows header and nrows of content table does not match the number of rows in the string matrix. To our knowledge, this is usually of a problem in solving newline characters (\n) in the header. Please contact the maintaner or file an issue. ('test-print.R:32:3')">Error in `.local(x, ...)`: The sum of the expected nrows header and nrows of content table does not match the number of rows in the string matrix. To our knowledge, this is usually of a problem in solving newline characters (\n) in the header. Please contact the maintaner or file an issue.
+Backtrace:
+    x
+ 1. +-base::strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n") at test-print.R:32:2
+ 2. +-base::toString(matrix_form(lsting), hsep = "-")
+ 3. \-formatters::toString(matrix_form(lsting), hsep = "-")
+ 4.   \-formatters (local) .local(x, ...)</error>
+    </testcase>
+    <testcase time="0.048" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified">
+      <error type="error" message="Error in `.local(x, ...)`: The sum of the expected nrows header and nrows of content table does not match the number of rows in the string matrix. To our knowledge, this is usually of a problem in solving newline characters (\n) in the header. Please contact the maintaner or file an issue. ('test-print.R:73:3')">Error in `.local(x, ...)`: The sum of the expected nrows header and nrows of content table does not match the number of rows in the string matrix. To our knowledge, this is usually of a problem in solving newline characters (\n) in the header. Please contact the maintaner or file an issue.
+Backtrace:
+    x
+ 1. +-base::strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n") at test-print.R:73:2
+ 2. +-base::toString(matrix_form(lsting), hsep = "-")
+ 3. \-formatters::toString(matrix_form(lsting), hsep = "-")
+ 4.   \-formatters (local) .local(x, ...)</error>
+    </testcase>
+  </testsuite>
+</testsuites>
