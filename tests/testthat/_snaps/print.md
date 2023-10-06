@@ -21,32 +21,56 @@
 # Listing print correctly with different widths
 
     Code
-      res
+      cat(toString(matrix_form(lsting), widths = c(7, 8, 9), hsep = "-"))
     Output
-       [1] "          Descript            " "Unique      ion               "
-       [3] "Subject      Of               " "Identif   Planned    Continous"
-       [5] "  ier       Arm        Level  " "                     Biomarker"
-       [7] "                         1    " "------------------------------"
-       [9] "AB12345   B:         4.5749910" "   -      Placebo     1339464 "
-      [11] "CHN-1-                        " "id-307                        "
-      [13] "AB12345   B:         10.262734" "   -      Placebo     0069523 "
-      [15] "CHN-11-                       " "id-220                        "
-      [17] "AB12345   C: Combi   6.9067988" "   -      nation      141075  "
-      [19] "CHN-15-                       " "id-201                        "
-      [21] "AB12345   C: Combi   4.0554627" "   -      nation      7230382 "
-      [23] "CHN-15-                       " "id-262                        "
-      [25] "AB12345   A: Drug    14.424933" "   -      X           692778  "
-      [27] "CHN-3-                        " "id-128                        "
-      [29] "AB12345   B:         6.2067627" "   -      Placebo     167943  "
-      [31] "CHN-7-                        " "id-267                        "
-      [33] "AB12345   C: Combi   4.9972257" "   -      nation      3047567 "
-      [35] "NGA-11-                       " "id-173                        "
-      [37] "AB12345   C: Combi   2.8032395" "   -      nation      6920649 "
-      [39] "RUS-3-                        " "id-378                        "
-      [41] "AB12345   B:         2.8551641" "   -      Placebo     9937308 "
-      [43] "USA-1-                        " "id-261                        "
-      [45] "AB12345   A: Drug    0.4635604" "   -      X          41314472 "
-      [47] "USA-1-                        " " id-45                        "
+                Descript            
+      Unique      ion               
+      Subject      Of               
+      Identif   Planned    Continous
+        ier       Arm        Level  
+                           Biomarker
+                               1    
+      ------------------------------
+      AB12345   B:         4.5749910
+         -      Placebo     1339464 
+      CHN-1-                        
+      id-307                        
+      AB12345   B:         10.262734
+         -      Placebo     0069523 
+      CHN-11-                       
+      id-220                        
+      AB12345   C: Combi   6.9067988
+         -      nation      141075  
+      CHN-15-                       
+      id-201                        
+      AB12345   C: Combi   4.0554627
+         -      nation      7230382 
+      CHN-15-                       
+      id-262                        
+      AB12345   A: Drug    14.424933
+         -      X           692778  
+      CHN-3-                        
+      id-128                        
+      AB12345   B:         6.2067627
+         -      Placebo     167943  
+      CHN-7-                        
+      id-267                        
+      AB12345   C: Combi   4.9972257
+         -      nation      3047567 
+      NGA-11-                       
+      id-173                        
+      AB12345   C: Combi   2.8032395
+         -      nation      6920649 
+      RUS-3-                        
+      id-378                        
+      AB12345   B:         2.8551641
+         -      Placebo     9937308 
+      USA-1-                        
+      id-261                        
+      AB12345   A: Drug    0.4635604
+         -      X          41314472 
+      USA-1-                        
+       id-45                        
 
 # as_listing produces correct output when default_formatting is specified
 
