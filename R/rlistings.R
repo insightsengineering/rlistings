@@ -273,7 +273,6 @@ setMethod(
     atts <- attributes(obj)
     atts$names <- cols
     attributes(listing) <- atts
-
     keycols <- get_keycols(listing)
 
 
@@ -318,6 +317,7 @@ setMethod(
         byrow = TRUE
       )
     )
+
     MatrixPrintForm(
       strings = fullmat,
       spans = matrix(1,
