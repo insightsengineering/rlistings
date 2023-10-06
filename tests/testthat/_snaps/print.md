@@ -91,20 +91,20 @@
 ---
 
     Code
-      res2
+      cat(toString(matrix_form(lsting), hsep = "-"))
     Output
-       [1] "       Unique                                      "
-       [2] "       Subject                                     "
-       [3] "     Identifier         Continous Level Biomarker 1"
-       [4] "---------------------------------------------------"
-       [5] "AB12345-CHN-1-id-307                 5             "
-       [6] "AB12345-CHN-11-id-220               10             "
-       [7] "AB12345-CHN-15-id-201                7             "
-       [8] "AB12345-CHN-15-id-262                4             "
-       [9] "AB12345-CHN-3-id-128                14             "
-      [10] "AB12345-CHN-7-id-267                 6             "
-      [11] "AB12345-NGA-11-id-173                5             "
-      [12] "AB12345-RUS-3-id-378                 3             "
-      [13] "AB12345-USA-1-id-261                 3             "
-      [14] " AB12345-USA-1-id-45                 0             "
+             Unique                                      
+             Subject                                     
+           Identifier         Continous Level Biomarker 1
+      ---------------------------------------------------
+      AB12345-CHN-1-id-307                 5             
+      AB12345-CHN-11-id-220               10             
+      AB12345-CHN-15-id-201                7             
+      AB12345-CHN-15-id-262                4             
+      AB12345-CHN-3-id-128                14             
+      AB12345-CHN-7-id-267                 6             
+      AB12345-NGA-11-id-173                5             
+      AB12345-RUS-3-id-378                 3             
+      AB12345-USA-1-id-261                 3             
+       AB12345-USA-1-id-45                 0             
 

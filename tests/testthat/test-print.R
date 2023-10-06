@@ -85,8 +85,7 @@ testthat::test_that("as_listing produces correct output when col_formatting is s
     )
   )
 
-  res2 <- strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n")[[1]]
-  testthat::expect_snapshot(res2)
+  testthat::expect_snapshot(cat(toString(matrix_form(lsting), hsep = "-")))
 
   testthat::expect_error(
     {
