@@ -62,9 +62,6 @@ paginate_listing <- function(lsting,
   checkmate::assert_count(max_width, null.ok = TRUE)
   checkmate::assert_flag(verbose)
 
-
-
-
   indx <- paginate_indices(lsting,
                            page_type = page_type,
                            font_family = font_family,
@@ -81,7 +78,6 @@ paginate_listing <- function(lsting,
                            max_width = max_width,
                            rep_cols = length(get_keycols(lsting)),
                            verbose = verbose)
-
 
   vert_pags <- lapply(indx$pag_row_indices,
                       function(ii) lsting[ii, ])
