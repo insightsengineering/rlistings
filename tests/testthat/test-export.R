@@ -72,4 +72,3 @@ testthat::test_that("export_as_txt works and repeats the correct lines in pagina
   pages_listings <- export_as_txt(lsting, file = NULL, paginate = TRUE, lpp = 33, cpp = 550)
   testthat::expect_snapshot(cat(pages_listings))
 })
-
