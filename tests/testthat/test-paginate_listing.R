@@ -176,6 +176,23 @@ testthat::test_that("pagination works with col wrapping", {
   testthat::expect_error(paginate_listing(lsting, colwidths = c(12, 15)))
 })
 
+testthat::test_that("pagination repeats keycols in other pages", {
+  dat <- formatters::ex_adae
+  lsting <- as_listing(dat[1:25, c(1:6, 40)],
+    key_cols = c("USUBJID", "AESOC"),
+    main_title = "Example Title for Listing",
+    subtitles = "This is the subtitle for this Adverse Events Table",
+    main_footer = "Main footer for the listing",
+    prov_footer = c(
+      "You can even add a subfooter", "Second element is place on a new line",
+      "Third string"
+    )
+  )
+  testthat::expect_true(grepl(
+    "AB12345-BRA-1-id-42",
+    paginate_to_mpfs(lsting, lpp = 33, cpp = 550)[[2]]$strings
+  )[2])
+})
 
 testthat::test_that("defunct is defunct", {
   expect_error(pag_listing_indices(), "defunct")

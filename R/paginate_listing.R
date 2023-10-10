@@ -62,43 +62,46 @@ paginate_listing <- function(lsting,
   checkmate::assert_count(max_width, null.ok = TRUE)
   checkmate::assert_flag(verbose)
 
-
-
-
   indx <- paginate_indices(lsting,
-                           page_type = page_type,
-                           font_family = font_family,
-                           font_size = font_size,
-                           lineheight = lineheight,
-                           landscape = landscape,
-                           pg_width = pg_width,
-                           pg_height = pg_height,
-                           margins = margins,
-                           lpp = lpp,
-                           cpp = cpp,
-                           colwidths = colwidths,
-                           tf_wrap = tf_wrap,
-                           max_width = max_width,
-                           rep_cols = length(get_keycols(lsting)),
-                           verbose = verbose)
+    page_type = page_type,
+    font_family = font_family,
+    font_size = font_size,
+    lineheight = lineheight,
+    landscape = landscape,
+    pg_width = pg_width,
+    pg_height = pg_height,
+    margins = margins,
+    lpp = lpp,
+    cpp = cpp,
+    colwidths = colwidths,
+    tf_wrap = tf_wrap,
+    max_width = max_width,
+    rep_cols = length(get_keycols(lsting)),
+    verbose = verbose
+  )
 
-
-  vert_pags <- lapply(indx$pag_row_indices,
-                      function(ii) lsting[ii, ])
+  vert_pags <- lapply(
+    indx$pag_row_indices,
+    function(ii) lsting[ii, ]
+  )
   dispnames <- listing_dispcols(lsting)
-  full_pag <- lapply(vert_pags,
-                     function(onepag) {
+  full_pag <- lapply(
+    vert_pags,
+    function(onepag) {
       if (!is.null(indx$pag_col_indices)) {
-          lapply(indx$pag_col_indices,
-                 function(jj) {
-              res <- onepag[, dispnames[jj], drop = FALSE]
-              listing_dispcols(res) <- intersect(dispnames, names(res))
-              res
-          })
+        lapply(
+          indx$pag_col_indices,
+          function(jj) {
+            res <- onepag[, dispnames[jj], drop = FALSE]
+            listing_dispcols(res) <- intersect(dispnames, names(res))
+            res
+          }
+        )
       } else {
-          list(onepag)
+        list(onepag)
       }
-  })
+    }
+  )
 
   ret <- unlist(full_pag, recursive = FALSE)
   ret
@@ -117,5 +120,5 @@ pag_listing_indices <- function(lsting,
                                 colwidths = NULL,
                                 max_width = NULL,
                                 verbose = FALSE) {
-    .Defunct("paginate_indices", package = "formatters")
+  .Defunct("paginate_indices", package = "formatters")
 }
