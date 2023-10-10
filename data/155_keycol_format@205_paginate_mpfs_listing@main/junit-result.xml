@@ -1,100 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="export" timestamp="2023-10-04T18:03:34Z" hostname="de0acf7f9ab7" tests="6" skipped="2" failures="0" errors="0" time="0.929">
-    <testcase time="0.216" classname="export" name="Listing_print_correctly"/>
-    <testcase time="0.226" classname="export" name="key_columns_repeat_with_export_as_txt">
-      <skipped message="Reason: On CRAN ('test-export.R:24:3')"/>
+  <testsuite name="export" timestamp="2023-10-10T09:34:06Z" hostname="cde015597fd1" tests="5" skipped="0" failures="0" errors="5" time="0.987">
+    <testcase time="0.22" classname="export" name="Listing_print_correctly">
+      <error type="error" message="Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found ('test-export.R:6:5')">Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found
+Backtrace:
+     x
+  1. +-testthat::expect_silent(...) at test-export.R:5:2
+  2. | \-testthat:::quasi_capture(enquo(object), NULL, evaluate_promise)
+  3. |   +-testthat (local) .capture(...)
+  4. |   | +-withr::with_output_sink(...)
+  5. |   | | \-base::force(code)
+  6. |   | +-base::withCallingHandlers(...)
+  7. |   | \-base::withVisible(code)
+  8. |   \-rlang::eval_bare(quo_get_expr(.quo), quo_get_env(.quo))
+  9. +-formatters::export_as_txt(lsting, file = NULL) at test-export.R:6:4
+ 10. | \-formatters::paginate_to_mpfs(...)
+ 11. |   \-base::lapply(...)
+ 12. |     \-formatters (local) FUN(X[[i]], ...)
+ 13. |       \-formatters::matrix_form(lsting[ii, ], TRUE, TRUE, indent_size = indent_size)
+ 14. \-base::.handleSimpleError(...)
+ 15.   \-base (local) h(simpleError(msg, call))</error>
     </testcase>
-    <testcase time="0.146" classname="export" name="key_columns_repeat_with_pagination_with_export_as_txt">
-      <skipped message="Reason: On CRAN ('test-export.R:40:3')"/>
+    <testcase time="0.169" classname="export" name="key_columns_repeat_with_export_as_txt">
+      <error type="error" message="Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found ('test-export.R:22:3')">Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found
+Backtrace:
+    x
+ 1. +-base::suppressMessages(...) at test-export.R:22:2
+ 2. | \-base::withCallingHandlers(...)
+ 3. +-formatters::export_as_txt(lsting, lpp = 4, verbose = TRUE, page_break = "\n")
+ 4. | \-formatters::paginate_to_mpfs(...)
+ 5. |   \-base::lapply(...)
+ 6. |     \-formatters (local) FUN(X[[i]], ...)
+ 7. |       \-formatters::matrix_form(lsting[ii, ], TRUE, TRUE, indent_size = indent_size)
+ 8. \-base::.handleSimpleError(...)
+ 9.   \-base (local) h(simpleError(msg, call))</error>
     </testcase>
-    <testcase time="0.334" classname="export" name="Listing_print_correctly_with_paginate"/>
-    <testcase time="0.00300000000000011" classname="export" name="Listing_print_correctly_with_paginate"/>
-    <testcase time="0.004" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.131" classname="export" name="key_columns_repeat_with_pagination_with_export_as_txt">
+      <error type="error" message="Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found ('test-export.R:36:3')">Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found
+Backtrace:
+    x
+ 1. +-base::suppressMessages(...) at test-export.R:36:2
+ 2. | \-base::withCallingHandlers(...)
+ 3. +-formatters::export_as_txt(...)
+ 4. | \-formatters::paginate_to_mpfs(...)
+ 5. |   \-base::lapply(...)
+ 6. |     \-formatters (local) FUN(X[[i]], ...)
+ 7. |       \-formatters::matrix_form(lsting[ii, ], TRUE, TRUE, indent_size = indent_size)
+ 8. \-base::.handleSimpleError(...)
+ 9.   \-base (local) h(simpleError(msg, call))</error>
+    </testcase>
+    <testcase time="0.211" classname="export" name="Listing_print_correctly_with_paginate">
+      <error type="error" message="Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found ('test-export.R:46:3')">Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found
+Backtrace:
+    x
+ 1. +-formatters::export_as_txt(...) at test-export.R:46:2
+ 2. | \-formatters::paginate_to_mpfs(...)
+ 3. |   \-base::lapply(...)
+ 4. |     \-formatters (local) FUN(X[[i]], ...)
+ 5. |       \-formatters::matrix_form(lsting[ii, ], TRUE, TRUE, indent_size = indent_size)
+ 6. \-base::.handleSimpleError(...)
+ 7.   \-base (local) h(simpleError(msg, call))</error>
+    </testcase>
+    <testcase time="0.256" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination">
+      <error type="error" message="Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found ('test-export.R:67:3')">Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found
+Backtrace:
+    x
+ 1. +-testthat::expect_equal(...) at test-export.R:67:2
+ 2. | \-testthat::quasi_label(enquo(expected), expected.label, arg = "expected")
+ 3. |   \-rlang::eval_bare(expr, quo_get_env(quo))
+ 4. +-formatters::paginate_to_mpfs(lsting, lpp = 33, cpp = 550)
+ 5. | \-base::lapply(...)
+ 6. |   \-formatters (local) FUN(X[[i]], ...)
+ 7. |     \-formatters::matrix_form(lsting[ii, ], TRUE, TRUE, indent_size = indent_size)
+ 8. \-base::.handleSimpleError(...)
+ 9.   \-base (local) h(simpleError(msg, call))</error>
+    </testcase>
   </testsuite>
-  <testsuite name="export_as_txt" timestamp="2023-10-04T18:03:35Z" hostname="de0acf7f9ab7" tests="1" skipped="1" failures="0" errors="0" time="0.267">
-    <testcase time="0.267" classname="export_as_txt" name="export_as_txt_works">
-      <skipped message="Reason: On CRAN ('test-export_as_txt.R:19:3')"/>
-    </testcase>
-  </testsuite>
-  <testsuite name="listings" timestamp="2023-10-04T18:03:36Z" hostname="de0acf7f9ab7" tests="37" skipped="0" failures="0" errors="0" time="0.634">
-    <testcase time="0.0379999999999998" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.016" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.00300000000000011" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.0229999999999997" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+  <testsuite name="listings" timestamp="2023-10-10T09:34:07Z" hostname="cde015597fd1" tests="37" skipped="0" failures="0" errors="0" time="0.776">
+    <testcase time="0.0530000000000002" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.0189999999999997" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.00500000000000034" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.0279999999999996" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00500000000000034" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00499999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00499999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00499999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00900000000000034" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00599999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00499999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00499999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.016" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00699999999999967" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00700000000000012" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.0190000000000001" classname="listings" name="Content_of_listings_supports_newlines"/>
+    <testcase time="0.0100000000000002" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00999999999999979" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0089999999999999" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0100000000000002" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00499999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0270000000000001" classname="listings" name="Content_of_listings_supports_newlines"/>
     <testcase time="0.0089999999999999" classname="listings" name="Content_of_listings_supports_newlines"/>
-    <testcase time="0.012" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
-    <testcase time="0.036" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0209999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.056" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0569999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.00900000000000034" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.00599999999999978" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0550000000000002" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0209999999999999" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
-    <testcase time="0.02" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
-    <testcase time="0.0299999999999998" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
-    <testcase time="0.016" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
-    <testcase time="0.036" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.0289999999999999" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.0290000000000004" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.0089999999999999" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0150000000000001" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
+    <testcase time="0.044" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0259999999999998" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0680000000000001" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0720000000000001" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00699999999999967" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00700000000000012" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0620000000000003" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0259999999999998" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.024" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.0369999999999999" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
+    <testcase time="0.02" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
+    <testcase time="0.0420000000000003" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0329999999999999" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0329999999999999" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.012" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
   </testsuite>
-  <testsuite name="paginate_listing" timestamp="2023-10-04T18:03:36Z" hostname="de0acf7f9ab7" tests="23" skipped="1" failures="0" errors="0" time="1.9">
-    <testcase time="0.085" classname="paginate_listing" name="pagination_works_vertically">
+  <testsuite name="paginate_listing" timestamp="2023-10-10T09:34:07Z" hostname="cde015597fd1" tests="24" skipped="1" failures="0" errors="1" time="2.527">
+    <testcase time="0.201" classname="paginate_listing" name="pagination_works_vertically">
       <skipped message="Reason: On CRAN ('test-paginate_listing.R:15:3')"/>
     </testcase>
-    <testcase time="0.0909999999999997" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00600000000000023" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.0909999999999997" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.114" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00499999999999989" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
     <testcase time="0.004" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.105" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
     <testcase time="0.004" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.0630000000000002" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
-    <testcase time="0.00499999999999989" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
-    <testcase time="0.004" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
-    <testcase time="0.0680000000000001" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
-    <testcase time="0.004" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
-    <testcase time="0.208" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
-    <testcase time="0.22" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
-    <testcase time="0.198" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
-    <testcase time="0.228" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
-    <testcase time="0.209" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
-    <testcase time="0.231" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
-    <testcase time="0.0739999999999998" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.00499999999999989" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00800000000000001" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.0669999999999997" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.0100000000000002" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.00599999999999978" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.0780000000000003" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
+    <testcase time="0.00599999999999978" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
+    <testcase time="0.233" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
+    <testcase time="0.255" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.24" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.274" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
+    <testcase time="0.242" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
+    <testcase time="0.263" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
     <testcase time="0.085" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
-    <testcase time="0.00600000000000023" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
-    <testcase time="0.00999999999999979" classname="paginate_listing" name="defunct_is_defunct"/>
+    <testcase time="0.093" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.0129999999999999" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.176" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages">
+      <error type="error" message="Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found ('test-paginate_listing.R:191:3')">Error in `h(simpleError(msg, call))`: error in evaluating the argument 'obj' in selecting a method for function 'matrix_form': object 'lsting' not found
+Backtrace:
+     x
+  1. +-testthat::expect_true(...) at test-paginate_listing.R:191:2
+  2. | \-testthat::quasi_label(enquo(object), label, arg = "object")
+  3. |   \-rlang::eval_bare(expr, quo_get_env(quo))
+  4. +-base::grepl(...)
+  5. | \-base::is.factor(x)
+  6. +-formatters::paginate_to_mpfs(lsting, lpp = 33, cpp = 550)
+  7. | \-base::lapply(...)
+  8. |   \-formatters (local) FUN(X[[i]], ...)
+  9. |     \-formatters::matrix_form(lsting[ii, ], TRUE, TRUE, indent_size = indent_size)
+ 10. \-base::.handleSimpleError(...)
+ 11.   \-base (local) h(simpleError(msg, call))</error>
+    </testcase>
+    <testcase time="0.04" classname="paginate_listing" name="defunct_is_defunct"/>
   </testsuite>
-  <testsuite name="print" timestamp="2023-10-04T18:03:38Z" hostname="de0acf7f9ab7" tests="5" skipped="4" failures="0" errors="0" time="0.206">
-    <testcase time="0.0410000000000004" classname="print" name="Listing_print_correctly">
+  <testsuite name="print" timestamp="2023-10-10T09:34:10Z" hostname="cde015597fd1" tests="5" skipped="4" failures="0" errors="0" time="0.249">
+    <testcase time="0.0430000000000001" classname="print" name="Listing_print_correctly">
       <skipped message="Reason: On CRAN ('test-print.R:7:3')"/>
     </testcase>
-    <testcase time="0.0729999999999995" classname="print" name="Listing_print_correctly_with_different_widths"/>
-    <testcase time="0.00499999999999989" classname="print" name="Listing_print_correctly_with_different_widths">
+    <testcase time="0.0919999999999996" classname="print" name="Listing_print_correctly_with_different_widths"/>
+    <testcase time="0.00700000000000056" classname="print" name="Listing_print_correctly_with_different_widths">
       <skipped message="Reason: On CRAN ('test-print.R:19:3')"/>
     </testcase>
-    <testcase time="0.04" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified">
+    <testcase time="0.0510000000000002" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified">
       <skipped message="Reason: On CRAN ('test-print.R:34:3')"/>
     </testcase>
-    <testcase time="0.0470000000000006" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified">
+    <testcase time="0.0559999999999992" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified">
       <skipped message="Reason: On CRAN ('test-print.R:74:3')"/>
     </testcase>
   </testsuite>
