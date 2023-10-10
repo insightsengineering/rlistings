@@ -1,4 +1,4 @@
-## rlistings 0.2.5.9000
+## rlistings 0.2.5.9001
 * Fixed bug in pagination preventing key column values to appear in paginated listings when `export_as_txt` was used.
 * Added tests to cover for `export_as_txt` outputs.
 
