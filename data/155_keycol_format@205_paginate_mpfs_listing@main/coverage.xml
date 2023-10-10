@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "https://raw.githubusercontent.com/cobertura/cobertura/master/cobertura/src/site/htdocs/xml/coverage-04.dtd">
-<coverage line-rate="0.883333333333333" branch-rate="0" lines-covered="265" lines-valid="300" branches-covered="0" branches-valid="0" complexity="0" version="3.6.2" timestamp="2023-10-10 11:28:41.127184">
+<coverage line-rate="0.885993485342019" branch-rate="0" lines-covered="272" lines-valid="307" branches-covered="0" branches-valid="0" complexity="0" version="3.6.2" timestamp="2023-10-10 11:49:24.202321">
   <sources>
     <source>/__w/rlistings/rlistings/rlistings</source>
   </sources>
   <packages>
-    <package name="rlistings" line-rate="0.883333333333333" branch-rate="0" complexity="0">
+    <package name="rlistings" line-rate="0.885993485342019" branch-rate="0" complexity="0">
       <classes>
-        <class name="paginate_listing.R" filename="R/paginate_listing.R" line-rate="0.975" branch-rate="0" complexity="0">
+        <class name="paginate_listing.R" filename="R/paginate_listing.R" line-rate="0.978723404255319" branch-rate="0" complexity="0">
           <methods>
-            <method name="paginate_listing" signature="" line-rate="0.974358974358974" branch-rate="0" complexity="0">
+            <method name="paginate_listing" signature="" line-rate="0.978260869565217" branch-rate="0" complexity="0">
               <lines>
                 <line number="59" hits="21" branch="false"/>
                 <line number="60" hits="21" branch="false"/>
@@ -32,7 +32,7 @@
                 <line number="78" hits="20" branch="false"/>
                 <line number="79" hits="20" branch="false"/>
                 <line number="80" hits="20" branch="false"/>
-                <line number="82" hits="20" branch="false"/>
+                <line number="81" hits="20" branch="false"/>
                 <line number="83" hits="20" branch="false"/>
                 <line number="84" hits="20" branch="false"/>
                 <line number="85" hits="20" branch="false"/>
@@ -45,16 +45,23 @@
                 <line number="92" hits="20" branch="false"/>
                 <line number="93" hits="20" branch="false"/>
                 <line number="94" hits="20" branch="false"/>
-                <line number="95" hits="0" branch="false"/>
+                <line number="95" hits="20" branch="false"/>
                 <line number="96" hits="20" branch="false"/>
                 <line number="97" hits="20" branch="false"/>
+                <line number="98" hits="20" branch="false"/>
                 <line number="99" hits="20" branch="false"/>
                 <line number="100" hits="20" branch="false"/>
+                <line number="101" hits="0" branch="false"/>
+                <line number="102" hits="20" branch="false"/>
+                <line number="103" hits="20" branch="false"/>
+                <line number="104" hits="20" branch="false"/>
+                <line number="106" hits="20" branch="false"/>
+                <line number="107" hits="20" branch="false"/>
               </lines>
             </method>
             <method name="pag_listing_indices" signature="" line-rate="1" branch-rate="0" complexity="0">
               <lines>
-                <line number="116" hits="1" branch="false"/>
+                <line number="123" hits="1" branch="false"/>
               </lines>
             </method>
           </methods>
@@ -80,7 +87,7 @@
             <line number="78" hits="20" branch="false"/>
             <line number="79" hits="20" branch="false"/>
             <line number="80" hits="20" branch="false"/>
-            <line number="82" hits="20" branch="false"/>
+            <line number="81" hits="20" branch="false"/>
             <line number="83" hits="20" branch="false"/>
             <line number="84" hits="20" branch="false"/>
             <line number="85" hits="20" branch="false"/>
@@ -93,12 +100,19 @@
             <line number="92" hits="20" branch="false"/>
             <line number="93" hits="20" branch="false"/>
             <line number="94" hits="20" branch="false"/>
-            <line number="95" hits="0" branch="false"/>
+            <line number="95" hits="20" branch="false"/>
             <line number="96" hits="20" branch="false"/>
             <line number="97" hits="20" branch="false"/>
+            <line number="98" hits="20" branch="false"/>
             <line number="99" hits="20" branch="false"/>
             <line number="100" hits="20" branch="false"/>
-            <line number="116" hits="1" branch="false"/>
+            <line number="101" hits="0" branch="false"/>
+            <line number="102" hits="20" branch="false"/>
+            <line number="103" hits="20" branch="false"/>
+            <line number="104" hits="20" branch="false"/>
+            <line number="106" hits="20" branch="false"/>
+            <line number="107" hits="20" branch="false"/>
+            <line number="123" hits="1" branch="false"/>
           </lines>
         </class>
         <class name="rlistings_methods.R" filename="R/rlistings_methods.R" line-rate="0.861386138613861" branch-rate="0" complexity="0">
