@@ -21,27 +21,56 @@
 # Listing print correctly with different widths
 
     Code
-      res
+      cat(toString(matrix_form(lsting), widths = c(7, 8, 9), hsep = "-"))
     Output
-       [1] "          Descript            " "Unique      ion               "
-       [3] "Subject      Of               " "Identif   Planned    Continous"
-       [5] "  ier       Arm        Level  " "                     Biomarker"
-       [7] "                         1    " "------------------------------"
-       [9] "AB12345   B:         4.5749910" "-CHN-1-   Placebo     1339464 "
-      [11] "id-307                        " "AB12345   B:         10.262734"
-      [13] "-CHN-11   Placebo     0069523 " "-id-220                       "
-      [15] "AB12345   C: Combi   6.9067988" "-CHN-15   nation      141075  "
-      [17] "-id-201                       " "AB12345   C: Combi   4.0554627"
-      [19] "-CHN-15   nation      7230382 " "-id-262                       "
-      [21] "AB12345   A: Drug    14.424933" "-CHN-3-   X           692778  "
-      [23] "id-128                        " "AB12345   B:         6.2067627"
-      [25] "-CHN-7-   Placebo     167943  " "id-267                        "
-      [27] "AB12345   C: Combi   4.9972257" "-NGA-11   nation      3047567 "
-      [29] "-id-173                       " "AB12345   C: Combi   2.8032395"
-      [31] "-RUS-3-   nation      6920649 " "id-378                        "
-      [33] "AB12345   B:         2.8551641" "-USA-1-   Placebo     9937308 "
-      [35] "id-261                        " "AB12345   A: Drug    0.4635604"
-      [37] "-USA-1-   X          41314472 " " id-45                        "
+                Descript            
+      Unique      ion               
+      Subject      Of               
+      Identif   Planned    Continous
+        ier       Arm        Level  
+                           Biomarker
+                               1    
+      ------------------------------
+      AB12345   B:         4.5749910
+         -      Placebo     1339464 
+      CHN-1-                        
+      id-307                        
+      AB12345   B:         10.262734
+         -      Placebo     0069523 
+      CHN-11-                       
+      id-220                        
+      AB12345   C: Combi   6.9067988
+         -      nation      141075  
+      CHN-15-                       
+      id-201                        
+      AB12345   C: Combi   4.0554627
+         -      nation      7230382 
+      CHN-15-                       
+      id-262                        
+      AB12345   A: Drug    14.424933
+         -      X           692778  
+      CHN-3-                        
+      id-128                        
+      AB12345   B:         6.2067627
+         -      Placebo     167943  
+      CHN-7-                        
+      id-267                        
+      AB12345   C: Combi   4.9972257
+         -      nation      3047567 
+      NGA-11-                       
+      id-173                        
+      AB12345   C: Combi   2.8032395
+         -      nation      6920649 
+      RUS-3-                        
+      id-378                        
+      AB12345   B:         2.8551641
+         -      Placebo     9937308 
+      USA-1-                        
+      id-261                        
+      AB12345   A: Drug    0.4635604
+         -      X          41314472 
+      USA-1-                        
+       id-45                        
 
 # as_listing produces correct output when default_formatting is specified
 
@@ -86,20 +115,20 @@
 ---
 
     Code
-      res2
+      cat(toString(matrix_form(lsting), hsep = "-"))
     Output
-       [1] "       Unique                                      "
-       [2] "       Subject                                     "
-       [3] "     Identifier         Continous Level Biomarker 1"
-       [4] "---------------------------------------------------"
-       [5] "AB12345-CHN-1-id-307                 5             "
-       [6] "AB12345-CHN-11-id-220               10             "
-       [7] "AB12345-CHN-15-id-201                7             "
-       [8] "AB12345-CHN-15-id-262                4             "
-       [9] "AB12345-CHN-3-id-128                14             "
-      [10] "AB12345-CHN-7-id-267                 6             "
-      [11] "AB12345-NGA-11-id-173                5             "
-      [12] "AB12345-RUS-3-id-378                 3             "
-      [13] "AB12345-USA-1-id-261                 3             "
-      [14] " AB12345-USA-1-id-45                 0             "
+             Unique                                      
+             Subject                                     
+           Identifier         Continous Level Biomarker 1
+      ---------------------------------------------------
+      AB12345-CHN-1-id-307                 5             
+      AB12345-CHN-11-id-220               10             
+      AB12345-CHN-15-id-201                7             
+      AB12345-CHN-15-id-262                4             
+      AB12345-CHN-3-id-128                14             
+      AB12345-CHN-7-id-267                 6             
+      AB12345-NGA-11-id-173                5             
+      AB12345-RUS-3-id-378                 3             
+      AB12345-USA-1-id-261                 3             
+       AB12345-USA-1-id-45                 0             
 

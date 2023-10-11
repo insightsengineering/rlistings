@@ -16,7 +16,7 @@ testthat::test_that("Listing print correctly with different widths", {
 
   testthat::expect_identical(res, res2)
 
-  testthat::expect_snapshot(res)
+  testthat::expect_snapshot(cat(toString(matrix_form(lsting), widths = c(7, 8, 9), hsep = "-")))
 })
 testthat::test_that("as_listing produces correct output when default_formatting is specified", {
   anl$BMRKR1[3:6] <- NA
@@ -74,19 +74,20 @@ testthat::test_that("as_listing produces correct output when col_formatting is s
   testthat::expect_snapshot(res)
 
   # Mixed behavior
+  # Note: all is rightfully masked by the more specific numeric assignment
   lsting <- as_listing(
     anl,
     key_cols = "USUBJID", disp_cols = "BMRKR1",
-    default_formatting = list(numeric = fmt_config(align = "right"),
-    # all is rightfully masked by the more specific numeric assignment
-                              all = fmt_config(na_str = "default na")),
+    default_formatting = list(
+      numeric = fmt_config(align = "right"),
+      all = fmt_config(na_str = "default na")
+    ),
     col_formatting = list(
       BMRKR1 = fmt_config(na_str = "bmrkr1 special", format = "xx.") # This has precedence
     )
   )
 
-  res2 <- strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n")[[1]]
-  testthat::expect_snapshot(res2)
+  testthat::expect_snapshot(cat(toString(matrix_form(lsting), hsep = "-")))
 
   testthat::expect_error(
     {
