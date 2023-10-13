@@ -426,18 +426,23 @@ add_listing_col <- function(df,
   df
 }
 
-#' Split Listing into a List of Listings by Values of a Parameter
+#' Split Listing by Values of a Variable
 #'
 #' @description `r lifecycle::badge("experimental")`
 #'
 #' Split is performed based on unique values of the given parameter present in the listing.
+#' Each listing can only be split by variable once. If this function is applied prior to
+#' pagination, parameter values will be separated by page.
 #'
 #' @param lsting listing_df. The listing to split.
-#' @param param character. Name of the parameter upon which to split.
-#' @param page_prefix character. Prefix to be appended with the split value (`param` level),
+#' @param var character. Name of the variable to split on.
+#' @param page_prefix character. Prefix to be appended with the split value (`var` level),
 #'   at the end of the subtitles, corresponding to each resulting list element (listing).
 #'
-#' @return A list of `lsting_df` objects each corresponding to a unique value of `param`.
+#' @return A list of `lsting_df` objects each corresponding to a unique value of `var`.
+#'
+#' @note This function should only be used after the complete listing has been created. The
+#'   listing cannot be modified further after applying this function.
 #'
 #' @examples
 #' dat <- ex_adae[1:20, ]
@@ -450,21 +455,21 @@ add_listing_col <- function(df,
 #'     main_footer = "footer"
 #'   ) %>%
 #'   add_listing_col("BMRKR1", format = "xx.x") %>%
-#'   split_listing_by_param("SEX")
+#'   split_listing_by_var("SEX")
 #'
 #' lsting
 #'
 #' @export
-split_listing_by_param <- function(lsting, param, page_prefix = param) {
+split_listing_by_var <- function(lsting, var, page_prefix = var) {
   checkmate::assert_class(lsting, "listing_df")
-  checkmate::assert_choice(param, names(lsting))
+  checkmate::assert_choice(var, names(lsting))
 
-  lsting_by_param <- list()
-  for (lvl in unique(lsting[[param]])) {
-    param_desc <- paste0(page_prefix, ": ", lvl)
-    lsting_by_param[[lvl]] <- lsting[lsting[[param]] == lvl, ]
-    subtitles(lsting_by_param[[lvl]]) <- c(subtitles(lsting), param_desc)
+  lsting_by_var <- list()
+  for (lvl in unique(lsting[[var]])) {
+    var_desc <- paste0(page_prefix, ": ", lvl)
+    lsting_by_var[[lvl]] <- lsting[lsting[[var]] == lvl, ]
+    subtitles(lsting_by_var[[lvl]]) <- c(subtitles(lsting), var_desc)
   }
 
-  lsting_by_param
+  lsting_by_var
 }
