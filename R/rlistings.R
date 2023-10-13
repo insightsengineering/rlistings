@@ -425,3 +425,15 @@ add_listing_col <- function(df,
   df <- add_listing_dispcol(df, name)
   df
 }
+
+#' @export
+split_by_param <- function(lsting, param) {
+  checkmate::assert_choice(param, names(lsting))
+
+  lsting_by_param <- list()
+  for (lvl in unique(lsting[[param]])) {
+    lsting_by_param[[lvl]] <- lsting[lsting[[param]] == lvl, ]
+  }
+
+  lsting_by_param
+}

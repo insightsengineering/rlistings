@@ -56,52 +56,60 @@ paginate_listing <- function(lsting,
                              tf_wrap = !is.null(max_width),
                              max_width = NULL,
                              verbose = FALSE) {
-  checkmate::assert_class(lsting, "listing_df")
-  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
-  checkmate::assert_flag(tf_wrap)
-  checkmate::assert_count(max_width, null.ok = TRUE)
-  checkmate::assert_flag(verbose)
+  do_full_pag <- function(lsting) {
+    checkmate::assert_class(lsting, "listing_df")
+    checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
+    checkmate::assert_flag(tf_wrap)
+    checkmate::assert_count(max_width, null.ok = TRUE)
+    checkmate::assert_flag(verbose)
 
-  indx <- paginate_indices(lsting,
-    page_type = page_type,
-    font_family = font_family,
-    font_size = font_size,
-    lineheight = lineheight,
-    landscape = landscape,
-    pg_width = pg_width,
-    pg_height = pg_height,
-    margins = margins,
-    lpp = lpp,
-    cpp = cpp,
-    colwidths = colwidths,
-    tf_wrap = tf_wrap,
-    max_width = max_width,
-    rep_cols = length(get_keycols(lsting)),
-    verbose = verbose
-  )
+    indx <- paginate_indices(lsting,
+                             page_type = page_type,
+                             font_family = font_family,
+                             font_size = font_size,
+                             lineheight = lineheight,
+                             landscape = landscape,
+                             pg_width = pg_width,
+                             pg_height = pg_height,
+                             margins = margins,
+                             lpp = lpp,
+                             cpp = cpp,
+                             colwidths = colwidths,
+                             tf_wrap = tf_wrap,
+                             max_width = max_width,
+                             rep_cols = length(get_keycols(lsting)),
+                             verbose = verbose)
 
-  vert_pags <- lapply(
-    indx$pag_row_indices,
-    function(ii) lsting[ii, ]
-  )
-  dispnames <- listing_dispcols(lsting)
-  full_pag <- lapply(
-    vert_pags,
-    function(onepag) {
-      if (!is.null(indx$pag_col_indices)) {
-        lapply(
-          indx$pag_col_indices,
+    vert_pags <- lapply(indx$pag_row_indices, function(ii) lsting[ii, ])
+    dispnames <- listing_dispcols(lsting)
+
+    lapply(
+      vert_pags,
+      function(onepag) {
+        if (!is.null(indx$pag_col_indices)) {
+          lapply(indx$pag_col_indices,
           function(jj) {
             res <- onepag[, dispnames[jj], drop = FALSE]
             listing_dispcols(res) <- intersect(dispnames, names(res))
             res
-          }
-        )
-      } else {
-        list(onepag)
-      }
+          })
+        } else {
+          list(onepag)
+        }
+      })
+  }
+
+  full_pag <- if (is.data.frame(lsting)) {
+    do_full_pag(lsting)
+  } else {
+    if (!"colwidths" %in% as.list(match.call())) {
+      all_colwidths <- lapply(lsting, propose_column_widths)
+      max_w <- which.max(lapply(all_colwidths, sum))
+      colwidths <- all_colwidths[[max_w]]
     }
-  )
+
+    lapply(lsting, function(x) unlist(do_full_pag(x), recursive = FALSE))
+  }
 
   ret <- unlist(full_pag, recursive = FALSE)
   ret
@@ -120,5 +128,5 @@ pag_listing_indices <- function(lsting,
                                 colwidths = NULL,
                                 max_width = NULL,
                                 verbose = FALSE) {
-  .Defunct("paginate_indices", package = "formatters")
+    .Defunct("paginate_indices", package = "formatters")
 }
