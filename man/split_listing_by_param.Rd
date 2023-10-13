@@ -4,12 +4,15 @@
 \alias{split_listing_by_param}
 \title{Split Listing into a List of Listings by Values of a Parameter}
 \usage{
-split_listing_by_param(lsting, param)
+split_listing_by_param(lsting, param, page_prefix = param)
 }
 \arguments{
 \item{lsting}{listing_df. The listing to split.}
 
 \item{param}{character. Name of the parameter upon which to split.}
+
+\item{page_prefix}{character. Prefix to be appended with the split value (\code{param} level),
+at the end of the subtitles, corresponding to each resulting list element (listing).}
 }
 \value{
 A list of \code{lsting_df} objects each corresponding to a unique value of \code{param}.

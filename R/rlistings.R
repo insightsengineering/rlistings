@@ -434,6 +434,8 @@ add_listing_col <- function(df,
 #'
 #' @param lsting listing_df. The listing to split.
 #' @param param character. Name of the parameter upon which to split.
+#' @param page_prefix character. Prefix to be appended with the split value (`param` level),
+#'   at the end of the subtitles, corresponding to each resulting list element (listing).
 #'
 #' @return A list of `lsting_df` objects each corresponding to a unique value of `param`.
 #'
@@ -453,15 +455,15 @@ add_listing_col <- function(df,
 #' lsting
 #'
 #' @export
-split_listing_by_param <- function(lsting, param) {
+split_listing_by_param <- function(lsting, param, page_prefix = param) {
   checkmate::assert_class(lsting, "listing_df")
   checkmate::assert_choice(param, names(lsting))
 
   lsting_by_param <- list()
   for (lvl in unique(lsting[[param]])) {
-    param_desc <- paste(param, "=", lvl)
-    lsting_by_param[[param_desc]] <- lsting[lsting[[param]] == lvl, ]
-    subtitles(lsting_by_param[[param_desc]]) <- c(subtitles(lsting), "", param_desc)
+    param_desc <- paste0(page_prefix, ": ", lvl)
+    lsting_by_param[[lvl]] <- lsting[lsting[[param]] == lvl, ]
+    subtitles(lsting_by_param[[lvl]]) <- c(subtitles(lsting), param_desc)
   }
 
   lsting_by_param
