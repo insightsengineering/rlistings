@@ -99,7 +99,7 @@ paginate_listing <- function(lsting,
       })
   }
 
-  full_pag <- if (is.data.frame(lsting)) {
+  full_pag <- if (is(lsting, "listing_df")) {
     do_full_pag(lsting)
   } else {
     if (!"colwidths" %in% as.list(match.call())) {
@@ -107,11 +107,10 @@ paginate_listing <- function(lsting,
       max_w <- which.max(lapply(all_colwidths, sum))
       colwidths <- all_colwidths[[max_w]]
     }
-
     lapply(lsting, function(x) unlist(do_full_pag(x), recursive = FALSE))
   }
 
-  ret <- unlist(full_pag, recursive = FALSE)
+  ret <- unlist(full_pag, recursive = FALSE, use.names = FALSE)
   ret
 }
 

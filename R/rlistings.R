@@ -426,13 +426,42 @@ add_listing_col <- function(df,
   df
 }
 
+#' Split Listing into a List of Listings by Values of a Parameter
+#'
+#' @description `r lifecycle::badge("experimental")`
+#'
+#' Split is performed based on unique values of the given parameter present in the listing.
+#'
+#' @param lsting listing_df. The listing to split.
+#' @param param character. Name of the parameter upon which to split.
+#'
+#' @return A list of `lsting_df` objects each corresponding to a unique value of `param`.
+#'
+#' @examples
+#' dat <- ex_adae[1:20, ]
+#'
+#' lsting <- as_listing(
+#'     dat,
+#'     key_cols = c("USUBJID", "AGE"),
+#'     disp_cols = "SEX",
+#'     main_title = "title",
+#'     main_footer = "footer"
+#'   ) %>%
+#'   add_listing_col("BMRKR1", format = "xx.x") %>%
+#'   split_listing_by_param("SEX")
+#'
+#' lsting
+#'
 #' @export
-split_by_param <- function(lsting, param) {
+split_listing_by_param <- function(lsting, param) {
+  checkmate::assert_class(lsting, "listing_df")
   checkmate::assert_choice(param, names(lsting))
 
   lsting_by_param <- list()
   for (lvl in unique(lsting[[param]])) {
-    lsting_by_param[[lvl]] <- lsting[lsting[[param]] == lvl, ]
+    param_desc <- paste(param, "=", lvl)
+    lsting_by_param[[param_desc]] <- lsting[lsting[[param]] == lvl, ]
+    subtitles(lsting_by_param[[param_desc]]) <- c(subtitles(lsting), "", param_desc)
   }
 
   lsting_by_param
