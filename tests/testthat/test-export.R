@@ -75,3 +75,20 @@ testthat::test_that("export_as_txt works and repeats the correct lines in pagina
   pages_listings <- export_as_txt(lsting, file = NULL, paginate = TRUE, lpp = 33, cpp = 550)
   testthat::expect_snapshot(cat(pages_listings))
 })
+
+testthat::test_that("export_as_txt works with split_listing_by_var", {
+  tmp_data <- ex_adae[1:50, ]
+
+  lsting <- as_listing(
+    tmp_data,
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = "SEX",
+    main_title = "title",
+    main_footer = "foot"
+  ) %>%
+    add_listing_col("BMRKR1", format = "xx.x") %>%
+    split_listing_by_var("SEX", page_prefix = "Patient Subset - Sex")
+
+  pages_listings <- export_as_txt(lsting, file = NULL, paginate = TRUE, lpp = 30, cpp = 65)
+  testthat::expect_snapshot(cat(pages_listings))
+})

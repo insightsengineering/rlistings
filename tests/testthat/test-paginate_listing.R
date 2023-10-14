@@ -197,3 +197,23 @@ testthat::test_that("pagination repeats keycols in other pages", {
 testthat::test_that("defunct is defunct", {
   expect_error(pag_listing_indices(), "defunct")
 })
+
+testthat::test_that("paginate_listing works with split_listing_by_var", {
+  tmp_data <- ex_adae[1:50, ]
+
+  lsting <- as_listing(
+    tmp_data,
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = "SEX",
+    main_title = "title",
+    main_footer = "foot"
+  ) %>%
+    add_listing_col("BMRKR1", format = "xx.x") %>%
+    split_listing_by_var("SEX", page_prefix = "Patient Subset - Sex")
+
+  pag5_listing <- paginate_listing(lsting, lpp = 30, cpp = 65)[[5]]
+  testthat::expect_equal(main_title(pag5_listing), "title")
+  testthat::expect_equal(subtitles(pag5_listing), "Patient Subset - Sex: F")
+  testthat::expect_equal(main_footer(pag5_listing), "foot")
+  testthat::expect_snapshot(pag5_listing)
+})
