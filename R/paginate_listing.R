@@ -83,20 +83,18 @@ paginate_listing <- function(lsting,
     vert_pags <- lapply(indx$pag_row_indices, function(ii) lsting[ii, ])
     dispnames <- listing_dispcols(lsting)
 
-    lapply(
-      vert_pags,
-      function(onepag) {
-        if (!is.null(indx$pag_col_indices)) {
-          lapply(indx$pag_col_indices,
-          function(jj) {
-            res <- onepag[, dispnames[jj], drop = FALSE]
-            listing_dispcols(res) <- intersect(dispnames, names(res))
-            res
-          })
-        } else {
-          list(onepag)
-        }
-      })
+    lapply(vert_pags,
+           function(onepag) {
+             if (!is.null(indx$pag_col_indices)) {
+               lapply(indx$pag_col_indices, function(jj) {
+                 res <- onepag[, dispnames[jj], drop = FALSE]
+                 listing_dispcols(res) <- intersect(dispnames, names(res))
+                 res
+               })
+             } else {
+               list(onepag)
+             }
+           })
   }
 
   full_pag <- if (is(lsting, "listing_df")) {
@@ -127,5 +125,5 @@ pag_listing_indices <- function(lsting,
                                 colwidths = NULL,
                                 max_width = NULL,
                                 verbose = FALSE) {
-    .Defunct("paginate_indices", package = "formatters")
+  .Defunct("paginate_indices", package = "formatters")
 }
