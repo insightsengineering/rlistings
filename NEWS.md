@@ -1,6 +1,8 @@
 ## rlistings 0.2.5.9002
 * Fixed bug in pagination preventing key column values to appear in paginated listings when `export_as_txt` was used.
 * Added tests to cover for `export_as_txt` outputs.
+* Added function `split_listing_by_var` to split a listing into a list of listings according to values of a given 
+  variable. This enables page splits by variable when paginating.
 
 ## rlistings 0.2.5
  * Fixed bug in `as_listing` preventing custom formatting from being applied to key columns.
