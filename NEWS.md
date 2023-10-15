@@ -1,6 +1,7 @@
 ## rlistings 0.2.5.9002
 * Fixed bug in pagination preventing key column values to appear in paginated listings when `export_as_txt` was used.
 * Added tests to cover for `export_as_txt` outputs.
+* Integrated support for newline characters.
 
 ## rlistings 0.2.5
  * Fixed bug in `as_listing` preventing custom formatting from being applied to key columns.

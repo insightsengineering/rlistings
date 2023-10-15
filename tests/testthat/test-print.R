@@ -119,7 +119,7 @@ testthat::test_that("listings support newline characters", {
   vl <- var_labels(anl)
   vl[3] <- "\n\na\n\nn\n"
   var_labels(anl) <- vl
-  anl_tmp <- anl[1:4,]
+  anl_tmp <- anl[1:4, ]
   lsting <- as_listing(
     anl_tmp,
     key_cols = "USUBJID",
