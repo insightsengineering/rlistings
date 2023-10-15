@@ -112,3 +112,22 @@ testthat::test_that("as_listing produces correct output when col_formatting is s
     "All format configurations supplied in `col_formatting` must be of type `fmt_config`."
   )
 })
+
+testthat::test_that("listings support newline characters", {
+  anl$ARM[3:6] <- NA
+  anl$USUBJID[1] <- "aaatrial\ntrial\n" # last \n is trimmed
+  vl <- var_labels(anl)
+  vl[3] <- "\n\na\n\nn\n"
+  var_labels(anl) <- vl
+  anl_tmp <- anl[1:4,]
+  lsting <- as_listing(
+    anl_tmp,
+    key_cols = "USUBJID",
+    col_formatting = list(
+      USUBJID = fmt_config(align = "right"),
+      ARM = fmt_config(format = sprintf_format("ARM #: %s"), na_str = "-\nasd\n", align = "left")
+    )
+  )
+  res <- strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n")[[1]]
+  testthat::expect_snapshot(res)
+})
