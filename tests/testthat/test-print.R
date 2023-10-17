@@ -128,6 +128,31 @@ testthat::test_that("listings support newline characters", {
       ARM = fmt_config(format = sprintf_format("ARM #: %s"), na_str = "-\nasd\n", align = "left")
     )
   )
+
   res <- strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n")[[1]]
   testthat::expect_snapshot(res)
+
+  res_txt <- strsplit(export_as_txt(lsting, hsep = "-") , "\\n")[[1]]
+  testthat::expect_identical(res, res_txt)
+})
+
+testthat::test_that("listings supports wrapping", {
+  lsting <- as_listing(
+    anl,
+    key_cols = "USUBJID",
+    col_formatting = list(
+      USUBJID = fmt_config(align = "right"),
+      ARM = fmt_config(format = sprintf_format("ARM #: %s"), na_str = "-\nasd\n", align = "left")
+    )
+  )
+
+  cw <- c(5, 8, 2)
+  ts_wrap <- strsplit(toString(lsting, widths = cw), "\n")[[1]]
+  testthat::expect_equal(length(ts_wrap), 95)
+  eat_wrap <- strsplit(export_as_txt(lsting, colwidths = cw), "\n")[[1]]
+  testthat::expect_equal(length(eat_wrap), 95 + 2 + 7) # 2 is the page separator, 7 is header
+  testthat::expect_equal(eat_wrap[-seq(87, 87 + 8)], ts_wrap) # 8 because of repeated line
+
+  # Fix C stack inf rec loop
+  testthat::expect_silent(toString(lsting, widths = c(10, 10, 1)))
 })
