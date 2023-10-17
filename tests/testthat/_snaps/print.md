@@ -132,3 +132,22 @@
       AB12345-USA-1-id-261                 3             
        AB12345-USA-1-id-45                 0             
 
+# listings support newline characters
+
+    Code
+      res
+    Output
+       [1] "                                                      "
+       [2] "                                                      "
+       [3] "       Unique           Description          a        "
+       [4] "       Subject              Of                        "
+       [5] "     Identifier         Planned Arm          n        "
+       [6] "------------------------------------------------------"
+       [7] "AB12345-CHN-11-id-220   -             10.2627340069523"
+       [8] "                        asd                           "
+       [9] "AB12345-CHN-15-id-262   ARM #: 3      4.05546277230382"
+      [10] " AB12345-RUS-3-id-378   -             2.80323956920649"
+      [11] "                        asd                           "
+      [12] "             aaatrial   ARM #: 1      14.424933692778 "
+      [13] "                trial                                 "
+
