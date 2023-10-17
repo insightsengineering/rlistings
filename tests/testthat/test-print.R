@@ -132,7 +132,7 @@ testthat::test_that("listings support newline characters", {
   res <- strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n")[[1]]
   testthat::expect_snapshot(res)
 
-  res_txt <- strsplit(export_as_txt(lsting, hsep = "-") , "\\n")[[1]]
+  res_txt <- strsplit(export_as_txt(lsting, hsep = "-"), "\\n")[[1]]
   testthat::expect_identical(res, res_txt)
 })
 
