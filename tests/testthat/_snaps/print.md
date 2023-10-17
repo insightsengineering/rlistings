@@ -23,13 +23,12 @@
     Code
       cat(toString(matrix_form(lsting), widths = c(7, 8, 9), hsep = "-"))
     Output
+                                    
                 Descript            
-      Unique      ion               
-      Subject      Of               
-      Identif   Planned    Continous
-        ier       Arm        Level  
-                           Biomarker
-                               1    
+      Unique      ion      Continous
+      Subject      Of        Level  
+      Identif   Planned    Biomarker
+        ier       Arm          1    
       ------------------------------
       AB12345   B:         4.5749910
          -      Placebo     1339464 
