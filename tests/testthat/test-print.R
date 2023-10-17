@@ -148,10 +148,10 @@ testthat::test_that("listings supports wrapping", {
 
   cw <- c(5, 8, 2)
   ts_wrap <- strsplit(toString(lsting, widths = cw), "\n")[[1]]
-  testthat::expect_equal(length(ts_wrap), 95)
+  testthat::expect_equal(length(ts_wrap), 98)
   eat_wrap <- strsplit(export_as_txt(lsting, colwidths = cw), "\n")[[1]]
-  testthat::expect_equal(length(eat_wrap), 95 + 2 + 7) # 2 is the page separator, 7 is header
-  testthat::expect_equal(eat_wrap[-seq(87, 87 + 8)], ts_wrap) # 8 because of repeated line
+  testthat::expect_equal(length(eat_wrap), 98 + 2 + 15) # 2 is the page separator, 15 is header
+  testthat::expect_equal(eat_wrap[-seq(116 - 9 - 17, 115 - 9)], ts_wrap) # 9 is in second page
 
   # Fix C stack inf rec loop
   testthat::expect_silent(toString(lsting, widths = c(10, 10, 1)))
