@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/404.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/404.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/CONTRIBUTING.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/articles/index.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/articles/rlistings.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/articles/rlistings.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/authors.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/authors.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/index.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/index.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/news/index.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/news/index.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/reference/defunct.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/reference/defunct.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/reference/index.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/reference/listing_methods.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/reference/listing_methods.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/reference/listings.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/reference/listings.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/reference/make_row_df-listing_df-method.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/reference/make_row_df-listing_df-method.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/reference/matrix_form-listing_df-method.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/reference/matrix_form-listing_df-method.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/reference/paginate.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/reference/paginate.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/reference/reexports.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/reference/reexports.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/reference/rlistings-package.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/reference/rlistings-package.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/v0.2.3-rc2/reference/vec_nlines.html</loc>
+    <loc>https://insightsengineering.github.io/rlistings/reference/vec_nlines.html</loc>
   </url>
 </urlset>
