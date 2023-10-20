@@ -114,8 +114,8 @@ are then displayed.
 
 ```{r}
 lsting <- as_listing(
-    df = adae,
-    non_disp_cols = tail(names(adae), 8))
+  df = adae,
+  non_disp_cols = tail(names(adae), 8))
 head(lsting, 15)
 ```
 
