@@ -140,8 +140,10 @@ as_listing <- function(df,
                        main_footer = NULL,
                        prov_footer = NULL) {
   if (length(non_disp_cols) > 0 && length(intersect(key_cols, non_disp_cols)) > 0) {
-    stop("Key column also listed in non_disp_cols. All key columns are by",
-      " definition display columns.")
+    stop(
+      "Key column also listed in non_disp_cols. All key columns are by",
+      " definition display columns."
+    )
   }
   if (!is.null(disp_cols) && !is.null(non_disp_cols)) {
     stop("Got non-null values for both disp_cols and non_disp_cols. This is not supported.")
@@ -153,12 +155,16 @@ as_listing <- function(df,
     cols <- disp_cols
   }
   if (!all(sapply(default_formatting, is, class2 = "fmt_config"))) {
-    stop("All format configurations supplied in `default_formatting`",
-      " must be of type `fmt_config`.")
+    stop(
+      "All format configurations supplied in `default_formatting`",
+      " must be of type `fmt_config`."
+    )
   }
   if (!(is.null(col_formatting) || all(sapply(col_formatting, is, class2 = "fmt_config")))) {
-    stop("All format configurations supplied in `col_formatting`",
-      " must be of type `fmt_config`.")
+    stop(
+      "All format configurations supplied in `col_formatting`",
+      " must be of type `fmt_config`."
+    )
   }
 
   df <- as_tibble(df)
@@ -197,9 +203,11 @@ as_listing <- function(df,
       default_formatting[[col_fmt_class]]
     } else {
       if (!"all" %in% names(default_formatting)) {
-        stop("Format configurations must be supplied for all listing columns. ",
+        stop(
+          "Format configurations must be supplied for all listing columns. ",
           "To cover all remaining columns please add an 'all' configuration",
-          " to `default_formatting`.")
+          " to `default_formatting`."
+        )
       }
       default_formatting[["all"]]
     }
