@@ -1,11 +1,11 @@
 ---
-title: "Listing Pagination"
+title: "Pagination"
 author: "Emily de la Rua"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Listing Pagination}
+  %\VignetteIndexEntry{Pagination}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
