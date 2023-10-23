@@ -95,18 +95,25 @@ We can see from the above output that applying pagination separated our listing 
 
 ### Alternative Methods to Specify Page Size
 
-In addition to specifying `page_type`, there are two alternative methods that can be used to specify page size when paginating a listing. If either of the two methods are implemented, the `page_type` argument will be ignored.
+In addition to specifying `page_type`, there are three alternative methods that can be used to specify page size when paginating a listing:
 
-#### `pg_width` and `pg_height`
+1. `pg_width` and `pg_height`
+2. `lpp` and `cpp`
+3. `colwidths`
+
+If method 1 or 2 is implemented, the `page_type` argument will be ignored.
+
+#### 1. `pg_width` and `pg_height`
 
 As an alternative to specifying page type, the user can instead supply page width (`pg_width`) and  
 page height (`pg_height`) values in inches to define the page size. 
 
-#### `lpp` and `cpp`
+#### 2. `lpp` and `cpp`
 
 For more control users can instead set the `lpp` (lines per page) and `cpp` (characters per page) parameters to set an exact number of rows in the vertical dimension that should be included per page, and characters per line that should be included per page in the horizontal dimension, respectively. If `NULL` is supplied to either of these parameters, pagination in the associated dimension will not be applied.
 
-Considerations: 
+Considerations:
+
 - The `lpp` value do not include lines for titles and footers, which are included on every page. 
 - If a value is supplied which does not allow for valid pagination, an error will occur. One example where an error would occur is if your titles & footer information (including separator lines) spans 10 rows but you specify `lpp` as 5.
 
@@ -118,11 +125,12 @@ paginate_listing(lsting, lpp = 50, cpp = NULL)
 
 Here we set `lpp` to 50 which shortens the vertical length of each page to a maximum of 50 lines (8 rows of header/footer information + 42 rows of data). By setting `cpp` to `NULL` we disable pagination in the horizontal direction so that all columns fit horizontally across each page.
 
-#### `colwidths`
+#### 3. `colwidths`
 
 When applying horizontal pagination, the `colwidths` parameter can be set via a numeric vector with widths to use for each column. The length of this vector must be equal to the number of columns in the listing, with each element corresponding to the column of the listing at the same index. 
 
 Considerations:
+
 - If a column width smaller than the widest text in the column (or its label) is specified, then the width of that column will be set the number of characters of the widest text in that column. 
 - This argument only affects horizontal pagination (page width) and should be used in combination with an argument that applies vertical pagination (page height).
 
@@ -134,7 +142,7 @@ For example, we can create a small listing:
 
 ```{r}
 lsting_tfwrap <- as_listing(
-  df = adae[1:30, ],
+  df = adae[1:10, ],
   key_cols = c("ARMCD"),
   disp_cols = c("AGE", "SEX"),
   main_title = "This is a Very Long Title That Should Be Wrapped",
@@ -147,7 +155,7 @@ lsting_tfwrap
 Then we apply pagination with `max_width` specified:
 
 ```{r}
-paginate_listing(lsting_tfwrap, max_width = 15, tf_wrap = TRUE)
+paginate_listing(lsting_tfwrap, max_width = 20, tf_wrap = TRUE)
 ```
 
 ## Pagination with Exporters
