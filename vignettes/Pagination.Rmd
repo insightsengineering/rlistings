@@ -158,7 +158,7 @@ Notice the page break symbol (`\s\n`) is repeated where page breaks occur (i.e. 
 
 ### `export_as_rtf`
 
-The `export_as_rtf` function can be used similarly to `export_as_txt` to paginate and export listings except this function will write output to a supplied `.rtf` file containing the listing output. If no file is supplied, the RTF formatted output will be printed to the console. See `?export_as_rtf` for more details on this function.
+The `export_as_rtf` function can be used similarly to `export_as_txt` to paginate and export listings except this function will write output to a supplied `.rtf` file containing the listing output. If no file is supplied, the `RTF` formatted output will be printed to the console. See `?export_as_rtf` for more details on this function.
 
 ## Pagination by Parameter
 
