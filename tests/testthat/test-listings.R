@@ -240,8 +240,10 @@ testthat::test_that("unique_rows removes duplicate rows from listing", {
   )
   result_strings <- matrix_form(lsting)$strings
   expected_strings <- matrix(
-    c("Planned Arm Code", "ARM A", "", "", "", "ARM B", "", "", "ARM C", "", "", "",
-      "Sex", "M", "F", "UNDIFFERENTIATED", "U", "F", "M", "U", "M", "F", "U", "UNDIFFERENTIATED"),
+    c(
+      "Planned Arm Code", "ARM A", "", "", "", "ARM B", "", "", "ARM C", "", "", "",
+      "Sex", "M", "F", "UNDIFFERENTIATED", "U", "F", "M", "U", "M", "F", "U", "UNDIFFERENTIATED"
+    ),
     ncol = 2,
     dimnames = list(c(), c("ARMCD", "SEX"))
   )
