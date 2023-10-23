@@ -134,30 +134,6 @@ Considerations:
 - If a column width smaller than the widest text in the column (or its label) is specified, then the width of that column will be set the number of characters of the widest text in that column. 
 - This argument only affects horizontal pagination (page width) and should be used in combination with an argument that applies vertical pagination (page height).
 
-### Wrapping Title & Footer Information
-
-In addition to setting page size, the user can also customize pagination by wrapping text in titles/footers to a given width. Titles and footers are wrapped to a specified width (in characters) using the `max_width` argument. If this parameter is not set then these annotations are automatically wrapped to the width of the table. If the `tf_wrap` argument is explicitly set to `FALSE` then titles & footers are printed as is.
-
-For example, we can create a small listing: 
-
-```{r}
-lsting_tfwrap <- as_listing(
-  df = adae[1:10, ],
-  key_cols = c("ARMCD"),
-  disp_cols = c("AGE", "SEX"),
-  main_title = "This is a Very Long Title That Should Be Wrapped",
-  main_footer = "This is a Very Long Footnote That Should Be Wrapped"
-)
-
-lsting_tfwrap
-```
-
-Then we apply pagination with `max_width` specified:
-
-```{r}
-paginate_listing(lsting_tfwrap, max_width = 20, tf_wrap = TRUE)
-```
-
 ## Pagination with Exporters
 
 ### `export_as_txt`
