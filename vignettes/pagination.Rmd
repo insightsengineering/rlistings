@@ -39,13 +39,13 @@ To learn more about how listings are constructed using the `rlistings` package, 
 
 ## Basics of Pagination
 
-In many cases, listings more rows or more columns than fit on a single page. When this occurs, we may choose to use pagination to improve the readability of the listing and/or to fit in onto a standard-sized page for exporting or printing. When pagination is applied, all listing annotations (titles & footers) are printed on each of the returned page. Note that currently only mono-spaced fonts are supported for pagination as characters are used to measure text width.
+In many cases, listings have more rows or more columns than can fit on a single page. When this occurs, we may choose to use pagination to improve the readability of the listing and/or to fit in onto a standard-sized page for exporting or printing. When pagination is applied, all listing annotations (titles & footers) are printed on each of the returned pages. Note that currently only mono-spaced fonts are supported for pagination as characters are used to measure text width.
 
 Vertical pagination occurs when a listing is especially long and has too many _rows_ to fit on one page, while horizontal pagination is applied when a listing is especially wide and has too many _columns_ to print on a single page. When horizontal pagination is applied to a listing, any key columns that have been specified for the listing will be repeated as the leftmost columns on each page. If a value from a key column, for example a subject ID, is present in rows that extend over several pages, that key column value will be printed at the top of each page.
 
 The `paginate_listing` function paginates a listing object and returns a list of listing objects with each list element corresponding to a separate page. This function should be used if you want to paginate a listing to view within your R console or you would like to process the list of paginated output further before exporting.
 
-In the R code below we will give a basic example of how to create an `rlistings` listing from a pre-processed data frame and paginate the listing using `paginate_listing`.
+In the R code below, we will give a basic example of how to create a listing with `rlistings` from a pre-processed data frame and paginate the listing using `paginate_listing`.
 
 We first load in the `rlistings` package.
 
@@ -73,9 +73,9 @@ lsting <- as_listing(
 head(lsting, 20)
 ```
 
-In the listing output above you can see that there are two key columns that we expect to be repeated on each page after pagination.
+In the listing output above, notice that there are two key columns that we expect to be repeated on each page after pagination.
 
-Next we apply pagination with the default settings via the `paginate_listing` function. 
+Next, we apply pagination with the default settings via the `paginate_listing` function. 
 Default pagination applies the following settings, which are adjustable via the parameter specified in parentheses:
 
 - Page type: `"letter"` (`page_type`) - other options: `"a4"`, `"legal"`
@@ -85,7 +85,7 @@ Default pagination applies the following settings, which are adjustable via the 
 - Landscape: `FALSE` - portrait orientation (`landscape`)
 - Margins: `0.5`, `0.75` - inches for top/bottom and left/right margins, respectively (`margins`)
 
-These as well as some additional parameters not listed here (see `?paginate_listing` for all options) can be set to fine-tune your pagination output.
+These parameters, as well as some additional arguments not listed here (see `?paginate_listing` for all options), can be set to fine-tune your pagination output.
 
 ```{r}
 paginate_listing(lsting)
@@ -131,14 +131,14 @@ When applying horizontal pagination, the `colwidths` parameter can be set via a 
 
 Considerations when using `colwidths`:
 
-- If a column width smaller than the widest text in the column (or its label) is specified, then the width of that column will be set the number of characters of the widest text in that column. 
+- If the supplied column width is smaller than the widest text in the column (or its label), then the width of that column defaults to the number of characters of the widest text in that column. 
 - This argument only affects horizontal pagination (page width) and should be used in combination with an argument that applies vertical pagination (page height).
 
 ## Pagination with Exporters
 
 ### `export_as_txt`
 
-Similarly to `paginate_listing`, `export_as_txt` can also be used to paginate listing objects. Instead of returning a list of listings by page, the `export_as_txt` function will, if no file is specified, return a concatenated string value of all of the page content resulting after pagination. If the `file` parameter is specified, the `export_as_txt` function will instead write the result to the supplied `.txt` file.
+As with `paginate_listing`, `export_as_txt` can also be used to paginate listing objects. Instead of returning a list of listings by page, the `export_as_txt` function will, if no file is specified, return a concatenated string value of all of the page content resulting after pagination. If the `file` parameter is specified, the `export_as_txt` function will instead write the result to the supplied `.txt` file.
 
 The `export_as_txt` function contains all of the arguments available in `paginate_listing`, which work the same way, plus some additional arguments that are useful for listing pagination:
 
@@ -188,7 +188,7 @@ lsting_by_arm <- lsting %>%
 lsting_by_arm
 ```
 
-Similarly to `paginate_listing` this creates a list of listings, where each list element corresponds to a new page and each page contains only one value of the given parameter. Note that the `page_prefix` argument can be specified to change the modify the text printed on each page to describe the current value of the specified parameter.
+As with `paginate_listing`, this creates a list of listings where each list element corresponds to a new page, but with each page corresponding to only one value of the given parameter. Note that the `page_prefix` argument can be specified to modify the text printed on each page to describe the current parameter value.
 
 #### Combining Pagination by Parameter with Regular Pagination
 
@@ -224,6 +224,6 @@ Again, we use the `cat` function to make the text output more easily readable in
 
 ## Summary
 
-In this vignette you have learned how to use the `rlistings` package to paginate listings. You have seen examples demonstrating how custom pagination can be configured, as well as examples of pagination applied using exporter functions. You have also seen learned how pagination can be applied with pages separated by value of a given parameter.
+In this vignette, you have learned how to use the `rlistings` package to paginate listings. You have seen examples demonstrating how custom pagination can be configured, as well as examples of pagination applied using exporter functions. You have also seen learned how pagination can be applied with pages separated by value of a given parameter.
 
 **For more information on listings pagination please see `?paginate_listing`.**
