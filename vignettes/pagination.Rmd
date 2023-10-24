@@ -1,0 +1,229 @@
+---
+title: "Pagination"
+author: "Emily de la Rua"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Pagination}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{css, echo=FALSE}
+pre {
+  max-height: 800px !important;
+}
+```
+
+## Introduction
+
+This vignette shows how pagination can be applied to `listing_df` objects using the `rlistings` R package.
+
+Specifically, the following topics will be covered:
+
+- Basics of pagination
+- Pagination with exporters
+- Pagination by parameter
+
+To learn more about how listings are constructed using the `rlistings` package, see the [Getting Started vignette](rlistings.html).
+
+---------
+
+## Basics of Pagination
+
+In many cases, listings have more rows or more columns than can fit on a single page. When this occurs, we may choose to use pagination to improve the readability of the listing and/or to fit in onto a standard-sized page for exporting or printing. When pagination is applied, all listing annotations (titles & footers) are printed on each of the returned pages. Note that currently only mono-spaced fonts are supported for pagination as characters are used to measure text width.
+
+Vertical pagination occurs when a listing is especially long and has too many _rows_ to fit on one page, while horizontal pagination is applied when a listing is especially wide and has too many _columns_ to print on a single page. When horizontal pagination is applied to a listing, any key columns that have been specified for the listing will be repeated as the leftmost columns on each page. If a value from a key column, for example a subject ID, is present in rows that extend over several pages, that key column value will be printed at the top of each page.
+
+The `paginate_listing` function paginates a listing object and returns a list of listing objects with each list element corresponding to a separate page. This function should be used if you want to paginate a listing to view within your R console or you would like to process the list of paginated output further before exporting.
+
+In the R code below, we will give a basic example of how to create a listing with `rlistings` from a pre-processed data frame and paginate the listing using `paginate_listing`.
+
+We first load in the `rlistings` package.
+
+```{r, message=FALSE}
+library(rlistings)
+```
+
+For the purpose of this example we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient. For the purpose of this example, we will subset the data and only use the first 100 records of the dataset.
+
+```{r}
+adae <- ex_adae[1:100, ]
+```
+
+Now we will create a basic listing.
+
+```{r}
+lsting <- as_listing(
+  df = adae,
+  key_cols = c("USUBJID", "ARM"),
+  disp_cols = c("AETOXGR", "AEDECOD", "AESEV"),
+  main_title = "Title",
+  main_footer = "Footer"
+)
+
+head(lsting, 20)
+```
+
+In the listing output above, notice that there are two key columns that we expect to be repeated on each page after pagination.
+
+Next, we apply pagination with the default settings via the `paginate_listing` function. 
+Default pagination applies the following settings, which are adjustable via the parameter specified in parentheses:
+
+- Page type: `"letter"` (`page_type`) - other options: `"a4"`, `"legal"`
+- Font family: `"Courier"` (`font_family`) - other options: `"mono"`, `"NimbusMon"`, `"Japan1"`, `"Japan1HeiMin"`, `"Japan1GothicBBB"`, `"Japan1Ryumin"`, `"Korea1"`, `"Korea1deb"`, `"CNS1"`, `"GB1"`
+- Font size: `8` (`font_size`)
+- Line height: `1` (`line_height`)
+- Landscape: `FALSE` - portrait orientation (`landscape`)
+- Margins: `0.5`, `0.75` - inches for top/bottom and left/right margins, respectively (`margins`)
+
+These parameters, as well as some additional arguments not listed here (see `?paginate_listing` for all options), can be set to fine-tune your pagination output.
+
+```{r}
+paginate_listing(lsting)
+```
+
+We can see from the above output that applying pagination separated our listing into 4 pages (list elements). Each page includes the two key columns as well as however many display columns fit horizontally on the page. Pages 1 and 3 contain only the key columns and the "Analysis Toxicity Grade" column, while the overflowing columns from these pages are present on pages 2 and 4, respectively. Additionally, vertical pagination is applied for this listing, with 20 rows that do not fit vertically on pages 1 and 2 overflowing onto pages 3 and 4, respectively. We can also see that the last subject included on pages 1 and 2, with subject ID "AB12345-BRA-12-id-59", has additional rows that overflow onto pages 3 and 4, and the key column values for this subject are repeated in the first line of these two pages.
+
+### Alternative Methods to Specify Page Size
+
+In addition to specifying `page_type`, there are three alternative methods that can be used to specify page size when paginating a listing:
+
+1. `pg_width` and `pg_height`
+2. `lpp` and `cpp`
+3. `colwidths`
+
+If method 1 or 2 is implemented, the `page_type` argument will be ignored.
+
+#### 1. `pg_width` and `pg_height`
+
+As an alternative to specifying page type, the user can instead supply page width (`pg_width`) and  
+page height (`pg_height`) values in inches to define the page size. 
+
+#### 2. `lpp` and `cpp`
+
+For more control users can instead set the `lpp` (lines per page) and `cpp` (characters per page) parameters to set an exact number of rows in the vertical dimension that should be included per page, and characters per line that should be included per page in the horizontal dimension, respectively. If `NULL` is supplied to either of these parameters, pagination in the associated dimension will not be applied.
+
+Considerations when using `lpp` and `cpp`:
+
+- The `lpp` value must include lines for titles and footers, which are included on every page. 
+- If a value is supplied which does not allow for valid pagination, an error will occur. One example where an error would occur is if your titles & footer information (including separator lines) spans 10 rows but you specify `lpp` as 5.
+
+See the following example which uses `lpp` and `cpp` instead of `page_type` to specify page size:
+
+```{r}
+paginate_listing(lsting, lpp = 50, cpp = NULL)
+```
+
+Here we set `lpp` to 50 which shortens the vertical length of each page to a maximum of 50 lines (8 rows of header/footer information + 42 rows of data). By setting `cpp` to `NULL` we disable pagination in the horizontal direction so that all columns fit horizontally across each page.
+
+#### 3. `colwidths`
+
+When applying horizontal pagination, the `colwidths` parameter can be set via a numeric vector with widths to use for each column. The length of this vector must be equal to the number of columns in the listing, with each element corresponding to the column of the listing at the same index. 
+
+Considerations when using `colwidths`:
+
+- If the supplied column width is smaller than the widest text in the column (or its label), then the width of that column defaults to the number of characters of the widest text in that column. 
+- This argument only affects horizontal pagination (page width) and should be used in combination with an argument that applies vertical pagination (page height).
+
+## Pagination with Exporters
+
+### `export_as_txt`
+
+As with `paginate_listing`, `export_as_txt` can also be used to paginate listing objects. Instead of returning a list of listings by page, the `export_as_txt` function will, if no file is specified, return a concatenated string value of all of the page content resulting after pagination. If the `file` parameter is specified, the `export_as_txt` function will instead write the result to the supplied `.txt` file.
+
+The `export_as_txt` function contains all of the arguments available in `paginate_listing`, which work the same way, plus some additional arguments that are useful for listing pagination:
+
+- `file`: The path to write a text file to, with the paginated listing rendered as ASCII text.
+- `hsep`: Character to repeat to create separator line between header/footer and body.
+- `page_break`: Page break symbol. Defaults to `"\\s\\n"`.
+
+Note that if the `paginate` argument is set to `FALSE`, no pagination will occur.
+
+See an example using `export_as_txt` below. We use the `cat` function to make the output more easily readable in the console:
+
+```{r}
+cat(export_as_txt(lsting))
+```
+
+Notice the page break symbol (`\s\n`) is repeated where page breaks occur (i.e. prior to the title on each new page).
+
+### `export_as_rtf`
+
+The `export_as_rtf` function can be used similarly to `export_as_txt` to paginate and export listings except this function will write output to a supplied `.rtf` file containing the listing output. If no file is supplied, the `RTF` formatted output will be printed to the console. See `?export_as_rtf` for more details on this function.
+
+## Pagination by Parameter
+
+In addition to paginating by page size as described in the previous sections of this vignette, a user may also want to paginate their listing such that each page corresponds to a different value of a given parameter. For example, you may require that each treatment arm is printed on a separate page. This can currently be done with `rlistings` using the following workaround:
+
+```{r}
+split_listing_by_param <- function(lsting, param, page_prefix = param) {
+  checkmate::assert_class(lsting, "listing_df")
+  checkmate::assert_choice(param, names(lsting))
+
+  lsting_by_param <- list()
+  for (lvl in unique(lsting[[param]])) {
+    param_desc <- paste0(page_prefix, ": ", lvl)
+    lsting_by_param[[lvl]] <- lsting[lsting[[param]] == lvl, ]
+    subtitles(lsting_by_param[[lvl]]) <- c(subtitles(lsting), param_desc)
+  }
+  unname(lsting_by_param)
+}
+```
+
+After loading the function above, you can apply it to your pre-existing listing as follows:
+
+```{r}
+lsting_by_arm <- lsting %>%
+  split_listing_by_param("ARM", page_prefix = "Treatment Arm")
+
+lsting_by_arm
+```
+
+As with `paginate_listing`, this creates a list of listings where each list element corresponds to a new page, but with each page corresponding to only one value of the given parameter. Note that the `page_prefix` argument can be specified to modify the text printed on each page to describe the current parameter value.
+
+#### Combining Pagination by Parameter with Regular Pagination
+
+To then apply regular pagination to the listing, you can apply the following function to your list of listings by parameter. Any arguments to `paginate_listing` supplied to this function will be applied to each list element.
+
+```{r}
+paginate_lsting_by_param <- function(lsting, ...) {
+  unlist(lapply(lsting, paginate_listing, ...), recursive = FALSE)
+}
+```
+
+#### Combining Pagination by Parameter with `export_as_txt`
+
+Similarly, for pagination via `export_as_txt` after paginating by parameter, you can apply the following function to your list of listings by parameter. Any arguments to `export_as_txt` supplied to this function will be applied to each list element and the list will then be concatenated into the correct text format.
+
+```{r}
+export_to_txt_lsting_by_param <- function(lsting, file = NULL, page_break = "\\s\\n", ...) {
+  lst <- unlist(lapply(lsting, export_as_txt, page_break = page_break, ...), recursive = FALSE)
+  res <- paste(lst, collapse = page_break)
+  if (is.null(file)) res else cat(res, file = file)
+}
+```
+
+For example:
+
+```{r}
+cat(export_to_txt_lsting_by_param(lsting_by_arm))
+```
+
+Again, we use the `cat` function to make the text output more easily readable in the console.
+
+---------
+
+## Summary
+
+In this vignette, you have learned how to use the `rlistings` package to paginate listings. You have seen examples demonstrating how custom pagination can be configured, as well as examples of pagination applied using exporter functions. You have also seen learned how pagination can be applied with pages separated by value of a given parameter.
+
+**For more information on listings pagination please see `?paginate_listing`.**
