@@ -39,7 +39,7 @@ To learn more about how listings are constructed using the `rlistings` package, 
 
 ## Basics of Pagination
 
-In many cases, listings more rows or more columns than fit on a single page. When this occurs, we may choose to use pagination to improve the readability of the listing and/or to fit in onto a standard-sized page for exporting or printing. When pagination is applied, all listing annotations (titles & footers) are printed on each of the returned page. Note that currently only mono-spaced fonts are supported for pagination.
+In many cases, listings more rows or more columns than fit on a single page. When this occurs, we may choose to use pagination to improve the readability of the listing and/or to fit in onto a standard-sized page for exporting or printing. When pagination is applied, all listing annotations (titles & footers) are printed on each of the returned page. Note that currently only mono-spaced fonts are supported for pagination as characters are used to measure text width.
 
 Vertical pagination occurs when a listing is especially long and has too many _rows_ to fit on one page, while horizontal pagination is applied when a listing is especially wide and has too many _columns_ to print on a single page. When horizontal pagination is applied to a listing, any key columns that have been specified for the listing will be repeated as the leftmost columns on each page. If a value from a key column, for example a subject ID, is present in rows that extend over several pages, that key column value will be printed at the top of each page.
 
@@ -78,9 +78,9 @@ In the listing output above you can see that there are two key columns that we e
 Next we apply pagination with the default settings via the `paginate_listing` function. 
 Default pagination applies the following settings, which are adjustable via the parameter specified in parentheses:
 
-- Page type: letter (`page_type`)
-- Font family: Courier (`font_family`)
-- Font size: 12 (`font_size`)
+- Page type: letter (`page_type`) - other options: a4, legal
+- Font family: Courier (`font_family`) - other options: mono, NimbusMon, Japan1, Japan1HeiMin, Japan1GothicBBB, Japan1Ryumin, Korea1, Korea1deb, CNS1, GB1
+- Font size: 8 (`font_size`)
 - Line height: 1 (`line_height`)
 - Landscape: false - portrait orientation (`landscape`)
 - Margins: 0.5 inches for top/bottom margins, 0.75 inches for left/right margins (`margins`)
@@ -112,9 +112,9 @@ page height (`pg_height`) values in inches to define the page size.
 
 For more control users can instead set the `lpp` (lines per page) and `cpp` (characters per page) parameters to set an exact number of rows in the vertical dimension that should be included per page, and characters per line that should be included per page in the horizontal dimension, respectively. If `NULL` is supplied to either of these parameters, pagination in the associated dimension will not be applied.
 
-Considerations:
+Considerations when using `lpp` and `cpp`:
 
-- The `lpp` value do not include lines for titles and footers, which are included on every page. 
+- The `lpp` value must include lines for titles and footers, which are included on every page. 
 - If a value is supplied which does not allow for valid pagination, an error will occur. One example where an error would occur is if your titles & footer information (including separator lines) spans 10 rows but you specify `lpp` as 5.
 
 See the following example which uses `lpp` and `cpp` instead of `page_type` to specify page size:
@@ -129,7 +129,7 @@ Here we set `lpp` to 50 which shortens the vertical length of each page to a max
 
 When applying horizontal pagination, the `colwidths` parameter can be set via a numeric vector with widths to use for each column. The length of this vector must be equal to the number of columns in the listing, with each element corresponding to the column of the listing at the same index. 
 
-Considerations:
+Considerations when using `colwidths`:
 
 - If a column width smaller than the widest text in the column (or its label) is specified, then the width of that column will be set the number of characters of the widest text in that column. 
 - This argument only affects horizontal pagination (page width) and should be used in combination with an argument that applies vertical pagination (page height).
@@ -200,7 +200,7 @@ paginate_lsting_by_param <- function(lsting, ...) {
 }
 ```
 
-#### Combining Pagination by Parameter via `export_as_txt`
+#### Combining Pagination by Parameter with `export_as_txt`
 
 Similarly, for pagination via `export_as_txt` after paginating by parameter, you can apply the following function to your list of listings by parameter. Any arguments to `export_as_txt` supplied to this function will be applied to each list element and the list will then be concatenated into the correct text format.
 
