@@ -3,12 +3,7 @@ title: "Getting Started with rlistings"
 author: "Emily de la Rua and Gabriel Becker"
 date: "2022-10-26"
 output:
-    rmarkdown::html_document:
-        theme: "spacelab"
-        highlight: "kate"
-        toc: true
-        toc_float:
-          collapsed: false
+  rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{Getting Started}
     %\VignetteEngine{knitr::rmarkdown}
@@ -24,8 +19,6 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-
----------
 
 ## Introduction
 
