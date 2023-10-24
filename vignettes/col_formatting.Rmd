@@ -1,0 +1,54 @@
+---
+title: "Column Formatting"
+author: "Emily de la Rua"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Column Formatting}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+---------
+
+## Introduction
+
+This vignette shows how content in columns of a `listing_df` object can be formatted using the `rlistings` R package.
+
+The following topics will be covered in this vignette:
+
+- Applying custom formatting settings when adding a new column to a listing via `add_listing_col`
+- Adjusting default column formatting settings in `as_listing`
+- Applying custom formatting to specific columns in `as_listing`
+
+To learn more about how listings are constructed using the `rlistings` package, see the [Getting Started vignette](rlistings.html).
+
+---------
+
+## Formatting Listing Columns Added via `add_listing_col`
+
+
+
+
+## Setting Default Formatting in `as_listing`
+
+
+
+## Applying Custom Formatting to Columns in `as_listing`
+
+
+
+---------
+
+## Summary
+
+In this vignette you have learned how to implement the basic listing framework provided by the `rlistings` package to build a simple listing. You have also seen examples demonstrating how the optional parameters of the `as_listing` function can be set to customize and annotate your listings.
+
+**For more information please explore the [rlistings website](https://insightsengineering.github.io/rlistings/main/).**
