@@ -78,12 +78,12 @@ In the listing output above you can see that there are two key columns that we e
 Next we apply pagination with the default settings via the `paginate_listing` function. 
 Default pagination applies the following settings, which are adjustable via the parameter specified in parentheses:
 
-- Page type: letter (`page_type`) - other options: a4, legal
-- Font family: Courier (`font_family`) - other options: mono, NimbusMon, Japan1, Japan1HeiMin, Japan1GothicBBB, Japan1Ryumin, Korea1, Korea1deb, CNS1, GB1
-- Font size: 8 (`font_size`)
-- Line height: 1 (`line_height`)
-- Landscape: false - portrait orientation (`landscape`)
-- Margins: 0.5 inches for top/bottom margins, 0.75 inches for left/right margins (`margins`)
+- Page type: `"letter"` (`page_type`) - other options: `"a4"`, `"legal"`
+- Font family: `"Courier"` (`font_family`) - other options: `"mono"`, `"NimbusMon"`, `"Japan1"`, `"Japan1HeiMin"`, `"Japan1GothicBBB"`, `"Japan1Ryumin"`, `"Korea1"`, `"Korea1deb"`, `"CNS1"`, `"GB1"`
+- Font size: `8` (`font_size`)
+- Line height: `1` (`line_height`)
+- Landscape: `FALSE` - portrait orientation (`landscape`)
+- Margins: `0.5`, `0.75` - inches for top/bottom and left/right margins, respectively (`margins`)
 
 These as well as some additional parameters not listed here (see `?paginate_listing` for all options) can be set to fine-tune your pagination output.
 
