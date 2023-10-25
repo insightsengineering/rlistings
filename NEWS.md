@@ -1,4 +1,5 @@
-## rlistings 0.2.6.9003
+## rlistings 0.2.6.9004
+* Fixed bug in `add_listing_col` when both a function and a format are specified.
 
 ## rlistings 0.2.6
 * Fixed bug in pagination preventing key column values to appear in paginated listings when `export_as_txt` was used.

@@ -410,7 +410,7 @@ add_listing_col <- function(df,
                             na_str = "NA",
                             align = "left") {
   if (!is.null(fun)) {
-    vec <- fun(df)
+    vec <- with_label(fun(df), name)
   } else if (name %in% names(df)) {
     vec <- df[[name]]
   } else {
@@ -421,7 +421,6 @@ add_listing_col <- function(df,
   }
 
   if (!is.null(format)) {
-    vec <- df[[name]]
     obj_format(vec) <- format
   }
 
