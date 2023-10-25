@@ -42,7 +42,7 @@ The `default_formatting` argument to `as_listing` accepts a named list of format
 2. `na_str`: A string that should be displayed in place of missing values. Defaults to `"NA"`.
 3. `align`: Alignment to use when rendering the listing column. Defaults to `"center"`. Other options include `"left"`, `"right"`, `"decimal"`, `"dec_right"`, and `"dec_left"`.
 
-The `default_formatting` argument by default uses the same format configuration for all columns in a listing, but also allows the user to set different format configurations for each data class present in your listing. The list supplied to `default_formatting` must contain a named element corresponding to every data class present in your listing, or include the `all` element wiht a configuration that will be applied to any data classes that are _not_ explicitly covered.
+The `default_formatting` argument by default uses the same format configuration for all columns in a listing, but also allows the user to set different format configurations for each data class present in your listing. The list supplied to `default_formatting` must contain a named element corresponding to every data class present in your listing, or include the `all` element with a configuration that will be applied to any data classes that are _not_ explicitly covered.
 
 To demonstrate, we will create a basic listing below and customize formatting using the `default_formatting` parameter.
 
