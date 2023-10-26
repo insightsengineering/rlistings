@@ -32,6 +32,9 @@ Some of the key features currently available to customize listings created using
 - Key columns
 - Titles and footnotes
 
+For information on listing column formatting see the [Column Formatting vignette](col_formatting.html).
+To learn about listing pagination see the [Pagination vignette](pagination.html).
+
 The index of all available `rlistings` functions can be found on the [rlistings website functions reference](https://insightsengineering.github.io/rlistings/main/reference/index.html).
 
 The `rlistings` package is intended for use in creating simple one-dimensional listings. For construction of more complex tables see the [`rtables` package](https://insightsengineering.github.io/rtables/).
