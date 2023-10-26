@@ -1,4 +1,4 @@
-## rlistings 0.2.6.9004
+## rlistings 0.2.6.9005
 * Fixed bug in `add_listing_col` when both a function and a format are specified.
 
 ## rlistings 0.2.6
