@@ -42,7 +42,7 @@ The `default_formatting` argument to `as_listing` accepts a named list of format
 2. `na_str`: A string that should be displayed in place of missing values. Defaults to `"NA"`.
 3. `align`: Alignment to use when rendering the listing column. Defaults to `"center"`. Other options include `"left"`, `"right"`, `"decimal"`, `"dec_right"`, and `"dec_left"`.
 
-The `default_formatting` argument by default uses the same format configuration for all columns in a listing, but also allows the user to set different format configurations for each data class present in your listing. The list supplied to `default_formatting` must contain a named element corresponding to every data class present in your listing, or include the `all` element with a configuration that will be applied to any data classes that are _not_ explicitly covered.
+The `default_formatting` argument can use the same format configuration for all columns in a listing (as is the default), but also allows the user to set different format configurations for each data class present in your listing. The list supplied to `default_formatting` must contain a named element corresponding to every data class present in your listing, or include the `all` element with a configuration that will be applied to any data classes that are _not_ explicitly covered.
 
 To demonstrate, we will create a basic listing below and customize formatting using the `default_formatting` parameter.
 
@@ -52,7 +52,7 @@ We begin by loading in the `rlistings` package.
 library(rlistings)
 ```
 
-For the purpose of this example we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient. For the purpose of this example, we will subset the data and only use the first 10 records of the dataset. We will create some `NA` values in the data to showcase how `NA` values can be formatted, and sort the data by what will be our key columns.
+For this example, we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient. For the purpose of this example, we will subset the data and only use the first 10 records of the dataset. We will create some `NA` values in the data to showcase how `NA` values can be formatted, and sort the data by what will be our key columns.
 
 ```{r}
 adae <- ex_adae[1:15, ]
@@ -140,7 +140,7 @@ In the output above, the `all` format configuration, which originally applied to
 
 ## Column-Wise Formatting in `as_listing`
 
-In this section we will demonstrate how custom formatting can be applied on a column-by-column basis rather than to all columns of a specified data class or an entire listing at once. 
+In this section, we will demonstrate how custom formatting can be applied on a column-by-column basis rather than to all columns of a specified data class or an entire listing at once. 
 
 Take, for example, `lsting_4` created in the previous section.
 
@@ -199,6 +199,6 @@ lsting_6
 
 ## Summary
 
-In this vignette you have learned how column formatting can be configured using the `default_formatting` and `col_formatting` arguments to `as_listing` and the `add_listing_col` function to customize how listings are rendered.
+In this vignette, you have learned how column formatting can be configured using the `default_formatting` and `col_formatting` arguments to `as_listing` and the `add_listing_col` function to customize how listings are rendered.
 
 **For more information please explore the [rlistings website](https://insightsengineering.github.io/rlistings/main/).**
