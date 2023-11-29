@@ -67,7 +67,7 @@ df_lbls <- var_labels(adae)
 levels(adae$ARM) <- c("A: Drug X", "B: Placebo", "C: Combination", "C: Combination*")
 
 # Mutate variable where referential footnotes are to be added according to conditions
-adae <- adae %>% 
+adae <- adae %>%
   dplyr::mutate(ARM = ifelse(ARM == "C: Combination" & ASEQ %in% 1:2, paste0(ARM, "*"), as.character(ARM))) %>%
   dplyr::arrange(USUBJID, ARM, ASEQ)
 
@@ -105,7 +105,7 @@ df_lbls <- var_labels(adae)
 levels(adae$AESEV) <- c("MILD", "MODERATE", "SEVERE", "SEVERE**")
 
 # Mutate variable where referential footnotes are to be added according to conditions
-adae <- adae %>% 
+adae <- adae %>%
   dplyr::mutate(AESEV = ifelse(AETOXGR == 5, paste0(AESEV, "**"), as.character(AESEV)))
 
 # Add back data variable labels
