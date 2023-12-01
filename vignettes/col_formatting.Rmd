@@ -52,7 +52,7 @@ We begin by loading in the `rlistings` package.
 library(rlistings)
 ```
 
-For this example, we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient. For the purpose of this example, we will subset the data and only use the first 10 records of the dataset. We will create some `NA` values in the data to showcase how `NA` values can be formatted, and sort the data by what will be our key columns.
+For this example, we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient. For the purpose of this example, we will subset the data and only use the first 15 records of the dataset. We will create some `NA` values in the data to showcase how `NA` values can be formatted, and sort the data by what will be our key columns.
 
 ```{r}
 adae <- ex_adae[1:15, ]
