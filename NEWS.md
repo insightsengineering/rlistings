@@ -1,4 +1,4 @@
-## rlistings 0.2.6.9005
+## rlistings 0.2.6.9006
 * Fixed bug in `add_listing_col` when both a function and a format are specified.
 * Added a vignette on referential footnotes workaround.
 
