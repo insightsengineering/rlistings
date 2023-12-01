@@ -66,7 +66,7 @@ For this example, we will add 4 referential footnotes.
 Footnote text can be supplied either as a vector, where each element is a new footnote, or as a single string with footnotes separated by the new line (`\n`) character. For example, see the following list of referential footnotes:
 
 ```{r}
-ref_fns <- "*   ASEQ 1 or 2\n**  Analysis start date is imputed\n**  Records with ATOXGR = 5\n*** ID column"
+ref_fns <- "*   ASEQ 1 or 2\n**  Analysis start date is imputed\n***  Records with ATOXGR = 5\n**** ID column"
 ```
 
 We start with our first footnote in the `ARM` column for records with arm "A: Drug X" which also have analysis sequence number 1 or 2. Referential footnotes can be added to any variable by converting the variable to a factor, editing the variable values, and adding a corresponding footnote below the listing. We will add our first referential footnote in the `ARM` column. To ensure that levels are correctly ordered, be sure to specify the new level order when mutating your variable.
@@ -169,7 +169,7 @@ adae <- adae %>% var_relabel(
 # Generate listing
 lsting <- as_listing(
   df = adae,
-  key_cols = c("USUBJID", "ARM", "ASTDY", "ASEQ"),
+  key_cols = c("ARM", "USUBJID", "ASTDY", "ASEQ"),
   disp_cols = c("BMRKR1", "AESEV")
 )
 
@@ -182,7 +182,7 @@ Finally, we add in the referential footnote text below the listing as follows.
 # Generate listing
 lsting <- as_listing(
   df = adae,
-  key_cols = c("USUBJID", "ARM", "ASTDY", "ASEQ"),
+  key_cols = c("ARM", "USUBJID", "ASTDY", "ASEQ"),
   disp_cols = c("BMRKR1", "AESEV")
 )
 
