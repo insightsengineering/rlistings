@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rlistings <a href='https://github.com/insightsengineering/rlistings'><img src="man/figures/rlistings.png" align="right" height="200" width="200"/></a>
+# rlistings <a href='https://github.com/insightsengineering/rlistings'><img src="man/figures/logo.png" align="right" height="200" width="200"/></a>
 
 <!-- start badges -->
 [![Check
