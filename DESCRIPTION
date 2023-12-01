@@ -1,6 +1,6 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Version: 0.2.6.9006
+Version: 0.2.6.9007
 Date: 2023-12-01
 Authors@R: c(
     person("Gabriel", "Becker", , "gabembecker@gmail.com", role = "aut",
