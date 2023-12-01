@@ -6,6 +6,8 @@
 \alias{rlistings-package}
 \title{rlistings: Clinical Trial Style Data Readout Listings}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Listings are often part of the submission of clinical trial data in regulatory settings. We provide a framework for the specific formatting features often used when displaying large datasets in that context.
 }
 \seealso{
