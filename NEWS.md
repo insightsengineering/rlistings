@@ -1,6 +1,9 @@
-## rlistings 0.2.6.9007
+## rlistings 0.2.7
+* Applied `styler` and resolved package lint. Changed default indentation from 4 spaces to 2.
 * Fixed bug in `add_listing_col` when both a function and a format are specified.
 * Added a vignette on referential footnotes workaround.
+* Added a vignette on formatting columns. 
+* Added a vignette on pagination. 
 
 ## rlistings 0.2.6
 * Fixed bug in pagination preventing key column values to appear in paginated listings when `export_as_txt` was used.
