@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="export" timestamp="2023-12-06T09:59:18Z" hostname="f4b66e71a7b6" tests="8" skipped="3" failures="0" errors="0" time="1.307">
+    <testcase time="0.196" classname="export" name="Listing_print_correctly"/>
+    <testcase time="0.199" classname="export" name="key_columns_repeat_with_export_as_txt">
+      <skipped message="Reason: On CRAN ('test-export.R:24:3')"/>
+    </testcase>
+    <testcase time="0.152" classname="export" name="key_columns_repeat_with_pagination_with_export_as_txt">
+      <skipped message="Reason: On CRAN ('test-export.R:42:3')"/>
+    </testcase>
+    <testcase time="0.32" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.00300000000000011" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.00299999999999989" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.252" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination"/>
+    <testcase time="0.182" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination">
+      <skipped message="Reason: On CRAN ('test-export.R:76:3')"/>
+    </testcase>
+  </testsuite>
+  <testsuite name="listings" timestamp="2023-12-06T09:59:20Z" hostname="f4b66e71a7b6" tests="38" skipped="0" failures="0" errors="0" time="0.625">
+    <testcase time="0.0289999999999999" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.0150000000000001" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.00599999999999978" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.0209999999999999" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00499999999999989" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00299999999999967" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.016" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00599999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00600000000000023" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00599999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.016" classname="listings" name="Content_of_listings_supports_newlines"/>
+    <testcase time="0.00499999999999989" classname="listings" name="Content_of_listings_supports_newlines"/>
+    <testcase time="0.0129999999999999" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
+    <testcase time="0.036" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.016" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0510000000000002" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.048" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.004" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00499999999999989" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0670000000000002" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.02" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.0189999999999997" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.0270000000000001" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
+    <testcase time="0.0180000000000002" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
+    <testcase time="0.0389999999999997" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0350000000000001" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0299999999999998" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0100000000000002" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.02" classname="listings" name="add_listing_col_works_with_a_function_when_a_format_is_applied"/>
+  </testsuite>
+  <testsuite name="paginate_listing" timestamp="2023-12-06T09:59:20Z" hostname="f4b66e71a7b6" tests="24" skipped="1" failures="0" errors="0" time="2.206">
+    <testcase time="0.147" classname="paginate_listing" name="pagination_works_vertically">
+      <skipped message="Reason: On CRAN ('test-paginate_listing.R:15:3')"/>
+    </testcase>
+    <testcase time="0.0990000000000002" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00299999999999967" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.0880000000000001" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.004" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.052" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.004" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.00299999999999967" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.0609999999999999" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
+    <testcase time="0.004" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
+    <testcase time="0.216" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
+    <testcase time="0.229" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.213" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.233" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
+    <testcase time="0.222" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
+    <testcase time="0.231" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
+    <testcase time="0.0700000000000003" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.0840000000000005" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.00499999999999989" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.22" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages"/>
+    <testcase time="0.00900000000000034" classname="paginate_listing" name="defunct_is_defunct"/>
+  </testsuite>
+  <testsuite name="print" timestamp="2023-12-06T09:59:22Z" hostname="f4b66e71a7b6" tests="10" skipped="5" failures="0" errors="0" time="0.483">
+    <testcase time="0.0359999999999996" classname="print" name="Listing_print_correctly">
+      <skipped message="Reason: On CRAN ('test-print.R:7:3')"/>
+    </testcase>
+    <testcase time="0.0739999999999998" classname="print" name="Listing_print_correctly_with_different_widths"/>
+    <testcase time="0.0419999999999998" classname="print" name="Listing_print_correctly_with_different_widths">
+      <skipped message="Reason: On CRAN ('test-print.R:19:3')"/>
+    </testcase>
+    <testcase time="0.0420000000000007" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified">
+      <skipped message="Reason: On CRAN ('test-print.R:34:3')"/>
+    </testcase>
+    <testcase time="0.04" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified">
+      <skipped message="Reason: On CRAN ('test-print.R:74:3')"/>
+    </testcase>
+    <testcase time="0.0349999999999993" classname="print" name="listings_support_newline_characters">
+      <skipped message="Reason: On CRAN ('test-print.R:133:3')"/>
+    </testcase>
+    <testcase time="0.0520000000000005" classname="print" name="listings_supports_wrapping"/>
+    <testcase time="0.121" classname="print" name="listings_supports_wrapping"/>
+    <testcase time="0.00600000000000023" classname="print" name="listings_supports_wrapping"/>
+    <testcase time="0.0350000000000001" classname="print" name="listings_supports_wrapping"/>
+  </testsuite>
+</testsuites>
