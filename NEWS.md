@@ -1,3 +1,5 @@
+## rlistings 0.2.7.9000
+
 ## rlistings 0.2.7
 * Applied `styler` and resolved package lint. Changed default indentation from 4 spaces to 2.
 * Fixed bug in `add_listing_col` when both a function and a format are specified.
