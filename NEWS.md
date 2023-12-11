@@ -1,4 +1,4 @@
-## rlistings 0.2.7.9000
+## rlistings 0.2.7.9001
 
 ## rlistings 0.2.7
 * Applied `styler` and resolved package lint. Changed default indentation from 4 spaces to 2.
