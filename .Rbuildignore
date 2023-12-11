@@ -18,3 +18,4 @@ TODO\.md
 ^\.gitlab-ci\.yml$
 ^man-roxygen$
 pkgdown
+^pkgdown$
