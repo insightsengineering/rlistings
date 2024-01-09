@@ -204,13 +204,12 @@ testthat::test_that("pagination repeats keycols in other pages", {
     expect_warning(
       as_listing(tibble("a" = rep("", 25), "b" = seq(25)), key_cols = "a") %>%
         paginate_to_mpfs(lpp = 10)
-      )
     )
+  )
 
   expect_snapshot(
     cat(toString(mf_pages[[3]]))
   )
-
 })
 
 testthat::test_that("defunct is defunct", {
