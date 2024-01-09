@@ -192,6 +192,25 @@ testthat::test_that("pagination repeats keycols in other pages", {
     "AB12345-BRA-1-id-42",
     paginate_to_mpfs(lsting, lpp = 33, cpp = 550)[[2]]$strings
   )[2])
+
+  # Simplified test
+  mf_pages <- as_listing(tibble("a" = rep("1", 25), "b" = seq(25)), key_cols = "a") %>%
+    paginate_to_mpfs(lpp = 10)
+
+  expect_snapshot(cat(toString(mf_pages[[3]])))
+
+  # Warning from empty key col
+  mf_pages <- suppressWarnings(
+    expect_warning(
+      as_listing(tibble("a" = rep("", 25), "b" = seq(25)), key_cols = "a") %>%
+        paginate_to_mpfs(lpp = 10)
+      )
+    )
+
+  expect_snapshot(
+    cat(toString(mf_pages[[3]]))
+  )
+
 })
 
 testthat::test_that("defunct is defunct", {

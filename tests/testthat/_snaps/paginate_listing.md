@@ -34,3 +34,31 @@
          AB12345-BRA-1-id-65      25    MEDIUM                       
       
 
+# pagination repeats keycols in other pages
+
+    Code
+      cat(toString(mf_pages[[3]]))
+    Output
+      a   b 
+      ——————
+      1   17
+          18
+          19
+          20
+          21
+          22
+
+---
+
+    Code
+      cat(toString(mf_pages[[3]]))
+    Output
+      a   b 
+      ——————
+          17
+          18
+          19
+          20
+          21
+          22
+
