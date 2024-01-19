@@ -256,3 +256,35 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
     seq(8, 6)
   )
 })
+
+testthat::test_that("paginate_to_mpfs works with wrapping on keycols when doing horizontal pagination", {
+  iris2 <- iris[1:10, 3:5]
+  iris2$Species <- "SOMETHING VERY LONG THAT BREAKS PAGINATION"
+  iris2 <- cbind("Petal.L3ngth" = iris2$Petal.Length, iris2)
+
+  lst <- as_listing(iris2, key_cols = c("Species", "Petal.Width"))
+  cw <- propose_column_widths(lst)
+  cw[1] <- 30
+  colgap <- matrix_form(lst)$col_gap
+  expected_min_cpp <- sum(cw[seq_len(3)]) + 2 * colgap
+  pgs <- paginate_to_mpfs(lst, colwidths = cw, lpp = 150, cpp = expected_min_cpp + 3) # why + 3? -> + colgap
+
+  testthat::expect_equal(
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] %>% nchar()),
+    rep(expected_min_cpp, 2) # no colgap
+  )
+
+  pgs <- paginate_to_mpfs(lst, colwidths = cw, lpp = 5, cpp = expected_min_cpp + 3)
+
+  # testing nrow
+  testthat::expect_equal(
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
+    rep(5, 10)
+  )
+  # testing nchars
+  testthat::expect_equal(
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] %>% nchar()),
+    rep(expected_min_cpp, 10)
+  )
+
+})
