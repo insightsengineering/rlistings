@@ -1,4 +1,4 @@
-## rlistings 0.2.7.9001
+## rlistings 0.2.7.9002
  * Added relevant tests for pagination when key columns need to be repeated in each page and when they are all empty.
  * Added relevant tests for new line characters' handling in footnotes and titles.
 
