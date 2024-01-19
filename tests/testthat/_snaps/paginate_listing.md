@@ -34,3 +34,66 @@
          AB12345-BRA-1-id-65      25    MEDIUM                       
       
 
+# pagination repeats keycols in other pages
+
+    Code
+      cat(toString(mf_pages[[3]]))
+    Output
+      a   b 
+      ——————
+      1   17
+          18
+          19
+          20
+          21
+          22
+          23
+          24
+
+---
+
+    Code
+      cat(toString(mf_pages[[3]]))
+    Output
+      a   b 
+      ——————
+          17
+          18
+          19
+          20
+          21
+          22
+          23
+          24
+
+# paginate_to_mpfs works with wrapping on keycols
+
+    Code
+      null <- sapply(pgs, function(x) toString(x) %>% cat())
+    Output
+                 Species               Petal.Width   Petal.Length
+      ———————————————————————————————————————————————————————————
+         SOMETHING VERY LONG THAT          0.1           1.5     
+            BREAKS PAGINATION                                    
+                                           0.2           1.4     
+                 Species               Petal.Width   Petal.Length
+      ———————————————————————————————————————————————————————————
+         SOMETHING VERY LONG THAT          0.2           1.4     
+            BREAKS PAGINATION                                    
+                                                         1.3     
+                 Species               Petal.Width   Petal.Length
+      ———————————————————————————————————————————————————————————
+         SOMETHING VERY LONG THAT          0.2           1.5     
+            BREAKS PAGINATION                                    
+                                                         1.4     
+                 Species               Petal.Width   Petal.Length
+      ———————————————————————————————————————————————————————————
+         SOMETHING VERY LONG THAT          0.2           1.5     
+            BREAKS PAGINATION                                    
+                                                         1.4     
+                 Species               Petal.Width   Petal.Length
+      ———————————————————————————————————————————————————————————
+         SOMETHING VERY LONG THAT          0.3           1.4     
+            BREAKS PAGINATION                                    
+                                           0.4           1.7     
+

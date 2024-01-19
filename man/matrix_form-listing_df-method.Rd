@@ -4,13 +4,18 @@
 \alias{matrix_form,listing_df-method}
 \title{Transform \code{rtable} to a list of matrices which can be used for outputting}
 \usage{
-\S4method{matrix_form}{listing_df}(obj, indent_rownames = FALSE)
+\S4method{matrix_form}{listing_df}(obj, indent_rownames = FALSE, expand_newlines = TRUE)
 }
 \arguments{
 \item{obj}{ANY. Object to be transformed into a ready-to-render form (a \code{MatrixPrintForm} object)}
 
 \item{indent_rownames}{logical(1). Silently ignored, as listings do not have row names
 nor indenting structure.}
+
+\item{expand_newlines}{logical(1). Should the matrix form generated
+expand  rows  whose  values   contain  newlines  into  multiple
+'physical'  rows  (as  they  will  appear  when  rendered  into
+ASCII). Defaults to \code{TRUE}}
 }
 \value{
 a \code{MatrixPrintForm} object
@@ -24,8 +29,11 @@ The strings in the return object are defined as follows: row labels are those de
 cell values are determined using \code{get_formatted_cells}.
 (Column labels are calculated using a non-exported internal function.
 }
+\note{
+Parameter \code{expand_newlines} should always be \code{TRUE} for listings. We keep it for
+debugging reasons.
+}
 \examples{
-
 lsting <- as_listing(mtcars)
 mf <- matrix_form(lsting)
 

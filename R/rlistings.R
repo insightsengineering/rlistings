@@ -258,21 +258,24 @@ get_keycols <- function(df) {
   names(which(sapply(df, is_keycol)))
 }
 
-#' @export
 #' @inherit formatters::matrix_form
 #' @seealso [formatters::matrix_form()]
 #' @param indent_rownames logical(1). Silently ignored, as listings do not have row names
-#' nor indenting structure.
+#'   nor indenting structure.
 #'
 #' @examples
-#'
 #' lsting <- as_listing(mtcars)
 #' mf <- matrix_form(lsting)
 #'
 #' @return a `MatrixPrintForm` object
+#'
+#' @note Parameter `expand_newlines` should always be `TRUE` for listings. We keep it for
+#'   debugging reasons.
+#'
+#' @export
 setMethod(
   "matrix_form", "listing_df",
-  rix_form <- function(obj, indent_rownames = FALSE) {
+  rix_form <- function(obj, indent_rownames = FALSE, expand_newlines = TRUE) {
     ##  we intentionally silently ignore indent_rownames because listings have
     ## no rownames, but formatters::vert_pag_indices calls matrix_form(obj, TRUE)
     ## unconditionally.
@@ -339,11 +342,11 @@ setMethod(
         ncol = ncol(fullmat)
       ),
       row_info = make_row_df(obj),
-      nlines_header = 1, ## XXX this is probably wrong!!!
+      nlines_header = 1, # We allow only one level of headers and nl expansion happens after
       nrow_header = 1,
       has_topleft = FALSE,
       has_rowlabs = FALSE,
-      expand_newlines = TRUE,
+      expand_newlines = expand_newlines,
       main_title = main_title(obj),
       subtitles = subtitles(obj),
       page_titles = page_titles(obj),
