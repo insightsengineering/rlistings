@@ -25,7 +25,6 @@ cell values are determined using \code{get_formatted_cells}.
 (Column labels are calculated using a non-exported internal function.
 }
 \examples{
-
 lsting <- as_listing(mtcars)
 mf <- matrix_form(lsting)
 

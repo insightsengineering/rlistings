@@ -85,7 +85,6 @@ See core documentation in \code{formatters} for descriptions
 of these functions.
 }
 \examples{
-
 lsting <- as_listing(mtcars)
 main_title(lsting) <- "Hi there"
 

@@ -265,7 +265,6 @@ get_keycols <- function(df) {
 #' nor indenting structure.
 #'
 #' @examples
-#'
 #' lsting <- as_listing(mtcars)
 #' mf <- matrix_form(lsting)
 #'

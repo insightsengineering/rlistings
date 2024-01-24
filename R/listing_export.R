@@ -2,7 +2,6 @@
 #'
 #' @export
 #' @examples
-#'
 #' dat <- ex_adae
 #' lsting <- as_listing(dat[1:25, ], key_cols = c("USUBJID", "AESOC")) %>%
 #'   add_listing_col("AETOXGR") %>%
