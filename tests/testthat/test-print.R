@@ -128,6 +128,10 @@ testthat::test_that("listings support newline characters", {
       ARM = fmt_config(format = sprintf_format("ARM #: %s"), na_str = "-\nasd\n", align = "left")
     )
   )
+  main_footer(lsting) <- c("main_footer: argh\nasr", "sada\n")
+  prov_footer(lsting) <- c("prov_footer: argh\nasr", "sada\n")
+  main_title(lsting) <- "main_title: argh\nasr"
+  subtitles(lsting) <- c("subtitle: argh\nasr", "sada\n")
 
   res <- strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n")[[1]]
   testthat::expect_snapshot(res)
