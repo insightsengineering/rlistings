@@ -9,8 +9,14 @@ repos:
     -   id: roxygenize
         name: Regenerate package documentation
         additional_dependencies:
-          - dplyr
-          - insightsengineering/formatters
+          - formatters
+          - methods
+          - tibble
+          - checkmate
+          - grDevices
+          - grid
+          - stats
+          - utils
     # codemeta must be above use-tidy-description when both are used
     # -   id: codemeta-description-updated
     -   id: use-tidy-description
