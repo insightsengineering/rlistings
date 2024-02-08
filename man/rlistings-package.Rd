@@ -13,6 +13,7 @@ Listings are often part of the submission of clinical trial data in regulatory s
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://insightsengineering.github.io/rlistings/latest-tag/}
   \item \url{https://github.com/insightsengineering/rlistings}
   \item Report bugs at \url{https://github.com/insightsengineering/rlistings/issues}
 }
