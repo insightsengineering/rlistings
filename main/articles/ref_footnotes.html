@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.7.9004</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.7.9006</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,24 +60,6 @@
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
-<!-- start dropdown for versions --> <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle"
-          data-bs-toggle="dropdown" role="button"
-          aria-expanded="false" aria-haspopup="true"
-          id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/latest-tag">latest-tag</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/release-candidate">release-candidate</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.6-rc1">v0.2.6-rc1</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.3-rc2">v0.2.3-rc2</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.2-rc1">v0.2.2-rc1</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.7">v0.2.7</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.5">v0.2.5</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.4">v0.2.4</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.3">v0.2.3</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.2">v0.2.2</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.1">v0.2.1</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.0">v0.2.0</a> </div></li>
-<!-- end dropdown for versions -->
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-reports">Reports</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-reports">
@@ -113,7 +95,7 @@
                         <h4 data-toc-skip class="author">Emily de la
 Rua</h4>
             
-            <h4 data-toc-skip class="date">2024-02-08</h4>
+            <h4 data-toc-skip class="date">2024-02-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/insightsengineering/rlistings/blob/HEAD/vignettes/ref_footnotes.Rmd" class="external-link"><code>vignettes/ref_footnotes.Rmd</code></a></small>
       <div class="d-none name"><code>ref_footnotes.Rmd</code></div>
@@ -224,7 +206,7 @@ levels are correctly ordered, be sure to specify the new level order
 when mutating your variable.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save variable labels for your data to add back in after mutating dataset</span></span>
-<span><span class="va">df_lbls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/formatters/man/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span></span>
+<span><span class="va">df_lbls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mutate variable where referential footnotes are to be added according to your conditions</span></span>
 <span><span class="co"># Specify order of levels with new referential footnotes added</span></span>
@@ -236,7 +218,7 @@ when mutating your variable.</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Add data variable labels back in</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/formatters/man/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">df_lbls</span></span>
+<span><span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">df_lbls</span></span>
 <span></span>
 <span><span class="co"># Generate listing</span></span>
 <span><span class="va">lsting</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/listings.html">as_listing</a></span><span class="op">(</span></span>
@@ -290,7 +272,7 @@ must be converted to factors.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Save variable labels for your data to add back in after mutating dataset</span></span>
-<span><span class="va">df_lbls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/formatters/man/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span></span>
+<span><span class="va">df_lbls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mutate variable where referential footnotes are to be added according to your conditions</span></span>
 <span><span class="co"># Specify order of levels with new referential footnotes added</span></span>
@@ -303,7 +285,7 @@ must be converted to factors.</p>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">ASTDTF</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Add data variable labels back in</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/formatters/man/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">df_lbls</span></span>
+<span><span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">df_lbls</span></span>
 <span></span>
 <span><span class="co"># Generate listing</span></span>
 <span><span class="va">lsting</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/listings.html">as_listing</a></span><span class="op">(</span></span>
@@ -351,7 +333,7 @@ must be converted to factors.</p>
 5.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save variable labels for your data to add back in after mutating dataset</span></span>
-<span><span class="va">df_lbls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/formatters/man/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span></span>
+<span><span class="va">df_lbls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Mutate variable where referential footnotes are to be added according to your conditions</span></span>
 <span><span class="co"># Specify order of levels with new referential footnotes added</span></span>
@@ -363,7 +345,7 @@ must be converted to factors.</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Add data variable labels back in</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/formatters/man/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">df_lbls</span></span>
+<span><span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">df_lbls</span></span>
 <span></span>
 <span><span class="co"># Generate listing</span></span>
 <span><span class="va">lsting</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/listings.html">as_listing</a></span><span class="op">(</span></span>
@@ -413,8 +395,8 @@ Suppose we want to add our fourth referential footnote to the
 follows:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Modify data variable label</span></span>
-<span><span class="va">adae</span> <span class="op">&lt;-</span> <span class="va">adae</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/pkg/formatters/man/var_relabel.html" class="external-link">var_relabel</a></span><span class="op">(</span></span>
-<span>  USUBJID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/formatters/man/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span><span class="op">[[</span><span class="st">"USUBJID"</span><span class="op">]</span><span class="op">]</span>, <span class="st">"****"</span><span class="op">)</span></span>
+<span><span class="va">adae</span> <span class="op">&lt;-</span> <span class="va">adae</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/var_relabel.html" class="external-link">var_relabel</a></span><span class="op">(</span></span>
+<span>  USUBJID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/var_labels.html" class="external-link">var_labels</a></span><span class="op">(</span><span class="va">adae</span><span class="op">)</span><span class="op">[[</span><span class="st">"USUBJID"</span><span class="op">]</span><span class="op">]</span>, <span class="st">"****"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Generate listing</span></span>
@@ -469,7 +451,7 @@ follows.</p>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; sorting incoming data by key columns</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/formatters/man/title_footer.html" class="external-link">main_footer</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/formatters/man/title_footer.html" class="external-link">main_footer</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span>, <span class="va">ref_fns</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/title_footer.html" class="external-link">main_footer</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/title_footer.html" class="external-link">main_footer</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span>, <span class="va">ref_fns</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">lsting</span></span>
 <span><span class="co">#&gt; Description of Planned Arm   Unique Subject Identifier****   Analysis Start Relative Day   Analysis Sequence Number   Continous Level Biomarker 1   Severity/Intensity</span></span>
