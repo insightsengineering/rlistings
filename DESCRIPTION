@@ -33,14 +33,15 @@ Imports:
 Suggests:
     dplyr (>= 1.0.0),
     knitr (>= 1.42),
-    lifecycle  (>= 0.2.0),
+    lifecycle (>= 0.2.0),
     stringi (>= 1.6),
-    testthat (>= 3.0.4)
+    testthat (>= 3.0.4),
+    withr (>= 2.0.0)
 VignetteBuilder:
     knitr
 Config/Needs/verdepcheck: insightsengineering/formatters,
     tidyverse/tibble, mllg/checkmate, tidyverse/dplyr, yihui/knitr,
-    r-lib/lifecycle, r-lib/testthat
+    r-lib/lifecycle, gogolewski/stringi, r-lib/testthat, r-lib/withr
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
 Encoding: UTF-8

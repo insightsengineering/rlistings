@@ -245,7 +245,6 @@ setMethod(
 #' the relevant element of the listing updated.
 #'
 #' @examples
-#'
 #' lsting <- as_listing(mtcars)
 #' main_title(lsting) <- "Hi there"
 #'
