@@ -176,6 +176,7 @@ testthat::test_that("pagination works with col wrapping", {
   ## testthat::expect_silent(pag <- paginate_listing(lsting, colwidths = c(15, 15, 15, 15), font_size = 12))
   ## pag_no_wrapping <- paginate_listing(lsting, font_size = 12)
 
+
   ## testthat::expect_equal(length(pag), length(pag_no_wrapping) + 1)
   ## testthat::expect_error(paginate_listing(lsting, colwidths = c(12, 15)))
 })

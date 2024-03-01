@@ -52,7 +52,6 @@ paginate_listing <- function(lsting,
                              fontspec = font_spec(font_family, font_size, lineheight),
                              verbose = FALSE,
                              print_pages = TRUE) {
-  checkmate::assert_multi_class(lsting, c("listing_df", "list"))
   checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
   checkmate::assert_flag(tf_wrap)
   checkmate::assert_count(max_width, null.ok = TRUE)
