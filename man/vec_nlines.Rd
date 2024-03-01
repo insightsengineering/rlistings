@@ -8,9 +8,9 @@
 \usage{
 format_colvector(df, colnm, colvec = df[[colnm]])
 
-vec_nlines(vec, max_width = NULL)
+vec_nlines(vec, max_width = NULL, fontspec = dflt_courier)
 
-\S4method{vec_nlines}{ANY}(vec, max_width = NULL)
+\S4method{vec_nlines}{ANY}(vec, max_width = NULL, fontspec = dflt_courier)
 }
 \arguments{
 \item{df}{(\code{listing_df})\cr the listing.}

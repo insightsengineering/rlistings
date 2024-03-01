@@ -1,0 +1,51 @@
+> pag_no_wrapping <- paginate_listing(lsting, font_size = 12, verbose = TRUE)
+Determining lines required for header content: 0 title and 2 table header lines
+Determining lines required for footer content: 0 lines
+Lines per page available for tables rows: 58 (original: 60)
+--------- ROW-WISE: Checking possible pagination for page 1
+-> Attempting pagination between 1 and 25 row
+  OK [25 lines]
+Adjusted characters per page: 70 [original: 70, table inset: 0]
+========= COLUMN-WISE: Checking possible pagination for page 1
+-> Attempting pagination between 1 and 4 column
+  FAIL: selected columns require 104 chars (4 cols).
+-> Attempting pagination between 1 and 3 column
+  FAIL: selected columns require 76 chars (3 cols).
+-> Attempting pagination between 1 and 2 column
+  OK [47 chars]
+========= COLUMN-WISE: Checking possible pagination for page 2
+-> Attempting pagination between 3 and 4 column
+  FAIL: selected columns require 57 chars (2 cols).
+-> Attempting pagination between 3 and 3 column
+  OK [48 chars]
+========= COLUMN-WISE: Checking possible pagination for page 3
+-> Attempting pagination between 4 and 4 column
+  OK [47 chars]
+> testthat::expect_silent(pag <- paginate_listing(lsting, colwidths = c(15, 15, 15, 15), font_size = 12))
+> pag <- paginate_listing(lsting, colwidths = c(15, 15, 15, 15), font_size = 12, verbose = TRUE)
+Determining lines required for header content: 0 title and 3 table header lines
+Determining lines required for footer content: 0 lines
+Lines per page available for tables rows: 57 (original: 60)
+--------- ROW-WISE: Checking possible pagination for page 1
+-> Attempting pagination between 1 and 25 row
+  FAIL: rows selected for pagination require 61 lines while only 57 are available from lpp = 60 and 3 header/footers lines.
+        details: [raw: 61 lns (25 rws), rep. context: 0 lns (0 rws), refs: 0 lns (0) sect. divs: 0 lns].
+-> Attempting pagination between 1 and 24 row
+  FAIL: rows selected for pagination require 58 lines while only 57 are available from lpp = 60 and 3 header/footers lines.
+        details: [raw: 58 lns (24 rws), rep. context: 0 lns (0 rws), refs: 0 lns (0) sect. divs: 0 lns].
+-> Attempting pagination between 1 and 23 row
+  FAIL: last row had only 1 following siblings, needed 2
+-> Attempting pagination between 1 and 22 row
+  OK [52 lines]
+--------- ROW-WISE: Checking possible pagination for page 2
+-> Attempting pagination between 23 and 25 row
+  OK [8 lines]
+Adjusted characters per page: 70 [original: 70, table inset: 0]
+========= COLUMN-WISE: Checking possible pagination for page 1
+-> Attempting pagination between 1 and 4 column
+  FAIL: selected columns require 72 chars (4 cols).
+-> Attempting pagination between 1 and 3 column
+  OK [54 chars]
+========= COLUMN-WISE: Checking possible pagination for page 2
+-> Attempting pagination between 4 and 4 column
+  OK [36 chars]

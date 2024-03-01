@@ -15,7 +15,8 @@
   repr_ext = 0L,
   repr_inds = integer(),
   sibpos = NA_integer_,
-  nsibs = NA_integer_
+  nsibs = NA_integer_,
+  fontspec = dflt_courier
 )
 }
 \arguments{
@@ -41,6 +42,9 @@ non-visible structural elements.}
 \item{sibpos}{(\code{integer(1)})\cr internal detail, do not set manually.}
 
 \item{nsibs}{(\code{integer(1)})\cr internal detail, do not set manually.}
+
+\item{fontspec}{(\code{font_spec})\cr a font_spec object specifying the font information to use for
+calculating string widths and heights, as returned by \code{\link[formatters:font_spec]{font_spec()}}.}
 }
 \value{
 a \code{data.frame} with pagination information.

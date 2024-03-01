@@ -16,10 +16,11 @@ paginate_listing(
   margins = c(top = 0.5, bottom = 0.5, left = 0.75, right = 0.75),
   lpp = NA_integer_,
   cpp = NA_integer_,
-  colwidths = NULL,
+  colwidths = propose_column_widths(lsting, fontspec = fontspec),
   tf_wrap = !is.null(max_width),
   rep_cols = NULL,
   max_width = NULL,
+  fontspec = font_spec(font_family, font_size, lineheight),
   verbose = FALSE,
   print_pages = TRUE
 )
@@ -66,6 +67,9 @@ Defaults to 0.}
 footnotes) materials should be word-wrapped to. If \code{NULL}, it is set to the current print width of the
 session (\code{getOption("width")}). If set to \code{"auto"}, the width of the table (plus any table inset) is
 used. Parameter is ignored if \code{tf_wrap = FALSE}.}
+
+\item{fontspec}{(\code{font_spec})\cr a font_spec object specifying the font information to use for
+calculating string widths and heights, as returned by \code{\link[formatters:font_spec]{font_spec()}}.}
 
 \item{verbose}{(\code{flag})\cr whether additional informative messages about the search for
 pagination breaks should be shown. Defaults to \code{FALSE}.}

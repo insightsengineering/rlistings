@@ -4,7 +4,13 @@
 \alias{matrix_form,listing_df-method}
 \title{Transform \code{rtable} to a list of matrices which can be used for outputting}
 \usage{
-\S4method{matrix_form}{listing_df}(obj, indent_rownames = FALSE, expand_newlines = TRUE)
+\S4method{matrix_form}{listing_df}(
+  obj,
+  indent_rownames = FALSE,
+  expand_newlines = TRUE,
+  fontspec = font_spec("Courier", 9, 1.2),
+  col_gap = 3L
+)
 }
 \arguments{
 \item{obj}{(\code{ANY})\cr object to be transformed into a ready-to-render form (a \code{\link[formatters]{MatrixPrintForm}} object).}
@@ -14,6 +20,12 @@ nor indenting structure.}
 
 \item{expand_newlines}{(\code{flag})\cr this should always be \code{TRUE} for listings. We keep it
 for debugging reasons.}
+
+\item{fontspec}{(\code{font_spec})\cr a font_spec object specifying the font information to use for
+calculating string widths and heights, as returned by \code{\link[formatters:font_spec]{font_spec()}}.}
+
+\item{col_gap}{(\code{numeric(1)})\cr the gap to be assumed between columns, in number of spaces with
+font specified by \code{fontspec}.}
 }
 \value{
 a \code{\link{MatrixPrintForm}} object.

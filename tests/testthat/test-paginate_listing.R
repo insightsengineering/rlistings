@@ -170,19 +170,14 @@ testthat::test_that("pagination: lpp and cpp correctly computed for margins", {
 })
 
 testthat::test_that("pagination works with col wrapping", {
-  lsting <- h_lsting_adae(disp_cols = c("USUBJID", "AESOC", "RACE"))
+## This test was predicated and enforcing the extra colgap bug in https://github.com/insightsengineering/formatters/issues/249
+  ## lsting <- h_lsting_adae(disp_cols = c("USUBJID", "AESOC", "RACE"))
 
-  testthat::expect_silent(
-    pag <- paginate_listing(
-      lsting,
-      colwidths = c(15, 15, 15, 15),
-      font_size = 12, print_pages = FALSE
-    )
-  )
-  pag_no_wrapping <- paginate_listing(lsting, font_size = 12, print_pages = FALSE)
+  ## testthat::expect_silent(pag <- paginate_listing(lsting, colwidths = c(15, 15, 15, 15), font_size = 12))
+  ## pag_no_wrapping <- paginate_listing(lsting, font_size = 12)
 
-  testthat::expect_equal(length(pag), length(pag_no_wrapping) + 1)
-  testthat::expect_error(paginate_listing(lsting, colwidths = c(12, 15)))
+  ## testthat::expect_equal(length(pag), length(pag_no_wrapping) + 1)
+  ## testthat::expect_error(paginate_listing(lsting, colwidths = c(12, 15)))
 })
 
 testthat::test_that("pagination repeats keycols in other pages", {
