@@ -34,6 +34,8 @@ knitr::opts_chunk$set(
 [![Open Issues](https://img.shields.io/github/issues-raw/insightsengineering/rlistings?color=red\&label=open%20issues)](https://github.com/insightsengineering/rlistings/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
 <!-- end badges -->
 
+[![Cheatsheet](https://img.shields.io/badge/cheatsheet-rlistings-blue)](https://insightsengineering.github.io/rlistings/inst/cheatsheet/rlistings_cheatsheet_03-24.pdf)
+
 ## Listings with R
 
 The `rlistings` R package is a package that was designed to create and display listings with R. The focus of this package is to provide functionality for value formatting and ASCII rendering infrastructure for tables and listings. Many of the functions contained in `rlistings` depend on the [`formatters`](https://insightsengineering.github.io/formatters/) package, which provides a framework for ASCII rendering and is available on CRAN.
