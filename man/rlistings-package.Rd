@@ -6,12 +6,15 @@
 \alias{rlistings-package}
 \title{rlistings: Clinical Trial Style Data Readout Listings}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Listings are often part of the submission of clinical trial data in regulatory settings. We provide a framework for the specific formatting features often used when displaying large datasets in that context.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/insightsengineering/rlistings}
+  \item \url{https://insightsengineering.github.io/rlistings/}
+  \item \url{https://github.com/insightsengineering/rlistings/}
   \item Report bugs at \url{https://github.com/insightsengineering/rlistings/issues}
 }
 

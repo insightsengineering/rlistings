@@ -112,3 +112,51 @@ testthat::test_that("as_listing produces correct output when col_formatting is s
     "All format configurations supplied in `col_formatting` must be of type `fmt_config`."
   )
 })
+
+testthat::test_that("listings support newline characters", {
+  anl$ARM[3:6] <- NA
+  anl$USUBJID[1] <- "aaatrial\ntrial\n" # last \n is trimmed
+  vl <- var_labels(anl)
+  vl[3] <- "\n\na\n\nn\n"
+  var_labels(anl) <- vl
+  anl_tmp <- anl[1:4, ]
+  lsting <- as_listing(
+    anl_tmp,
+    key_cols = "USUBJID",
+    col_formatting = list(
+      USUBJID = fmt_config(align = "right"),
+      ARM = fmt_config(format = sprintf_format("ARM #: %s"), na_str = "-\nasd\n", align = "left")
+    )
+  )
+  main_footer(lsting) <- c("main_footer: argh\nasr", "sada\n")
+  prov_footer(lsting) <- c("prov_footer: argh\nasr", "sada\n")
+  main_title(lsting) <- "main_title: argh\nasr"
+  subtitles(lsting) <- c("subtitle: argh\nasr", "sada\n")
+
+  res <- strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n")[[1]]
+  testthat::expect_snapshot(res)
+
+  res_txt <- strsplit(export_as_txt(lsting, hsep = "-"), "\\n")[[1]]
+  testthat::expect_identical(res, res_txt)
+})
+
+testthat::test_that("listings supports wrapping", {
+  lsting <- as_listing(
+    anl,
+    key_cols = "USUBJID",
+    col_formatting = list(
+      USUBJID = fmt_config(align = "right"),
+      ARM = fmt_config(format = sprintf_format("ARM #: %s"), na_str = "-\nasd\n", align = "left")
+    )
+  )
+
+  cw <- c(5, 8, 2)
+  ts_wrap <- strsplit(toString(lsting, widths = cw), "\n")[[1]]
+  testthat::expect_equal(length(ts_wrap), 98)
+  eat_wrap <- strsplit(export_as_txt(lsting, colwidths = cw), "\n")[[1]]
+  testthat::expect_equal(length(eat_wrap), 98 + 2 + 15) # 2 is the page separator, 15 is header
+  testthat::expect_equal(eat_wrap[-seq(116 - 9 - 17, 115 - 9)], ts_wrap) # 9 is in second page
+
+  # Fix C stack inf rec loop
+  testthat::expect_silent(toString(lsting, widths = c(10, 10, 1)))
+})

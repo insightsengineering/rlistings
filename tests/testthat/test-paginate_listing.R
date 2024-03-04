@@ -192,10 +192,101 @@ testthat::test_that("pagination repeats keycols in other pages", {
     "AB12345-BRA-1-id-42",
     paginate_to_mpfs(lsting, lpp = 33, cpp = 550)[[2]]$strings
   )[2])
+
+  # Simplified test
+  mf_pages <- as_listing(tibble("a" = rep("1", 25), "b" = seq(25)), key_cols = "a") %>%
+    paginate_to_mpfs(lpp = 10)
+
+  testthat::expect_snapshot(cat(toString(mf_pages[[3]])))
+
+  # Warning from empty key col
+  mf_pages <- suppressWarnings(
+    testthat::expect_warning(
+      as_listing(tibble("a" = rep("", 25), "b" = seq(25)), key_cols = "a") %>%
+        paginate_to_mpfs(lpp = 10)
+    )
+  )
+  mf_pages <- suppressWarnings(
+    as_listing(tibble("a" = rep("", 25), "b" = seq(25)), key_cols = "a") %>%
+      paginate_to_mpfs(lpp = 10)
+  )
+
+  testthat::expect_snapshot(
+    cat(toString(mf_pages[[3]]))
+  )
 })
 
 testthat::test_that("defunct is defunct", {
-  expect_error(pag_listing_indices(), "defunct")
+  testthat::expect_error(pag_listing_indices(), "defunct")
+})
+
+testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
+  iris2 <- iris[1:10, 3:5]
+  iris2$Species <- "SOMETHING VERY LONG THAT BREAKS PAGINATION"
+
+  lst <- as_listing(iris2, key_cols = c("Species", "Petal.Width"))
+
+  pgs <- paginate_to_mpfs(lst, colwidths = c(30, 11, 12), lpp = 5)
+
+  testthat::expect_equal(
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
+    rep(5, 5)
+  )
+  testthat::expect_snapshot(null <- sapply(pgs, function(x) toString(x) %>% cat()))
+
+  # Errors
+  testthat::expect_error(
+    suppressMessages(pgs <- paginate_to_mpfs(lst, colwidths = c(30, 11, 12), lpp = 3, verbose = TRUE))
+  )
+  testthat::expect_error(
+    suppressMessages(pgs <- paginate_to_mpfs(lst, colwidths = c(30, 11, 12), lpp = 8, cpp = 5, verbose = TRUE))
+  )
+
+  # Test 2 with double wrapping
+  tmp_fct <- factor(iris2$Petal.Width)
+  levels(tmp_fct) <- paste0("Very long level name ", levels(tmp_fct))
+  iris2$Petal.Width <- as.character(tmp_fct)
+
+  lst <- as_listing(iris2, key_cols = c("Species", "Petal.Width"))
+
+  pgs <- paginate_to_mpfs(lst, colwidths = c(30, 15, 12), lpp = 8)
+
+  testthat::expect_equal(
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
+    seq(8, 6)
+  )
+})
+
+testthat::test_that("paginate_to_mpfs works with wrapping on keycols when doing horizontal pagination", {
+  iris2 <- iris[1:10, 3:5]
+  iris2$Species <- "SOMETHING VERY LONG THAT BREAKS PAGINATION"
+  iris2 <- cbind("Petal.L3ngth" = iris2$Petal.Length, iris2)
+
+  lst <- as_listing(iris2, key_cols = c("Species", "Petal.Width"))
+  cw <- propose_column_widths(lst)
+  cw[1] <- 30
+  colgap <- matrix_form(lst)$col_gap
+  expected_min_cpp <- sum(cw[seq_len(3)]) + 2 * colgap
+  pgs <- paginate_to_mpfs(lst, colwidths = cw, lpp = 150, cpp = expected_min_cpp + 3) # why + 3? -> + colgap
+
+  testthat::expect_equal(
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] %>% nchar()),
+    rep(expected_min_cpp, 2) # no colgap
+  )
+
+  pgs <- paginate_to_mpfs(lst, colwidths = cw, lpp = 5, cpp = expected_min_cpp + 3)
+
+  # testing nrow
+  testthat::expect_equal(
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
+    rep(5, 10)
+  )
+  # testing nchars
+  testthat::expect_equal(
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] %>% nchar()),
+    rep(expected_min_cpp, 10)
+  )
+
 })
 
 testthat::test_that("paginate_listing works with split_listing_by_var", {

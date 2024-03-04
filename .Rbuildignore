@@ -17,3 +17,5 @@ TODO\.md
 ^LICENSE\.md$
 ^\.gitlab-ci\.yml$
 ^man-roxygen$
+pkgdown
+^pkgdown$

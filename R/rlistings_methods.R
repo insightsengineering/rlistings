@@ -84,19 +84,8 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
     max_width <- floor(0.9 * getOption("width")) # default of base::strwrap
     # NB: flooring as it is used as <= (also in base::strwrap)
   }
-  str_to_wrap_wnl <- format_colvector(colvec = vec) # with newlines
-
-  mtchs <- gregexpr("\n", str_to_wrap_wnl, fixed = TRUE) # counting manual \n
-  line_extension_count <- 1L + vapply(mtchs, function(vi) sum(vi > 0), 1L)
-
-  # Previous implementation of wrap_string was just removing manual \n with space
-  # Taking out the natural \n (matrix_form will take care of these)
-  str_to_wrap <- sub("\n", " ", str_to_wrap_wnl) # this was happening before
-  strvec <- wrap_txt(str_to_wrap, width = max_width, collapse = "\n")
-
-  # This is not used in rlistings - it seems
-  mtchs <- gregexpr("\n", strvec, fixed = TRUE) # this was and is never seeing a \n
-  line_extension_count + vapply(mtchs, function(vi) sum(vi > 0), 1L)
+  # in formatters for characters
+  unlist(lapply(format_colvector(colvec = vec), nlines, max_width = max_width))
 })
 
 ## setMethod("vec_nlines", "character", function(vec, max_width = NULL) {
@@ -135,7 +124,6 @@ setMethod(
            repr_inds = integer(),
            sibpos = NA_integer_,
            nsibs = NA_integer_) {
-
     ## assume sortedness by keycols
     keycols <- get_keycols(tt)
     dispcols <- listing_dispcols(tt)
@@ -257,7 +245,6 @@ setMethod(
 #' the relevant element of the listing updated.
 #'
 #' @examples
-#'
 #' lsting <- as_listing(mtcars)
 #' main_title(lsting) <- "Hi there"
 #'

@@ -23,13 +23,12 @@
     Code
       cat(toString(matrix_form(lsting), widths = c(7, 8, 9), hsep = "-"))
     Output
+                                    
                 Descript            
-      Unique      ion               
-      Subject      Of               
-      Identif   Planned    Continous
-        ier       Arm        Level  
-                           Biomarker
-                               1    
+      Unique      ion      Continous
+      Subject      Of        Level  
+      Identif   Planned    Biomarker
+        ier       Arm          1    
       ------------------------------
       AB12345   B:         4.5749910
          -      Placebo     1339464 
@@ -131,4 +130,39 @@
       AB12345-RUS-3-id-378                 3             
       AB12345-USA-1-id-261                 3             
        AB12345-USA-1-id-45                 0             
+
+# listings support newline characters
+
+    Code
+      res
+    Output
+       [1] "main_title: argh"                                      
+       [2] "asr"                                                   
+       [3] "subtitle: argh"                                        
+       [4] "asr"                                                   
+       [5] "sada"                                                  
+       [6] ""                                                      
+       [7] "------------------------------------------------------"
+       [8] "                                                      "
+       [9] "                                                      "
+      [10] "       Unique           Description          a        "
+      [11] "       Subject              Of                        "
+      [12] "     Identifier         Planned Arm          n        "
+      [13] "------------------------------------------------------"
+      [14] "AB12345-CHN-11-id-220   -             10.2627340069523"
+      [15] "                        asd                           "
+      [16] "AB12345-CHN-15-id-262   ARM #: 3      4.05546277230382"
+      [17] " AB12345-RUS-3-id-378   -             2.80323956920649"
+      [18] "                        asd                           "
+      [19] "             aaatrial   ARM #: 1      14.424933692778 "
+      [20] "                trial                                 "
+      [21] "------------------------------------------------------"
+      [22] ""                                                      
+      [23] "main_footer: argh"                                     
+      [24] "asr"                                                   
+      [25] "sada"                                                  
+      [26] ""                                                      
+      [27] "prov_footer: argh"                                     
+      [28] "asr"                                                   
+      [29] "sada"                                                  
 

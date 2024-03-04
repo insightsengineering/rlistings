@@ -1,0 +1,204 @@
+---
+title: "Column Formatting"
+author: "Emily de la Rua"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Column Formatting}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+---------
+
+## Introduction
+
+This vignette demonstrates how content in columns of a `listing_df` object can be customized using format configurations with the `rlistings` R package.
+
+The following topics will be covered:
+
+- Adjusting default column formatting settings in `as_listing`
+- Applying custom formatting to specific columns in `as_listing`
+- Applying custom formatting settings when adding a new column to a listing via `add_listing_col`
+
+To learn more about how listings are constructed using the `rlistings` package, see the [Getting Started vignette](rlistings.html).
+
+---------
+
+## Default Formatting in `as_listing`
+
+When creating a listing with the `rlistings` package, you may want to customize how content is rendered within one or more of your listing columns. In this section we will demonstrate how default formatting can be set within the `as_listing` function via the `default_formatting` parameter.
+
+The `default_formatting` argument to `as_listing` accepts a named list of format configurations to apply within your listing. Format configurations are supplied as `fmt_config` objects which contain 3 elements to control formatting:
+
+1. `format`: A format label (string) or format function to apply when rendering values (see all valid options with `?formatters::list_valid_format_labels()`). Defaults to `NULL`.
+2. `na_str`: A string that should be displayed in place of missing values. Defaults to `"NA"`.
+3. `align`: Alignment to use when rendering the listing column. Defaults to `"center"`. Other options include `"left"`, `"right"`, `"decimal"`, `"dec_right"`, and `"dec_left"`.
+
+The `default_formatting` argument can use the same format configuration for all columns in a listing (as is the default), but also allows the user to set different format configurations for each data class present in your listing. The list supplied to `default_formatting` must contain a named element corresponding to every data class present in your listing, or include the `all` element with a configuration that will be applied to any data classes that are _not_ explicitly covered.
+
+To demonstrate, we will create a basic listing below and customize formatting using the `default_formatting` parameter.
+
+We begin by loading in the `rlistings` package. 
+
+```{r, message=FALSE}
+library(rlistings)
+```
+
+For this example, we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient. For the purpose of this example, we will subset the data and only use the first 15 records of the dataset. We will create some `NA` values in the data to showcase how `NA` values can be formatted, and sort the data by what will be our key columns.
+
+```{r}
+adae <- ex_adae[1:15, ]
+
+set.seed(1)
+adae <- as.data.frame(lapply(adae, function(x) replace(x, sample(length(x), 0.1 * length(x)), NA)))
+
+adae <- adae %>% dplyr::arrange(USUBJID, AGE, TRTSDTM)
+```
+
+Now we will create a basic listing.
+
+```{r}
+lsting_1 <- as_listing(
+  df = adae,
+  key_cols = c("USUBJID", "AGE", "TRTSDTM"),
+  disp_cols = c("BMRKR1", "ASEQ", "AESEV"),
+)
+
+lsting_1
+```
+
+Notice that all of the data in the table above is displayed as is, with no rounding or formatting applied. All columns are centered and all missing values are displayed as `"NA"`.
+
+Suppose we want to left align all of the columns in the listing and replace missing values with the string `"<No data>"`. This can be done by setting the `all` element in the list supplied to `default_formatting`, as shown in the following example.
+
+```{r}
+default_fmt <- list(
+  all = fmt_config(na_str = "<No data>", align = "left")
+)
+
+lsting_2 <- as_listing(
+  df = adae,
+  key_cols = c("USUBJID", "AGE", "TRTSDTM"),
+  disp_cols = c("BMRKR1", "ASEQ", "AESEV"),
+  default_formatting = default_fmt
+)
+
+lsting_2
+```
+
+Now consider that we would like to display our numeric columns with two decimal places and then align these columns on the decimal point. This can be done by adding a `"numeric"` element to the `default_formatting` list as follows:
+
+```{r}
+default_fmt <- list(
+  all = fmt_config(na_str = "<No data>", align = "left"),
+  numeric = fmt_config(format = "xx.xx", na_str = "<No data>", align = "decimal")
+)
+
+lsting_3 <- as_listing(
+  df = adae,
+  key_cols = c("USUBJID", "AGE", "TRTSDTM"),
+  disp_cols = c("BMRKR1", "ASEQ", "AESEV"),
+  default_formatting = default_fmt
+)
+
+lsting_3
+```
+
+Along with the format strings listed by `formatters::list_valid_format_labels`, we can also specify a format _function_ to allow for more customized formats in our listing. In the following example, we will define and apply a custom format function to format date (`POSIXt` class) columns in our listing.
+
+```{r}
+# Custom format function - takes date format as input
+date_fmt <- function(fmt) {
+  function(x, ...) do.call(format, list(x = x, fmt))
+}
+
+default_fmt <- list(
+  all = fmt_config(na_str = "<No data>", align = "left"),
+  numeric = fmt_config(format = "xx.xx", na_str = "<No data>", align = "decimal"),
+  POSIXt = fmt_config(format = date_fmt("%B %d, %Y @ %I:%M %p %Z"), na_str = "<No data>")
+)
+
+lsting_4 <- as_listing(
+  df = adae,
+  key_cols = c("USUBJID", "AGE", "TRTSDTM"),
+  disp_cols = c("BMRKR1", "ASEQ", "AESEV"),
+  default_formatting = default_fmt
+)
+
+lsting_4
+```
+
+In the output above, the `all` format configuration, which originally applied to all columns in the listing, now only applies to the two character/factor variables (`USUBJID` and `AESEV`). This is because all other data classes in the listing have been covered by other elements in the list provided to `default_formatting`. When format configurations are supplied to a listing, any other applicable configuration take precedence over the `all` format configuration.
+
+## Column-Wise Formatting in `as_listing`
+
+In this section, we will demonstrate how custom formatting can be applied on a column-by-column basis rather than to all columns of a specified data class or an entire listing at once. 
+
+Take, for example, `lsting_4` created in the previous section.
+
+```{r}
+lsting_4
+```
+
+This listing applies the same format configuration to all numeric columns. But in some cases, this may not produce the result we want. In the above listing, the "Age" and "Analysis Sequence Number" columns contain only integer values, so we would like to _not_ render these columns with two decimal places and instead only apply the current numeric format configuration to the "Continuous Level Biomarker 1" column. To do so, we make use of the `col_formatting` argument to `as_listing`. Like `default_formatting`, this argument takes a named list of format configurations (`fmt_config` objects) as input, but unlike `default_formatting` the names of the list elements correspond to column names. The `col_formatting` argument can be used in combination with the `default_formatting` argument or on its own, and for any number of columns present in your listing, depending on your requirements.
+
+See the following example which demonstrates how `col_formatting` can be used with the `BMRKR1` column. We will use the `"xx"` format and right alignment for the two remaining numeric columns.
+
+```{r}
+default_fmt <- list(
+  all = fmt_config(na_str = "<No data>", align = "left"),
+  numeric = fmt_config(format = "xx", na_str = "<No data>", align = "right"),
+  POSIXt = fmt_config(format = date_fmt("%B %d, %Y @ %I:%M %p %Z"), na_str = "<No data>")
+)
+
+col_fmt <- list(
+  BMRKR1 = fmt_config(format = "xx.xx", na_str = "<No data>", align = "decimal")
+)
+
+lsting_5 <- as_listing(
+  df = adae,
+  key_cols = c("USUBJID", "AGE", "TRTSDTM"),
+  disp_cols = c("BMRKR1", "ASEQ", "AESEV"),
+  default_formatting = default_fmt,
+  col_formatting = col_fmt
+)
+
+lsting_5
+```
+
+Now all of the columns present in our listing are formatted according to our specifications. Note that format configurations supplied to `col_formatting` for individual columns take precedence over any format configurations from `default_formatting`.
+
+## Adding Formatted Columns to a Listing via `add_listing_col`
+
+In some cases, you may want to add a new column with its own formatting settings to a pre-existing listing. In this section, we will demonstrate how this can be accomplished using the `add_listing_col`. Columns added after a listing has already been created with `as_listing` will not inherit format configurations previously applied, so formatting for the new column must be specified _within_ the `add_listing_col` function. Instead of creating a `fmt_config` object, the `format`, `na_str`, and `align` specifications are supplied directly to `add_listing_col` using its the parameters by the same names. If these parameters are not specified, default values of `NULL`, `"NA"`, and `"left"` will be used as `format`, `na_str`, and `align`, respectively. The `add_listing_col` can be used in sequence as many times as needed to add new columns to a listing.
+
+In this example, we will add a column to `lsting_5` created in the previous section. This new column will calculates the length of the analysis (in days) by subtracting "Analysis Start Relative Day" (`ASTDY`) from "Analysis End Relative Day" (`AENDY`). This can be done as follows:
+
+```{r}
+lsting_6 <- lsting_5 %>%
+  add_listing_col(
+    name = "Length of\nAnalysis",
+    fun = function(df) df$AENDY - df$ASTDY,
+    format = "xx.x",
+    na_str = "NE",
+    align = "center"
+  )
+
+lsting_6
+```
+
+---------
+
+## Summary
+
+In this vignette, you have learned how column formatting can be configured using the `default_formatting` and `col_formatting` arguments to `as_listing` and the `add_listing_col` function to customize how listings are rendered.
+
+**For more information please explore the [rlistings website](https://insightsengineering.github.io/rlistings/main/).**

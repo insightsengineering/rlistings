@@ -3,12 +3,7 @@ title: "Getting Started with rlistings"
 author: "Emily de la Rua and Gabriel Becker"
 date: "2022-10-26"
 output:
-    rmarkdown::html_document:
-        theme: "spacelab"
-        highlight: "kate"
-        toc: true
-        toc_float:
-          collapsed: false
+  rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{Getting Started}
     %\VignetteEngine{knitr::rmarkdown}
@@ -25,8 +20,6 @@ knitr::opts_chunk$set(
 )
 ```
 
----------
-
 ## Introduction
 
 This vignette shows the general purpose and basic functionality of the `rlistings` R package.  
@@ -38,6 +31,9 @@ Some of the key features currently available to customize listings created using
 
 - Key columns
 - Titles and footnotes
+
+For information on listing column formatting see the [Column Formatting vignette](col_formatting.html).
+To learn about listing pagination see the [Pagination vignette](pagination.html).
 
 The index of all available `rlistings` functions can be found on the [rlistings website functions reference](https://insightsengineering.github.io/rlistings/main/reference/index.html).
 
@@ -114,8 +110,9 @@ are then displayed.
 
 ```{r}
 lsting <- as_listing(
-    df = adae,
-    non_disp_cols = tail(names(adae), 8))
+  df = adae,
+  non_disp_cols = tail(names(adae), 8)
+)
 head(lsting, 15)
 ```
 

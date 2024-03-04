@@ -1,7 +1,7 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Version: 0.2.5.9002
-Date: 2023-10-11
+Version: 0.2.7.9008
+Date: 2024-03-04
 Authors@R: c(
     person("Gabriel", "Becker", , "gabembecker@gmail.com", role = "aut",
            comment = "original creator of the package"),
@@ -17,10 +17,11 @@ Description: Listings are often part of the submission of clinical trial
     formatting features often used when displaying large datasets in that
     context.
 License: Apache License 2.0
-URL: https://github.com/insightsengineering/rlistings
+URL: https://insightsengineering.github.io/rlistings/,
+    https://github.com/insightsengineering/rlistings/
 BugReports: https://github.com/insightsengineering/rlistings/issues
 Depends:
-    formatters (>= 0.5.3),
+    formatters (>= 0.5.5),
     methods,
     tibble (>= 2.0.0)
 Imports:
@@ -32,16 +33,18 @@ Imports:
 Suggests:
     dplyr (>= 1.0.0),
     knitr (>= 1.42),
-    lifecycle  (>= 0.2.0),
-    testthat (>= 3.0.4)
+    lifecycle (>= 0.2.0),
+    stringi (>= 1.6),
+    testthat (>= 3.0.4),
+    withr (>= 2.0.0)
 VignetteBuilder:
     knitr
 Config/Needs/verdepcheck: insightsengineering/formatters,
     tidyverse/tibble, mllg/checkmate, tidyverse/dplyr, yihui/knitr,
-    r-lib/lifecycle, r-lib/testthat
+    r-lib/lifecycle, gogolewski/stringi, r-lib/testthat, r-lib/withr
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

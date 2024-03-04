@@ -140,8 +140,10 @@ as_listing <- function(df,
                        main_footer = NULL,
                        prov_footer = NULL) {
   if (length(non_disp_cols) > 0 && length(intersect(key_cols, non_disp_cols)) > 0) {
-    stop("Key column also listed in non_disp_cols. All key columns are by",
-         " definition display columns.")
+    stop(
+      "Key column also listed in non_disp_cols. All key columns are by",
+      " definition display columns."
+    )
   }
   if (!is.null(disp_cols) && !is.null(non_disp_cols)) {
     stop("Got non-null values for both disp_cols and non_disp_cols. This is not supported.")
@@ -153,12 +155,16 @@ as_listing <- function(df,
     cols <- disp_cols
   }
   if (!all(sapply(default_formatting, is, class2 = "fmt_config"))) {
-    stop("All format configurations supplied in `default_formatting`",
-         " must be of type `fmt_config`.")
+    stop(
+      "All format configurations supplied in `default_formatting`",
+      " must be of type `fmt_config`."
+    )
   }
   if (!(is.null(col_formatting) || all(sapply(col_formatting, is, class2 = "fmt_config")))) {
-    stop("All format configurations supplied in `col_formatting`",
-         " must be of type `fmt_config`.")
+    stop(
+      "All format configurations supplied in `col_formatting`",
+      " must be of type `fmt_config`."
+    )
   }
 
   df <- as_tibble(df)
@@ -197,9 +203,11 @@ as_listing <- function(df,
       default_formatting[[col_fmt_class]]
     } else {
       if (!"all" %in% names(default_formatting)) {
-        stop("Format configurations must be supplied for all listing columns. ",
-             "To cover all remaining columns please add an 'all' configuration",
-             " to `default_formatting`.")
+        stop(
+          "Format configurations must be supplied for all listing columns. ",
+          "To cover all remaining columns please add an 'all' configuration",
+          " to `default_formatting`."
+        )
       }
       default_formatting[["all"]]
     }
@@ -250,21 +258,24 @@ get_keycols <- function(df) {
   names(which(sapply(df, is_keycol)))
 }
 
-#' @export
 #' @inherit formatters::matrix_form
 #' @seealso [formatters::matrix_form()]
 #' @param indent_rownames logical(1). Silently ignored, as listings do not have row names
-#' nor indenting structure.
+#'   nor indenting structure.
 #'
 #' @examples
-#'
 #' lsting <- as_listing(mtcars)
 #' mf <- matrix_form(lsting)
 #'
 #' @return a `MatrixPrintForm` object
+#'
+#' @note Parameter `expand_newlines` should always be `TRUE` for listings. We keep it for
+#'   debugging reasons.
+#'
+#' @export
 setMethod(
   "matrix_form", "listing_df",
-  rix_form <- function(obj, indent_rownames = FALSE) {
+  rix_form <- function(obj, indent_rownames = FALSE, expand_newlines = TRUE) {
     ##  we intentionally silently ignore indent_rownames because listings have
     ## no rownames, but formatters::vert_pag_indices calls matrix_form(obj, TRUE)
     ## unconditionally.
@@ -331,11 +342,11 @@ setMethod(
         ncol = ncol(fullmat)
       ),
       row_info = make_row_df(obj),
-      nlines_header = 1, ## XXX this is probably wrong!!!
+      nlines_header = 1, # We allow only one level of headers and nl expansion happens after
       nrow_header = 1,
       has_topleft = FALSE,
       has_rowlabs = FALSE,
-      expand_newlines = TRUE,
+      expand_newlines = expand_newlines,
       main_title = main_title(obj),
       subtitles = subtitles(obj),
       page_titles = page_titles(obj),
@@ -402,7 +413,7 @@ add_listing_col <- function(df,
                             na_str = "NA",
                             align = "left") {
   if (!is.null(fun)) {
-    vec <- fun(df)
+    vec <- with_label(fun(df), name)
   } else if (name %in% names(df)) {
     vec <- df[[name]]
   } else {
@@ -413,7 +424,6 @@ add_listing_col <- function(df,
   }
 
   if (!is.null(format)) {
-    vec <- df[[name]]
     obj_format(vec) <- format
   }
 

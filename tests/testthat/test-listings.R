@@ -240,8 +240,10 @@ testthat::test_that("unique_rows removes duplicate rows from listing", {
   )
   result_strings <- matrix_form(lsting)$strings
   expected_strings <- matrix(
-    c("Planned Arm Code", "ARM A", "", "", "", "ARM B", "", "", "ARM C", "", "", "",
-      "Sex", "M", "F", "UNDIFFERENTIATED", "U", "F", "M", "U", "M", "F", "U", "UNDIFFERENTIATED"),
+    c(
+      "Planned Arm Code", "ARM A", "", "", "", "ARM B", "", "", "ARM C", "", "", "",
+      "Sex", "M", "F", "UNDIFFERENTIATED", "U", "F", "M", "U", "M", "F", "U", "UNDIFFERENTIATED"
+    ),
     ncol = 2,
     dimnames = list(c(), c("ARMCD", "SEX"))
   )
@@ -297,6 +299,24 @@ testthat::test_that("as_listing works with NA values in key cols", {
     key_cols = c("gear", "carb"),
     disp_cols = "qsec"
   ), "rows that only contain NA"))
+})
+
+testthat::test_that("add_listing_col works with a function when a format is applied", {
+  suppressMessages(lsting <- as_listing(
+    mtcars[1:5, ],
+    key_cols = c("gear", "carb"),
+    disp_cols = "qsec"
+  ) %>%
+    add_listing_col(
+      "kpg",
+      function(df) df$mpg * 1.60934,
+      format = "xx.xx"
+    ))
+
+  testthat::expect_identical(
+    matrix_form(lsting)$strings[, 4],
+    c("kpg", "34.44", "30.09", "36.69", "33.80", "33.80")
+  )
 })
 
 testthat::test_that("split_listing_by_var works as expected", {
