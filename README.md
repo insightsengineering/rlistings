@@ -1,15 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rlistings <a href='https://github.com/insightsengineering/rlistings'><img src="man/figures/logo.png" align="right" height="200" width="200"/></a>
+# rlistings
 
 <!-- start badges -->
+
 [![Check
-🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/main/unit-test-report/)
+🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml)
 [![Docs
 📚](https://github.com/insightsengineering/rlistings/actions/workflows/docs.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/)
 [![Code Coverage
-📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://insightsengineering.github.io/rlistings/main/coverage-report/)
+📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml)
 
 ![GitHub
 forks](https://img.shields.io/github/forks/insightsengineering/rlistings?style=social)
@@ -39,6 +40,8 @@ Issues](https://img.shields.io/github/issues-raw/insightsengineering/rlistings?c
 
 ## Listings with R
 
+[![cheatsheet](https://img.shields.io/badge/cheatsheet-rlistings-blue)](https://insightsengineering.github.io/rlistings/inst/cheatsheet/rlistings_cheatsheet_03-24.pdf)
+
 The `rlistings` R package is a package that was designed to create and
 display listings with R. The focus of this package is to provide
 functionality for value formatting and ASCII rendering infrastructure
@@ -63,27 +66,26 @@ under active development.
 
 ## Installation
 
-`rlistings` is available on CRAN and you can install the latest released
-version with:
+For releases from October 2022 it is recommended that you [create and
+use a Github
+PAT](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+to install the latest version of this package. Once you have the PAT,
+run the following:
 
 ``` r
-install.packages("rlistings")
+Sys.setenv(GITHUB_PAT = "your_access_token_here")
+if (!require("remotes")) install.packages("remotes")
+remotes::install_github("insightsengineering/rlistings@*release")
 ```
 
-or you can install the latest development version directly from GitHub
-with:
+The `rlistings` package was not a part of the October 2022 stable
+release of all `NEST` packages, but the list of these `NEST` packages is
+available
+[here](https://github.com/insightsengineering/depository#readme).
 
-``` r
-remotes::install_github("insightsengineering/formatters")
-remotes::install_github("insightsengineering/rlistings")
-```
-
-Note you might need to set your `GITHUB_PAT` environment variable in
-order to be able to install from GitHub.
-
-Packaged releases (both those on CRAN and those between official CRAN
-releases) can be found in the [releases
-list](https://github.com/insightsengineering/rlistings/releases).
+See [the Get started
+page](https://insightsengineering.github.io/rlistings/main/articles/rlistings.html)
+for an introduction to creating listings using this package.
 
 ## Usage
 
@@ -91,9 +93,7 @@ The following example shows a simple listing and its printed output.
 
 ``` r
 library(rlistings)
-#> Warning: package 'rlistings' was built under R version 4.2.2
 #> Loading required package: formatters
-#> Warning: package 'formatters' was built under R version 4.2.2
 #> Loading required package: tibble
 
 # Reducing the data
@@ -101,16 +101,16 @@ mtcars_ex <- mtcars %>% dplyr::mutate("car" = rownames(mtcars))
 
 as_listing(mtcars_ex,
   key_cols = c("gear", "carb"),
-  cols = c("gear", "carb", "qsec", "car")
+  disp_cols = c("gear", "carb", "qsec", "car")
 ) %>% head()
 #> sorting incoming data by key columns
-#> gear   carb   qsec           car
+#> gear   carb   qsec           car       
 #> ———————————————————————————————————————
-#> 3      1      19.44    Hornet 4 Drive
-#>               20.22        Valiant
-#>               20.01     Toyota Corona
-#>        2      17.02   Hornet Sportabout
-#>               16.87   Dodge Challenger
+#>  3      1     19.44    Hornet 4 Drive  
+#>               20.22        Valiant     
+#>               20.01     Toyota Corona  
+#>         2     17.02   Hornet Sportabout
+#>               16.87   Dodge Challenger 
 #>               17.3       AMC Javelin
 ```
 
@@ -128,8 +128,8 @@ time](https://starchart.cc/insightsengineering/rlistings.svg)](https://starchart
 
 ### Stargazers
 
-[![Stargazers repo roster for
-@insightsengineering/rlistings](https://reporoster.com/stars/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/stargazers)
+[![Stargazers repo roster
+for](https://reporoster.com/stars/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/stargazers)
 
-[![Forkers repo roster for
-@insightsengineering/rlistings](https://reporoster.com/forks/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/network/members)
+[![Forkers repo roster
+for](https://reporoster.com/forks/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/network/members)
