@@ -56,8 +56,8 @@ paginate_listing <- function(lsting,
                              tf_wrap = !is.null(max_width),
                              max_width = NULL,
                              verbose = FALSE) {
+  # process lists of listings
   if (!is(lsting, "listing_df")) {
-    # process lists of listings
     checkmate::assert_true(all(unlist(lapply(lsting, is, "listing_df"))))
     if (!"colwidths" %in% as.list(match.call())) {
       all_colwidths <- lapply(lsting, propose_column_widths)
@@ -72,58 +72,58 @@ paginate_listing <- function(lsting,
     )
 
     ret <- unlist(lsting_list, recursive = FALSE)
-    ret
-  } else {
-    checkmate::assert_flag(tf_wrap)
-    checkmate::assert_count(max_width, null.ok = TRUE)
-    checkmate::assert_flag(verbose)
-    checkmate::assert_class(lsting, "listing_df")
-    checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
-
-    indx <- paginate_indices(lsting,
-      page_type = page_type,
-      font_family = font_family,
-      font_size = font_size,
-      lineheight = lineheight,
-      landscape = landscape,
-      pg_width = pg_width,
-      pg_height = pg_height,
-      margins = margins,
-      lpp = lpp,
-      cpp = cpp,
-      colwidths = colwidths,
-      tf_wrap = tf_wrap,
-      max_width = max_width,
-      rep_cols = length(get_keycols(lsting)),
-      verbose = verbose
-    )
-
-    vert_pags <- lapply(
-      indx$pag_row_indices,
-      function(ii) lsting[ii, ]
-    )
-    dispnames <- listing_dispcols(lsting)
-    full_pag <- lapply(
-      vert_pags,
-      function(onepag) {
-        if (!is.null(indx$pag_col_indices)) {
-          lapply(
-            indx$pag_col_indices,
-            function(jj) {
-              res <- onepag[, dispnames[jj], drop = FALSE]
-              listing_dispcols(res) <- intersect(dispnames, names(res))
-              res
-            }
-          )
-        } else {
-          list(onepag)
-        }
-      }
-    )
-
-    ret <- unlist(full_pag, recursive = FALSE)
-    ret
+    return(ret)
   }
+
+  checkmate::assert_flag(tf_wrap)
+  checkmate::assert_count(max_width, null.ok = TRUE)
+  checkmate::assert_flag(verbose)
+  checkmate::assert_class(lsting, "listing_df")
+  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
+
+  indx <- paginate_indices(lsting,
+    page_type = page_type,
+    font_family = font_family,
+    font_size = font_size,
+    lineheight = lineheight,
+    landscape = landscape,
+    pg_width = pg_width,
+    pg_height = pg_height,
+    margins = margins,
+    lpp = lpp,
+    cpp = cpp,
+    colwidths = colwidths,
+    tf_wrap = tf_wrap,
+    max_width = max_width,
+    rep_cols = length(get_keycols(lsting)),
+    verbose = verbose
+  )
+
+  vert_pags <- lapply(
+    indx$pag_row_indices,
+    function(ii) lsting[ii, ]
+  )
+  dispnames <- listing_dispcols(lsting)
+  full_pag <- lapply(
+    vert_pags,
+    function(onepag) {
+      if (!is.null(indx$pag_col_indices)) {
+        lapply(
+          indx$pag_col_indices,
+          function(jj) {
+            res <- onepag[, dispnames[jj], drop = FALSE]
+            listing_dispcols(res) <- intersect(dispnames, names(res))
+            res
+          }
+        )
+      } else {
+        list(onepag)
+      }
+    }
+  )
+
+  ret <- unlist(full_pag, recursive = FALSE)
+  ret
 }
 
 #' @title Defunct functions
