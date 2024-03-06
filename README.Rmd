@@ -16,41 +16,26 @@ knitr::opts_chunk$set(
 )
 ```
 
-# rlistings
+# rlistings <a href='https://github.com/insightsengineering/rlistings'><img src="man/figures/logo.png" align="right" height="200" width="200"/></a>
 
 <!-- start badges -->
 
-[![Check
-🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml)
-[![Docs
-📚](https://github.com/insightsengineering/rlistings/actions/workflows/docs.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/)
-[![Code Coverage
-📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml)
+[![Check 🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/main/unit-test-report/)
+[![Docs 📚](https://github.com/insightsengineering/formatters/actions/workflows/docs.yaml/badge.svg)](https://insightsengineering.github.io/formatters/)
+[![Code Coverage 📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://insightsengineering.github.io/rlistings/main/coverage-report/)
 
-![GitHub
-forks](https://img.shields.io/github/forks/insightsengineering/rlistings?style=social)
-![GitHub Repo
-stars](https://img.shields.io/github/stars/insightsengineering/rlistings?style=social)
+![GitHub forks](https://img.shields.io/github/forks/insightsengineering/rlistings?style=social)
+![GitHub Repo stars](https://img.shields.io/github/stars/insightsengineering/rlistings?style=social)
 
-![GitHub commit
-activity](https://img.shields.io/github/commit-activity/m/insightsengineering/rlistings)
-![GitHub
-contributors](https://img.shields.io/github/contributors/insightsengineering/rlistings)
-![GitHub last
-commit](https://img.shields.io/github/last-commit/insightsengineering/rlistings)
-![GitHub pull
-requests](https://img.shields.io/github/issues-pr/insightsengineering/rlistings)
-![GitHub repo
-size](https://img.shields.io/github/repo-size/insightsengineering/rlistings)
-![GitHub language
-count](https://img.shields.io/github/languages/count/insightsengineering/rlistings)
-[![WIP -- Initial development is in progress, but there has not yet been
-a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![Current
-Version](https://img.shields.io/github/r-package/v/insightsengineering/rlistings/main?color=purple&label=package%20version)](https://github.com/insightsengineering/rlistings/tree/main)
-[![Open
-Issues](https://img.shields.io/github/issues-raw/insightsengineering/rlistings?color=red&label=open%20issues)](https://github.com/insightsengineering/rlistings/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/insightsengineering/rlistings)
+![GitHub contributors](https://img.shields.io/github/contributors/insightsengineering/rlistings)
+![GitHub last commit](https://img.shields.io/github/last-commit/insightsengineering/rlistings)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/insightsengineering/rlistings)
+![GitHub repo size](https://img.shields.io/github/repo-size/insightsengineering/rlistings)
+![GitHub language count](https://img.shields.io/github/languages/count/insightsengineering/rlistings)
+[![WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Current Version](https://img.shields.io/github/r-package/v/insightsengineering/rlistings/main?color=purple\&label=package%20version)](https://github.com/insightsengineering/rlistings/tree/main)
+[![Open Issues](https://img.shields.io/github/issues-raw/insightsengineering/rlistings?color=red\&label=open%20issues)](https://github.com/insightsengineering/rlistings/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
 <!-- end badges -->
 
 ## Listings with R
@@ -82,26 +67,26 @@ under active development.
 
 ## Installation
 
-For releases from October 2022 it is recommended that you [create and
-use a Github
-PAT](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-to install the latest version of this package. Once you have the PAT,
-run the following:
+`rlistings` is available on CRAN and you can install the latest released
+version with:
 
 ``` r
-Sys.setenv(GITHUB_PAT = "your_access_token_here")
-if (!require("remotes")) install.packages("remotes")
-remotes::install_github("insightsengineering/rlistings@*release")
+install.packages("rlistings")
 ```
 
-The `rlistings` package was not a part of the October 2022 stable
-release of all `NEST` packages, but the list of these `NEST` packages is
-available
-[here](https://github.com/insightsengineering/depository#readme).
+or you can install the latest development version directly from GitHub
+with:
 
-See [the Get started
-page](https://insightsengineering.github.io/rlistings/main/articles/rlistings.html)
-for an introduction to creating listings using this package.
+``` r
+remotes::install_github("insightsengineering/formatters")
+remotes::install_github("insightsengineering/rlistings")
+```
+Note you might need to set your `GITHUB_PAT` environment variable in
+order to be able to install from GitHub.
+
+Packaged releases (both those on CRAN and those between official CRAN
+releases) can be found in the [releases
+list](https://github.com/insightsengineering/rlistings/releases).
 
 ## Usage
 
@@ -134,7 +119,7 @@ time](https://starchart.cc/insightsengineering/rlistings.svg)](https://starchart
 ### Stargazers
 
 [![Stargazers repo roster for
-](https://reporoster.com/stars/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/stargazers)
+@insightsengineering/rlistings](https://reporoster.com/stars/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/stargazers)
 
 [![Forkers repo roster for
-](https://reporoster.com/forks/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/network/members)
+@insightsengineering/rlistings](https://reporoster.com/forks/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/network/members)

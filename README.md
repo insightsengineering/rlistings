@@ -1,16 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rlistings
+# rlistings <a href='https://github.com/insightsengineering/rlistings'><img src="man/figures/logo.png" align="right" height="200" width="200"/></a>
 
 <!-- start badges -->
 
 [![Check
-🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml)
+🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/main/unit-test-report/)
 [![Docs
-📚](https://github.com/insightsengineering/rlistings/actions/workflows/docs.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/)
+📚](https://github.com/insightsengineering/formatters/actions/workflows/docs.yaml/badge.svg)](https://insightsengineering.github.io/formatters/)
 [![Code Coverage
-📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml)
+📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://insightsengineering.github.io/rlistings/main/coverage-report/)
 
 ![GitHub
 forks](https://img.shields.io/github/forks/insightsengineering/rlistings?style=social)
@@ -66,26 +66,27 @@ under active development.
 
 ## Installation
 
-For releases from October 2022 it is recommended that you [create and
-use a Github
-PAT](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-to install the latest version of this package. Once you have the PAT,
-run the following:
+`rlistings` is available on CRAN and you can install the latest released
+version with:
 
 ``` r
-Sys.setenv(GITHUB_PAT = "your_access_token_here")
-if (!require("remotes")) install.packages("remotes")
-remotes::install_github("insightsengineering/rlistings@*release")
+install.packages("rlistings")
 ```
 
-The `rlistings` package was not a part of the October 2022 stable
-release of all `NEST` packages, but the list of these `NEST` packages is
-available
-[here](https://github.com/insightsengineering/depository#readme).
+or you can install the latest development version directly from GitHub
+with:
 
-See [the Get started
-page](https://insightsengineering.github.io/rlistings/main/articles/rlistings.html)
-for an introduction to creating listings using this package.
+``` r
+remotes::install_github("insightsengineering/formatters")
+remotes::install_github("insightsengineering/rlistings")
+```
+
+Note you might need to set your `GITHUB_PAT` environment variable in
+order to be able to install from GitHub.
+
+Packaged releases (both those on CRAN and those between official CRAN
+releases) can be found in the [releases
+list](https://github.com/insightsengineering/rlistings/releases).
 
 ## Usage
 
@@ -128,8 +129,8 @@ time](https://starchart.cc/insightsengineering/rlistings.svg)](https://starchart
 
 ### Stargazers
 
-[![Stargazers repo roster
-for](https://reporoster.com/stars/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/stargazers)
+[![Stargazers repo roster for
+@insightsengineering/rlistings](https://reporoster.com/stars/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/stargazers)
 
-[![Forkers repo roster
-for](https://reporoster.com/forks/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/network/members)
+[![Forkers repo roster for
+@insightsengineering/rlistings](https://reporoster.com/forks/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/network/members)
