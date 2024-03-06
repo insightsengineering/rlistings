@@ -57,19 +57,18 @@ paginate_listing <- function(lsting,
                              max_width = NULL,
                              verbose = FALSE) {
   # process lists of listings
-  if (!is(lsting, "listing_df")) {
-    checkmate::assert_true(all(unlist(lapply(lsting, is, "listing_df"))))
-    if (!"colwidths" %in% as.list(match.call())) {
+  if (is(lsting, "list")) {
+    checkmate::assert_true(all(sapply(lsting, is, "listing_df")))
+    cur_call <- match.call(expand.dots = FALSE)
+    if (!"colwidths" %in% names(match.call())) {
       all_colwidths <- lapply(lsting, propose_column_widths)
       max_w <- which.max(lapply(all_colwidths, sum))
-      colwidths <- all_colwidths[[max_w]]
+      cur_call[["colwidths"]] <- all_colwidths[[max_w]]
     }
-    checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting[[1]])), null.ok = TRUE)
-    lsting_list <- lapply(
-      lsting, paginate_listing, page_type = page_type, font_family = font_family, font_size = font_size,
-      lineheight = lineheight, landscape = landscape, pg_width = pg_width, pg_height = pg_height, margins = margins,
-      lpp = lpp, cpp = cpp, colwidths = colwidths, tf_wrap = tf_wrap, max_width = max_width, verbose = verbose
-    )
+    lsting_list <- lapply(lsting, function(x_i) {
+      cur_call[["lsting"]] <- x_i
+      eval(cur_call)
+    })
 
     ret <- unlist(lsting_list, recursive = FALSE)
     return(ret)
