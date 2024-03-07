@@ -40,8 +40,6 @@ Issues](https://img.shields.io/github/issues-raw/insightsengineering/rlistings?c
 
 ## Listings with R
 
-[![cheatsheet](https://img.shields.io/badge/cheatsheet-rlistings-blue)](https://insightsengineering.github.io/rlistings/inst/cheatsheet/rlistings_cheatsheet_03-24.pdf)
-
 The `rlistings` R package is a package that was designed to create and
 display listings with R. The focus of this package is to provide
 functionality for value formatting and ASCII rendering infrastructure
@@ -87,6 +85,10 @@ order to be able to install from GitHub.
 Packaged releases (both those on CRAN and those between official CRAN
 releases) can be found in the [releases
 list](https://github.com/insightsengineering/rlistings/releases).
+
+## Cheatsheet
+
+<a href="https://github.com/insightsengineering/rlistings/blob/main/inst/cheatsheet/rlistings_cheatsheet_03-24.pdf"><img src="https://raw.githubusercontent.com/insightsengineering/rlistings/main/inst/cheatsheet/rlistings_cheatsheet_03-24_thumbs.png" width="630" height="249"/></a>
 
 ## Usage
 
