@@ -60,7 +60,11 @@ remotes::install_github("insightsengineering/rlistings@*release")
 
 The `rlistings` package was not a part of the October 2022 stable release of all `NEST` packages, but the list of these `NEST` packages is available [here](https://github.com/insightsengineering/depository#readme).
 
-See [the Get started page](https://insightsengineering.github.io/rlistings/main/articles/rlistings.html) for an introduction to creating listings using this package.
+See the [Get Started page](https://insightsengineering.github.io/rlistings/main/articles/rlistings.html) for an introduction to creating listings using this package.
+
+## Cheatsheet
+
+<a href="https://github.com/insightsengineering/rlistings/blob/main/inst/cheatsheet/rlistings_cheatsheet_03-24.pdf"><img src="https://raw.githubusercontent.com/insightsengineering/rlistings/main/inst/cheatsheet/rlistings_cheatsheet_03-24_thumbs.png" width="630" height="249"/></a>
 
 ## Usage
 
@@ -74,7 +78,7 @@ mtcars_ex <- mtcars %>% dplyr::mutate("car" = rownames(mtcars))
 
 as_listing(mtcars_ex,
   key_cols = c("gear", "carb"),
-  cols = c("gear", "carb", "qsec", "car")
+  disp_cols = c("qsec", "car")
 ) %>% head()
 ```
 
