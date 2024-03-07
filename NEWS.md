@@ -1,6 +1,7 @@
-## rlistings 0.2.7.9008
+## rlistings 0.2.7.9009
  * Added relevant tests for pagination when key columns need to be repeated in each page and when they are all empty.
  * Added relevant tests for new line characters' handling in footnotes and titles.
+ * Added cheatsheet.
 
 ## rlistings 0.2.7
  * Applied `styler` and resolved package lint. Changed default indentation from 4 spaces to 2.

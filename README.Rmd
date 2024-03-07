@@ -2,6 +2,8 @@
 output: github_document
 editor_options: 
   chunk_output_type: console
+  markdown: 
+    wrap: 72
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -14,11 +16,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# rlistings
+# rlistings <a href='https://github.com/insightsengineering/rlistings'><img src="man/figures/logo.png" align="right" height="200" width="200"/></a>
+
 <!-- start badges -->
-[![Check 🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml)
+
+[![Check 🛠](https://github.com/insightsengineering/rlistings/actions/workflows/check.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/main/unit-test-report/)
 [![Docs 📚](https://github.com/insightsengineering/rlistings/actions/workflows/docs.yaml/badge.svg)](https://insightsengineering.github.io/rlistings/)
-[![Code Coverage 📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/coverage.xml)
+[![Code Coverage 📔](https://raw.githubusercontent.com/insightsengineering/rlistings/_xml_coverage_reports/data/main/badge.svg)](https://insightsengineering.github.io/rlistings/main/coverage-report/)
 
 ![GitHub forks](https://img.shields.io/github/forks/insightsengineering/rlistings?style=social)
 ![GitHub Repo stars](https://img.shields.io/github/stars/insightsengineering/rlistings?style=social)
@@ -36,17 +40,28 @@ knitr::opts_chunk$set(
 
 ## Listings with R
 
-The `rlistings` R package is a package that was designed to create and display listings with R. The focus of this package is to provide functionality for value formatting and ASCII rendering infrastructure for tables and listings. Many of the functions contained in `rlistings` depend on the [`formatters`](https://insightsengineering.github.io/formatters/) package, which provides a framework for ASCII rendering and is available on CRAN.
+The `rlistings` R package is a package that was designed to create and
+display listings with R. The focus of this package is to provide
+functionality for value formatting and ASCII rendering infrastructure
+for tables and listings. Many of the functions contained in `rlistings`
+depend on the
+[`formatters`](https://insightsengineering.github.io/formatters/)
+package, which provides a framework for ASCII rendering and is available
+on CRAN.
 
-`rlistings` development is driven by the need to create regulatory ready listings for health authority review. Some of the key requirements for this undertaking are listed below:
+`rlistings` development is driven by the need to create regulatory ready
+listings for health authority review. Some of the key requirements for
+this undertaking are listed below:
 
-- flexible formatting (pagesize, column widths, alignment, labels, etc.)
-- multiple output formats (csv, out, txt)
-- repeated key columns
-- flexible pagination in both horizontal and vertical directions
-- titles and footnotes
+-   flexible formatting (pagesize, column widths, alignment, labels,
+    etc.)
+-   multiple output formats (csv, out, txt)
+-   repeated key columns
+-   flexible pagination in both horizontal and vertical directions
+-   titles and footnotes
 
-`rlistings` currently covers some of these requirements, and remains under active development.
+`rlistings` currently covers some of these requirements, and remains
+under active development.
 
 ## Installation
 
@@ -94,16 +109,20 @@ as_listing(mtcars_ex,
 
 ## Acknowledgment
 
-This package is a result of a joint effort by many developers and stakeholders. We would like to thank everyone who contributed so far!
+This package is a result of a joint effort by many developers and
+stakeholders. We would like to thank everyone who contributed so far!
 
 ## Stargazers and Forkers
 
 ### Stargazers over time
 
-[![Stargazers over time](https://starchart.cc/insightsengineering/rlistings.svg)](https://starchart.cc/insightsengineering/rlistings)
+[![Stargazers over
+time](https://starchart.cc/insightsengineering/rlistings.svg)](https://starchart.cc/insightsengineering/rlistings)
 
 ### Stargazers
 
-[![Stargazers repo roster for @insightsengineering/rlistings](https://reporoster.com/stars/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/stargazers)
+[![Stargazers repo roster for
+@insightsengineering/rlistings](https://reporoster.com/stars/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/stargazers)
 
-[![Forkers repo roster for @insightsengineering/rlistings](https://reporoster.com/forks/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/network/members)
+[![Forkers repo roster for
+@insightsengineering/rlistings](https://reporoster.com/forks/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/network/members)
