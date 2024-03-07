@@ -104,7 +104,7 @@ mtcars_ex <- mtcars %>% dplyr::mutate("car" = rownames(mtcars))
 
 as_listing(mtcars_ex,
   key_cols = c("gear", "carb"),
-  disp_cols = c("qsec", "car")
+  disp_cols = c("gear", "carb", "qsec", "car")
 ) %>% head()
 #> sorting incoming data by key columns
 #> gear   carb   qsec           car       
