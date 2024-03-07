@@ -74,11 +74,11 @@ paginate_listing <- function(lsting,
     return(ret)
   }
 
+  checkmate::assert_class(lsting, "listing_df")
+  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
   checkmate::assert_flag(tf_wrap)
   checkmate::assert_count(max_width, null.ok = TRUE)
   checkmate::assert_flag(verbose)
-  checkmate::assert_class(lsting, "listing_df")
-  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
 
   indx <- paginate_indices(lsting,
     page_type = page_type,
