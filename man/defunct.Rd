@@ -13,11 +13,10 @@ pag_listing_indices(
 )
 }
 \arguments{
-\item{lsting}{listing_df. The listing to paginate.}
+\item{lsting}{(\code{listing_df} or \code{list})\cr the listing or list of listings to paginate.}
 
-\item{lpp}{numeric(1) or NULL. Number of row lines (not counting titles and
-footers) to have per page. Standard is \code{70} while \code{NULL} disables vertical
-pagination.}
+\item{lpp}{(\code{numeric(1)} or \code{NULL})\cr number of rows/lines (excluding titles and footers)
+to include per page. Standard is \code{70} while \code{NULL} disables vertical pagination.}
 
 \item{colwidths}{numeric vector.  Column widths (in characters) for
 use with vertical pagination.}
@@ -33,6 +32,5 @@ completely if \code{tf_wrap} is \code{FALSE}.}
 pagination breaks be shown. Defaults to \code{FALSE}.}
 }
 \description{
-These functions are defunct and their symbols will be removed entirely
-in a future release.
+These functions are defunct and their symbols will be removed entirely in a future release.
 }
