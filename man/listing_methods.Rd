@@ -41,7 +41,7 @@
 \S4method{num_rep_cols}{listing_df}(obj)
 }
 \arguments{
-\item{x}{listing_df. The listing.}
+\item{x}{(\code{listing_df})\cr the listing.}
 
 \item{widths}{numeric (or  \code{NULL}). (proposed) widths for the columns
 of \code{x}. The expected length  of this numeric vector can be
@@ -58,11 +58,11 @@ of the  session (\code{getOption("width")}). If set to \code{"auto"},
 the width of the table (plus any table inset) is used. Ignored
 completely if \code{tf_wrap} is \code{FALSE}.}
 
-\item{...}{dots. See \code{toString} method in \code{formatters} for all parameters.}
+\item{...}{additional parameters passed to \code{\link[formatters:tostring]{formatters::toString()}}.}
 
-\item{i}{ANY. Passed to base \code{[} methods.}
+\item{i}{(\code{any})\cr object passed to base \code{[} methods.}
 
-\item{j}{ANY. Passed to base \code{[} methods.}
+\item{j}{(\code{any})\cr object passed to base \code{[} methods.}
 
 \item{drop}{For matrices and arrays.  If \code{TRUE} the result is
     coerced to the lowest possible dimension (see the examples).  This
@@ -70,24 +70,24 @@ completely if \code{tf_wrap} is \code{FALSE}.}
     \code{\link[base]{drop}} for further details.
   }
 
-\item{obj}{The object.}
+\item{obj}{(\code{listing_df})\cr the listing.}
 
 \item{value}{typically an array-like \R object of a similar class as
     \code{x}.}
 }
 \value{
-for getter methods, the value of the aspect of
-\code{obj}; for setter methods, \code{obj} with
-the relevant element of the listing updated.
+\itemize{
+\item Getter methods return the value of the aspect of \code{obj}.
+\item Setter methods return \code{obj} with the relevant element of the listing updated.
+}
 }
 \description{
-See core documentation in \code{formatters} for descriptions
-of these functions.
+See core documentation in \code{\link{formatters}} for descriptions of these functions.
 }
 \examples{
 lsting <- as_listing(mtcars)
 main_title(lsting) <- "Hi there"
 
 main_title(lsting)
+
 }
-\keyword{internal}

@@ -17,7 +17,6 @@ testthat::test_that("Column labels are the same", {
   )
 })
 
-
 testthat::test_that("listings work well with different formats and attributes", {
   # (1) Error with NA values in numeric column when apply format
   anl_tmp <- anl
@@ -131,7 +130,6 @@ testthat::test_that("regression test for keycols being lost due to `head()`", {
     c(5L, ncol(mtcars))
   )
 })
-
 
 testthat::test_that("column inclusion and ordering stuff", {
   ## key columns must be left-most k columns (#36)

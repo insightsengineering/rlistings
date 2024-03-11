@@ -106,19 +106,3 @@ paginate_listing <- function(lsting,
   ret <- unlist(full_pag, recursive = FALSE)
   ret
 }
-
-#' @title Defunct functions
-#'
-#' @description
-#' These functions are defunct and their symbols will be removed entirely
-#' in a future release.
-#' @rdname defunct
-#' @inheritParams paginate_listing
-#' @export
-pag_listing_indices <- function(lsting,
-                                lpp = 15,
-                                colwidths = NULL,
-                                max_width = NULL,
-                                verbose = FALSE) {
-  .Defunct("paginate_indices", package = "formatters")
-}

@@ -11,14 +11,15 @@
 
 #' Methods for `listing_df` objects
 #'
-#' See core documentation in \code{formatters} for descriptions
-#' of these functions.
+#' See core documentation in [`formatters`] for descriptions of these functions.
+#'
+#' @inheritParams formatters::toString
+#' @param x (`listing_df`)\cr the listing.
+#' @param ... additional parameters passed to [formatters::toString()].
+#'
+#' @method print listing_df
 #'
 #' @export
-#' @inheritParams formatters::toString
-#' @param x listing_df. The listing.
-#' @param ... dots. See `toString` method in \code{formatters} for all parameters.
-#' @method print listing_df
 #' @name listing_methods
 print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, ...) {
   cat(toString(matrix_form(x), widths = widths, tf_wrap = tf_wrap, max_width = max_width, ...))
@@ -44,11 +45,11 @@ basic_run_lens <- function(x) {
   diff(c(0L, i))
 }
 
-
-#' @rdname vec_nlines
-#' @param df listing_df. The listing.
+#' @param df (`listing_df`)\cr the listing.
 #' @param colnm Column name
 #' @param colvec Column values based on colnm
+#'
+#' @rdname vec_nlines
 format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
   if (missing(colvec) && !(colnm %in% names(df))) {
     stop("column ", colnm, " not found")
@@ -67,17 +68,16 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
 #' For `vec_nlines`, calculate the number of lines each element of a column vector will
 #' take to render. For `format_colvector`,
 #'
-#' @param vec any vector. A column vector to be rendered into ASCII.
-#' @param max_width numeric (or NULL). The width the column will be
-#' rendered in.
-#' @return a numeric vector of the number of lines elementwise that
-#' will be needed to render the elements of \code{vec} to width
-#' \code{max_width}.
+#' @param vec (`any`)\cr a column vector to be rendered into ASCII.
+#' @param max_width (`numeric(1)` or `NULL`)\cr the width to render the column with.
+#' @return (`numeric`)\cr a vector of the number of lines element-wise that will be
+#'   needed to render the elements of `vec` to width `max_width`.
+#'
 #' @keywords internal
 setGeneric("vec_nlines", function(vec, max_width = NULL) standardGeneric("vec_nlines"))
 
 #' @rdname vec_nlines
-#' @param vec A vector.
+#' @param vec (`any`)\cr a vector.
 #' @keywords internal
 setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
   if (is.null(max_width)) {
@@ -100,19 +100,22 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
 ##   ret[is.na(ret)] <- format_value(NA_character
 ## })
 
-#' Make pagination dataframe for a listing
-#' @export
+#' Make pagination data frame for a listing
+#'
 #' @inheritParams formatters::make_row_df
-#' @param tt listing_df. The listing to be rendered
-#' @param visible_only logical(1). Ignored, as listings
-#' do not have non-visible structural elements.
+#' @param tt (`listing_df`)\cr the listing to be rendered.
+#' @param visible_only (`logical(1)`)\cr ignored, as listings do not have
+#'   non-visible structural elements.
+#'
+#' @return a `data.frame` with pagination information.
+#'
+#' @seealso [formatters::make_row_df()]
 #'
 #' @examples
 #' lsting <- as_listing(mtcars)
 #' mf <- matrix_form(lsting)
 #'
-#' @return a data.frame with pagination information.
-#' @seealso \code{\link[formatters]{make_row_df}}
+#' @export
 setMethod(
   "make_row_df", "listing_df",
   function(tt, colwidths = NULL, visible_only = TRUE,
@@ -216,14 +219,14 @@ setMethod(
 ##     ret
 ## })
 
-#' @export
-#' @param x listing_df. The listing.
 #' @inheritParams base::Extract
-#' @param i ANY. Passed to base `[` methods.
-#' @param j ANY. Passed to base `[` methods.
+#' @param x (`listing_df`)\cr the listing.
+#' @param i (`any`)\cr object passed to base `[` methods.
+#' @param j (`any`)\cr object passed to base `[` methods.
+#'
+#' @export
 #' @aliases [,listing_df-method
 #' @rdname listing_methods
-#' @keywords internal
 setMethod(
   "[", "listing_df",
   function(x, i, j, drop = FALSE) {
@@ -238,17 +241,19 @@ setMethod(
 )
 
 #' @rdname listing_methods
-#' @param obj The object.
-#' @export
-#' @return for getter methods, the value of the aspect of
-#' \code{obj}; for setter methods, \code{obj} with
-#' the relevant element of the listing updated.
+#' @param obj (`listing_df`)\cr the listing.
+#'
+#' @return
+#' * Getter methods return the value of the aspect of `obj`.
+#' * Setter methods return `obj` with the relevant element of the listing updated.
 #'
 #' @examples
 #' lsting <- as_listing(mtcars)
 #' main_title(lsting) <- "Hi there"
 #'
 #' main_title(lsting)
+#'
+#' @export
 setMethod(
   "main_title", "listing_df",
   function(obj) attr(obj, "main_title") %||% character()
@@ -260,12 +265,14 @@ setMethod(
   "subtitles", "listing_df",
   function(obj) attr(obj, "subtitles") %||% character()
 )
+
 #' @rdname listing_methods
 #' @export
 setMethod(
   "main_footer", "listing_df",
   function(obj) attr(obj, "main_footer") %||% character()
 )
+
 #' @rdname listing_methods
 #' @export
 setMethod(
