@@ -25,30 +25,27 @@ paginate_listing(
 \arguments{
 \item{lsting}{listing_df. The listing to paginate.}
 
-\item{page_type}{character(1).   Name   of  a  page  type.   See
-\code{page_types}.   Ignored when  \code{pg_width} and  \code{pg_height}
-are set directly.}
+\item{page_type}{(\code{character(1)})\cr name of a page type. See \code{\link[formatters]{page_types}}. Ignored
+when \code{pg_width} and \code{pg_height} are set directly.}
 
-\item{font_family}{character(1). Name of a font family. An error
-will be thrown if the family named is not monospaced. Defaults
-to Courier.}
+\item{font_family}{(\code{character(1)})\cr name of a font family. An error will be thrown
+if the family named is not monospaced. Defaults to \code{"Courier"}.}
 
-\item{font_size}{numeric(1). Font size, defaults to 12.}
+\item{font_size}{(\code{numeric(1)})\cr font size. Defaults to \code{12}.}
 
-\item{lineheight}{numeric(1). Line height, defaults to 1.}
+\item{lineheight}{(\code{numeric(1)})\cr line height. Defaults to \code{1}.}
 
-\item{landscape}{logical(1). Should the  dimensions of \code{page_type}
-be inverted  for landscape?  Defaults to  \code{FALSE}, ignored when
-\code{pg_width} and \code{pg_height} are set directly.}
+\item{landscape}{(\code{logical(1)})\cr whether the dimensions of \code{page_type} should be
+inverted for landscape orientation. Defaults to \code{FALSE}, ignored when \code{pg_width} and
+\code{pg_height} are set directly.}
 
-\item{pg_width}{numeric(1). Page width in inches.}
+\item{pg_width}{(\code{numeric(1)})\cr page width in inches.}
 
-\item{pg_height}{numeric(1). Page height in inches.}
+\item{pg_height}{(\code{numeric(1)})\cr page height in inches.}
 
-\item{margins}{numeric(4). Named numeric vector containing \code{'bottom'},
-\code{'left'}, \code{'top'}, and \code{'right'} margins in inches. Defaults
-to \code{.5} inches for both vertical margins and \code{.75} for both
-horizontal margins.}
+\item{margins}{(\code{numeric(4)})\cr named numeric vector containing \code{"bottom"}, \code{"left"},
+\code{"top"}, and \code{"right"} margins in inches. Defaults to \code{.5} inches for both vertical
+margins and \code{.75} for both horizontal margins.}
 
 \item{lpp}{numeric(1) or NULL. Number of row lines (not counting titles and
 footers) to have per page. Standard is \code{70} while \code{NULL} disables vertical
@@ -58,21 +55,17 @@ pagination.}
 horizontal pagination. \code{NULL} (the default) indicates no horizontal
 pagination should be done.}
 
-\item{colwidths}{numeric vector.  Column widths (in characters) for
-use with vertical pagination.}
+\item{colwidths}{(\code{numeric})\cr vector of column widths (in characters) for use in vertical pagination.}
 
-\item{tf_wrap}{logical(1). Should  the texts for  title, subtitle,
-and footnotes be wrapped?}
+\item{tf_wrap}{(\code{logical(1)})\cr whether the text for title, subtitles, and footnotes should be wrapped.}
 
-\item{max_width}{integer(1), character(1) or \code{NULL}. Width that title
-and   footer   (including   footnotes)  materials   should   be
-word-wrapped to. If \code{NULL}, it is  set to the current print width
-of the  session (\code{getOption("width")}). If set to \code{"auto"},
-the width of the table (plus any table inset) is used. Ignored
-completely if \code{tf_wrap} is \code{FALSE}.}
+\item{max_width}{(\code{integer(1)}, \code{character(1)} or \code{NULL})\cr width that title and footer (including
+footnotes) materials should be word-wrapped to. If \code{NULL}, it is set to the current print width of the
+session (\code{getOption("width")}). If set to \code{"auto"}, the width of the table (plus any table inset) is
+used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 
-\item{verbose}{logical(1). Should additional informative messages about the search for
-pagination breaks be shown. Defaults to \code{FALSE}.}
+\item{verbose}{(\code{logical(1)})\cr whether additional informative messages about the search for
+pagination breaks should be shown. Defaults to \code{FALSE}.}
 }
 \value{
 A list of listings' objects that are meant to be on separated pages.

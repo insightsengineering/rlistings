@@ -98,11 +98,11 @@ displayed when the listing is rendered.}
 returns the vector for a new column, which is added to \code{df} as
 \code{name}, or \code{NULL} if marking an existing column as a listing column.}
 
-\item{format}{character(1) or function. A format label (string) or \code{formatter} function.}
+\item{format}{(\code{character(1)} or \code{function})\cr a format label (string) or formatter function.}
 
-\item{na_str}{character(1). String that should be displayed in place of missing values.}
+\item{na_str}{(\code{character(1)})\cr string that should be displayed in place of missing values.}
 
-\item{align}{character(1). Alignment values should be rendered with.}
+\item{align}{(\code{character(1)})\cr alignment values should be rendered with.}
 }
 \value{
 a \code{listing_df} object, sorted by its key columns.

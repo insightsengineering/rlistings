@@ -21,27 +21,26 @@
 \arguments{
 \item{tt}{(\code{listing_df})\cr the listing to be rendered.}
 
-\item{colwidths}{numeric. Internal detail do not set manually.}
+\item{colwidths}{(\code{numeric})\cr internal detail, do not set manually.}
 
 \item{visible_only}{(\code{logical(1)})\cr ignored, as listings do not have
 non-visible structural elements.}
 
-\item{rownum}{numeric(1). Internal detail do not set manually.}
+\item{rownum}{(\code{numeric(1)})\cr internal detail, do not set manually.}
 
-\item{indent}{integer(1). Internal detail do not set manually.}
+\item{indent}{(\code{integer(1)})\cr internal detail, do not set manually.}
 
-\item{path}{character.  Path  to  the (sub)table  represented  by
-\code{tt}. Defaults to \code{character()}}
+\item{path}{(\code{character})\cr path to the (sub)table represented by \code{tt}. Defaults to \code{character()}.}
 
-\item{incontent}{logical(1). Internal detail do not set manually.}
+\item{incontent}{(\code{logical(1)})\cr internal detail, do not set manually.}
 
-\item{repr_ext}{integer(1). Internal detail do not set manually.}
+\item{repr_ext}{(\code{integer(1)})\cr internal detail, do not set manually.}
 
-\item{repr_inds}{integer. Internal detail do not set manually.}
+\item{repr_inds}{(\code{integer})\cr internal detail, do not set manually.}
 
-\item{sibpos}{integer(1). Internal detail do not set manually.}
+\item{sibpos}{(\code{integer(1)})\cr internal detail, do not set manually.}
 
-\item{nsibs}{integer(1). Internal detail do not set manually.}
+\item{nsibs}{(\code{integer(1)})\cr internal detail, do not set manually.}
 }
 \value{
 a \code{data.frame} with pagination information.

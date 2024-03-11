@@ -43,20 +43,16 @@
 \arguments{
 \item{x}{(\code{listing_df})\cr the listing.}
 
-\item{widths}{numeric (or  \code{NULL}). (proposed) widths for the columns
-of \code{x}. The expected length  of this numeric vector can be
-retrieved with  \code{ncol() + 1}  as the  column of row  names must
-also be considered.}
+\item{widths}{(\code{numeric} or  \code{NULL})\cr Proposed widths for the columns of \code{x}. The expected
+length of this numeric vector can be retrieved with \code{ncol(x) + 1} as the column of row names
+must also be considered.}
 
-\item{tf_wrap}{logical(1). Should  the texts for  title, subtitle,
-and footnotes be wrapped?}
+\item{tf_wrap}{(\code{logical(1)})\cr whether the text for title, subtitles, and footnotes should be wrapped.}
 
-\item{max_width}{integer(1), character(1) or \code{NULL}. Width that title
-and   footer   (including   footnotes)  materials   should   be
-word-wrapped to. If \code{NULL}, it is  set to the current print width
-of the  session (\code{getOption("width")}). If set to \code{"auto"},
-the width of the table (plus any table inset) is used. Ignored
-completely if \code{tf_wrap} is \code{FALSE}.}
+\item{max_width}{(\code{integer(1)}, \code{character(1)} or \code{NULL})\cr width that title and footer (including
+footnotes) materials should be word-wrapped to. If \code{NULL}, it is set to the current print width of the
+session (\code{getOption("width")}). If set to \code{"auto"}, the width of the table (plus any table inset) is
+used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 
 \item{...}{additional parameters passed to \code{\link[formatters:tostring]{formatters::toString()}}.}
 
