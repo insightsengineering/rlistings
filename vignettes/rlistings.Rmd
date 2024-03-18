@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with rlistings"
+title: "Getting Started"
 author: "Emily de la Rua and Gabriel Becker"
 date: "2022-10-26"
 output:
@@ -9,7 +9,7 @@ vignette: >
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 editor_options:
-    markdown: 
+    markdown:
         wrap: 72
 ---
 
@@ -22,9 +22,9 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This vignette shows the general purpose and basic functionality of the `rlistings` R package.  
+This vignette shows the general purpose and basic functionality of the `rlistings` R package.
 
-The `rlistings` R package contains value formatting and ASCII rendering infrastructure for tables and listings useful for clinical trials and other statistical analysis. 
+The `rlistings` R package contains value formatting and ASCII rendering infrastructure for tables and listings useful for clinical trials and other statistical analysis.
 The core functionality is built on top of the [`formatters` package](https://insightsengineering.github.io/formatters/latest-tag/).
 
 Some of the key features currently available to customize listings created using the `rlistings` package include:
