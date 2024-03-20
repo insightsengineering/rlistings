@@ -56,9 +56,9 @@ used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 
 \item{...}{additional parameters passed to \code{\link[formatters:tostring]{formatters::toString()}}.}
 
-\item{i}{(\code{any})\cr object passed to base \code{[} methods.}
+\item{i}{(\code{ANY})\cr object passed to base \code{[} methods.}
 
-\item{j}{(\code{any})\cr object passed to base \code{[} methods.}
+\item{j}{(\code{ANY})\cr object passed to base \code{[} methods.}
 
 \item{drop}{For matrices and arrays.  If \code{TRUE} the result is
     coerced to the lowest possible dimension (see the examples).  This

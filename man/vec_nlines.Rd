@@ -19,7 +19,7 @@ vec_nlines(vec, max_width = NULL)
 
 \item{colvec}{Column values based on colnm}
 
-\item{vec}{(\code{any})\cr a vector.}
+\item{vec}{(\code{ANY})\cr a vector.}
 
 \item{max_width}{(\code{numeric(1)} or \code{NULL})\cr the width to render the column with.}
 }

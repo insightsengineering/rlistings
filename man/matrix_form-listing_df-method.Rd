@@ -7,7 +7,7 @@
 \S4method{matrix_form}{listing_df}(obj, indent_rownames = FALSE, expand_newlines = TRUE)
 }
 \arguments{
-\item{obj}{(\code{any})\cr object to be transformed into a ready-to-render form (a \code{\link[formatters]{MatrixPrintForm}} object).}
+\item{obj}{(\code{ANY})\cr object to be transformed into a ready-to-render form (a \code{\link[formatters]{MatrixPrintForm}} object).}
 
 \item{indent_rownames}{(\code{logical(1)})\cr silently ignored, as listings do not have row names
 nor indenting structure.}
