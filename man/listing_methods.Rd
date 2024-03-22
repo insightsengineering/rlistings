@@ -56,9 +56,9 @@ used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 
 \item{...}{additional parameters passed to \code{\link[formatters:tostring]{formatters::toString()}}.}
 
-\item{i}{(\code{ANY})\cr object passed to base \code{[} methods.}
+\item{i}{(\code{any})\cr object passed to base \code{[} methods.}
 
-\item{j}{(\code{ANY})\cr object passed to base \code{[} methods.}
+\item{j}{(\code{any})\cr object passed to base \code{[} methods.}
 
 \item{drop}{For matrices and arrays.  If \code{TRUE} the result is
     coerced to the lowest possible dimension (see the examples).  This
@@ -73,7 +73,7 @@ used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 }
 \value{
 \itemize{
-\item Getter methods return the value of the aspect of \code{obj}.
+\item Accessor methods return the value of the aspect of \code{obj}.
 \item Setter methods return \code{obj} with the relevant element of the listing updated.
 }
 }

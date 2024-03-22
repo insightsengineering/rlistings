@@ -23,7 +23,7 @@ paginate_listing(
 )
 }
 \arguments{
-\item{lsting}{listing_df. The listing to paginate.}
+\item{lsting}{(\code{listing_df})\cr the listing to paginate.}
 
 \item{page_type}{(\code{character(1)})\cr name of a page type. See \code{\link[formatters]{page_types}}. Ignored
 when \code{pg_width} and \code{pg_height} are set directly.}
@@ -47,13 +47,11 @@ inverted for landscape orientation. Defaults to \code{FALSE}, ignored when \code
 \code{"top"}, and \code{"right"} margins in inches. Defaults to \code{.5} inches for both vertical
 margins and \code{.75} for both horizontal margins.}
 
-\item{lpp}{numeric(1) or NULL. Number of row lines (not counting titles and
-footers) to have per page. Standard is \code{70} while \code{NULL} disables vertical
-pagination.}
+\item{lpp}{(\code{numeric(1)} or \code{NULL})\cr number of rows/lines (excluding titles and footers)
+to include per page. Standard is \code{70} while \code{NULL} disables vertical pagination.}
 
-\item{cpp}{numeric(1) or NULL. Width (in characters) of the pages for
-horizontal pagination. \code{NULL} (the default) indicates no horizontal
-pagination should be done.}
+\item{cpp}{(\code{numeric(1)} or \code{NULL})\cr width (in characters) of the pages for horizontal
+pagination. \code{NULL} (the default) indicates no horizontal pagination should be done.}
 
 \item{colwidths}{(\code{numeric})\cr vector of column widths (in characters) for use in vertical pagination.}
 
@@ -68,26 +66,18 @@ used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 pagination breaks should be shown. Defaults to \code{FALSE}.}
 }
 \value{
-A list of listings' objects that are meant to be on separated pages.
-For \code{pag_tt_indices} a list of paginated-groups of row-indices of \code{lsting}.
-
-for \code{paginate_listing} a list containing separate
-\code{listing_df} objects for each page, for \code{pag_listing_indices},
-a list of indices in the direction being paginated corresponding
-to the individual pages in that dimension.
+A list of \code{listing_df} objects where each list element corresponds to a separate page.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Pagination of a listing. This can be vertical for long listings with many
-rows or horizontal if there are many columns.
+rows and/or horizontal if there are many columns.
 }
 \examples{
 dat <- ex_adae
 lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
-
 mat <- matrix_form(lsting)
-
 cat(toString(mat))
 
 paginate_listing(lsting, lpp = 10)
@@ -95,4 +85,5 @@ paginate_listing(lsting, lpp = 10)
 paginate_listing(lsting, cpp = 100, lpp = 40)
 
 paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)
+
 }

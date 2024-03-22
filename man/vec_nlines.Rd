@@ -15,11 +15,11 @@ vec_nlines(vec, max_width = NULL)
 \arguments{
 \item{df}{(\code{listing_df})\cr the listing.}
 
-\item{colnm}{Column name}
+\item{colnm}{(\code{character(1)})\cr column name.}
 
-\item{colvec}{Column values based on colnm}
+\item{colvec}{(\code{vector})\cr column values based on \code{colnm}.}
 
-\item{vec}{(\code{ANY})\cr a vector.}
+\item{vec}{(\code{vector})\cr a vector.}
 
 \item{max_width}{(\code{numeric(1)} or \code{NULL})\cr the width to render the column with.}
 }

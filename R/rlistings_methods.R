@@ -46,10 +46,11 @@ basic_run_lens <- function(x) {
 }
 
 #' @param df (`listing_df`)\cr the listing.
-#' @param colnm Column name
-#' @param colvec Column values based on colnm
+#' @param colnm (`character(1)`)\cr column name.
+#' @param colvec (`vector`)\cr column values based on `colnm`.
 #'
 #' @rdname vec_nlines
+#' @keywords internal
 format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
   if (missing(colvec) && !(colnm %in% names(df))) {
     stop("column ", colnm, " not found")
@@ -68,7 +69,7 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
 #' For `vec_nlines`, calculate the number of lines each element of a column vector will
 #' take to render. For `format_colvector`,
 #'
-#' @param vec (`ANY`)\cr a column vector to be rendered into ASCII.
+#' @param vec (`vector`)\cr a column vector to be rendered into ASCII.
 #' @param max_width (`numeric(1)` or `NULL`)\cr the width to render the column with.
 #' @return (`numeric`)\cr a vector of the number of lines element-wise that will be
 #'   needed to render the elements of `vec` to width `max_width`.
@@ -76,8 +77,9 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
 #' @keywords internal
 setGeneric("vec_nlines", function(vec, max_width = NULL) standardGeneric("vec_nlines"))
 
+#' @param vec (`vector`)\cr a vector.
+#'
 #' @rdname vec_nlines
-#' @param vec (`ANY`)\cr a vector.
 #' @keywords internal
 setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
   if (is.null(max_width)) {
@@ -221,8 +223,8 @@ setMethod(
 
 #' @inheritParams base::Extract
 #' @param x (`listing_df`)\cr the listing.
-#' @param i (`ANY`)\cr object passed to base `[` methods.
-#' @param j (`ANY`)\cr object passed to base `[` methods.
+#' @param i (`any`)\cr object passed to base `[` methods.
+#' @param j (`any`)\cr object passed to base `[` methods.
 #'
 #' @export
 #' @aliases [,listing_df-method
@@ -244,7 +246,7 @@ setMethod(
 #' @param obj (`listing_df`)\cr the listing.
 #'
 #' @return
-#' * Getter methods return the value of the aspect of `obj`.
+#' * Accessor methods return the value of the aspect of `obj`.
 #' * Setter methods return `obj` with the relevant element of the listing updated.
 #'
 #' @examples
