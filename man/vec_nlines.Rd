@@ -13,21 +13,19 @@ vec_nlines(vec, max_width = NULL)
 \S4method{vec_nlines}{ANY}(vec, max_width = NULL)
 }
 \arguments{
-\item{df}{listing_df. The listing.}
+\item{df}{(\code{listing_df})\cr the listing.}
 
-\item{colnm}{Column name}
+\item{colnm}{(\code{string})\cr column name.}
 
-\item{colvec}{Column values based on colnm}
+\item{colvec}{(\code{vector})\cr column values based on \code{colnm}.}
 
-\item{vec}{A vector.}
+\item{vec}{(\code{vector})\cr a vector.}
 
-\item{max_width}{numeric (or NULL). The width the column will be
-rendered in.}
+\item{max_width}{(\code{numeric(1)} or \code{NULL})\cr the width to render the column with.}
 }
 \value{
-a numeric vector of the number of lines elementwise that
-will be needed to render the elements of \code{vec} to width
-\code{max_width}.
+(\code{numeric})\cr a vector of the number of lines element-wise that will be
+needed to render the elements of \code{vec} to width \code{max_width}.
 }
 \description{
 For \code{vec_nlines}, calculate the number of lines each element of a column vector will

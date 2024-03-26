@@ -165,7 +165,6 @@ testthat::test_that("pagination: lpp and cpp correctly computed for margins", {
   testthat::expect_identical(res, pag)
 })
 
-
 testthat::test_that("pagination works with col wrapping", {
   lsting <- h_lsting_adae(disp_cols = c("USUBJID", "AESOC", "RACE"))
 
@@ -214,10 +213,6 @@ testthat::test_that("pagination repeats keycols in other pages", {
   testthat::expect_snapshot(
     cat(toString(mf_pages[[3]]))
   )
-})
-
-testthat::test_that("defunct is defunct", {
-  testthat::expect_error(pag_listing_indices(), "defunct")
 })
 
 testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
