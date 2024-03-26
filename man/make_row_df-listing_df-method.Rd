@@ -23,7 +23,7 @@
 
 \item{colwidths}{(\code{numeric})\cr internal detail, do not set manually.}
 
-\item{visible_only}{(\code{logical(1)})\cr ignored, as listings do not have
+\item{visible_only}{(\code{flag})\cr ignored, as listings do not have
 non-visible structural elements.}
 
 \item{rownum}{(\code{numeric(1)})\cr internal detail, do not set manually.}
@@ -32,7 +32,7 @@ non-visible structural elements.}
 
 \item{path}{(\code{character})\cr path to the (sub)table represented by \code{tt}. Defaults to \code{character()}.}
 
-\item{incontent}{(\code{logical(1)})\cr internal detail, do not set manually.}
+\item{incontent}{(\code{flag})\cr internal detail, do not set manually.}
 
 \item{repr_ext}{(\code{integer(1)})\cr internal detail, do not set manually.}
 

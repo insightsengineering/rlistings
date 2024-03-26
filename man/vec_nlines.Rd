@@ -15,7 +15,7 @@ vec_nlines(vec, max_width = NULL)
 \arguments{
 \item{df}{(\code{listing_df})\cr the listing.}
 
-\item{colnm}{(\code{character(1)})\cr column name.}
+\item{colnm}{(\code{string})\cr column name.}
 
 \item{colvec}{(\code{vector})\cr column values based on \code{colnm}.}
 

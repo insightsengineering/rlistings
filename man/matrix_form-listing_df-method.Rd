@@ -9,10 +9,10 @@
 \arguments{
 \item{obj}{(\code{ANY})\cr object to be transformed into a ready-to-render form (a \code{\link[formatters]{MatrixPrintForm}} object).}
 
-\item{indent_rownames}{(\code{logical(1)})\cr silently ignored, as listings do not have row names
+\item{indent_rownames}{(\code{flag})\cr silently ignored, as listings do not have row names
 nor indenting structure.}
 
-\item{expand_newlines}{(\code{logical(1)})\cr this should always be \code{TRUE} for listings. We keep it
+\item{expand_newlines}{(\code{flag})\cr this should always be \code{TRUE} for listings. We keep it
 for debugging reasons.}
 }
 \value{

@@ -46,7 +46,7 @@ basic_run_lens <- function(x) {
 }
 
 #' @param df (`listing_df`)\cr the listing.
-#' @param colnm (`character(1)`)\cr column name.
+#' @param colnm (`string`)\cr column name.
 #' @param colvec (`vector`)\cr column values based on `colnm`.
 #'
 #' @rdname vec_nlines
@@ -106,7 +106,7 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
 #'
 #' @inheritParams formatters::make_row_df
 #' @param tt (`listing_df`)\cr the listing to be rendered.
-#' @param visible_only (`logical(1)`)\cr ignored, as listings do not have
+#' @param visible_only (`flag`)\cr ignored, as listings do not have
 #'   non-visible structural elements.
 #'
 #' @return a `data.frame` with pagination information.

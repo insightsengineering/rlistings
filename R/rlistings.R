@@ -17,7 +17,7 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   `non_disp_cols`.
 #' @param non_disp_cols (`character` or `NULL`)\cr vector of names of non-key columns to be excluded as display
 #'   columns. All other non-key columns are treated as display columns. Ignored if `disp_cols` is non-`NULL`.
-#' @param unique_rows (`logical(1)`)\cr whether only unique rows should be included in the listing. Defaults to `FALSE`.
+#' @param unique_rows (`flag`)\cr whether only unique rows should be included in the listing. Defaults to `FALSE`.
 #' @param default_formatting (`list`)\cr a named list of default column format configurations to apply when rendering
 #'   the listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all
 #'   unspecified numeric classes) and a value of type `fmt_config` with the format configuration that should be
@@ -28,13 +28,13 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   columns when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a
 #'   value of type `fmt_config` with the formatting configuration that should be implemented for that column. Objects
 #'   of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`. Defaults to `NULL`.
-#' @param main_title (`character(1)` or `NULL`)\cr the main title for the listing, or
+#' @param main_title (`string` or `NULL`)\cr the main title for the listing, or
 #'   `NULL` (the default).
 #' @param subtitles (`character` or `NULL`)\cr a vector of subtitles for the listing, or `NULL` (the default).
 #' @param main_footer (`character` or `NULL`)\cr a vector of main footer lines for the listing, or `NULL` (the default).
 #' @param prov_footer (`character` or `NULL`)\cr a vector of provenance footer lines for the listing, or `NULL`
 #'   (the default). Each string element is placed on a new line.
-#' @param vec (`character(1)`)\cr name of a column vector from a `listing_df` object to be annotated as a key column.
+#' @param vec (`string`)\cr name of a column vector from a `listing_df` object to be annotated as a key column.
 #'
 #' @return a `listing_df` object, sorted by its key columns.
 #'
@@ -253,9 +253,9 @@ get_keycols <- function(df) {
 }
 
 #' @inherit formatters::matrix_form
-#' @param indent_rownames (`logical(1)`)\cr silently ignored, as listings do not have row names
+#' @param indent_rownames (`flag`)\cr silently ignored, as listings do not have row names
 #'   nor indenting structure.
-#' @param expand_newlines (`logical(1)`)\cr this should always be `TRUE` for listings. We keep it
+#' @param expand_newlines (`flag`)\cr this should always be `TRUE` for listings. We keep it
 #'   for debugging reasons.
 #'
 #' @return a [`MatrixPrintForm`] object.
@@ -361,7 +361,7 @@ add_listing_dispcol <- function(df, new) {
   df
 }
 
-#' @param value (`character(1)`)\cr new value.
+#' @param value (`string`)\cr new value.
 #'
 #' @export
 #' @rdname listings
@@ -384,7 +384,7 @@ add_listing_dispcol <- function(df, new) {
 }
 
 #' @inheritParams formatters::fmt_config
-#' @param name (`character(1)`)\cr name of the existing or new column to be
+#' @param name (`string`)\cr name of the existing or new column to be
 #'   displayed when the listing is rendered.
 #' @param fun (`function` or `NULL`)\cr a function which accepts `df` and
 #'   returns the vector for a new column, which is added to `df` as

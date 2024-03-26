@@ -60,7 +60,7 @@ displayed when the listing is rendered. Defaults to all columns of \code{df} not
 \item{non_disp_cols}{(\code{character} or \code{NULL})\cr vector of names of non-key columns to be excluded as display
 columns. All other non-key columns are treated as display columns. Ignored if \code{disp_cols} is non-\code{NULL}.}
 
-\item{unique_rows}{(\code{logical(1)})\cr whether only unique rows should be included in the listing. Defaults to \code{FALSE}.}
+\item{unique_rows}{(\code{flag})\cr whether only unique rows should be included in the listing. Defaults to \code{FALSE}.}
 
 \item{default_formatting}{(\code{list})\cr a named list of default column format configurations to apply when rendering
 the listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all
@@ -74,7 +74,7 @@ columns when rendering the listing. Each name-value pair consists of a name corr
 value of type \code{fmt_config} with the formatting configuration that should be implemented for that column. Objects
 of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}. Defaults to \code{NULL}.}
 
-\item{main_title}{(\code{character(1)} or \code{NULL})\cr the main title for the listing, or
+\item{main_title}{(\code{string} or \code{NULL})\cr the main title for the listing, or
 \code{NULL} (the default).}
 
 \item{subtitles}{(\code{character} or \code{NULL})\cr a vector of subtitles for the listing, or \code{NULL} (the default).}
@@ -84,25 +84,25 @@ of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, an
 \item{prov_footer}{(\code{character} or \code{NULL})\cr a vector of provenance footer lines for the listing, or \code{NULL}
 (the default). Each string element is placed on a new line.}
 
-\item{vec}{(\code{character(1)})\cr name of a column vector from a \code{listing_df} object to be annotated as a key column.}
+\item{vec}{(\code{string})\cr name of a column vector from a \code{listing_df} object to be annotated as a key column.}
 
 \item{new}{(\code{character})\cr vector of names of columns to be added to
 the set of display columns.}
 
-\item{value}{(\code{character(1)})\cr new value.}
+\item{value}{(\code{string})\cr new value.}
 
-\item{name}{(\code{character(1)})\cr name of the existing or new column to be
+\item{name}{(\code{string})\cr name of the existing or new column to be
 displayed when the listing is rendered.}
 
 \item{fun}{(\code{function} or \code{NULL})\cr a function which accepts \code{df} and
 returns the vector for a new column, which is added to \code{df} as
 \code{name}, or \code{NULL} if marking an existing column as a listing column.}
 
-\item{format}{(\code{character(1)} or \code{function})\cr a format label (string) or formatter function.}
+\item{format}{(\code{string} or \code{function})\cr a format label (string) or formatter function.}
 
-\item{na_str}{(\code{character(1)})\cr string that should be displayed in place of missing values.}
+\item{na_str}{(\code{string})\cr string that should be displayed in place of missing values.}
 
-\item{align}{(\code{character(1)})\cr alignment values should be rendered with.}
+\item{align}{(\code{string})\cr alignment values should be rendered with.}
 }
 \value{
 a \code{listing_df} object, sorted by its key columns.
