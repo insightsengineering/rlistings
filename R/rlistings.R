@@ -170,7 +170,7 @@ as_listing <- function(df,
   df <- as_tibble(df)
   varlabs <- var_labels(df, fill = TRUE)
   o <- do.call(order, df[key_cols])
-  if (is.unsorted(o)) {
+  if (is.unsorted(o) && interactive()) {
     message("sorting incoming data by key columns")
     df <- df[o, ]
   }
@@ -188,7 +188,7 @@ as_listing <- function(df,
   cols <- c(key_cols, setdiff(cols, key_cols))
 
   row_all_na <- apply(df[cols], 1, function(x) all(is.na(x)))
-  if (any(row_all_na)) {
+  if (any(row_all_na) && interactive()) {
     message("rows that only contain NA values have been trimmed")
     df <- df[!row_all_na, ]
   }
@@ -342,6 +342,7 @@ setMethod(
         ncol = ncol(fullmat)
       ),
       row_info = make_row_df(obj),
+      listing_keycols = keycols, # It is always something
       nlines_header = 1, # We allow only one level of headers and nl expansion happens after
       nrow_header = 1,
       has_topleft = FALSE,

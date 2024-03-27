@@ -38,7 +38,6 @@ testthat::test_that("key columns repeat with pagination with export_as_txt", {
     page_break = "\n"
   ))
 
-
   testthat::expect_snapshot(cat(listing))
 })
 
