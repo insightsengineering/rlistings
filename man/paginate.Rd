@@ -16,10 +16,12 @@ paginate_listing(
   margins = c(top = 0.5, bottom = 0.5, left = 0.75, right = 0.75),
   lpp = NA_integer_,
   cpp = NA_integer_,
-  colwidths = propose_column_widths(lsting),
+  colwidths = NULL,
   tf_wrap = !is.null(max_width),
+  rep_cols = NULL,
   max_width = NULL,
-  verbose = FALSE
+  verbose = FALSE,
+  printable_form = TRUE
 )
 }
 \arguments{
@@ -62,6 +64,9 @@ use with vertical pagination.}
 \item{tf_wrap}{logical(1). Should  the texts for  title, subtitle,
 and footnotes be wrapped?}
 
+\item{rep_cols}{numeric(1). Number of \emph{columns} (not including
+row labels) to be repeated on every page. Defaults to 0}
+
 \item{max_width}{integer(1), character(1) or \code{NULL}. Width that title
 and   footer   (including   footnotes)  materials   should   be
 word-wrapped to. If \code{NULL}, it is  set to the current print width
@@ -71,6 +76,9 @@ completely if \code{tf_wrap} is \code{FALSE}.}
 
 \item{verbose}{logical(1). Should additional informative messages about the search for
 pagination breaks be shown. Defaults to \code{FALSE}.}
+
+\item{printable_form}{(\code{logical(1)})\cr whether to return the paginated listing as strings to be
+printed (\code{vapply(..., cat, "")}).}
 }
 \value{
 A list of \code{listing_df} objects where each list element corresponds to a separate page.
@@ -79,7 +87,8 @@ A list of \code{listing_df} objects where each list element corresponds to a sep
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Pagination of a listing. This can be vertical for long listings with many
-rows and/or horizontal if there are many columns.
+rows and/or horizontal if there are many columns. This function is a wrapper of
+\code{\link[formatters:paginate_indices]{formatters::paginate_to_mpfs()}} and it is mainly meant for exploration and testing.
 }
 \examples{
 dat <- ex_adae

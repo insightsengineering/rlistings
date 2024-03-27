@@ -33,10 +33,10 @@ testthat::test_that("key columns repeat with pagination with export_as_txt", {
     disp_cols = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 
-  listing <- suppressMessages(export_as_txt(head(tbl),
+  listing <- export_as_txt(head(tbl),
     cpp = 50, paginate = TRUE,
     page_break = "\n"
-  ))
+  )
 
   testthat::expect_snapshot(cat(listing))
 })
@@ -52,22 +52,21 @@ testthat::test_that("Listing print correctly, with paginate", {
 })
 
 testthat::test_that("export_as_txt works and repeats the correct lines in pagination", {
-  dat <- formatters::ex_adae
-  lsting <- suppressMessages(
-    as_listing(dat[1:25, c(seq(1, 3), 40)],
-      key_cols = c("USUBJID", "AESOC"),
-      main_title = "Example Title for Listing",
-      subtitles = "This is the subtitle for this Adverse Events Table",
-      main_footer = "Main footer for the listing",
-      prov_footer = c(
-        "You can even add a subfooter", "Second element is place on a new line",
-        "Third string"
-      )
+  dat <- ex_adae
+  lsting <- as_listing(dat[1:25, c(seq(1, 3), 40)],
+    key_cols = c("USUBJID", "AESOC"),
+    main_title = "Example Title for Listing",
+    subtitles = "This is the subtitle for this Adverse Events Table",
+    main_footer = "Main footer for the listing",
+    prov_footer = c(
+      "You can even add a subfooter", "Second element is place on a new line",
+      "Third string"
     )
   )
   # There are differences in pagination that should be taken into account (ref footnotes and rinfo)
+  local_pagination <- paginate_listing(lsting, lpp = 33, cpp = 550)[[2]]
   testthat::expect_equal(
-    matrix_form(paginate_listing(lsting, lpp = 33, cpp = 550)[[2]], TRUE, TRUE)$strings,
+    matrix_form(local_pagination, TRUE, TRUE)$strings,
     paginate_to_mpfs(lsting, lpp = 33, cpp = 550)[[2]]$strings
   )
 
