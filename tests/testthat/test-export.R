@@ -64,7 +64,7 @@ testthat::test_that("export_as_txt works and repeats the correct lines in pagina
     )
   )
   # There are differences in pagination that should be taken into account (ref footnotes and rinfo)
-  local_pagination <- paginate_listing(lsting, lpp = 33, cpp = 550)[[2]]
+  local_pagination <- paginate_listing(lsting, lpp = 33, cpp = 550, print_pages = FALSE)[[2]]
   testthat::expect_equal(
     matrix_form(local_pagination, TRUE, TRUE)$strings,
     paginate_to_mpfs(lsting, lpp = 33, cpp = 550)[[2]]$strings
@@ -74,7 +74,7 @@ testthat::test_that("export_as_txt works and repeats the correct lines in pagina
   testthat::expect_snapshot(cat(pages_listings))
 })
 
-testthat::test_that("export_as_txt works with split_listing_by_var", {
+testthat::test_that("export_as_txt works with split_into_pages_by_var", {
   tmp_data <- ex_adae[1:50, ]
 
   lsting <- as_listing(
@@ -85,7 +85,7 @@ testthat::test_that("export_as_txt works with split_listing_by_var", {
     main_footer = "foot"
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x") %>%
-    split_listing_by_var("SEX", page_prefix = "Patient Subset - Sex")
+    split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
   pages_listings <- export_as_txt(lsting, file = NULL, paginate = TRUE, lpp = 30, cpp = 65)
   testthat::expect_snapshot(cat(pages_listings))

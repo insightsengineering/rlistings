@@ -21,7 +21,7 @@ paginate_listing(
   rep_cols = NULL,
   max_width = NULL,
   verbose = FALSE,
-  printable_form = TRUE
+  print_pages = TRUE
 )
 }
 \arguments{
@@ -77,8 +77,8 @@ completely if \code{tf_wrap} is \code{FALSE}.}
 \item{verbose}{logical(1). Should additional informative messages about the search for
 pagination breaks be shown. Defaults to \code{FALSE}.}
 
-\item{printable_form}{(\code{logical(1)})\cr whether to return the paginated listing as strings to be
-printed (\code{vapply(..., cat, "")}).}
+\item{print_pages}{(\code{logical(1)})\cr whether to also print the paginated listing to console
+(\code{cat(toString(x))}).}
 }
 \value{
 A list of \code{listing_df} objects where each list element corresponds to a separate page.

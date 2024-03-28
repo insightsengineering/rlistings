@@ -319,7 +319,7 @@ testthat::test_that("add_listing_col works with a function when a format is appl
   )
 })
 
-testthat::test_that("split_listing_by_var works as expected", {
+testthat::test_that("split_into_pages_by_var works as expected", {
   tmp_data <- ex_adae[1:100, ]
 
   lsting <- as_listing(
@@ -330,7 +330,7 @@ testthat::test_that("split_listing_by_var works as expected", {
     main_footer = "foot"
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x") %>%
-    split_listing_by_var("SEX", page_prefix = "Patient Subset - Sex")
+    split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
   testthat::expect_equal(length(lsting), length(unique(tmp_data[["SEX"]])))
   testthat::expect_equal(subtitles(lsting[[1]]), "Patient Subset - Sex: M")

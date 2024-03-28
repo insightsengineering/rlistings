@@ -93,3 +93,27 @@
             BREAKS PAGINATION                                    
                                            0.4           1.7     
 
+# paginate_listing works with split_into_pages_by_var
+
+    Code
+      fast_print(list(pag5_listing))
+    Output
+      Page 1 
+      title
+      Patient Subset - Sex: F
+      
+      —————————————————————————————————————
+      Unique Subject Identifier   Age   Sex
+      —————————————————————————————————————
+        AB12345-BRA-11-id-237     64     F 
+        AB12345-BRA-11-id-321     33     F 
+                                         F 
+                                         F 
+                                         F 
+                                         F 
+                                         F 
+                                         F 
+      —————————————————————————————————————
+      
+      foot
+

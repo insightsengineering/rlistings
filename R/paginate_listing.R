@@ -15,8 +15,8 @@
 #'   to include per page. Standard is `70` while `NULL` disables vertical pagination.
 #' @param cpp (`numeric(1)` or `NULL`)\cr width (in characters) of the pages for horizontal
 #'   pagination. `NULL` (the default) indicates no horizontal pagination should be done.
-#' @param printable_form (`logical(1)`)\cr whether to return the paginated listing as strings to be
-#'   printed (`vapply(..., cat, "")`).
+#' @param print_pages (`logical(1)`)\cr whether to also print the paginated listing to console
+#'   (`cat(toString(x))`).
 #'
 #' @return A list of `listing_df` objects where each list element corresponds to a separate page.
 #'
@@ -51,13 +51,13 @@ paginate_listing <- function(lsting,
                              rep_cols = NULL,
                              max_width = NULL,
                              verbose = FALSE,
-                             printable_form = TRUE) {
+                             print_pages = TRUE) {
   checkmate::assert_multi_class(lsting, c("listing_df", "list"))
   checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
   checkmate::assert_flag(tf_wrap)
   checkmate::assert_count(max_width, null.ok = TRUE)
   checkmate::assert_flag(verbose)
-  checkmate::assert_flag(printable_form)
+  checkmate::assert_flag(print_pages)
 
   pages <- paginate_to_mpfs(lsting,
     page_type = page_type,
@@ -77,11 +77,14 @@ paginate_listing <- function(lsting,
     verbose = verbose
   )
 
-  if (printable_form) {
-    lapply(pages, toString, widths = NULL, tf_wrap = tf_wrap, max_width = max_width)
-  } else {
-    pages
+  if (print_pages) {
+    nothing <- lapply(seq_along(pages), function(pagi) {
+      cat("--- Page", paste0(pagi, "/", length(pages)), "---\n")
+      cat(toString(pagi, widths = colwidths, tf_wrap = tf_wrap, max_width = max_width))
+      cat("\n")
+    })
   }
+  invisible(pages)
 }
 
 #' Defunct functions

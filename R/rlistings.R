@@ -466,12 +466,12 @@ add_listing_col <- function(df,
 #'     main_footer = "footer"
 #'   ) %>%
 #'   add_listing_col("BMRKR1", format = "xx.x") %>%
-#'   split_listing_by_var("SEX")
+#'   split_into_pages_by_var("SEX")
 #'
 #' lsting
 #'
 #' @export
-split_listing_by_var <- function(lsting, var, page_prefix = var) {
+split_into_pages_by_var <- function(lsting, var, page_prefix = var) {
   checkmate::assert_class(lsting, "listing_df")
   checkmate::assert_choice(var, names(lsting))
 

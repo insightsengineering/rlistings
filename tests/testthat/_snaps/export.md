@@ -98,7 +98,7 @@
       Second element is place on a new line
       Third string
 
-# export_as_txt works with split_listing_by_var
+# export_as_txt works with split_into_pages_by_var
 
     Code
       cat(pages_listings)
