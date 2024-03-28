@@ -75,7 +75,7 @@ head(lsting, 20)
 
 In the listing output above, notice that there are two key columns that we expect to be repeated on each page after pagination.
 
-Next, we apply pagination with the default settings via the `paginate_listing` function. 
+Next, we see how the pagination works with the default settings via the `paginate_listing` function that is a wrapper of `paginate_to_mpfs()` that is the core pagination function and lives in `formatters`. 
 Default pagination applies the following settings, which are adjustable via the parameter specified in parentheses:
 
 - Page type: `"letter"` (`page_type`) - other options: `"a4"`, `"legal"`
@@ -88,7 +88,7 @@ Default pagination applies the following settings, which are adjustable via the 
 These parameters, as well as some additional arguments not listed here (see `?paginate_listing` for all options), can be set to fine-tune your pagination output.
 
 ```{r}
-sapply(paginate_listing(lsting), cat)
+paginate_listing(lsting)
 ```
 
 We can see from the above output that applying pagination separated our listing into 4 pages (list elements). Each page includes the two key columns as well as however many display columns fit horizontally on the page. Pages 1 and 3 contain only the key columns and the "Analysis Toxicity Grade" column, while the overflowing columns from these pages are present on pages 2 and 4, respectively. Additionally, vertical pagination is applied for this listing, with 20 rows that do not fit vertically on pages 1 and 2 overflowing onto pages 3 and 4, respectively. We can also see that the last subject included on pages 1 and 2, with subject ID "AB12345-BRA-12-id-59", has additional rows that overflow onto pages 3 and 4, and the key column values for this subject are repeated in the first line of these two pages.

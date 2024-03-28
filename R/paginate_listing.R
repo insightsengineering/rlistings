@@ -80,7 +80,7 @@ paginate_listing <- function(lsting,
   if (print_pages) {
     nothing <- lapply(seq_along(pages), function(pagi) {
       cat("--- Page", paste0(pagi, "/", length(pages)), "---\n")
-      cat(toString(pagi, widths = colwidths, tf_wrap = tf_wrap, max_width = max_width))
+      cat(toString(pages[[pagi]], widths = colwidths, tf_wrap = tf_wrap, max_width = max_width))
       cat("\n")
     })
   }

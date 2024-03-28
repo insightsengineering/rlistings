@@ -96,7 +96,7 @@
 # paginate_listing works with split_into_pages_by_var
 
     Code
-      fast_print(list(pag5_listing))
+      fast_print(list(pag_listing))
     Output
       Page 1 
       title
@@ -105,9 +105,7 @@
       —————————————————————————————————————
       Unique Subject Identifier   Age   Sex
       —————————————————————————————————————
-        AB12345-BRA-11-id-237     64     F 
-        AB12345-BRA-11-id-321     33     F 
-                                         F 
+        AB12345-BRA-1-id-141      35     F 
                                          F 
                                          F 
                                          F 
@@ -116,4 +114,42 @@
       —————————————————————————————————————
       
       foot
+
+---
+
+    Code
+      paginate_listing(lsting, lpp = 330, cpp = 365, print_pages = TRUE)
+    Output
+      --- Page 1/2 ---
+      title
+      Patient Subset - Sex: M
+      
+      ———————————————————————————————————————————————————————————————————
+      Unique Subject Identifier   Age   Sex   Continous Level Biomarker 1
+      ———————————————————————————————————————————————————————————————————
+        AB12345-BRA-1-id-134      47     M    6.5                        
+                                         M    6.5                        
+                                         M    6.5                        
+                                         M    6.5                        
+      ———————————————————————————————————————————————————————————————————
+      
+      foot
+      
+      --- Page 2/2 ---
+      title
+      Patient Subset - Sex: F
+      
+      ———————————————————————————————————————————————————————————————————
+      Unique Subject Identifier   Age   Sex   Continous Level Biomarker 1
+      ———————————————————————————————————————————————————————————————————
+        AB12345-BRA-1-id-141      35     F    7.5                        
+                                         F    7.5                        
+                                         F    7.5                        
+                                         F    7.5                        
+                                         F    7.5                        
+                                         F    7.5                        
+      ———————————————————————————————————————————————————————————————————
+      
+      foot
+      
 

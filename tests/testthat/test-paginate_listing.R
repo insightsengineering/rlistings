@@ -293,7 +293,7 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols when doing 
 })
 
 testthat::test_that("paginate_listing works with split_into_pages_by_var", {
-  tmp_data <- ex_adae[1:50, ]
+  tmp_data <- ex_adae[1:10, ]
 
   lsting <- as_listing(
     tmp_data,
@@ -305,10 +305,13 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var", {
     add_listing_col("BMRKR1", format = "xx.x") %>%
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
-    pag5_listing <- paginate_listing(lsting, lpp = 30, cpp = 65, print_pages = FALSE)[[5]]
-    testthat::expect_equal(main_title(pag5_listing), "title")
-    testthat::expect_equal(subtitles(pag5_listing), "Patient Subset - Sex: F")
-    testthat::expect_equal(main_footer(pag5_listing), "foot")
-    testthat::expect_snapshot(fast_print(list(pag5_listing)))
-    testthat::expect_true(all(pag5_listing$strings[-1, 3] == "F"))
+    pag_listing <- paginate_listing(lsting, lpp = 20, cpp = 65, print_pages = FALSE)[[3]]
+    testthat::expect_equal(main_title(pag_listing), "title")
+    testthat::expect_equal(subtitles(pag_listing), "Patient Subset - Sex: F")
+    testthat::expect_equal(main_footer(pag_listing), "foot")
+    testthat::expect_true(all(pag_listing$strings[-1, 3] == "F"))
+    testthat::expect_snapshot(fast_print(list(pag_listing)))
+
+    # This works also for the pagination print
+    testthat::expect_snapshot(paginate_listing(lsting, lpp = 330, cpp = 365, print_pages = TRUE))
 })
