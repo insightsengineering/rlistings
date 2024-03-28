@@ -1,130 +1,349 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="export" timestamp="2024-03-08T21:06:29Z" hostname="f8462db8dfa1" tests="9" skipped="4" failures="0" errors="0" time="1.697">
-    <testcase time="0.197" classname="export" name="Listing_print_correctly"/>
-    <testcase time="0.193" classname="export" name="key_columns_repeat_with_export_as_txt">
+  <testsuite name="export" timestamp="2024-03-28T14:32:05Z" hostname="5bb17efbda13" tests="8" skipped="3" failures="0" errors="1" time="1.701">
+    <testcase time="0.224" classname="export" name="Listing_print_correctly"/>
+    <testcase time="0.228" classname="export" name="key_columns_repeat_with_export_as_txt">
       <skipped message="Reason: On CRAN ('test-export.R:24:3')"/>
     </testcase>
-    <testcase time="0.148" classname="export" name="key_columns_repeat_with_pagination_with_export_as_txt">
-      <skipped message="Reason: On CRAN ('test-export.R:42:3')"/>
+    <testcase time="0.169" classname="export" name="key_columns_repeat_with_pagination_with_export_as_txt">
+      <skipped message="Reason: On CRAN ('test-export.R:41:3')"/>
     </testcase>
-    <testcase time="0.31" classname="export" name="Listing_print_correctly_with_paginate"/>
-    <testcase time="0.002" classname="export" name="Listing_print_correctly_with_paginate"/>
-    <testcase time="0.002" classname="export" name="Listing_print_correctly_with_paginate"/>
-    <testcase time="0.252" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination"/>
-    <testcase time="0.173" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination">
-      <skipped message="Reason: On CRAN ('test-export.R:76:3')"/>
+    <testcase time="0.344" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.00600000000000001" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.00299999999999989" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.209" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination">
+      <error type="error" message="Error in `(function (classes, fdef, mtable)  ('test-export.R:68:3')">Error in `(function (classes, fdef, mtable) 
+{
+    methods &lt;- .findInheritedMethods(classes, fdef, mtable)
+    if (length(methods) == 1L) 
+        return(methods[[1L]])
+    else if (length(methods) == 0L) {
+        cnames &lt;- paste0("\"", vapply(classes, as.character, 
+            ""), "\"", collapse = ", ")
+        stop(gettextf("unable to find an inherited method for function %s for signature %s", 
+            sQuote(fdef@generic), sQuote(cnames)), domain = NA)
+    }
+    else stop("Internal error in finding inherited methods; didn't return a unique method", 
+        domain = NA)
+})(list("character"), new("nonstandardGenericFunction", .Data = function (obj, 
+    indent_rownames = FALSE, expand_newlines = TRUE, indent_size = 2) 
+{
+    standardGeneric("matrix_form")
+}, generic = structure("matrix_form", package = "formatters"), 
+    package = "formatters", group = list(), valueClass = character(0), 
+    signature = c("obj", "indent_rownames", "expand_newlines", 
+    "indent_size"), default = NULL, skeleton = (function (obj, 
+        indent_rownames = FALSE, expand_newlines = TRUE, indent_size = 2) 
+    stop(gettextf("invalid call in method dispatch to '%s' (no default method)", 
+        "matrix_form"), domain = NA))(obj, indent_rownames, expand_newlines, 
+        indent_size)), &lt;environment&gt;)`: unable to find an inherited method for function 'matrix_form' for signature '"character"'
+Backtrace:
+    x
+ 1. +-testthat::expect_equal(...) at test-export.R:68:3
+ 2. | \-testthat::quasi_label(enquo(object), label, arg = "object")
+ 3. |   \-rlang::eval_bare(expr, quo_get_env(quo))
+ 4. \-formatters::matrix_form(local_pagination, TRUE, TRUE)
+ 5.   \-methods (local) `&lt;fn&gt;`(`&lt;list&gt;`, `&lt;nnstndGF&gt;`, `&lt;env&gt;`)</error>
     </testcase>
-    <testcase time="0.42" classname="export" name="export_as_txt_works_with_split_listing_by_var">
-      <skipped message="Reason: On CRAN ('test-export.R:93:3')"/>
+    <testcase time="0.518" classname="export" name="export_as_txt_works_with_split_listing_by_var">
+      <skipped message="Reason: On CRAN ('test-export.R:91:3')"/>
     </testcase>
   </testsuite>
-  <testsuite name="listings" timestamp="2024-03-08T21:06:31Z" hostname="f8462db8dfa1" tests="40" skipped="0" failures="0" errors="0" time="0.687">
-    <testcase time="0.0289999999999999" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.0179999999999998" classname="listings" name="Column_labels_are_the_same"/>
+  <testsuite name="listings" timestamp="2024-03-28T14:32:07Z" hostname="5bb17efbda13" tests="40" skipped="0" failures="10" errors="0" time="1.094">
+    <testcase time="0.032" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.0169999999999999" classname="listings" name="Column_labels_are_the_same"/>
     <testcase time="0.00200000000000022" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.0229999999999997" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00200000000000022" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0259999999999998" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00200000000000022" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00900000000000034" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.004" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00299999999999967" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00200000000000022" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.012" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00700000000000012" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00599999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00700000000000012" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00599999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00500000000000034" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.0159999999999996" classname="listings" name="Content_of_listings_supports_newlines"/>
-    <testcase time="0.00500000000000034" classname="listings" name="Content_of_listings_supports_newlines"/>
-    <testcase time="0.00800000000000001" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
-    <testcase time="0.0389999999999997" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0150000000000001" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.052" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0499999999999998" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.00500000000000034" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0709999999999997" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0649999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0230000000000001" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
-    <testcase time="0.0249999999999999" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
-    <testcase time="0.024" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
-    <testcase time="0.016" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
-    <testcase time="0.0340000000000003" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.0329999999999999" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.028" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.00800000000000001" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.0179999999999998" classname="listings" name="add_listing_col_works_with_a_function_when_a_format_is_applied"/>
-    <testcase time="0.012" classname="listings" name="split_listing_by_var_works_as_expected"/>
-    <testcase time="0.00300000000000011" classname="listings" name="split_listing_by_var_works_as_expected"/>
+    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0109999999999997" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00700000000000012" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0169999999999999" classname="listings" name="Content_of_listings_supports_newlines"/>
+    <testcase time="0.0110000000000001" classname="listings" name="Content_of_listings_supports_newlines"/>
+    <testcase time="0.00999999999999979" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
+    <testcase time="0.226" classname="listings" name="column_inclusion_and_ordering_stuff">
+      <failure type="failure" message="`exp` (`actual`) not equal to matrix(...) (`expected`). ('test-listings.R:147:3')">`exp` (`actual`) not equal to matrix(...) (`expected`).
+
+`actual[7:15]`:   "" "" "Analysis Toxicity Grade" "3" "" "2" "Age" "47" "47"
+`expected[7:15]`: "" "" "Analysis Toxicity Grade" "2" "" "3" "Age" "47" "47"</failure>
+    </testcase>
+    <testcase time="0.0310000000000001" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0569999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0540000000000003" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00599999999999978" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00600000000000023" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.081" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.032" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing">
+      <failure type="failure" message="`expected_strings` (`actual`) not equal to `result_strings` (`expected`). ('test-listings.R:232:3')">`expected_strings` (`actual`) not equal to `result_strings` (`expected`).
+
+`actual`:   "Sex" "F" "M" "U" "UNDIFFERENTIATED"
+`expected`: "Sex" "M" "F" "U" "UNDIFFERENTIATED"</failure>
+    </testcase>
+    <testcase time="0.0509999999999997" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing">
+      <failure type="failure" message="`expected_strings` (`actual`) not equal to `result_strings` (`expected`). ('test-listings.R:250:3')">`expected_strings` (`actual`) not equal to `result_strings` (`expected`).
+
+     actual             | expected               
+ [1] "Planned Arm Code" | "Planned Arm Code" [1] 
+ [2] "ARM A"            | "ARM A"            [2] 
+ [3] ""                 - "ARM C"            [3] 
+ [4] ""                 | ""                 [4] 
+ [5] ""                 - "ARM B"            [5] 
+ [6] "ARM B"            - ""                 [6] 
+ [7] ""                 - "ARM A"            [7] 
+ [8] ""                 - "ARM C"            [8] 
+ [9] "ARM C"            - "ARM A"            [9] 
+[10] ""                 - "ARM B"            [10]
+[11] ""                 - "ARM A"            [11]
+[12] ""                 - "ARM C"            [12]
+[13] "Sex"              | "Sex"              [13]
+[14] "M"                | "M"                [14]
+[15] "F"                - "M"                [15]
+[16] "UNDIFFERENTIATED" - "F"                [16]
+[17] "U"                - "F"                [17]
+[18] "F"                - "M"                [18]
+[19] "M"                - "F"                [19]
+[20] "U"                | "U"                [20]
+[21] "M"                - "UNDIFFERENTIATED" [21]
+[22] "F"                - "U"                [22]
+[23] "U"                | "U"                [23]
+[24] "UNDIFFERENTIATED" | "UNDIFFERENTIATED" [24]</failure>
+    </testcase>
+    <testcase time="0.0530000000000004" classname="listings" name="as_listing_custom_format_works_in_key_cols">
+      <failure type="failure" message="matrix_form(lsting)$strings[2, 1:2] (`actual`) not identical to c(AGE = &quot;24.00&quot;, BMRKR1 = &quot;4.57&quot;) (`expected`). ('test-listings.R:261:3')">matrix_form(lsting)$strings[2, 1:2] (`actual`) not identical to c(AGE = "24.00", BMRKR1 = "4.57") (`expected`).
+
+`actual`:   "32.00" "14.42"
+`expected`: "24.00" "4.57" </failure>
+    </testcase>
+    <testcase time="0.0399999999999996" classname="listings" name="as_listing_custom_format_works_in_key_cols">
+      <failure type="failure" message="matrix_form(lsting)$strings[3, 1:2] (`actual`) not identical to c(AGE = &quot;&quot;, BMRKR1 = &quot;5.00&quot;) (`expected`). ('test-listings.R:262:3')">matrix_form(lsting)$strings[3, 1:2] (`actual`) not identical to c(AGE = "", BMRKR1 = "5.00") (`expected`).
+
+`actual`:   "35.00" "4.06"
+`expected`: ""      "5.00"</failure>
+    </testcase>
+    <testcase time="0.0680000000000001" classname="listings" name="as_listing_works_with_NA_values_in_key_cols">
+      <failure type="failure" message="matrix_form(lsting)$strings[29:33, ] (`actual`) not identical to matrix(...) (`expected`). ('test-listings.R:275:3')">matrix_form(lsting)$strings[29:33, ] (`actual`) not identical to matrix(...) (`expected`).
+
+     actual | expected     
+ [1] ""     - "NA"     [1] 
+ [2] ""     | ""       [2] 
+ [3] ""     | ""       [3] 
+ [4] ""     | ""       [4] 
+ [5] "4"    - ""       [5] 
+ [6] ""     - "1"      [6] 
+ [7] "4"    - ""       [7] 
+ [8] "6"    - "2"      [8] 
+ [9] "8"    - "4"      [9] 
+[10] "2"    - ""       [10]
+[11] "16.9" - "18.61"  [11]
+[12] "14.5" - "19.44"  [12]
+[13] "15.5" - "17.02"  [13]
+[14] "14.6" - "16.46"  [14]
+[15] "18.6" - "17.02"  [15]</failure>
+    </testcase>
+    <testcase time="0.056" classname="listings" name="as_listing_works_with_NA_values_in_key_cols">
+      <failure type="failure" message="matrix_form(lsting)$strings[29, 1] (`actual`) not identical to c(gear = &quot;&lt;No data&gt;&quot;) (`expected`). ('test-listings.R:292:3')">matrix_form(lsting)$strings[29, 1] (`actual`) not identical to c(gear = "&lt;No data&gt;") (`expected`).
+
+`actual`:   ""         
+`expected`: "&lt;No data&gt;"</failure>
+    </testcase>
+    <testcase time="0.0510000000000002" classname="listings" name="as_listing_works_with_NA_values_in_key_cols">
+      <failure type="failure" message="matrix_form(lsting)$strings[13, 2] (`actual`) not identical to c(carb = &quot;&lt;No data&gt;&quot;) (`expected`). ('test-listings.R:293:3')">matrix_form(lsting)$strings[13, 2] (`actual`) not identical to c(carb = "&lt;No data&gt;") (`expected`).
+
+`actual`:   "3"        
+`expected`: "&lt;No data&gt;"</failure>
+    </testcase>
+    <testcase time="0.0169999999999999" classname="listings" name="as_listing_works_with_NA_values_in_key_cols">
+      <failure type="failure" message="`lsting &lt;- as_listing(mtcars, key_cols = c(&quot;gear&quot;, &quot;carb&quot;), disp_cols = &quot;qsec&quot;)` did not throw the expected message. ('test-listings.R:297:3')">`lsting &lt;- as_listing(mtcars, key_cols = c("gear", "carb"), disp_cols = "qsec")` did not throw the expected message.</failure>
+    </testcase>
+    <testcase time="0.048" classname="listings" name="add_listing_col_works_with_a_function_when_a_format_is_applied">
+      <failure type="failure" message="matrix_form(lsting)$strings[, 4] (`actual`) not identical to c(&quot;kpg&quot;, &quot;34.44&quot;, &quot;30.09&quot;, &quot;36.69&quot;, &quot;33.80&quot;, &quot;33.80&quot;) (`expected`). ('test-listings.R:316:3')">matrix_form(lsting)$strings[, 4] (`actual`) not identical to c("kpg", "34.44", "30.09", "36.69", "33.80", "33.80") (`expected`).
+
+`actual`:   "kpg" "33.80" "33.80" "36.69" "34.44" "30.09"
+`expected`: "kpg" "34.44" "30.09" "36.69" "33.80" "33.80"</failure>
+    </testcase>
+    <testcase time="0.0230000000000001" classname="listings" name="split_listing_by_var_works_as_expected"/>
+    <testcase time="0.004" classname="listings" name="split_listing_by_var_works_as_expected"/>
   </testsuite>
-  <testsuite name="paginate_listing" timestamp="2024-03-08T21:06:32Z" hostname="f8462db8dfa1" tests="34" skipped="4" failures="0" errors="0" time="3">
-    <testcase time="0.0880000000000001" classname="paginate_listing" name="pagination_works_vertically">
-      <skipped message="Reason: On CRAN ('test-paginate_listing.R:15:3')"/>
+  <testsuite name="matrix_form" timestamp="2024-03-28T14:32:08Z" hostname="5bb17efbda13" tests="10" skipped="0" failures="2" errors="0" time="0.277">
+    <testcase time="0.0429999999999997" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.00300000000000011" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.0230000000000001" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing">
+      <failure type="failure" message="`mat` (`actual`) not equal to `mat_rebuilt` (`expected`). ('test-matrix_form.R:21:3')">`mat` (`actual`) not equal to `mat_rebuilt` (`expected`).
+
+    actual$strings | expected$strings    
+[2] "mean"         | "mean"           [2]
+[3] ""             | ""               [3]
+[4] "Petal.Width"  | "Petal.Width"    [4]
+[5] "0.4"          - "0.2"            [5]
+[6] "0.2"          - "0.4"            [6]
+[7] "Petal.Length" | "Petal.Length"   [7]
+[8] "1.5"          - "1.3"            [8]
+[9] "1.3"          - "1.5"            [9]</failure>
     </testcase>
-    <testcase time="0.0880000000000001" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00299999999999967" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00200000000000022" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.0920000000000001" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00299999999999967" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00200000000000022" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.056" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
-    <testcase time="0.00299999999999967" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
-    <testcase time="0.00300000000000011" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
-    <testcase time="0.0600000000000001" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
-    <testcase time="0.00300000000000011" classname="paginate_listing" name="checking_vertical_pagination_line_calculation."/>
-    <testcase time="0.228" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
-    <testcase time="0.234" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
-    <testcase time="0.218" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
-    <testcase time="0.241000000000001" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
-    <testcase time="0.226999999999999" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
-    <testcase time="0.24" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
-    <testcase time="0.069" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
-    <testcase time="0.0880000000000001" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
-    <testcase time="0.00499999999999989" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
-    <testcase time="0.2" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages"/>
-    <testcase time="0.131" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages">
-      <skipped message="Reason: On CRAN ('test-paginate_listing.R:200:3')"/>
+    <testcase time="0.0409999999999999" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing">
+      <failure type="failure" message="toString(mat) (`actual`) not equal to toString(mat_rebuilt) (`expected`). ('test-matrix_form.R:23:3')">toString(mat) (`actual`) not equal to toString(mat_rebuilt) (`expected`).
+
+lines(actual) vs lines(expected)
+  "fake_rownames   Petal.Width   Petal.Length"
+  "——————————————————————————————————————————"
+- "    mean            0.4           1.5     "
++ "    mean            0.2           1.3     "
+- "                    0.2           1.3     "
++ "                    0.4           1.5     "
+  ""</failure>
     </testcase>
-    <testcase time="0.0169999999999995" classname="paginate_listing" name="defunct_is_defunct"/>
-    <testcase time="0.114" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols"/>
-    <testcase time="0.0340000000000007" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
-      <skipped message="Reason: On CRAN ('test-paginate_listing.R:235:3')"/>
+    <testcase time="0.0790000000000002" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.00299999999999967" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.00300000000000011" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.077" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.00300000000000011" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.00199999999999978" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+  </testsuite>
+  <testsuite name="paginate_listing" timestamp="2024-03-28T14:32:08Z" hostname="5bb17efbda13" tests="22" skipped="4" failures="0" errors="3" time="5.485">
+    <testcase time="0.11" classname="paginate_listing" name="pagination_works_vertically">
+      <skipped message="Reason: On CRAN ('test-paginate_listing.R:22:3')"/>
     </testcase>
-    <testcase time="0.148" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination"/>
-    <testcase time="0.15" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination"/>
-    <testcase time="0.0379999999999994" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination"/>
-    <testcase time="0.180000000000001" classname="paginate_listing" name="paginate_listing_works_with_split_listing_by_var"/>
-    <testcase time="0.00299999999999923" classname="paginate_listing" name="paginate_listing_works_with_split_listing_by_var"/>
-    <testcase time="0.00200000000000067" classname="paginate_listing" name="paginate_listing_works_with_split_listing_by_var"/>
-    <testcase time="0.0270000000000001" classname="paginate_listing" name="paginate_listing_works_with_split_listing_by_var">
-      <skipped message="Reason: On CRAN ('test-paginate_listing.R:309:3')"/>
+    <testcase time="0.127" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly">
+      <error type="error" message="Error in `h(simpleError(msg, call))`: error in evaluating the argument 'x' in selecting a method for function 'toString': unable to find an inherited method for function 'matrix_form' for signature '&quot;character&quot;' ('test-paginate_listing.R:46:3')">Error in `h(simpleError(msg, call))`: error in evaluating the argument 'x' in selecting a method for function 'toString': unable to find an inherited method for function 'matrix_form' for signature '"character"'
+Backtrace:
+    x
+ 1. +-base::strsplit(...) at test-paginate_listing.R:46:3
+ 2. +-base::toString(matrix_form(pages_listings[[1]]), hsep = "-")
+ 3. +-formatters::matrix_form(pages_listings[[1]])
+ 4. | \-methods (local) `&lt;fn&gt;`(`&lt;list&gt;`, `&lt;nnstndGF&gt;`, `&lt;env&gt;`)
+ 5. |   \-base::stop(...)
+ 6. \-base::.handleSimpleError(...)
+ 7.   \-base (local) h(simpleError(msg, call))</error>
+    </testcase>
+    <testcase time="0.103" classname="paginate_listing" name="listing_works_with_no_vertical_pagination">
+      <error type="error" message="Error in `(function (classes, fdef, mtable)  ('test-paginate_listing.R:106:3')">Error in `(function (classes, fdef, mtable) 
+{
+    methods &lt;- .findInheritedMethods(classes, fdef, mtable)
+    if (length(methods) == 1L) 
+        return(methods[[1L]])
+    else if (length(methods) == 0L) {
+        cnames &lt;- paste0("\"", vapply(classes, as.character, 
+            ""), "\"", collapse = ", ")
+        stop(gettextf("unable to find an inherited method for function %s for signature %s", 
+            sQuote(fdef@generic), sQuote(cnames)), domain = NA)
+    }
+    else stop("Internal error in finding inherited methods; didn't return a unique method", 
+        domain = NA)
+})(list("character"), new("nonstandardGenericFunction", .Data = function (obj, 
+    indent_rownames = FALSE, expand_newlines = TRUE, indent_size = 2) 
+{
+    standardGeneric("matrix_form")
+}, generic = structure("matrix_form", package = "formatters"), 
+    package = "formatters", group = list(), valueClass = character(0), 
+    signature = c("obj", "indent_rownames", "expand_newlines", 
+    "indent_size"), default = NULL, skeleton = (function (obj, 
+        indent_rownames = FALSE, expand_newlines = TRUE, indent_size = 2) 
+    stop(gettextf("invalid call in method dispatch to '%s' (no default method)", 
+        "matrix_form"), domain = NA))(obj, indent_rownames, expand_newlines, 
+        indent_size)), &lt;environment&gt;)`: unable to find an inherited method for function 'matrix_form' for signature '"character"'
+Backtrace:
+    x
+ 1. \-formatters::matrix_form(pages_listings[[1]]) at test-paginate_listing.R:106:3
+ 2.   \-methods (local) `&lt;fn&gt;`(`&lt;list&gt;`, `&lt;nnstndGF&gt;`, `&lt;env&gt;`)</error>
+    </testcase>
+    <testcase time="0.11" classname="paginate_listing" name="checking_vertical_pagination_line_calculation.">
+      <error type="error" message="Error in `(function (classes, fdef, mtable)  ('test-paginate_listing.R:129:3')">Error in `(function (classes, fdef, mtable) 
+{
+    methods &lt;- .findInheritedMethods(classes, fdef, mtable)
+    if (length(methods) == 1L) 
+        return(methods[[1L]])
+    else if (length(methods) == 0L) {
+        cnames &lt;- paste0("\"", vapply(classes, as.character, 
+            ""), "\"", collapse = ", ")
+        stop(gettextf("unable to find an inherited method for function %s for signature %s", 
+            sQuote(fdef@generic), sQuote(cnames)), domain = NA)
+    }
+    else stop("Internal error in finding inherited methods; didn't return a unique method", 
+        domain = NA)
+})(list("character"), new("nonstandardGenericFunction", .Data = function (obj, 
+    indent_rownames = FALSE, expand_newlines = TRUE, indent_size = 2) 
+{
+    standardGeneric("matrix_form")
+}, generic = structure("matrix_form", package = "formatters"), 
+    package = "formatters", group = list(), valueClass = character(0), 
+    signature = c("obj", "indent_rownames", "expand_newlines", 
+    "indent_size"), default = NULL, skeleton = (function (obj, 
+        indent_rownames = FALSE, expand_newlines = TRUE, indent_size = 2) 
+    stop(gettextf("invalid call in method dispatch to '%s' (no default method)", 
+        "matrix_form"), domain = NA))(obj, indent_rownames, expand_newlines, 
+        indent_size)), &lt;environment&gt;)`: unable to find an inherited method for function 'matrix_form' for signature '"character"'
+Backtrace:
+    x
+ 1. \-formatters::matrix_form(pages_listings[[1]]) at test-paginate_listing.R:129:3
+ 2.   \-methods (local) `&lt;fn&gt;`(`&lt;list&gt;`, `&lt;nnstndGF&gt;`, `&lt;env&gt;`)</error>
+    </testcase>
+    <testcase time="0.533" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
+    <testcase time="0.632" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.538" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.7" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
+    <testcase time="0.552" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
+    <testcase time="0.682" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
+    <testcase time="0.235999999999999" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.228000000000002" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.0119999999999987" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.213000000000001" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages"/>
+    <testcase time="0.141999999999999" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages">
+      <skipped message="Reason: On CRAN ('test-paginate_listing.R:207:3')"/>
+    </testcase>
+    <testcase time="0.0240000000000009" classname="paginate_listing" name="defunct_is_defunct"/>
+    <testcase time="0.120999999999999" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols"/>
+    <testcase time="0.0410000000000004" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
+      <skipped message="Reason: On CRAN ('test-paginate_listing.R:242:3')"/>
+    </testcase>
+    <testcase time="0.161" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination"/>
+    <testcase time="0.16" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination"/>
+    <testcase time="0.048" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination"/>
+    <testcase time="0.0120000000000005" classname="paginate_listing" name="paginate_listing_works_with_split_listing_by_var">
+      <skipped message="Reason: empty test ('test-paginate_listing.R:299:1')"/>
     </testcase>
   </testsuite>
-  <testsuite name="print" timestamp="2024-03-08T21:06:35Z" hostname="f8462db8dfa1" tests="10" skipped="5" failures="0" errors="0" time="0.488">
-    <testcase time="0.0429999999999993" classname="print" name="Listing_print_correctly">
+  <testsuite name="print" timestamp="2024-03-28T14:32:14Z" hostname="5bb17efbda13" tests="10" skipped="5" failures="1" errors="0" time="0.565">
+    <testcase time="0.048" classname="print" name="Listing_print_correctly">
       <skipped message="Reason: On CRAN ('test-print.R:7:3')"/>
     </testcase>
-    <testcase time="0.0760000000000005" classname="print" name="Listing_print_correctly_with_different_widths"/>
-    <testcase time="0.0419999999999998" classname="print" name="Listing_print_correctly_with_different_widths">
+    <testcase time="0.0839999999999996" classname="print" name="Listing_print_correctly_with_different_widths"/>
+    <testcase time="0.0449999999999999" classname="print" name="Listing_print_correctly_with_different_widths">
       <skipped message="Reason: On CRAN ('test-print.R:19:3')"/>
     </testcase>
-    <testcase time="0.0430000000000001" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified">
+    <testcase time="0.043000000000001" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified">
       <skipped message="Reason: On CRAN ('test-print.R:34:3')"/>
     </testcase>
-    <testcase time="0.0409999999999995" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified">
+    <testcase time="0.0510000000000002" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified">
       <skipped message="Reason: On CRAN ('test-print.R:74:3')"/>
     </testcase>
-    <testcase time="0.0330000000000004" classname="print" name="listings_support_newline_characters">
+    <testcase time="0.036999999999999" classname="print" name="listings_support_newline_characters">
       <skipped message="Reason: On CRAN ('test-print.R:137:3')"/>
     </testcase>
-    <testcase time="0.0549999999999997" classname="print" name="listings_supports_wrapping"/>
-    <testcase time="0.116000000000001" classname="print" name="listings_supports_wrapping"/>
-    <testcase time="0.00300000000000011" classname="print" name="listings_supports_wrapping"/>
-    <testcase time="0.0359999999999996" classname="print" name="listings_supports_wrapping"/>
+    <testcase time="0.0560000000000009" classname="print" name="listings_supports_wrapping"/>
+    <testcase time="0.129" classname="print" name="listings_supports_wrapping"/>
+    <testcase time="0.0179999999999989" classname="print" name="listings_supports_wrapping">
+      <failure type="failure" message="eat_wrap[-seq(116 - 9 - 17, 115 - 9)] (`actual`) not equal to `ts_wrap` (`expected`). ('test-print.R:158:3')">eat_wrap[-seq(116 - 9 - 17, 115 - 9)] (`actual`) not equal to `ts_wrap` (`expected`).
+
+     actual                  | expected                    
+[87] " -173              73" | " -173              73" [87]
+[88] "                   04" | "                   04" [88]
+[89] "                   75" | "                   75" [89]
+[90] "—————————————————————" - "                   67" [90]
+[91] "AB123   ARM #: 2   4." | "AB123   ARM #: 2   4." [91]
+[92] "  45-              57" | "  45-              57" [92]
+[93] "CHN-1              49" | "CHN-1              49" [93]</failure>
+    </testcase>
+    <testcase time="0.0540000000000003" classname="print" name="listings_supports_wrapping"/>
   </testsuite>
 </testsuites>
