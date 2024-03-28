@@ -1,7 +1,8 @@
-## rlistings 0.2.7.9010
+## rlistings 0.2.7.9011
  * Added relevant tests for pagination when key columns need to be repeated in each page and when they are all empty.
  * Added relevant tests for new line characters' handling in footnotes and titles.
  * Added cheatsheet.
+ * Change title of "Getting Started with rlistings" vignette to "Getting Started".
  * Added function `split_listing_by_var` to split a listing into a list of listings according to values of a given 
    variable. This enables page splits by variable when paginating.
 
@@ -9,8 +10,8 @@
  * Applied `styler` and resolved package lint. Changed default indentation from 4 spaces to 2.
  * Fixed bug in `add_listing_col` when both a function and a format are specified.
  * Added a vignette on referential footnotes workaround.
- * Added a vignette on formatting columns. 
- * Added a vignette on pagination. 
+ * Added a vignette on formatting columns.
+ * Added a vignette on pagination.
 
 ## rlistings 0.2.6
  * Fixed bug in pagination preventing key column values to appear in paginated listings when `export_as_txt` was used.
@@ -34,7 +35,7 @@
  * Introduced `testthat` edition 3.
 
 ## rlistings 0.2.2
- * Moved `export_as_txt` to `formatters`. Added to reexports. 
+ * Moved `export_as_txt` to `formatters`. Added to reexports.
 
 ## rlistings 0.2.1
 
