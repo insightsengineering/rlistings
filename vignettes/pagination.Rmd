@@ -166,7 +166,7 @@ In addition to paginating by page size as described in the previous sections of 
 
 ```{r}
 lsting_by_arm <- lsting %>%
-  split_listing_by_var("ARM", page_prefix = "Treatment Arm")
+  split_into_pages_by_var("ARM", page_prefix = "Treatment Arm")
 
 lsting_by_arm
 ```
