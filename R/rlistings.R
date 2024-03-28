@@ -170,7 +170,7 @@ as_listing <- function(df,
   df <- as_tibble(df)
   varlabs <- var_labels(df, fill = TRUE)
   o <- do.call(order, df[key_cols])
-  if (is.unsorted(o)) {
+  if (is.unsorted(o) && interactive()) {
     message("sorting incoming data by key columns")
     df <- df[o, ]
   }
@@ -188,7 +188,7 @@ as_listing <- function(df,
   cols <- c(key_cols, setdiff(cols, key_cols))
 
   row_all_na <- apply(df[cols], 1, function(x) all(is.na(x)))
-  if (any(row_all_na)) {
+  if (any(row_all_na) && interactive()) {
     message("rows that only contain NA values have been trimmed")
     df <- df[!row_all_na, ]
   }
@@ -342,6 +342,7 @@ setMethod(
         ncol = ncol(fullmat)
       ),
       row_info = make_row_df(obj),
+      listing_keycols = keycols, # It is always something
       nlines_header = 1, # We allow only one level of headers and nl expansion happens after
       nrow_header = 1,
       has_topleft = FALSE,
@@ -434,4 +435,52 @@ add_listing_col <- function(df,
   df[[name]] <- vec
   df <- add_listing_dispcol(df, name)
   df
+}
+
+#' Split Listing by Values of a Variable
+#'
+#' @description `r lifecycle::badge("experimental")`
+#'
+#' Split is performed based on unique values of the given parameter present in the listing.
+#' Each listing can only be split by variable once. If this function is applied prior to
+#' pagination, parameter values will be separated by page.
+#'
+#' @param lsting listing_df. The listing to split.
+#' @param var character. Name of the variable to split on.
+#' @param page_prefix character. Prefix to be appended with the split value (`var` level),
+#'   at the end of the subtitles, corresponding to each resulting list element (listing).
+#'
+#' @return A list of `lsting_df` objects each corresponding to a unique value of `var`.
+#'
+#' @note This function should only be used after the complete listing has been created. The
+#'   listing cannot be modified further after applying this function.
+#'
+#' @examples
+#' dat <- ex_adae[1:20, ]
+#'
+#' lsting <- as_listing(
+#'     dat,
+#'     key_cols = c("USUBJID", "AGE"),
+#'     disp_cols = "SEX",
+#'     main_title = "title",
+#'     main_footer = "footer"
+#'   ) %>%
+#'   add_listing_col("BMRKR1", format = "xx.x") %>%
+#'   split_into_pages_by_var("SEX")
+#'
+#' lsting
+#'
+#' @export
+split_into_pages_by_var <- function(lsting, var, page_prefix = var) {
+  checkmate::assert_class(lsting, "listing_df")
+  checkmate::assert_choice(var, names(lsting))
+
+  lsting_by_var <- list()
+  for (lvl in unique(lsting[[var]])) {
+    var_desc <- paste0(page_prefix, ": ", lvl)
+    lsting_by_var[[lvl]] <- lsting[lsting[[var]] == lvl, ]
+    subtitles(lsting_by_var[[lvl]]) <- c(subtitles(lsting), var_desc)
+  }
+
+  lsting_by_var
 }

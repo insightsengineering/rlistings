@@ -318,3 +318,20 @@ testthat::test_that("add_listing_col works with a function when a format is appl
     c("kpg", "34.44", "30.09", "36.69", "33.80", "33.80")
   )
 })
+
+testthat::test_that("split_into_pages_by_var works as expected", {
+  tmp_data <- ex_adae[1:100, ]
+
+  lsting <- as_listing(
+    tmp_data,
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = "SEX",
+    main_title = "title",
+    main_footer = "foot"
+  ) %>%
+    add_listing_col("BMRKR1", format = "xx.x") %>%
+    split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
+
+  testthat::expect_equal(length(lsting), length(unique(tmp_data[["SEX"]])))
+  testthat::expect_equal(subtitles(lsting[[1]]), "Patient Subset - Sex: M")
+})

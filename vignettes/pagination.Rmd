@@ -75,7 +75,7 @@ head(lsting, 20)
 
 In the listing output above, notice that there are two key columns that we expect to be repeated on each page after pagination.
 
-Next, we apply pagination with the default settings via the `paginate_listing` function. 
+Next, we see how the pagination works with the default settings via the `paginate_listing` function that is a wrapper of `paginate_to_mpfs()` that is the core pagination function and lives in `formatters`. 
 Default pagination applies the following settings, which are adjustable via the parameter specified in parentheses:
 
 - Page type: `"letter"` (`page_type`) - other options: `"a4"`, `"legal"`
@@ -162,28 +162,11 @@ The `export_as_rtf` function can be used similarly to `export_as_txt` to paginat
 
 ## Pagination by Parameter
 
-In addition to paginating by page size as described in the previous sections of this vignette, a user may also want to paginate their listing such that each page corresponds to a different value of a given parameter. For example, you may require that each treatment arm is printed on a separate page. This can currently be done with `rlistings` using the following workaround:
-
-```{r}
-split_listing_by_param <- function(lsting, param, page_prefix = param) {
-  checkmate::assert_class(lsting, "listing_df")
-  checkmate::assert_choice(param, names(lsting))
-
-  lsting_by_param <- list()
-  for (lvl in unique(lsting[[param]])) {
-    param_desc <- paste0(page_prefix, ": ", lvl)
-    lsting_by_param[[lvl]] <- lsting[lsting[[param]] == lvl, ]
-    subtitles(lsting_by_param[[lvl]]) <- c(subtitles(lsting), param_desc)
-  }
-  unname(lsting_by_param)
-}
-```
-
-After loading the function above, you can apply it to your pre-existing listing as follows:
+In addition to paginating by page size as described in the previous sections of this vignette, a user may also want to paginate their listing such that each page corresponds to a different value of a given parameter. For example, you may require that each treatment arm is printed on a separate page. This can currently be done with `rlistings` using the `split_listing_by_var` function, which can be applied to your pre-existing listing as follows:
 
 ```{r}
 lsting_by_arm <- lsting %>%
-  split_listing_by_param("ARM", page_prefix = "Treatment Arm")
+  split_into_pages_by_var("ARM", page_prefix = "Treatment Arm")
 
 lsting_by_arm
 ```
@@ -192,30 +175,16 @@ As with `paginate_listing`, this creates a list of listings where each list elem
 
 #### Combining Pagination by Parameter with Regular Pagination
 
-To then apply regular pagination to the listing, you can apply the following function to your list of listings by parameter. Any arguments to `paginate_listing` supplied to this function will be applied to each list element.
-
-```{r}
-paginate_lsting_by_param <- function(lsting, ...) {
-  unlist(lapply(lsting, paginate_listing, ...), recursive = FALSE)
-}
-```
+To then apply regular pagination to the listing, you can apply `paginate_listing` to your list of listings by parameter. Any arguments supplied to this function will be applied to each list element.
 
 #### Combining Pagination by Parameter with `export_as_txt`
 
-Similarly, for pagination via `export_as_txt` after paginating by parameter, you can apply the following function to your list of listings by parameter. Any arguments to `export_as_txt` supplied to this function will be applied to each list element and the list will then be concatenated into the correct text format.
-
-```{r}
-export_to_txt_lsting_by_param <- function(lsting, file = NULL, page_break = "\\s\\n", ...) {
-  lst <- unlist(lapply(lsting, export_as_txt, page_break = page_break, ...), recursive = FALSE)
-  res <- paste(lst, collapse = page_break)
-  if (is.null(file)) res else cat(res, file = file)
-}
-```
+Similarly, for pagination via `export_as_txt` after paginating by parameter, you can apply `export_as_txt` to your list of listings by parameter. Any arguments supplied to `export_as_txt` will be applied to each list element and the list will then be concatenated into the correct text format.
 
 For example:
 
 ```{r}
-cat(export_to_txt_lsting_by_param(lsting_by_arm))
+cat(export_as_txt(lsting_by_arm))
 ```
 
 Again, we use the `cat` function to make the text output more easily readable in the console.
