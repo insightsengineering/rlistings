@@ -28,15 +28,17 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   columns when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a
 #'   value of type `fmt_config` with the formatting configuration that should be implemented for that column. Objects
 #'   of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`. Defaults to `NULL`.
-#' @param main_title (`string` or `NULL`)\cr the main title for the listing, or
-#'   `NULL` (the default).
+#' @param main_title (`string` or `NULL`)\cr the main title for the listing, or `NULL` (the default).
 #' @param subtitles (`character` or `NULL`)\cr a vector of subtitles for the listing, or `NULL` (the default).
 #' @param main_footer (`character` or `NULL`)\cr a vector of main footer lines for the listing, or `NULL` (the default).
 #' @param prov_footer (`character` or `NULL`)\cr a vector of provenance footer lines for the listing, or `NULL`
 #'   (the default). Each string element is placed on a new line.
+#' @param split_into_pages_by_var (`character` or `NULL`)\cr the name of a variable for on the listing should be split 
+#'   into pages, with each page corresponding to one unique value/level of the variable. See 
+#'   [split_into_pages_by_var()] for more details.
 #' @param vec (`string`)\cr name of a column vector from a `listing_df` object to be annotated as a key column.
 #'
-#' @return a `listing_df` object, sorted by its key columns.
+#' @return A `listing_df` object, sorted by its key columns.
 #'
 #' @details
 #' At its core, a `listing_df` object is a `tbl_df` object with a customized
@@ -136,7 +138,8 @@ as_listing <- function(df,
                        main_title = NULL,
                        subtitles = NULL,
                        main_footer = NULL,
-                       prov_footer = NULL) {
+                       prov_footer = NULL,
+                       split_into_pages_by_var = NULL) {
   if (length(non_disp_cols) > 0 && length(intersect(key_cols, non_disp_cols)) > 0) {
     stop(
       "Key column also listed in non_disp_cols. All key columns are by",
@@ -169,7 +172,9 @@ as_listing <- function(df,
   varlabs <- var_labels(df, fill = TRUE)
   o <- do.call(order, df[key_cols])
   if (is.unsorted(o)) {
-    message("sorting incoming data by key columns")
+    if (interactive()) {
+      message("sorting incoming data by key columns")
+    }
     df <- df[o, ]
   }
 
@@ -187,7 +192,7 @@ as_listing <- function(df,
 
   row_all_na <- apply(df[cols], 1, function(x) all(is.na(x)))
   if (any(row_all_na)) {
-    message("rows that only contain NA values have been trimmed")
+    warning("rows that only contain NA values have been trimmed")
     df <- df[!row_all_na, ]
   }
 
@@ -219,12 +224,18 @@ as_listing <- function(df,
   if (unique_rows) df <- df[!duplicated(df[, cols]), ]
 
   class(df) <- c("listing_df", class(df))
+
   ## these all work even when the value is NULL
   main_title(df) <- main_title
   main_footer(df) <- main_footer
   subtitles(df) <- subtitles
   prov_footer(df) <- prov_footer
   listing_dispcols(df) <- cols
+
+  if (!is.null(split_into_pages_by_var)) {
+    df <- split_into_pages_by_var(df, split_into_pages_by_var)
+  }
+
   df
 }
 
@@ -333,6 +344,7 @@ setMethod(
         ncol = ncol(fullmat)
       ),
       row_info = make_row_df(obj),
+      listing_keycols = keycols, # It is always something
       nlines_header = 1, # We allow only one level of headers and nl expansion happens after
       nrow_header = 1,
       has_topleft = FALSE,
@@ -423,4 +435,52 @@ add_listing_col <- function(df,
   df[[name]] <- vec
   df <- add_listing_dispcol(df, name)
   df
+}
+
+#' Split Listing by Values of a Variable
+#'
+#' @description `r lifecycle::badge("experimental")`
+#'
+#' Split is performed based on unique values of the given parameter present in the listing.
+#' Each listing can only be split by variable once. If this function is applied prior to
+#' pagination, parameter values will be separated by page.
+#'
+#' @param lsting listing_df. The listing to split.
+#' @param var character. Name of the variable to split on.
+#' @param page_prefix character. Prefix to be appended with the split value (`var` level),
+#'   at the end of the subtitles, corresponding to each resulting list element (listing).
+#'
+#' @return A list of `lsting_df` objects each corresponding to a unique value of `var`.
+#'
+#' @note This function should only be used after the complete listing has been created. The
+#'   listing cannot be modified further after applying this function.
+#'
+#' @examples
+#' dat <- ex_adae[1:20, ]
+#'
+#' lsting <- as_listing(
+#'   dat,
+#'   key_cols = c("USUBJID", "AGE"),
+#'   disp_cols = "SEX",
+#'   main_title = "title",
+#'   main_footer = "footer"
+#' ) %>%
+#'   add_listing_col("BMRKR1", format = "xx.x") %>%
+#'   split_into_pages_by_var("SEX")
+#'
+#' lsting
+#'
+#' @export
+split_into_pages_by_var <- function(lsting, var, page_prefix = var) {
+  checkmate::assert_class(lsting, "listing_df")
+  checkmate::assert_choice(var, names(lsting))
+
+  lsting_by_var <- list()
+  for (lvl in unique(lsting[[var]])) {
+    var_desc <- paste0(page_prefix, ": ", lvl)
+    lsting_by_var[[lvl]] <- lsting[lsting[[var]] == lvl, ]
+    subtitles(lsting_by_var[[lvl]]) <- c(subtitles(lsting), var_desc)
+  }
+
+  lsting_by_var
 }

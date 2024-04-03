@@ -16,14 +16,16 @@ paginate_listing(
   margins = c(top = 0.5, bottom = 0.5, left = 0.75, right = 0.75),
   lpp = NA_integer_,
   cpp = NA_integer_,
-  colwidths = propose_column_widths(lsting),
+  colwidths = NULL,
   tf_wrap = !is.null(max_width),
+  rep_cols = NULL,
   max_width = NULL,
-  verbose = FALSE
+  verbose = FALSE,
+  print_pages = TRUE
 )
 }
 \arguments{
-\item{lsting}{(\code{listing_df})\cr the listing to paginate.}
+\item{lsting}{(\code{listing_df} or \code{list})\cr the listing or list of listings to paginate.}
 
 \item{page_type}{(\code{string})\cr name of a page type. See \code{\link[formatters]{page_types}}. Ignored
 when \code{pg_width} and \code{pg_height} are set directly.}
@@ -57,6 +59,9 @@ pagination. \code{NULL} (the default) indicates no horizontal pagination should 
 
 \item{tf_wrap}{(\code{flag})\cr whether the text for title, subtitles, and footnotes should be wrapped.}
 
+\item{rep_cols}{numeric(1). Number of \emph{columns} (not including
+row labels) to be repeated on every page. Defaults to 0}
+
 \item{max_width}{(\code{integer(1)}, \code{string} or \code{NULL})\cr width that title and footer (including
 footnotes) materials should be word-wrapped to. If \code{NULL}, it is set to the current print width of the
 session (\code{getOption("width")}). If set to \code{"auto"}, the width of the table (plus any table inset) is
@@ -64,6 +69,9 @@ used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 
 \item{verbose}{(\code{flag})\cr whether additional informative messages about the search for
 pagination breaks should be shown. Defaults to \code{FALSE}.}
+
+\item{print_pages}{(\code{logical(1)})\cr whether to also print the paginated listing to console
+(\code{cat(toString(x))}).}
 }
 \value{
 A list of \code{listing_df} objects where each list element corresponds to a separate page.
@@ -72,7 +80,8 @@ A list of \code{listing_df} objects where each list element corresponds to a sep
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Pagination of a listing. This can be vertical for long listings with many
-rows and/or horizontal if there are many columns.
+rows and/or horizontal if there are many columns. This function is a wrapper of
+\code{\link[formatters:paginate_indices]{formatters::paginate_to_mpfs()}} and it is mainly meant for exploration and testing.
 }
 \examples{
 dat <- ex_adae

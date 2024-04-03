@@ -3,17 +3,20 @@
 #' @description `r lifecycle::badge("experimental")`
 #'
 #' Pagination of a listing. This can be vertical for long listings with many
-#' rows and/or horizontal if there are many columns.
+#' rows and/or horizontal if there are many columns. This function is a wrapper of
+#' [formatters::paginate_to_mpfs()] and it is mainly meant for exploration and testing.
 #'
 #' @inheritParams formatters::pag_indices_inner
 #' @inheritParams formatters::vert_pag_indices
 #' @inheritParams formatters::page_lcpp
 #' @inheritParams formatters::toString
-#' @param lsting (`listing_df`)\cr the listing to paginate.
+#' @param lsting (`listing_df` or `list`)\cr the listing or list of listings to paginate.
 #' @param lpp (`numeric(1)` or `NULL`)\cr number of rows/lines (excluding titles and footers)
 #'   to include per page. Standard is `70` while `NULL` disables vertical pagination.
 #' @param cpp (`numeric(1)` or `NULL`)\cr width (in characters) of the pages for horizontal
 #'   pagination. `NULL` (the default) indicates no horizontal pagination should be done.
+#' @param print_pages (`flag`)\cr whether the paginated listing should be printed to the console
+#'   (`cat(toString(x))`).
 #'
 #' @return A list of `listing_df` objects where each list element corresponds to a separate page.
 #'
@@ -42,17 +45,20 @@ paginate_listing <- function(lsting,
                              margins = c(top = .5, bottom = .5, left = .75, right = .75),
                              lpp = NA_integer_,
                              cpp = NA_integer_,
-                             colwidths = propose_column_widths(lsting),
+                             colwidths = NULL,
                              tf_wrap = !is.null(max_width),
+                             rep_cols = NULL,
                              max_width = NULL,
-                             verbose = FALSE) {
-  checkmate::assert_class(lsting, "listing_df")
+                             verbose = FALSE,
+                             print_pages = TRUE) {
+  checkmate::assert_multi_class(lsting, c("listing_df", "list"))
   checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
   checkmate::assert_flag(tf_wrap)
   checkmate::assert_count(max_width, null.ok = TRUE)
   checkmate::assert_flag(verbose)
+  checkmate::assert_flag(print_pages)
 
-  indx <- paginate_indices(lsting,
+  pages <- paginate_to_mpfs(lsting,
     page_type = page_type,
     font_family = font_family,
     font_size = font_size,
@@ -66,33 +72,17 @@ paginate_listing <- function(lsting,
     colwidths = colwidths,
     tf_wrap = tf_wrap,
     max_width = max_width,
-    rep_cols = length(get_keycols(lsting)),
+    rep_cols = rep_cols,
     verbose = verbose
   )
 
-  vert_pags <- lapply(
-    indx$pag_row_indices,
-    function(ii) lsting[ii, ]
-  )
-  dispnames <- listing_dispcols(lsting)
-  full_pag <- lapply(
-    vert_pags,
-    function(onepag) {
-      if (!is.null(indx$pag_col_indices)) {
-        lapply(
-          indx$pag_col_indices,
-          function(jj) {
-            res <- onepag[, dispnames[jj], drop = FALSE]
-            listing_dispcols(res) <- intersect(dispnames, names(res))
-            res
-          }
-        )
-      } else {
-        list(onepag)
-      }
-    }
-  )
-
-  ret <- unlist(full_pag, recursive = FALSE)
-  ret
+  if (print_pages) {
+    nothing <- lapply(seq_along(pages), function(pagi) {
+      cat("--- Page", paste0(pagi, "/", length(pages)), "---\n")
+      # It is NULL because paginate_mpfs takes care of it
+      cat(toString(pages[[pagi]], widths = NULL, tf_wrap = tf_wrap, max_width = max_width))
+      cat("\n")
+    })
+  }
+  invisible(pages)
 }
