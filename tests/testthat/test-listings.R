@@ -294,11 +294,11 @@ testthat::test_that("as_listing works with NA values in key cols", {
 
   mtcars[33, ] <- mtcars[32, ]
   mtcars[33, c(7, 10:11)] <- NA
-  suppressMessages(testthat::expect_message(lsting <- as_listing(
+  testthat::expect_warning(lsting <- as_listing(
     mtcars,
     key_cols = c("gear", "carb"),
     disp_cols = "qsec"
-  ), "rows that only contain NA"))
+  ), "rows that only contain NA")
 })
 
 testthat::test_that("add_listing_col works with a function when a format is applied", {

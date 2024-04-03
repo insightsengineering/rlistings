@@ -170,8 +170,10 @@ as_listing <- function(df,
   df <- as_tibble(df)
   varlabs <- var_labels(df, fill = TRUE)
   o <- do.call(order, df[key_cols])
-  if (is.unsorted(o) && interactive()) {
-    message("sorting incoming data by key columns")
+  if (is.unsorted(o)) {
+    if (interactive()) {
+      message("sorting incoming data by key columns")
+    }
     df <- df[o, ]
   }
 
@@ -188,8 +190,8 @@ as_listing <- function(df,
   cols <- c(key_cols, setdiff(cols, key_cols))
 
   row_all_na <- apply(df[cols], 1, function(x) all(is.na(x)))
-  if (any(row_all_na) && interactive()) {
-    message("rows that only contain NA values have been trimmed")
+  if (any(row_all_na)) {
+    warning("rows that only contain NA values have been trimmed")
     df <- df[!row_all_na, ]
   }
 
