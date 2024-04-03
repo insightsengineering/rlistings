@@ -80,25 +80,10 @@ paginate_listing <- function(lsting,
   if (print_pages) {
     nothing <- lapply(seq_along(pages), function(pagi) {
       cat("--- Page", paste0(pagi, "/", length(pages)), "---\n")
-      cat(toString(pages[[pagi]], widths = colwidths, tf_wrap = tf_wrap, max_width = max_width))
+      # It is NULL because paginate_mpfs takes care of it
+      cat(toString(pages[[pagi]], widths = NULL, tf_wrap = tf_wrap, max_width = max_width))
       cat("\n")
     })
   }
   invisible(pages)
-}
-
-#' Defunct functions
-#'
-#' These functions are defunct and their symbols will be removed entirely in a future release.
-#'
-#' @inheritParams paginate_listing
-#'
-#' @export
-#' @rdname defunct
-pag_listing_indices <- function(lsting,
-                                lpp = 15,
-                                colwidths = NULL,
-                                max_width = NULL,
-                                verbose = FALSE) {
-  .Defunct("paginate_indices", package = "formatters")
 }

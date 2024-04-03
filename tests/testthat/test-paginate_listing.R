@@ -226,10 +226,6 @@ testthat::test_that("pagination repeats keycols in other pages", {
   )
 })
 
-testthat::test_that("defunct is defunct", {
-  testthat::expect_error(pag_listing_indices(), "defunct")
-})
-
 testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
   iris2 <- iris[1:10, 3:5]
   iris2$Species <- "SOMETHING VERY LONG THAT BREAKS PAGINATION"
