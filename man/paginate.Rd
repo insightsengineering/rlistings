@@ -16,14 +16,16 @@ paginate_listing(
   margins = c(top = 0.5, bottom = 0.5, left = 0.75, right = 0.75),
   lpp = NA_integer_,
   cpp = NA_integer_,
-  colwidths = propose_column_widths(lsting),
+  colwidths = NULL,
   tf_wrap = !is.null(max_width),
+  rep_cols = NULL,
   max_width = NULL,
-  verbose = FALSE
+  verbose = FALSE,
+  print_pages = TRUE
 )
 }
 \arguments{
-\item{lsting}{listing_df. The listing to paginate.}
+\item{lsting}{(\code{listing_df} or \code{list})\cr the listing or list of listings to paginate.}
 
 \item{page_type}{character(1).   Name   of  a  page  type.   See
 \code{page_types}.   Ignored when  \code{pg_width} and  \code{pg_height}
@@ -50,19 +52,20 @@ be inverted  for landscape?  Defaults to  \code{FALSE}, ignored when
 to \code{.5} inches for both vertical margins and \code{.75} for both
 horizontal margins.}
 
-\item{lpp}{numeric(1) or NULL. Number of row lines (not counting titles and
-footers) to have per page. Standard is \code{70} while \code{NULL} disables vertical
-pagination.}
+\item{lpp}{(\code{numeric(1)} or \code{NULL})\cr number of rows/lines (excluding titles and footers)
+to include per page. Standard is \code{70} while \code{NULL} disables vertical pagination.}
 
-\item{cpp}{numeric(1) or NULL. Width (in characters) of the pages for
-horizontal pagination. \code{NULL} (the default) indicates no horizontal
-pagination should be done.}
+\item{cpp}{(\code{numeric(1)} or \code{NULL})\cr width (in characters) of the pages for horizontal
+pagination. \code{NULL} (the default) indicates no horizontal pagination should be done.}
 
 \item{colwidths}{numeric vector.  Column widths (in characters) for
 use with vertical pagination.}
 
 \item{tf_wrap}{logical(1). Should  the texts for  title, subtitle,
 and footnotes be wrapped?}
+
+\item{rep_cols}{numeric(1). Number of \emph{columns} (not including
+row labels) to be repeated on every page. Defaults to 0}
 
 \item{max_width}{integer(1), character(1) or \code{NULL}. Width that title
 and   footer   (including   footnotes)  materials   should   be
@@ -73,26 +76,23 @@ completely if \code{tf_wrap} is \code{FALSE}.}
 
 \item{verbose}{logical(1). Should additional informative messages about the search for
 pagination breaks be shown. Defaults to \code{FALSE}.}
+
+\item{print_pages}{(\code{logical(1)})\cr whether to also print the paginated listing to console
+(\code{cat(toString(x))}).}
 }
 \value{
-A list of listings' objects that are meant to be on separated pages.
-For \code{pag_tt_indices} a list of paginated-groups of row-indices of \code{lsting}.
-
-for \code{paginate_listing} a list containing separate
-\code{listing_df} objects for each page, for \code{pag_listing_indices},
-a list of indices in the direction being paginated corresponding
-to the individual pages in that dimension.
+A list of \code{listing_df} objects where each list element corresponds to a separate page.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Pagination of a listing. This can be vertical for long listings with many
-rows or horizontal if there are many columns.
+rows and/or horizontal if there are many columns. This function is a wrapper of
+\code{\link[formatters:paginate_indices]{formatters::paginate_to_mpfs()}} and it is mainly meant for exploration and testing.
 }
 \examples{
 dat <- ex_adae
 lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
-
 mat <- matrix_form(lsting)
 
 cat(toString(mat))
@@ -102,4 +102,5 @@ paginate_listing(lsting, lpp = 10)
 paginate_listing(lsting, cpp = 100, lpp = 40)
 
 paginate_listing(lsting, cpp = 80, lpp = 40, verbose = TRUE)
+
 }

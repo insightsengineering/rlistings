@@ -3,6 +3,10 @@
  * Added relevant tests for new line characters' handling in footnotes and titles.
  * Added cheatsheet.
  * Change title of "Getting Started with rlistings" vignette to "Getting Started".
+ * Added function `split_into_pages_by_var` to split a listing into a list of listings according to values of a given 
+   variable. This enables page splits by variable when paginating.
+ * Removed defunct function `pag_listing_indices`.
+ * Refactored `paginate_listing` to use directly `paginate_to_mpfs` function from `formatters` package.
 
 ## rlistings 0.2.7
  * Applied `styler` and resolved package lint. Changed default indentation from 4 spaces to 2.
