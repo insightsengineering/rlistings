@@ -75,8 +75,7 @@ columns when rendering the listing. Each name-value pair consists of a name corr
 value of type \code{fmt_config} with the formatting configuration that should be implemented for that column. Objects
 of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}. Defaults to \code{NULL}.}
 
-\item{main_title}{(\code{string} or \code{NULL})\cr the main title for the listing, or
-\code{NULL} (the default).}
+\item{main_title}{(\code{string} or \code{NULL})\cr the main title for the listing, or \code{NULL} (the default).}
 
 \item{subtitles}{(\code{character} or \code{NULL})\cr a vector of subtitles for the listing, or \code{NULL} (the default).}
 
@@ -85,8 +84,8 @@ of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, an
 \item{prov_footer}{(\code{character} or \code{NULL})\cr a vector of provenance footer lines for the listing, or \code{NULL}
 (the default). Each string element is placed on a new line.}
 
-\item{split_into_pages_by_var}{character or NULL. The name of a column for which the
-listing should be split into pages, one for each level of the column. Check
+\item{split_into_pages_by_var}{(\code{character} or \code{NULL})\cr the name of a variable for on the listing should be split
+into pages, with each page corresponding to one unique value/level of the variable. See
 \code{\link[=split_into_pages_by_var]{split_into_pages_by_var()}} for more details.}
 
 \item{vec}{(\code{string})\cr name of a column vector from a \code{listing_df} object to be annotated as a key column.}
@@ -110,7 +109,7 @@ returns the vector for a new column, which is added to \code{df} as
 \item{align}{(\code{string})\cr alignment values should be rendered with.}
 }
 \value{
-a \code{listing_df} object, sorted by its key columns.
+A \code{listing_df} object, sorted by its key columns.
 
 \code{df} with \code{name} created (if necessary) and marked for
 display during rendering.

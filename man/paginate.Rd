@@ -59,8 +59,8 @@ pagination. \code{NULL} (the default) indicates no horizontal pagination should 
 
 \item{tf_wrap}{(\code{flag})\cr whether the text for title, subtitles, and footnotes should be wrapped.}
 
-\item{rep_cols}{numeric(1). Number of \emph{columns} (not including
-row labels) to be repeated on every page. Defaults to 0}
+\item{rep_cols}{(\code{numeric(1)})\cr number of \emph{columns} (not including row labels) to be repeated on every page.
+Defaults to 0.}
 
 \item{max_width}{(\code{integer(1)}, \code{string} or \code{NULL})\cr width that title and footer (including
 footnotes) materials should be word-wrapped to. If \code{NULL}, it is set to the current print width of the
@@ -70,7 +70,7 @@ used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 \item{verbose}{(\code{flag})\cr whether additional informative messages about the search for
 pagination breaks should be shown. Defaults to \code{FALSE}.}
 
-\item{print_pages}{(\code{logical(1)})\cr whether to also print the paginated listing to console
+\item{print_pages}{(\code{flag})\cr whether the paginated listing should be printed to the console
 (\code{cat(toString(x))}).}
 }
 \value{
