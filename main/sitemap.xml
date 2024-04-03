@@ -31,9 +31,6 @@
     <loc>https://insightsengineering.github.io/rlistings/news/index.html</loc>
   </url>
   <url>
-    <loc>https://insightsengineering.github.io/rlistings/reference/defunct.html</loc>
-  </url>
-  <url>
     <loc>https://insightsengineering.github.io/rlistings/reference/index.html</loc>
   </url>
   <url>
@@ -56,6 +53,9 @@
   </url>
   <url>
     <loc>https://insightsengineering.github.io/rlistings/reference/rlistings-package.html</loc>
+  </url>
+  <url>
+    <loc>https://insightsengineering.github.io/rlistings/reference/split_into_pages_by_var.html</loc>
   </url>
   <url>
     <loc>https://insightsengineering.github.io/rlistings/reference/vec_nlines.html</loc>

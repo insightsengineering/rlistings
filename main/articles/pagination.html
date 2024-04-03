@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.7.9010</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.7.9011</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,24 +60,6 @@
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
-<!-- start dropdown for versions --> <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle"
-          data-bs-toggle="dropdown" role="button"
-          aria-expanded="false" aria-haspopup="true"
-          id="dropdown-versions">Versions</a> <div class="dropdown-menu" aria-labelledby="dropdown-versions"> <a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/main">main</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/latest-tag">latest-tag</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/release-candidate">release-candidate</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.6-rc1">v0.2.6-rc1</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.3-rc2">v0.2.3-rc2</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.2-rc1">v0.2.2-rc1</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.7">v0.2.7</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.5">v0.2.5</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.4">v0.2.4</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.3">v0.2.3</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.2">v0.2.2</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.1">v0.2.1</a>
-<a class="dropdown-item" data-toggle="tooltip" title="" href="https://insightsengineering.github.io/rlistings/v0.2.0">v0.2.0</a> </div></li>
-<!-- end dropdown for versions -->
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-reports">Reports</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-reports">
@@ -113,7 +95,7 @@
                         <h4 data-toc-skip class="author">Emily de la
 Rua</h4>
             
-            <h4 data-toc-skip class="date">2024-03-18</h4>
+            <h4 data-toc-skip class="date">2024-04-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/insightsengineering/rlistings/blob/HEAD/vignettes/pagination.Rmd" class="external-link"><code>vignettes/pagination.Rmd</code></a></small>
       <div class="d-none name"><code>pagination.Rmd</code></div>
@@ -223,8 +205,10 @@ the data and only use the first 100 records of the dataset.</p>
 <span><span class="co">#&gt; Footer</span></span></code></pre></div>
 <p>In the listing output above, notice that there are two key columns
 that we expect to be repeated on each page after pagination.</p>
-<p>Next, we apply pagination with the default settings via the
-<code>paginate_listing</code> function. Default pagination applies the
+<p>Next, we see how the pagination works with the default settings via
+the <code>paginate_listing</code> function that is a wrapper of
+<code><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/paginate_indices.html" class="external-link">paginate_to_mpfs()</a></code> that is the core pagination function and
+lives in <code>formatters</code>. Default pagination applies the
 following settings, which are adjustable via the parameter specified in
 parentheses:</p>
 <ul>
@@ -250,7 +234,7 @@ here (see <code><a href="../reference/paginate.html">?paginate_listing</a></code
 fine-tune your pagination output.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/paginate.html">paginate_listing</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; --- Page 1/4 ---</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ————————————————————————————————————————————————————————————————————————————————</span></span>
@@ -336,11 +320,13 @@ fine-tune your pagination output.</p>
 <span><span class="co">#&gt;                                                                     3           </span></span>
 <span><span class="co">#&gt;                                                                     2           </span></span>
 <span><span class="co">#&gt;                                                                     3           </span></span>
+<span><span class="co">#&gt;                                                                     1           </span></span>
+<span><span class="co">#&gt;                                                                     4           </span></span>
 <span><span class="co">#&gt; ————————————————————————————————————————————————————————————————————————————————</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Footer</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; --- Page 2/4 ---</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; —————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
@@ -426,19 +412,19 @@ fine-tune your pagination output.</p>
 <span><span class="co">#&gt;                                                               dcd B.2.1.2.1             MODERATE     </span></span>
 <span><span class="co">#&gt;                                                               dcd C.2.1.2.1             MODERATE     </span></span>
 <span><span class="co">#&gt;                                                               dcd B.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;                                                               dcd D.2.1.5.3               MILD       </span></span>
+<span><span class="co">#&gt;                                                               dcd C.1.1.1.3              SEVERE      </span></span>
 <span><span class="co">#&gt; —————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Footer</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[3]]</span></span>
+<span><span class="co">#&gt; --- Page 3/4 ---</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ————————————————————————————————————————————————————————————————————————————————</span></span>
 <span><span class="co">#&gt; Unique Subject Identifier   Description of Planned Arm   Analysis Toxicity Grade</span></span>
 <span><span class="co">#&gt; ————————————————————————————————————————————————————————————————————————————————</span></span>
-<span><span class="co">#&gt;   AB12345-BRA-12-id-59              B: Placebo                      1           </span></span>
-<span><span class="co">#&gt;                                                                     4           </span></span>
-<span><span class="co">#&gt;                                                                     3           </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-12-id-59              B: Placebo                      3           </span></span>
 <span><span class="co">#&gt;   AB12345-BRA-13-id-177             A: Drug X                       3           </span></span>
 <span><span class="co">#&gt;                                                                     1           </span></span>
 <span><span class="co">#&gt;                                                                     5           </span></span>
@@ -460,15 +446,13 @@ fine-tune your pagination output.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Footer</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[4]]</span></span>
+<span><span class="co">#&gt; --- Page 4/4 ---</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; —————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
 <span><span class="co">#&gt; Unique Subject Identifier   Description of Planned Arm   Dictionary-Derived Term   Severity/Intensity</span></span>
 <span><span class="co">#&gt; —————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
-<span><span class="co">#&gt;   AB12345-BRA-12-id-59              B: Placebo                dcd D.2.1.5.3               MILD       </span></span>
-<span><span class="co">#&gt;                                                               dcd C.1.1.1.3              SEVERE      </span></span>
-<span><span class="co">#&gt;                                                               dcd D.1.1.4.2             MODERATE     </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-12-id-59              B: Placebo                dcd D.1.1.4.2             MODERATE     </span></span>
 <span><span class="co">#&gt;   AB12345-BRA-13-id-177             A: Drug X                 dcd B.2.1.2.1             MODERATE     </span></span>
 <span><span class="co">#&gt;                                                               dcd D.2.1.5.3               MILD       </span></span>
 <span><span class="co">#&gt;                                                               dcd B.1.1.1.1              SEVERE      </span></span>
@@ -550,7 +534,7 @@ rows but you specify <code>lpp</code> as 5.</li>
 size:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/paginate.html">paginate_listing</a></span><span class="op">(</span><span class="va">lsting</span>, lpp <span class="op">=</span> <span class="fl">50</span>, cpp <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; --- Page 1/3 ---</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
@@ -596,19 +580,19 @@ size:</p>
 <span><span class="co">#&gt;                                                                     5                   dcd B.1.1.1.1              SEVERE      </span></span>
 <span><span class="co">#&gt;                                                                     1                   dcd D.2.1.5.3               MILD       </span></span>
 <span><span class="co">#&gt;                                                                     1                   dcd B.2.2.3.1               MILD       </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-11-id-237           C: Combination                    1                   dcd D.2.1.5.3               MILD       </span></span>
+<span><span class="co">#&gt;                                                                     4                   dcd C.1.1.1.3              SEVERE      </span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Footer</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; --- Page 2/3 ---</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
 <span><span class="co">#&gt; Unique Subject Identifier   Description of Planned Arm   Analysis Toxicity Grade   Dictionary-Derived Term   Severity/Intensity</span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
-<span><span class="co">#&gt;   AB12345-BRA-11-id-237           C: Combination                    1                   dcd D.2.1.5.3               MILD       </span></span>
-<span><span class="co">#&gt;                                                                     4                   dcd C.1.1.1.3              SEVERE      </span></span>
-<span><span class="co">#&gt;                                                                     3                   dcd B.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-11-id-237           C: Combination                    3                   dcd B.2.1.2.1             MODERATE     </span></span>
 <span><span class="co">#&gt;   AB12345-BRA-11-id-321           C: Combination                    1                   dcd A.1.1.1.1               MILD       </span></span>
 <span><span class="co">#&gt;                                                                     1                   dcd A.1.1.1.1               MILD       </span></span>
 <span><span class="co">#&gt;                                                                     2                   dcd C.2.1.2.1             MODERATE     </span></span>
@@ -646,21 +630,21 @@ size:</p>
 <span><span class="co">#&gt;                                                                     3                   dcd B.2.1.2.1             MODERATE     </span></span>
 <span><span class="co">#&gt;                                                                     2                   dcd C.2.1.2.1             MODERATE     </span></span>
 <span><span class="co">#&gt;                                                                     3                   dcd B.2.1.2.1             MODERATE     </span></span>
+<span><span class="co">#&gt;                                                                     1                   dcd D.2.1.5.3               MILD       </span></span>
+<span><span class="co">#&gt;                                                                     4                   dcd C.1.1.1.3              SEVERE      </span></span>
+<span><span class="co">#&gt;                                                                     3                   dcd D.1.1.4.2             MODERATE     </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-13-id-177             A: Drug X                       3                   dcd B.2.1.2.1             MODERATE     </span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Footer</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[3]]</span></span>
+<span><span class="co">#&gt; --- Page 3/3 ---</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
 <span><span class="co">#&gt; Unique Subject Identifier   Description of Planned Arm   Analysis Toxicity Grade   Dictionary-Derived Term   Severity/Intensity</span></span>
 <span><span class="co">#&gt; ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————</span></span>
-<span><span class="co">#&gt;   AB12345-BRA-12-id-59              B: Placebo                      1                   dcd D.2.1.5.3               MILD       </span></span>
-<span><span class="co">#&gt;                                                                     4                   dcd C.1.1.1.3              SEVERE      </span></span>
-<span><span class="co">#&gt;                                                                     3                   dcd D.1.1.4.2             MODERATE     </span></span>
-<span><span class="co">#&gt;   AB12345-BRA-13-id-177             A: Drug X                       3                   dcd B.2.1.2.1             MODERATE     </span></span>
-<span><span class="co">#&gt;                                                                     1                   dcd D.2.1.5.3               MILD       </span></span>
+<span><span class="co">#&gt;   AB12345-BRA-13-id-177             A: Drug X                       1                   dcd D.2.1.5.3               MILD       </span></span>
 <span><span class="co">#&gt;                                                                     5                   dcd B.1.1.1.1              SEVERE      </span></span>
 <span><span class="co">#&gt;                                                                     4                   dcd C.1.1.1.3              SEVERE      </span></span>
 <span><span class="co">#&gt;                                                                     3                   dcd B.2.1.2.1             MODERATE     </span></span>
@@ -996,28 +980,15 @@ sections of this vignette, a user may also want to paginate their
 listing such that each page corresponds to a different value of a given
 parameter. For example, you may require that each treatment arm is
 printed on a separate page. This can currently be done with
-<code>rlistings</code> using the following workaround:</p>
+<code>rlistings</code> using the <code>split_listing_by_var</code>
+function, which can be applied to your pre-existing listing as
+follows:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">split_listing_by_param</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lsting</span>, <span class="va">param</span>, <span class="va">page_prefix</span> <span class="op">=</span> <span class="va">param</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu">checkmate</span><span class="fu">::</span><span class="fu"><a href="https://mllg.github.io/checkmate/reference/checkClass.html" class="external-link">assert_class</a></span><span class="op">(</span><span class="va">lsting</span>, <span class="st">"listing_df"</span><span class="op">)</span></span>
-<span>  <span class="fu">checkmate</span><span class="fu">::</span><span class="fu"><a href="https://mllg.github.io/checkmate/reference/checkChoice.html" class="external-link">assert_choice</a></span><span class="op">(</span><span class="va">param</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="va">lsting_by_param</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="kw">for</span> <span class="op">(</span><span class="va">lvl</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">[[</span><span class="va">param</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">param_desc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">page_prefix</span>, <span class="st">": "</span>, <span class="va">lvl</span><span class="op">)</span></span>
-<span>    <span class="va">lsting_by_param</span><span class="op">[[</span><span class="va">lvl</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">lsting</span><span class="op">[</span><span class="va">lsting</span><span class="op">[[</span><span class="va">param</span><span class="op">]</span><span class="op">]</span> <span class="op">==</span> <span class="va">lvl</span>, <span class="op">]</span></span>
-<span>    <span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/title_footer.html" class="external-link">subtitles</a></span><span class="op">(</span><span class="va">lsting_by_param</span><span class="op">[[</span><span class="va">lvl</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/title_footer.html" class="external-link">subtitles</a></span><span class="op">(</span><span class="va">lsting</span><span class="op">)</span>, <span class="va">param_desc</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="va">lsting_by_param</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
-<p>After loading the function above, you can apply it to your
-pre-existing listing as follows:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lsting_by_arm</span> <span class="op">&lt;-</span> <span class="va">lsting</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu">split_listing_by_param</span><span class="op">(</span><span class="st">"ARM"</span>, page_prefix <span class="op">=</span> <span class="st">"Treatment Arm"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/split_into_pages_by_var.html">split_into_pages_by_var</a></span><span class="op">(</span><span class="st">"ARM"</span>, page_prefix <span class="op">=</span> <span class="st">"Treatment Arm"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">lsting_by_arm</span></span>
-<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; $`A: Drug X`</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; Treatment Arm: A: Drug X</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -1071,7 +1042,7 @@ pre-existing listing as follows:</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Footer</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[2]]</span></span>
+<span><span class="co">#&gt; $`C: Combination`</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; Treatment Arm: C: Combination</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -1122,7 +1093,7 @@ pre-existing listing as follows:</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Footer</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[3]]</span></span>
+<span><span class="co">#&gt; $`B: Placebo`</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; Treatment Arm: B: Placebo</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -1158,34 +1129,23 @@ value.</p>
 <div class="section level4">
 <h4 id="combining-pagination-by-parameter-with-regular-pagination">Combining Pagination by Parameter with Regular Pagination<a class="anchor" aria-label="anchor" href="#combining-pagination-by-parameter-with-regular-pagination"></a>
 </h4>
-<p>To then apply regular pagination to the listing, you can apply the
-following function to your list of listings by parameter. Any arguments
-to <code>paginate_listing</code> supplied to this function will be
-applied to each list element.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">paginate_lsting_by_param</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lsting</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lsting</span>, <span class="va">paginate_listing</span>, <span class="va">...</span><span class="op">)</span>, recursive <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
+<p>To then apply regular pagination to the listing, you can apply
+<code>paginate_listing</code> to your list of listings by parameter. Any
+arguments supplied to this function will be applied to each list
+element.</p>
 </div>
 <div class="section level4">
 <h4 id="combining-pagination-by-parameter-with-export_as_txt">Combining Pagination by Parameter with
 <code>export_as_txt</code><a class="anchor" aria-label="anchor" href="#combining-pagination-by-parameter-with-export_as_txt"></a>
 </h4>
 <p>Similarly, for pagination via <code>export_as_txt</code> after
-paginating by parameter, you can apply the following function to your
-list of listings by parameter. Any arguments to
-<code>export_as_txt</code> supplied to this function will be applied to
-each list element and the list will then be concatenated into the
-correct text format.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">export_to_txt_lsting_by_param</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lsting</span>, <span class="va">file</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">page_break</span> <span class="op">=</span> <span class="st">"\\s\\n"</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">lst</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">lsting</span>, <span class="va">export_as_txt</span>, page_break <span class="op">=</span> <span class="va">page_break</span>, <span class="va">...</span><span class="op">)</span>, recursive <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span>  <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">lst</span>, collapse <span class="op">=</span> <span class="va">page_break</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span> <span class="va">res</span> <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">res</span>, file <span class="op">=</span> <span class="va">file</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
+paginating by parameter, you can apply <code>export_as_txt</code> to
+your list of listings by parameter. Any arguments supplied to
+<code>export_as_txt</code> will be applied to each list element and the
+list will then be concatenated into the correct text format.</p>
 <p>For example:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">export_to_txt_lsting_by_param</span><span class="op">(</span><span class="va">lsting_by_arm</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/export_as_txt.html" class="external-link">export_as_txt</a></span><span class="op">(</span><span class="va">lsting_by_arm</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Title</span></span>
 <span><span class="co">#&gt; Treatment Arm: A: Drug X</span></span>
 <span><span class="co">#&gt; </span></span>
