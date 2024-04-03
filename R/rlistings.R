@@ -33,8 +33,8 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' @param main_footer (`character` or `NULL`)\cr a vector of main footer lines for the listing, or `NULL` (the default).
 #' @param prov_footer (`character` or `NULL`)\cr a vector of provenance footer lines for the listing, or `NULL`
 #'   (the default). Each string element is placed on a new line.
-#' @param split_into_pages_by_var (`character` or `NULL`)\cr the name of a variable for on the listing should be split 
-#'   into pages, with each page corresponding to one unique value/level of the variable. See 
+#' @param split_into_pages_by_var (`character` or `NULL`)\cr the name of a variable for on the listing should be split
+#'   into pages, with each page corresponding to one unique value/level of the variable. See
 #'   [split_into_pages_by_var()] for more details.
 #' @param vec (`string`)\cr name of a column vector from a `listing_df` object to be annotated as a key column.
 #'
