@@ -14,9 +14,8 @@ h_lsting_adae <- function(disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "
 
 # Helper function to print output from paginate_listings
 fast_print <- function(x) {
-  nothing <- lapply(seq_along(x), function(pg_num){
+  nothing <- lapply(seq_along(x), function(pg_num) {
     cat("Page", pg_num, "\n")
     cat(toString(x[[pg_num]]))
   })
 }
-

@@ -162,8 +162,10 @@ testthat::test_that("pagination: lpp and cpp correctly computed for landscape", 
 testthat::test_that("pagination: lpp and cpp correctly computed for margins", {
   lsting <- h_lsting_adae()
   pag <- paginate_listing(lsting, lpp = 42, cpp = 65, font_size = 12, print_pages = FALSE)
-  res <- paginate_listing(lsting, margins = c(top = 2, bottom = 2, left = 1, right = 1),
-                          font_size = 12, print_pages = FALSE)
+  res <- paginate_listing(lsting,
+    margins = c(top = 2, bottom = 2, left = 1, right = 1),
+    font_size = 12, print_pages = FALSE
+  )
   testthat::expect_identical(res, pag)
 })
 
@@ -171,8 +173,13 @@ testthat::test_that("pagination: lpp and cpp correctly computed for margins", {
 testthat::test_that("pagination works with col wrapping", {
   lsting <- h_lsting_adae(disp_cols = c("USUBJID", "AESOC", "RACE"))
 
-  testthat::expect_silent(pag <- paginate_listing(lsting, colwidths = c(15, 15, 15, 15),
-                                                  font_size = 12, print_pages = FALSE))
+  testthat::expect_silent(
+    pag <- paginate_listing(
+      lsting,
+      colwidths = c(15, 15, 15, 15),
+      font_size = 12, print_pages = FALSE
+    )
+  )
   pag_no_wrapping <- paginate_listing(lsting, font_size = 12, print_pages = FALSE)
 
   testthat::expect_equal(length(pag), length(pag_no_wrapping) + 1)
@@ -289,7 +296,6 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols when doing 
     sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] %>% nchar()),
     rep(expected_min_cpp, 10)
   )
-
 })
 
 testthat::test_that("paginate_listing works with split_into_pages_by_var", {
@@ -305,13 +311,13 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var", {
     add_listing_col("BMRKR1", format = "xx.x") %>%
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
-    pag_listing <- paginate_listing(lsting, lpp = 20, cpp = 65, print_pages = FALSE)[[3]]
-    testthat::expect_equal(main_title(pag_listing), "title")
-    testthat::expect_equal(subtitles(pag_listing), "Patient Subset - Sex: F")
-    testthat::expect_equal(main_footer(pag_listing), "foot")
-    testthat::expect_true(all(pag_listing$strings[-1, 3] == "F"))
-    testthat::expect_snapshot(fast_print(list(pag_listing)))
+  pag_listing <- paginate_listing(lsting, lpp = 20, cpp = 65, print_pages = FALSE)[[3]]
+  testthat::expect_equal(main_title(pag_listing), "title")
+  testthat::expect_equal(subtitles(pag_listing), "Patient Subset - Sex: F")
+  testthat::expect_equal(main_footer(pag_listing), "foot")
+  testthat::expect_true(all(pag_listing$strings[-1, 3] == "F"))
+  testthat::expect_snapshot(fast_print(list(pag_listing)))
 
-    # This works also for the pagination print
-    testthat::expect_snapshot(paginate_listing(lsting, lpp = 330, cpp = 365, print_pages = TRUE))
+  # This works also for the pagination print
+  testthat::expect_snapshot(paginate_listing(lsting, lpp = 330, cpp = 365, print_pages = TRUE))
 })

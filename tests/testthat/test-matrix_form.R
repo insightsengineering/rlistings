@@ -1,14 +1,18 @@
 testthat::test_that("matrix_form keeps relevant information and structure about the listing", {
-  my_iris <- iris %>% slice(c(16, 3)) %>% mutate("fake_rownames" = c("mean", "mean"))
+  my_iris <- iris %>%
+    slice(c(16, 3)) %>%
+    mutate("fake_rownames" = c("mean", "mean"))
 
   lsting <- as_listing(my_iris,
-                       key_cols = c("fake_rownames", "Petal.Width"),
-                       disp_cols = c("Petal.Length"))
+    key_cols = c("fake_rownames", "Petal.Width"),
+    disp_cols = c("Petal.Length")
+  )
   mat <- matrix_form(lsting)
 
   # IMPORTANT: the following is coming directly from spoof matrix form for rlistings coming from {formatters}
   mat_rebuilt <- basic_listing_mf(my_iris[c("fake_rownames", "Petal.Width", "Petal.Length")],
-                                  keycols = c("fake_rownames", "Petal.Width"), add_decoration = FALSE)
+    keycols = c("fake_rownames", "Petal.Width"), add_decoration = FALSE
+  )
 
   expect_equal(names(mat_rebuilt), names(mat))
 
