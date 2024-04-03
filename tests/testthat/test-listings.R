@@ -329,9 +329,26 @@ testthat::test_that("split_into_pages_by_var works as expected", {
     main_title = "title",
     main_footer = "foot"
   ) %>%
-    add_listing_col("BMRKR1", format = "xx.x") %>%
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
   testthat::expect_equal(length(lsting), length(unique(tmp_data[["SEX"]])))
   testthat::expect_equal(subtitles(lsting[[1]]), "Patient Subset - Sex: M")
+
+  lsting <- as_listing(
+    tmp_data,
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = "SEX",
+    main_title = "title",
+    main_footer = "foot"
+  ) %>%
+    split_into_pages_by_var("SEX")
+  lsting_id <- as_listing(
+    tmp_data,
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = "SEX",
+    main_title = "title",
+    main_footer = "foot",
+    split_into_pages_by_var = "SEX"
+  )
+  testthat::expect_identical(lsting, lsting_id)
 })

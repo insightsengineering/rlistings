@@ -32,12 +32,12 @@ listing cannot be modified further after applying this function.
 dat <- ex_adae[1:20, ]
 
 lsting <- as_listing(
-    dat,
-    key_cols = c("USUBJID", "AGE"),
-    disp_cols = "SEX",
-    main_title = "title",
-    main_footer = "footer"
-  ) \%>\%
+  dat,
+  key_cols = c("USUBJID", "AGE"),
+  disp_cols = "SEX",
+  main_title = "title",
+  main_footer = "footer"
+) \%>\%
   add_listing_col("BMRKR1", format = "xx.x") \%>\%
   split_into_pages_by_var("SEX")
 

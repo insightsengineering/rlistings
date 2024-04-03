@@ -22,7 +22,8 @@ as_listing(
   main_title = NULL,
   subtitles = NULL,
   main_footer = NULL,
-  prov_footer = NULL
+  prov_footer = NULL,
+  split_into_pages_by_var = NULL
 )
 
 as_keycol(vec)
@@ -85,6 +86,10 @@ for the listing, or \code{NULL} (the default).}
 
 \item{prov_footer}{character or NULL. A vector of provenance strings
 for the listing, or \code{NULL} (the default). Each string element is placed on a new line.}
+
+\item{split_into_pages_by_var}{character or NULL. The name of a column for which the
+listing should be split into pages, one for each level of the column. Check
+\code{\link[=split_into_pages_by_var]{split_into_pages_by_var()}} for more details.}
 
 \item{vec}{any. A column vector from a \code{listing_df} to be annotated as a key column.}
 

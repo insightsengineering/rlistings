@@ -37,6 +37,9 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   for the listing, or `NULL` (the default).
 #' @param prov_footer character or NULL. A vector of provenance strings
 #'   for the listing, or `NULL` (the default). Each string element is placed on a new line.
+#' @param split_into_pages_by_var character or NULL. The name of a column for which the
+#'   listing should be split into pages, one for each level of the column. Check
+#'   [split_into_pages_by_var()] for more details.
 #' @param vec any. A column vector from a `listing_df` to be annotated as a key column.
 #'
 #' @return A `listing_df` object, sorted by the key columns.
@@ -138,7 +141,8 @@ as_listing <- function(df,
                        main_title = NULL,
                        subtitles = NULL,
                        main_footer = NULL,
-                       prov_footer = NULL) {
+                       prov_footer = NULL,
+                       split_into_pages_by_var = NULL) {
   if (length(non_disp_cols) > 0 && length(intersect(key_cols, non_disp_cols)) > 0) {
     stop(
       "Key column also listed in non_disp_cols. All key columns are by",
@@ -223,12 +227,18 @@ as_listing <- function(df,
   if (unique_rows) df <- df[!duplicated(df[, cols]), ]
 
   class(df) <- c("listing_df", class(df))
+
   ## these all work even when the value is NULL
   main_title(df) <- main_title
   main_footer(df) <- main_footer
   subtitles(df) <- subtitles
   prov_footer(df) <- prov_footer
   listing_dispcols(df) <- cols
+
+  if (!is.null(split_into_pages_by_var)) {
+    df <- split_into_pages_by_var(df, split_into_pages_by_var)
+  }
+
   df
 }
 
