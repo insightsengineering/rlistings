@@ -187,7 +187,7 @@ testthat::test_that("pagination works with col wrapping", {
 })
 
 testthat::test_that("pagination repeats keycols in other pages", {
-  dat <- formatters::ex_adae
+  dat <- ex_adae
   lsting <- as_listing(dat[1:25, c(1:6, 40)],
     key_cols = c("USUBJID", "AESOC"),
     main_title = "Example Title for Listing",
