@@ -55,8 +55,7 @@ testthat::test_that("as_listing produces correct output when default_formatting 
       "To cover all remaining columns please add an ",
       "'all' configuration to `default_formatting`."
     )
-  ) %>%
-    suppressMessages()
+  )
 })
 
 testthat::test_that("as_listing produces correct output when col_formatting is specified", {

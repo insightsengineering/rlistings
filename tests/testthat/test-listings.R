@@ -302,7 +302,7 @@ testthat::test_that("as_listing works with NA values in key cols", {
 })
 
 testthat::test_that("add_listing_col works with a function when a format is applied", {
-  suppressMessages(lsting <- as_listing(
+  lsting <- as_listing(
     mtcars[1:5, ],
     key_cols = c("gear", "carb"),
     disp_cols = "qsec"
@@ -311,7 +311,7 @@ testthat::test_that("add_listing_col works with a function when a format is appl
       "kpg",
       function(df) df$mpg * 1.60934,
       format = "xx.xx"
-    ))
+    )
 
   testthat::expect_identical(
     matrix_form(lsting)$strings[, 4],
