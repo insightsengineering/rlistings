@@ -169,7 +169,6 @@ testthat::test_that("pagination: lpp and cpp correctly computed for margins", {
   testthat::expect_identical(res, pag)
 })
 
-
 testthat::test_that("pagination works with col wrapping", {
   lsting <- h_lsting_adae(disp_cols = c("USUBJID", "AESOC", "RACE"))
 

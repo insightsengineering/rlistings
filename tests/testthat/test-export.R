@@ -24,7 +24,6 @@ testthat::test_that("key columns repeat with export_as_txt", {
   testthat::expect_snapshot(cat(listing_exp))
 })
 
-
 testthat::test_that("key columns repeat with pagination with export_as_txt", {
   # pre-processing and ordering
   tbl <- as_listing(

@@ -7,6 +7,7 @@
    variable. This enables page splits by variable when paginating.
  * Removed defunct function `pag_listing_indices`.
  * Refactored `paginate_listing` to use directly `paginate_to_mpfs` function from `formatters` package.
+ * Remove defunct function `pag_listing_indices`.
 
 ## rlistings 0.2.7
  * Applied `styler` and resolved package lint. Changed default indentation from 4 spaces to 2.

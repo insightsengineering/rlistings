@@ -27,30 +27,27 @@ paginate_listing(
 \arguments{
 \item{lsting}{(\code{listing_df} or \code{list})\cr the listing or list of listings to paginate.}
 
-\item{page_type}{character(1).   Name   of  a  page  type.   See
-\code{page_types}.   Ignored when  \code{pg_width} and  \code{pg_height}
-are set directly.}
+\item{page_type}{(\code{string})\cr name of a page type. See \code{\link[formatters]{page_types}}. Ignored
+when \code{pg_width} and \code{pg_height} are set directly.}
 
-\item{font_family}{character(1). Name of a font family. An error
-will be thrown if the family named is not monospaced. Defaults
-to Courier.}
+\item{font_family}{(\code{string})\cr name of a font family. An error will be thrown
+if the family named is not monospaced. Defaults to \code{"Courier"}.}
 
-\item{font_size}{numeric(1). Font size, defaults to 12.}
+\item{font_size}{(\code{numeric(1)})\cr font size. Defaults to \code{12}.}
 
-\item{lineheight}{numeric(1). Line height, defaults to 1.}
+\item{lineheight}{(\code{numeric(1)})\cr line height. Defaults to \code{1}.}
 
-\item{landscape}{logical(1). Should the  dimensions of \code{page_type}
-be inverted  for landscape?  Defaults to  \code{FALSE}, ignored when
-\code{pg_width} and \code{pg_height} are set directly.}
+\item{landscape}{(\code{flag})\cr whether the dimensions of \code{page_type} should be
+inverted for landscape orientation. Defaults to \code{FALSE}, ignored when \code{pg_width} and
+\code{pg_height} are set directly.}
 
-\item{pg_width}{numeric(1). Page width in inches.}
+\item{pg_width}{(\code{numeric(1)})\cr page width in inches.}
 
-\item{pg_height}{numeric(1). Page height in inches.}
+\item{pg_height}{(\code{numeric(1)})\cr page height in inches.}
 
-\item{margins}{numeric(4). Named numeric vector containing \code{'bottom'},
-\code{'left'}, \code{'top'}, and \code{'right'} margins in inches. Defaults
-to \code{.5} inches for both vertical margins and \code{.75} for both
-horizontal margins.}
+\item{margins}{(\code{numeric(4)})\cr named numeric vector containing \code{"bottom"}, \code{"left"},
+\code{"top"}, and \code{"right"} margins in inches. Defaults to \code{.5} inches for both vertical
+margins and \code{.75} for both horizontal margins.}
 
 \item{lpp}{(\code{numeric(1)} or \code{NULL})\cr number of rows/lines (excluding titles and footers)
 to include per page. Standard is \code{70} while \code{NULL} disables vertical pagination.}
@@ -58,26 +55,22 @@ to include per page. Standard is \code{70} while \code{NULL} disables vertical p
 \item{cpp}{(\code{numeric(1)} or \code{NULL})\cr width (in characters) of the pages for horizontal
 pagination. \code{NULL} (the default) indicates no horizontal pagination should be done.}
 
-\item{colwidths}{numeric vector.  Column widths (in characters) for
-use with vertical pagination.}
+\item{colwidths}{(\code{numeric})\cr vector of column widths (in characters) for use in vertical pagination.}
 
-\item{tf_wrap}{logical(1). Should  the texts for  title, subtitle,
-and footnotes be wrapped?}
+\item{tf_wrap}{(\code{flag})\cr whether the text for title, subtitles, and footnotes should be wrapped.}
 
-\item{rep_cols}{numeric(1). Number of \emph{columns} (not including
-row labels) to be repeated on every page. Defaults to 0}
+\item{rep_cols}{(\code{numeric(1)})\cr number of \emph{columns} (not including row labels) to be repeated on every page.
+Defaults to 0.}
 
-\item{max_width}{integer(1), character(1) or \code{NULL}. Width that title
-and   footer   (including   footnotes)  materials   should   be
-word-wrapped to. If \code{NULL}, it is  set to the current print width
-of the  session (\code{getOption("width")}). If set to \code{"auto"},
-the width of the table (plus any table inset) is used. Ignored
-completely if \code{tf_wrap} is \code{FALSE}.}
+\item{max_width}{(\code{integer(1)}, \code{string} or \code{NULL})\cr width that title and footer (including
+footnotes) materials should be word-wrapped to. If \code{NULL}, it is set to the current print width of the
+session (\code{getOption("width")}). If set to \code{"auto"}, the width of the table (plus any table inset) is
+used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 
-\item{verbose}{logical(1). Should additional informative messages about the search for
-pagination breaks be shown. Defaults to \code{FALSE}.}
+\item{verbose}{(\code{flag})\cr whether additional informative messages about the search for
+pagination breaks should be shown. Defaults to \code{FALSE}.}
 
-\item{print_pages}{(\code{logical(1)})\cr whether to also print the paginated listing to console
+\item{print_pages}{(\code{flag})\cr whether the paginated listing should be printed to the console
 (\code{cat(toString(x))}).}
 }
 \value{
@@ -94,7 +87,6 @@ rows and/or horizontal if there are many columns. This function is a wrapper of
 dat <- ex_adae
 lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
 mat <- matrix_form(lsting)
-
 cat(toString(mat))
 
 paginate_listing(lsting, lpp = 10)

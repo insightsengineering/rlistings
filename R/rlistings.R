@@ -1,50 +1,47 @@
 setOldClass(c("listing_df", "tbl_df", "tbl", "data.frame"))
 setOldClass(c("MatrixPrintForm", "list"))
 
-#' @rdname listings
-#' @title Create a Listing from a `data.frame` or `tibble`
+#' Create a listing from a `data.frame` or `tibble`
 #'
 #' @description `r lifecycle::badge("experimental")`
 #'
-#' Creates listings by using `cols` and `key_cols` to produce a compact and
-#' elegant representation of the `data.frame` or `tibble` in input.
+#' Create listings displaying `key_cols` and `disp_cols` to produce a compact and
+#' elegant representation of the input `data.frame` or `tibble`.
 #'
-#' @param df data.frame or listing_df. The (non-listing) data.frame to be converted to a listing or
-#'   the listing_df to be modified.
-#' @param key_cols character. Names of columns which should be treated as *key columns*
+#' @param df (`data.frame` or `listing_df`)\cr the `data.frame` to be converted to a listing or
+#'   `listing_df` to be modified.
+#' @param key_cols (`character`)\cr vector of names of columns which should be treated as *key columns*
 #'   when rendering the listing. Key columns allow you to group repeat occurrences.
-#' @param disp_cols character or NULL. Names of non-key columns which should be displayed when
-#'   the listing is rendered. Defaults to all columns of `df` not named in `key_cols` or
+#' @param disp_cols (`character` or `NULL`)\cr vector of names of non-key columns which should be
+#'   displayed when the listing is rendered. Defaults to all columns of `df` not named in `key_cols` or
 #'   `non_disp_cols`.
-#' @param non_disp_cols character or NULL. Names of non-key columns to be excluded as display
-#'   columns. All other non-key columns are then treated as display columns. Invalid if
-#'   `disp_cols` is non-NULL.
-#' @param unique_rows logical(1). Should only unique rows be included in the listing. Defaults to `FALSE`.
-#' @param default_formatting list. A named list of default column format configurations to apply when rendering the
-#'   listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all unspecified
-#'   numeric classes) and a value of type `fmt_config` with the format configuration that should be implemented for
-#'   columns of that class. If named element "all" is included in the list, this configuration will be used for all
-#'   data classes not specified. Objects of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`.
-#' @param col_formatting list. A named list of custom column formatting configurations to apply to specific columns
-#'   when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a value of
-#'   type `fmt_config` with the formatting configuration that should be implemented for that column. Objects of type
-#'   `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`. Defaults to `NULL`.
-#' @param main_title character(1) or NULL. The main title for the listing, or
-#'   `NULL` (the default). Must be length 1 non-NULL.
-#' @param subtitles character or NULL. A vector of subtitle(s) for the
-#'   listing, or `NULL` (the default).
-#' @param main_footer character or NULL. A vector of main footer lines
-#'   for the listing, or `NULL` (the default).
-#' @param prov_footer character or NULL. A vector of provenance strings
-#'   for the listing, or `NULL` (the default). Each string element is placed on a new line.
-#' @param split_into_pages_by_var character or NULL. The name of a column for which the
-#'   listing should be split into pages, one for each level of the column. Check
+#' @param non_disp_cols (`character` or `NULL`)\cr vector of names of non-key columns to be excluded as display
+#'   columns. All other non-key columns are treated as display columns. Ignored if `disp_cols` is non-`NULL`.
+#' @param unique_rows (`flag`)\cr whether only unique rows should be included in the listing. Defaults to `FALSE`.
+#' @param default_formatting (`list`)\cr a named list of default column format configurations to apply when rendering
+#'   the listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all
+#'   unspecified numeric classes) and a value of type `fmt_config` with the format configuration that should be
+#'   implemented for columns of that class. If named element "all" is included in the list, this configuration will be
+#'   used for all data classes not specified. Objects of type `fmt_config` can take 3 arguments: `format`, `na_str`,
+#'   and `align`.
+#' @param col_formatting (`list`)\cr a named list of custom column formatting configurations to apply to specific
+#'   columns when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a
+#'   value of type `fmt_config` with the formatting configuration that should be implemented for that column. Objects
+#'   of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`. Defaults to `NULL`.
+#' @param main_title (`string` or `NULL`)\cr the main title for the listing, or `NULL` (the default).
+#' @param subtitles (`character` or `NULL`)\cr a vector of subtitles for the listing, or `NULL` (the default).
+#' @param main_footer (`character` or `NULL`)\cr a vector of main footer lines for the listing, or `NULL` (the default).
+#' @param prov_footer (`character` or `NULL`)\cr a vector of provenance footer lines for the listing, or `NULL`
+#'   (the default). Each string element is placed on a new line.
+#' @param split_into_pages_by_var (`character` or `NULL`)\cr the name of a variable for on the listing should be split
+#'   into pages, with each page corresponding to one unique value/level of the variable. See
 #'   [split_into_pages_by_var()] for more details.
-#' @param vec any. A column vector from a `listing_df` to be annotated as a key column.
+#' @param vec (`string`)\cr name of a column vector from a `listing_df` object to be annotated as a key column.
 #'
-#' @return A `listing_df` object, sorted by the key columns.
+#' @return A `listing_df` object, sorted by its key columns.
 #'
-#' @details At its core, a `listing_df` object is a `tbl_df` object with a customized
+#' @details
+#' At its core, a `listing_df` object is a `tbl_df` object with a customized
 #' print method  and support for the formatting and pagination machinery provided by
 #' the `formatters` package.
 #'
@@ -54,9 +51,9 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'
 #' All key columns are also display columns.
 #'
-#' `listing_df` objects are always sorted by their set of key_columns at creation time.
+#' `listing_df` objects are always sorted by their set of key columns at creation time.
 #' Any `listing_df` object which is not sorted by its full set of key columns (e.g.,
-#' one  whose rows have been reordered explicitly creation) is invalid and the behavior
+#' one whose rows have been reordered explicitly during creation) is invalid and the behavior
 #' when rendering or paginating that object is undefined.
 #'
 #' Each value of a key column is printed only once per page and per unique combination of
@@ -72,7 +69,6 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' Columns in the underlying data which are neither key nor display columns remain
 #' within the object available for computations but *are not rendered during
 #' printing or export of the listing*.
-#'
 #'
 #' @examples
 #' dat <- ex_adae
@@ -131,6 +127,7 @@ setOldClass(c("MatrixPrintForm", "list"))
 #' cat(toString(mat))
 #'
 #' @export
+#' @rdname listings
 as_listing <- function(df,
                        key_cols = names(df)[1],
                        disp_cols = NULL,
@@ -242,7 +239,6 @@ as_listing <- function(df,
   df
 }
 
-
 #' @export
 #' @rdname listings
 as_keycol <- function(vec) {
@@ -255,14 +251,11 @@ as_keycol <- function(vec) {
   vec
 }
 
-
 #' @export
 #' @rdname listings
 is_keycol <- function(vec) {
   inherits(vec, "listing_keycol")
 }
-
-
 
 #' @export
 #' @rdname listings
@@ -271,18 +264,18 @@ get_keycols <- function(df) {
 }
 
 #' @inherit formatters::matrix_form
-#' @seealso [formatters::matrix_form()]
-#' @param indent_rownames logical(1). Silently ignored, as listings do not have row names
+#' @param indent_rownames (`flag`)\cr silently ignored, as listings do not have row names
 #'   nor indenting structure.
+#' @param expand_newlines (`flag`)\cr this should always be `TRUE` for listings. We keep it
+#'   for debugging reasons.
+#'
+#' @return a [`MatrixPrintForm`] object.
+#'
+#' @seealso [formatters::matrix_form()]
 #'
 #' @examples
 #' lsting <- as_listing(mtcars)
 #' mf <- matrix_form(lsting)
-#'
-#' @return a `MatrixPrintForm` object
-#'
-#' @note Parameter `expand_newlines` should always be `TRUE` for listings. We keep it for
-#'   debugging reasons.
 #'
 #' @export
 setMethod(
@@ -298,14 +291,12 @@ setMethod(
     attributes(listing) <- atts
     keycols <- get_keycols(listing)
 
-
     bodymat <- matrix("",
       nrow = nrow(listing),
       ncol = ncol(listing)
     )
 
     colnames(bodymat) <- names(listing)
-
 
     curkey <- ""
     for (i in seq_along(keycols)) {
@@ -325,7 +316,6 @@ setMethod(
         bodymat[, nonk] <- vec
       }
     }
-
 
     fullmat <- rbind(
       var_labels(listing, fill = TRUE),
@@ -369,21 +359,23 @@ setMethod(
   }
 )
 
-
 #' @export
 #' @rdname listings
 listing_dispcols <- function(df) attr(df, "listing_dispcols") %||% character()
 
+#' @param new (`character`)\cr vector of names of columns to be added to
+#'   the set of display columns.
+#'
 #' @export
-#' @param new character. Names of columns to be added to
-#' the set of display columns.
 #' @rdname listings
 add_listing_dispcol <- function(df, new) {
   listing_dispcols(df) <- c(listing_dispcols(df), new)
   df
 }
+
+#' @param value (`string`)\cr new value.
+#'
 #' @export
-#' @param value character. New value.
 #' @rdname listings
 `listing_dispcols<-` <- function(df, value) {
   if (!is.character(value)) {
@@ -403,22 +395,18 @@ add_listing_dispcol <- function(df, new) {
   df
 }
 
-
-
-#' @rdname listings
-#'
-#' @param name character(1). Name of the existing or new column to be
-#'   displayed when the listing is rendered.
-#' @param fun function or NULL. A function which accepts \code{df} and
-#'   returns the vector for a new column, which is added to \code{df} as
-#'   \code{name}, or NULL if marking an existing column as
-#'   a listing column.
 #' @inheritParams formatters::fmt_config
+#' @param name (`string`)\cr name of the existing or new column to be
+#'   displayed when the listing is rendered.
+#' @param fun (`function` or `NULL`)\cr a function which accepts `df` and
+#'   returns the vector for a new column, which is added to `df` as
+#'   `name`, or `NULL` if marking an existing column as a listing column.
 #'
-#' @return `df`, with `name` created (if necessary) and marked for
+#' @return `df` with `name` created (if necessary) and marked for
 #'   display during rendering.
 #'
 #' @export
+#' @rdname listings
 add_listing_col <- function(df,
                             name,
                             fun = NULL,

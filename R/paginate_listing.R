@@ -15,7 +15,7 @@
 #'   to include per page. Standard is `70` while `NULL` disables vertical pagination.
 #' @param cpp (`numeric(1)` or `NULL`)\cr width (in characters) of the pages for horizontal
 #'   pagination. `NULL` (the default) indicates no horizontal pagination should be done.
-#' @param print_pages (`logical(1)`)\cr whether to also print the paginated listing to console
+#' @param print_pages (`flag`)\cr whether the paginated listing should be printed to the console
 #'   (`cat(toString(x))`).
 #'
 #' @return A list of `listing_df` objects where each list element corresponds to a separate page.
@@ -24,7 +24,6 @@
 #' dat <- ex_adae
 #' lsting <- as_listing(dat[1:25, ], disp_cols = c("USUBJID", "AESOC", "RACE", "AETOXGR", "BMRKR1"))
 #' mat <- matrix_form(lsting)
-#'
 #' cat(toString(mat))
 #'
 #' paginate_listing(lsting, lpp = 10)

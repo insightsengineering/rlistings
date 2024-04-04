@@ -2,7 +2,7 @@
 % Please edit documentation in R/rlistings_methods.R
 \name{make_row_df,listing_df-method}
 \alias{make_row_df,listing_df-method}
-\title{Make pagination dataframe for a listing}
+\title{Make pagination data frame for a listing}
 \usage{
 \S4method{make_row_df}{listing_df}(
   tt,
@@ -19,35 +19,34 @@
 )
 }
 \arguments{
-\item{tt}{listing_df. The listing to be rendered}
+\item{tt}{(\code{listing_df})\cr the listing to be rendered.}
 
-\item{colwidths}{numeric. Internal detail do not set manually.}
+\item{colwidths}{(\code{numeric})\cr internal detail, do not set manually.}
 
-\item{visible_only}{logical(1). Ignored, as listings
-do not have non-visible structural elements.}
+\item{visible_only}{(\code{flag})\cr ignored, as listings do not have
+non-visible structural elements.}
 
-\item{rownum}{numeric(1). Internal detail do not set manually.}
+\item{rownum}{(\code{numeric(1)})\cr internal detail, do not set manually.}
 
-\item{indent}{integer(1). Internal detail do not set manually.}
+\item{indent}{(\code{integer(1)})\cr internal detail, do not set manually.}
 
-\item{path}{character.  Path  to  the (sub)table  represented  by
-\code{tt}. Defaults to \code{character()}}
+\item{path}{(\code{character})\cr path to the (sub)table represented by \code{tt}. Defaults to \code{character()}.}
 
-\item{incontent}{logical(1). Internal detail do not set manually.}
+\item{incontent}{(\code{flag})\cr internal detail, do not set manually.}
 
-\item{repr_ext}{integer(1). Internal detail do not set manually.}
+\item{repr_ext}{(\code{integer(1)})\cr internal detail, do not set manually.}
 
-\item{repr_inds}{integer. Internal detail do not set manually.}
+\item{repr_inds}{(\code{integer})\cr internal detail, do not set manually.}
 
-\item{sibpos}{integer(1). Internal detail do not set manually.}
+\item{sibpos}{(\code{integer(1)})\cr internal detail, do not set manually.}
 
-\item{nsibs}{integer(1). Internal detail do not set manually.}
+\item{nsibs}{(\code{integer(1)})\cr internal detail, do not set manually.}
 }
 \value{
-a data.frame with pagination information.
+a \code{data.frame} with pagination information.
 }
 \description{
-Make pagination dataframe for a listing
+Make pagination data frame for a listing
 }
 \examples{
 lsting <- as_listing(mtcars)
@@ -55,5 +54,5 @@ mf <- matrix_form(lsting)
 
 }
 \seealso{
-\code{\link[formatters]{make_row_df}}
+\code{\link[formatters:make_row_df]{formatters::make_row_df()}}
 }
