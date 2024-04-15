@@ -18,3 +18,7 @@ downstream_repos:
   insightsengineering/teal.modules.clinical:
     repo: insightsengineering/teal.modules.clinical
     host: https://github.com
+  insightsengineering/tlg-catalog:
+    repo: insightsengineering/tlg-catalog
+    host: https://github.com
+    subdir: package
