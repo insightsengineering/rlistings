@@ -18,6 +18,7 @@ testthat::test_that("Listing print correctly with different widths", {
 
   testthat::expect_snapshot(cat(toString(matrix_form(lsting), widths = c(7, 8, 9), hsep = "-")))
 })
+
 testthat::test_that("as_listing produces correct output when default_formatting is specified", {
   anl$BMRKR1[3:6] <- NA
   lsting <- as_listing(
@@ -55,8 +56,7 @@ testthat::test_that("as_listing produces correct output when default_formatting 
       "To cover all remaining columns please add an ",
       "'all' configuration to `default_formatting`."
     )
-  ) %>%
-    suppressMessages()
+  )
 })
 
 testthat::test_that("as_listing produces correct output when col_formatting is specified", {

@@ -17,7 +17,6 @@ testthat::test_that("Column labels are the same", {
   )
 })
 
-
 testthat::test_that("listings work well with different formats and attributes", {
   # (1) Error with NA values in numeric column when apply format
   anl_tmp <- anl
@@ -131,7 +130,6 @@ testthat::test_that("regression test for keycols being lost due to `head()`", {
     c(5L, ncol(mtcars))
   )
 })
-
 
 testthat::test_that("column inclusion and ordering stuff", {
   ## key columns must be left-most k columns (#36)
@@ -294,15 +292,15 @@ testthat::test_that("as_listing works with NA values in key cols", {
 
   mtcars[33, ] <- mtcars[32, ]
   mtcars[33, c(7, 10:11)] <- NA
-  suppressMessages(testthat::expect_message(lsting <- as_listing(
+  testthat::expect_warning(lsting <- as_listing(
     mtcars,
     key_cols = c("gear", "carb"),
     disp_cols = "qsec"
-  ), "rows that only contain NA"))
+  ), "rows that only contain NA")
 })
 
 testthat::test_that("add_listing_col works with a function when a format is applied", {
-  suppressMessages(lsting <- as_listing(
+  lsting <- as_listing(
     mtcars[1:5, ],
     key_cols = c("gear", "carb"),
     disp_cols = "qsec"
@@ -311,10 +309,44 @@ testthat::test_that("add_listing_col works with a function when a format is appl
       "kpg",
       function(df) df$mpg * 1.60934,
       format = "xx.xx"
-    ))
+    )
 
   testthat::expect_identical(
     matrix_form(lsting)$strings[, 4],
     c("kpg", "34.44", "30.09", "36.69", "33.80", "33.80")
   )
+})
+
+testthat::test_that("split_into_pages_by_var works as expected", {
+  tmp_data <- ex_adae[1:100, ]
+
+  lsting <- as_listing(
+    tmp_data,
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = "SEX",
+    main_title = "title",
+    main_footer = "foot"
+  ) %>%
+    split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
+
+  testthat::expect_equal(length(lsting), length(unique(tmp_data[["SEX"]])))
+  testthat::expect_equal(subtitles(lsting[[1]]), "Patient Subset - Sex: M")
+
+  lsting <- as_listing(
+    tmp_data,
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = "SEX",
+    main_title = "title",
+    main_footer = "foot"
+  ) %>%
+    split_into_pages_by_var("SEX")
+  lsting_id <- as_listing(
+    tmp_data,
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = "SEX",
+    main_title = "title",
+    main_footer = "foot",
+    split_into_pages_by_var = "SEX"
+  )
+  testthat::expect_identical(lsting, lsting_id)
 })

@@ -9,7 +9,7 @@
 \alias{add_listing_dispcol}
 \alias{listing_dispcols<-}
 \alias{add_listing_col}
-\title{Create a Listing from a \code{data.frame} or \code{tibble}}
+\title{Create a listing from a \code{data.frame} or \code{tibble}}
 \usage{
 as_listing(
   df,
@@ -22,7 +22,8 @@ as_listing(
   main_title = NULL,
   subtitles = NULL,
   main_footer = NULL,
-  prov_footer = NULL
+  prov_footer = NULL,
+  split_into_pages_by_var = NULL
 )
 
 as_keycol(vec)
@@ -47,77 +48,77 @@ add_listing_col(
 )
 }
 \arguments{
-\item{df}{data.frame or listing_df. The (non-listing) data.frame to be converted to a listing or
-the listing_df to be modified.}
+\item{df}{(\code{data.frame} or \code{listing_df})\cr the \code{data.frame} to be converted to a listing or
+\code{listing_df} to be modified.}
 
-\item{key_cols}{character. Names of columns which should be treated as \emph{key columns}
+\item{key_cols}{(\code{character})\cr vector of names of columns which should be treated as \emph{key columns}
 when rendering the listing. Key columns allow you to group repeat occurrences.}
 
-\item{disp_cols}{character or NULL. Names of non-key columns which should be displayed when
-the listing is rendered. Defaults to all columns of \code{df} not named in \code{key_cols} or
+\item{disp_cols}{(\code{character} or \code{NULL})\cr vector of names of non-key columns which should be
+displayed when the listing is rendered. Defaults to all columns of \code{df} not named in \code{key_cols} or
 \code{non_disp_cols}.}
 
-\item{non_disp_cols}{character or NULL. Names of non-key columns to be excluded as display
-columns. All other non-key columns are then treated as display columns. Invalid if
-\code{disp_cols} is non-NULL.}
+\item{non_disp_cols}{(\code{character} or \code{NULL})\cr vector of names of non-key columns to be excluded as display
+columns. All other non-key columns are treated as display columns. Ignored if \code{disp_cols} is non-\code{NULL}.}
 
-\item{unique_rows}{logical(1). Should only unique rows be included in the listing. Defaults to \code{FALSE}.}
+\item{unique_rows}{(\code{flag})\cr whether only unique rows should be included in the listing. Defaults to \code{FALSE}.}
 
-\item{default_formatting}{list. A named list of default column format configurations to apply when rendering the
-listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all unspecified
-numeric classes) and a value of type \code{fmt_config} with the format configuration that should be implemented for
-columns of that class. If named element "all" is included in the list, this configuration will be used for all
-data classes not specified. Objects of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}.}
+\item{default_formatting}{(\code{list})\cr a named list of default column format configurations to apply when rendering
+the listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all
+unspecified numeric classes) and a value of type \code{fmt_config} with the format configuration that should be
+implemented for columns of that class. If named element "all" is included in the list, this configuration will be
+used for all data classes not specified. Objects of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str},
+and \code{align}.}
 
-\item{col_formatting}{list. A named list of custom column formatting configurations to apply to specific columns
-when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a value of
-type \code{fmt_config} with the formatting configuration that should be implemented for that column. Objects of type
-\code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}. Defaults to \code{NULL}.}
+\item{col_formatting}{(\code{list})\cr a named list of custom column formatting configurations to apply to specific
+columns when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a
+value of type \code{fmt_config} with the formatting configuration that should be implemented for that column. Objects
+of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}. Defaults to \code{NULL}.}
 
-\item{main_title}{character(1) or NULL. The main title for the listing, or
-\code{NULL} (the default). Must be length 1 non-NULL.}
+\item{main_title}{(\code{string} or \code{NULL})\cr the main title for the listing, or \code{NULL} (the default).}
 
-\item{subtitles}{character or NULL. A vector of subtitle(s) for the
-listing, or \code{NULL} (the default).}
+\item{subtitles}{(\code{character} or \code{NULL})\cr a vector of subtitles for the listing, or \code{NULL} (the default).}
 
-\item{main_footer}{character or NULL. A vector of main footer lines
-for the listing, or \code{NULL} (the default).}
+\item{main_footer}{(\code{character} or \code{NULL})\cr a vector of main footer lines for the listing, or \code{NULL} (the default).}
 
-\item{prov_footer}{character or NULL. A vector of provenance strings
-for the listing, or \code{NULL} (the default). Each string element is placed on a new line.}
+\item{prov_footer}{(\code{character} or \code{NULL})\cr a vector of provenance footer lines for the listing, or \code{NULL}
+(the default). Each string element is placed on a new line.}
 
-\item{vec}{any. A column vector from a \code{listing_df} to be annotated as a key column.}
+\item{split_into_pages_by_var}{(\code{character} or \code{NULL})\cr the name of a variable for on the listing should be split
+into pages, with each page corresponding to one unique value/level of the variable. See
+\code{\link[=split_into_pages_by_var]{split_into_pages_by_var()}} for more details.}
 
-\item{new}{character. Names of columns to be added to
+\item{vec}{(\code{string})\cr name of a column vector from a \code{listing_df} object to be annotated as a key column.}
+
+\item{new}{(\code{character})\cr vector of names of columns to be added to
 the set of display columns.}
 
-\item{value}{character. New value.}
+\item{value}{(\code{string})\cr new value.}
 
-\item{name}{character(1). Name of the existing or new column to be
+\item{name}{(\code{string})\cr name of the existing or new column to be
 displayed when the listing is rendered.}
 
-\item{fun}{function or NULL. A function which accepts \code{df} and
+\item{fun}{(\code{function} or \code{NULL})\cr a function which accepts \code{df} and
 returns the vector for a new column, which is added to \code{df} as
-\code{name}, or NULL if marking an existing column as
-a listing column.}
+\code{name}, or \code{NULL} if marking an existing column as a listing column.}
 
-\item{format}{character(1) or function. A format label (string) or \code{formatter} function.}
+\item{format}{(\code{string} or \code{function})\cr a format label (string) or formatter function.}
 
-\item{na_str}{character(1). String that should be displayed in place of missing values.}
+\item{na_str}{(\code{string})\cr string that should be displayed in place of missing values.}
 
-\item{align}{character(1). Alignment values should be rendered with.}
+\item{align}{(\code{string})\cr alignment values should be rendered with.}
 }
 \value{
-A \code{listing_df} object, sorted by the key columns.
+A \code{listing_df} object, sorted by its key columns.
 
-\code{df}, with \code{name} created (if necessary) and marked for
+\code{df} with \code{name} created (if necessary) and marked for
 display during rendering.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-Creates listings by using \code{cols} and \code{key_cols} to produce a compact and
-elegant representation of the \code{data.frame} or \code{tibble} in input.
+Create listings displaying \code{key_cols} and \code{disp_cols} to produce a compact and
+elegant representation of the input \code{data.frame} or \code{tibble}.
 }
 \details{
 At its core, a \code{listing_df} object is a \code{tbl_df} object with a customized
@@ -130,9 +131,9 @@ Key columns act as indexes, which means a number of things in practice.
 
 All key columns are also display columns.
 
-\code{listing_df} objects are always sorted by their set of key_columns at creation time.
+\code{listing_df} objects are always sorted by their set of key columns at creation time.
 Any \code{listing_df} object which is not sorted by its full set of key columns (e.g.,
-one  whose rows have been reordered explicitly creation) is invalid and the behavior
+one whose rows have been reordered explicitly during creation) is invalid and the behavior
 when rendering or paginating that object is undefined.
 
 Each value of a key column is printed only once per page and per unique combination of
