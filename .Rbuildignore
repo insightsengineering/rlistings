@@ -19,6 +19,6 @@ TODO\.md
 ^man-roxygen$
 pkgdown
 ^pkgdown$
-^revdeprefs\.yaml$
+^.revdeprefs\.yaml$
 ^revdep$
 ^\.covrignore$
