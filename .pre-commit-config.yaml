@@ -35,6 +35,7 @@ repos:
           .*\.Rproj|
           .*\.sh|
           (.*/|)\.gitignore|
+          (.*/|)\.covrignore|
           (.*/|)\.gitlab-ci\.y[a]?ml|
           (.*/|)\.lintr|
           (.*/|)\.pre-commit-.*|
