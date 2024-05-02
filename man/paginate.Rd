@@ -16,7 +16,7 @@ paginate_listing(
   margins = c(top = 0.5, bottom = 0.5, left = 0.75, right = 0.75),
   lpp = NA_integer_,
   cpp = NA_integer_,
-  colwidths = propose_column_widths(lsting, fontspec = fontspec),
+  colwidths = NULL,
   tf_wrap = !is.null(max_width),
   rep_cols = NULL,
   max_width = NULL,

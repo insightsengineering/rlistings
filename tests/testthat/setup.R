@@ -19,3 +19,19 @@ fast_print <- function(x) {
     cat(toString(x[[pg_num]]))
   })
 }
+
+
+compare_paginations <- function(paglst1, paglst2) {
+  if (length(paglst1) != length(paglst2))
+    return(FALSE)
+  indres <- vapply(seq_along(paglst1),
+                   function(i) compare_mpfs_no_fontspec(paglst1[[i]], paglst2[[i]]),
+                   TRUE)
+  expect_true(all(indres))
+}
+
+compare_mpfs_no_fontspec <- function(mpf1, mpf2) {
+  mf_fontspec(mpf1) <- NULL
+  mf_fontspec(mpf2) <- NULL
+  identical(mpf1, mpf2)
+}

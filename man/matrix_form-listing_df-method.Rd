@@ -8,7 +8,7 @@
   obj,
   indent_rownames = FALSE,
   expand_newlines = TRUE,
-  fontspec = font_spec("Courier", 9, 1.2),
+  fontspec = font_spec,
   col_gap = 3L
 )
 }

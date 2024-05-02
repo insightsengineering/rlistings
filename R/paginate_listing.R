@@ -45,14 +45,23 @@ paginate_listing <- function(lsting,
                              margins = c(top = .5, bottom = .5, left = .75, right = .75),
                              lpp = NA_integer_,
                              cpp = NA_integer_,
-                             colwidths = propose_column_widths(lsting, fontspec = fontspec),
+                             colwidths = NULL,
                              tf_wrap = !is.null(max_width),
                              rep_cols = NULL,
                              max_width = NULL,
                              fontspec = font_spec(font_family, font_size, lineheight),
                              verbose = FALSE,
                              print_pages = TRUE) {
-  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)
+  ## this is wrong!!! but thats a different PR
+  ## needed to support passing a list in after split_into_pages_by_var
+  ## no guarantee colwidths are right for all chunks
+  samp_lsting <- lsting
+  if (!is(lsting, "listing_df"))
+    samp_lsting <- lsting[[1]]
+  if (is.null(colwidths)) {
+    colwidths <- propose_column_widths(samp_lsting, fontspec = fontspec)
+  }
+  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(samp_lsting)), null.ok = TRUE)
   checkmate::assert_flag(tf_wrap)
   checkmate::assert_count(max_width, null.ok = TRUE)
   checkmate::assert_flag(verbose)
