@@ -34,7 +34,7 @@ Suggests:
     dplyr (>= 1.0.1),
     knitr (>= 1.42),
     lifecycle (>= 0.2.0),
-    rmarkdown (>= 2.19),
+    rmarkdown (>= 2.23),
     stringi (>= 1.6),
     testthat (>= 3.1.5),
     withr (>= 2.0.0)
