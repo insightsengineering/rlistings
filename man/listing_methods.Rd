@@ -60,7 +60,7 @@ used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 
 \item{j}{(\code{any})\cr object passed to base \code{[} methods.}
 
-\item{drop}{For matrices and arrays.  If \code{TRUE} the result is
+\item{drop}{relevant for matrices and arrays.  If \code{TRUE} the result is
     coerced to the lowest possible dimension (see the examples).  This
     only works for extracting elements, not for the replacement.  See
     \code{\link[base]{drop}} for further details.
