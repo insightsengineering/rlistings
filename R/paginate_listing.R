@@ -49,6 +49,8 @@ paginate_listing <- function(lsting,
                              tf_wrap = !is.null(max_width),
                              rep_cols = NULL,
                              max_width = NULL,
+                             col_gap = 3,
+                             fontspec = font_spec(font_family, font_size, lineheight),
                              verbose = FALSE,
                              print_pages = TRUE) {
   checkmate::assert_multi_class(lsting, c("listing_df", "list"))
@@ -60,9 +62,7 @@ paginate_listing <- function(lsting,
 
   pages <- paginate_to_mpfs(lsting,
     page_type = page_type,
-    font_family = font_family,
-    font_size = font_size,
-    lineheight = lineheight,
+    fontspec = fontspec,
     landscape = landscape,
     pg_width = pg_width,
     pg_height = pg_height,
@@ -73,6 +73,7 @@ paginate_listing <- function(lsting,
     tf_wrap = tf_wrap,
     max_width = max_width,
     rep_cols = rep_cols,
+    col_gap = col_gap,
     verbose = verbose
   )
 
@@ -80,7 +81,7 @@ paginate_listing <- function(lsting,
     nothing <- lapply(seq_along(pages), function(pagi) {
       cat("--- Page", paste0(pagi, "/", length(pages)), "---\n")
       # It is NULL because paginate_mpfs takes care of it
-      cat(toString(pages[[pagi]], widths = NULL, tf_wrap = tf_wrap, max_width = max_width))
+      cat(toString(pages[[pagi]], widths = NULL, tf_wrap = tf_wrap, max_width = max_width, col_gap = col_gap))
       cat("\n")
     })
   }

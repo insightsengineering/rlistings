@@ -1,13 +1,6 @@
-## #' Print a listing to the terminal
-## #' @param x listing_df. the listing
-## #' @param ... ANY. unused
-## #' @return prints the listing object to the screen and silently returns the object
-## #' @export
-## setMethod("print", "listing_df",
-##           function(x, ...) {
-##     cat(toString(listing_matrix_form(x)))
-##     invisible(x)
-## })
+
+## XXX this historically has been 1, but it actually should be 1.2!!!!!
+dflt_courier <- font_spec("Courier", 9, 1)
 
 #' Methods for `listing_df` objects
 #'
@@ -21,16 +14,32 @@
 #'
 #' @export
 #' @name listing_methods
-print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, ...) {
-  cat(toString(matrix_form(x), widths = widths, tf_wrap = tf_wrap, max_width = max_width, ...))
+print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, fontspec = NULL, col_gap = 3L,  ...) {
+  cat(
+    toString(
+      matrix_form(x, fontspec = fontspec, col_gap = col_gap),
+      widths = widths,
+      tf_wrap = tf_wrap,
+      max_width = max_width,
+      fontspec = fontspec,
+      col_gap = col_gap,
+      ...
+    )
+  )
   invisible(x)
 }
 
 #' @exportMethod toString
 #' @name listing_methods
 #' @aliases toString,listing_df-method
-setMethod("toString", "listing_df", function(x, ...) {
-  toString(matrix_form(x), ...)
+setMethod("toString", "listing_df", function(x, widths = NULL, fontspec = NULL, col_gap = 3L,  ...) {
+  toString(
+    matrix_form(x, fontspec = fontspec, col_gap = col_gap),
+    fontspec = fontspec,
+    col_gap = col_gap,
+    widths = widths,
+    ...
+  )
 })
 
 ## because rle in base is too much of a stickler for being atomic
@@ -75,19 +84,19 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
 #'   needed to render the elements of `vec` to width `max_width`.
 #'
 #' @keywords internal
-setGeneric("vec_nlines", function(vec, max_width = NULL) standardGeneric("vec_nlines"))
+setGeneric("vec_nlines", function(vec, max_width = NULL, fontspec = dflt_courier) standardGeneric("vec_nlines"))
 
 #' @param vec (`vector`)\cr a vector.
 #'
 #' @rdname vec_nlines
 #' @keywords internal
-setMethod("vec_nlines", "ANY", function(vec, max_width = NULL) {
+setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_courier) {
   if (is.null(max_width)) {
     max_width <- floor(0.9 * getOption("width")) # default of base::strwrap
     # NB: flooring as it is used as <= (also in base::strwrap)
   }
   # in formatters for characters
-  unlist(lapply(format_colvector(colvec = vec), nlines, max_width = max_width))
+  unlist(lapply(format_colvector(colvec = vec), nlines, max_width = max_width, fontspec = fontspec))
 })
 
 ## setMethod("vec_nlines", "character", function(vec, max_width = NULL) {
@@ -128,7 +137,8 @@ setMethod(
            repr_ext = 0L,
            repr_inds = integer(),
            sibpos = NA_integer_,
-           nsibs = NA_integer_) {
+           nsibs = NA_integer_,
+           fontspec = dflt_courier) {
     ## assume sortedness by keycols
     keycols <- get_keycols(tt)
     dispcols <- listing_dispcols(tt)
@@ -154,7 +164,7 @@ setMethod(
     ## if that column has any rows wider than the previously recorded extent.
     for (col in dispcols) {
       ## duplicated from matrix_form method, refactor!
-      col_ext <- vec_nlines(tt[[col]], max_width = colwidths[col])
+      col_ext <- vec_nlines(tt[[col]], max_width = colwidths[col], fontspec = fontspec)
       extents <- ifelse(col_ext > extents, col_ext, extents)
     }
     ret <- data.frame(
