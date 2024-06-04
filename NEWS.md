@@ -1,4 +1,4 @@
-## rlistings 0.2.8.9001
+## rlistings 0.2.8.9002
  * Added truetype font support based on new `formatters` api, by @gmbecker.
  * `paginate_listing` now accepts `col_gap` argument and passes it down correctly to pagination machinery in `formatters`, by @gmbecker.
  * Fixed tests so that paginations based on different fonts and page sizes can be compared, by @gmbecker.
