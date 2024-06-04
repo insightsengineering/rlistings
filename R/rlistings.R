@@ -280,7 +280,7 @@ get_keycols <- function(df) {
 #' @export
 setMethod(
   "matrix_form", "listing_df",
-  rix_form <- function(obj, indent_rownames = FALSE, expand_newlines = TRUE) {
+  rix_form <- function(obj, indent_rownames = FALSE, expand_newlines = TRUE, fontspec = font_spec, col_gap = 3L) {
     ##  we intentionally silently ignore indent_rownames because listings have
     ## no rownames, but formatters::vert_pag_indices calls matrix_form(obj, TRUE)
     ## unconditionally.
@@ -343,8 +343,8 @@ setMethod(
         nrow = nrow(fullmat),
         ncol = ncol(fullmat)
       ),
-      row_info = make_row_df(obj),
       listing_keycols = keycols, # It is always something
+      row_info = make_row_df(obj, fontspec = fontspec),
       nlines_header = 1, # We allow only one level of headers and nl expansion happens after
       nrow_header = 1,
       has_topleft = FALSE,
@@ -354,7 +354,10 @@ setMethod(
       subtitles = subtitles(obj),
       page_titles = page_titles(obj),
       main_footer = main_footer(obj),
-      prov_footer = prov_footer(obj)
+      prov_footer = prov_footer(obj),
+      col_gap = col_gap,
+      fontspec = fontspec,
+      rep_cols = length(keycols)
     )
   }
 )

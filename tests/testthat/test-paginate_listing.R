@@ -131,25 +131,25 @@ testthat::test_that("pagination: lpp and cpp correctly computed for pg_width and
   lsting <- h_lsting_adae()
   pag <- paginate_listing(lsting, lpp = 24, cpp = 135, print_pages = FALSE)
   res <- paginate_listing(lsting, pg_width = 15, pg_height = 5, font_size = 12, print_pages = FALSE)
-  testthat::expect_identical(res, pag)
+  compare_paginations(pag, res)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for page_type and font_size", {
   lsting <- h_lsting_adae()
   pag1 <- paginate_listing(lsting, lpp = 69, cpp = 73, print_pages = FALSE)
   res1 <- paginate_listing(lsting, page_type = "a4", font_size = 11, print_pages = FALSE)
-  testthat::expect_identical(res1, pag1)
+  compare_paginations(pag1, res1)
 
   pag2 <- paginate_listing(lsting, lpp = 85, cpp = 76, print_pages = FALSE)
   res2 <- paginate_listing(lsting, page_type = "legal", font_size = 11, print_pages = FALSE)
-  testthat::expect_identical(res2, pag2)
+  compare_paginations(pag2, res2)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for lineheight", {
   lsting <- h_lsting_adae()
   pag <- paginate_listing(lsting, lpp = 20, cpp = 70, font_size = 12, print_pages = FALSE)
   res <- paginate_listing(lsting, lineheight = 3, font_size = 12, print_pages = FALSE)
-  testthat::expect_identical(res, pag)
+  compare_paginations(pag, res)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for landscape", {
@@ -176,10 +176,12 @@ testthat::test_that("pagination works with col wrapping", {
     pag <- paginate_listing(
       lsting,
       colwidths = c(15, 15, 15, 15),
-      font_size = 12, print_pages = FALSE
+      font_size = 12,
+      col_gap = 4,
+      print_pages = FALSE
     )
   )
-  pag_no_wrapping <- paginate_listing(lsting, font_size = 12, print_pages = FALSE)
+  pag_no_wrapping <- paginate_listing(lsting, font_size = 12, col_gap = 4, print_pages = FALSE)
 
   testthat::expect_equal(length(pag), length(pag_no_wrapping) + 1)
   testthat::expect_error(paginate_listing(lsting, colwidths = c(12, 15)))
