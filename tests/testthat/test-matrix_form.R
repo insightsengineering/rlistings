@@ -7,11 +7,11 @@ testthat::test_that("matrix_form keeps relevant information and structure about 
     key_cols = c("fake_rownames", "Petal.Width"),
     disp_cols = c("Petal.Length")
   )
-  mat <- matrix_form(lsting)
+  mat <- matrix_form(lsting) ## to match basic_listing_mfb
 
   # IMPORTANT: the following is coming directly from spoof matrix form for rlistings coming from {formatters}
   mat_rebuilt <- basic_listing_mf(my_iris[c("fake_rownames", "Petal.Width", "Petal.Length")],
-    keycols = c("fake_rownames", "Petal.Width"), add_decoration = FALSE
+    keycols = c("fake_rownames", "Petal.Width"), add_decoration = FALSE, fontspec = NULL
   )
 
   testthat::expect_equal(names(mat_rebuilt), names(mat))
