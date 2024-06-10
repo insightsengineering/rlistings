@@ -31,7 +31,7 @@ Imports:
     stats,
     utils
 Suggests:
-    dplyr (>= 1.0.1),
+    dplyr (>= 1.0.2),
     knitr (>= 1.42),
     lifecycle (>= 0.2.0),
     rmarkdown (>= 2.23),
