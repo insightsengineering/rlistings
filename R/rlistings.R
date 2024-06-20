@@ -269,7 +269,7 @@ get_keycols <- function(df) {
 #' @param expand_newlines (`flag`)\cr this should always be `TRUE` for listings. We keep it
 #'   for debugging reasons.
 #'
-#' @return a [`MatrixPrintForm`] object.
+#' @return a [formatters::MatrixPrintForm] object.
 #'
 #' @seealso [formatters::matrix_form()]
 #'

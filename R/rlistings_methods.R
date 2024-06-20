@@ -4,7 +4,7 @@ dflt_courier <- font_spec("Courier", 9, 1)
 
 #' Methods for `listing_df` objects
 #'
-#' See core documentation in [`formatters`] for descriptions of these functions.
+#' See core documentation in [formatters::formatters-package] for descriptions of these functions.
 #'
 #' @inheritParams formatters::toString
 #' @param x (`listing_df`)\cr the listing.
