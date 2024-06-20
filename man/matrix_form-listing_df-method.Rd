@@ -28,7 +28,7 @@ calculating string widths and heights, as returned by \code{\link[formatters:fon
 font specified by \code{fontspec}.}
 }
 \value{
-a \code{\link{MatrixPrintForm}} object.
+a \link[formatters:MatrixPrintForm]{formatters::MatrixPrintForm} object.
 }
 \description{
 Although \code{rtable}s are represented as a tree data structure when outputting the table to ASCII or HTML,
