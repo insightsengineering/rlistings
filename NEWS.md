@@ -1,4 +1,4 @@
-## rlistings 0.2.9.9001
+## rlistings 0.2.9.9002
 
 ## rlistings 0.2.9
  * Added `truetype` font support based on new `formatters` api, by @gmbecker.
