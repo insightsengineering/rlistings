@@ -75,16 +75,18 @@ or you can install the latest development version directly from GitHub
 with:
 
 ``` r
-remotes::install_github("insightsengineering/formatters")
-remotes::install_github("insightsengineering/rlistings")
+# install.packages("pak")
+pak::pak("insightsengineering/rlistings")
 ```
-
-Note you might need to set your `GITHUB_PAT` environment variable in
-order to be able to install from GitHub.
 
 Packaged releases (both those on CRAN and those between official CRAN
 releases) can be found in the [releases
 list](https://github.com/insightsengineering/rlistings/releases).
+
+To understand how to use this package, please refer to the [Introduction
+to
+`rlistings`](https://insightsengineering.github.io/rlistings/latest-tag/articles/rlistings.html)
+article, which provides multiple examples of code implementation.
 
 ## Cheatsheet
 
@@ -96,8 +98,6 @@ The following example shows a simple listing and its printed output.
 
 ``` r
 library(rlistings)
-#> Loading required package: formatters
-#> Loading required package: tibble
 
 # Reducing the data
 mtcars_ex <- mtcars %>% dplyr::mutate("car" = rownames(mtcars))

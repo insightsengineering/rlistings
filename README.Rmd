@@ -1,8 +1,8 @@
 ---
 output: github_document
-editor_options: 
+editor_options:
   chunk_output_type: console
-  markdown: 
+  markdown:
     wrap: 72
 ---
 
@@ -76,16 +76,15 @@ or you can install the latest development version directly from GitHub
 with:
 
 ``` r
-remotes::install_github("insightsengineering/formatters")
-remotes::install_github("insightsengineering/rlistings")
+# install.packages("pak")
+pak::pak("insightsengineering/rlistings")
 ```
-
-Note you might need to set your `GITHUB_PAT` environment variable in
-order to be able to install from GitHub.
 
 Packaged releases (both those on CRAN and those between official CRAN
 releases) can be found in the [releases
 list](https://github.com/insightsengineering/rlistings/releases).
+
+To understand how to use this package, please refer to the [Introduction to `rlistings`](https://insightsengineering.github.io/rlistings/latest-tag/articles/rlistings.html) article, which provides multiple examples of code implementation.
 
 ## Cheatsheet
 
