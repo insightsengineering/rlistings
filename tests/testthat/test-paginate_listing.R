@@ -1,6 +1,6 @@
 testthat::test_that("pagination works vertically", {
-  require("dplyr", quietly = TRUE)
   skip_if_not_installed("dplyr")
+  require("dplyr", quietly = TRUE)
 
   # pre-processing and ordering
   tmp_data <- ex_adae %>%
@@ -25,8 +25,8 @@ testthat::test_that("pagination works vertically", {
 })
 
 testthat::test_that("horizontal pagination with 0 or 1 key column specified works correctly", {
-  require("dplyr", quietly = TRUE)
   skip_if_not_installed("dplyr")
+  require("dplyr", quietly = TRUE)
 
   # pre-processing and ordering
   tmp_data <- ex_adae %>%
@@ -90,8 +90,8 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
 })
 
 testthat::test_that("listing works with no vertical pagination", {
-  require("dplyr", quietly = TRUE)
   skip_if_not_installed("dplyr")
+  require("dplyr", quietly = TRUE)
 
   # pre-processing and ordering
   tmp_data <- ex_adae %>%
@@ -113,8 +113,8 @@ testthat::test_that("listing works with no vertical pagination", {
 })
 
 testthat::test_that("checking vertical pagination line calculation.", {
-  require("dplyr", quietly = TRUE)
   skip_if_not_installed("dplyr")
+  require("dplyr", quietly = TRUE)
 
   # pre-processing and ordering
   tmp_data <- ex_adae %>%
