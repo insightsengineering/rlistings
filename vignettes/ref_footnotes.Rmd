@@ -43,8 +43,7 @@ We begin by loading in the `rlistings` package.
 
 ```{r, message=FALSE}
 library(rlistings)
-require(dplyr)
-
+library(dplyr)
 ```
 
 For this example, we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient. For the purpose of this example, we will subset the data and only use the first 30 records of the dataset.
