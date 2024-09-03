@@ -8,6 +8,8 @@ testthat::test_that("Listing print correctly", {
 })
 
 testthat::test_that("key columns repeat with export_as_txt", {
+  skip_if_not_installed("dplyr")
+  require("dplyr", quietly = TRUE)
   # pre-processing and ordering
   tmp_data <- ex_adae %>%
     dplyr::slice(1:30) %>%
