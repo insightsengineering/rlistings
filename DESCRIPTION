@@ -39,7 +39,8 @@ Suggests:
     testthat (>= 3.1.5),
     withr (>= 2.0.0)
 VignetteBuilder:
-    knitr
+    knitr,
+    rmarkdown
 Config/Needs/verdepcheck: insightsengineering/formatters,
     tidyverse/tibble, mllg/checkmate, tidyverse/dplyr, yihui/knitr,
     r-lib/lifecycle, rstudio/rmarkdown, gagolews/stringi, r-lib/testthat,
