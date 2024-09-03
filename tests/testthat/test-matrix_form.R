@@ -1,4 +1,7 @@
 testthat::test_that("matrix_form keeps relevant information and structure about the listing", {
+  require("dplyr", quietly = TRUE)
+  skip_if_not_installed("dplyr")
+
   my_iris <- iris %>%
     slice(c(16, 3)) %>%
     mutate("fake_rownames" = c("mean", "mean"))
