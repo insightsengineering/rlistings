@@ -15,9 +15,10 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-suggested_dependent_pkgs <- c("dplyr", ...)
+suggested_dependent_pkgs <- c("dplyr")
 knitr::opts_chunk$set(
-  eval = any(vapply(suggested_dependent_pkgs, Negate(requireNamespace), logical(1), quietly = TRUE))
+  eval = all(vapply(suggested_dependent_pkgs, (requireNamespace), 
+                                            logical(1), quietly = TRUE))
 )
 ```
 
