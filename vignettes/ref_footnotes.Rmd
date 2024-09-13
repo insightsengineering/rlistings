@@ -10,9 +10,16 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+suggested_dependent_pkgs <- c("dplyr")
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = all(vapply(
+    suggested_dependent_pkgs,
+    requireNamespace,
+    logical(1),
+    quietly = TRUE
+  ))
 )
 ```
 
@@ -32,10 +39,11 @@ When creating a listing with the `rlistings` package, you may want to add refere
 
 To demonstrate, we will create a basic listing below.
 
-We begin by loading in the `rlistings` package. 
+We begin by loading in the `rlistings` package.
 
 ```{r, message=FALSE}
 library(rlistings)
+library(dplyr)
 ```
 
 For this example, we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient. For the purpose of this example, we will subset the data and only use the first 30 records of the dataset.
@@ -97,7 +105,7 @@ lsting <- as_listing(
 lsting
 ```
 
-Additional referential footnotes can be added to the data be repeating the above steps. 
+Additional referential footnotes can be added to the data be repeating the above steps.
 
 For example, we can add the second referential footnote to the `ASTDY` column for imputed analysis start days. We use dummy variable `ASTDTF` to indicate imputed analysis start dates. When adding referential footnotes to numeric variables, the variables must be converted to factors.
 

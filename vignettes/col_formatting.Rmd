@@ -10,9 +10,16 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+suggested_dependent_pkgs <- c("dplyr")
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = all(vapply(
+    suggested_dependent_pkgs,
+    requireNamespace,
+    logical(1),
+    quietly = TRUE
+  ))
 )
 ```
 
@@ -46,10 +53,11 @@ The `default_formatting` argument can use the same format configuration for all 
 
 To demonstrate, we will create a basic listing below and customize formatting using the `default_formatting` parameter.
 
-We begin by loading in the `rlistings` package. 
+We begin by loading in the `rlistings` package.
 
 ```{r, message=FALSE}
 library(rlistings)
+require(dplyr)
 ```
 
 For this example, we will use the dummy ADAE dataset provided within the `formatters` package as our data frame, which consists of 48 columns of adverse event patient data, and one or more rows per patient. For the purpose of this example, we will subset the data and only use the first 15 records of the dataset. We will create some `NA` values in the data to showcase how `NA` values can be formatted, and sort the data by what will be our key columns.
@@ -140,7 +148,7 @@ In the output above, the `all` format configuration, which originally applied to
 
 ## Column-Wise Formatting in `as_listing`
 
-In this section, we will demonstrate how custom formatting can be applied on a column-by-column basis rather than to all columns of a specified data class or an entire listing at once. 
+In this section, we will demonstrate how custom formatting can be applied on a column-by-column basis rather than to all columns of a specified data class or an entire listing at once.
 
 Take, for example, `lsting_4` created in the previous section.
 
