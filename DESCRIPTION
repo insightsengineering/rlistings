@@ -21,7 +21,7 @@ URL: https://insightsengineering.github.io/rlistings/,
     https://github.com/insightsengineering/rlistings/
 BugReports: https://github.com/insightsengineering/rlistings/issues
 Depends:
-    formatters (>= 0.5.8.9006),
+    formatters (>= 0.5.9),
     methods,
     tibble (>= 2.0.0)
 Imports:
