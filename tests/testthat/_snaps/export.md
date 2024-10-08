@@ -258,3 +258,12 @@
       
       foot
 
+# export_as_txt works with empty listings
+
+    Code
+      cat(res)
+    Output
+                                                                                           
+      —————————————————————————————————————————————————————————————————————————————————————
+      Null Report: No observations met the reporting criteria for inclusion in this output.
+
