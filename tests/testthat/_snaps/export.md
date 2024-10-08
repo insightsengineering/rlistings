@@ -258,3 +258,45 @@
       
       foot
 
+# export_as_txt works with empty listings
+
+    Code
+      cat(res)
+    Output
+                                                                                           
+      —————————————————————————————————————————————————————————————————————————————————————
+      Null Report: No observations met the reporting criteria for inclusion in this output.
+
+# export_as_txt works with listings with all key cols
+
+    Code
+      cat(res)
+    Output
+      Categorical Level Biomarker 2   Medication Class   Standardized Medication Name
+      ———————————————————————————————————————————————————————————————————————————————
+                   LOW                    medcl A               medname A_1/3        
+                                                                medname A_2/3        
+                                                                medname A_3/3        
+                                          medcl B               medname B_1/4        
+                                                                medname B_2/4        
+                                                                medname B_3/4        
+                                                                medname B_4/4        
+                                          medcl C               medname C_1/2        
+                                                                medname C_2/2        
+                 MEDIUM                   medcl A               medname A_2/3        
+                                                                medname A_3/3        
+                                          medcl B               medname B_1/4        
+                                                                medname B_2/4        
+                                                                medname B_3/4        
+                                                                medname B_4/4        
+                                          medcl C               medname C_1/2        
+                                                                medname C_2/2        
+                  HIGH                    medcl A               medname A_1/3        
+                                                                medname A_2/3        
+                                                                medname A_3/3        
+                                          medcl B               medname B_1/4        
+                                                                medname B_2/4        
+                                                                medname B_3/4        
+                                                                medname B_4/4        
+                                          medcl C               medname C_2/2        
+
