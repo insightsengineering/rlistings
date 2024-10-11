@@ -91,3 +91,25 @@ testthat::test_that("export_as_txt works with split_into_pages_by_var", {
   pages_listings <- export_as_txt(lsting, file = NULL, paginate = TRUE, lpp = 30, cpp = 65)
   testthat::expect_snapshot(cat(pages_listings))
 })
+
+testthat::test_that("export_as_txt works with empty listings", {
+  df <- data.frame(
+    x = with_label("Null Report: No observations met the reporting criteria for inclusion in this output.", "")
+  )
+  lsting <- as_listing(df)
+
+  res <- export_as_txt(lsting)
+  testthat::expect_snapshot(cat(res))
+})
+
+testthat::test_that("export_as_txt works with listings with all key cols", {
+  lsting <- as_listing(
+    df = ex_adcm[1:50, ],
+    key_cols = c("BMRKR2", "CMCLAS", "CMDECOD"),
+    disp_cols = c("BMRKR2", "CMCLAS", "CMDECOD"),
+    unique_rows = TRUE
+  )
+
+  res <- export_as_txt(lsting)
+  testthat::expect_snapshot(cat(res))
+})
