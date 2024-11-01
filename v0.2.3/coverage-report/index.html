@@ -1,22 +1,21 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8">
 <style>body{background-color:white;}</style>
 <script src="lib/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<link href="lib/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<link href="lib/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="lib/datatables-binding-0.28/datatables.js"></script>
 <script src="lib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="lib/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="lib/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<link href="lib/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="lib/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="lib/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
-<link href="lib/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<link href="lib/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="lib/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="lib/highlight.js-6.2/rstudio.css" rel="stylesheet" />
+<link href="lib/highlight.js-6.2/rstudio.css" rel="stylesheet">
 <script src="lib/highlight.js-6.2/highlight.pack.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="lib/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<link href="lib/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="lib/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link href="lib/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
 <script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="lib/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="lib/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -1103,21 +1102,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">142</td>
-                    <td class="coverage">30<em>x</em></td>
+                    <td class="coverage">30<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (length(non_disp_cols) &gt; 0 &amp;&amp; length(intersect(key_cols, non_disp_cols)) &gt; 0) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">143</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">1<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    stop("Key column also listed in non_disp_cols. All key columns are by",</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">144</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">1<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">         " definition display columns.")</pre>
                     </td>
@@ -1131,21 +1133,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">146</td>
-                    <td class="coverage">29<em>x</em></td>
+                    <td class="coverage">29<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (!is.null(disp_cols) &amp;&amp; !is.null(non_disp_cols)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">147</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">1<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    stop("Got non-null values for both disp_cols and non_disp_cols. This is not supported.")</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">148</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  } else if (is.null(disp_cols)) {</pre>
                     </td>
@@ -1159,7 +1164,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">150</td>
-                    <td class="coverage">11<em>x</em></td>
+                    <td class="coverage">11<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    cols &lt;- setdiff(names(df), c(key_cols, non_disp_cols))</pre>
                     </td>
@@ -1180,7 +1186,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">153</td>
-                    <td class="coverage">17<em>x</em></td>
+                    <td class="coverage">17<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    cols &lt;- disp_cols</pre>
                     </td>
@@ -1194,7 +1201,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">155</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (!all(sapply(default_formatting, is, class2 = "fmt_config"))) {</pre>
                     </td>
@@ -1222,14 +1230,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">159</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (!(is.null(col_formatting) ||</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">160</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        all(sapply(col_formatting, is, class2 = "fmt_config")))) {</pre>
                     </td>
@@ -1264,42 +1274,48 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">165</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  df &lt;- as_tibble(df)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">166</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  varlabs &lt;- var_labels(df, fill = TRUE)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">167</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  o &lt;- do.call(order, df[key_cols])</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">168</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (is.unsorted(o)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">169</td>
-                    <td class="coverage">13<em>x</em></td>
+                    <td class="coverage">13<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    message("sorting incoming data by key columns")</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">170</td>
-                    <td class="coverage">13<em>x</em></td>
+                    <td class="coverage">13<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    df &lt;- df[o, ]</pre>
                     </td>
@@ -1327,21 +1343,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">174</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  ordercols &lt;- c(key_cols, setdiff(names(df), key_cols))</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">175</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  df &lt;- df[, ordercols]</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">176</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  var_labels(df) &lt;- varlabs[ordercols]</pre>
                     </td>
@@ -1355,14 +1374,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">178</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  for (cnm in key_cols) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">179</td>
-                    <td class="coverage">39<em>x</em></td>
+                    <td class="coverage">39<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    df[[cnm]] &lt;- as_keycol(df[[cnm]])</pre>
                     </td>
@@ -1390,7 +1411,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">183</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  cols &lt;- c(key_cols, setdiff(cols, key_cols))</pre>
                     </td>
@@ -1411,56 +1433,64 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">186</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  df[cols] &lt;- lapply(cols, function(col) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">187</td>
-                    <td class="coverage">234<em>x</em></td>
+                    <td class="coverage">234<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    col_class &lt;- tail(class(df[[col]]), 1)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">188</td>
-                    <td class="coverage">234<em>x</em></td>
+                    <td class="coverage">234<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    col_fmt_class &lt;- if (!col_class %in% names(default_formatting) &amp;&amp;</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">189</td>
-                    <td class="coverage">234<em>x</em></td>
+                    <td class="coverage">234<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                         is.numeric(df[[col]])) "numeric" else col_class</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">190</td>
-                    <td class="coverage">234<em>x</em></td>
+                    <td class="coverage">234<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    col_fmt &lt;- if (col %in% names(col_formatting)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">191</td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage">2<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      col_formatting[[col]]</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">192</td>
-                    <td class="coverage">234<em>x</em></td>
+                    <td class="coverage">234<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    } else if (col_fmt_class %in% names(default_formatting)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">193</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">1<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      default_formatting[[col_fmt_class]]</pre>
                     </td>
@@ -1474,7 +1504,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">195</td>
-                    <td class="coverage">231<em>x</em></td>
+                    <td class="coverage">231<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      if (!"all" %in% names(default_formatting)) {</pre>
                     </td>
@@ -1509,7 +1540,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">200</td>
-                    <td class="coverage">231<em>x</em></td>
+                    <td class="coverage">231<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      default_formatting[["all"]]</pre>
                     </td>
@@ -1530,28 +1562,32 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">203</td>
-                    <td class="coverage">234<em>x</em></td>
+                    <td class="coverage">234<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj_format(df[[col]]) &lt;- obj_format(col_fmt)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">204</td>
-                    <td class="coverage">234<em>x</em></td>
+                    <td class="coverage">234<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj_na_str(df[[col]]) &lt;- if (is.null(obj_na_str(col_fmt))) "NA" else obj_na_str(col_fmt)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">205</td>
-                    <td class="coverage">234<em>x</em></td>
+                    <td class="coverage">234<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj_align(df[[col]]) &lt;- if (is.null(obj_align(col_fmt))) "left" else obj_align(col_fmt)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">206</td>
-                    <td class="coverage">234<em>x</em></td>
+                    <td class="coverage">234<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    df[[col]]</pre>
                     </td>
@@ -1572,7 +1608,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">209</td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage">2<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (unique_rows) df &lt;- df[!duplicated(df[, cols]), ]</pre>
                     </td>
@@ -1586,7 +1623,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">211</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  class(df) &lt;- c("listing_df", class(df))</pre>
                     </td>
@@ -1600,42 +1638,48 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">213</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  main_title(df) &lt;- main_title</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">214</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  main_footer(df) &lt;- main_footer</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">215</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  subtitles(df) &lt;- subtitles</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">216</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  prov_footer(df) &lt;- prov_footer</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">217</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  listing_dispcols(df) &lt;- cols</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">218</td>
-                    <td class="coverage">28<em>x</em></td>
+                    <td class="coverage">28<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  df</pre>
                     </td>
@@ -1684,28 +1728,32 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">225</td>
-                    <td class="coverage">39<em>x</em></td>
+                    <td class="coverage">39<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (is.factor(vec)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">226</td>
-                    <td class="coverage">10<em>x</em></td>
+                    <td class="coverage">10<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    lab &lt;- obj_label(vec)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">227</td>
-                    <td class="coverage">10<em>x</em></td>
+                    <td class="coverage">10<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    vec &lt;- as.character(vec)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">228</td>
-                    <td class="coverage">10<em>x</em></td>
+                    <td class="coverage">10<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj_label(vec) &lt;- lab</pre>
                     </td>
@@ -1719,14 +1767,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">230</td>
-                    <td class="coverage">39<em>x</em></td>
+                    <td class="coverage">39<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  class(vec) &lt;- c("listing_keycol", class(vec))</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">231</td>
-                    <td class="coverage">39<em>x</em></td>
+                    <td class="coverage">39<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  vec</pre>
                     </td>
@@ -1775,7 +1825,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">238</td>
-                    <td class="coverage">3425<em>x</em></td>
+                    <td class="coverage">3425<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  inherits(vec, "listing_keycol")</pre>
                     </td>
@@ -1831,7 +1882,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">246</td>
-                    <td class="coverage">150<em>x</em></td>
+                    <td class="coverage">150<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  names(which(sapply(df, is_keycol)))</pre>
                     </td>
@@ -1978,35 +2030,40 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">267</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    cols &lt;- attr(obj, "listing_dispcols")</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">268</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    listing &lt;- obj[, cols]</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">269</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    atts &lt;- attributes(obj)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">270</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    atts$names &lt;- cols</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">271</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    attributes(listing) &lt;- atts</pre>
                     </td>
@@ -2020,7 +2077,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">273</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    keycols &lt;- get_keycols(listing)</pre>
                     </td>
@@ -2041,21 +2099,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">276</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    bodymat &lt;- matrix("",</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">277</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      nrow = nrow(listing),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">278</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      ncol = ncol(listing)</pre>
                     </td>
@@ -2076,7 +2137,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">281</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    colnames(bodymat) &lt;- names(listing)</pre>
                     </td>
@@ -2097,49 +2159,56 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">284</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    curkey &lt;- ""</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">285</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    for (i in seq_along(keycols)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">286</td>
-                    <td class="coverage">81<em>x</em></td>
+                    <td class="coverage">81<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      kcol &lt;- keycols[i]</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">287</td>
-                    <td class="coverage">81<em>x</em></td>
+                    <td class="coverage">81<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      kcolvec &lt;- listing[[kcol]]</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">288</td>
-                    <td class="coverage">81<em>x</em></td>
+                    <td class="coverage">81<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      curkey &lt;- paste0(curkey, kcolvec)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">289</td>
-                    <td class="coverage">81<em>x</em></td>
+                    <td class="coverage">81<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      disp &lt;- c(TRUE, tail(curkey, -1) != head(curkey, -1))</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">290</td>
-                    <td class="coverage">81<em>x</em></td>
+                    <td class="coverage">81<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      bodymat[disp, kcol] &lt;- kcolvec[disp]</pre>
                     </td>
@@ -2160,42 +2229,48 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">293</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    nonkeycols &lt;- setdiff(names(listing), keycols)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">294</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    if (length(nonkeycols) &gt; 0) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">295</td>
-                    <td class="coverage">64<em>x</em></td>
+                    <td class="coverage">64<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      for (nonk in nonkeycols) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">296</td>
-                    <td class="coverage">333<em>x</em></td>
+                    <td class="coverage">333<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        vec &lt;- listing[[nonk]]</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">297</td>
-                    <td class="coverage">333<em>x</em></td>
+                    <td class="coverage">333<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        vec &lt;- vapply(vec, format_value, "", format = obj_format(vec), na_str = obj_na_str(vec))</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">298</td>
-                    <td class="coverage">333<em>x</em></td>
+                    <td class="coverage">333<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        bodymat[, nonk] &lt;- vec</pre>
                     </td>
@@ -2230,21 +2305,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">303</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    fullmat &lt;- rbind(</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">304</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      var_labels(listing, fill = TRUE),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">305</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      bodymat</pre>
                     </td>
@@ -2265,42 +2343,48 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">308</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    colaligns &lt;- rbind(</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">309</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      rep("center", length(cols)),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">310</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      matrix(sapply(listing, obj_align),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">311</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        ncol = length(cols),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">312</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        nrow = nrow(fullmat) - 1,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">313</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        byrow = TRUE</pre>
                     </td>
@@ -2321,35 +2405,40 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">316</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    MatrixPrintForm(</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">317</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      strings = fullmat,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">318</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      spans = matrix(1,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">319</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        nrow = nrow(fullmat),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">320</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        ncol = ncol(fullmat)</pre>
                     </td>
@@ -2363,35 +2452,40 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">322</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      ref_fnotes = list(),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">323</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      aligns = colaligns,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">324</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      formats = matrix(1,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">325</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        nrow = nrow(fullmat),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">326</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        ncol = ncol(fullmat)</pre>
                     </td>
@@ -2405,77 +2499,88 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">328</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      row_info = make_row_df(obj),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">329</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      nlines_header = 1, ## XXX this is probably wrong!!!</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">330</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      nrow_header = 1,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">331</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      has_topleft = FALSE,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">332</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      has_rowlabs = FALSE,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">333</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      expand_newlines = TRUE,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">334</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      main_title = main_title(obj),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">335</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      subtitles = subtitles(obj),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">336</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      page_titles = page_titles(obj),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">337</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      main_footer = main_footer(obj),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">338</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      prov_footer = prov_footer(obj)</pre>
                     </td>
@@ -2531,7 +2636,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">346</td>
-                    <td class="coverage">126<em>x</em></td>
+                    <td class="coverage">126<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">listing_dispcols &lt;- function(df) attr(df, "listing_dispcols") %||% character()</pre>
                     </td>
@@ -2580,14 +2686,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">353</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  listing_dispcols(df) &lt;- c(listing_dispcols(df), new)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">354</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  df</pre>
                     </td>
@@ -2629,7 +2737,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">360</td>
-                    <td class="coverage">123<em>x</em></td>
+                    <td class="coverage">123<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (!is.character(value)) {</pre>
                     </td>
@@ -2671,14 +2780,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">366</td>
-                    <td class="coverage">123<em>x</em></td>
+                    <td class="coverage">123<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  chk &lt;- setdiff(value, names(df)) ## remember setdiff is not symmetrical</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">367</td>
-                    <td class="coverage">123<em>x</em></td>
+                    <td class="coverage">123<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (length(chk) &gt; 0) {</pre>
                     </td>
@@ -2720,14 +2831,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">373</td>
-                    <td class="coverage">123<em>x</em></td>
+                    <td class="coverage">123<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  attr(df, "listing_dispcols") &lt;- unique(value)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">374</td>
-                    <td class="coverage">123<em>x</em></td>
+                    <td class="coverage">123<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  df</pre>
                     </td>
@@ -2902,28 +3015,32 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">399</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (!is.null(fun)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">400</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">1<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    vec &lt;- fun(df)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">401</td>
-                    <td class="coverage">18<em>x</em></td>
+                    <td class="coverage">18<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  } else if (name %in% names(df)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">402</td>
-                    <td class="coverage">18<em>x</em></td>
+                    <td class="coverage">18<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    vec &lt;- df[[name]]</pre>
                     </td>
@@ -2979,21 +3096,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">410</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (!is.null(format)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">411</td>
-                    <td class="coverage">7<em>x</em></td>
+                    <td class="coverage">7<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    vec &lt;- df[[name]]</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">412</td>
-                    <td class="coverage">7<em>x</em></td>
+                    <td class="coverage">7<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj_format(vec) &lt;- format</pre>
                     </td>
@@ -3014,14 +3134,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">415</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  obj_na_str(vec) &lt;- na_str</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">416</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  obj_align(vec) &lt;- align</pre>
                     </td>
@@ -3042,21 +3164,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">419</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  df[[name]] &lt;- vec</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">420</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  df &lt;- add_listing_dispcol(df, name)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">421</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  df</pre>
                     </td>
@@ -3237,14 +3362,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">24</td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage">2<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  cat(toString(matrix_form(x), widths = widths, tf_wrap = tf_wrap, max_width = max_width, ...))</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">25</td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage">2<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  invisible(x)</pre>
                     </td>
@@ -3293,7 +3420,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">32</td>
-                    <td class="coverage">2<em>x</em></td>
+                    <td class="coverage">2<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  toString(matrix_form(x), ...)</pre>
                     </td>
@@ -3328,14 +3456,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">37</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  n &lt;- length(x)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">38</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (n == 0) {</pre>
                     </td>
@@ -3363,21 +3493,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">42</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  y &lt;- x[-1L] != x[-n]</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">43</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  i &lt;- c(which(y), n)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">44</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  diff(c(0L, i))</pre>
                     </td>
@@ -3440,7 +3573,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">53</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (missing(colvec) &amp;&amp; !(colnm %in% names(df))) {</pre>
                     </td>
@@ -3461,14 +3595,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">56</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  na_str &lt;- obj_na_str(colvec)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">57</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (is.null(na_str) || all(is.na(na_str))) {</pre>
                     </td>
@@ -3496,14 +3632,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">61</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  strvec &lt;- vapply(colvec, format_value, "", format = obj_format(colvec), na_str = na_str)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">62</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  strvec</pre>
                     </td>
@@ -3608,7 +3746,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">77</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">setGeneric("vec_nlines", function(vec, max_width = NULL) standardGeneric("vec_nlines"))</pre>
                     </td>
@@ -3650,21 +3789,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">83</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  strvec &lt;- wrap_txt(format_colvector(colvec = vec), max_width = max_width, hard = TRUE)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">84</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  mtchs &lt;- gregexpr("\n", strvec, fixed = TRUE)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">85</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  1L + vapply(mtchs, function(vi) sum(vi &gt; 0), 1L)</pre>
                     </td>
@@ -3944,35 +4086,40 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">125</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    keycols &lt;- get_keycols(tt)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">126</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    dispcols &lt;- listing_dispcols(tt)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">127</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    abs_rownumber &lt;- seq_along(tt[[1]])</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">128</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    if (length(keycols) &gt;= 1) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">129</td>
-                    <td class="coverage">65<em>x</em></td>
+                    <td class="coverage">65<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      runlens &lt;- basic_run_lens(tt[[tail(keycols, 1)]])</pre>
                     </td>
@@ -3986,7 +4133,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">131</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">1<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      runlens &lt;- rep(1, NROW(tt))</pre>
                     </td>
@@ -4000,28 +4148,32 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">133</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    sibpos &lt;- unlist(lapply(runlens, seq_len))</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">134</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    nsibs &lt;- rep(runlens, times = runlens)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">135</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    extents &lt;- rep(1L, nrow(tt))</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">136</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    if (length(colwidths) &gt; 0 &amp;&amp; length(colwidths) != length(dispcols)) {</pre>
                     </td>
@@ -4063,7 +4215,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">142</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    if (length(colwidths) &gt; 0) {</pre>
                     </td>
@@ -4098,7 +4251,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">147</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    for (col in dispcols) {</pre>
                     </td>
@@ -4112,14 +4266,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">149</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      col_ext &lt;- vec_nlines(tt[[col]], max_width = colwidths[col])</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">150</td>
-                    <td class="coverage">416<em>x</em></td>
+                    <td class="coverage">416<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      extents &lt;- ifelse(col_ext &gt; extents, col_ext, extents)</pre>
                     </td>
@@ -4133,119 +4289,136 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">152</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    ret &lt;- data.frame(</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">153</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      label = "", name = "",</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">154</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      abs_rownumber = abs_rownumber,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">155</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      path = I(as.list(rep(NA_character_, NROW(tt)))),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">156</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      pos_in_siblings = sibpos,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">157</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      n_siblings = nsibs,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">158</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      self_extent = extents,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">159</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      par_extent = 0L,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">160</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      reprint_inds = I(replicate(NROW(tt), list(integer()))),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">161</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      node_class = "listing_df",</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">162</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      indent = 0L,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">163</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      nrowrefs = 0L, ## XXX this doesn't support footnotes</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">164</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      ncellrefs = 0L, ## XXX this doesn't support footnotes</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">165</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      nreflines = 0L, ## XXX this doesn't support footnotes</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">166</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      force_page = FALSE,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">167</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      page_title = NA_character_,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">168</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      trailing_sep = NA_character_</pre>
                     </td>
@@ -4259,35 +4432,40 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">170</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    stopifnot(identical(</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">171</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      names(ret),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">172</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      names(pagdfrow(</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">173</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        nm = "", lab = "", rnum = 1L, pth = NA_character_, extent = 1L,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">174</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">        rclass = ""</pre>
                     </td>
@@ -4308,7 +4486,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">177</td>
-                    <td class="coverage">66<em>x</em></td>
+                    <td class="coverage">66<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    ret</pre>
                     </td>
@@ -4833,7 +5012,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">252</td>
-                    <td class="coverage">68<em>x</em></td>
+                    <td class="coverage">68<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  function(obj) attr(obj, "main_title") %||% character()</pre>
                     </td>
@@ -4882,7 +5062,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">259</td>
-                    <td class="coverage">67<em>x</em></td>
+                    <td class="coverage">67<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  function(obj) attr(obj, "subtitles") %||% character()</pre>
                     </td>
@@ -4924,7 +5105,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">265</td>
-                    <td class="coverage">67<em>x</em></td>
+                    <td class="coverage">67<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  function(obj) attr(obj, "main_footer") %||% character()</pre>
                     </td>
@@ -4966,7 +5148,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">271</td>
-                    <td class="coverage">67<em>x</em></td>
+                    <td class="coverage">67<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  function(obj) attr(obj, "prov_footer") %||% character()</pre>
                     </td>
@@ -4994,14 +5177,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">275</td>
-                    <td class="coverage">126<em>x</em></td>
+                    <td class="coverage">126<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (null_ok &amp;&amp; is.null(val)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">276</td>
-                    <td class="coverage">112<em>x</em></td>
+                    <td class="coverage">112<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    return(TRUE)</pre>
                     </td>
@@ -5015,28 +5200,32 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">278</td>
-                    <td class="coverage">14<em>x</em></td>
+                    <td class="coverage">14<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (!is.character(val)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">279</td>
-                    <td class="coverage">4<em>x</em></td>
+                    <td class="coverage">4<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    stop("value for ", fname, " must be a character, got ",</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">280</td>
-                    <td class="coverage">4<em>x</em></td>
+                    <td class="coverage">4<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      "object of class: ", paste(class(val), collapse = ","),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">281</td>
-                    <td class="coverage">4<em>x</em></td>
+                    <td class="coverage">4<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      call. = FALSE</pre>
                     </td>
@@ -5057,28 +5246,32 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">284</td>
-                    <td class="coverage">10<em>x</em></td>
+                    <td class="coverage">10<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  if (len_one &amp;&amp; length(val) &gt; 1) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">285</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">1<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    stop(</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">286</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">1<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      "value for ", fname, " must be length &lt;= 1, got ",</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">287</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">1<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      "vector of length ", length(val)</pre>
                     </td>
@@ -5099,7 +5292,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">290</td>
-                    <td class="coverage">9<em>x</em></td>
+                    <td class="coverage">9<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  TRUE</pre>
                     </td>
@@ -5169,21 +5363,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">300</td>
-                    <td class="coverage">34<em>x</em></td>
+                    <td class="coverage">34<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    .chk_value(value, "main_title", len_one = TRUE)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">301</td>
-                    <td class="coverage">32<em>x</em></td>
+                    <td class="coverage">32<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    attr(obj, "main_title") &lt;- value</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">302</td>
-                    <td class="coverage">32<em>x</em></td>
+                    <td class="coverage">32<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj</pre>
                     </td>
@@ -5246,21 +5443,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">311</td>
-                    <td class="coverage">30<em>x</em></td>
+                    <td class="coverage">30<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    .chk_value(value, "subtitles")</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">312</td>
-                    <td class="coverage">29<em>x</em></td>
+                    <td class="coverage">29<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    attr(obj, "subtitles") &lt;- value</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">313</td>
-                    <td class="coverage">29<em>x</em></td>
+                    <td class="coverage">29<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj</pre>
                     </td>
@@ -5323,21 +5523,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">322</td>
-                    <td class="coverage">32<em>x</em></td>
+                    <td class="coverage">32<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    .chk_value(value, "main_footer")</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">323</td>
-                    <td class="coverage">31<em>x</em></td>
+                    <td class="coverage">31<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    attr(obj, "main_footer") &lt;- value</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">324</td>
-                    <td class="coverage">31<em>x</em></td>
+                    <td class="coverage">31<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj</pre>
                     </td>
@@ -5400,21 +5603,24 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">333</td>
-                    <td class="coverage">30<em>x</em></td>
+                    <td class="coverage">30<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    .chk_value(value, "prov_footer")</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">334</td>
-                    <td class="coverage">29<em>x</em></td>
+                    <td class="coverage">29<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    attr(obj, "prov_footer") &lt;- value</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">335</td>
-                    <td class="coverage">29<em>x</em></td>
+                    <td class="coverage">29<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj</pre>
                     </td>
@@ -5847,35 +6053,40 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">59</td>
-                    <td class="coverage">20<em>x</em></td>
+                    <td class="coverage">20<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  checkmate::assert_class(lsting, "listing_df")</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">60</td>
-                    <td class="coverage">20<em>x</em></td>
+                    <td class="coverage">20<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  checkmate::assert_numeric(colwidths, lower = 0, len = length(listing_dispcols(lsting)), null.ok = TRUE)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">61</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  checkmate::assert_flag(tf_wrap)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">62</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  checkmate::assert_count(max_width, null.ok = TRUE)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">63</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  checkmate::assert_flag(verbose)</pre>
                     </td>
@@ -5910,112 +6121,128 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">68</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  indx &lt;- paginate_indices(lsting,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">69</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           page_type = page_type,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">70</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           font_family = font_family,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">71</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           font_size = font_size,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">72</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           lineheight = lineheight,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">73</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           landscape = landscape,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">74</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           pg_width = pg_width,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">75</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           pg_height = pg_height,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">76</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           margins = margins,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">77</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           lpp = lpp,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">78</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           cpp = cpp,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">79</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           colwidths = colwidths,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">80</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           tf_wrap = tf_wrap,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">81</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           max_width = max_width,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">82</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           rep_cols = length(get_keycols(lsting)),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">83</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                           verbose = verbose)</pre>
                     </td>
@@ -6036,77 +6263,88 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">86</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  vert_pags &lt;- lapply(indx$pag_row_indices,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">87</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                      function(ii) lsting[ii, ])</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">88</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  dispnames &lt;- listing_dispcols(lsting)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">89</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  full_pag &lt;- lapply(vert_pags,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">90</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                     function(onepag) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">91</td>
-                    <td class="coverage">27<em>x</em></td>
+                    <td class="coverage">27<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">      if (!is.null(indx$pag_col_indices)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">92</td>
-                    <td class="coverage">27<em>x</em></td>
+                    <td class="coverage">27<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">          lapply(indx$pag_col_indices,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">93</td>
-                    <td class="coverage">27<em>x</em></td>
+                    <td class="coverage">27<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">                 function(jj) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">94</td>
-                    <td class="coverage">76<em>x</em></td>
+                    <td class="coverage">76<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">              res &lt;- onepag[, dispnames[jj], drop = FALSE]</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">95</td>
-                    <td class="coverage">76<em>x</em></td>
+                    <td class="coverage">76<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">              listing_dispcols(res) &lt;- intersect(dispnames, names(res))</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">96</td>
-                    <td class="coverage">76<em>x</em></td>
+                    <td class="coverage">76<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">              res</pre>
                     </td>
@@ -6155,14 +6393,16 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">103</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  ret &lt;- unlist(full_pag, recursive = FALSE)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">104</td>
-                    <td class="coverage">19<em>x</em></td>
+                    <td class="coverage">19<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">  ret</pre>
                     </td>
@@ -6274,7 +6514,8 @@ table.table-condensed {
                   </tr>
                   <tr class="covered">
                     <td class="num">120</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage">1<em>x</em>
+</td>
                     <td class="col-sm-12">
                       <pre class="language-r">    .Defunct("paginate_indices", package = "formatters")</pre>
                     </td>
