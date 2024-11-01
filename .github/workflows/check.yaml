@@ -71,7 +71,7 @@ jobs:
     with:
       deps-installation-method: setup-r-dependencies
       lookup-refs: |
-        insightsengineering/formatterss
+        insightsengineering/formatters
       additional-env-vars: |
         NOT_CRAN=true
   linter:
