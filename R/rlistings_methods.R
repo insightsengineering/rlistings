@@ -15,6 +15,15 @@ dflt_courier <- font_spec("Courier", 9, 1)
 #' @export
 #' @name listing_methods
 print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, fontspec = NULL, col_gap = 3L,  ...) {
+
+  # check classes
+  column_classes <- lapply(x, function(col) sapply(col, class))
+
+  # Check if any of the columns contain an element of class "difftime"
+  if (any(sapply(column_classes, function(col) any(col == "difftime")))) {
+    stop("Error: Listing contains variables of class 'difftime'. Please convert to character or factor.")
+  }
+
   cat(
     toString(
       matrix_form(x, fontspec = fontspec, col_gap = col_gap),
