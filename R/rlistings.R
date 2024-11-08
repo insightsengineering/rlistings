@@ -168,6 +168,10 @@ as_listing <- function(df,
     )
   }
 
+  if (any(sapply(df, inherits, "difftime"))) {
+    stop("One or more variables in the dataframe have class 'difftime'. Please convert to factor or character.")
+  }
+
   df <- as_tibble(df)
   varlabs <- var_labels(df, fill = TRUE)
   o <- do.call(order, df[key_cols])
