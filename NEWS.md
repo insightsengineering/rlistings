@@ -1,4 +1,5 @@
 ## rlistings 0.2.9.9008
+ * Added an error message for listings with variables of `difftime` class.
 
 ## rlistings 0.2.9
  * Added `truetype` font support based on new `formatters` api, by @gmbecker.
