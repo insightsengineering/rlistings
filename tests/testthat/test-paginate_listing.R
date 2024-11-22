@@ -325,9 +325,9 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var", {
 
   pag_listing <- paginate_listing(lsting, lpp = 20, cpp = 65, print_pages = FALSE)[[3]]
   testthat::expect_equal(main_title(pag_listing), "title")
-  testthat::expect_equal(subtitles(pag_listing), "Patient Subset - Sex: F")
+  testthat::expect_equal(subtitles(pag_listing), "Patient Subset - Sex: M")
   testthat::expect_equal(main_footer(pag_listing), "foot")
-  testthat::expect_true(all(pag_listing$strings[-1, 3] == "F"))
+  testthat::expect_true(all(pag_listing$strings[-1, 3] == "M"))
   testthat::expect_snapshot(fast_print(list(pag_listing)))
 
   # This works also for the pagination print
