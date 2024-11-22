@@ -335,6 +335,13 @@ setMethod(
       )
     )
 
+    if (any(grepl("([{}])", fullmat))) {
+      stop(
+        "Labels cannot contain { or } due to their use for indicating referential footnotes.\n",
+        "These are not supported at the moment in {rlistings}."
+      )
+    }
+
     MatrixPrintForm(
       strings = fullmat,
       spans = matrix(1,
