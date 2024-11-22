@@ -320,6 +320,9 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var", {
     add_listing_col("BMRKR1", format = "xx.x") %>%
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
+  # split keeps the order of the levels
+  expect_equal(names(lsting), levels(tmp_data$SEX)[seq(2)])
+
   pag_listing <- paginate_listing(lsting, lpp = 20, cpp = 65, print_pages = FALSE)[[3]]
   testthat::expect_equal(main_title(pag_listing), "title")
   testthat::expect_equal(subtitles(pag_listing), "Patient Subset - Sex: F")

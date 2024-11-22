@@ -7,11 +7,12 @@
 split_into_pages_by_var(lsting, var, page_prefix = var)
 }
 \arguments{
-\item{lsting}{listing_df. The listing to split.}
+\item{lsting}{(\code{listing_df})\cr the listing to split.}
 
-\item{var}{character. Name of the variable to split on.}
+\item{var}{(\code{string})\cr name of the variable to split on. If the column is a factor,
+the resulting list follows the order of the levels.}
 
-\item{page_prefix}{character. Prefix to be appended with the split value (\code{var} level),
+\item{page_prefix}{(\code{string})\cr prefix to be appended with the split value (\code{var} level),
 at the end of the subtitles, corresponding to each resulting list element (listing).}
 }
 \value{
