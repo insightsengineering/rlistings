@@ -60,7 +60,7 @@ test_that("matrix_form detects { or } in labels and sends meaningful error messa
 
   # Generate listing
   lsting <- as_listing(
-    df = adae,
+    df = dat,
     key_cols = c("ARM"),
     disp_cols = c("BMRKR1"),
     main_footer = "(1) adasdasd"
