@@ -330,7 +330,7 @@ testthat::test_that("split_into_pages_by_var works as expected", {
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
   testthat::expect_equal(length(lsting), length(unique(tmp_data[["SEX"]])))
-  testthat::expect_equal(subtitles(lsting[[1]]), "Patient Subset - Sex: M")
+  testthat::expect_equal(subtitles(lsting[[1]]), "Patient Subset - Sex: F")
 
   lsting <- as_listing(
     tmp_data,

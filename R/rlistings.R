@@ -335,6 +335,13 @@ setMethod(
       )
     )
 
+    if (any(grepl("([{}])", fullmat))) {
+      stop(
+        "Labels cannot contain { or } due to their use for indicating referential footnotes.\n",
+        "These are not supported at the moment in {rlistings}."
+      )
+    }
+
     MatrixPrintForm(
       strings = fullmat,
       spans = matrix(1,
@@ -452,9 +459,10 @@ add_listing_col <- function(df,
 #' Each listing can only be split by variable once. If this function is applied prior to
 #' pagination, parameter values will be separated by page.
 #'
-#' @param lsting listing_df. The listing to split.
-#' @param var character. Name of the variable to split on.
-#' @param page_prefix character. Prefix to be appended with the split value (`var` level),
+#' @param lsting (`listing_df`)\cr the listing to split.
+#' @param var (`string`)\cr name of the variable to split on. If the column is a factor,
+#'   the resulting list follows the order of the levels.
+#' @param page_prefix (`string`)\cr prefix to be appended with the split value (`var` level),
 #'   at the end of the subtitles, corresponding to each resulting list element (listing).
 #'
 #' @return A list of `lsting_df` objects each corresponding to a unique value of `var`.
@@ -482,8 +490,17 @@ split_into_pages_by_var <- function(lsting, var, page_prefix = var) {
   checkmate::assert_class(lsting, "listing_df")
   checkmate::assert_choice(var, names(lsting))
 
+  # Pre-processing in case of factor variable
+  levels_or_vals <- if (is.factor(lsting[[var]])) {
+    lvls <- levels(lsting[[var]])
+    lvls[lvls %in% unique(lsting[[var]])] # Filter out missing values
+  } else {
+    unique(lsting[[var]])
+  }
+
+  # Main list creator (filters rows by var)
   lsting_by_var <- list()
-  for (lvl in unique(lsting[[var]])) {
+  for (lvl in levels_or_vals) {
     var_desc <- paste0(page_prefix, ": ", lvl)
     lsting_by_var[[lvl]] <- lsting[lsting[[var]] == lvl, ]
     subtitles(lsting_by_var[[lvl]]) <- c(subtitles(lsting), var_desc)

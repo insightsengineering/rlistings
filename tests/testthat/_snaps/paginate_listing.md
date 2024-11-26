@@ -100,17 +100,15 @@
     Output
       Page 1 
       title
-      Patient Subset - Sex: F
+      Patient Subset - Sex: M
       
       —————————————————————————————————————
       Unique Subject Identifier   Age   Sex
       —————————————————————————————————————
-        AB12345-BRA-1-id-141      35     F 
-                                         F 
-                                         F 
-                                         F 
-                                         F 
-                                         F 
+        AB12345-BRA-1-id-134      47     M 
+                                         M 
+                                         M 
+                                         M 
       —————————————————————————————————————
       
       foot
@@ -121,21 +119,6 @@
       paginate_listing(lsting, lpp = 330, cpp = 365, print_pages = TRUE)
     Output
       --- Page 1/2 ---
-      title
-      Patient Subset - Sex: M
-      
-      ———————————————————————————————————————————————————————————————————
-      Unique Subject Identifier   Age   Sex   Continous Level Biomarker 1
-      ———————————————————————————————————————————————————————————————————
-        AB12345-BRA-1-id-134      47     M    6.5                        
-                                         M    6.5                        
-                                         M    6.5                        
-                                         M    6.5                        
-      ———————————————————————————————————————————————————————————————————
-      
-      foot
-      
-      --- Page 2/2 ---
       title
       Patient Subset - Sex: F
       
@@ -148,6 +131,21 @@
                                          F    7.5                        
                                          F    7.5                        
                                          F    7.5                        
+      ———————————————————————————————————————————————————————————————————
+      
+      foot
+      
+      --- Page 2/2 ---
+      title
+      Patient Subset - Sex: M
+      
+      ———————————————————————————————————————————————————————————————————
+      Unique Subject Identifier   Age   Sex   Continous Level Biomarker 1
+      ———————————————————————————————————————————————————————————————————
+        AB12345-BRA-1-id-134      47     M    6.5                        
+                                         M    6.5                        
+                                         M    6.5                        
+                                         M    6.5                        
       ———————————————————————————————————————————————————————————————————
       
       foot
