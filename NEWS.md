@@ -1,4 +1,4 @@
-## rlistings 0.2.9.9009
+## rlistings 0.2.9.9010
  * Added an error message for listings with variables of `difftime` class.
 
 ## rlistings 0.2.9
