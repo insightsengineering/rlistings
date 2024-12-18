@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rlistings <a href='https://github.com/insightsengineering/rlistings'><img src="man/figures/logo.png" align="right" height="200" width="200"/></a>
+# rlistings <a href='https://github.com/insightsengineering/rlistings'><img src="man/figures/logo.svg" align="right" height="200" width="200"/></a>
 
 <!-- start badges -->
 
@@ -98,6 +98,13 @@ The following example shows a simple listing and its printed output.
 
 ``` r
 library(rlistings)
+#> Loading required package: formatters
+#> 
+#> Attaching package: 'formatters'
+#> The following object is masked from 'package:base':
+#> 
+#>     %||%
+#> Loading required package: tibble
 
 # Reducing the data
 mtcars_ex <- mtcars %>% dplyr::mutate("car" = rownames(mtcars))
@@ -106,7 +113,6 @@ as_listing(mtcars_ex,
   key_cols = c("gear", "carb"),
   disp_cols = c("gear", "carb", "qsec", "car")
 ) %>% head()
-#> sorting incoming data by key columns
 #> gear   carb   qsec           car       
 #> ———————————————————————————————————————
 #>  3      1     19.44    Hornet 4 Drive  
