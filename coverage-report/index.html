@@ -95,7 +95,7 @@ table.table-condensed {
   font-size: 11px;
 }</style>
   <div class="col-md-8 col-md-offset-2">
-    <h2>rlistings coverage - 88.24%</h2>
+    <h2>rlistings coverage - 86.21%</h2>
     <div class="tabbable">
       <ul class="nav nav-tabs" data-tabsetid="covr">
         <li class="active">
@@ -107,8 +107,8 @@ table.table-condensed {
       </ul>
       <div class="tab-content" data-tabsetid="covr">
         <div class="tab-pane active" title="Files" data-value="Files" id="tab-covr-1">
-          <div class="datatables html-widget html-fill-item" id="htmlwidget-6ebf33ce4f78166659b5" style="width:100%;height:500px;"></div>
-          <script type="application/json" data-for="htmlwidget-6ebf33ce4f78166659b5">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["<a href=\"#\">R/rlistings_methods.R<\/a>","<a href=\"#\">R/rlistings.R<\/a>","<a href=\"#\">R/paginate_listing.R<\/a>"],[367,510,89],[106,173,27],[84,162,27],[22,11,0],["156","149","20"],["79.25%","93.64%","100.00%"]],"container":"<table class=\"row-border\">\n  <thead>\n    <tr>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n      <th>Coverage<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"targets":6,"createdCell":"function(td, cellData, rowData, row, col) {\n  var percent = cellData.replace(\"%\", \"\");\n  if (percent > 90) {\n    var grad = \"linear-gradient(90deg, #edfde7 \" + cellData + \", white \" + cellData + \")\";\n  } else if (percent > 75) {\n    var grad = \"linear-gradient(90deg, #f9ffe5 \" + cellData + \", white \" + cellData + \")\";\n  } else {\n    var grad = \"linear-gradient(90deg, #fcece9 \" + cellData + \", white \" + cellData + \")\";\n  }\n  $(td).css(\"background\", grad);\n}\n"},{"className":"dt-right","targets":[1,2,3,4]},{"name":"File","targets":0},{"name":"Lines","targets":1},{"name":"Relevant","targets":2},{"name":"Covered","targets":3},{"name":"Missed","targets":4},{"name":"Hits / Line","targets":5},{"name":"Coverage","targets":6}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}"},"evals":["options.columnDefs.0.createdCell","callback"],"jsHooks":[]}</script>
+          <div class="datatables html-widget html-fill-item" id="htmlwidget-5058acd37366264e070c" style="width:100%;height:500px;"></div>
+          <script type="application/json" data-for="htmlwidget-5058acd37366264e070c">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["<a href=\"#\">R/rlistings_methods.R<\/a>","<a href=\"#\">R/rlistings.R<\/a>","<a href=\"#\">R/paginate_listing.R<\/a>"],[375,510,89],[111,173,27],[84,162,27],[27,11,0],["149","149","20"],["75.68%","93.64%","100.00%"]],"container":"<table class=\"row-border\">\n  <thead>\n    <tr>\n      <th>File<\/th>\n      <th>Lines<\/th>\n      <th>Relevant<\/th>\n      <th>Covered<\/th>\n      <th>Missed<\/th>\n      <th>Hits / Line<\/th>\n      <th>Coverage<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"dom":"t","paging":false,"columnDefs":[{"targets":6,"createdCell":"function(td, cellData, rowData, row, col) {\n  var percent = cellData.replace(\"%\", \"\");\n  if (percent > 90) {\n    var grad = \"linear-gradient(90deg, #edfde7 \" + cellData + \", white \" + cellData + \")\";\n  } else if (percent > 75) {\n    var grad = \"linear-gradient(90deg, #f9ffe5 \" + cellData + \", white \" + cellData + \")\";\n  } else {\n    var grad = \"linear-gradient(90deg, #fcece9 \" + cellData + \", white \" + cellData + \")\";\n  }\n  $(td).css(\"background\", grad);\n}\n"},{"className":"dt-right","targets":[1,2,3,4]},{"name":"File","targets":0},{"name":"Lines","targets":1},{"name":"Relevant","targets":2},{"name":"Covered","targets":3},{"name":"Missed","targets":4},{"name":"Hits / Line","targets":5},{"name":"Coverage","targets":6}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\ntable.on('click.dt', 'a', function() {\n  files = $('div#files div');\n  files.not('div.hidden').addClass('hidden');\n  id = $(this).text();\n  files.filter('div[id=\\'' + id + '\\']').removeClass('hidden');\n  $('ul.nav a[data-value=Source]').text(id).tab('show');\n});\n}"},"evals":["options.columnDefs.0.createdCell","callback"],"jsHooks":[]}</script>
         </div>
         <div class="tab-pane" title="Source" data-value="Source" id="tab-covr-2">
           <div id="files">
@@ -867,469 +867,469 @@ table.table-condensed {
                     <td class="num">18</td>
                     <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  cat(</pre>
+                      <pre class="language-r">  tryCatch({</pre>
                     </td>
                   </tr>
                   <tr class="missed">
                     <td class="num">19</td>
                     <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    toString(</pre>
+                      <pre class="language-r">    cat(</pre>
                     </td>
                   </tr>
                   <tr class="missed">
                     <td class="num">20</td>
                     <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      matrix_form(x, fontspec = fontspec, col_gap = col_gap),</pre>
+                      <pre class="language-r">      toString(</pre>
                     </td>
                   </tr>
                   <tr class="missed">
                     <td class="num">21</td>
                     <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      widths = widths,</pre>
+                      <pre class="language-r">        matrix_form(x, fontspec = fontspec, col_gap = col_gap),</pre>
                     </td>
                   </tr>
                   <tr class="missed">
                     <td class="num">22</td>
                     <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      tf_wrap = tf_wrap,</pre>
+                      <pre class="language-r">        widths = widths,</pre>
                     </td>
                   </tr>
                   <tr class="missed">
                     <td class="num">23</td>
                     <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      max_width = max_width,</pre>
+                      <pre class="language-r">        tf_wrap = tf_wrap,</pre>
                     </td>
                   </tr>
                   <tr class="missed">
                     <td class="num">24</td>
                     <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      fontspec = fontspec,</pre>
+                      <pre class="language-r">        max_width = max_width,</pre>
                     </td>
                   </tr>
                   <tr class="missed">
                     <td class="num">25</td>
                     <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      col_gap = col_gap,</pre>
+                      <pre class="language-r">        fontspec = fontspec,</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="missed">
                     <td class="num">26</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      ...</pre>
+                      <pre class="language-r">        col_gap = col_gap,</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">27</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    )</pre>
+                      <pre class="language-r">        ...</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">28</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  )</pre>
+                      <pre class="language-r">      )</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">29</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    )</pre>
                     </td>
                   </tr>
                   <tr class="missed">
-                    <td class="num">29</td>
+                    <td class="num">30</td>
                     <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  invisible(x)</pre>
+                      <pre class="language-r">  }, error = function(e) {</pre>
                     </td>
                   </tr>
-                  <tr class="never">
-                    <td class="num">30</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
+                  <tr class="missed">
                     <td class="num">31</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">    if (nrow(x) == 0) {</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="missed">
                     <td class="num">32</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @exportMethod toString</pre>
+                      <pre class="language-r">      print("No observation in the listing object.")</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">33</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @name listing_methods</pre>
+                      <pre class="language-r">    } else {</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="missed">
                     <td class="num">34</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @aliases toString,listing_df-method</pre>
+                      <pre class="language-r">      stop(e)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">35</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setMethod("toString", "listing_df", function(x, widths = NULL, fontspec = NULL, col_gap = 3L,  ...) {</pre>
+                      <pre class="language-r">    }</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">36</td>
-                    <td class="coverage">6<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  toString(</pre>
+                      <pre class="language-r">  })</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="missed">
                     <td class="num">37</td>
-                    <td class="coverage">6<em>x</em></td>
+                    <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    matrix_form(x, fontspec = fontspec, col_gap = col_gap),</pre>
+                      <pre class="language-r">  invisible(x)</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">38</td>
-                    <td class="coverage">6<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    fontspec = fontspec,</pre>
+                      <pre class="language-r">}</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">39</td>
-                    <td class="coverage">6<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    col_gap = col_gap,</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">40</td>
-                    <td class="coverage">6<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    widths = widths,</pre>
+                      <pre class="language-r">#' @exportMethod toString</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">41</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    ...</pre>
+                      <pre class="language-r">#' @name listing_methods</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">42</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  )</pre>
+                      <pre class="language-r">#' @aliases toString,listing_df-method</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">43</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">})</pre>
+                      <pre class="language-r">setMethod("toString", "listing_df", function(x, widths = NULL, fontspec = NULL, col_gap = 3L,  ...) {</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">44</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">6<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">  toString(</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">45</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">6<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">## because rle in base is too much of a stickler for being atomic</pre>
+                      <pre class="language-r">    matrix_form(x, fontspec = fontspec, col_gap = col_gap),</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">46</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">6<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">basic_run_lens &lt;- function(x) {</pre>
+                      <pre class="language-r">    fontspec = fontspec,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">47</td>
-                    <td class="coverage">170<em>x</em></td>
+                    <td class="coverage">6<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  n &lt;- length(x)</pre>
+                      <pre class="language-r">    col_gap = col_gap,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">48</td>
-                    <td class="coverage">170<em>x</em></td>
+                    <td class="coverage">6<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  if (n == 0) {</pre>
+                      <pre class="language-r">    widths = widths,</pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="never">
                     <td class="num">49</td>
-                    <td class="coverage">!</td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    return(integer())</pre>
+                      <pre class="language-r">    ...</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">50</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">  )</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">51</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">})</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">52</td>
-                    <td class="coverage">170<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  y &lt;- x[-1L] != x[-n]</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">53</td>
-                    <td class="coverage">170<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  i &lt;- c(which(y), n)</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">54</td>
-                    <td class="coverage">170<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  diff(c(0L, i))</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">55</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">56</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">57</td>
+                    <td class="num">53</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param df (`listing_df`)\cr the listing.</pre>
+                      <pre class="language-r">## because rle in base is too much of a stickler for being atomic</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">54</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">basic_run_lens &lt;- function(x) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">55</td>
+                    <td class="coverage">170<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  n &lt;- length(x)</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">56</td>
+                    <td class="coverage">170<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  if (n == 0) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">57</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    return(integer())</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">58</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param colnm (`string`)\cr column name.</pre>
+                      <pre class="language-r">  }</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">59</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param colvec (`vector`)\cr column values based on `colnm`.</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">60</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">170<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">  y &lt;- x[-1L] != x[-n]</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">61</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">170<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname vec_nlines</pre>
+                      <pre class="language-r">  i &lt;- c(which(y), n)</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">62</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">170<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @keywords internal</pre>
+                      <pre class="language-r">  diff(c(0L, i))</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">63</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">format_colvector &lt;- function(df, colnm, colvec = df[[colnm]]) {</pre>
+                      <pre class="language-r">}</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">64</td>
-                    <td class="coverage">702<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  if (missing(colvec) &amp;&amp; !(colnm %in% names(df))) {</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="never">
                     <td class="num">65</td>
-                    <td class="coverage">!</td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    stop("column ", colnm, " not found")</pre>
+                      <pre class="language-r">#' @param df (`listing_df`)\cr the listing.</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">66</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">#' @param colnm (`string`)\cr column name.</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">67</td>
-                    <td class="coverage">702<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  na_str &lt;- obj_na_str(colvec)</pre>
+                      <pre class="language-r">#' @param colvec (`vector`)\cr column values based on `colnm`.</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">68</td>
-                    <td class="coverage">702<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  if (is.null(na_str) || all(is.na(na_str))) {</pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="never">
                     <td class="num">69</td>
-                    <td class="coverage">!</td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    na_str &lt;- rep("-", max(1L, length(na_str)))</pre>
+                      <pre class="language-r">#' @rdname vec_nlines</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">70</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">#' @keywords internal</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">71</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">format_colvector &lt;- function(df, colnm, colvec = df[[colnm]]) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">72</td>
                     <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  strvec &lt;- vapply(colvec, format_value, "", format = obj_format(colvec), na_str = na_str)</pre>
+                      <pre class="language-r">  if (missing(colvec) &amp;&amp; !(colnm %in% names(df))) {</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="missed">
                     <td class="num">73</td>
-                    <td class="coverage">702<em>x</em></td>
+                    <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  strvec</pre>
+                      <pre class="language-r">    stop("column ", colnm, " not found")</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">74</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
+                      <pre class="language-r">  }</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">75</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">  na_str &lt;- obj_na_str(colvec)</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">76</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' Utilities for formatting a listing column</pre>
+                      <pre class="language-r">  if (is.null(na_str) || all(is.na(na_str))) {</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="missed">
                     <td class="num">77</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">    na_str &lt;- rep("-", max(1L, length(na_str)))</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">78</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' For `vec_nlines`, calculate the number of lines each element of a column vector will</pre>
+                      <pre class="language-r">  }</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">79</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' take to render. For `format_colvector`,</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">80</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">  strvec &lt;- vapply(colvec, format_value, "", format = obj_format(colvec), na_str = na_str)</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">81</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param vec (`vector`)\cr a column vector to be rendered into ASCII.</pre>
+                      <pre class="language-r">  strvec</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">82</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param max_width (`numeric(1)` or `NULL`)\cr the width to render the column with.</pre>
+                      <pre class="language-r">}</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">83</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @return (`numeric`)\cr a vector of the number of lines element-wise that will be</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">84</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'   needed to render the elements of `vec` to width `max_width`.</pre>
+                      <pre class="language-r">#' Utilities for formatting a listing column</pre>
                     </td>
                   </tr>
                   <tr class="never">
@@ -1343,294 +1343,294 @@ table.table-condensed {
                     <td class="num">86</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @keywords internal</pre>
+                      <pre class="language-r">#' For `vec_nlines`, calculate the number of lines each element of a column vector will</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">87</td>
-                    <td class="coverage">702<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setGeneric("vec_nlines", function(vec, max_width = NULL, fontspec = dflt_courier) standardGeneric("vec_nlines"))</pre>
+                      <pre class="language-r">#' take to render. For `format_colvector`,</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">88</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">89</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param vec (`vector`)\cr a vector.</pre>
+                      <pre class="language-r">#' @param vec (`vector`)\cr a column vector to be rendered into ASCII.</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">90</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">#' @param max_width (`numeric(1)` or `NULL`)\cr the width to render the column with.</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">91</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname vec_nlines</pre>
+                      <pre class="language-r">#' @return (`numeric`)\cr a vector of the number of lines element-wise that will be</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">92</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @keywords internal</pre>
+                      <pre class="language-r">#'   needed to render the elements of `vec` to width `max_width`.</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">93</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_courier) {</pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">94</td>
-                    <td class="coverage">702<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  if (is.null(max_width)) {</pre>
+                      <pre class="language-r">#' @keywords internal</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">95</td>
                     <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    max_width &lt;- floor(0.9 * getOption("width")) # default of base::strwrap</pre>
+                      <pre class="language-r">setGeneric("vec_nlines", function(vec, max_width = NULL, fontspec = dflt_courier) standardGeneric("vec_nlines"))</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">96</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    # NB: flooring as it is used as &lt;= (also in base::strwrap)</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">97</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">#' @param vec (`vector`)\cr a vector.</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">98</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  # in formatters for characters</pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">99</td>
-                    <td class="coverage">702<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  unlist(lapply(format_colvector(colvec = vec), nlines, max_width = max_width, fontspec = fontspec))</pre>
+                      <pre class="language-r">#' @rdname vec_nlines</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">100</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">})</pre>
+                      <pre class="language-r">#' @keywords internal</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">101</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_courier) {</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">102</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">## setMethod("vec_nlines", "character", function(vec, max_width = NULL) {</pre>
+                      <pre class="language-r">  if (is.null(max_width)) {</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">103</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     strvec &lt;- wrap_txt(format_colvector(colvec = vec), width = max_width, collapse = "\n")</pre>
+                      <pre class="language-r">    max_width &lt;- floor(0.9 * getOption("width")) # default of base::strwrap</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">104</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     mtchs &lt;- gregexpr("\n", strvec, fixed = TRUE)</pre>
+                      <pre class="language-r">    # NB: flooring as it is used as &lt;= (also in base::strwrap)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">105</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     1L + vapply(mtchs, function(vi) sum(vi &gt; 0), 1L)</pre>
+                      <pre class="language-r">  }</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">106</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">## })</pre>
+                      <pre class="language-r">  # in formatters for characters</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">107</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">  unlist(lapply(format_colvector(colvec = vec), nlines, max_width = max_width, fontspec = fontspec))</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">108</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">## setMethod("vec_nlines", "factor", function(vec, max_width = NULL) {</pre>
+                      <pre class="language-r">})</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">109</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##   lvl_nlines &lt;- vec_nlines(levels(vec), max_width = max_width)</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">110</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##   ret &lt;- lvl_nlines[vec]</pre>
+                      <pre class="language-r">## setMethod("vec_nlines", "character", function(vec, max_width = NULL) {</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">111</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##   ret[is.na(ret)] &lt;- format_value(NA_character</pre>
+                      <pre class="language-r">##     strvec &lt;- wrap_txt(format_colvector(colvec = vec), width = max_width, collapse = "\n")</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">112</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">## })</pre>
+                      <pre class="language-r">##     mtchs &lt;- gregexpr("\n", strvec, fixed = TRUE)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">113</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">##     1L + vapply(mtchs, function(vi) sum(vi &gt; 0), 1L)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">114</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' Make pagination data frame for a listing</pre>
+                      <pre class="language-r">## })</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">115</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">116</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @inheritParams formatters::make_row_df</pre>
+                      <pre class="language-r">## setMethod("vec_nlines", "factor", function(vec, max_width = NULL) {</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">117</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param tt (`listing_df`)\cr the listing to be rendered.</pre>
+                      <pre class="language-r">##   lvl_nlines &lt;- vec_nlines(levels(vec), max_width = max_width)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">118</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param visible_only (`flag`)\cr ignored, as listings do not have</pre>
+                      <pre class="language-r">##   ret &lt;- lvl_nlines[vec]</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">119</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'   non-visible structural elements.</pre>
+                      <pre class="language-r">##   ret[is.na(ret)] &lt;- format_value(NA_character</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">120</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">## })</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">121</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @return a `data.frame` with pagination information.</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">122</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">#' Make pagination data frame for a listing</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">123</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @seealso [formatters::make_row_df()]</pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">124</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">#' @inheritParams formatters::make_row_df</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">125</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @examples</pre>
+                      <pre class="language-r">#' @param tt (`listing_df`)\cr the listing to be rendered.</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">126</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' lsting &lt;- as_listing(mtcars)</pre>
+                      <pre class="language-r">#' @param visible_only (`flag`)\cr ignored, as listings do not have</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">127</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' mf &lt;- matrix_form(lsting)</pre>
+                      <pre class="language-r">#'   non-visible structural elements.</pre>
                     </td>
                   </tr>
                   <tr class="never">
@@ -1644,952 +1644,952 @@ table.table-condensed {
                     <td class="num">129</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
+                      <pre class="language-r">#' @return a `data.frame` with pagination information.</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">130</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setMethod(</pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">131</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  "make_row_df", "listing_df",</pre>
+                      <pre class="language-r">#' @seealso [formatters::make_row_df()]</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">132</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  function(tt, colwidths = NULL, visible_only = TRUE,</pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">133</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">           rownum = 0,</pre>
+                      <pre class="language-r">#' @examples</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">134</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">           indent = 0L,</pre>
+                      <pre class="language-r">#' lsting &lt;- as_listing(mtcars)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">135</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">           path = character(),</pre>
+                      <pre class="language-r">#' mf &lt;- matrix_form(lsting)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">136</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">           incontent = FALSE,</pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">137</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">           repr_ext = 0L,</pre>
+                      <pre class="language-r">#' @export</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">138</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">           repr_inds = integer(),</pre>
+                      <pre class="language-r">setMethod(</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">139</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">           sibpos = NA_integer_,</pre>
+                      <pre class="language-r">  "make_row_df", "listing_df",</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">140</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">           nsibs = NA_integer_,</pre>
+                      <pre class="language-r">  function(tt, colwidths = NULL, visible_only = TRUE,</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">141</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">           fontspec = dflt_courier) {</pre>
+                      <pre class="language-r">           rownum = 0,</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">142</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    ## assume sortedness by keycols</pre>
+                      <pre class="language-r">           indent = 0L,</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">143</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    keycols &lt;- get_keycols(tt)</pre>
+                      <pre class="language-r">           path = character(),</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">144</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    dispcols &lt;- listing_dispcols(tt)</pre>
+                      <pre class="language-r">           incontent = FALSE,</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">145</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    abs_rownumber &lt;- seq_along(tt[[1]])</pre>
+                      <pre class="language-r">           repr_ext = 0L,</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">146</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    if (length(keycols) &gt;= 1) {</pre>
+                      <pre class="language-r">           repr_inds = integer(),</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">147</td>
-                    <td class="coverage">170<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      runlens &lt;- basic_run_lens(tt[[tail(keycols, 1)]])</pre>
+                      <pre class="language-r">           sibpos = NA_integer_,</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">148</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    } else {</pre>
+                      <pre class="language-r">           nsibs = NA_integer_,</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">149</td>
-                    <td class="coverage">1<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      runlens &lt;- rep(1, NROW(tt))</pre>
+                      <pre class="language-r">           fontspec = dflt_courier) {</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">150</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    }</pre>
+                      <pre class="language-r">    ## assume sortedness by keycols</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">151</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    sibpos &lt;- unlist(lapply(runlens, seq_len))</pre>
+                      <pre class="language-r">    keycols &lt;- get_keycols(tt)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">152</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    nsibs &lt;- rep(runlens, times = runlens)</pre>
+                      <pre class="language-r">    dispcols &lt;- listing_dispcols(tt)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">153</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    extents &lt;- rep(1L, nrow(tt))</pre>
+                      <pre class="language-r">    abs_rownumber &lt;- seq_along(tt[[1]])</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">154</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    if (length(colwidths) &gt; 0 &amp;&amp; length(colwidths) != length(dispcols)) {</pre>
+                      <pre class="language-r">    if (length(keycols) &gt;= 1) {</pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="covered">
                     <td class="num">155</td>
-                    <td class="coverage">!</td>
+                    <td class="coverage">170<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      stop(</pre>
+                      <pre class="language-r">      runlens &lt;- basic_run_lens(tt[[tail(keycols, 1)]])</pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="never">
                     <td class="num">156</td>
-                    <td class="coverage">!</td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">        "Non-null colwidths vector must be the same length as the number of display columns.\n",</pre>
+                      <pre class="language-r">    } else {</pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="covered">
                     <td class="num">157</td>
-                    <td class="coverage">!</td>
+                    <td class="coverage">1<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">        "Got: ", length(colwidths), "(", length(dispcols), " disp cols)."</pre>
+                      <pre class="language-r">      runlens &lt;- rep(1, NROW(tt))</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">158</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      )</pre>
+                      <pre class="language-r">    }</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">159</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    }</pre>
+                      <pre class="language-r">    sibpos &lt;- unlist(lapply(runlens, seq_len))</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">160</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    if (length(colwidths) &gt; 0) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">161</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      names(colwidths) &lt;- dispcols</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">162</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    }</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">163</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    ## extents is a row-wise vector of extents, for each col, we update</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">164</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    ## if that column has any rows wider than the previously recorded extent.</pre>
+                      <pre class="language-r">    nsibs &lt;- rep(runlens, times = runlens)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">165</td>
+                    <td class="num">161</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    for (col in dispcols) {</pre>
+                      <pre class="language-r">    extents &lt;- rep(1L, nrow(tt))</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">162</td>
+                    <td class="coverage">171<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    if (length(colwidths) &gt; 0 &amp;&amp; length(colwidths) != length(dispcols)) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">163</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      stop(</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">164</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">        "Non-null colwidths vector must be the same length as the number of display columns.\n",</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">165</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">        "Got: ", length(colwidths), "(", length(dispcols), " disp cols)."</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">166</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      ## duplicated from matrix_form method, refactor!</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">167</td>
-                    <td class="coverage">702<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      col_ext &lt;- vec_nlines(tt[[col]], max_width = colwidths[col], fontspec = fontspec)</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">168</td>
-                    <td class="coverage">702<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      extents &lt;- ifelse(col_ext &gt; extents, col_ext, extents)</pre>
+                      <pre class="language-r">      )</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">169</td>
+                    <td class="num">167</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">    }</pre>
                     </td>
                   </tr>
                   <tr class="covered">
+                    <td class="num">168</td>
+                    <td class="coverage">171<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    if (length(colwidths) &gt; 0) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">169</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      names(colwidths) &lt;- dispcols</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
                     <td class="num">170</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    ret &lt;- data.frame(</pre>
+                      <pre class="language-r">    }</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">171</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      label = "", name = "",</pre>
+                      <pre class="language-r">    ## extents is a row-wise vector of extents, for each col, we update</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">172</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      abs_rownumber = abs_rownumber,</pre>
+                      <pre class="language-r">    ## if that column has any rows wider than the previously recorded extent.</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">173</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      path = I(as.list(rep(NA_character_, NROW(tt)))),</pre>
+                      <pre class="language-r">    for (col in dispcols) {</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">174</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      pos_in_siblings = sibpos,</pre>
+                      <pre class="language-r">      ## duplicated from matrix_form method, refactor!</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">175</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      n_siblings = nsibs,</pre>
+                      <pre class="language-r">      col_ext &lt;- vec_nlines(tt[[col]], max_width = colwidths[col], fontspec = fontspec)</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">176</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage">702<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      self_extent = extents,</pre>
+                      <pre class="language-r">      extents &lt;- ifelse(col_ext &gt; extents, col_ext, extents)</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">177</td>
-                    <td class="coverage">171<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      par_extent = 0L,</pre>
+                      <pre class="language-r">    }</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">178</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      reprint_inds = I(replicate(NROW(tt), list(integer()))),</pre>
+                      <pre class="language-r">    ret &lt;- data.frame(</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">179</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      node_class = "listing_df",</pre>
+                      <pre class="language-r">      label = "", name = "",</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">180</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      indent = 0L,</pre>
+                      <pre class="language-r">      abs_rownumber = abs_rownumber,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">181</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      nrowrefs = 0L, ## XXX this doesn't support footnotes</pre>
+                      <pre class="language-r">      path = I(as.list(rep(NA_character_, NROW(tt)))),</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">182</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      ncellrefs = 0L, ## XXX this doesn't support footnotes</pre>
+                      <pre class="language-r">      pos_in_siblings = sibpos,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">183</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      nreflines = 0L, ## XXX this doesn't support footnotes</pre>
+                      <pre class="language-r">      n_siblings = nsibs,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">184</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      force_page = FALSE,</pre>
+                      <pre class="language-r">      self_extent = extents,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">185</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      page_title = NA_character_,</pre>
+                      <pre class="language-r">      par_extent = 0L,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">186</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      trailing_sep = NA_character_</pre>
+                      <pre class="language-r">      reprint_inds = I(replicate(NROW(tt), list(integer()))),</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">187</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    )</pre>
+                      <pre class="language-r">      node_class = "listing_df",</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">188</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    stopifnot(identical(</pre>
+                      <pre class="language-r">      indent = 0L,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">189</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      names(ret),</pre>
+                      <pre class="language-r">      nrowrefs = 0L, ## XXX this doesn't support footnotes</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">190</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      names(pagdfrow(</pre>
+                      <pre class="language-r">      ncellrefs = 0L, ## XXX this doesn't support footnotes</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">191</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">        nm = "", lab = "", rnum = 1L, pth = NA_character_, extent = 1L,</pre>
+                      <pre class="language-r">      nreflines = 0L, ## XXX this doesn't support footnotes</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">192</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">        rclass = ""</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">193</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      ))</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">194</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    ))</pre>
+                      <pre class="language-r">      force_page = FALSE,</pre>
                     </td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">195</td>
+                    <td class="num">193</td>
                     <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    ret</pre>
+                      <pre class="language-r">      page_title = NA_character_,</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">194</td>
+                    <td class="coverage">171<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      trailing_sep = NA_character_</pre>
                     </td>
                   </tr>
                   <tr class="never">
+                    <td class="num">195</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    )</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
                     <td class="num">196</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">    stopifnot(identical(</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">197</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">)</pre>
+                      <pre class="language-r">      names(ret),</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">198</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">      names(pagdfrow(</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">199</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     tt$sibpos &lt;- unlist(lapply(</pre>
+                      <pre class="language-r">        nm = "", lab = "", rnum = 1L, pth = NA_character_, extent = 1L,</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">200</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     ## don't support pathing for now</pre>
+                      <pre class="language-r">        rclass = ""</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">201</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     tt$path &lt;- I(lapply(1:NROW(tt),</pre>
+                      <pre class="language-r">      ))</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">202</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##                     function(i) {</pre>
+                      <pre class="language-r">    ))</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">203</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">171<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##         retpath &lt;- character(2*length(keycols))</pre>
+                      <pre class="language-r">    ret</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">204</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##         for(j in seq_along(keycols)) {</pre>
+                      <pre class="language-r">  }</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">205</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##             retpath[2*j - 1] &lt;- keycols[j]</pre>
+                      <pre class="language-r">)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">206</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##             retpath[2*j] &lt;- tt[i, keycols[j], drop = TRUE]</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">207</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##         }</pre>
+                      <pre class="language-r">##     tt$sibpos &lt;- unlist(lapply(</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">208</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##         retpath</pre>
+                      <pre class="language-r">##     ## don't support pathing for now</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">209</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     }))</pre>
+                      <pre class="language-r">##     tt$path &lt;- I(lapply(1:NROW(tt),</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">210</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     spl &lt;- split(tt, tt[keycols])</pre>
+                      <pre class="language-r">##                     function(i) {</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">211</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     spl &lt;- spl[vapply(spl, function(y) NROW(y) &gt; 0, NA)]</pre>
+                      <pre class="language-r">##         retpath &lt;- character(2*length(keycols))</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">212</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     dfs &lt;- lapply(spl, function(df) {</pre>
+                      <pre class="language-r">##         for(j in seq_along(keycols)) {</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">213</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##         df &lt;- df[order(df$abs_rownumber),]</pre>
+                      <pre class="language-r">##             retpath[2*j - 1] &lt;- keycols[j]</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">214</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##         ndf &lt;- NROW(df)</pre>
+                      <pre class="language-r">##             retpath[2*j] &lt;- tt[i, keycols[j], drop = TRUE]</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">215</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##         lapply(1:ndf, function(i) {</pre>
+                      <pre class="language-r">##         }</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">216</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##             rw &lt;- df[i,]</pre>
+                      <pre class="language-r">##         retpath</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">217</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##             stopifnot(nrow(rw) == 1)</pre>
+                      <pre class="language-r">##     }))</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">218</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##             pagdfrow(nm = "",</pre>
+                      <pre class="language-r">##     spl &lt;- split(tt, tt[keycols])</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">219</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##                      lab = "",</pre>
+                      <pre class="language-r">##     spl &lt;- spl[vapply(spl, function(y) NROW(y) &gt; 0, NA)]</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">220</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##                      rnum = rw$abs_rownumber,</pre>
+                      <pre class="language-r">##     dfs &lt;- lapply(spl, function(df) {</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">221</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##                      pth = NA_character_,</pre>
+                      <pre class="language-r">##         df &lt;- df[order(df$abs_rownumber),]</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">222</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##                      sibpos = i,</pre>
+                      <pre class="language-r">##         ndf &lt;- NROW(df)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">223</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##                      nsibs = ndf,</pre>
+                      <pre class="language-r">##         lapply(1:ndf, function(i) {</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">224</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##                      extent = 1L,</pre>
+                      <pre class="language-r">##             rw &lt;- df[i,]</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">225</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##                      rclass = "listing_df",</pre>
+                      <pre class="language-r">##             stopifnot(nrow(rw) == 1)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">226</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##                      repind = integer())</pre>
+                      <pre class="language-r">##             pagdfrow(nm = "",</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">227</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##         })</pre>
+                      <pre class="language-r">##                      lab = "",</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">228</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     })</pre>
+                      <pre class="language-r">##                      rnum = rw$abs_rownumber,</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">229</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     ret &lt;- do.call(rbind, unlist(dfs, recursive = FALSE))</pre>
+                      <pre class="language-r">##                      pth = NA_character_,</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">230</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     ret &lt;- ret[order(ret$abs_rownumber),]</pre>
+                      <pre class="language-r">##                      sibpos = i,</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">231</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">##     ret</pre>
+                      <pre class="language-r">##                      nsibs = ndf,</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">232</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">## })</pre>
+                      <pre class="language-r">##                      extent = 1L,</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">233</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">##                      rclass = "listing_df",</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">234</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @inheritParams base::Extract</pre>
+                      <pre class="language-r">##                      repind = integer())</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">235</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param x (`listing_df`)\cr the listing.</pre>
+                      <pre class="language-r">##         })</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">236</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param i (`any`)\cr object passed to base `[` methods.</pre>
+                      <pre class="language-r">##     })</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">237</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param j (`any`)\cr object passed to base `[` methods.</pre>
+                      <pre class="language-r">##     ret &lt;- do.call(rbind, unlist(dfs, recursive = FALSE))</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">238</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">##     ret &lt;- ret[order(ret$abs_rownumber),]</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">239</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
+                      <pre class="language-r">##     ret</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">240</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @aliases [,listing_df-method</pre>
+                      <pre class="language-r">## })</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">241</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname listing_methods</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">242</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setMethod(</pre>
+                      <pre class="language-r">#' @inheritParams base::Extract</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">243</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  "[", "listing_df",</pre>
+                      <pre class="language-r">#' @param x (`listing_df`)\cr the listing.</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">244</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  function(x, i, j, drop = FALSE) {</pre>
+                      <pre class="language-r">#' @param i (`any`)\cr object passed to base `[` methods.</pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="never">
                     <td class="num">245</td>
-                    <td class="coverage">!</td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    xattr &lt;- attributes(x)</pre>
+                      <pre class="language-r">#' @param j (`any`)\cr object passed to base `[` methods.</pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="never">
                     <td class="num">246</td>
-                    <td class="coverage">!</td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    xattr$names &lt;- xattr$names[j]</pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="never">
                     <td class="num">247</td>
-                    <td class="coverage">!</td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    res &lt;- NextMethod()</pre>
+                      <pre class="language-r">#' @export</pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="never">
                     <td class="num">248</td>
-                    <td class="coverage">!</td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    if (!drop) {</pre>
+                      <pre class="language-r">#' @aliases [,listing_df-method</pre>
                     </td>
                   </tr>
-                  <tr class="missed">
+                  <tr class="never">
                     <td class="num">249</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      attributes(res) &lt;- xattr</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">250</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    }</pre>
-                    </td>
-                  </tr>
-                  <tr class="missed">
-                    <td class="num">251</td>
-                    <td class="coverage">!</td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    res</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">252</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">253</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">254</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r"></pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">255</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">#' @rdname listing_methods</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">256</td>
+                    <td class="num">250</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @param obj (`listing_df`)\cr the listing.</pre>
+                      <pre class="language-r">setMethod(</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">257</td>
+                    <td class="num">251</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">  "[", "listing_df",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">252</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  function(x, i, j, drop = FALSE) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">253</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    xattr &lt;- attributes(x)</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">254</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    xattr$names &lt;- xattr$names[j]</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">255</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    res &lt;- NextMethod()</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">256</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    if (!drop) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="missed">
+                    <td class="num">257</td>
+                    <td class="coverage">!</td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      attributes(res) &lt;- xattr</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">258</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @return</pre>
+                      <pre class="language-r">    }</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="missed">
                     <td class="num">259</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">!</td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' * Accessor methods return the value of the aspect of `obj`.</pre>
+                      <pre class="language-r">    res</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">260</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' * Setter methods return `obj` with the relevant element of the listing updated.</pre>
+                      <pre class="language-r">  }</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">261</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">262</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @examples</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">263</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' lsting &lt;- as_listing(mtcars)</pre>
+                      <pre class="language-r">#' @rdname listing_methods</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">264</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' main_title(lsting) &lt;- "Hi there"</pre>
+                      <pre class="language-r">#' @param obj (`listing_df`)\cr the listing.</pre>
                     </td>
                   </tr>
                   <tr class="never">
@@ -2603,711 +2603,767 @@ table.table-condensed {
                     <td class="num">266</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' main_title(lsting)</pre>
+                      <pre class="language-r">#' @return</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">267</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#'</pre>
+                      <pre class="language-r">#' * Accessor methods return the value of the aspect of `obj`.</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">268</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
+                      <pre class="language-r">#' * Setter methods return `obj` with the relevant element of the listing updated.</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">269</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setMethod(</pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">270</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  "main_title", "listing_df",</pre>
+                      <pre class="language-r">#' @examples</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">271</td>
-                    <td class="coverage">173<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  function(obj) attr(obj, "main_title") %||% character()</pre>
+                      <pre class="language-r">#' lsting &lt;- as_listing(mtcars)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">272</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">)</pre>
+                      <pre class="language-r">#' main_title(lsting) &lt;- "Hi there"</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">273</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">274</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname listing_methods</pre>
+                      <pre class="language-r">#' main_title(lsting)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">275</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
+                      <pre class="language-r">#'</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">276</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setMethod(</pre>
+                      <pre class="language-r">#' @export</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">277</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  "subtitles", "listing_df",</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">278</td>
-                    <td class="coverage">183<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  function(obj) attr(obj, "subtitles") %||% character()</pre>
+                      <pre class="language-r">setMethod(</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">279</td>
+                    <td class="num">278</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">)</pre>
+                      <pre class="language-r">  "main_title", "listing_df",</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">279</td>
+                    <td class="coverage">173<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  function(obj) attr(obj, "main_title") %||% character()</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">280</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">281</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname listing_methods</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">282</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
+                      <pre class="language-r">#' @rdname listing_methods</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">283</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setMethod(</pre>
+                      <pre class="language-r">#' @export</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">284</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  "main_footer", "listing_df",</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">285</td>
-                    <td class="coverage">172<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  function(obj) attr(obj, "main_footer") %||% character()</pre>
+                      <pre class="language-r">setMethod(</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">286</td>
+                    <td class="num">285</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">)</pre>
+                      <pre class="language-r">  "subtitles", "listing_df",</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">286</td>
+                    <td class="coverage">183<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  function(obj) attr(obj, "subtitles") %||% character()</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">287</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">288</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname listing_methods</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">289</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
+                      <pre class="language-r">#' @rdname listing_methods</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">290</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setMethod(</pre>
+                      <pre class="language-r">#' @export</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">291</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  "prov_footer", "listing_df",</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">292</td>
-                    <td class="coverage">172<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  function(obj) attr(obj, "prov_footer") %||% character()</pre>
+                      <pre class="language-r">setMethod(</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">293</td>
+                    <td class="num">292</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">)</pre>
+                      <pre class="language-r">  "main_footer", "listing_df",</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">293</td>
+                    <td class="coverage">172<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  function(obj) attr(obj, "main_footer") %||% character()</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">294</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">295</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">.chk_value &lt;- function(val, fname, len_one = FALSE, null_ok = TRUE) {</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">296</td>
-                    <td class="coverage">254<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  if (null_ok &amp;&amp; is.null(val)) {</pre>
+                      <pre class="language-r">#' @rdname listing_methods</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">297</td>
-                    <td class="coverage">209<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    return(TRUE)</pre>
+                      <pre class="language-r">#' @export</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">298</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">setMethod(</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">299</td>
-                    <td class="coverage">45<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  if (!is.character(val)) {</pre>
+                      <pre class="language-r">  "prov_footer", "listing_df",</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">300</td>
-                    <td class="coverage">4<em>x</em></td>
+                    <td class="coverage">172<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    stop("value for ", fname, " must be a character, got ",</pre>
+                      <pre class="language-r">  function(obj) attr(obj, "prov_footer") %||% character()</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">301</td>
-                    <td class="coverage">4<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      "object of class: ", paste(class(val), collapse = ","),</pre>
+                      <pre class="language-r">)</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">302</td>
-                    <td class="coverage">4<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">      call. = FALSE</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">303</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    )</pre>
+                      <pre class="language-r">.chk_value &lt;- function(val, fname, len_one = FALSE, null_ok = TRUE) {</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">304</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">254<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">  if (null_ok &amp;&amp; is.null(val)) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
                     <td class="num">305</td>
-                    <td class="coverage">41<em>x</em></td>
+                    <td class="coverage">209<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  if (len_one &amp;&amp; length(val) &gt; 1) {</pre>
+                      <pre class="language-r">    return(TRUE)</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">306</td>
-                    <td class="coverage">1<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    stop(</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">307</td>
-                    <td class="coverage">1<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      "value for ", fname, " must be length &lt;= 1, got ",</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">308</td>
-                    <td class="coverage">1<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">      "vector of length ", length(val)</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">309</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    )</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">310</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">  }</pre>
                     </td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">311</td>
-                    <td class="coverage">40<em>x</em></td>
+                    <td class="num">307</td>
+                    <td class="coverage">45<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  TRUE</pre>
+                      <pre class="language-r">  if (!is.character(val)) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">308</td>
+                    <td class="coverage">4<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    stop("value for ", fname, " must be a character, got ",</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">309</td>
+                    <td class="coverage">4<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      "object of class: ", paste(class(val), collapse = ","),</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">310</td>
+                    <td class="coverage">4<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">      call. = FALSE</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">311</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    )</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">312</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">}</pre>
+                      <pre class="language-r">  }</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">313</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">41<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">  if (len_one &amp;&amp; length(val) &gt; 1) {</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">314</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">1<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname listing_methods</pre>
+                      <pre class="language-r">    stop(</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">315</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">1<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
+                      <pre class="language-r">      "value for ", fname, " must be length &lt;= 1, got ",</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">316</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">1<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setMethod(</pre>
+                      <pre class="language-r">      "vector of length ", length(val)</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">317</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  "main_title&lt;-", "listing_df",</pre>
+                      <pre class="language-r">    )</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">318</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  function(obj, value) {</pre>
+                      <pre class="language-r">  }</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">319</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">40<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    ## length 1 restriction is to match rtables behavior</pre>
+                      <pre class="language-r">  TRUE</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">320</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    ## which currently enforces this (though incompletely)</pre>
+                      <pre class="language-r">}</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">321</td>
-                    <td class="coverage">63<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    .chk_value(value, "main_title", len_one = TRUE)</pre>
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">322</td>
-                    <td class="coverage">61<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    attr(obj, "main_title") &lt;- value</pre>
+                      <pre class="language-r">#' @rdname listing_methods</pre>
                     </td>
                   </tr>
-                  <tr class="covered">
+                  <tr class="never">
                     <td class="num">323</td>
-                    <td class="coverage">61<em>x</em></td>
+                    <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    obj</pre>
+                      <pre class="language-r">#' @export</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">324</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">setMethod(</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">325</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">)</pre>
+                      <pre class="language-r">  "main_title&lt;-", "listing_df",</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">326</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">  function(obj, value) {</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">327</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname listing_methods</pre>
+                      <pre class="language-r">    ## length 1 restriction is to match rtables behavior</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">328</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
+                      <pre class="language-r">    ## which currently enforces this (though incompletely)</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">329</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">63<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">setMethod(</pre>
+                      <pre class="language-r">    .chk_value(value, "main_title", len_one = TRUE)</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">330</td>
-                    <td class="coverage"></td>
+                    <td class="coverage">61<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  "subtitles&lt;-", "listing_df",</pre>
+                      <pre class="language-r">    attr(obj, "main_title") &lt;- value</pre>
                     </td>
                   </tr>
-                  <tr class="never">
+                  <tr class="covered">
                     <td class="num">331</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  function(obj, value) {</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">332</td>
-                    <td class="coverage">70<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    .chk_value(value, "subtitles")</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">333</td>
-                    <td class="coverage">69<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    attr(obj, "subtitles") &lt;- value</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">334</td>
-                    <td class="coverage">69<em>x</em></td>
+                    <td class="coverage">61<em>x</em></td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">332</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">333</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">334</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">335</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">#' @rdname listing_methods</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">336</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">)</pre>
+                      <pre class="language-r">#' @export</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">337</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">setMethod(</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">338</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname listing_methods</pre>
+                      <pre class="language-r">  "subtitles&lt;-", "listing_df",</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">339</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">340</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">setMethod(</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">341</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  "main_footer&lt;-", "listing_df",</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">342</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
                       <pre class="language-r">  function(obj, value) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">343</td>
-                    <td class="coverage">61<em>x</em></td>
+                    <td class="num">340</td>
+                    <td class="coverage">70<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    .chk_value(value, "main_footer")</pre>
+                      <pre class="language-r">    .chk_value(value, "subtitles")</pre>
                     </td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">344</td>
-                    <td class="coverage">60<em>x</em></td>
+                    <td class="num">341</td>
+                    <td class="coverage">69<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    attr(obj, "main_footer") &lt;- value</pre>
+                      <pre class="language-r">    attr(obj, "subtitles") &lt;- value</pre>
                     </td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">345</td>
-                    <td class="coverage">60<em>x</em></td>
+                    <td class="num">342</td>
+                    <td class="coverage">69<em>x</em></td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">343</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">344</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">345</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">346</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  }</pre>
+                      <pre class="language-r">#' @rdname listing_methods</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">347</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">)</pre>
+                      <pre class="language-r">#' @export</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">348</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r"></pre>
+                      <pre class="language-r">setMethod(</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">349</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @rdname listing_methods</pre>
+                      <pre class="language-r">  "main_footer&lt;-", "listing_df",</pre>
                     </td>
                   </tr>
                   <tr class="never">
                     <td class="num">350</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">#' @export</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">351</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">setMethod(</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">352</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">  "prov_footer&lt;-", "listing_df",</pre>
-                    </td>
-                  </tr>
-                  <tr class="never">
-                    <td class="num">353</td>
-                    <td class="coverage"></td>
-                    <td class="col-sm-12">
                       <pre class="language-r">  function(obj, value) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">354</td>
+                    <td class="num">351</td>
+                    <td class="coverage">61<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    .chk_value(value, "main_footer")</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">352</td>
                     <td class="coverage">60<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    .chk_value(value, "prov_footer")</pre>
+                      <pre class="language-r">    attr(obj, "main_footer") &lt;- value</pre>
                     </td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">355</td>
-                    <td class="coverage">59<em>x</em></td>
-                    <td class="col-sm-12">
-                      <pre class="language-r">    attr(obj, "prov_footer") &lt;- value</pre>
-                    </td>
-                  </tr>
-                  <tr class="covered">
-                    <td class="num">356</td>
-                    <td class="coverage">59<em>x</em></td>
+                    <td class="num">353</td>
+                    <td class="coverage">60<em>x</em></td>
                     <td class="col-sm-12">
                       <pre class="language-r">    obj</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">357</td>
+                    <td class="num">354</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">  }</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">358</td>
+                    <td class="num">355</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">)</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">359</td>
+                    <td class="num">356</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r"></pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">360</td>
+                    <td class="num">357</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">#' @rdname listing_methods</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">361</td>
+                    <td class="num">358</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">#' @export</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">362</td>
+                    <td class="num">359</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">setMethod(</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">363</td>
+                    <td class="num">360</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  "num_rep_cols", "listing_df",</pre>
+                      <pre class="language-r">  "prov_footer&lt;-", "listing_df",</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">364</td>
+                    <td class="num">361</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">  function(obj) {</pre>
+                      <pre class="language-r">  function(obj, value) {</pre>
                     </td>
                   </tr>
                   <tr class="covered">
-                    <td class="num">365</td>
-                    <td class="coverage">93<em>x</em></td>
+                    <td class="num">362</td>
+                    <td class="coverage">60<em>x</em></td>
                     <td class="col-sm-12">
-                      <pre class="language-r">    length(get_keycols(obj))</pre>
+                      <pre class="language-r">    .chk_value(value, "prov_footer")</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">363</td>
+                    <td class="coverage">59<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    attr(obj, "prov_footer") &lt;- value</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">364</td>
+                    <td class="coverage">59<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    obj</pre>
                     </td>
                   </tr>
                   <tr class="never">
-                    <td class="num">366</td>
+                    <td class="num">365</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">  }</pre>
                     </td>
                   </tr>
                   <tr class="never">
+                    <td class="num">366</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">)</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
                     <td class="num">367</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r"></pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">368</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @rdname listing_methods</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">369</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">#' @export</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">370</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">setMethod(</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">371</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  "num_rep_cols", "listing_df",</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">372</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  function(obj) {</pre>
+                    </td>
+                  </tr>
+                  <tr class="covered">
+                    <td class="num">373</td>
+                    <td class="coverage">93<em>x</em></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">    length(get_keycols(obj))</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">374</td>
+                    <td class="coverage"></td>
+                    <td class="col-sm-12">
+                      <pre class="language-r">  }</pre>
+                    </td>
+                  </tr>
+                  <tr class="never">
+                    <td class="num">375</td>
                     <td class="coverage"></td>
                     <td class="col-sm-12">
                       <pre class="language-r">)</pre>
