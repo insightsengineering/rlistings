@@ -30,6 +30,8 @@ print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL
   }, error = function(e) {
     if (nrow(x) == 0) {
       print("No observation in the listing object.")
+    } else {
+      stop(e)
     }
   })
   invisible(x)
