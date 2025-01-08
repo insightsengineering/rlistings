@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Joe Zhu \email{joe.zhu@roche.com}
+\strong{Maintainer}: Joe Zhu \email{joe.zhu@roche.com} (\href{https://orcid.org/0000-0001-7566-2787}{ORCID})
 
 Authors:
 \itemize{
