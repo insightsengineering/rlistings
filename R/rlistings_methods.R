@@ -14,7 +14,7 @@ dflt_courier <- font_spec("Courier", 9, 1)
 #'
 #' @export
 #' @name listing_methods
-print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, fontspec = NULL, col_gap = 3L,  ...) {
+print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, fontspec = NULL, col_gap = 3L, round_type = c("iec", "sas"),  ...) {
   tryCatch({
     cat(
       toString(
@@ -24,8 +24,10 @@ print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL
         max_width = max_width,
         fontspec = fontspec,
         col_gap = col_gap,
+        round_type = round_type,
         ...
-      )
+      ),
+      round_type = round_type
     )
   }, error = function(e) {
     if (nrow(x) == 0) {
@@ -40,12 +42,13 @@ print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL
 #' @exportMethod toString
 #' @name listing_methods
 #' @aliases toString,listing_df-method
-setMethod("toString", "listing_df", function(x, widths = NULL, fontspec = NULL, col_gap = 3L,  ...) {
+setMethod("toString", "listing_df", function(x, widths = NULL, fontspec = NULL, col_gap = 3L, round_type = c("iec", "sas"),  ...) {
   toString(
-    matrix_form(x, fontspec = fontspec, col_gap = col_gap),
+    matrix_form(x, fontspec = fontspec, col_gap = col_gap, round_type = round_type),
     fontspec = fontspec,
     col_gap = col_gap,
     widths = widths,
+    round_type = round_type,
     ...
   )
 })
@@ -68,7 +71,7 @@ basic_run_lens <- function(x) {
 #'
 #' @rdname vec_nlines
 #' @keywords internal
-format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
+format_colvector <- function(df, colnm, colvec = df[[colnm]], round_type = c("iec", "sas")) {
   if (missing(colvec) && !(colnm %in% names(df))) {
     stop("column ", colnm, " not found")
   }
@@ -77,7 +80,7 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
     na_str <- rep("-", max(1L, length(na_str)))
   }
 
-  strvec <- vapply(colvec, format_value, "", format = obj_format(colvec), na_str = na_str)
+  strvec <- vapply(colvec, format_value, "", format = obj_format(colvec), na_str = na_str, round_type = round_type)
   strvec
 }
 
@@ -92,19 +95,20 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]]) {
 #'   needed to render the elements of `vec` to width `max_width`.
 #'
 #' @keywords internal
-setGeneric("vec_nlines", function(vec, max_width = NULL, fontspec = dflt_courier) standardGeneric("vec_nlines"))
+setGeneric("vec_nlines", function(vec, max_width = NULL, fontspec = dflt_courier, round_type = c("iec", "sas")) standardGeneric("vec_nlines"))
 
 #' @param vec (`vector`)\cr a vector.
 #'
 #' @rdname vec_nlines
 #' @keywords internal
-setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_courier) {
+setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_courier, round_type = c("iec", "sas")) {
+  round_type <- match.arg(round_type)
   if (is.null(max_width)) {
     max_width <- floor(0.9 * getOption("width")) # default of base::strwrap
     # NB: flooring as it is used as <= (also in base::strwrap)
   }
   # in formatters for characters
-  unlist(lapply(format_colvector(colvec = vec), nlines, max_width = max_width, fontspec = fontspec))
+  unlist(lapply(format_colvector(colvec = vec, round_type = round_type), nlines, max_width = max_width, fontspec = fontspec))
 })
 
 ## setMethod("vec_nlines", "character", function(vec, max_width = NULL) {
@@ -118,6 +122,8 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_c
 ##   ret <- lvl_nlines[vec]
 ##   ret[is.na(ret)] <- format_value(NA_character
 ## })
+
+
 
 #' Make pagination data frame for a listing
 #'
@@ -146,7 +152,8 @@ setMethod(
            repr_inds = integer(),
            sibpos = NA_integer_,
            nsibs = NA_integer_,
-           fontspec = dflt_courier) {
+           fontspec = dflt_courier,
+           round_type = c("iec", "sas")) {
     ## assume sortedness by keycols
     keycols <- get_keycols(tt)
     dispcols <- listing_dispcols(tt)
@@ -172,7 +179,7 @@ setMethod(
     ## if that column has any rows wider than the previously recorded extent.
     for (col in dispcols) {
       ## duplicated from matrix_form method, refactor!
-      col_ext <- vec_nlines(tt[[col]], max_width = colwidths[col], fontspec = fontspec)
+      col_ext <- vec_nlines(tt[[col]], max_width = colwidths[col], fontspec = fontspec, round_type = round_type)
       extents <- ifelse(col_ext > extents, col_ext, extents)
     }
     ret <- data.frame(

@@ -160,3 +160,19 @@ testthat::test_that("listings supports wrapping", {
   # Fix C stack inf rec loop
   testthat::expect_silent(toString(lsting, widths = c(10, 10, 1)))
 })
+
+
+testthat::test_that("sas rounding support", {
+  df <- data.frame(id = 1:3 + 0.845, value = 0.845)
+  lsting <- as_listing(df, key_cols = "id", default_formatting = list(all = fmt_config("xx.xx")))
+  txt1 <- export_as_txt(lsting)
+  txtlns1 <- strsplit(txt1, "\n", fixed = TRUE)[[1]]
+  expect_true(all(grepl(".*84.*84 $", txtlns1[3:5])))
+  expect_false(any(grepl("85", txtlns1)))
+  txt2 <- export_as_txt(lsting, round_type = "sas")
+  txtlns2 <- strsplit(txt2, "\n", fixed = TRUE)[[1]]
+  expect_true(all(grepl(".*85.*85 $", txtlns2[3:5])))
+  expect_false(any(grepl("84", txtlns2)))
+  expect_identical(export_as_txt(lsting, round_type = "sas"),
+                   toString(lsting, round_type = "sas"))
+})
