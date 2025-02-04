@@ -14,7 +14,14 @@ dflt_courier <- font_spec("Courier", 9, 1)
 #'
 #' @export
 #' @name listing_methods
-print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, fontspec = NULL, col_gap = 3L, round_type = c("iec", "sas"),  ...) {
+print.listing_df <- function(x,
+                             widths = NULL,
+                             tf_wrap = FALSE,
+                             max_width = NULL,
+                             fontspec = NULL,
+                             col_gap = 3L,
+                             round_type = c("iec", "sas"),
+                             ...) {
   tryCatch({
     cat(
       toString(
@@ -42,7 +49,12 @@ print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL
 #' @exportMethod toString
 #' @name listing_methods
 #' @aliases toString,listing_df-method
-setMethod("toString", "listing_df", function(x, widths = NULL, fontspec = NULL, col_gap = 3L, round_type = c("iec", "sas"),  ...) {
+setMethod("toString", "listing_df", function(x,
+                                             widths = NULL,
+                                             fontspec = NULL,
+                                             col_gap = 3L,
+                                             round_type = c("iec", "sas"),
+                                             ...) {
   toString(
     matrix_form(x, fontspec = fontspec, col_gap = col_gap, round_type = round_type),
     fontspec = fontspec,
@@ -95,7 +107,9 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]], round_type = c("ie
 #'   needed to render the elements of `vec` to width `max_width`.
 #'
 #' @keywords internal
-setGeneric("vec_nlines", function(vec, max_width = NULL, fontspec = dflt_courier, round_type = c("iec", "sas")) standardGeneric("vec_nlines"))
+setGeneric("vec_nlines", function(vec, max_width = NULL, fontspec = dflt_courier, round_type = c("iec", "sas")) {
+  standardGeneric("vec_nlines")
+})
 
 #' @param vec (`vector`)\cr a vector.
 #'
@@ -108,7 +122,8 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_c
     # NB: flooring as it is used as <= (also in base::strwrap)
   }
   # in formatters for characters
-  unlist(lapply(format_colvector(colvec = vec, round_type = round_type), nlines, max_width = max_width, fontspec = fontspec))
+  unlist(lapply(format_colvector(colvec = vec, round_type = round_type), nlines,
+                max_width = max_width, fontspec = fontspec))
 })
 
 ## setMethod("vec_nlines", "character", function(vec, max_width = NULL) {

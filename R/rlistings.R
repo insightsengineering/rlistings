@@ -284,7 +284,12 @@ get_keycols <- function(df) {
 #' @export
 setMethod(
   "matrix_form", "listing_df",
-  rix_form <- function(obj, indent_rownames = FALSE, expand_newlines = TRUE, fontspec = font_spec, col_gap = 3L, round_type = c("iec", "sas")) {
+  rix_form <- function(obj,
+                       indent_rownames = FALSE,
+                       expand_newlines = TRUE,
+                       fontspec = font_spec,
+                       col_gap = 3L,
+                       round_type = c("iec", "sas")) {
     ##  we intentionally silently ignore indent_rownames because listings have
     ## no rownames, but formatters::vert_pag_indices calls matrix_form(obj, TRUE)
     ## unconditionally.
@@ -306,7 +311,10 @@ setMethod(
     for (i in seq_along(keycols)) {
       kcol <- keycols[i]
       kcolvec <- listing[[kcol]]
-      kcolvec <- vapply(kcolvec, format_value, "", format = obj_format(kcolvec), na_str = obj_na_str(kcolvec), round_type = round_type)
+      kcolvec <- vapply(kcolvec, format_value, "",
+                        format = obj_format(kcolvec),
+                        na_str = obj_na_str(kcolvec),
+                        round_type = round_type)
       curkey <- paste0(curkey, kcolvec)
       disp <- c(TRUE, tail(curkey, -1) != head(curkey, -1))
       bodymat[disp, kcol] <- kcolvec[disp]
@@ -316,7 +324,10 @@ setMethod(
     if (length(nonkeycols) > 0) {
       for (nonk in nonkeycols) {
         vec <- listing[[nonk]]
-        vec <- vapply(vec, format_value, "", format = obj_format(vec), na_str = obj_na_str(vec), round_type = round_type)
+        vec <- vapply(vec, format_value, "",
+                      format = obj_format(vec),
+                      na_str = obj_na_str(vec),
+                      round_type = round_type)
         bodymat[, nonk] <- vec
       }
     }
