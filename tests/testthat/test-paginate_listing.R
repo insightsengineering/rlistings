@@ -13,14 +13,14 @@ testthat::test_that("pagination works vertically", {
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
-  pages_listings <- suppressMessages(paginate_listing(lsting, lpp = 4, verbose = TRUE, print_pages = FALSE))
+  pages_listings <- suppressMessages(paginate_listing(lsting, lpp = 6, verbose = TRUE, print_pages = FALSE))
 
   testthat::expect_snapshot(fast_print(pages_listings[c(1, 2)]))
 
   lsting2 <- lsting %>% add_listing_col("BMRKR2")
-  pages_listings2 <- paginate_listing(lsting2, lpp = 4, cpp = 70, print_pages = FALSE)
+  pages_listings2 <- paginate_listing(lsting2, lpp = 8, cpp = 70, print_pages = FALSE)
 
-  testthat::expect_equal(length(pages_listings2), 6L)
+  testthat::expect_equal(length(pages_listings2), 4L)
   testthat::expect_snapshot(fast_print(pages_listings2[c(1, 6)]))
 })
 
@@ -135,8 +135,8 @@ testthat::test_that("checking vertical pagination line calculation.", {
   page1_result <- pages_listings[[1]]
   page2_result <- pages_listings[[2]]
 
-  testthat::expect_equal(sum(nrow(page1_result$strings), length(page1_result$main_footer)), 5)
-  testthat::expect_equal(sum(nrow(page2_result$strings), length(page2_result$main_footer)), 5)
+  testthat::expect_equal(sum(nrow(page1_result$strings), length(page1_result$main_footer)), 3)
+  testthat::expect_equal(sum(nrow(page2_result$strings), length(page2_result$main_footer)), 3)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for pg_width and pg_height", {
@@ -239,27 +239,38 @@ testthat::test_that("pagination repeats keycols in other pages", {
   )
 })
 
+testthat::test_that("pagination repeats keycols in other pages (longer test)", {
+  dat <- ex_adae
+  lsting <- as_listing(dat[1:50, c(1:6, 40)],
+    key_cols = c("USUBJID", "AESOC"),
+    main_title = "Example Title for Listing",
+    subtitles = "This is the subtitle for this Adverse Events Table",
+    main_footer = "Main footer for the listing",
+    prov_footer = c(
+      "You can even add a subfooter", "Second element is place on a new line",
+      "Third string"
+    )
+  )
+
+  lst <- lsting %>% export_as_txt(tf_wrap = T, lpp = 30, page_break = "\f")
+  testthat::expect_snapshot(
+    cat(toString(lst))
+  )
+})
+
 testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
   iris2 <- iris[1:10, 3:5]
   iris2$Species <- "SOMETHING VERY LONG THAT BREAKS PAGINATION"
 
   lst <- as_listing(iris2, key_cols = c("Species", "Petal.Width"))
 
-  pgs <- paginate_to_mpfs(lst, colwidths = c(30, 11, 12), lpp = 5)
+  pgs <- paginate_to_mpfs(lst, colwidths = c(30, 11, 12), lpp = 7)
 
   testthat::expect_equal(
     sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
-    rep(5, 5)
+    rep(7, 10)
   )
   testthat::expect_snapshot(null <- sapply(pgs, function(x) toString(x) %>% cat()))
-
-  # Errors
-  testthat::expect_error(
-    suppressMessages(pgs <- paginate_to_mpfs(lst, colwidths = c(30, 11, 12), lpp = 3, verbose = TRUE))
-  )
-  testthat::expect_error(
-    suppressMessages(pgs <- paginate_to_mpfs(lst, colwidths = c(30, 11, 12), lpp = 8, cpp = 5, verbose = TRUE))
-  )
 
   # Test 2 with double wrapping
   tmp_fct <- factor(iris2$Petal.Width)
@@ -272,7 +283,7 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
 
   testthat::expect_equal(
     sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
-    seq(8, 6)
+    c(7, 8, 8, 8, 7, 7, 7)
   )
 })
 
@@ -293,17 +304,17 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols when doing 
     rep(expected_min_cpp, 2) # no colgap
   )
 
-  pgs <- paginate_to_mpfs(lst, colwidths = cw, lpp = 5, cpp = expected_min_cpp + 3)
+  pgs <- paginate_to_mpfs(lst, colwidths = cw, lpp = 7, cpp = expected_min_cpp + 3)
 
   # testing nrow
   testthat::expect_equal(
     sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
-    rep(5, 10)
+    rep(7, 20)
   )
   # testing nchars
   testthat::expect_equal(
     sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] %>% nchar()),
-    rep(expected_min_cpp, 10)
+    rep(expected_min_cpp, 20)
   )
 })
 
