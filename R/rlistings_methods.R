@@ -1,4 +1,3 @@
-
 ## XXX this historically has been 1, but it actually should be 1.2!!!!!
 dflt_courier <- font_spec("Courier", 9, 1)
 
@@ -14,33 +13,36 @@ dflt_courier <- font_spec("Courier", 9, 1)
 #'
 #' @export
 #' @name listing_methods
-print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, fontspec = NULL, col_gap = 3L,  ...) {
-  tryCatch({
-    cat(
-      toString(
-        matrix_form(x, fontspec = fontspec, col_gap = col_gap),
-        widths = widths,
-        tf_wrap = tf_wrap,
-        max_width = max_width,
-        fontspec = fontspec,
-        col_gap = col_gap,
-        ...
+print.listing_df <- function(x, widths = NULL, tf_wrap = FALSE, max_width = NULL, fontspec = NULL, col_gap = 3L, ...) {
+  tryCatch(
+    {
+      cat(
+        toString(
+          matrix_form(x, fontspec = fontspec, col_gap = col_gap),
+          widths = widths,
+          tf_wrap = tf_wrap,
+          max_width = max_width,
+          fontspec = fontspec,
+          col_gap = col_gap,
+          ...
+        )
       )
-    )
-  }, error = function(e) {
-    if (nrow(x) == 0) {
-      print("No observation in the listing object.")
-    } else {
-      stop(e)
+    },
+    error = function(e) {
+      if (nrow(x) == 0) {
+        print("No observation in the listing object.")
+      } else {
+        stop(e)
+      }
     }
-  })
+  )
   invisible(x)
 }
 
 #' @exportMethod toString
 #' @name listing_methods
 #' @aliases toString,listing_df-method
-setMethod("toString", "listing_df", function(x, widths = NULL, fontspec = NULL, col_gap = 3L,  ...) {
+setMethod("toString", "listing_df", function(x, widths = NULL, fontspec = NULL, col_gap = 3L, ...) {
   toString(
     matrix_form(x, fontspec = fontspec, col_gap = col_gap),
     fontspec = fontspec,
