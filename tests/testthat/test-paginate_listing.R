@@ -252,7 +252,7 @@ testthat::test_that("pagination repeats keycols in other pages (longer test)", {
     )
   )
 
-  lst <- lsting %>% export_as_txt(tf_wrap = T, lpp = 30, page_break = "\f")
+  lst <- lsting %>% export_as_txt(tf_wrap = TRUE, lpp = 30, page_break = "\f")
   testthat::expect_snapshot(
     cat(toString(lst))
   )
