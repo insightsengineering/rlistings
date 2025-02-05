@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="export" timestamp="2025-02-05T06:28:54Z" hostname="7759e344fa60" tests="11" skipped="0" failures="0" errors="0" time="2.372">
-    <testcase time="0.202" classname="export" name="Listing_print_correctly"/>
-    <testcase time="0.312" classname="export" name="key_columns_repeat_with_export_as_txt"/>
-    <testcase time="0.178" classname="export" name="key_columns_repeat_with_pagination_with_export_as_txt"/>
-    <testcase time="0.332" classname="export" name="Listing_print_correctly_with_paginate"/>
+  <testsuite name="export" timestamp="2025-02-05T06:39:46Z" hostname="9ef87159a5e6" tests="11" skipped="0" failures="0" errors="0" time="2.322">
+    <testcase time="0.199" classname="export" name="Listing_print_correctly"/>
+    <testcase time="0.306" classname="export" name="key_columns_repeat_with_export_as_txt"/>
+    <testcase time="0.174" classname="export" name="key_columns_repeat_with_pagination_with_export_as_txt"/>
+    <testcase time="0.321" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.00300000000000011" classname="export" name="Listing_print_correctly_with_paginate"/>
     <testcase time="0.002" classname="export" name="Listing_print_correctly_with_paginate"/>
-    <testcase time="0.00299999999999989" classname="export" name="Listing_print_correctly_with_paginate"/>
-    <testcase time="0.346" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination"/>
-    <testcase time="0.219" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination"/>
-    <testcase time="0.51" classname="export" name="export_as_txt_works_with_split_into_pages_by_var"/>
+    <testcase time="0.334" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination"/>
+    <testcase time="0.213" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination"/>
+    <testcase time="0.495" classname="export" name="export_as_txt_works_with_split_into_pages_by_var"/>
     <testcase time="0.0659999999999998" classname="export" name="export_as_txt_works_with_empty_listings"/>
-    <testcase time="0.202" classname="export" name="export_as_txt_works_with_listings_with_all_key_cols"/>
+    <testcase time="0.209" classname="export" name="export_as_txt_works_with_listings_with_all_key_cols"/>
   </testsuite>
-  <testsuite name="listings" timestamp="2025-02-05T06:28:56Z" hostname="7759e344fa60" tests="42" skipped="0" failures="0" errors="0" time="0.753">
+  <testsuite name="listings" timestamp="2025-02-05T06:39:48Z" hostname="9ef87159a5e6" tests="42" skipped="0" failures="0" errors="0" time="0.724">
     <testcase time="0.0190000000000001" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.024" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.00199999999999978" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.0270000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0229999999999997" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.00300000000000011" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.028" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00200000000000022" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00299999999999967" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00200000000000022" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.0129999999999999" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00200000000000022" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0119999999999996" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00700000000000012" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00600000000000023" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00699999999999967" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00599999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00600000000000023" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00800000000000001" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.0209999999999999" classname="listings" name="Content_of_listings_supports_newlines"/>
+    <testcase time="0.00299999999999967" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0220000000000002" classname="listings" name="Content_of_listings_supports_newlines"/>
     <testcase time="0.012" classname="listings" name="Content_of_listings_supports_newlines"/>
-    <testcase time="0.0140000000000002" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
-    <testcase time="0.0509999999999997" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0180000000000002" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0459999999999998" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0380000000000003" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0089999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.00499999999999989" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0819999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0179999999999998" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
-    <testcase time="0.0270000000000001" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
-    <testcase time="0.0350000000000001" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
-    <testcase time="0.0249999999999999" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
-    <testcase time="0.0459999999999998" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.04" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.044" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0110000000000001" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
+    <testcase time="0.0489999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0169999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.044" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0390000000000001" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00800000000000001" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00599999999999978" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0779999999999998" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0190000000000001" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.0249999999999999" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.0329999999999999" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
+    <testcase time="0.024" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
+    <testcase time="0.0450000000000004" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0389999999999997" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0390000000000001" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
     <testcase time="0.0089999999999999" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
     <testcase time="0.028" classname="listings" name="add_listing_col_works_with_a_function_when_a_format_is_applied"/>
-    <testcase time="0.0129999999999999" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
-    <testcase time="0.00200000000000022" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
-    <testcase time="0.0190000000000001" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
-    <testcase time="0.00800000000000001" classname="listings" name="appropriate_error_message_returned_for_difftime_class"/>
+    <testcase time="0.012" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
+    <testcase time="0.00300000000000011" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
+    <testcase time="0.0180000000000002" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
+    <testcase time="0.0089999999999999" classname="listings" name="appropriate_error_message_returned_for_difftime_class"/>
   </testsuite>
-  <testsuite name="matrix_form" timestamp="2025-02-05T06:28:57Z" hostname="7759e344fa60" tests="13" skipped="0" failures="0" errors="0" time="0.413">
-    <testcase time="0.0569999999999999" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.00199999999999978" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.0089999999999999" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.0790000000000002" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+  <testsuite name="matrix_form" timestamp="2025-02-05T06:39:49Z" hostname="9ef87159a5e6" tests="13" skipped="0" failures="0" errors="0" time="0.403">
+    <testcase time="0.0539999999999998" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.00200000000000022" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.00800000000000001" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.0749999999999997" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
     <testcase time="0.104" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
     <testcase time="0.00300000000000011" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
     <testcase time="0.00199999999999978" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.0899999999999999" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.00300000000000011" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.0900000000000003" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
     <testcase time="0.00199999999999978" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.0140000000000002" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
+    <testcase time="0.00300000000000011" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.0129999999999999" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
     <testcase time="0.0259999999999998" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
-    <testcase time="0.0220000000000002" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
+    <testcase time="0.0209999999999999" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
   </testsuite>
-  <testsuite name="paginate_listing" timestamp="2025-02-05T06:28:57Z" hostname="7759e344fa60" tests="42" skipped="0" failures="15" errors="0" time="7.139">
-    <testcase time="0.206" classname="paginate_listing" name="pagination_works_vertically">
+  <testsuite name="paginate_listing" timestamp="2025-02-05T06:39:49Z" hostname="9ef87159a5e6" tests="42" skipped="0" failures="15" errors="0" time="7.033">
+    <testcase time="0.204000000000001" classname="paginate_listing" name="pagination_works_vertically">
       <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:18:3')">Snapshot of code has changed:
 old[5:17] vs new[5:15]
     Unique Subject Identifier   Age   Continous Level Biomarker 1
@@ -98,13 +98,13 @@ old[5:17] vs new[5:15]
 * Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
 * Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
     </testcase>
-    <testcase time="0.105" classname="paginate_listing" name="pagination_works_vertically">
+    <testcase time="0.101999999999999" classname="paginate_listing" name="pagination_works_vertically">
       <failure type="failure" message="length(pages_listings2) (`actual`) not equal to 4L (`expected`). ('test-paginate_listing.R:23:3')">length(pages_listings2) (`actual`) not equal to 4L (`expected`).
 
   `actual`: 2
 `expected`: 4</failure>
     </testcase>
-    <testcase time="0.0609999999999999" classname="paginate_listing" name="pagination_works_vertically">
+    <testcase time="0.0580000000000007" classname="paginate_listing" name="pagination_works_vertically">
       <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:24:3')">Snapshot of code has changed:
 old[7:13] vs new[7:13]
       AB12345-BRA-1-id-134      47    6.5                        
@@ -121,39 +121,39 @@ old[7:13] vs new[7:13]
 * Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
 * Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
     </testcase>
-    <testcase time="0.118" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.117" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00199999999999978" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
     <testcase time="0.00499999999999989" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
     <testcase time="0.125" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
     <testcase time="0.00199999999999978" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
     <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.0789999999999997" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
-    <testcase time="0.00400000000000045" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.0780000000000003" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
     <testcase time="0.00299999999999923" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.00400000000000045" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
     <testcase time="0.0940000000000003" classname="paginate_listing" name="checking_vertical_pagination_line_calculation.">
       <failure type="failure" message="sum(nrow(page1_result$strings), length(page1_result$main_footer)) (`actual`) not equal to 3 (`expected`). ('test-paginate_listing.R:138:3')">sum(nrow(page1_result$strings), length(page1_result$main_footer)) (`actual`) not equal to 3 (`expected`).
 
   `actual`: 5.0
 `expected`: 3.0</failure>
     </testcase>
-    <testcase time="0.0209999999999999" classname="paginate_listing" name="checking_vertical_pagination_line_calculation.">
+    <testcase time="0.0199999999999996" classname="paginate_listing" name="checking_vertical_pagination_line_calculation.">
       <failure type="failure" message="sum(nrow(page2_result$strings), length(page2_result$main_footer)) (`actual`) not equal to 3 (`expected`). ('test-paginate_listing.R:139:3')">sum(nrow(page2_result$strings), length(page2_result$main_footer)) (`actual`) not equal to 3 (`expected`).
 
   `actual`: 5.0
 `expected`: 3.0</failure>
     </testcase>
-    <testcase time="0.486" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
-    <testcase time="0.512" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
-    <testcase time="0.493" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
-    <testcase time="0.587" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
-    <testcase time="0.518" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
-    <testcase time="0.584" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
-    <testcase time="0.207000000000001" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
-    <testcase time="0.209999999999999" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.475" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
+    <testcase time="0.505000000000001" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.488" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.579" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
+    <testcase time="0.508" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
+    <testcase time="0.575000000000001" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
+    <testcase time="0.208" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.204999999999998" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
     <testcase time="0.00500000000000078" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
-    <testcase time="0.24" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages"/>
-    <testcase time="0.177" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages">
+    <testcase time="0.237" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages"/>
+    <testcase time="0.176" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages">
       <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:223:3')">Snapshot of code has changed:
 old[3:13] vs new[3:13]
   Output
@@ -180,7 +180,7 @@ old[3:13] vs new[3:13]
 * Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
     </testcase>
     <testcase time="0.143000000000001" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages"/>
-    <testcase time="0.171999999999999" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages">
+    <testcase time="0.17" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages">
       <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:237:3')">Snapshot of code has changed:
 old[3:13] vs new[3:13]
   Output
@@ -206,7 +206,7 @@ old[3:13] vs new[3:13]
 * Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
 * Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
     </testcase>
-    <testcase time="0.756" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages_longer_test_">
+    <testcase time="0.728999999999999" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages_longer_test_">
       <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:256:3')">Snapshot of code has changed:
 old[23:28] vs new[23:29]
                                                                  AB12345     
@@ -505,13 +505,13 @@ old[329:333] vs new[268:270]
 * Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
 * Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
     </testcase>
-    <testcase time="0.137" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
+    <testcase time="0.135999999999999" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
       <failure type="failure" message="sapply(...) (`actual`) not equal to rep(7, 10) (`expected`). ('test-paginate_listing.R:269:3')">sapply(...) (`actual`) not equal to rep(7, 10) (`expected`).
 
   `actual`: 7 7 5              
 `expected`: 7 7 7 7 7 7 7 7 7 7</failure>
     </testcase>
-    <testcase time="0.0719999999999992" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
+    <testcase time="0.072000000000001" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
       <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:273:3')">Snapshot of code has changed:
 old[5:73] vs new[5:22]
     ———————————————————————————————————————————————————————————
@@ -596,14 +596,14 @@ old[5:73] vs new[5:22]
 * Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
 * Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
     </testcase>
-    <testcase time="0.140000000000001" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
+    <testcase time="0.137" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
       <failure type="failure" message="sapply(...) (`actual`) not equal to c(7, 8, 8, 8, 7, 7, 7) (`expected`). ('test-paginate_listing.R:284:3')">sapply(...) (`actual`) not equal to c(7, 8, 8, 8, 7, 7, 7) (`expected`).
 
   `actual`: 8 7 6        
 `expected`: 7 8 8 8 7 7 7</failure>
     </testcase>
-    <testcase time="0.185" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination"/>
-    <testcase time="0.173" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination">
+    <testcase time="0.183999999999999" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination"/>
+    <testcase time="0.173999999999999" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination">
       <failure type="failure" message="sapply(...) (`actual`) not equal to rep(7, 20) (`expected`). ('test-paginate_listing.R:310:3')">sapply(...) (`actual`) not equal to rep(7, 20) (`expected`).
 
    `actual[2:6]`: 7 7 7 5 5                            
@@ -615,12 +615,12 @@ old[5:73] vs new[5:22]
    `actual[4:6]`: 59 59 59                                          
 `expected[4:20]`: 59 59 59 59 59 59 59 59 59 59 59 59 59 59 59 59 59</failure>
     </testcase>
-    <testcase time="0.020999999999999" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
-    <testcase time="0.166" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
+    <testcase time="0.0200000000000014" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
+    <testcase time="0.165999999999999" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
     <testcase time="0.00300000000000011" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
     <testcase time="0.00300000000000011" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
     <testcase time="0.00300000000000011" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
-    <testcase time="0.0440000000000005" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var">
+    <testcase time="0.043000000000001" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var">
       <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:342:3')">Snapshot of code has changed:
 old[15:19] vs new[15:17]
     —————————————————————————————————————
@@ -632,7 +632,7 @@ old[15:19] vs new[15:17]
 * Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
 * Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
     </testcase>
-    <testcase time="0.209" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var">
+    <testcase time="0.208" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var">
       <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:345:3')">Snapshot of code has changed:
 old[18:25] vs new[18:23]
     
@@ -656,22 +656,22 @@ old[34:39] vs new[32:35]
 * Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
     </testcase>
   </testsuite>
-  <testsuite name="print" timestamp="2025-02-05T06:29:04Z" hostname="7759e344fa60" tests="16" skipped="0" failures="0" errors="0" time="1.545">
+  <testsuite name="print" timestamp="2025-02-05T06:39:56Z" hostname="9ef87159a5e6" tests="16" skipped="0" failures="0" errors="0" time="1.515">
     <testcase time="0.0739999999999998" classname="print" name="Listing_print_correctly"/>
-    <testcase time="0.151999999999999" classname="print" name="Listing_print_correctly_with_different_widths"/>
-    <testcase time="0.0709999999999997" classname="print" name="Listing_print_correctly_with_different_widths"/>
-    <testcase time="0.0559999999999992" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
+    <testcase time="0.147" classname="print" name="Listing_print_correctly_with_different_widths"/>
+    <testcase time="0.0719999999999992" classname="print" name="Listing_print_correctly_with_different_widths"/>
+    <testcase time="0.0549999999999997" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
     <testcase time="0.00500000000000078" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
     <testcase time="0.00600000000000023" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
-    <testcase time="0.0629999999999988" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
-    <testcase time="0.0570000000000004" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
+    <testcase time="0.0609999999999999" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
+    <testcase time="0.0569999999999986" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
     <testcase time="0.00500000000000078" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
-    <testcase time="0.00499999999999901" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
-    <testcase time="0.048" classname="print" name="listings_support_newline_characters"/>
-    <testcase time="0.0760000000000005" classname="print" name="listings_support_newline_characters"/>
-    <testcase time="0.261000000000001" classname="print" name="listings_supports_wrapping"/>
-    <testcase time="0.603999999999999" classname="print" name="listings_supports_wrapping"/>
+    <testcase time="0.00500000000000078" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
+    <testcase time="0.0469999999999988" classname="print" name="listings_support_newline_characters"/>
+    <testcase time="0.077" classname="print" name="listings_support_newline_characters"/>
+    <testcase time="0.254" classname="print" name="listings_supports_wrapping"/>
+    <testcase time="0.586" classname="print" name="listings_supports_wrapping"/>
     <testcase time="0.00300000000000011" classname="print" name="listings_supports_wrapping"/>
-    <testcase time="0.0590000000000011" classname="print" name="listings_supports_wrapping"/>
+    <testcase time="0.0609999999999999" classname="print" name="listings_supports_wrapping"/>
   </testsuite>
 </testsuites>
