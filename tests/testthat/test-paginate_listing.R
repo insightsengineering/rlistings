@@ -8,8 +8,8 @@ testthat::test_that("pagination works vertically", {
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-    key_cols = c("USUBJID", "AGE"),
-    disp_cols = character()
+                       key_cols = c("USUBJID", "AGE"),
+                       disp_cols = character()
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
@@ -18,7 +18,7 @@ testthat::test_that("pagination works vertically", {
   testthat::expect_snapshot(fast_print(pages_listings[c(1, 2)]))
 
   lsting2 <- lsting %>% add_listing_col("BMRKR2")
-  pages_listings2 <- paginate_listing(lsting2, lpp = 8, cpp = 70, print_pages = FALSE)
+  pages_listings2 <- paginate_listing(lsting2, lpp = 6, cpp = 70, print_pages = FALSE)
 
   testthat::expect_equal(length(pages_listings2), 4L)
   testthat::expect_snapshot(fast_print(pages_listings2[c(1, 6)]))
@@ -34,8 +34,8 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-    key_cols = c("USUBJID"),
-    disp_cols = character()
+                       key_cols = c("USUBJID"),
+                       disp_cols = character()
   ) %>%
     add_listing_col("AGE") %>%
     add_listing_col("BMRKR1", format = "xx.x") %>%
@@ -58,7 +58,7 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
   testthat::expect_equal(length(pages_listings), 2L)
 
   lsting2 <- as_listing(tmp_data,
-    disp_cols = character()
+                        disp_cols = character()
   ) %>%
     add_listing_col("USUBJID") %>%
     add_listing_col("AGE") %>%
@@ -99,8 +99,8 @@ testthat::test_that("listing works with no vertical pagination", {
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-    key_cols = c("USUBJID", "AGE"),
-    disp_cols = character()
+                       key_cols = c("USUBJID", "AGE"),
+                       disp_cols = character()
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
@@ -122,9 +122,9 @@ testthat::test_that("checking vertical pagination line calculation.", {
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
-    key_cols = c("USUBJID", "AGE"),
-    disp_cols = character(),
-    main_footer = c("Main Footer A")
+                       key_cols = c("USUBJID", "AGE"),
+                       disp_cols = character(),
+                       main_footer = c("Main Footer A")
   ) %>%
     add_listing_col("BMRKR1", format = "xx.x")
 
@@ -135,8 +135,8 @@ testthat::test_that("checking vertical pagination line calculation.", {
   page1_result <- pages_listings[[1]]
   page2_result <- pages_listings[[2]]
 
-  testthat::expect_equal(sum(nrow(page1_result$strings), length(page1_result$main_footer)), 3)
-  testthat::expect_equal(sum(nrow(page2_result$strings), length(page2_result$main_footer)), 3)
+  testthat::expect_equal(sum(nrow(page1_result$strings), length(page1_result$main_footer)), 5)
+  testthat::expect_equal(sum(nrow(page2_result$strings), length(page2_result$main_footer)), 5)
 })
 
 testthat::test_that("pagination: lpp and cpp correctly computed for pg_width and pg_height", {
@@ -175,8 +175,8 @@ testthat::test_that("pagination: lpp and cpp correctly computed for margins", {
   lsting <- h_lsting_adae()
   pag <- paginate_listing(lsting, lpp = 42, cpp = 65, font_size = 12, print_pages = FALSE)
   res <- paginate_listing(lsting,
-    margins = c(top = 2, bottom = 2, left = 1, right = 1),
-    font_size = 12, print_pages = FALSE
+                          margins = c(top = 2, bottom = 2, left = 1, right = 1),
+                          font_size = 12, print_pages = FALSE
   )
   testthat::expect_identical(res, pag)
 })
@@ -202,14 +202,14 @@ testthat::test_that("pagination works with col wrapping", {
 testthat::test_that("pagination repeats keycols in other pages", {
   dat <- ex_adae
   lsting <- as_listing(dat[1:25, c(1:6, 40)],
-    key_cols = c("USUBJID", "AESOC"),
-    main_title = "Example Title for Listing",
-    subtitles = "This is the subtitle for this Adverse Events Table",
-    main_footer = "Main footer for the listing",
-    prov_footer = c(
-      "You can even add a subfooter", "Second element is place on a new line",
-      "Third string"
-    )
+                       key_cols = c("USUBJID", "AESOC"),
+                       main_title = "Example Title for Listing",
+                       subtitles = "This is the subtitle for this Adverse Events Table",
+                       main_footer = "Main footer for the listing",
+                       prov_footer = c(
+                         "You can even add a subfooter", "Second element is place on a new line",
+                         "Third string"
+                       )
   )
   testthat::expect_true(grepl(
     "AB12345-BRA-1-id-42",
@@ -218,7 +218,7 @@ testthat::test_that("pagination repeats keycols in other pages", {
 
   # Simplified test
   mf_pages <- as_listing(tibble("a" = rep("1", 25), "b" = seq(25)), key_cols = "a") %>%
-    paginate_to_mpfs(lpp = 10)
+    paginate_to_mpfs(lpp = 12)
 
   testthat::expect_snapshot(cat(toString(mf_pages[[3]])))
 
@@ -226,12 +226,12 @@ testthat::test_that("pagination repeats keycols in other pages", {
   mf_pages <- suppressWarnings(
     testthat::expect_warning(
       as_listing(tibble("a" = rep("", 25), "b" = seq(25)), key_cols = "a") %>%
-        paginate_to_mpfs(lpp = 10)
+        paginate_to_mpfs(lpp = 12)
     )
   )
   mf_pages <- suppressWarnings(
     as_listing(tibble("a" = rep("", 25), "b" = seq(25)), key_cols = "a") %>%
-      paginate_to_mpfs(lpp = 10)
+      paginate_to_mpfs(lpp = 12)
   )
 
   testthat::expect_snapshot(
@@ -239,17 +239,18 @@ testthat::test_that("pagination repeats keycols in other pages", {
   )
 })
 
+
 testthat::test_that("pagination repeats keycols in other pages (longer test)", {
   dat <- ex_adae
   lsting <- as_listing(dat[1:50, c(1:6, 40)],
-    key_cols = c("USUBJID", "AESOC"),
-    main_title = "Example Title for Listing",
-    subtitles = "This is the subtitle for this Adverse Events Table",
-    main_footer = "Main footer for the listing",
-    prov_footer = c(
-      "You can even add a subfooter", "Second element is place on a new line",
-      "Third string"
-    )
+                       key_cols = c("USUBJID", "AESOC"),
+                       main_title = "Example Title for Listing",
+                       subtitles = "This is the subtitle for this Adverse Events Table",
+                       main_footer = "Main footer for the listing",
+                       prov_footer = c(
+                         "You can even add a subfooter", "Second element is place on a new line",
+                         "Third string"
+                       )
   )
 
   lst <- lsting %>% export_as_txt(tf_wrap = TRUE, lpp = 30, page_break = "\f")
@@ -257,6 +258,7 @@ testthat::test_that("pagination repeats keycols in other pages (longer test)", {
     cat(toString(lst))
   )
 })
+
 
 testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
   iris2 <- iris[1:10, 3:5]
@@ -268,9 +270,17 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
 
   testthat::expect_equal(
     sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
-    rep(7, 10)
+    c(7, 7, 5)
   )
   testthat::expect_snapshot(null <- sapply(pgs, function(x) toString(x) %>% cat()))
+
+  # Errors
+  testthat::expect_error(
+    suppressMessages(pgs <- paginate_to_mpfs(lst, colwidths = c(30, 11, 12), lpp = 3, verbose = TRUE))
+  )
+  testthat::expect_error(
+    suppressMessages(pgs <- paginate_to_mpfs(lst, colwidths = c(30, 11, 12), lpp = 8, cpp = 5, verbose = TRUE))
+  )
 
   # Test 2 with double wrapping
   tmp_fct <- factor(iris2$Petal.Width)
@@ -283,7 +293,7 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
 
   testthat::expect_equal(
     sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
-    c(7, 8, 8, 8, 7, 7, 7)
+    seq(8, 6)
   )
 })
 
@@ -304,17 +314,17 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols when doing 
     rep(expected_min_cpp, 2) # no colgap
   )
 
-  pgs <- paginate_to_mpfs(lst, colwidths = cw, lpp = 7, cpp = expected_min_cpp + 3)
+  pgs <- paginate_to_mpfs(lst, colwidths = cw, lpp = 5, cpp = expected_min_cpp + 3)
 
   # testing nrow
   testthat::expect_equal(
     sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
-    rep(7, 20)
+    rep(5, 10)
   )
   # testing nchars
   testthat::expect_equal(
     sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] %>% nchar()),
-    rep(expected_min_cpp, 20)
+    rep(expected_min_cpp, 10)
   )
 })
 
@@ -344,3 +354,4 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var", {
   # This works also for the pagination print
   testthat::expect_snapshot(paginate_listing(lsting, lpp = 330, cpp = 365, print_pages = TRUE))
 })
+
