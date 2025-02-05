@@ -1,137 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="export" timestamp="2025-02-05T06:39:46Z" hostname="9ef87159a5e6" tests="11" skipped="0" failures="0" errors="0" time="2.322">
-    <testcase time="0.199" classname="export" name="Listing_print_correctly"/>
-    <testcase time="0.306" classname="export" name="key_columns_repeat_with_export_as_txt"/>
-    <testcase time="0.174" classname="export" name="key_columns_repeat_with_pagination_with_export_as_txt"/>
-    <testcase time="0.321" classname="export" name="Listing_print_correctly_with_paginate"/>
-    <testcase time="0.00300000000000011" classname="export" name="Listing_print_correctly_with_paginate"/>
+  <testsuite name="export" timestamp="2025-02-05T06:40:04Z" hostname="1dd15d21f1be" tests="11" skipped="6" failures="0" errors="0" time="2.568">
+    <testcase time="0.213" classname="export" name="Listing_print_correctly"/>
+    <testcase time="0.308" classname="export" name="key_columns_repeat_with_export_as_txt">
+      <skipped message="Reason: On CRAN ('test-export.R:26:3')"/>
+    </testcase>
+    <testcase time="0.191" classname="export" name="key_columns_repeat_with_pagination_with_export_as_txt">
+      <skipped message="Reason: On CRAN ('test-export.R:42:3')"/>
+    </testcase>
+    <testcase time="0.388" classname="export" name="Listing_print_correctly_with_paginate"/>
+    <testcase time="0.004" classname="export" name="Listing_print_correctly_with_paginate"/>
     <testcase time="0.002" classname="export" name="Listing_print_correctly_with_paginate"/>
-    <testcase time="0.334" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination"/>
-    <testcase time="0.213" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination"/>
-    <testcase time="0.495" classname="export" name="export_as_txt_works_with_split_into_pages_by_var"/>
-    <testcase time="0.0659999999999998" classname="export" name="export_as_txt_works_with_empty_listings"/>
-    <testcase time="0.209" classname="export" name="export_as_txt_works_with_listings_with_all_key_cols"/>
+    <testcase time="0.385" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination"/>
+    <testcase time="0.224" classname="export" name="export_as_txt_works_and_repeats_the_correct_lines_in_pagination">
+      <skipped message="Reason: On CRAN ('test-export.R:75:3')"/>
+    </testcase>
+    <testcase time="0.567" classname="export" name="export_as_txt_works_with_split_into_pages_by_var">
+      <skipped message="Reason: On CRAN ('test-export.R:92:3')"/>
+    </testcase>
+    <testcase time="0.0609999999999999" classname="export" name="export_as_txt_works_with_empty_listings">
+      <skipped message="Reason: On CRAN ('test-export.R:102:3')"/>
+    </testcase>
+    <testcase time="0.225" classname="export" name="export_as_txt_works_with_listings_with_all_key_cols">
+      <skipped message="Reason: On CRAN ('test-export.R:114:3')"/>
+    </testcase>
   </testsuite>
-  <testsuite name="listings" timestamp="2025-02-05T06:39:48Z" hostname="9ef87159a5e6" tests="42" skipped="0" failures="0" errors="0" time="0.724">
-    <testcase time="0.0190000000000001" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.0229999999999997" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.00300000000000011" classname="listings" name="Column_labels_are_the_same"/>
-    <testcase time="0.028" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+  <testsuite name="listings" timestamp="2025-02-05T06:40:07Z" hostname="1dd15d21f1be" tests="42" skipped="0" failures="0" errors="0" time="0.856">
+    <testcase time="0.0329999999999999" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.0230000000000001" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.00299999999999967" classname="listings" name="Column_labels_are_the_same"/>
+    <testcase time="0.032" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00200000000000022" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00299999999999967" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00200000000000022" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00199999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00200000000000022" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.0119999999999996" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00700000000000012" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00600000000000023" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00599999999999978" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.00600000000000023" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
     <testcase time="0.00299999999999967" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
-    <testcase time="0.0220000000000002" classname="listings" name="Content_of_listings_supports_newlines"/>
-    <testcase time="0.012" classname="listings" name="Content_of_listings_supports_newlines"/>
-    <testcase time="0.0110000000000001" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
-    <testcase time="0.0489999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0089999999999999" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00700000000000012" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00699999999999967" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0130000000000003" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00699999999999967" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.00300000000000011" classname="listings" name="listings_work_well_with_different_formats_and_attributes"/>
+    <testcase time="0.0249999999999999" classname="listings" name="Content_of_listings_supports_newlines"/>
+    <testcase time="0.0140000000000002" classname="listings" name="Content_of_listings_supports_newlines"/>
+    <testcase time="0.0089999999999999" classname="listings" name="regression_test_for_keycols_being_lost_due_to_head_"/>
+    <testcase time="0.0609999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
     <testcase time="0.0169999999999999" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.044" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0390000000000001" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.00800000000000001" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.048" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0470000000000002" classname="listings" name="column_inclusion_and_ordering_stuff"/>
     <testcase time="0.00599999999999978" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0779999999999998" classname="listings" name="column_inclusion_and_ordering_stuff"/>
-    <testcase time="0.0190000000000001" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
-    <testcase time="0.0249999999999999" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
-    <testcase time="0.0329999999999999" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
-    <testcase time="0.024" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
-    <testcase time="0.0450000000000004" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.0389999999999997" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.0390000000000001" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.0089999999999999" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
-    <testcase time="0.028" classname="listings" name="add_listing_col_works_with_a_function_when_a_format_is_applied"/>
-    <testcase time="0.012" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
-    <testcase time="0.00300000000000011" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
-    <testcase time="0.0180000000000002" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
-    <testcase time="0.0089999999999999" classname="listings" name="appropriate_error_message_returned_for_difftime_class"/>
+    <testcase time="0.004" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0950000000000002" classname="listings" name="column_inclusion_and_ordering_stuff"/>
+    <testcase time="0.0259999999999998" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.0300000000000002" classname="listings" name="unique_rows_removes_duplicate_rows_from_listing"/>
+    <testcase time="0.0409999999999999" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
+    <testcase time="0.0289999999999999" classname="listings" name="as_listing_custom_format_works_in_key_cols"/>
+    <testcase time="0.0500000000000003" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0489999999999995" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0460000000000003" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.00900000000000034" classname="listings" name="as_listing_works_with_NA_values_in_key_cols"/>
+    <testcase time="0.0329999999999995" classname="listings" name="add_listing_col_works_with_a_function_when_a_format_is_applied"/>
+    <testcase time="0.0170000000000003" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
+    <testcase time="0.00399999999999956" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
+    <testcase time="0.016" classname="listings" name="split_into_pages_by_var_works_as_expected"/>
+    <testcase time="0.0140000000000002" classname="listings" name="appropriate_error_message_returned_for_difftime_class"/>
   </testsuite>
-  <testsuite name="matrix_form" timestamp="2025-02-05T06:39:49Z" hostname="9ef87159a5e6" tests="13" skipped="0" failures="0" errors="0" time="0.403">
-    <testcase time="0.0539999999999998" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.00200000000000022" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.00800000000000001" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.0749999999999997" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.104" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+  <testsuite name="matrix_form" timestamp="2025-02-05T06:40:08Z" hostname="1dd15d21f1be" tests="13" skipped="0" failures="0" errors="0" time="0.435">
+    <testcase time="0.0620000000000003" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
     <testcase time="0.00300000000000011" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.00199999999999978" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.0900000000000003" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.0859999999999994" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.0129999999999999" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.102" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
     <testcase time="0.00199999999999978" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
     <testcase time="0.00300000000000011" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
-    <testcase time="0.0129999999999999" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
-    <testcase time="0.0259999999999998" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
-    <testcase time="0.0209999999999999" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
+    <testcase time="0.0910000000000002" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.00300000000000011" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.00300000000000011" classname="matrix_form" name="matrix_form_keeps_relevant_information_and_structure_about_the_listing"/>
+    <testcase time="0.0139999999999993" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
+    <testcase time="0.0280000000000005" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
+    <testcase time="0.0250000000000004" classname="matrix_form" name="matrix_form_detects_or_in_labels_and_sends_meaningful_error_message"/>
   </testsuite>
-  <testsuite name="paginate_listing" timestamp="2025-02-05T06:39:49Z" hostname="9ef87159a5e6" tests="42" skipped="0" failures="15" errors="0" time="7.033">
-    <testcase time="0.204000000000001" classname="paginate_listing" name="pagination_works_vertically">
-      <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:18:3')">Snapshot of code has changed:
-old[5:17] vs new[5:15]
-    Unique Subject Identifier   Age   Continous Level Biomarker 1
-    —————————————————————————————————————————————————————————————
-      AB12345-BRA-1-id-134      47    6.5                        
--   —————————————————————————————————————————————————————————————
-+     AB12345-BRA-1-id-141      35    7.5                        
--   
-+     AB12345-BRA-1-id-236      32    7.7                        
--                                                                                                 page 1 of 6
-+     AB12345-BRA-1-id-265      25    10.3                       
-    Page 2 
-    Unique Subject Identifier   Age   Continous Level Biomarker 1
-    —————————————————————————————————————————————————————————————
--     AB12345-BRA-1-id-141      35    7.5                        
--   —————————————————————————————————————————————————————————————
--   
--                                                                                                 page 2 of 6
-+      AB12345-BRA-1-id-42      36    2.3                        
-+      AB12345-BRA-1-id-65      25    7.3                        
-
-* Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
-* Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
+  <testsuite name="paginate_listing" timestamp="2025-02-05T06:40:08Z" hostname="1dd15d21f1be" tests="36" skipped="5" failures="5" errors="0" time="6.398">
+    <testcase time="0.124" classname="paginate_listing" name="pagination_works_vertically">
+      <skipped message="Reason: On CRAN ('test-paginate_listing.R:18:3')"/>
     </testcase>
-    <testcase time="0.101999999999999" classname="paginate_listing" name="pagination_works_vertically">
-      <failure type="failure" message="length(pages_listings2) (`actual`) not equal to 4L (`expected`). ('test-paginate_listing.R:23:3')">length(pages_listings2) (`actual`) not equal to 4L (`expected`).
-
-  `actual`: 2
-`expected`: 4</failure>
-    </testcase>
-    <testcase time="0.0580000000000007" classname="paginate_listing" name="pagination_works_vertically">
-      <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:24:3')">Snapshot of code has changed:
-old[7:13] vs new[7:13]
-      AB12345-BRA-1-id-134      47    6.5                        
-      AB12345-BRA-1-id-141      35    7.5                        
-      AB12345-BRA-1-id-236      32    7.7                        
--   —————————————————————————————————————————————————————————————
-+     AB12345-BRA-1-id-265      25    10.3                       
--   
-+      AB12345-BRA-1-id-42      36    2.3                        
--                                                              page 1 of 4
-+      AB12345-BRA-1-id-65      25    7.3                        
-    Page 2 
-
-* Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
-* Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
-    </testcase>
-    <testcase time="0.117" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00199999999999978" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00499999999999989" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
     <testcase time="0.125" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00199999999999978" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.131" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
+    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
     <testcase time="0.00199999999999978" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
     <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.00300000000000011" classname="paginate_listing" name="horizontal_pagination_with_0_or_1_key_column_specified_works_correctly"/>
-    <testcase time="0.0780000000000003" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
+    <testcase time="0.0830000000000002" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
     <testcase time="0.00299999999999923" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
     <testcase time="0.00400000000000045" classname="paginate_listing" name="listing_works_with_no_vertical_pagination"/>
-    <testcase time="0.0940000000000003" classname="paginate_listing" name="checking_vertical_pagination_line_calculation.">
+    <testcase time="0.165" classname="paginate_listing" name="checking_vertical_pagination_line_calculation.">
       <failure type="failure" message="sum(nrow(page1_result$strings), length(page1_result$main_footer)) (`actual`) not equal to 3 (`expected`). ('test-paginate_listing.R:138:3')">sum(nrow(page1_result$strings), length(page1_result$main_footer)) (`actual`) not equal to 3 (`expected`).
 
   `actual`: 5.0
@@ -143,534 +110,72 @@ old[7:13] vs new[7:13]
   `actual`: 5.0
 `expected`: 3.0</failure>
     </testcase>
-    <testcase time="0.475" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
-    <testcase time="0.505000000000001" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
-    <testcase time="0.488" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
-    <testcase time="0.579" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
-    <testcase time="0.508" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
-    <testcase time="0.575000000000001" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
-    <testcase time="0.208" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
-    <testcase time="0.204999999999998" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
-    <testcase time="0.00500000000000078" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
-    <testcase time="0.237" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages"/>
-    <testcase time="0.176" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages">
-      <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:223:3')">Snapshot of code has changed:
-old[3:13] vs new[3:13]
-  Output
-    a   b 
-    ——————
--   1   11
-+   1   17
--       12
-+       18
--       13
-+       19
--       14
-+       20
--       15
-+       21
--   ——————
-+       22
--   
-+       23
--                                                                                                 page 3 of 5
-+       24
-
-* Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
-* Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
+    <testcase time="0.511" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_pg_width_and_pg_height"/>
+    <testcase time="0.516" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.529" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_page_type_and_font_size"/>
+    <testcase time="0.615" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_lineheight"/>
+    <testcase time="0.541" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_landscape"/>
+    <testcase time="0.625999999999999" classname="paginate_listing" name="pagination_lpp_and_cpp_correctly_computed_for_margins"/>
+    <testcase time="0.221" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.214" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.00600000000000023" classname="paginate_listing" name="pagination_works_with_col_wrapping"/>
+    <testcase time="0.248999999999999" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages"/>
+    <testcase time="0.159000000000001" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages">
+      <skipped message="Reason: On CRAN ('test-paginate_listing.R:223:3')"/>
     </testcase>
-    <testcase time="0.143000000000001" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages"/>
-    <testcase time="0.17" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages">
-      <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:237:3')">Snapshot of code has changed:
-old[3:13] vs new[3:13]
-  Output
-    a   b 
-    ——————
--       11
-+       17
--       12
-+       18
--       13
-+       19
--       14
-+       20
--       15
-+       21
--   ——————
-+       22
--   
-+       23
--                                                                                                 page 3 of 5
-+       24
-
-* Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
-* Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
+    <testcase time="0.686" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages_longer_test_">
+      <skipped message="Reason: On CRAN ('test-paginate_listing.R:256:3')"/>
     </testcase>
-    <testcase time="0.728999999999999" classname="paginate_listing" name="pagination_repeats_keycols_in_other_pages_longer_test_">
-      <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:256:3')">Snapshot of code has changed:
-old[23:28] vs new[23:29]
-                                                                 AB12345     
-      AB12345-BRA-1-id-265                 cl C                  AB12345     
-                                                                 AB12345     
-                                           cl D                  AB12345     
-+                                                                AB12345     
-    —————————————————————————————————————————————————————————————————————————
-    
-    Main footer for the listing
-
-old[30:37] vs new[31:36]
-    You can even add a subfooter
-    Second element is place on a new line
-    Third string
--                                                                                   
--   page 1 of 12
-    Example Title for Listing
-    This is the subtitle for this Adverse Events Table
-    
-
-old[54:59] vs new[53:59]
-                                                                          id-236             
-      AB12345-BRA-1-id-265                 cl C                           id-265             
-                                                                          id-265             
-                                           cl D                           id-265             
-+                                                                         id-265             
-    —————————————————————————————————————————————————————————————————————————————————————————
-    
-    Main footer for the listing
-
-old[61:68] vs new[61:66]
-    You can even add a subfooter
-    Second element is place on a new line
-    Third string
--                                                                                   
--   page 2 of 12
-    Example Title for Listing
-    This is the subtitle for this Adverse Events Table
-    
-
-old[85:90] vs new[83:89]
-                                                                     BRA-1           32     M 
-      AB12345-BRA-1-id-265                 cl C                      BRA-1           25     M 
-                                                                     BRA-1           25     M 
-                                           cl D                      BRA-1           25     M 
-+                                                                    BRA-1           25     M 
-    ——————————————————————————————————————————————————————————————————————————————————————————
-    
-    Main footer for the listing
-
-old[92:99] vs new[91:96]
-    You can even add a subfooter
-    Second element is place on a new line
-    Third string
--                                                                                   
--   page 3 of 12
-    Example Title for Listing
-    This is the subtitle for this Adverse Events Table
-    
-
-old[100:106] vs new[97:102]
-    —————————————————————————————————————————————————————————————————————————
-    Unique Subject Identifier   Primary System Organ Class   Study Identifier
-    —————————————————————————————————————————————————————————————————————————
--     AB12345-BRA-1-id-265                 cl D                  AB12345     
-       AB12345-BRA-1-id-42                 cl A                  AB12345     
-                                                                 AB12345     
-                                                                 AB12345     
-
-old[116:121] vs new[112:119]
-                                           cl C                  AB12345     
-                                                                 AB12345     
-                                           cl D                  AB12345     
-       AB12345-BRA-1-id-93                 cl A                  AB12345     
-+                                          cl B                  AB12345     
-+                                                                AB12345     
-    —————————————————————————————————————————————————————————————————————————
-    
-    Main footer for the listing
-
-old[123:130] vs new[121:126]
-    You can even add a subfooter
-    Second element is place on a new line
-    Third string
--                                                                                   
--   page 4 of 12
-    Example Title for Listing
-    This is the subtitle for this Adverse Events Table
-    
-
-old[131:137] vs new[127:132]
-    —————————————————————————————————————————————————————————————————————————————————————————
-    Unique Subject Identifier   Primary System Organ Class   Subject Identifier for the Study
-    —————————————————————————————————————————————————————————————————————————————————————————
--     AB12345-BRA-1-id-265                 cl D                           id-265             
-       AB12345-BRA-1-id-42                 cl A                           id-42              
-                                                                          id-42              
-                                                                          id-42              
-
-old[147:152] vs new[142:149]
-                                           cl C                           id-65              
-                                                                          id-65              
-                                           cl D                           id-65              
-       AB12345-BRA-1-id-93                 cl A                           id-93              
-+                                          cl B                           id-93              
-+                                                                         id-93              
-    —————————————————————————————————————————————————————————————————————————————————————————
-    
-    Main footer for the listing
-
-old[154:161] vs new[151:156]
-    You can even add a subfooter
-    Second element is place on a new line
-    Third string
--                                                                                   
--   page 5 of 12
-    Example Title for Listing
-    This is the subtitle for this Adverse Events Table
-    
-
-old[162:168] vs new[157:162]
-    ——————————————————————————————————————————————————————————————————————————————————————————
-    Unique Subject Identifier   Primary System Organ Class   Study Site Identifier   Age   Sex
-    ——————————————————————————————————————————————————————————————————————————————————————————
--     AB12345-BRA-1-id-265                 cl D                      BRA-1           25     M 
-       AB12345-BRA-1-id-42                 cl A                      BRA-1           36     M 
-                                                                     BRA-1           36     M 
-                                                                     BRA-1           36     M 
-
-old[178:183] vs new[172:179]
-                                           cl C                      BRA-1           25     F 
-                                                                     BRA-1           25     F 
-                                           cl D                      BRA-1           25     F 
-       AB12345-BRA-1-id-93                 cl A                      BRA-1           34     F 
-+                                          cl B                      BRA-1           34     F 
-+                                                                    BRA-1           34     F 
-    ——————————————————————————————————————————————————————————————————————————————————————————
-    
-    Main footer for the listing
-
-old[185:192] vs new[181:186]
-    You can even add a subfooter
-    Second element is place on a new line
-    Third string
--                                                                                   
--   page 6 of 12
-    Example Title for Listing
-    This is the subtitle for this Adverse Events Table
-    
-
-old[193:201] vs new[187:193]
-    —————————————————————————————————————————————————————————————————————————
-    Unique Subject Identifier   Primary System Organ Class   Study Identifier
-    —————————————————————————————————————————————————————————————————————————
--      AB12345-BRA-1-id-93                 cl B                  AB12345     
--                                                                AB12345     
--                                          cl C                  AB12345     
-+      AB12345-BRA-1-id-93                 cl C                  AB12345     
-                                           cl D                  AB12345     
-                                                                 AB12345     
-                                                                 AB12345     
-
-old[209:214] vs new[201:208]
-                                                                 AB12345     
-                                                                 AB12345     
-                                                                 AB12345     
-                                           cl C                  AB12345     
-+                                          cl D                  AB12345     
-+                                                                AB12345     
-    —————————————————————————————————————————————————————————————————————————
-    
-    Main footer for the listing
-
-old[216:223] vs new[210:215]
-    You can even add a subfooter
-    Second element is place on a new line
-    Third string
--                                                                                   
--   page 7 of 12
-    Example Title for Listing
-    This is the subtitle for this Adverse Events Table
-    
-
-old[224:232] vs new[216:222]
-    —————————————————————————————————————————————————————————————————————————————————————————
-    Unique Subject Identifier   Primary System Organ Class   Subject Identifier for the Study
-    —————————————————————————————————————————————————————————————————————————————————————————
--      AB12345-BRA-1-id-93                 cl B                           id-93              
--                                                                         id-93              
--                                          cl C                           id-93              
-+      AB12345-BRA-1-id-93                 cl C                           id-93              
-                                           cl D                           id-93              
-                                                                          id-93              
-                                                                          id-93              
-
-old[240:245] vs new[230:237]
-                                                                          id-321             
-                                                                          id-321             
-                                                                          id-321             
-                                           cl C                           id-321             
-+                                          cl D                           id-321             
-+                                                                         id-321             
-    —————————————————————————————————————————————————————————————————————————————————————————
-    
-    Main footer for the listing
-
-old[247:254] vs new[239:244]
-    You can even add a subfooter
-    Second element is place on a new line
-    Third string
--                                                                                   
--   page 8 of 12
-    Example Title for Listing
-    This is the subtitle for this Adverse Events Table
-    
-
-old[255:263] vs new[245:251]
-    ——————————————————————————————————————————————————————————————————————————————————————————
-    Unique Subject Identifier   Primary System Organ Class   Study Site Identifier   Age   Sex
-    ——————————————————————————————————————————————————————————————————————————————————————————
--      AB12345-BRA-1-id-93                 cl B                      BRA-1           34     F 
--                                                                    BRA-1           34     F 
--                                          cl C                      BRA-1           34     F 
-+      AB12345-BRA-1-id-93                 cl C                      BRA-1           34     F 
-                                           cl D                      BRA-1           34     F 
-                                                                     BRA-1           34     F 
-                                                                     BRA-1           34     F 
-
-old[271:326] vs new[259:265]
-                                                                    BRA-11           33     F 
-                                                                    BRA-11           33     F 
-                                           cl C                     BRA-11           33     F 
--   ——————————————————————————————————————————————————————————————————————————————————————————
--   
--   Main footer for the listing
--   
--   You can even add a subfooter
--   Second element is place on a new line
--   Third string
--                                                                                   
--   page 9 of 12
--   Example Title for Listing
--   This is the subtitle for this Adverse Events Table
--   
--   —————————————————————————————————————————————————————————————————————————
--   Unique Subject Identifier   Primary System Organ Class   Study Identifier
--   —————————————————————————————————————————————————————————————————————————
--     AB12345-BRA-11-id-321                cl D                  AB12345     
--                                                                AB12345     
--   —————————————————————————————————————————————————————————————————————————
--   
--   Main footer for the listing
--   
--   You can even add a subfooter
--   Second element is place on a new line
--   Third string
--                                                                                   
--   page 10 of 12
--   Example Title for Listing
--   This is the subtitle for this Adverse Events Table
--   
--   —————————————————————————————————————————————————————————————————————————————————————————
--   Unique Subject Identifier   Primary System Organ Class   Subject Identifier for the Study
--   —————————————————————————————————————————————————————————————————————————————————————————
--     AB12345-BRA-11-id-321                cl D                           id-321             
--                                                                         id-321             
--   —————————————————————————————————————————————————————————————————————————————————————————
--   
--   Main footer for the listing
--   
--   You can even add a subfooter
--   Second element is place on a new line
--   Third string
--                                                                                   
--   page 11 of 12
--   Example Title for Listing
--   This is the subtitle for this Adverse Events Table
--   
--   ——————————————————————————————————————————————————————————————————————————————————————————
--   Unique Subject Identifier   Primary System Organ Class   Study Site Identifier   Age   Sex
--   ——————————————————————————————————————————————————————————————————————————————————————————
--     AB12345-BRA-11-id-321                cl D                     BRA-11           33     F 
-+                                          cl D                     BRA-11           33     F 
-                                                                    BRA-11           33     F 
-    ——————————————————————————————————————————————————————————————————————————————————————————
-    
-
-old[329:333] vs new[268:270]
-    You can even add a subfooter
-    Second element is place on a new line
-    Third string
--                                                                                   
--   page 12 of 12
-
-* Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
-* Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
-    </testcase>
-    <testcase time="0.135999999999999" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
+    <testcase time="0.145" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
       <failure type="failure" message="sapply(...) (`actual`) not equal to rep(7, 10) (`expected`). ('test-paginate_listing.R:269:3')">sapply(...) (`actual`) not equal to rep(7, 10) (`expected`).
 
   `actual`: 7 7 5              
 `expected`: 7 7 7 7 7 7 7 7 7 7</failure>
     </testcase>
-    <testcase time="0.072000000000001" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
-      <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:273:3')">Snapshot of code has changed:
-old[5:73] vs new[5:22]
-    ———————————————————————————————————————————————————————————
-       SOMETHING VERY LONG THAT          0.1           1.5     
-          BREAKS PAGINATION                                    
--   ———————————————————————————————————————————————————————————
-+                                        0.2           1.4     
--   
-+                                                      1.4     
--                                                                                                page 1 of 10
-+                                                      1.3     
-               Species               Petal.Width   Petal.Length
-    ———————————————————————————————————————————————————————————
--      SOMETHING VERY LONG THAT          0.2           1.4     
-+      SOMETHING VERY LONG THAT          0.2           1.5     
-          BREAKS PAGINATION                                    
--   ———————————————————————————————————————————————————————————
-+                                                      1.4     
--   
-+                                                      1.5     
--                                                                                                page 2 of 10
-+                                                      1.4     
-               Species               Petal.Width   Petal.Length
-    ———————————————————————————————————————————————————————————
--      SOMETHING VERY LONG THAT          0.2           1.4     
-+      SOMETHING VERY LONG THAT          0.3           1.4     
-          BREAKS PAGINATION                                    
--   ———————————————————————————————————————————————————————————
--   
--                                                                                                page 3 of 10
--              Species               Petal.Width   Petal.Length
--   ———————————————————————————————————————————————————————————
--      SOMETHING VERY LONG THAT          0.2           1.3     
--         BREAKS PAGINATION                                    
--   ———————————————————————————————————————————————————————————
--   
--                                                                                                page 4 of 10
--              Species               Petal.Width   Petal.Length
--   ———————————————————————————————————————————————————————————
--      SOMETHING VERY LONG THAT          0.2           1.5     
--         BREAKS PAGINATION                                    
--   ———————————————————————————————————————————————————————————
--   
--                                                                                                page 5 of 10
--              Species               Petal.Width   Petal.Length
--   ———————————————————————————————————————————————————————————
--      SOMETHING VERY LONG THAT          0.2           1.4     
--         BREAKS PAGINATION                                    
--   ———————————————————————————————————————————————————————————
--   
--                                                                                                page 6 of 10
--              Species               Petal.Width   Petal.Length
--   ———————————————————————————————————————————————————————————
--      SOMETHING VERY LONG THAT          0.2           1.5     
--         BREAKS PAGINATION                                    
--   ———————————————————————————————————————————————————————————
--   
--                                                                                                page 7 of 10
--              Species               Petal.Width   Petal.Length
--   ———————————————————————————————————————————————————————————
--      SOMETHING VERY LONG THAT          0.2           1.4     
--         BREAKS PAGINATION                                    
--   ———————————————————————————————————————————————————————————
--   
--                                                                                                page 8 of 10
--              Species               Petal.Width   Petal.Length
--   ———————————————————————————————————————————————————————————
--      SOMETHING VERY LONG THAT          0.3           1.4     
--         BREAKS PAGINATION                                    
--   ———————————————————————————————————————————————————————————
--   
--                                                                                                page 9 of 10
--              Species               Petal.Width   Petal.Length
--   ———————————————————————————————————————————————————————————
--      SOMETHING VERY LONG THAT          0.4           1.7     
--         BREAKS PAGINATION                                    
--   ———————————————————————————————————————————————————————————
--   
--                                                                                               page 10 of 10
-+                                        0.4           1.7     
-
-* Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
-* Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
+    <testcase time="0.0490000000000013" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
+      <skipped message="Reason: On CRAN ('test-paginate_listing.R:273:3')"/>
     </testcase>
-    <testcase time="0.137" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols">
-      <failure type="failure" message="sapply(...) (`actual`) not equal to c(7, 8, 8, 8, 7, 7, 7) (`expected`). ('test-paginate_listing.R:284:3')">sapply(...) (`actual`) not equal to c(7, 8, 8, 8, 7, 7, 7) (`expected`).
-
-  `actual`: 8 7 6        
-`expected`: 7 8 8 8 7 7 7</failure>
-    </testcase>
-    <testcase time="0.183999999999999" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination"/>
-    <testcase time="0.173999999999999" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination">
+    <testcase time="0.197999999999999" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination"/>
+    <testcase time="0.176" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination">
       <failure type="failure" message="sapply(...) (`actual`) not equal to rep(7, 20) (`expected`). ('test-paginate_listing.R:310:3')">sapply(...) (`actual`) not equal to rep(7, 20) (`expected`).
 
    `actual[2:6]`: 7 7 7 5 5                            
 `expected[2:20]`: 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7</failure>
     </testcase>
-    <testcase time="0.0609999999999999" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination">
+    <testcase time="0.0660000000000007" classname="paginate_listing" name="paginate_to_mpfs_works_with_wrapping_on_keycols_when_doing_horizontal_pagination">
       <failure type="failure" message="sapply(...) (`actual`) not equal to rep(expected_min_cpp, 20) (`expected`). ('test-paginate_listing.R:315:3')">sapply(...) (`actual`) not equal to rep(expected_min_cpp, 20) (`expected`).
 
    `actual[4:6]`: 59 59 59                                          
 `expected[4:20]`: 59 59 59 59 59 59 59 59 59 59 59 59 59 59 59 59 59</failure>
     </testcase>
-    <testcase time="0.0200000000000014" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
-    <testcase time="0.165999999999999" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
+    <testcase time="0.0220000000000002" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
+    <testcase time="0.177" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
     <testcase time="0.00300000000000011" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
     <testcase time="0.00300000000000011" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
     <testcase time="0.00300000000000011" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var"/>
-    <testcase time="0.043000000000001" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var">
-      <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:342:3')">Snapshot of code has changed:
-old[15:19] vs new[15:17]
-    —————————————————————————————————————
-    
-    foot
--   
--                                                         page 3 of 4
-
-* Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
-* Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
-    </testcase>
-    <testcase time="0.208" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var">
-      <failure type="failure" message="Snapshot of code has changed: ('test-paginate_listing.R:345:3')">Snapshot of code has changed:
-old[18:25] vs new[18:23]
-    
-    foot
-    
--                                                                                                                                                                                                                                                                                                                                                                     page 1 of 2
--   
-    --- Page 2/2 ---
-    title
-    Patient Subset - Sex: M
-
-old[34:39] vs new[32:35]
-    ———————————————————————————————————————————————————————————————————
-    
-    foot
--   
--                                                                                                                                                                                                                                                                                                                                                                     page 2 of 2
-    
-
-* Run `testthat::snapshot_accept('paginate_listing')` to accept the change.
-* Run `testthat::snapshot_review('paginate_listing')` to interactively review the change.</failure>
+    <testcase time="0.0150000000000006" classname="paginate_listing" name="paginate_listing_works_with_split_into_pages_by_var">
+      <skipped message="Reason: On CRAN ('test-paginate_listing.R:342:3')"/>
     </testcase>
   </testsuite>
-  <testsuite name="print" timestamp="2025-02-05T06:39:56Z" hostname="9ef87159a5e6" tests="16" skipped="0" failures="0" errors="0" time="1.515">
-    <testcase time="0.0739999999999998" classname="print" name="Listing_print_correctly"/>
-    <testcase time="0.147" classname="print" name="Listing_print_correctly_with_different_widths"/>
-    <testcase time="0.0719999999999992" classname="print" name="Listing_print_correctly_with_different_widths"/>
-    <testcase time="0.0549999999999997" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
-    <testcase time="0.00500000000000078" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
-    <testcase time="0.00600000000000023" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified"/>
-    <testcase time="0.0609999999999999" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
-    <testcase time="0.0569999999999986" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
-    <testcase time="0.00500000000000078" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
-    <testcase time="0.00500000000000078" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified"/>
-    <testcase time="0.0469999999999988" classname="print" name="listings_support_newline_characters"/>
-    <testcase time="0.077" classname="print" name="listings_support_newline_characters"/>
-    <testcase time="0.254" classname="print" name="listings_supports_wrapping"/>
-    <testcase time="0.586" classname="print" name="listings_supports_wrapping"/>
+  <testsuite name="print" timestamp="2025-02-05T06:40:15Z" hostname="1dd15d21f1be" tests="10" skipped="5" failures="0" errors="0" time="1.331">
+    <testcase time="0.0619999999999994" classname="print" name="Listing_print_correctly">
+      <skipped message="Reason: On CRAN ('test-print.R:7:3')"/>
+    </testcase>
+    <testcase time="0.163" classname="print" name="Listing_print_correctly_with_different_widths"/>
+    <testcase time="0.0559999999999992" classname="print" name="Listing_print_correctly_with_different_widths">
+      <skipped message="Reason: On CRAN ('test-print.R:19:3')"/>
+    </testcase>
+    <testcase time="0.0600000000000005" classname="print" name="as_listing_produces_correct_output_when_default_formatting_is_specified">
+      <skipped message="Reason: On CRAN ('test-print.R:35:3')"/>
+    </testcase>
+    <testcase time="0.0589999999999993" classname="print" name="as_listing_produces_correct_output_when_col_formatting_is_specified">
+      <skipped message="Reason: On CRAN ('test-print.R:74:3')"/>
+    </testcase>
+    <testcase time="0.0449999999999999" classname="print" name="listings_support_newline_characters">
+      <skipped message="Reason: On CRAN ('test-print.R:137:3')"/>
+    </testcase>
+    <testcase time="0.271000000000001" classname="print" name="listings_supports_wrapping"/>
+    <testcase time="0.551" classname="print" name="listings_supports_wrapping"/>
     <testcase time="0.00300000000000011" classname="print" name="listings_supports_wrapping"/>
     <testcase time="0.0609999999999999" classname="print" name="listings_supports_wrapping"/>
   </testsuite>
