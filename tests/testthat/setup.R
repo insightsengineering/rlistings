@@ -23,9 +23,11 @@ compare_paginations <- function(paglst1, paglst2) {
   if (length(paglst1) != length(paglst2)) {
     indres <- FALSE
   } else {
-    indres <- vapply(seq_along(paglst1),
-                     function(i) compare_mpfs_no_fontspec(paglst1[[i]], paglst2[[i]]),
-                     TRUE)
+    indres <- vapply(
+      seq_along(paglst1),
+      function(i) compare_mpfs_no_fontspec(paglst1[[i]], paglst2[[i]]),
+      TRUE
+    )
   }
   expect_true(all(indres), "paginations are not equivalent as expected")
 }
