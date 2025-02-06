@@ -1,4 +1,3 @@
-
 ## XXX this historically has been 1, but it actually should be 1.2!!!!!
 dflt_courier <- font_spec("Courier", 9, 1)
 
@@ -42,7 +41,7 @@ print.listing_df <- function(x,
     } else {
       stop(e)
     }
-  })
+  )
   invisible(x)
 }
 
