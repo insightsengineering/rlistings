@@ -41,7 +41,7 @@ print.listing_df <- function(x,
     } else {
       stop(e)
     }
-  )
+  })
   invisible(x)
 }
 
