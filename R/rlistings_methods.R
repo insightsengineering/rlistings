@@ -32,8 +32,7 @@ print.listing_df <- function(x,
         col_gap = col_gap,
         round_type = round_type,
         ...
-      ),
-      round_type = round_type
+      )
     )
   }, error = function(e) {
     if (nrow(x) == 0) {

@@ -3,6 +3,10 @@ testthat::test_that("Listing print correctly", {
     add_listing_col("ARM")
 
   res <- strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n")[[1]]
+  ## regression
+  printout <- capture.output(print(lsting, hsep = "-"))
+  testthat::expect_false(any(grepl("iec", printout, fixed = TRUE)))
+  testthat::expect_identical(res, printout)
 
   testthat::expect_snapshot(res)
 })
