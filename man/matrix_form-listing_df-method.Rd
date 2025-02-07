@@ -9,7 +9,8 @@
   indent_rownames = FALSE,
   expand_newlines = TRUE,
   fontspec = font_spec,
-  col_gap = 3L
+  col_gap = 3L,
+  round_type = c("iec", "sas")
 )
 }
 \arguments{
@@ -26,6 +27,10 @@ calculating string widths and heights, as returned by \code{\link[formatters:fon
 
 \item{col_gap}{(\code{numeric(1)})\cr the gap to be assumed between columns, in number of spaces with
 font specified by \code{fontspec}.}
+
+\item{round_type}{(\code{"iec"} or \code{"sas"})\cr the type of rounding to perform. iec,
+the default, peforms rounding compliant with IEC 60559 (see details), while
+sas performs nearest-value rounding consistent with rounding within SAS.}
 }
 \value{
 a \link[formatters:MatrixPrintForm]{formatters::MatrixPrintForm} object.

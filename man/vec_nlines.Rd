@@ -6,11 +6,21 @@
 \alias{vec_nlines,ANY-method}
 \title{Utilities for formatting a listing column}
 \usage{
-format_colvector(df, colnm, colvec = df[[colnm]])
+format_colvector(df, colnm, colvec = df[[colnm]], round_type = c("iec", "sas"))
 
-vec_nlines(vec, max_width = NULL, fontspec = dflt_courier)
+vec_nlines(
+  vec,
+  max_width = NULL,
+  fontspec = dflt_courier,
+  round_type = c("iec", "sas")
+)
 
-\S4method{vec_nlines}{ANY}(vec, max_width = NULL, fontspec = dflt_courier)
+\S4method{vec_nlines}{ANY}(
+  vec,
+  max_width = NULL,
+  fontspec = dflt_courier,
+  round_type = c("iec", "sas")
+)
 }
 \arguments{
 \item{df}{(\code{listing_df})\cr the listing.}
