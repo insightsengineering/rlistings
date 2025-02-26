@@ -17,6 +17,8 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   `non_disp_cols`.
 #' @param non_disp_cols (`character` or `NULL`)\cr vector of names of non-key columns to be excluded as display
 #'   columns. All other non-key columns are treated as display columns. Ignored if `disp_cols` is non-`NULL`.
+#' @param sort_cols (`character` or `NULL`)\cr vector of names of columns (in order) which should be used to sort the
+#'   listing. Defaults to `key_cols`. If `NULL`, no sorting will be performed.
 #' @param unique_rows (`flag`)\cr whether only unique rows should be included in the listing. Defaults to `FALSE`.
 #' @param default_formatting (`list`)\cr a named list of default column format configurations to apply when rendering
 #'   the listing. Each name-value pair consists of a name corresponding to a data class (or "numeric" for all
@@ -132,6 +134,7 @@ as_listing <- function(df,
                        key_cols = names(df)[1],
                        disp_cols = NULL,
                        non_disp_cols = NULL,
+                       sort_cols = key_cols,
                        unique_rows = FALSE,
                        default_formatting = list(all = fmt_config()),
                        col_formatting = NULL,
@@ -174,12 +177,21 @@ as_listing <- function(df,
 
   df <- as_tibble(df)
   varlabs <- var_labels(df, fill = TRUE)
-  o <- do.call(order, df[key_cols])
-  if (is.unsorted(o)) {
-    if (interactive()) {
-      message("sorting incoming data by key columns")
+  if (!is.null(sort_cols)) {
+    o <- do.call(order, df[sort_cols])
+    if (is.unsorted(o)) {
+      if (interactive()) {
+        message(paste(
+          "sorting incoming data by",
+          if (identical(sort_cols, key_cols)) {
+            "key columns"
+          } else {
+            paste0("column", if (length(sort_cols) > 1) "s", " `", paste(sort_cols, collapse = "`, `"), "`")
+          }
+        ))
+      }
+      df <- df[o, ]
     }
-    df <- df[o, ]
   }
 
   ## reorder the full set of cols to ensure key columns are first

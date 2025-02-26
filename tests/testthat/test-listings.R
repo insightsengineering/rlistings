@@ -299,6 +299,73 @@ testthat::test_that("as_listing works with NA values in key cols", {
   ), "rows that only contain NA")
 })
 
+testthat::test_that("as_listing(sort_cols) works", {
+  # default behavior (sort by key_cols)
+  testthat::expect_message(
+    lsting <- as_listing(
+      mtcars,
+      key_cols = c("gear", "carb"),
+      disp_cols = "qsec"
+    ),
+    "sorting incoming data by key columns"
+  )
+  testthat::expect_true(!is.unsorted(lsting$gear))
+  testthat::expect_identical(
+    lsting$carb,
+    c(1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 1, 1, 1, 1, 2, 2, 2, 2, 4, 4, 4, 4, 2, 2, 4, 6, 8),
+    ignore_attr = TRUE
+  )
+  testthat::expect_true(is.unsorted(lsting$qsec))
+
+  testthat::expect_message(
+    lsting <- as_listing(
+      mtcars,
+      key_cols = c("gear", "carb"),
+      disp_cols = "qsec",
+      sort_cols = "carb"
+    ),
+    "sorting incoming data by column `carb`"
+  )
+  testthat::expect_identical(
+    lsting$gear,
+    c(4, 3, 3, 4, 4, 3, 4, 3, 4, 4, 4, 3, 3, 3, 5, 5, 4, 3, 3, 3, 4, 4, 3, 4, 4, 3, 3, 3, 3, 5, 5, 5),
+    ignore_attr = TRUE
+  )
+  testthat::expect_true(!is.unsorted(lsting$carb))
+  testthat::expect_true(is.unsorted(lsting$qsec))
+
+  # works with columns not displayed in listing
+  testthat::expect_message(
+    lsting <- as_listing(
+      mtcars,
+      key_cols = c("gear", "carb"),
+      disp_cols = "qsec",
+      sort_cols = c("am", "vs")
+    ),
+    "sorting incoming data by columns `am`, `vs`"
+  )
+  testthat::expect_true(is.unsorted(lsting$gear))
+  testthat::expect_true(is.unsorted(lsting$carb))
+  testthat::expect_true(is.unsorted(lsting$qsec))
+  testthat::expect_true(!is.unsorted(lsting$am))
+  testthat::expect_identical(
+    lsting$vs,
+    c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+    ignore_attr = TRUE
+  )
+
+  # works with no sorting
+  lsting <- as_listing(
+    mtcars,
+    key_cols = c("gear", "carb"),
+    disp_cols = "qsec",
+    sort_cols = NULL
+  )
+  testthat::expect_identical(lsting$gear, mtcars$gear, ignore_attr = TRUE)
+  testthat::expect_true(is.unsorted(lsting$carb))
+  testthat::expect_true(is.unsorted(lsting$qsec))
+})
+
 testthat::test_that("add_listing_col works with a function when a format is applied", {
   lsting <- as_listing(
     mtcars[1:5, ],
