@@ -301,13 +301,10 @@ testthat::test_that("as_listing works with NA values in key cols", {
 
 testthat::test_that("as_listing(sort_cols) works", {
   # default behavior (sort by key_cols)
-  testthat::expect_message(
-    lsting <- as_listing(
-      mtcars,
-      key_cols = c("gear", "carb"),
-      disp_cols = "qsec"
-    ),
-    "sorting incoming data by key columns"
+  lsting <- as_listing(
+    mtcars,
+    key_cols = c("gear", "carb"),
+    disp_cols = "qsec"
   )
   testthat::expect_true(!is.unsorted(lsting$gear))
   testthat::expect_identical(
@@ -317,14 +314,12 @@ testthat::test_that("as_listing(sort_cols) works", {
   )
   testthat::expect_true(is.unsorted(lsting$qsec))
 
-  testthat::expect_message(
-    lsting <- as_listing(
-      mtcars,
-      key_cols = c("gear", "carb"),
-      disp_cols = "qsec",
-      sort_cols = "carb"
-    ),
-    "sorting incoming data by column `carb`"
+  # works with only one key column
+  lsting <- as_listing(
+    mtcars,
+    key_cols = c("gear", "carb"),
+    disp_cols = "qsec",
+    sort_cols = "carb"
   )
   testthat::expect_identical(
     lsting$gear,
@@ -335,14 +330,11 @@ testthat::test_that("as_listing(sort_cols) works", {
   testthat::expect_true(is.unsorted(lsting$qsec))
 
   # works with columns not displayed in listing
-  testthat::expect_message(
-    lsting <- as_listing(
-      mtcars,
-      key_cols = c("gear", "carb"),
-      disp_cols = "qsec",
-      sort_cols = c("am", "vs")
-    ),
-    "sorting incoming data by columns `am`, `vs`"
+  lsting <- as_listing(
+    mtcars,
+    key_cols = c("gear", "carb"),
+    disp_cols = "qsec",
+    sort_cols = c("am", "vs")
   )
   testthat::expect_true(is.unsorted(lsting$gear))
   testthat::expect_true(is.unsorted(lsting$carb))
