@@ -178,6 +178,13 @@ as_listing <- function(df,
   df <- as_tibble(df)
   varlabs <- var_labels(df, fill = TRUE)
   if (!is.null(sort_cols)) {
+    sort_miss <- setdiff(sort_cols, names(df))
+    if (length(sort_miss) > 0) {
+      stop(
+        "The following columns were specified as sorting columns (sort_cols) but are missing from df: ",
+        paste0("`", sort_miss, "`", collapse = ", ")
+      )
+    }
     o <- do.call(order, df[sort_cols])
     if (is.unsorted(o)) {
       if (interactive()) {
@@ -186,7 +193,7 @@ as_listing <- function(df,
           if (identical(sort_cols, key_cols)) {
             "key columns"
           } else {
-            paste0("column", if (length(sort_cols) > 1) "s", " `", paste(sort_cols, collapse = "`, `"), "`")
+            paste0("column", if (length(sort_cols) > 1) "s", " ", paste0("`", sort_cols, "`", collapse = ", "))
           }
         ))
       }

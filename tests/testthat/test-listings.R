@@ -356,6 +356,16 @@ testthat::test_that("as_listing(sort_cols) works", {
   testthat::expect_identical(lsting$gear, mtcars$gear, ignore_attr = TRUE)
   testthat::expect_true(is.unsorted(lsting$carb))
   testthat::expect_true(is.unsorted(lsting$qsec))
+
+  # error if sort column given is not in df
+  testthat::expect_error(
+    lsting <- as_listing(
+      mtcars,
+      key_cols = c("gear", "carb"),
+      disp_cols = "qsec",
+      sort_cols = "test"
+    )
+  )
 })
 
 testthat::test_that("add_listing_col works with a function when a format is applied", {
