@@ -23,10 +23,18 @@
   max_width = NULL,
   fontspec = NULL,
   col_gap = 3L,
+  round_type = c("iec", "sas"),
   ...
 )
 
-\S4method{toString}{listing_df}(x, widths = NULL, fontspec = NULL, col_gap = 3L, ...)
+\S4method{toString}{listing_df}(
+  x,
+  widths = NULL,
+  fontspec = NULL,
+  col_gap = 3L,
+  round_type = c("iec", "sas"),
+  ...
+)
 
 \S4method{[}{listing_df}(x, i, j, drop = FALSE)
 
@@ -66,6 +74,10 @@ used. Parameter is ignored if \code{tf_wrap = FALSE}.}
 calculating string widths and heights, as returned by \code{\link[formatters:font_spec]{font_spec()}}.}
 
 \item{col_gap}{(\code{numeric(1)})\cr space (in characters) between columns.}
+
+\item{round_type}{(\code{"iec"} or \code{"sas"})\cr the type of rounding to perform. iec,
+the default, peforms rounding compliant with IEC 60559 (see details), while
+sas performs nearest-value rounding consistent with rounding within SAS.}
 
 \item{...}{additional parameters passed to \code{\link[formatters:tostring]{formatters::toString()}}.}
 

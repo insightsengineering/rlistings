@@ -16,7 +16,8 @@
   repr_inds = integer(),
   sibpos = NA_integer_,
   nsibs = NA_integer_,
-  fontspec = dflt_courier
+  fontspec = dflt_courier,
+  round_type = c("iec", "sas")
 )
 }
 \arguments{
@@ -45,6 +46,10 @@ non-visible structural elements.}
 
 \item{fontspec}{(\code{font_spec})\cr a font_spec object specifying the font information to use for
 calculating string widths and heights, as returned by \code{\link[formatters:font_spec]{font_spec()}}.}
+
+\item{round_type}{(\code{"iec"} or \code{"sas"})\cr the type of rounding to perform. iec,
+the default, peforms rounding compliant with IEC 60559 (see details), while
+sas performs nearest-value rounding consistent with rounding within SAS.}
 }
 \value{
 a \code{data.frame} with pagination information.
