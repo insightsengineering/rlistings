@@ -1,4 +1,4 @@
-## rlistings 0.2.10.9003
+## rlistings 0.2.10.9004
  * Added parameter `sort_cols` to `as_listing` to specify columns to sort the listing on. Previously listings were 
    always sorted on key columns.
 
