@@ -1,4 +1,6 @@
 ## rlistings 0.2.10.9003
+ * Added parameter `sort_cols` to `as_listing` to specify columns to sort the listing on. Previously listings were 
+   always sorted on key columns.
 
 ## rlistings 0.2.10
  * Added an error message for listings with variables of `difftime` class.

@@ -16,6 +16,7 @@ as_listing(
   key_cols = names(df)[1],
   disp_cols = NULL,
   non_disp_cols = NULL,
+  sort_cols = key_cols,
   unique_rows = FALSE,
   default_formatting = list(all = fmt_config()),
   col_formatting = NULL,
@@ -60,6 +61,9 @@ displayed when the listing is rendered. Defaults to all columns of \code{df} not
 
 \item{non_disp_cols}{(\code{character} or \code{NULL})\cr vector of names of non-key columns to be excluded as display
 columns. All other non-key columns are treated as display columns. Ignored if \code{disp_cols} is non-\code{NULL}.}
+
+\item{sort_cols}{(\code{character} or \code{NULL})\cr vector of names of columns (in order) which should be used to sort the
+listing. Defaults to \code{key_cols}. If \code{NULL}, no sorting will be performed.}
 
 \item{unique_rows}{(\code{flag})\cr whether only unique rows should be included in the listing. Defaults to \code{FALSE}.}
 
