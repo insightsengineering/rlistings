@@ -20,6 +20,8 @@ as_listing(
   unique_rows = FALSE,
   default_formatting = list(all = fmt_config()),
   col_formatting = NULL,
+  add_trailing_sep = NULL,
+  trailing_sep = " ",
   main_title = NULL,
   subtitles = NULL,
   main_footer = NULL,
@@ -78,6 +80,13 @@ and \code{align}.}
 columns when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a
 value of type \code{fmt_config} with the formatting configuration that should be implemented for that column. Objects
 of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}. Defaults to \code{NULL}.}
+
+\item{add_trailing_sep}{(\code{character} or \code{numeric} or \code{NULL})\cr If it is assigned to one or more column names,
+a trailing separator will be added between groups with identical values for that column. Numeric option allows
+the user to specify in which rows it can be added. Defaults to \code{NULL}.}
+
+\item{trailing_sep}{(\code{character(1)})\cr The separator to be added between groups. The character will be repeated to
+fill the row.}
 
 \item{main_title}{(\code{string} or \code{NULL})\cr the main title for the listing, or \code{NULL} (the default).}
 
