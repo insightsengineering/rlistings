@@ -278,7 +278,7 @@ as_listing <- function(df,
         )
       }
       row_ind_for_trail_sep <- apply(
-        apply(as.data.frame(df)[, add_trailing_sep, drop = FALSE], 2, function(col_i){
+        apply(as.data.frame(df)[, add_trailing_sep, drop = FALSE], 2, function(col_i) {
           diff(as.numeric(as.factor(col_i)))
         }),
         1, function(row_i) any(row_i != 0)
@@ -289,7 +289,7 @@ as_listing <- function(df,
         "what_to_separe" = trailing_sep
       )
     } else if (is.numeric(add_trailing_sep)) {
-      if (any(!add_trailing_sep %in% seq(nrow(df)))) {
+      if (any(!add_trailing_sep %in% seq_len(nrow(df)))) {
         stop(
           "The row indices specified in `add_trailing_sep` are not valid."
         )
@@ -373,9 +373,10 @@ setMethod(
       kcol <- keycols[i]
       kcolvec <- listing[[kcol]]
       kcolvec <- vapply(kcolvec, format_value, "",
-                        format = obj_format(kcolvec),
-                        na_str = obj_na_str(kcolvec),
-                        round_type = round_type)
+        format = obj_format(kcolvec),
+        na_str = obj_na_str(kcolvec),
+        round_type = round_type
+      )
       curkey <- paste0(curkey, kcolvec)
       disp <- c(TRUE, tail(curkey, -1) != head(curkey, -1))
       bodymat[disp, kcol] <- kcolvec[disp]
@@ -386,9 +387,10 @@ setMethod(
       for (nonk in nonkeycols) {
         vec <- listing[[nonk]]
         vec <- vapply(vec, format_value, "",
-                      format = obj_format(vec),
-                      na_str = obj_na_str(vec),
-                      round_type = round_type)
+          format = obj_format(vec),
+          na_str = obj_na_str(vec),
+          round_type = round_type
+        )
         bodymat[, nonk] <- vec
       }
     }
