@@ -177,6 +177,92 @@ testthat::test_that("sas rounding support", {
   txtlns2 <- strsplit(txt2, "\n", fixed = TRUE)[[1]]
   expect_true(all(grepl(".*85.*85 $", txtlns2[3:5])))
   expect_false(any(grepl("84", txtlns2)))
-  expect_identical(export_as_txt(lsting, round_type = "sas"),
-                   toString(lsting, round_type = "sas"))
+  expect_identical(
+    export_as_txt(lsting, round_type = "sas"),
+    toString(lsting, round_type = "sas")
+  )
+})
+
+testthat::test_that("listings supports horizontal separators", {
+  result <- as_listing(
+    df = ex_adae,
+    disp_cols = c("ARM"),
+    key_cols = c("USUBJID", "AETOXGR"),
+    add_trailing_sep = c("ARM", "AETOXGR"), # columns
+    trailing_sep = "k"
+  )
+  result <- head(result, 15)
+
+  expect_equal(
+    sum(
+      sapply(
+        strsplit(toString(result), "\n")[[1]],
+        function(x) {
+          x == paste0(rep(substr(x, 1, 1), nchar(x)), collapse = "")
+        },
+        USE.NAMES = FALSE
+      )
+    ),
+    9
+  )
+
+  # numeric values
+  result <- as_listing(
+    df = ex_adae,
+    disp_cols = c("ARM"),
+    key_cols = c("USUBJID", "AETOXGR"),
+    add_trailing_sep = c(1, 2),
+    trailing_sep = "k"
+  )
+  result <- head(result, 15)
+
+  expect_equal(
+    sum(
+      sapply(
+        strsplit(toString(result), "\n")[[1]],
+        function(x) {
+          x == paste0(rep(substr(x, 1, 1), nchar(x)), collapse = "")
+        },
+        USE.NAMES = FALSE
+      )
+    ),
+    2 + 1 # there is the bar too
+  )
+
+
+  # Some errors
+  expect_error(
+    result <- as_listing(
+      df = ex_adae,
+      add_trailing_sep = c(-1, 2),
+      trailing_sep = "k"
+    ),
+    "The row indices specified in `add_trailing_sep` are not valid"
+  )
+
+  expect_error(
+    result <- as_listing(
+      df = ex_adae,
+      add_trailing_sep = c(1, 2),
+      trailing_sep = "more values"
+    ),
+    "All elements must have exactly 1 characters"
+  )
+
+  expect_error(
+    result <- as_listing(
+      df = ex_adae,
+      add_trailing_sep = "not present"
+    ),
+    "does not exist in the dataframe"
+  )
+
+  # snapshot
+  expect_snapshot(
+    as_listing(
+      df = data.frame(one_col = c("aa", "aa", "b")),
+      key_cols = "one_col",
+      add_trailing_sep = "one_col", trailing_sep = "+"
+    )
+  )
 })

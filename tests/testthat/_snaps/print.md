@@ -166,3 +166,16 @@
       [28] "asr"                                                   
       [29] "sada"                                                  
 
+# listings supports horizontal separators
+
+    Code
+      as_listing(df = data.frame(one_col = c("aa", "aa", "b")), key_cols = "one_col",
+      add_trailing_sep = "one_col", trailing_sep = "+")
+    Output
+      one_col
+      ———————
+        aa   
+             
+      +++++++
+         b   
+
