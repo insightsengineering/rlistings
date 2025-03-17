@@ -271,38 +271,55 @@ as_listing <- function(df,
 
   # add trailing separators to the df object
   if (!is.null(add_trailing_sep)) {
-    if (is.character(add_trailing_sep)) {
-      if (!all(add_trailing_sep %in% names(df))) {
-        stop(
-          "The column specified in `add_trailing_sep` does not exist in the dataframe."
-        )
-      }
-      row_ind_for_trail_sep <- apply(
-        apply(as.data.frame(df)[, add_trailing_sep, drop = FALSE], 2, function(col_i) {
-          diff(as.numeric(as.factor(col_i)))
-        }),
-        1, function(row_i) any(row_i != 0)
-      ) %>%
-        which()
-      listing_trailing_sep(df) <- list(
-        "where_trailing_sep" = row_ind_for_trail_sep,
-        "what_to_separe" = trailing_sep
-      )
-    } else if (is.numeric(add_trailing_sep)) {
-      if (any(!add_trailing_sep %in% seq_len(nrow(df)))) {
-        stop(
-          "The row indices specified in `add_trailing_sep` are not valid."
-        )
-      }
-      listing_trailing_sep(df) <- list(
-        "where_trailing_sep" = add_trailing_sep,
-        "what_to_separe" = trailing_sep
-      )
+    if (class(df)[1] == "list") {
+      df <- lapply(
+        df, .do_add_trailing_sep,
+        add_trailing_sep = add_trailing_sep,
+        trailing_sep = trailing_sep)
+    } else {
+      df <- .do_add_trailing_sep(df, add_trailing_sep, trailing_sep)
     }
   }
 
   df
 }
+
+# Helper function to add trailing separators to the dataframe
+.do_add_trailing_sep <- function(df_tmp, add_trailing_sep, trailing_sep) {
+  if (is.character(add_trailing_sep)) {
+    if (!all(add_trailing_sep %in% names(df_tmp))) {
+      stop(
+        "The column specified in `add_trailing_sep` does not exist in the dataframe."
+      )
+    }
+    row_ind_for_trail_sep <- apply(
+      apply(as.data.frame(df_tmp)[, add_trailing_sep, drop = FALSE], 2, function(col_i) {
+        diff(as.numeric(as.factor(col_i)))
+      }),
+      1, function(row_i) any(row_i != 0)
+    ) %>%
+      which()
+    listing_trailing_sep(df_tmp) <- list(
+      "var_trailing_sep" = add_trailing_sep,
+      "where_trailing_sep" = row_ind_for_trail_sep,
+      "what_to_separe" = trailing_sep
+    )
+  } else if (is.numeric(add_trailing_sep)) {
+    if (any(!add_trailing_sep %in% seq_len(nrow(df_tmp)))) {
+      stop(
+        "The row indices specified in `add_trailing_sep` are not valid."
+      )
+    }
+    listing_trailing_sep(df_tmp) <- list(
+      "var_trailing_sep" = NULL, # If numeric only
+      "where_trailing_sep" = add_trailing_sep,
+      "what_to_separe" = trailing_sep
+    )
+  }
+
+  df_tmp
+}
+
 
 #' @export
 #' @rdname listings
@@ -499,13 +516,15 @@ listing_trailing_sep <- function(df) attr(df, "listing_trailing_sep") %||% NULL
 #'
 #' @keywords internal
 `listing_trailing_sep<-` <- function(df, value) {
-  if (!is.list(value)) {
-    stop("value must be a list")
+  checkmate::assert_list(value, len = 3, null.ok = TRUE)
+  if (is.null(value)) {
+    attr(df, "listing_trailing_sep") <- NULL
+    return(df)
   }
-  if (length(value) %% 2 != 0) {
-    stop("value must have an even number of elements")
-  }
-
+  checkmate::assert_set_equal(
+    names(value),
+    c("var_trailing_sep", "where_trailing_sep", "what_to_separe")
+  )
   attr(df, "listing_trailing_sep") <- value
   df
 }
@@ -528,6 +547,14 @@ add_listing_col <- function(df,
                             format = NULL,
                             na_str = "NA",
                             align = "left") {
+  if (class(df)[1] == "list") {
+    out <- lapply(
+      df, add_listing_col,
+      name = name, fun = fun, format = format, na_str = na_str, align = align
+    )
+    return(out)
+  }
+
   if (!is.null(fun)) {
     vec <- with_label(fun(df), name)
   } else if (name %in% names(df)) {
@@ -605,6 +632,20 @@ split_into_pages_by_var <- function(lsting, var, page_prefix = var) {
     var_desc <- paste0(page_prefix, ": ", lvl)
     lsting_by_var[[lvl]] <- lsting[lsting[[var]] == lvl, ]
     subtitles(lsting_by_var[[lvl]]) <- c(subtitles(lsting), var_desc)
+  }
+
+  # Correction for cases with trailing separators
+  if (!is.null(listing_trailing_sep(lsting))) {
+    trailing_sep_directives <- listing_trailing_sep(lsting)
+    if (is.null(trailing_sep_directives$var_trailing_sep)) {
+      stop(
+        "Current lsting did have add_trailing_sep directives with numeric indexes. ",
+        "This is not supported for split_into_pages_by_var. Please use the <var> method."
+      )
+    }
+    add_trailing_sep <- trailing_sep_directives$var_trailing_sep
+    trailing_sep <- trailing_sep_directives$trailing_sep
+    lsting_by_var <- lapply(lsting_by_var, .do_add_trailing_sep, add_trailing_sep, trailing_sep)
   }
 
   lsting_by_var

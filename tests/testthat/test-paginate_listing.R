@@ -354,3 +354,49 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var", {
   # This works also for the pagination print
   testthat::expect_snapshot(paginate_listing(lsting, lpp = 330, cpp = 365, print_pages = TRUE))
 })
+
+testthat::test_that("paginate_listing works with split_into_pages_by_var and trailing_sep", {
+  tmp_data <- ex_adae[1:30, ]
+
+  lsting <- as_listing(
+    tmp_data,
+    key_cols = "ARM",
+    disp_cols = c("SEX", "USUBJID", "AGE"),
+    add_trailing_sep = "ARM",
+    trailing_sep = "=",
+    split_into_pages_by_var = "SEX"
+  ) %>%
+    add_listing_col("BMRKR1", format = "xx.x")
+
+  lsting2 <- as_listing(
+    tmp_data,
+    key_cols = "ARM",
+    disp_cols = c("SEX", "USUBJID", "AGE"),
+    add_trailing_sep = "ARM",
+    trailing_sep = "="
+  ) %>%
+    add_listing_col("BMRKR1", format = "xx.x") %>%
+    split_into_pages_by_var("SEX", page_prefix = "SEX")
+
+  # splitting afterwards keeps the same printed trailing separators
+  listing_trailing_sep(lsting2$M) <- listing_trailing_sep(lsting$M)
+  listing_trailing_sep(lsting2$`F`) <- listing_trailing_sep(lsting$`F`)
+  expect_equal(lsting, lsting2)
+
+  # Not possible to guess indexes - error
+  expect_error(
+    lsting2 <- as_listing(
+      tmp_data,
+      key_cols = "ARM",
+      disp_cols = c("SEX", "USUBJID", "AGE"),
+      add_trailing_sep = c(3, 5, 7),
+      trailing_sep = "="
+    ) %>%
+      add_listing_col("BMRKR1", format = "xx.x") %>%
+      split_into_pages_by_var("SEX", page_prefix = "SEX"),
+    "Current lsting did have add_trailing_sep directives with numeric indexes"
+  )
+
+  # Sample snapshot
+  expect_snapshot(lsting2)
+})
