@@ -275,7 +275,8 @@ as_listing <- function(df,
       df <- lapply(
         df, .do_add_trailing_sep,
         add_trailing_sep = add_trailing_sep,
-        trailing_sep = trailing_sep)
+        trailing_sep = trailing_sep
+      )
     } else {
       df <- .do_add_trailing_sep(df, add_trailing_sep, trailing_sep)
     }
