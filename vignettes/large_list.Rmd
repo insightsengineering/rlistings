@@ -33,7 +33,8 @@ Consider the following example:
 library(rlistings)
 
 iris2 <- do.call(rbind, rep(list(iris), 40))
-rlist <- as_listing(iris2, key_cols = "Species", disp_cols = c("Sepal.Length", "Sepal.Width", "Petal.Width", "Petal.Length"))
+rlist <- as_listing(iris2, key_cols = "Species",
+                    disp_cols = c("Sepal.Length", "Sepal.Width", "Petal.Width", "Petal.Length"))
 
 bench::mark(
   a = paginate_to_mpfs(rlist[1:1000, ]),
@@ -65,20 +66,21 @@ It is obvious that the time consumption grows linearly as the rows of data incre
 
 ![](rlisting_time.png)
 
-To decrease the runtime and prevent memory issues, ee would recommend splitting the listing object by a grouping variable, and exporting the output separately. Consider the following demonstration:
+To decrease the runtime and prevent memory issues, we would recommend splitting the listing object by a grouping variable, and exporting the output separately. Consider the following demonstration:
 
 ```{r, eval = FALSE}
-iris3 <- cbind(iris2, gp = rep(c(1,2,3,4,5,6),1000))
-rlist3 <- as_listing(iris3, key_cols = "Species", disp_cols = c("Sepal.Length", "Sepal.Width", "Petal.Width", "Petal.Length"))
+iris3 <- cbind(iris2, gp = rep(c(1, 2, 3, 4, 5, 6), 1000))
+rlist3 <- as_listing(iris3, key_cols = "Species",
+                     disp_cols = c("Sepal.Length", "Sepal.Width", "Petal.Width", "Petal.Length"))
 
-start.time <- Sys.time() 
-rlist3  %>% split(rlist3$gp) %>% lapply(., paginate_to_mpfs) -> kkk
+start.time <- Sys.time()
+rlist3  %>% split(rlist3$gp) %>% lapply(., paginate_to_mpfs)
 end.time <- Sys.time()
 
 time.taken <- end.time - start.time
 time.taken
 
-> Time difference of 36.06119 secs
+# > Time difference of 36.06119 secs
 ```
 
 In principle, you could consider processing this work with multi-threading to further reduce the runtime, although within OCEAN and IO, the same considerations regarding available cores still apply.
@@ -87,12 +89,12 @@ In principle, you could consider processing this work with multi-threading to fu
 library(parallel)
 
 start.time <- Sys.time()
-rlist3  %>% split(rlist3$gp) %>% mclapply(., paginate_to_mpfs) -> kkk
+rlist3  %>% split(rlist3$gp) %>% mclapply(., paginate_to_mpfs)
 end.time <- Sys.time()
 
 time.taken <- end.time - start.time
 time.taken
 
-> Time difference of 18.20406 secs
+#> Time difference of 18.20406 secs
 ```
 
