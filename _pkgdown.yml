@@ -21,3 +21,12 @@ navbar:
     github:
       icon: fa-github
       href: https://github.com/insightsengineering/rlistings
+
+articles:
+  - title: Articles
+    navbar: ~
+    contents:
+    - col_formatting
+    - large_list
+    - pagination
+    - ref_footnotes
