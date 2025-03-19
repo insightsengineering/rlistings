@@ -2,7 +2,7 @@
  * Added parameter `sort_cols` to `as_listing` to specify columns to sort the listing on. Previously listings were 
    always sorted on key columns.
  * Addition of separators between values in `as_listings(add_trailing_sep = <col_names>)` with determined values `as_listings(trailing_sep = <single_character>)`.
- * Added vignette for tips when export large listing.
+ * Added a vignette with tips for exporting large listings.
 
 ## rlistings 0.2.10
  * Added an error message for listings with variables of `difftime` class.
