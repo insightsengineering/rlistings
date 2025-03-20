@@ -1,11 +1,11 @@
 ---
-title: "Tips when export large listing"
+title: "Tips when exporting large listing"
 author: "Joe Zhu"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Tips when export large listing}
+  %\VignetteIndexEntry{Tips when exporting large listing}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -25,7 +25,7 @@ pre {
 
 ## Introduction
 
-For submission, sometimes listings are required. Sometimes large listings can include thousands of patients, and tens of thousands of rows. Exporting such large listing files is time-consuming and memory-heavy, and it is not obvious if the job is still on-going or is already dead. The time cost is mostly due to paginating the listing object into multiple pages.
+For submission, sometimes listings are required. Sometimes large listings can include thousands of patients and tens of thousands of rows. Exporting such large listing files is time-consuming and memory-heavy, and it is not obvious if the job is still ongoing or is already dead. The time cost is mostly due to paginating the listing object into multiple pages.
 
 Consider the following example:
 
@@ -62,11 +62,11 @@ It gives the following benchmark results:
 # ℹ 4 more variables: result <list>, memory <list>, time <list>, gc <list>
 ```
 
-It is obvious that the time consumption grows linearly as the rows of data increases.
+It is obvious that the time consumption grows linearly as the rows of data increase.
 
 ![](rlisting_time.png)
 
-To decrease the runtime and prevent memory issues, we would recommend splitting the listing object by a grouping variable, and exporting the output separately. Consider the following demonstration:
+To decrease the runtime and prevent memory issues, we would recommend splitting the listing object by a grouping variable and exporting the output separately. Consider the following demonstration:
 
 ```{r, eval = FALSE}
 iris3 <- cbind(iris2, gp = rep(c(1, 2, 3, 4, 5, 6), 1000))
@@ -83,7 +83,7 @@ time.taken
 # > Time difference of 36.06119 secs
 ```
 
-In principle, you could consider processing this work with multi-threading to further reduce the runtime, although within OCEAN and IO, the same considerations regarding available cores still apply.
+In principle, you could consider processing this work with multi-threading to further reduce the runtime.
 
 ```{r, eval = FALSE}
 library(parallel)
