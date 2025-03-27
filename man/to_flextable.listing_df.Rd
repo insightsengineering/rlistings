@@ -4,7 +4,7 @@
 \alias{to_flextable.listing_df}
 \title{convert listing to flextable}
 \usage{
-\method{to_flextable}{listing_df}(x, cpp = 100, lpp = 100, ...)
+\method{to_flextable}{listing_df}(x, cpp = 100, lpp = 200, ...)
 }
 \description{
 convert listing to flextable

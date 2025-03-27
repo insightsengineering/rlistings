@@ -9,3 +9,7 @@ export_as_docx(listing, file)
 \description{
 Export to docx
 }
+\examples{
+lsting <- as_listing(iris, key_cols = "Species")
+export_as_docx(lsting, "tmp.docx")
+}
