@@ -27,8 +27,10 @@ Depends:
     tibble (>= 2.0.0)
 Imports:
     checkmate (>= 2.1.0),
+    flextable (>= 0.9.4),
     grDevices,
     grid,
+    officer (>= 0.3.18),
     stats,
     utils
 Suggests:
