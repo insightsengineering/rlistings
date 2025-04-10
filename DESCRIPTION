@@ -1,16 +1,19 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Version: 0.2.10.9010
-Date: 2025-03-25
+Version: 0.2.11
+Date: 2025-04-10
 Authors@R: c(
     person("Gabriel", "Becker", , "gabembecker@gmail.com", role = "aut",
            comment = "original creator of the package"),
     person("Adrian", "Waddell", , "adrian.waddell@gene.com", role = "aut"),
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7566-2787")),
-    person("Davide", "Garolini", , "davide.garolini@roche.com", role = "aut"),
-    person("Emily", "de la Rua", , "emily.de_la_rua@contractors.roche.com", role = "aut"),
-    person("Abinaya", "Yogasekaram", , "abinaya.yogasekaram@contractors.roche.com", role = "ctb"),
+    person("Davide", "Garolini", , "davide.garolini@roche.com", role = "aut",
+           comment = c(ORCID = "0000-0002-1445-1369")),
+    person("Emily", "de la Rua", , "emily.de_la_rua@contractors.roche.com", role = "aut",
+           comment = c(ORCID = "0009-0000-8738-5561")),
+    person("Abinaya", "Yogasekaram", , "abinaya.yogasekaram@contractors.roche.com", role = "ctb",
+           comment = c(ORCID = "0009-0005-2083-1105")),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
 Description: Listings are often part of the submission of clinical trial
@@ -22,7 +25,7 @@ URL: https://insightsengineering.github.io/rlistings/,
     https://github.com/insightsengineering/rlistings/
 BugReports: https://github.com/insightsengineering/rlistings/issues
 Depends:
-    formatters (>= 0.5.10.9004),
+    formatters (>= 0.5.11),
     methods,
     tibble (>= 2.0.0)
 Imports:
@@ -42,8 +45,6 @@ Suggests:
 VignetteBuilder:
     knitr,
     rmarkdown
-Remotes:
-    insightsengineering/formatters@main
 Config/Needs/verdepcheck: insightsengineering/formatters,
     tidyverse/tibble, mllg/checkmate, tidyverse/dplyr, yihui/knitr,
     r-lib/lifecycle, rstudio/rmarkdown, gagolews/stringi, r-lib/testthat,
