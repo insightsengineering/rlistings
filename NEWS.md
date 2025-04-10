@@ -1,6 +1,5 @@
-## rlistings 0.2.10.9010
- * Added parameter `sort_cols` to `as_listing` to specify columns to sort the listing on. Previously listings were 
-   always sorted on key columns.
+## rlistings 0.2.11
+ * Added parameter `sort_cols` to `as_listing` to specify columns to sort the listing by. Previously listings were always sorted by key columns.
  * Addition of separators between values in `as_listings(add_trailing_sep = <col_names>)` with determined values `as_listings(trailing_sep = <single_character>)`.
  * Added a vignette with tips for exporting large listings.
 
