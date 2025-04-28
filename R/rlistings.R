@@ -30,6 +30,8 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   columns when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a
 #'   value of type `fmt_config` with the formatting configuration that should be implemented for that column. Objects
 #'   of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`. Defaults to `NULL`.
+#' @param align_coltitles_as_cols (`flag`)\cr whether the column titles have the same alignment as columns. All values
+#'   defaults to `"center"` if `FALSE` (default).
 #' @param add_trailing_sep (`character` or `numeric` or `NULL`)\cr If it is assigned to one or more column names,
 #'   a trailing separator will be added between groups with identical values for that column. Numeric option allows
 #'   the user to specify in which rows it can be added. Defaults to `NULL`.
@@ -143,6 +145,7 @@ as_listing <- function(df,
                        unique_rows = FALSE,
                        default_formatting = list(all = fmt_config()),
                        col_formatting = NULL,
+                       align_coltitles_as_cols = FALSE,
                        add_trailing_sep = NULL,
                        trailing_sep = " ",
                        main_title = NULL,
@@ -253,6 +256,10 @@ as_listing <- function(df,
     obj_align(df[[col]]) <- if (is.null(obj_align(col_fmt))) "left" else obj_align(col_fmt)
     df[[col]]
   })
+
+  # Check and set align_coltitles_as_cols
+  checkmate::assert_flag(align_coltitles_as_cols)
+  align_coltitles_as_cols(df) <- align_coltitles_as_cols
 
   if (unique_rows) df <- df[!duplicated(df[, cols]), ]
 
@@ -418,9 +425,15 @@ setMethod(
       bodymat
     )
 
+    col_alignment_values <- sapply(listing, obj_align)
+    colnames_align <- if (isFALSE(align_coltitles_as_cols(obj))) {
+      rep("center", length(cols))
+    } else {
+      col_alignment_values
+    }
     colaligns <- rbind(
-      rep("center", length(cols)),
-      matrix(sapply(listing, obj_align),
+      colnames_align,
+      matrix(col_alignment_values,
         ncol = length(cols),
         nrow = nrow(fullmat) - 1,
         byrow = TRUE
@@ -510,6 +523,21 @@ add_listing_dispcol <- function(df, new) {
   attr(df, "listing_dispcols") <- unique(value)
   df
 }
+
+#' @export
+#' @rdname listings
+align_coltitles_as_cols <- function(df) attr(df, "align_coltitles_as_cols") %||% FALSE
+
+#' @param value (`string`)\cr new value.
+#'
+#' @export
+#' @rdname listings
+`align_coltitles_as_cols<-` <- function(df, value) {
+  checkmate::assert_flag(value)
+  attr(df, "align_coltitles_as_cols") <- value
+  df
+}
+
 #' @keywords internal
 listing_trailing_sep <- function(df) attr(df, "listing_trailing_sep") %||% NULL
 

@@ -8,6 +8,8 @@
 \alias{listing_dispcols}
 \alias{add_listing_dispcol}
 \alias{listing_dispcols<-}
+\alias{align_coltitles_as_cols}
+\alias{align_coltitles_as_cols<-}
 \alias{add_listing_col}
 \title{Create a listing from a \code{data.frame} or \code{tibble}}
 \usage{
@@ -20,6 +22,7 @@ as_listing(
   unique_rows = FALSE,
   default_formatting = list(all = fmt_config()),
   col_formatting = NULL,
+  align_coltitles_as_cols = FALSE,
   add_trailing_sep = NULL,
   trailing_sep = " ",
   main_title = NULL,
@@ -40,6 +43,10 @@ listing_dispcols(df)
 add_listing_dispcol(df, new)
 
 listing_dispcols(df) <- value
+
+align_coltitles_as_cols(df)
+
+align_coltitles_as_cols(df) <- value
 
 add_listing_col(
   df,
@@ -80,6 +87,9 @@ and \code{align}.}
 columns when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a
 value of type \code{fmt_config} with the formatting configuration that should be implemented for that column. Objects
 of type \code{fmt_config} can take 3 arguments: \code{format}, \code{na_str}, and \code{align}. Defaults to \code{NULL}.}
+
+\item{align_coltitles_as_cols}{(\code{flag})\cr whether the column titles have the same alignment as columns. All values
+defaults to \code{"center"} if \code{FALSE} (default).}
 
 \item{add_trailing_sep}{(\code{character} or \code{numeric} or \code{NULL})\cr If it is assigned to one or more column names,
 a trailing separator will be added between groups with identical values for that column. Numeric option allows

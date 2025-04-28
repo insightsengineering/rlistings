@@ -69,3 +69,14 @@ test_that("matrix_form detects { or } in labels and sends meaningful error messa
   expect_true(grepl(toString(lsting), pattern = "\\(1\\) adasdasd"))
   expect_true(grepl(toString(lsting), pattern = "A: Drug X\\(1\\)"))
 })
+
+test_that("align_coltitles_as_cols can change alignment for column titles", {
+  lsting <- as_listing(ex_adae[1:3, ],
+    key_cols = c("USUBJID", "AESOC"),
+    disp_cols = "STUDYID",
+    col_formatting = c("STUDYID" = fmt_config(align = "left")),
+    align_coltitles_as_cols = TRUE
+  )
+  mat <- matrix_form(lsting)
+  expect_equal(unname(mat$aligns[, 3]), rep("left", 4))
+})

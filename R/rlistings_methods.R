@@ -21,26 +21,29 @@ print.listing_df <- function(x,
                              col_gap = 3L,
                              round_type = c("iec", "sas"),
                              ...) {
-  tryCatch({
-    cat(
-      toString(
-        matrix_form(x, fontspec = fontspec, col_gap = col_gap),
-        widths = widths,
-        tf_wrap = tf_wrap,
-        max_width = max_width,
-        fontspec = fontspec,
-        col_gap = col_gap,
-        round_type = round_type,
-        ...
+  tryCatch(
+    {
+      cat(
+        toString(
+          matrix_form(x, fontspec = fontspec, col_gap = col_gap),
+          widths = widths,
+          tf_wrap = tf_wrap,
+          max_width = max_width,
+          fontspec = fontspec,
+          col_gap = col_gap,
+          round_type = round_type,
+          ...
+        )
       )
-    )
-  }, error = function(e) {
-    if (nrow(x) == 0) {
-      print("No observation in the listing object.")
-    } else {
-      stop(e)
+    },
+    error = function(e) {
+      if (nrow(x) == 0) {
+        print("No observation in the listing object.")
+      } else {
+        stop(e)
+      }
     }
-  })
+  )
   invisible(x)
 }
 
@@ -121,7 +124,8 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_c
   }
   # in formatters for characters
   unlist(lapply(format_colvector(colvec = vec, round_type = round_type), nlines,
-                max_width = max_width, fontspec = fontspec))
+    max_width = max_width, fontspec = fontspec
+  ))
 })
 
 ## setMethod("vec_nlines", "character", function(vec, max_width = NULL) {
