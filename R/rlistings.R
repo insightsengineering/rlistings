@@ -30,8 +30,8 @@ setOldClass(c("MatrixPrintForm", "list"))
 #'   columns when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a
 #'   value of type `fmt_config` with the formatting configuration that should be implemented for that column. Objects
 #'   of type `fmt_config` can take 3 arguments: `format`, `na_str`, and `align`. Defaults to `NULL`.
-#' @param align_colnames (`flag`)\cr whether the column titles should have the same alignment as their columns. All titles
-#'   default to `"center"` alignment if `FALSE` (default). This can be changed with `align_colnames()`.
+#' @param align_colnames (`flag`)\cr whether the column titles should have the same alignment as their columns. All
+#'   titles default to `"center"` alignment if `FALSE` (default). This can be changed with `align_colnames()`.
 #' @param add_trailing_sep (`character` or `numeric` or `NULL`)\cr If it is assigned to one or more column names,
 #'   a trailing separator will be added between groups with identical values for that column. Numeric option allows
 #'   the user to specify in which rows it can be added. Defaults to `NULL`.
