@@ -1,4 +1,5 @@
 ## rlistings 0.2.11.9000
+ * Added parameter `align_colnames` to `as_listings()`, along with post-processing functions `align_colnames()` and `align_colnames()<-`. This flag allows to align colnames as the column content is aligned.
 
 ## rlistings 0.2.11
  * Added parameter `sort_cols` to `as_listing` to specify columns to sort the listing by. Previously listings were always sorted by key columns.

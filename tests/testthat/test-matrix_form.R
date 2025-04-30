@@ -69,3 +69,34 @@ test_that("matrix_form detects { or } in labels and sends meaningful error messa
   expect_true(grepl(toString(lsting), pattern = "\\(1\\) adasdasd"))
   expect_true(grepl(toString(lsting), pattern = "A: Drug X\\(1\\)"))
 })
+
+test_that("align_colnames can change alignment for column titles", {
+  dat <- ex_adae[1:3, ]
+  attr(dat$STUDYID, "label") <- "A" # For clearer alignment
+
+  lsting <- as_listing(dat,
+    key_cols = "USUBJID",
+    disp_cols = "STUDYID",
+    col_formatting = c("STUDYID" = fmt_config(align = "left")),
+    align_colnames = TRUE
+  )
+
+  # same alignment
+  mat <- matrix_form(lsting)
+  expect_equal(mat$aligns[, 2], rep("left", 4))
+
+  # post-processing changes
+  align_colnames(lsting) <- FALSE
+  mat <- matrix_form(lsting)
+  expect_equal(mat$aligns[1, 2], "center")
+
+  # pagination
+  align_colnames(lsting) <- FALSE
+  out <- paginate_listing(lsting, lpp = 4, print_pages = FALSE)
+  expect_snapshot(cat(toString(out[[2]])))
+
+  # pagination
+  align_colnames(lsting) <- TRUE
+  out <- paginate_listing(lsting, lpp = 4, print_pages = FALSE)
+  expect_snapshot(cat(toString(out[[2]])))
+})
