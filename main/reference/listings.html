@@ -11,7 +11,7 @@ elegant representation of the input data.frame or tibble."><meta property="og:im
 
     <a class="navbar-brand me-2" href="../index.html">rlistings</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.11</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.11.9000</small>
 
     <div style="width: 140px; margin-left: 0.5rem;"> <small class="nav-text text-muted me-auto">part of</small> <img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/nest.png?raw=true" alt="NEST" style="height: 30px;"><a href="https://pharmaverse.org/" class="external-link"><img src="https://github.com/insightsengineering/hex-stickers/blob/main/PNG/pharmaverse.png?raw=true" alt="pharmaverse" style="height: 28px;"></a> </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,6 +67,7 @@ elegant representation of the input <code>data.frame</code> or <code>tibble</cod
 <span>  unique_rows <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  default_formatting <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>all <span class="op">=</span> <span class="fu"><a href="https://insightsengineering.github.io/formatters/latest-tag/reference/fmt_config.html" class="external-link">fmt_config</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  col_formatting <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  align_colnames <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  add_trailing_sep <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  trailing_sep <span class="op">=</span> <span class="st">" "</span>,</span>
 <span>  main_title <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -87,6 +88,10 @@ elegant representation of the input <code>data.frame</code> or <code>tibble</cod
 <span><span class="fu">add_listing_dispcol</span><span class="op">(</span><span class="va">df</span>, <span class="va">new</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">listing_dispcols</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">align_colnames</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">align_colnames</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
 <span></span>
 <span><span class="fu">add_listing_col</span><span class="op">(</span></span>
 <span>  <span class="va">df</span>,</span>
@@ -146,6 +151,11 @@ and <code>align</code>.</p></dd>
 columns when rendering the listing. Each name-value pair consists of a name corresponding to a column name and a
 value of type <code>fmt_config</code> with the formatting configuration that should be implemented for that column. Objects
 of type <code>fmt_config</code> can take 3 arguments: <code>format</code>, <code>na_str</code>, and <code>align</code>. Defaults to <code>NULL</code>.</p></dd>
+
+
+<dt id="arg-align-colnames">align_colnames<a class="anchor" aria-label="anchor" href="#arg-align-colnames"></a></dt>
+<dd><p>(<code>flag</code>)<br> whether the column titles should have the same alignment as their columns. All
+titles default to <code>"center"</code> alignment if <code>FALSE</code> (default). This can be changed with <code>align_colnames()</code>.</p></dd>
 
 
 <dt id="arg-add-trailing-sep">add_trailing_sep<a class="anchor" aria-label="anchor" href="#arg-add-trailing-sep"></a></dt>
