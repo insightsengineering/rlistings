@@ -530,7 +530,7 @@ setMethod(
       row_info$trailing_sep[lts$where_trailing_sep] <- lts$what_to_separe
     }
 
-    span_hdr <- make_span_hdr_stuff(spanning_col_label_df(obj), length(listing_dispcols(obj)))
+    span_hdr <- make_span_hdr_mats(spanning_col_label_df(obj), length(listing_dispcols(obj)))
     span_hdr_mat <- span_hdr$strings
     span_hdr_spans <- span_hdr$spans
 
@@ -574,7 +574,7 @@ setMethod(
   }
 )
 
-make_span_hdr_stuff <- function(spandf, ncol) {
+make_span_hdr_mats <- function(spandf, ncol) {
   if (NROW(spandf) == 0) {
     return(list(
       strings = matrix("", ncol = ncol, nrow = 0),
