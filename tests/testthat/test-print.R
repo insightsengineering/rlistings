@@ -266,3 +266,81 @@ testthat::test_that("listings supports horizontal separators", {
     )
   )
 })
+
+test_that("spanning column label machinery works", {
+  lsting <- as_listing(
+    df = head(ex_adae, 10),
+    key_cols = c("ARM", "RACE", "USUBJID"),
+    disp_cols = c("BMRKR1", "BMRKR2", "AEBODSYS", "AEDECOD"),
+    spanning_col_labels = data.frame(span_level = 1,
+                                     label = c("key columns", "lame columns"),
+                                     start = c(1, 4),
+                                     span = c(3, 4))
+  )
+  txtvec <- capture.output(print(lsting))
+  expect_true(grepl("^[[:space:]]+key columns[[:space:]]+lame columns[[:space:]]+$", txtvec[1]))
+  testthat::expect_snapshot(cat(txtvec, sep = "\n"))
+
+  expect_error(
+    as_listing(
+      df = head(ex_adae, 10),
+      key_cols = c("ARM", "RACE", "USUBJID"),
+      disp_cols = c("BMRKR1", "BMRKR2", "AEBODSYS", "AEDECOD"),
+      spanning_col_labels = data.frame(span_level = 1,
+                                       label = c("key columns", "lame columns"),
+                                       start = c(1, 4),
+                                       span = c(5, 3))
+    )
+  )
+
+
+  ## ok when some cols aren't covered by a spanning label
+
+  lsting2 <- as_listing(
+    df = head(ex_adae, 10),
+    key_cols = c("ARM", "RACE", "USUBJID"),
+    disp_cols = c("BMRKR1", "BMRKR2", "AEBODSYS", "AEDECOD"),
+    spanning_col_labels = data.frame(span_level = 1,
+                                     label = c("key columns",
+                                               "lame columns"),
+                                     start = c(2, 6),
+                                     span = c(2, 2))
+  )
+  txtvec2 <- capture.output(print(lsting2))
+  expect_true(grepl("^[[:space:]]+key columns[[:space:]]+lame columns[[:space:]]+$", txtvec2[1]))
+  ## not the same though...
+  expect_false(txtvec[1] == txtvec2[1])
+
+  ## pagination behaves ok
+
+  txt3 <- export_as_txt(lsting, cpp = 120)
+  ## 3 pages (only 2 of them have the page break tho...
+  ## and all of them have the lame columns header spanning over their non key dispcols
+  expect_equal(
+    length(grep("^(\\\\s\\\\n){0,1}[[:space:]]+key columns[[:space:]]+lame columns[[:space:]]+$",
+                strsplit(txt3, "\n")[[1]])),
+    3
+  )
+
+
+  ## multi-label badboys, the concept of this for a listing gets sillier and sillier
+  ## the more rows of extra labels you add, but in for a penny in for a pound.
+  ## might as well do it right if we're gonna do it
+
+  ## we can even have overlaps (on different span levels)
+
+  lsting_silly <- as_listing(
+    df = head(ex_adae, 10),
+    key_cols = c("ARM", "RACE", "USUBJID"),
+    disp_cols = c("BMRKR1", "BMRKR2", "AEBODSYS", "AEDECOD"),
+    spanning_col_labels = rbind(
+      data.frame(span_level = 1, label = c("key columns", "lame columns"), start = c(1, 4), span = c(3, 4)),
+      data.frame(span_level = 2, label = "biomarkers", start = 4, span = 2),
+      data.frame(span_level = 3, label = "AE info", start = 6, span = 2),
+      data.frame(span_level = 4, label = "whatever man", start = 5, span = 3)
+    )
+  )
+
+  txt_silly <- capture.output(print(lsting_silly))
+  testthat::expect_snapshot(cat(txt_silly, sep = "\n"))
+})

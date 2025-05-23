@@ -9,7 +9,7 @@ repos:
     -   id: roxygenize
         name: Regenerate package documentation
         additional_dependencies:
-          - formatters
+          - insightsengineering/formatters
           - methods
           - tibble
           - checkmate

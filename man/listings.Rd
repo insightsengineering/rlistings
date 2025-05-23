@@ -2,6 +2,8 @@
 % Please edit documentation in R/rlistings.R
 \name{as_listing}
 \alias{as_listing}
+\alias{spanning_col_label_df}
+\alias{spanning_col_label_df<-}
 \alias{as_keycol}
 \alias{is_keycol}
 \alias{get_keycols}
@@ -29,8 +31,13 @@ as_listing(
   subtitles = NULL,
   main_footer = NULL,
   prov_footer = NULL,
-  split_into_pages_by_var = NULL
+  split_into_pages_by_var = NULL,
+  spanning_col_labels = no_spans_df
 )
+
+spanning_col_label_df(df)
+
+spanning_col_label_df(df) <- value
 
 as_keycol(vec)
 
@@ -111,12 +118,16 @@ fill the row.}
 into pages, with each page corresponding to one unique value/level of the variable. See
 \code{\link[=split_into_pages_by_var]{split_into_pages_by_var()}} for more details.}
 
+\item{spanning_col_labels}{(\code{data.frame})\cr A data.frame with the columns
+\code{span_level}, \code{label}, \code{start}, and \code{span} defining 0 or more levels of
+addition spanning (ie grouping) of columns. Defaults to no additional spanning labels.}
+
+\item{value}{(\code{string})\cr new value.}
+
 \item{vec}{(\code{string})\cr name of a column vector from a \code{listing_df} object to be annotated as a key column.}
 
 \item{new}{(\code{character})\cr vector of names of columns to be added to
 the set of display columns.}
-
-\item{value}{(\code{string})\cr new value.}
 
 \item{name}{(\code{string})\cr name of the existing or new column to be
 displayed when the listing is rendered.}
@@ -172,6 +183,23 @@ default this is all non-key columns in the incoming data, but in need not be.
 Columns in the underlying data which are neither key nor display columns remain
 within the object available for computations but \emph{are not rendered during
 printing or export of the listing}.
+
+Spanning column labels are displayed centered above the individual labels
+of the columns they span across. \code{span_level} 1 is placed directly above
+the column labels, with higher "span_levels` displayed above it in ascending
+order.
+
+IF spanning column labels are present, a single spanning label cannot span
+across both key and non-key displayed columns simultaneously due to key
+columns' repetition after page breaks during horizontal pagination. Attempting
+to set a spanning column label which does so will result in an error.
+}
+\note{
+Unlike in the \code{rtables} sister package, spanning labels here are purely
+decorative and do not reflect any structure among the columns modeled by
+\code{rlistings}. Thus, we cannot, e.g., use pathing to select columns under
+a certain spanning column label, or restrict horizontal pagination to
+leave 'groups' of columns implied by a spanning label intact.
 }
 \examples{
 dat <- ex_adae
