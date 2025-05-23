@@ -279,6 +279,7 @@ test_that("spanning column label machinery works", {
   )
   txtvec <- capture.output(print(lsting))
   expect_true(grepl("^[[:space:]]+key columns[[:space:]]+lame columns[[:space:]]+$", txtvec[1]))
+  testthat::expect_snapshot(cat(txtvec, sep = "\n"))
 
   expect_error(
     as_listing(
@@ -339,4 +340,7 @@ test_that("spanning column label machinery works", {
       data.frame(span_level = 4, label = "whatever man", start = 5, span = 3)
     )
   )
+
+  txt_silly <- capture.output(print(lsting_silly))
+  testthat::expect_snapshot(cat(txt_silly, sep = "\n"))
 })
