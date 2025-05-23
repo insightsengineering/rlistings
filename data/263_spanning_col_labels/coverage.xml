@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "https://raw.githubusercontent.com/cobertura/cobertura/master/cobertura/src/site/htdocs/xml/coverage-04.dtd">
-<coverage line-rate="0.919847328244275" branch-rate="0" lines-covered="482" lines-valid="524" branches-covered="0" branches-valid="0" complexity="0" version="3.6.4" timestamp="2025-05-21 00:19:05.424547">
+<coverage line-rate="0.919847328244275" branch-rate="0" lines-covered="482" lines-valid="524" branches-covered="0" branches-valid="0" complexity="0" version="3.6.4" timestamp="2025-05-23 20:34:00.151587">
   <sources>
     <source>/__w/rlistings/rlistings/rlistings</source>
   </sources>
@@ -669,7 +669,7 @@
                 <line number="573" hits="202" branch="false"/>
               </lines>
             </method>
-            <method name="make_span_hdr_stuff" signature="" line-rate="1" branch-rate="0" complexity="0">
+            <method name="make_span_hdr_mats" signature="" line-rate="1" branch-rate="0" complexity="0">
               <lines>
                 <line number="578" hits="202" branch="false"/>
                 <line number="579" hits="197" branch="false"/>
