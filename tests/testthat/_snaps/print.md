@@ -187,10 +187,10 @@
                                key columns                                                                                lame columns                                                   
       Description of Planned Arm   Race    Unique Subject Identifier   Continous Level Biomarker 1   Categorical Level Biomarker 2   Body System or Organ Class   Dictionary-Derived Term
       ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-              A: Drug X            WHITE     AB12345-BRA-1-id-134            6.4629905784248                      LOW                          cl B.2                  dcd B.2.1.2.1     
-                                                                             6.4629905784248                      LOW                          cl D.1                  dcd D.1.1.4.2     
-                                                                             6.4629905784248                      LOW                          cl A.1                  dcd A.1.1.1.2     
-                                                                             6.4629905784248                      LOW                          cl A.1                  dcd A.1.1.1.2     
+              A: Drug X            WHITE     AB12345-BRA-1-id-134           6.46299057842479                      LOW                          cl B.2                  dcd B.2.1.2.1     
+                                                                            6.46299057842479                      LOW                          cl D.1                  dcd D.1.1.4.2     
+                                                                            6.46299057842479                      LOW                          cl A.1                  dcd A.1.1.1.2     
+                                                                            6.46299057842479                      LOW                          cl A.1                  dcd A.1.1.1.2     
             C: Combination         WHITE     AB12345-BRA-1-id-141           7.51607612428241                     HIGH                          cl B.2                  dcd B.2.1.2.1     
                                                                             7.51607612428241                     HIGH                          cl D.2                  dcd D.2.1.5.3     
                                                                             7.51607612428241                     HIGH                          cl A.1                  dcd A.1.1.1.1     
@@ -209,13 +209,14 @@
                                key columns                                                                                lame columns                                                   
       Description of Planned Arm   Race    Unique Subject Identifier   Continous Level Biomarker 1   Categorical Level Biomarker 2   Body System or Organ Class   Dictionary-Derived Term
       ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-              A: Drug X            WHITE     AB12345-BRA-1-id-134            6.4629905784248                      LOW                          cl B.2                  dcd B.2.1.2.1     
-                                                                             6.4629905784248                      LOW                          cl D.1                  dcd D.1.1.4.2     
-                                                                             6.4629905784248                      LOW                          cl A.1                  dcd A.1.1.1.2     
-                                                                             6.4629905784248                      LOW                          cl A.1                  dcd A.1.1.1.2     
+              A: Drug X            WHITE     AB12345-BRA-1-id-134           6.46299057842479                      LOW                          cl B.2                  dcd B.2.1.2.1     
+                                                                            6.46299057842479                      LOW                          cl D.1                  dcd D.1.1.4.2     
+                                                                            6.46299057842479                      LOW                          cl A.1                  dcd A.1.1.1.2     
+                                                                            6.46299057842479                      LOW                          cl A.1                  dcd A.1.1.1.2     
             C: Combination         WHITE     AB12345-BRA-1-id-141           7.51607612428241                     HIGH                          cl B.2                  dcd B.2.1.2.1     
                                                                             7.51607612428241                     HIGH                          cl D.2                  dcd D.2.1.5.3     
                                                                             7.51607612428241                     HIGH                          cl A.1                  dcd A.1.1.1.1     
                                                                             7.51607612428241                     HIGH                          cl A.1                  dcd A.1.1.1.2     
                                                                             7.51607612428241                     HIGH                          cl A.1                  dcd A.1.1.1.1     
                                                                             7.51607612428241                     HIGH                          cl D.1                  dcd D.1.1.1.1     
+
