@@ -1,5 +1,5 @@
-pandoc: 3.6.3
-pkgdown: 2.1.1
+pandoc: 3.6.4
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   col_formatting: col_formatting.html
@@ -7,7 +7,7 @@ articles:
   pagination: pagination.html
   ref_footnotes: ref_footnotes.html
   rlistings: rlistings.html
-last_built: 2025-04-30T14:19Z
+last_built: 2025-05-28T03:45Z
 urls:
   reference: https://insightsengineering.github.io/rlistings/reference
   article: https://insightsengineering.github.io/rlistings/articles
