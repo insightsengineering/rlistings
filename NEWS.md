@@ -1,3 +1,5 @@
+## rlistings 0.2.12.9000
+
 ## rlistings 0.2.12
  * Added parameter `align_colnames` to `as_listings()`, along with post-processing functions `align_colnames()` and `align_colnames()<-`. This flag allows to align colnames as the column content is aligned.
  * `as_listing` now accepts a `spanning_col_labels` argument which can declare decorative spanning labels to appear above the individual column labels when a `listing_df` is rendered. #263 by @gmbecker
