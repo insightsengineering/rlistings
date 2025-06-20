@@ -370,8 +370,9 @@ spanning_col_label_df <- function(df) {
 #' @export
 #' @rdname listings
 `spanning_col_label_df<-` <- function(df, value) {
-  if (is.null(value))
+  if (is.null(value)) {
     value <- no_spans_df
+  }
 
   checkmate::assert_data_frame(value, min.cols = 4, max.cols = 4, col.names = "named")
   checkmate::assert_set_equal(names(value), c("span_level", "label", "start", "span"))
@@ -786,8 +787,8 @@ split_into_pages_by_var <- function(lsting, var, page_prefix = var) {
   }
 
   # Correction for cases with trailing separators
+  trailing_sep_directives <- listing_trailing_sep(lsting)
   if (!is.null(listing_trailing_sep(lsting))) {
-    trailing_sep_directives <- listing_trailing_sep(lsting)
     if (is.null(trailing_sep_directives$var_trailing_sep)) {
       stop(
         "Current lsting did have add_trailing_sep directives with numeric indexes. ",
@@ -795,7 +796,7 @@ split_into_pages_by_var <- function(lsting, var, page_prefix = var) {
       )
     }
     add_trailing_sep <- trailing_sep_directives$var_trailing_sep
-    trailing_sep <- trailing_sep_directives$trailing_sep
+    trailing_sep <- trailing_sep_directives$what_to_separe
     lsting_by_var <- lapply(lsting_by_var, .do_add_trailing_sep, add_trailing_sep, trailing_sep)
   }
 
