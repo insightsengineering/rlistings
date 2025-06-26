@@ -400,3 +400,40 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var and tra
   # Sample snapshot
   expect_snapshot(lsting2)
 })
+
+testthat::test_that("pagination by variables work also with specific cases of trailing_sep", {
+  # Create test data
+  adae <- data.frame(
+    USUBJID = rep("SUBJ001", 100),
+    AECAT = rep(c("Adverse Event", "Injection Site Reactions"), each = 50),
+    AEDECOD = rep(c("Headache", "Nausea", "Rash", "Itching"), each = 25),
+    AESEV = rep(c("Mild", "Moderate", "Severe"), length.out = 10),
+    stringsAsFactors = FALSE
+  )
+
+  # Create listing
+  tlg_output <- as_listing(
+    adae,
+    key_cols = c("USUBJID", "AEDECOD"),
+    sort_cols = c("AECAT", "USUBJID", "AEDECOD"),
+    disp_cols = c("USUBJID", "AEDECOD", "AESEV"),
+    add_trailing_sep = "AEDECOD",
+    trailing_sep = " "
+  ) %>%
+    split_into_pages_by_var(
+      var = "AECAT",
+      page_prefix = "Category"
+    )
+
+  # It works
+  testthat::expect_silent(
+    mf_out <- matrix_form(tlg_output$`Adverse Event`)
+  )
+  expect_equal(
+    mf_rinfo(mf_out)$trailing_sep[25],
+    " "
+  )
+  expect_true(
+    all(is.na(mf_rinfo(mf_out)$trailing_sep[-25]))
+  )
+})
