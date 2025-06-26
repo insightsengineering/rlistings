@@ -339,7 +339,7 @@ as_listing <- function(df,
     listing_trailing_sep(df_tmp) <- list(
       "var_trailing_sep" = add_trailing_sep,
       "where_trailing_sep" = row_ind_for_trail_sep,
-      "what_to_separe" = trailing_sep
+      "what_to_separate" = trailing_sep
     )
   } else if (is.numeric(add_trailing_sep)) {
     if (any(!add_trailing_sep %in% seq_len(nrow(df_tmp)))) {
@@ -350,7 +350,7 @@ as_listing <- function(df,
     listing_trailing_sep(df_tmp) <- list(
       "var_trailing_sep" = NULL, # If numeric only
       "where_trailing_sep" = add_trailing_sep,
-      "what_to_separe" = trailing_sep
+      "what_to_separate" = trailing_sep
     )
   }
 
@@ -528,7 +528,7 @@ setMethod(
 
       # We need to make sure that the trailing separator is not beyond the number of rows (cases like head())
       lts$where_trailing_sep <- lts$where_trailing_sep[lts$where_trailing_sep <= nrow(row_info)]
-      row_info$trailing_sep[lts$where_trailing_sep] <- lts$what_to_separe
+      row_info$trailing_sep[lts$where_trailing_sep] <- lts$what_to_separate
     }
 
     span_hdr <- make_span_hdr_mats(spanning_col_label_df(obj), length(listing_dispcols(obj)))
@@ -674,7 +674,7 @@ listing_trailing_sep <- function(df) attr(df, "listing_trailing_sep") %||% NULL
   }
   checkmate::assert_set_equal(
     names(value),
-    c("var_trailing_sep", "where_trailing_sep", "what_to_separe")
+    c("var_trailing_sep", "where_trailing_sep", "what_to_separate")
   )
   attr(df, "listing_trailing_sep") <- value
   df
@@ -796,7 +796,7 @@ split_into_pages_by_var <- function(lsting, var, page_prefix = var) {
       )
     }
     add_trailing_sep <- trailing_sep_directives$var_trailing_sep
-    trailing_sep <- trailing_sep_directives$what_to_separe
+    trailing_sep <- trailing_sep_directives$what_to_separate
     lsting_by_var <- lapply(lsting_by_var, .do_add_trailing_sep, add_trailing_sep, trailing_sep)
   }
 
