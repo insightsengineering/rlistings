@@ -788,7 +788,7 @@ split_into_pages_by_var <- function(lsting, var, page_prefix = var) {
 
   # Correction for cases with trailing separators
   trailing_sep_directives <- listing_trailing_sep(lsting)
-  if (!is.null(listing_trailing_sep(lsting))) {
+  if (!is.null(trailing_sep_directives)) {
     if (is.null(trailing_sep_directives$var_trailing_sep)) {
       stop(
         "Current lsting did have add_trailing_sep directives with numeric indexes. ",
