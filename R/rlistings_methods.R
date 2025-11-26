@@ -171,6 +171,10 @@ setMethod(
            nsibs = NA_integer_,
            fontspec = dflt_courier,
            round_type = c("iec", "sas")) {
+    new_dev <- open_font_dev(fontspec)
+    if (new_dev) {
+      on.exit(close_font_dev())
+    }
     ## assume sortedness by keycols
     keycols <- get_keycols(tt)
     dispcols <- listing_dispcols(tt)

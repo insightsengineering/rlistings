@@ -444,12 +444,18 @@ get_keycols <- function(df) {
 #' @export
 setMethod(
   "matrix_form", "listing_df",
-  rix_form <- function(obj,
-                       indent_rownames = FALSE,
-                       expand_newlines = TRUE,
-                       fontspec = font_spec,
-                       col_gap = 3L,
-                       round_type = c("iec", "sas")) {
+  function(obj,
+           indent_rownames = FALSE,
+           expand_newlines = TRUE,
+           fontspec = font_spec,
+           col_gap = 3L,
+           round_type = c("iec", "sas")) {
+
+    new_dev <- open_font_dev(fontspec)
+    if (new_dev) {
+      on.exit(close_font_dev())
+    }
+
     ##  we intentionally silently ignore indent_rownames because listings have
     ## no rownames, but formatters::vert_pag_indices calls matrix_form(obj, TRUE)
     ## unconditionally.
