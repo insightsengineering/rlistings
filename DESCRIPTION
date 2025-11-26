@@ -1,7 +1,7 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Version: 0.2.12.9001
-Date: 2025-06-26
+Version: 0.2.12.9002
+Date: 2025-11-26
 Authors@R: c(
     person("Gabriel", "Becker", , "gabembecker@gmail.com", role = "aut",
            comment = "original creator of the package"),
@@ -27,7 +27,7 @@ BugReports: https://github.com/insightsengineering/rlistings/issues
 Depends:
     formatters (>= 0.5.11),
     methods,
-    tibble (>= 2.0.0)
+    tibble (>= 3.2.1)
 Imports:
     checkmate (>= 2.1.0),
     grDevices,
@@ -35,13 +35,14 @@ Imports:
     stats,
     utils
 Suggests:
-    dplyr (>= 1.0.2),
-    knitr (>= 1.42),
-    lifecycle (>= 0.2.0),
-    rmarkdown (>= 2.23),
-    stringi (>= 1.6),
-    testthat (>= 3.1.5),
-    withr (>= 2.0.0)
+    dplyr (>= 1.1.4),
+    knitr (>= 1.50),
+    lifecycle (>= 1.0.4),
+    processx (>= 3.8.6),
+    rmarkdown (>= 2.29),
+    stringi (>= 1.8.7),
+    testthat (>= 3.2.3),
+    withr (>= 3.0.2)
 VignetteBuilder:
     knitr,
     rmarkdown
@@ -54,4 +55,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
