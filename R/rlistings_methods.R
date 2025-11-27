@@ -57,7 +57,7 @@ setMethod("toString", "listing_df", function(x,
                                              col_gap = 3L,
                                              round_type = valid_round_type,
                                              ...) {
-  round_type = match.arg(round_type)
+  round_type <- match.arg(round_type)
   toString(
     matrix_form(x, fontspec = fontspec, col_gap = col_gap, round_type = round_type),
     fontspec = fontspec,
