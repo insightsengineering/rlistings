@@ -19,8 +19,9 @@ print.listing_df <- function(x,
                              max_width = NULL,
                              fontspec = NULL,
                              col_gap = 3L,
-                             round_type = c("iec", "sas"),
+                             round_type = valid_round_type,
                              ...) {
+  round_type <- match.arg(round_type)
   tryCatch(
     {
       cat(
@@ -54,8 +55,9 @@ setMethod("toString", "listing_df", function(x,
                                              widths = NULL,
                                              fontspec = NULL,
                                              col_gap = 3L,
-                                             round_type = c("iec", "sas"),
+                                             round_type = valid_round_type,
                                              ...) {
+  round_type = match.arg(round_type)
   toString(
     matrix_form(x, fontspec = fontspec, col_gap = col_gap, round_type = round_type),
     fontspec = fontspec,
@@ -81,10 +83,12 @@ basic_run_lens <- function(x) {
 #' @param df (`listing_df`)\cr the listing.
 #' @param colnm (`string`)\cr column name.
 #' @param colvec (`vector`)\cr column values based on `colnm`.
+#' @param round_type (`"iec"` (default), `"iec_mod"` or `"sas"`)\cr the type of rounding to perform.
+#' See [formatters::format_value()] for details.
 #'
 #' @rdname vec_nlines
 #' @keywords internal
-format_colvector <- function(df, colnm, colvec = df[[colnm]], round_type = c("iec", "sas")) {
+format_colvector <- function(df, colnm, colvec = df[[colnm]], round_type = valid_round_type) {
   if (missing(colvec) && !(colnm %in% names(df))) {
     stop("column ", colnm, " not found")
   }
@@ -104,11 +108,13 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]], round_type = c("ie
 #'
 #' @param vec (`vector`)\cr a column vector to be rendered into ASCII.
 #' @param max_width (`numeric(1)` or `NULL`)\cr the width to render the column with.
+#' @param round_type (`"iec"` (default), `"iec_mod"` or `"sas"`)\cr the type of rounding to perform.
+#' See [formatters::format_value()] for details.
 #' @return (`numeric`)\cr a vector of the number of lines element-wise that will be
 #'   needed to render the elements of `vec` to width `max_width`.
 #'
 #' @keywords internal
-setGeneric("vec_nlines", function(vec, max_width = NULL, fontspec = dflt_courier, round_type = c("iec", "sas")) {
+setGeneric("vec_nlines", function(vec, max_width = NULL, fontspec = dflt_courier, round_type = valid_round_type) {
   standardGeneric("vec_nlines")
 })
 
@@ -116,7 +122,7 @@ setGeneric("vec_nlines", function(vec, max_width = NULL, fontspec = dflt_courier
 #'
 #' @rdname vec_nlines
 #' @keywords internal
-setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_courier, round_type = c("iec", "sas")) {
+setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_courier, round_type = valid_round_type) {
   round_type <- match.arg(round_type)
   if (is.null(max_width)) {
     max_width <- floor(0.9 * getOption("width")) # default of base::strwrap
@@ -170,7 +176,7 @@ setMethod(
            sibpos = NA_integer_,
            nsibs = NA_integer_,
            fontspec = dflt_courier,
-           round_type = c("iec", "sas")) {
+           round_type = valid_round_type) {
     new_dev <- open_font_dev(fontspec)
     if (new_dev) {
       on.exit(close_font_dev())
@@ -399,5 +405,24 @@ setMethod(
   "num_rep_cols", "listing_df",
   function(obj) {
     length(get_keycols(obj))
+  }
+)
+#### obj_round_type getter-----
+#' @rdname listing_methods
+#' @export
+setMethod(
+  "obj_round_type", "listing_df",
+  function(obj) {
+    attr(obj, "round_type")
+  }
+)
+#### obj_round_type setter -----
+#' @rdname listing_methods
+#' @export
+setMethod(
+  "obj_round_type<-", "listing_df",
+  function(obj, value) {
+    attr(obj, "round_type") <- value
+    obj
   }
 )

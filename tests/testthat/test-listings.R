@@ -433,3 +433,50 @@ testthat::test_that("appropriate error message returned for 'difftime' class", {
   ) %>%
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex"))
 })
+
+
+testthat::test_that("round_type approach works", {
+  vals <- c(1.865)
+
+  txtvals_iec <- mapply(format_value, x = vals, format = "xx.xx", round_type = "iec")
+  txtvals_sas <- mapply(format_value, x = vals, format = "xx.xx", round_type = "sas")
+
+  # adjust vals if following is not TRUE
+  expect_true(any(txtvals_iec != txtvals_sas))
+
+  anl <- ex_adsl
+  anl <- anl[1:10, c("USUBJID", "ARM", "BMRKR1")]
+
+  lsting <- as_listing(anl, key_cols = c("ARM", "USUBJID")) %>%
+    add_listing_col("ARM") %>%
+    add_listing_col("USUBJID") %>%
+    add_listing_col("BMRKR1", format = "xx.xx")
+
+  # update a single value from listing to vals, to demonstrate sas rounding
+  lsting$BMRKR1[2] <- vals
+
+  mat <- matrix_form(lsting)
+
+  testthat::expect_identical(
+    unname(mat$strings[3, 3, drop = TRUE]),
+    txtvals_iec
+  )
+
+  # approach 1 to use sas rounding, through resetting obj_round_type of class listing_df
+  lsting_sas <- lsting
+  obj_round_type(lsting_sas) <- "sas"
+  mat_sas <- matrix_form(lsting_sas)
+
+  testthat::expect_identical(
+    unname(mat_sas$strings[3, 3, drop = TRUE]),
+    txtvals_sas
+  )
+
+  # approach 2 to use sas rounding, through call to matrix_form with updated round_type
+  mat_sas2 <- matrix_form(lsting, round_type = "sas")
+
+  testthat::expect_identical(
+    unname(mat_sas2$strings[3, 3, drop = TRUE]),
+    txtvals_sas
+  )
+})
