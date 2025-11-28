@@ -6,20 +6,25 @@
 \alias{vec_nlines,ANY-method}
 \title{Utilities for formatting a listing column}
 \usage{
-format_colvector(df, colnm, colvec = df[[colnm]], round_type = c("iec", "sas"))
+format_colvector(
+  df,
+  colnm,
+  colvec = df[[colnm]],
+  round_type = valid_round_type
+)
 
 vec_nlines(
   vec,
   max_width = NULL,
   fontspec = dflt_courier,
-  round_type = c("iec", "sas")
+  round_type = valid_round_type
 )
 
 \S4method{vec_nlines}{ANY}(
   vec,
   max_width = NULL,
   fontspec = dflt_courier,
-  round_type = c("iec", "sas")
+  round_type = valid_round_type
 )
 }
 \arguments{
@@ -28,6 +33,9 @@ vec_nlines(
 \item{colnm}{(\code{string})\cr column name.}
 
 \item{colvec}{(\code{vector})\cr column values based on \code{colnm}.}
+
+\item{round_type}{(\code{"iec"} (default), \code{"iec_mod"} or \code{"sas"})\cr the type of rounding to perform.
+See \code{\link[formatters:format_value]{formatters::format_value()}} for details.}
 
 \item{vec}{(\code{vector})\cr a vector.}
 
