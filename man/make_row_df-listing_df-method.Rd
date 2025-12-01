@@ -17,7 +17,7 @@
   sibpos = NA_integer_,
   nsibs = NA_integer_,
   fontspec = dflt_courier,
-  round_type = valid_round_type
+  round_type = obj_round_type(tt)
 )
 }
 \arguments{

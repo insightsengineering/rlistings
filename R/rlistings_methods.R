@@ -19,9 +19,8 @@ print.listing_df <- function(x,
                              max_width = NULL,
                              fontspec = NULL,
                              col_gap = 3L,
-                             round_type = valid_round_type,
+                             round_type = obj_round_type(x),
                              ...) {
-  round_type <- match.arg(round_type)
   tryCatch(
     {
       cat(
@@ -55,9 +54,8 @@ setMethod("toString", "listing_df", function(x,
                                              widths = NULL,
                                              fontspec = NULL,
                                              col_gap = 3L,
-                                             round_type = valid_round_type,
+                                             round_type = obj_round_type(x),
                                              ...) {
-  round_type <- match.arg(round_type)
   toString(
     matrix_form(x, fontspec = fontspec, col_gap = col_gap, round_type = round_type),
     fontspec = fontspec,
@@ -176,7 +174,7 @@ setMethod(
            sibpos = NA_integer_,
            nsibs = NA_integer_,
            fontspec = dflt_courier,
-           round_type = valid_round_type) {
+           round_type = obj_round_type(tt)) {
     new_dev <- open_font_dev(fontspec)
     if (new_dev) {
       on.exit(close_font_dev())

@@ -25,7 +25,7 @@
   max_width = NULL,
   fontspec = NULL,
   col_gap = 3L,
-  round_type = valid_round_type,
+  round_type = obj_round_type(x),
   ...
 )
 
@@ -34,7 +34,7 @@
   widths = NULL,
   fontspec = NULL,
   col_gap = 3L,
-  round_type = valid_round_type,
+  round_type = obj_round_type(x),
   ...
 )
 
