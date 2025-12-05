@@ -1,5 +1,5 @@
 testthat::test_that("Listing print correctly", {
-  lsting <- as_listing(anl, key_cols = c("USUBJID")) |>
+  lsting <- as_listing(anl, key_cols = c("USUBJID")) %>%
     add_listing_col("ARM")
 
   res <- strsplit(toString(matrix_form(lsting), hsep = "-"), "\\n")[[1]]
@@ -12,7 +12,7 @@ testthat::test_that("Listing print correctly", {
 })
 
 testthat::test_that("Listing print correctly with different widths", {
-  lsting <- as_listing(anl, key_cols = c("USUBJID")) |>
+  lsting <- as_listing(anl, key_cols = c("USUBJID")) %>%
     add_listing_col("ARM")
 
   res <- strsplit(toString(matrix_form(lsting), widths = c(7, 8, 9), hsep = "-"), "\\n")[[1]]

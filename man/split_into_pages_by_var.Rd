@@ -38,8 +38,8 @@ lsting <- as_listing(
   disp_cols = "SEX",
   main_title = "title",
   main_footer = "footer"
-) |>
-  add_listing_col("BMRKR1", format = "xx.x") |>
+) \%>\%
+  add_listing_col("BMRKR1", format = "xx.x") \%>\%
   split_into_pages_by_var("SEX")
 
 lsting

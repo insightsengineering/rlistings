@@ -68,7 +68,7 @@ adae <- ex_adae[1:15, ]
 set.seed(1)
 adae <- as.data.frame(lapply(adae, function(x) replace(x, sample(length(x), 0.1 * length(x)), NA)))
 
-adae <- adae |> dplyr::arrange(USUBJID, AGE, TRTSDTM)
+adae <- adae %>% dplyr::arrange(USUBJID, AGE, TRTSDTM)
 ```
 
 Now we will create a basic listing.
@@ -191,7 +191,7 @@ In some cases, you may want to add a new column with its own formatting settings
 In this example, we will add a column to `lsting_5` created in the previous section. This new column will calculates the length of the analysis (in days) by subtracting "Analysis Start Relative Day" (`ASTDY`) from "Analysis End Relative Day" (`AENDY`). This can be done as follows:
 
 ```{r}
-lsting_6 <- lsting_5 |>
+lsting_6 <- lsting_5 %>%
   add_listing_col(
     name = "Length of\nAnalysis",
     fun = function(df) df$AENDY - df$ASTDY,
