@@ -1,4 +1,4 @@
-## rlistings 0.2.12.9004
+## rlistings 0.2.12.9005
  * Fixed bug in `split_into_pages_by_var` that could not handle some listings with trailing separators.
  * Listings now carry around a rounding type to be used (by default) when printing or exporting them. Defaults to `"iec"` as before.
  * Added `obj_round_type` and `obj_round_type<-` methods for `listing_df` objects
