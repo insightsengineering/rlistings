@@ -486,10 +486,10 @@ testthat::test_that("round_type getter and setter on list of listing_df", {
   tmp_data <- ex_adae[1:100, ]
   new_BMRKR1_val <- 1.865
   expect_true(format_value(new_BMRKR1_val, format = "xx.xx", round_type = "sas") !=
-              format_value(new_BMRKR1_val, format = "xx.xx", round_type = "iec")  )
+                format_value(new_BMRKR1_val, format = "xx.xx", round_type = "iec"))
 
-  subj1 <- head(tmp_data[tmp_data$"SEX"=="F", "SUBJID", drop = TRUE], 1)
-  subj2 <- head(tmp_data[tmp_data$"SEX"=="M", "SUBJID", drop = TRUE], 1)
+  subj1 <- head(tmp_data[tmp_data$"SEX" == "F", "SUBJID", drop = TRUE], 1)
+  subj2 <- head(tmp_data[tmp_data$"SEX" == "M", "SUBJID", drop = TRUE], 1)
   tmp_data[tmp_data$SUBJID == subj1, "BMRKR1"] <- new_BMRKR1_val
   tmp_data[tmp_data$SUBJID == subj2, "BMRKR1"] <- new_BMRKR1_val
 
@@ -516,7 +516,7 @@ testthat::test_that("round_type getter and setter on list of listing_df", {
     "sas"
   )
 
- # check that round_type update actually has occurred on values
+  # check that round_type update actually has occurred on values
   lsting1 <- lsting[[1]]
   lsting2 <- lsting[[2]]
 
