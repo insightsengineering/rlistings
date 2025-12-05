@@ -3,21 +3,21 @@ testthat::test_that("pagination works vertically", {
   require("dplyr", quietly = TRUE)
 
   # pre-processing and ordering
-  tmp_data <- ex_adae %>%
-    dplyr::slice(1:30) %>%
+  tmp_data <- ex_adae |>
+    dplyr::slice(1:30) |>
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
     key_cols = c("USUBJID", "AGE"),
     disp_cols = character()
-  ) %>%
+  ) |>
     add_listing_col("BMRKR1", format = "xx.x")
 
   pages_listings <- suppressMessages(paginate_listing(lsting, lpp = 6, verbose = TRUE, print_pages = FALSE))
 
   testthat::expect_snapshot(fast_print(pages_listings[c(1, 2)]))
 
-  lsting2 <- lsting %>% add_listing_col("BMRKR2")
+  lsting2 <- lsting |> add_listing_col("BMRKR2")
   pages_listings2 <- paginate_listing(lsting2, lpp = 6, cpp = 70, print_pages = FALSE)
 
   testthat::expect_equal(length(pages_listings2), 4L)
@@ -29,16 +29,16 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
   require("dplyr", quietly = TRUE)
 
   # pre-processing and ordering
-  tmp_data <- ex_adae %>%
-    dplyr::slice(1:30) %>%
+  tmp_data <- ex_adae |>
+    dplyr::slice(1:30) |>
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
     key_cols = c("USUBJID"),
     disp_cols = character()
-  ) %>%
-    add_listing_col("AGE") %>%
-    add_listing_col("BMRKR1", format = "xx.x") %>%
+  ) |>
+    add_listing_col("AGE") |>
+    add_listing_col("BMRKR1", format = "xx.x") |>
     add_listing_col("BMRKR2")
 
   pages_listings <- paginate_listing(lsting, cpp = 70, print_pages = FALSE)
@@ -59,10 +59,10 @@ testthat::test_that("horizontal pagination with 0 or 1 key column specified work
 
   lsting2 <- as_listing(tmp_data,
     disp_cols = character()
-  ) %>%
-    add_listing_col("USUBJID") %>%
-    add_listing_col("AGE") %>%
-    add_listing_col("BMRKR1", format = "xx.x") %>%
+  ) |>
+    add_listing_col("USUBJID") |>
+    add_listing_col("AGE") |>
+    add_listing_col("BMRKR1", format = "xx.x") |>
     add_listing_col("BMRKR2")
 
   pages_listings2 <- paginate_listing(lsting2, cpp = 70, print_pages = FALSE)
@@ -94,14 +94,14 @@ testthat::test_that("listing works with no vertical pagination", {
   require("dplyr", quietly = TRUE)
 
   # pre-processing and ordering
-  tmp_data <- ex_adae %>%
-    dplyr::slice(1:30) %>%
+  tmp_data <- ex_adae |>
+    dplyr::slice(1:30) |>
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
     key_cols = c("USUBJID", "AGE"),
     disp_cols = character()
-  ) %>%
+  ) |>
     add_listing_col("BMRKR1", format = "xx.x")
 
   pages_listings <- paginate_listing(lsting, lpp = NULL, print_pages = FALSE)
@@ -117,15 +117,15 @@ testthat::test_that("checking vertical pagination line calculation.", {
   require("dplyr", quietly = TRUE)
 
   # pre-processing and ordering
-  tmp_data <- ex_adae %>%
-    dplyr::slice(1:30) %>%
+  tmp_data <- ex_adae |>
+    dplyr::slice(1:30) |>
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
     key_cols = c("USUBJID", "AGE"),
     disp_cols = character(),
     main_footer = c("Main Footer A")
-  ) %>%
+  ) |>
     add_listing_col("BMRKR1", format = "xx.x")
 
   pages_listings <- paginate_listing(lsting, lpp = 8, print_pages = FALSE)
@@ -217,7 +217,7 @@ testthat::test_that("pagination repeats keycols in other pages", {
   )[2])
 
   # Simplified test
-  mf_pages <- as_listing(tibble("a" = rep("1", 25), "b" = seq(25)), key_cols = "a") %>%
+  mf_pages <- as_listing(tibble("a" = rep("1", 25), "b" = seq(25)), key_cols = "a") |>
     paginate_to_mpfs(lpp = 12)
 
   testthat::expect_snapshot(cat(toString(mf_pages[[3]])))
@@ -225,12 +225,12 @@ testthat::test_that("pagination repeats keycols in other pages", {
   # Warning from empty key col
   mf_pages <- suppressWarnings(
     testthat::expect_warning(
-      as_listing(tibble("a" = rep("", 25), "b" = seq(25)), key_cols = "a") %>%
+      as_listing(tibble("a" = rep("", 25), "b" = seq(25)), key_cols = "a") |>
         paginate_to_mpfs(lpp = 12)
     )
   )
   mf_pages <- suppressWarnings(
-    as_listing(tibble("a" = rep("", 25), "b" = seq(25)), key_cols = "a") %>%
+    as_listing(tibble("a" = rep("", 25), "b" = seq(25)), key_cols = "a") |>
       paginate_to_mpfs(lpp = 12)
   )
 
@@ -253,7 +253,7 @@ testthat::test_that("pagination repeats keycols in other pages (longer test)", {
     )
   )
 
-  lst <- lsting %>% export_as_txt(tf_wrap = TRUE, lpp = 30, page_break = "\f")
+  lst <- lsting |> export_as_txt(tf_wrap = TRUE, lpp = 30, page_break = "\f")
   testthat::expect_snapshot(
     cat(toString(lst))
   )
@@ -269,10 +269,10 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
   pgs <- paginate_to_mpfs(lst, colwidths = c(30, 11, 12), lpp = 7)
 
   testthat::expect_equal(
-    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] |> length()),
     c(7, 7, 5)
   )
-  testthat::expect_snapshot(null <- sapply(pgs, function(x) toString(x) %>% cat()))
+  testthat::expect_snapshot(null <- sapply(pgs, function(x) toString(x) |> cat()))
 
   # Errors
   testthat::expect_error(
@@ -292,7 +292,7 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols", {
   pgs <- paginate_to_mpfs(lst, colwidths = c(30, 15, 12), lpp = 8)
 
   testthat::expect_equal(
-    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] |> length()),
     seq(8, 6)
   )
 })
@@ -310,7 +310,7 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols when doing 
   pgs <- paginate_to_mpfs(lst, colwidths = cw, lpp = 150, cpp = expected_min_cpp + 3) # why + 3? -> + colgap
 
   testthat::expect_equal(
-    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] %>% nchar()),
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] |> nchar()),
     rep(expected_min_cpp, 2) # no colgap
   )
 
@@ -318,12 +318,12 @@ testthat::test_that("paginate_to_mpfs works with wrapping on keycols when doing 
 
   # testing nrow
   testthat::expect_equal(
-    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] %>% length()),
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]] |> length()),
     rep(5, 10)
   )
   # testing nchars
   testthat::expect_equal(
-    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] %>% nchar()),
+    sapply(pgs, function(x) strsplit(toString(x), "\n")[[1]][1] |> nchar()),
     rep(expected_min_cpp, 10)
   )
 })
@@ -337,8 +337,8 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var", {
     disp_cols = "SEX",
     main_title = "title",
     main_footer = "foot"
-  ) %>%
-    add_listing_col("BMRKR1", format = "xx.x") %>%
+  ) |>
+    add_listing_col("BMRKR1", format = "xx.x") |>
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
   # split keeps the order of the levels
@@ -365,7 +365,7 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var and tra
     add_trailing_sep = "ARM",
     trailing_sep = "=",
     split_into_pages_by_var = "SEX"
-  ) %>%
+  ) |>
     add_listing_col("BMRKR1", format = "xx.x")
 
   lsting2 <- as_listing(
@@ -374,8 +374,8 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var and tra
     disp_cols = c("SEX", "USUBJID", "AGE"),
     add_trailing_sep = "ARM",
     trailing_sep = "="
-  ) %>%
-    add_listing_col("BMRKR1", format = "xx.x") %>%
+  ) |>
+    add_listing_col("BMRKR1", format = "xx.x") |>
     split_into_pages_by_var("SEX", page_prefix = "SEX")
 
   # splitting afterwards keeps the same printed trailing separators
@@ -391,8 +391,8 @@ testthat::test_that("paginate_listing works with split_into_pages_by_var and tra
       disp_cols = c("SEX", "USUBJID", "AGE"),
       add_trailing_sep = c(3, 5, 7),
       trailing_sep = "="
-    ) %>%
-      add_listing_col("BMRKR1", format = "xx.x") %>%
+    ) |>
+      add_listing_col("BMRKR1", format = "xx.x") |>
       split_into_pages_by_var("SEX", page_prefix = "SEX"),
     "Current lsting did have add_trailing_sep directives with numeric indexes"
   )
@@ -419,7 +419,7 @@ testthat::test_that("pagination by variables work also with specific cases of tr
     disp_cols = c("USUBJID", "AEDECOD", "AESEV"),
     add_trailing_sep = "AEDECOD",
     trailing_sep = " "
-  ) %>%
+  ) |>
     split_into_pages_by_var(
       var = "AECAT",
       page_prefix = "Category"

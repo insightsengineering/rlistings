@@ -220,9 +220,9 @@ lsting <- as_listing(dat[1:25, ],
     "You can even add a subfooter", "Second element is place on a new line",
     "Third string"
   )
-) \%>\%
-  add_listing_col("AETOXGR") \%>\%
-  add_listing_col("BMRKR1", format = "xx.x") \%>\%
+) |>
+  add_listing_col("AETOXGR") |>
+  add_listing_col("BMRKR1", format = "xx.x") |>
   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 
 mat <- matrix_form(lsting)
@@ -255,7 +255,7 @@ lsting <- as_listing(dat[1:25, ],
       align = "right"
     )
   )
-) \%>\%
+) |>
   add_listing_col("BMRKR1", format = "xx.x", align = "center")
 
 mat <- matrix_form(lsting)

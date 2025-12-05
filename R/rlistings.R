@@ -123,9 +123,9 @@ no_spans_df <- data.frame(
 #'     "You can even add a subfooter", "Second element is place on a new line",
 #'     "Third string"
 #'   )
-#' ) %>%
-#'   add_listing_col("AETOXGR") %>%
-#'   add_listing_col("BMRKR1", format = "xx.x") %>%
+#' ) |>
+#'   add_listing_col("AETOXGR") |>
+#'   add_listing_col("BMRKR1", format = "xx.x") |>
 #'   add_listing_col("AESER / AREL", fun = function(df) paste(df$AESER, df$AREL, sep = " / "))
 #'
 #' mat <- matrix_form(lsting)
@@ -158,7 +158,7 @@ no_spans_df <- data.frame(
 #'       align = "right"
 #'     )
 #'   )
-#' ) %>%
+#' ) |>
 #'   add_listing_col("BMRKR1", format = "xx.x", align = "center")
 #'
 #' mat <- matrix_form(lsting)
@@ -340,7 +340,7 @@ as_listing <- function(df,
         diff(as.numeric(as.factor(col_i)))
       }),
       1, function(row_i) any(row_i != 0)
-    ) %>%
+    ) |>
       which()
     listing_trailing_sep(df_tmp) <- list(
       "var_trailing_sep" = add_trailing_sep,
@@ -770,8 +770,8 @@ add_listing_col <- function(df,
 #'   disp_cols = "SEX",
 #'   main_title = "title",
 #'   main_footer = "footer"
-#' ) %>%
-#'   add_listing_col("BMRKR1", format = "xx.x") %>%
+#' ) |>
+#'   add_listing_col("BMRKR1", format = "xx.x") |>
 #'   split_into_pages_by_var("SEX")
 #'
 #' lsting

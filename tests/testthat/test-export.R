@@ -11,14 +11,14 @@ testthat::test_that("key columns repeat with export_as_txt", {
   skip_if_not_installed("dplyr")
   require("dplyr", quietly = TRUE)
   # pre-processing and ordering
-  tmp_data <- ex_adae %>%
-    dplyr::slice(1:30) %>%
+  tmp_data <- ex_adae |>
+    dplyr::slice(1:30) |>
     dplyr::distinct(USUBJID, AGE, BMRKR1, .keep_all = TRUE)
 
   lsting <- as_listing(tmp_data,
     key_cols = c("USUBJID", "AGE"),
     disp_cols = character()
-  ) %>%
+  ) |>
     add_listing_col("BMRKR1", format = "xx.x")
 
   listing_exp <- suppressMessages(export_as_txt(lsting, lpp = 4, verbose = TRUE, page_break = "\n"))
@@ -84,8 +84,8 @@ testthat::test_that("export_as_txt works with split_into_pages_by_var", {
     disp_cols = "SEX",
     main_title = "title",
     main_footer = "foot"
-  ) %>%
-    add_listing_col("BMRKR1", format = "xx.x") %>%
+  ) |>
+    add_listing_col("BMRKR1", format = "xx.x") |>
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
   pages_listings <- export_as_txt(lsting, file = NULL, paginate = TRUE, lpp = 30, cpp = 65)

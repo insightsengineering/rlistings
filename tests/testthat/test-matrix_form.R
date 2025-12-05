@@ -2,8 +2,8 @@ testthat::test_that("matrix_form keeps relevant information and structure about 
   skip_if_not_installed("dplyr")
   require("dplyr", quietly = TRUE)
 
-  my_iris <- iris %>%
-    slice(c(16, 3)) %>%
+  my_iris <- iris |>
+    slice(c(16, 3)) |>
     mutate("fake_rownames" = c("mean", "mean"))
 
   lsting <- as_listing(my_iris,
@@ -36,7 +36,7 @@ testthat::test_that("matrix_form keeps relevant information and structure about 
   testthat::expect_equal(ncol(lmf), ncol(lmf$strings))
   testthat::expect_false(mf_has_rlabels(lmf))
 
-  rlmf <- as_listing(mtcars) %>% matrix_form() # rownames are always ignored!!!
+  rlmf <- as_listing(mtcars) |> matrix_form() # rownames are always ignored!!!
   testthat::expect_equal(ncol(rlmf), length(rlmf$col_widths))
   testthat::expect_equal(ncol(rlmf), ncol(rlmf$strings))
   testthat::expect_false(mf_has_rlabels(rlmf))

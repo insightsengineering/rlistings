@@ -27,7 +27,8 @@ BugReports: https://github.com/insightsengineering/rlistings/issues
 Depends:
     formatters (>= 0.5.11),
     methods,
-    tibble (>= 3.2.1)
+    tibble (>= 3.2.1),
+    R (>= 4.1.0)
 Imports:
     checkmate (>= 2.1.0),
     grDevices,
