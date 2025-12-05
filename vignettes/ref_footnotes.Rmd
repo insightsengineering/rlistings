@@ -85,7 +85,7 @@ df_lbls <- var_labels(adae)
 
 # Mutate variable where referential footnotes are to be added according to your conditions
 # Specify order of levels with new referential footnotes added
-adae <- adae %>% dplyr::mutate(
+adae <- adae |> dplyr::mutate(
   ARM = factor(
     ifelse(ARM == "A: Drug X" & ASEQ %in% 1:2, paste0(ARM, " (1)"), as.character(ARM)),
     levels = c(sapply(levels(adae$ARM), paste0, c("", "(1)")))
@@ -118,12 +118,12 @@ df_lbls <- var_labels(adae)
 
 # Mutate variable where referential footnotes are to be added according to your conditions
 # Specify order of levels with new referential footnotes added
-adae <- adae %>%
-  dplyr::mutate(ASTDTF = sample(c("Y", NA), nrow(.), replace = TRUE, prob = c(0.25, 0.75))) %>%
+adae <- adae |>
+  dplyr::mutate(ASTDTF = sample(c("Y", NA), nrow(.), replace = TRUE, prob = c(0.25, 0.75))) |>
   dplyr::mutate(ASTDY = factor(
     ifelse(!is.na(ASTDTF), paste0(as.character(ASTDY), "**"), as.character(ASTDY)),
     levels = c(sapply(sort(unique(adae$ASTDY)), paste0, c("", "**")))
-  )) %>%
+  )) |>
   dplyr::select(-ASTDTF)
 
 # Add data variable labels back in
@@ -147,7 +147,7 @@ df_lbls <- var_labels(adae)
 
 # Mutate variable where referential footnotes are to be added according to your conditions
 # Specify order of levels with new referential footnotes added
-adae <- adae %>% dplyr::mutate(
+adae <- adae |> dplyr::mutate(
   AESEV = factor(
     ifelse(AETOXGR == 5, paste0(AESEV, "***"), as.character(AESEV)),
     levels = c(sapply(levels(adae$AESEV), paste0, c("", "***")))
@@ -171,7 +171,7 @@ Referential footnotes can also be added to column header labels. Suppose we want
 
 ```{r}
 # Modify data variable label
-adae <- adae %>% var_relabel(
+adae <- adae |> var_relabel(
   USUBJID = paste0(var_labels(adae)[["USUBJID"]], "****")
 )
 
