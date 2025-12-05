@@ -15,8 +15,10 @@ Consider the following example:
 library(rlistings)
 
 iris2 <- do.call(rbind, rep(list(iris), 40))
-rlist <- as_listing(iris2, key_cols = "Species",
-                    disp_cols = c("Sepal.Length", "Sepal.Width", "Petal.Width", "Petal.Length"))
+rlist <- as_listing(iris2,
+  key_cols = "Species",
+  disp_cols = c("Sepal.Length", "Sepal.Width", "Petal.Width", "Petal.Length")
+)
 
 bench::mark(
   a = paginate_to_mpfs(rlist[1:1000, ]),
@@ -53,11 +55,15 @@ output separately. Consider the following demonstration:
 
 ``` r
 iris3 <- cbind(iris2, gp = rep(c(1, 2, 3, 4, 5, 6), 1000))
-rlist3 <- as_listing(iris3, key_cols = "Species",
-                     disp_cols = c("Sepal.Length", "Sepal.Width", "Petal.Width", "Petal.Length"))
+rlist3 <- as_listing(iris3,
+  key_cols = "Species",
+  disp_cols = c("Sepal.Length", "Sepal.Width", "Petal.Width", "Petal.Length")
+)
 
 start.time <- Sys.time()
-rlist3  %>% split(rlist3$gp) %>% lapply(., paginate_to_mpfs)
+rlist3 |>
+  split(rlist3$gp) |>
+  lapply(FUN = paginate_to_mpfs)
 end.time <- Sys.time()
 
 time.taken <- end.time - start.time
@@ -73,7 +79,9 @@ multi-threading to further reduce the runtime.
 library(parallel)
 
 start.time <- Sys.time()
-rlist3  %>% split(rlist3$gp) %>% mclapply(., paginate_to_mpfs)
+rlist3 |>
+  split(rlist3$gp) |>
+  mclapply(FUN = paginate_to_mpfs)
 end.time <- Sys.time()
 
 time.taken <- end.time - start.time

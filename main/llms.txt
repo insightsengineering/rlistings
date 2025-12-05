@@ -152,6 +152,8 @@ time](https://starchart.cc/insightsengineering/rlistings.svg)](https://starchart
   [`` `main_footer<-`( ``*`<listing_df>`*`)`](https://insightsengineering.github.io/rlistings/reference/listing_methods.md)
   [`` `prov_footer<-`( ``*`<listing_df>`*`)`](https://insightsengineering.github.io/rlistings/reference/listing_methods.md)
   [`num_rep_cols(`*`<listing_df>`*`)`](https://insightsengineering.github.io/rlistings/reference/listing_methods.md)
+  [`obj_round_type(`*`<listing_df>`*`)`](https://insightsengineering.github.io/rlistings/reference/listing_methods.md)
+  [`` `obj_round_type<-`( ``*`<listing_df>`*`)`](https://insightsengineering.github.io/rlistings/reference/listing_methods.md)
   :
 
   Methods for `listing_df` objects

@@ -6,13 +6,18 @@ vector will take to render. For `format_colvector`,
 ## Usage
 
 ``` r
-format_colvector(df, colnm, colvec = df[[colnm]], round_type = c("iec", "sas"))
+format_colvector(
+  df,
+  colnm,
+  colvec = df[[colnm]],
+  round_type = valid_round_type
+)
 
 vec_nlines(
   vec,
   max_width = NULL,
   fontspec = dflt_courier,
-  round_type = c("iec", "sas")
+  round_type = valid_round_type
 )
 
 # S4 method for class 'ANY'
@@ -20,7 +25,7 @@ vec_nlines(
   vec,
   max_width = NULL,
   fontspec = dflt_courier,
-  round_type = c("iec", "sas")
+  round_type = valid_round_type
 )
 ```
 
@@ -40,6 +45,15 @@ vec_nlines(
 
   (`vector`)  
   column values based on `colnm`.
+
+- round_type:
+
+  (`string`)  
+  the type of rounding to perform. Allowed values are (`"iec"`
+  (default), `"iec_mod"` or `"sas"`).  
+  See
+  [`formatters::format_value()`](https://insightsengineering.github.io/formatters/latest-tag/reference/format_value.html)
+  for details.
 
 - vec:
 

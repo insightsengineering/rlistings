@@ -15,7 +15,7 @@ print(
   max_width = NULL,
   fontspec = NULL,
   col_gap = 3L,
-  round_type = c("iec", "sas"),
+  round_type = obj_round_type(x),
   ...
 )
 
@@ -25,7 +25,7 @@ toString(
   widths = NULL,
   fontspec = NULL,
   col_gap = 3L,
-  round_type = c("iec", "sas"),
+  round_type = obj_round_type(x),
   ...
 )
 
@@ -58,6 +58,12 @@ prov_footer(obj) <- value
 
 # S4 method for class 'listing_df'
 num_rep_cols(obj)
+
+# S4 method for class 'listing_df'
+obj_round_type(obj)
+
+# S4 method for class 'listing_df'
+obj_round_type(obj) <- value
 ```
 
 ## Arguments
@@ -103,10 +109,11 @@ num_rep_cols(obj)
 
 - round_type:
 
-  (`"iec"` or `"sas"`)  
-  the type of rounding to perform. iec, the default, peforms rounding
-  compliant with IEC 60559 (see details), while sas performs
-  nearest-value rounding consistent with rounding within SAS.
+  (`string`)  
+  The type of rounding to perform. Allowed values: (`"iec"`, `"iec_mod"`
+  or `"sas"`) See
+  [`round_fmt()`](https://insightsengineering.github.io/formatters/latest-tag/reference/round_fmt.html)
+  for details.
 
 - ...:
 

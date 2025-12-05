@@ -26,7 +26,8 @@ as_listing(
   main_footer = NULL,
   prov_footer = NULL,
   split_into_pages_by_var = NULL,
-  spanning_col_labels = no_spans_df
+  spanning_col_labels = no_spans_df,
+  round_type = valid_round_type
 )
 
 spanning_col_label_df(df)
@@ -181,6 +182,15 @@ add_listing_col(
   A data.frame with the columns `span_level`, `label`, `start`, and
   `span` defining 0 or more levels of addition spanning (ie grouping) of
   columns. Defaults to no additional spanning labels.
+
+- round_type:
+
+  (`string`)  
+  the type of rounding to perform. Allowed values are (`"iec"`
+  (default), `"iec_mod"` or `"sas"`).  
+  See
+  [`formatters::format_value()`](https://insightsengineering.github.io/formatters/latest-tag/reference/format_value.html)
+  for details.
 
 - value:
 
