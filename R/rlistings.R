@@ -57,6 +57,9 @@ no_spans_df <- data.frame(
 #' @param spanning_col_labels (`data.frame`)\cr A data.frame with the columns
 #'   `span_level`, `label`, `start`, and `span` defining 0 or more levels of
 #'   addition spanning (ie grouping) of columns. Defaults to no additional spanning labels.
+#' @param round_type (`string`)\cr the type of rounding to perform.
+#' Allowed values are (`"iec"` (default), `"iec_mod"` or `"sas"`).
+#' \cr See [formatters::format_value()] for details.
 #'
 #' @return A `listing_df` object, sorted by its key columns.
 #'
@@ -180,7 +183,9 @@ as_listing <- function(df,
                        main_footer = NULL,
                        prov_footer = NULL,
                        split_into_pages_by_var = NULL,
-                       spanning_col_labels = no_spans_df) {
+                       spanning_col_labels = no_spans_df,
+                       round_type = valid_round_type) {
+  round_type <- match.arg(round_type)
   checkmate::assert_multi_class(add_trailing_sep, c("character", "numeric"), null.ok = TRUE)
   checkmate::assert_string(trailing_sep, n.chars = 1)
 
@@ -300,6 +305,7 @@ as_listing <- function(df,
   prov_footer(df) <- prov_footer
   listing_dispcols(df) <- cols
   spanning_col_label_df(df) <- spanning_col_labels
+  obj_round_type(df) <- round_type
 
   if (!is.null(split_into_pages_by_var)) {
     df <- split_into_pages_by_var(df, split_into_pages_by_var)
@@ -329,13 +335,12 @@ as_listing <- function(df,
         "The column specified in `add_trailing_sep` does not exist in the dataframe."
       )
     }
-    row_ind_for_trail_sep <- apply(
+    row_ind_for_trail_sep <- which(apply(
       apply(as.data.frame(df_tmp)[, add_trailing_sep, drop = FALSE], 2, function(col_i) {
         diff(as.numeric(as.factor(col_i)))
       }),
       1, function(row_i) any(row_i != 0)
-    ) %>%
-      which()
+    ))
     listing_trailing_sep(df_tmp) <- list(
       "var_trailing_sep" = add_trailing_sep,
       "where_trailing_sep" = row_ind_for_trail_sep,
@@ -449,8 +454,7 @@ setMethod(
            expand_newlines = TRUE,
            fontspec = font_spec,
            col_gap = 3L,
-           round_type = c("iec", "sas")) {
-
+           round_type = obj_round_type(obj)) {
     new_dev <- open_font_dev(fontspec)
     if (new_dev) {
       on.exit(close_font_dev())
@@ -576,7 +580,8 @@ setMethod(
       prov_footer = prov_footer(obj),
       col_gap = col_gap,
       fontspec = fontspec,
-      rep_cols = length(keycols)
+      rep_cols = length(keycols),
+      round_type = round_type
     )
   }
 )
