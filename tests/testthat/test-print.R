@@ -272,10 +272,12 @@ test_that("spanning column label machinery works", {
     df = head(ex_adae, 10),
     key_cols = c("ARM", "RACE", "USUBJID"),
     disp_cols = c("BMRKR1", "BMRKR2", "AEBODSYS", "AEDECOD"),
-    spanning_col_labels = data.frame(span_level = 1,
-                                     label = c("key columns", "lame columns"),
-                                     start = c(1, 4),
-                                     span = c(3, 4))
+    spanning_col_labels = data.frame(
+      span_level = 1,
+      label = c("key columns", "lame columns"),
+      start = c(1, 4),
+      span = c(3, 4)
+    )
   )
   txtvec <- capture.output(print(lsting))
   expect_true(grepl("^[[:space:]]+key columns[[:space:]]+lame columns[[:space:]]+$", txtvec[1]))
@@ -286,10 +288,12 @@ test_that("spanning column label machinery works", {
       df = head(ex_adae, 10),
       key_cols = c("ARM", "RACE", "USUBJID"),
       disp_cols = c("BMRKR1", "BMRKR2", "AEBODSYS", "AEDECOD"),
-      spanning_col_labels = data.frame(span_level = 1,
-                                       label = c("key columns", "lame columns"),
-                                       start = c(1, 4),
-                                       span = c(5, 3))
+      spanning_col_labels = data.frame(
+        span_level = 1,
+        label = c("key columns", "lame columns"),
+        start = c(1, 4),
+        span = c(5, 3)
+      )
     )
   )
 
@@ -300,11 +304,15 @@ test_that("spanning column label machinery works", {
     df = head(ex_adae, 10),
     key_cols = c("ARM", "RACE", "USUBJID"),
     disp_cols = c("BMRKR1", "BMRKR2", "AEBODSYS", "AEDECOD"),
-    spanning_col_labels = data.frame(span_level = 1,
-                                     label = c("key columns",
-                                               "lame columns"),
-                                     start = c(2, 6),
-                                     span = c(2, 2))
+    spanning_col_labels = data.frame(
+      span_level = 1,
+      label = c(
+        "key columns",
+        "lame columns"
+      ),
+      start = c(2, 6),
+      span = c(2, 2)
+    )
   )
   txtvec2 <- capture.output(print(lsting2))
   expect_true(grepl("^[[:space:]]+key columns[[:space:]]+lame columns[[:space:]]+$", txtvec2[1]))
@@ -317,8 +325,10 @@ test_that("spanning column label machinery works", {
   ## 3 pages (only 2 of them have the page break tho...
   ## and all of them have the lame columns header spanning over their non key dispcols
   expect_equal(
-    length(grep("^(\\\\s\\\\n){0,1}[[:space:]]+key columns[[:space:]]+lame columns[[:space:]]+$",
-                strsplit(txt3, "\n")[[1]])),
+    length(grep(
+      "^(\\\\s\\\\n){0,1}[[:space:]]+key columns[[:space:]]+lame columns[[:space:]]+$",
+      strsplit(txt3, "\n")[[1]]
+    )),
     3
   )
 

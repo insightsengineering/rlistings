@@ -486,7 +486,7 @@ testthat::test_that("round_type getter and setter on list of listing_df", {
   tmp_data <- ex_adae[1:100, ]
   new_BMRKR1_val <- 1.865
   expect_true(format_value(new_BMRKR1_val, format = "xx.xx", round_type = "sas") !=
-                format_value(new_BMRKR1_val, format = "xx.xx", round_type = "iec"))
+    format_value(new_BMRKR1_val, format = "xx.xx", round_type = "iec"))
 
   subj1 <- head(tmp_data[tmp_data$"SEX" == "F", "SUBJID", drop = TRUE], 1)
   subj2 <- head(tmp_data[tmp_data$"SEX" == "M", "SUBJID", drop = TRUE], 1)
@@ -516,6 +516,11 @@ testthat::test_that("round_type getter and setter on list of listing_df", {
     "sas"
   )
 
+  ## setting round type on a list sets it on each of the list elements
+  testthat::expect_true(
+    all(vapply(lsting, obj_round_type, "") == "sas")
+  )
+
   # check that round_type update actually has occurred on values
   lsting1 <- lsting[[1]]
   lsting2 <- lsting[[2]]
@@ -536,4 +541,7 @@ testthat::test_that("round_type getter and setter on list of listing_df", {
     format_value(new_BMRKR1_val, format = "xx.xx", round_type = "sas")
   )
 
+  expect_error({
+    obj_round_type(lsting) <- "not real"
+  })
 })

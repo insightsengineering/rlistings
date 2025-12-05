@@ -147,7 +147,6 @@ setMethod("vec_nlines", "ANY", function(vec, max_width = NULL, fontspec = dflt_c
 ## })
 
 
-
 #' Make pagination data frame for a listing
 #'
 #' @inheritParams formatters::make_row_df
@@ -422,6 +421,7 @@ setMethod(
 setMethod(
   "obj_round_type<-", "listing_df",
   function(obj, value) {
+    match.arg(value, valid_round_type)
     attr(obj, "round_type") <- value
     obj
   }
