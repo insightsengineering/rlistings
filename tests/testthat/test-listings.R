@@ -1,6 +1,6 @@
 testthat::test_that("Column labels are the same", {
   ## listings var labels don't get mucked up by topleft machinery #262
-  lsting <- as_listing(anl, key_cols = c("USUBJID")) %>%
+  lsting <- as_listing(anl, key_cols = c("USUBJID")) |>
     add_listing_col("ARM")
 
   testthat::expect_identical(var_labels(anl), var_labels(lsting))
@@ -23,9 +23,9 @@ testthat::test_that("listings work well with different formats and attributes", 
   var_labels(anl_tmp) <- var_labels(ex_adsl)[c("USUBJID", "ARM", "BMRKR1")]
   anl_tmp$BMRKR1[1:3] <- NA
 
-  lsting <- as_listing(anl_tmp, key_cols = c("ARM", "USUBJID")) %>%
-    add_listing_col("ARM") %>%
-    add_listing_col("USUBJID") %>%
+  lsting <- as_listing(anl_tmp, key_cols = c("ARM", "USUBJID")) |>
+    add_listing_col("ARM") |>
+    add_listing_col("USUBJID") |>
     add_listing_col("BMRKR1", format = "xx.xx")
 
   main_title(lsting) <- "main title"
@@ -373,7 +373,7 @@ testthat::test_that("add_listing_col works with a function when a format is appl
     mtcars[1:5, ],
     key_cols = c("gear", "carb"),
     disp_cols = "qsec"
-  ) %>%
+  ) |>
     add_listing_col(
       "kpg",
       function(df) df$mpg * 1.60934,
@@ -395,7 +395,7 @@ testthat::test_that("split_into_pages_by_var works as expected", {
     disp_cols = "SEX",
     main_title = "title",
     main_footer = "foot"
-  ) %>%
+  ) |>
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
   testthat::expect_equal(length(lsting), length(unique(tmp_data[["SEX"]])))
@@ -407,7 +407,7 @@ testthat::test_that("split_into_pages_by_var works as expected", {
     disp_cols = "SEX",
     main_title = "title",
     main_footer = "foot"
-  ) %>%
+  ) |>
     split_into_pages_by_var("SEX")
   lsting_id <- as_listing(
     tmp_data,
@@ -430,7 +430,7 @@ testthat::test_that("appropriate error message returned for 'difftime' class", {
     disp_cols = "study_duration_secs",
     main_title = "title",
     main_footer = "foot"
-  ) %>%
+  ) |>
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex"))
 })
 
@@ -447,9 +447,9 @@ testthat::test_that("round_type approach works", {
   anl <- ex_adsl
   anl <- anl[1:10, c("USUBJID", "ARM", "BMRKR1")]
 
-  lsting <- as_listing(anl, key_cols = c("ARM", "USUBJID")) %>%
-    add_listing_col("ARM") %>%
-    add_listing_col("USUBJID") %>%
+  lsting <- as_listing(anl, key_cols = c("ARM", "USUBJID")) |>
+    add_listing_col("ARM") |>
+    add_listing_col("USUBJID") |>
     add_listing_col("BMRKR1", format = "xx.xx")
 
   # update a single value from listing to vals, to demonstrate sas rounding
@@ -485,8 +485,9 @@ testthat::test_that("round_type approach works", {
 testthat::test_that("round_type getter and setter on list of listing_df", {
   tmp_data <- ex_adae[1:100, ]
   new_BMRKR1_val <- 1.865
-  expect_true(format_value(new_BMRKR1_val, format = "xx.xx", round_type = "sas") !=
-    format_value(new_BMRKR1_val, format = "xx.xx", round_type = "iec"))
+  fmtvalsas <- format_value(new_BMRKR1_val, format = "xx.xx", round_type = "sas")
+  fmtvaliec <- format_value(new_BMRKR1_val, format = "xx.xx", round_type = "iec")
+  expect_true(fmtvalsas != fmtvaliec)
 
   subj1 <- head(tmp_data[tmp_data$"SEX" == "F", "SUBJID", drop = TRUE], 1)
   subj2 <- head(tmp_data[tmp_data$"SEX" == "M", "SUBJID", drop = TRUE], 1)
@@ -500,7 +501,7 @@ testthat::test_that("round_type getter and setter on list of listing_df", {
     col_formatting = c("BMRKR1" = fmt_config(format = "xx.xx")),
     main_title = "title",
     main_footer = "foot"
-  ) %>%
+  ) |>
     split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
 
   # round_type getter to retrieve info from list of listing_df

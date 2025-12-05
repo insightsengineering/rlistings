@@ -189,7 +189,7 @@ setMethod(
     } else {
       runlens <- rep(1, NROW(tt))
     }
-    sibpos <- unlist(lapply(runlens, seq_len))
+    sibpos <- sequence(runlens)
     nsibs <- rep(runlens, times = runlens)
     extents <- rep(1L, nrow(tt))
     if (length(colwidths) > 0 && length(colwidths) != length(dispcols)) {

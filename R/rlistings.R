@@ -335,13 +335,12 @@ as_listing <- function(df,
         "The column specified in `add_trailing_sep` does not exist in the dataframe."
       )
     }
-    row_ind_for_trail_sep <- apply(
+    row_ind_for_trail_sep <- which(apply(
       apply(as.data.frame(df_tmp)[, add_trailing_sep, drop = FALSE], 2, function(col_i) {
         diff(as.numeric(as.factor(col_i)))
       }),
       1, function(row_i) any(row_i != 0)
-    ) %>%
-      which()
+    ))
     listing_trailing_sep(df_tmp) <- list(
       "var_trailing_sep" = add_trailing_sep,
       "where_trailing_sep" = row_ind_for_trail_sep,

@@ -78,9 +78,9 @@ rlist3 <- as_listing(iris3,
 )
 
 start.time <- Sys.time()
-rlist3 %>%
-  split(rlist3$gp) %>%
-  lapply(., paginate_to_mpfs)
+rlist3 |>
+  split(rlist3$gp) |>
+  lapply(FUN = paginate_to_mpfs)
 end.time <- Sys.time()
 
 time.taken <- end.time - start.time
@@ -95,9 +95,9 @@ In principle, you could consider processing this work with multi-threading to fu
 library(parallel)
 
 start.time <- Sys.time()
-rlist3 %>%
-  split(rlist3$gp) %>%
-  mclapply(., paginate_to_mpfs)
+rlist3 |>
+  split(rlist3$gp) |>
+  mclapply(FUN = paginate_to_mpfs)
 end.time <- Sys.time()
 
 time.taken <- end.time - start.time
@@ -105,4 +105,3 @@ time.taken
 
 #> Time difference of 18.20406 secs
 ```
-
