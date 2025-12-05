@@ -34,8 +34,9 @@ vec_nlines(
 
 \item{colvec}{(\code{vector})\cr column values based on \code{colnm}.}
 
-\item{round_type}{(\code{"iec"} (default), \code{"iec_mod"} or \code{"sas"})\cr the type of rounding to perform.
-See \code{\link[formatters:format_value]{formatters::format_value()}} for details.}
+\item{round_type}{(\code{string})\cr the type of rounding to perform.
+Allowed values are (\code{"iec"} (default), \code{"iec_mod"} or \code{"sas"}).
+\cr See \code{\link[formatters:format_value]{formatters::format_value()}} for details.}
 
 \item{vec}{(\code{vector})\cr a vector.}
 

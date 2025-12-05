@@ -81,8 +81,9 @@ basic_run_lens <- function(x) {
 #' @param df (`listing_df`)\cr the listing.
 #' @param colnm (`string`)\cr column name.
 #' @param colvec (`vector`)\cr column values based on `colnm`.
-#' @param round_type (`"iec"` (default), `"iec_mod"` or `"sas"`)\cr the type of rounding to perform.
-#' See [formatters::format_value()] for details.
+#' @param round_type (`string`)\cr the type of rounding to perform.
+#' Allowed values are (`"iec"` (default), `"iec_mod"` or `"sas"`).
+#' \cr See [formatters::format_value()] for details.
 #'
 #' @rdname vec_nlines
 #' @keywords internal
@@ -106,8 +107,9 @@ format_colvector <- function(df, colnm, colvec = df[[colnm]], round_type = valid
 #'
 #' @param vec (`vector`)\cr a column vector to be rendered into ASCII.
 #' @param max_width (`numeric(1)` or `NULL`)\cr the width to render the column with.
-#' @param round_type (`"iec"` (default), `"iec_mod"` or `"sas"`)\cr the type of rounding to perform.
-#' See [formatters::format_value()] for details.
+#' @param round_type (`string`)\cr the type of rounding to perform.
+#' Allowed values are (`"iec"` (default), `"iec_mod"` or `"sas"`).
+#' \cr See [formatters::format_value()] for details.
 #' @return (`numeric`)\cr a vector of the number of lines element-wise that will be
 #'   needed to render the elements of `vec` to width `max_width`.
 #'

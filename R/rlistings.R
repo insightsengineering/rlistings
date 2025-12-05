@@ -57,8 +57,9 @@ no_spans_df <- data.frame(
 #' @param spanning_col_labels (`data.frame`)\cr A data.frame with the columns
 #'   `span_level`, `label`, `start`, and `span` defining 0 or more levels of
 #'   addition spanning (ie grouping) of columns. Defaults to no additional spanning labels.
-#' @param round_type (`"iec"` (default), `"iec_mod"` or `"sas"`)\cr the type of rounding to perform.
-#' See [formatters::format_value()] for details.
+#' @param round_type (`string`)\cr the type of rounding to perform.
+#' Allowed values are (`"iec"` (default), `"iec_mod"` or `"sas"`).
+#' \cr See [formatters::format_value()] for details.
 #'
 #' @return A `listing_df` object, sorted by its key columns.
 #'

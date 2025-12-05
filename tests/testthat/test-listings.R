@@ -480,3 +480,60 @@ testthat::test_that("round_type approach works", {
     txtvals_sas
   )
 })
+
+
+testthat::test_that("round_type getter and setter on list of listing_df", {
+  tmp_data <- ex_adae[1:100, ]
+  new_BMRKR1_val <- 1.865
+  expect_true(format_value(new_BMRKR1_val, format = "xx.xx", round_type = "sas") !=
+              format_value(new_BMRKR1_val, format = "xx.xx", round_type = "iec")  )
+
+  subj1 <- head(tmp_data[tmp_data$"SEX"=="F", "SUBJID", drop = TRUE], 1)
+  subj2 <- head(tmp_data[tmp_data$"SEX"=="M", "SUBJID", drop = TRUE], 1)
+  tmp_data[tmp_data$SUBJID == subj1, "BMRKR1"] <- new_BMRKR1_val
+  tmp_data[tmp_data$SUBJID == subj2, "BMRKR1"] <- new_BMRKR1_val
+
+  lsting <- as_listing(
+    tmp_data,
+    key_cols = c("USUBJID", "AGE"),
+    disp_cols = c("SEX", "BMRKR1"),
+    col_formatting = c("BMRKR1" = fmt_config(format = "xx.xx")),
+    main_title = "title",
+    main_footer = "foot"
+  ) %>%
+    split_into_pages_by_var("SEX", page_prefix = "Patient Subset - Sex")
+
+  # round_type getter to retrieve info from list of listing_df
+  testthat::expect_identical(
+    obj_round_type(lsting),
+    "iec"
+  )
+
+  # round_type setter to modify on list of listing_df into sas
+  obj_round_type(lsting) <- "sas"
+  testthat::expect_identical(
+    obj_round_type(lsting),
+    "sas"
+  )
+
+ # check that round_type update actually has occurred on values
+  lsting1 <- lsting[[1]]
+  lsting2 <- lsting[[2]]
+
+  checksubj1 <- lsting1[lsting1$"SUBJID" == subj1, ]
+  checksubj2 <- lsting2[lsting2$"SUBJID" == subj2, ]
+  BMRKR1_subj1 <- matrix_form(checksubj1)$strings[2, "BMRKR1"]
+  BMRKR1_subj2 <- matrix_form(checksubj2)$strings[2, "BMRKR1"]
+
+
+  testthat::expect_identical(
+    unname(BMRKR1_subj1),
+    format_value(new_BMRKR1_val, format = "xx.xx", round_type = "sas")
+  )
+
+  testthat::expect_identical(
+    unname(BMRKR1_subj2),
+    format_value(new_BMRKR1_val, format = "xx.xx", round_type = "sas")
+  )
+
+})

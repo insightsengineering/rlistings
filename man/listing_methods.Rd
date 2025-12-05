@@ -81,7 +81,8 @@ calculating string widths and heights, as returned by \code{\link[formatters:fon
 
 \item{col_gap}{(\code{numeric(1)})\cr space (in characters) between columns.}
 
-\item{round_type}{(\code{"iec"}, \code{"iec_mod"} or \code{"sas"})\cr the type of rounding to perform.
+\item{round_type}{(\code{string})\cr
+The type of rounding to perform. Allowed values: (\code{"iec"}, \code{"iec_mod"} or \code{"sas"})
 See \code{\link[formatters:round_fmt]{round_fmt()}} for details.}
 
 \item{...}{additional parameters passed to \code{\link[formatters:tostring]{formatters::toString()}}.}
