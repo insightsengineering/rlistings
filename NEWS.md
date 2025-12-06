@@ -1,5 +1,7 @@
 ## rlistings 0.2.13
  * Fixed bug in `split_into_pages_by_var()` that prevented correct handling of some listings with trailing separators.
+ * Listings now carry around a rounding type to be used (by default) when printing or exporting them. Defaults to `"iec"` as before.
+ * Added `obj_round_type` and `obj_round_type<-` methods for `listing_df` objects
 
 ## rlistings 0.2.12
  * Added parameter `align_colnames` to `as_listings()`, along with post-processing functions `align_colnames()` and `align_colnames()<-`. This flag allows to align colnames as the column content is aligned.
