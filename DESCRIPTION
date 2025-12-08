@@ -1,6 +1,6 @@
 Package: rlistings
 Title: Clinical Trial Style Data Readout Listings
-Version: 0.2.12.9005
+Version: 0.2.13
 Date: 2025-12-05
 Authors@R: c(
     person("Gabriel", "Becker", , "gabembecker@gmail.com", role = "aut",
@@ -25,7 +25,7 @@ URL: https://insightsengineering.github.io/rlistings/,
     https://github.com/insightsengineering/rlistings/
 BugReports: https://github.com/insightsengineering/rlistings/issues
 Depends:
-    formatters (>= 0.5.11),
+    formatters (>= 0.5.12),
     methods,
     R (>= 4.1.0),
     tibble (>= 3.2.1)
@@ -47,8 +47,6 @@ Suggests:
 VignetteBuilder:
     knitr,
     rmarkdown
-Remotes:
-    insightsengineering/formatters
 Config/Needs/verdepcheck: insightsengineering/formatters,
     tidyverse/tibble, mllg/checkmate, tidyverse/dplyr, yihui/knitr,
     r-lib/lifecycle, rstudio/rmarkdown, gagolews/stringi, r-lib/testthat,
