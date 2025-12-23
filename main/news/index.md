@@ -1,6 +1,10 @@
 # Changelog
 
+## rlistings 0.2.13.9001
+
 ## rlistings 0.2.13
+
+CRAN release: 2025-12-08
 
 - Fixed bug in
   [`split_into_pages_by_var()`](https://insightsengineering.github.io/rlistings/reference/split_into_pages_by_var.md)
