@@ -24,14 +24,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/insightsengineering/rlistings/blob/main/DESCRIPTION)
 
-Becker G, Waddell A, Zhu J, Garolini D, de la Rua E (2025). *rlistings:
+Becker G, Waddell A, Zhu J, Garolini D, de la Rua E (2026). *rlistings:
 Clinical Trial Style Data Readout Listings*. R package version
-0.2.13.9001, <https://insightsengineering.github.io/rlistings/>.
+0.2.13.9002, <https://insightsengineering.github.io/rlistings/>.
 
     @Manual{,
       title = {rlistings: Clinical Trial Style Data Readout Listings},
       author = {Gabriel Becker and Adrian Waddell and Joe Zhu and Davide Garolini and Emily {de la Rua}},
-      year = {2025},
-      note = {R package version 0.2.13.9001},
+      year = {2026},
+      note = {R package version 0.2.13.9002},
       url = {https://insightsengineering.github.io/rlistings/},
     }
