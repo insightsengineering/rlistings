@@ -89,7 +89,7 @@ A list of \code{listing_df} objects where each list element corresponds to a sep
 
 Pagination of a listing. This can be vertical for long listings with many
 rows and/or horizontal if there are many columns. This function is a wrapper of
-\code{\link[formatters:paginate_indices]{formatters::paginate_to_mpfs()}} and it is mainly meant for exploration and testing.
+\code{\link[formatters:paginate_to_mpfs]{formatters::paginate_to_mpfs()}} and it is mainly meant for exploration and testing.
 }
 \examples{
 dat <- ex_adae

@@ -85,7 +85,7 @@ calculating string widths and heights, as returned by \code{\link[formatters:fon
 The type of rounding to perform. Allowed values: (\code{"iec"}, \code{"iec_mod"} or \code{"sas"})
 See \code{\link[formatters:round_fmt]{round_fmt()}} for details.}
 
-\item{...}{additional parameters passed to \code{\link[formatters:tostring]{formatters::toString()}}.}
+\item{...}{additional parameters passed to \code{\link[formatters:toString]{formatters::toString()}}.}
 
 \item{i}{(\code{any})\cr object passed to base \code{[} methods.}
 
