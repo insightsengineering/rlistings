@@ -128,17 +128,3 @@ as_listing(mtcars_ex,
 This package is a result of a joint effort by many developers and
 stakeholders. We would like to thank everyone who contributed so far!
 
-## Stargazers and Forkers
-
-### Stargazers over time
-
-[![Stargazers over
-time](https://starchart.cc/insightsengineering/rlistings.svg)](https://starchart.cc/insightsengineering/rlistings)
-
-### Stargazers
-
-[![Stargazers repo roster for
-@insightsengineering/rlistings](https://reporoster.com/stars/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/stargazers)
-
-[![Forkers repo roster for
-@insightsengineering/rlistings](https://reporoster.com/forks/insightsengineering/rlistings)](https://github.com/insightsengineering/rlistings/network/members)
