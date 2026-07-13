@@ -29,6 +29,7 @@ To demonstrate, we will create a basic listing below.
 We begin by loading in the `rlistings` package.
 
 ``` r
+
 library(rlistings)
 library(dplyr)
 ```
@@ -40,12 +41,14 @@ purpose of this example, we will subset the data and only use the first
 30 records of the dataset.
 
 ``` r
+
 adae <- ex_adae[1:30, ]
 ```
 
 Now we will create a basic listing.
 
 ``` r
+
 lsting <- as_listing(
   df = adae,
   key_cols = c("ARM", "USUBJID", "ASEQ", "ASTDY"),
@@ -102,6 +105,7 @@ new line (`\n`) character. For example, see the following list of
 referential footnotes:
 
 ``` r
+
 ref_fns <- "*   ASEQ 1 or 2\n**  Analysis start date is imputed\n***  Records with ATOXGR = 5\n**** ID column"
 ```
 
@@ -115,6 +119,7 @@ correctly ordered, be sure to specify the new level order when mutating
 your variable.
 
 ``` r
+
 # Save variable labels for your data to add back in after mutating dataset
 df_lbls <- var_labels(adae)
 
@@ -186,6 +191,7 @@ footnotes to numeric variables, the variables must be converted to
 factors.
 
 ``` r
+
 set.seed(1)
 
 # Save variable labels for your data to add back in after mutating dataset
@@ -250,6 +256,7 @@ Next we can add our third referential footnote to the `AESEV` column for
 records with analysis toxicity grade 5.
 
 ``` r
+
 # Save variable labels for your data to add back in after mutating dataset
 df_lbls <- var_labels(adae)
 
@@ -313,6 +320,7 @@ label. We can do so by editing the `USUBJID` variable label and adding
 the footnote text as follows:
 
 ``` r
+
 # Modify data variable label
 adae <- adae %>% var_relabel(
   USUBJID = paste0(var_labels(adae)[["USUBJID"]], "****")
@@ -364,6 +372,7 @@ Finally, we add in the referential footnote text below the listing as
 follows.
 
 ``` r
+
 # Generate listing
 lsting <- as_listing(
   df = adae,

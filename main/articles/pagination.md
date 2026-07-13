@@ -49,6 +49,7 @@ the listing using `paginate_listing`.
 We first load in the `rlistings` package.
 
 ``` r
+
 library(rlistings)
 ```
 
@@ -59,12 +60,14 @@ rows per patient. For the purpose of this example, we will subset the
 data and only use the first 100 records of the dataset.
 
 ``` r
+
 adae <- ex_adae[1:100, ]
 ```
 
 Now we will create a basic listing.
 
 ``` r
+
 lsting <- as_listing(
   df = adae,
   key_cols = c("USUBJID", "ARM"),
@@ -130,6 +133,7 @@ These parameters, as well as some additional arguments not listed here
 for all options), can be set to fine-tune your pagination output.
 
 ``` r
+
 paginate_listing(lsting)
 #> --- Page 1/4 ---
 #> Title
@@ -400,7 +404,7 @@ ignored.
 #### 1. `pg_width` and `pg_height`
 
 As an alternative to specifying page type, the user can instead supply
-page width (`pg_width`) and  
+page width (`pg_width`) and\
 page height (`pg_height`) values in inches to define the page size.
 
 #### 2. `lpp` and `cpp`
@@ -425,6 +429,7 @@ See the following example which uses `lpp` and `cpp` instead of
 `page_type` to specify page size:
 
 ``` r
+
 paginate_listing(lsting, lpp = 50, cpp = NULL)
 #> --- Page 1/3 ---
 #> Title
@@ -608,6 +613,7 @@ See an example using `export_as_txt` below. We use the `cat` function to
 make the output more easily readable in the console:
 
 ``` r
+
 cat(export_as_txt(lsting))
 #> Title
 #> 
@@ -866,6 +872,7 @@ using the `split_listing_by_var` function, which can be applied to your
 pre-existing listing as follows:
 
 ``` r
+
 lsting_by_arm <- lsting %>%
   split_into_pages_by_var("ARM", page_prefix = "Treatment Arm")
 
@@ -1027,6 +1034,7 @@ correct text format.
 For example:
 
 ``` r
+
 cat(export_as_txt(lsting_by_arm))
 #> Title
 #> Treatment Arm: A: Drug X

@@ -64,47 +64,47 @@ add_listing_col(
 
 - df:
 
-  (`data.frame` or `listing_df`)  
+  (`data.frame` or `listing_df`)\
   the `data.frame` to be converted to a listing or `listing_df` to be
   modified.
 
 - key_cols:
 
-  (`character`)  
+  (`character`)\
   vector of names of columns which should be treated as *key columns*
   when rendering the listing. Key columns allow you to group repeat
   occurrences.
 
 - disp_cols:
 
-  (`character` or `NULL`)  
+  (`character` or `NULL`)\
   vector of names of non-key columns which should be displayed when the
   listing is rendered. Defaults to all columns of `df` not named in
   `key_cols` or `non_disp_cols`.
 
 - non_disp_cols:
 
-  (`character` or `NULL`)  
+  (`character` or `NULL`)\
   vector of names of non-key columns to be excluded as display columns.
   All other non-key columns are treated as display columns. Ignored if
   `disp_cols` is non-`NULL`.
 
 - sort_cols:
 
-  (`character` or `NULL`)  
+  (`character` or `NULL`)\
   vector of names of columns (in order) which should be used to sort the
   listing. Defaults to `key_cols`. If `NULL`, no sorting will be
   performed.
 
 - unique_rows:
 
-  (`flag`)  
+  (`flag`)\
   whether only unique rows should be included in the listing. Defaults
   to `FALSE`.
 
 - default_formatting:
 
-  (`list`)  
+  (`list`)\
   a named list of default column format configurations to apply when
   rendering the listing. Each name-value pair consists of a name
   corresponding to a data class (or "numeric" for all unspecified
@@ -116,7 +116,7 @@ add_listing_col(
 
 - col_formatting:
 
-  (`list`)  
+  (`list`)\
   a named list of custom column formatting configurations to apply to
   specific columns when rendering the listing. Each name-value pair
   consists of a name corresponding to a column name and a value of type
@@ -126,14 +126,14 @@ add_listing_col(
 
 - align_colnames:
 
-  (`flag`)  
+  (`flag`)\
   whether the column titles should have the same alignment as their
   columns. All titles default to `"center"` alignment if `FALSE`
   (default). This can be changed with `align_colnames()`.
 
 - add_trailing_sep:
 
-  (`character` or `numeric` or `NULL`)  
+  (`character` or `numeric` or `NULL`)\
   If it is assigned to one or more column names, a trailing separator
   will be added between groups with identical values for that column.
   Numeric option allows the user to specify in which rows it can be
@@ -141,35 +141,35 @@ add_listing_col(
 
 - trailing_sep:
 
-  (`character(1)`)  
+  (`character(1)`)\
   The separator to be added between groups. The character will be
   repeated to fill the row.
 
 - main_title:
 
-  (`string` or `NULL`)  
+  (`string` or `NULL`)\
   the main title for the listing, or `NULL` (the default).
 
 - subtitles:
 
-  (`character` or `NULL`)  
+  (`character` or `NULL`)\
   a vector of subtitles for the listing, or `NULL` (the default).
 
 - main_footer:
 
-  (`character` or `NULL`)  
+  (`character` or `NULL`)\
   a vector of main footer lines for the listing, or `NULL` (the
   default).
 
 - prov_footer:
 
-  (`character` or `NULL`)  
+  (`character` or `NULL`)\
   a vector of provenance footer lines for the listing, or `NULL` (the
   default). Each string element is placed on a new line.
 
 - split_into_pages_by_var:
 
-  (`character` or `NULL`)  
+  (`character` or `NULL`)\
   the name of a variable for on the listing should be split into pages,
   with each page corresponding to one unique value/level of the
   variable. See
@@ -178,62 +178,62 @@ add_listing_col(
 
 - spanning_col_labels:
 
-  (`data.frame`)  
+  (`data.frame`)\
   A data.frame with the columns `span_level`, `label`, `start`, and
   `span` defining 0 or more levels of addition spanning (ie grouping) of
   columns. Defaults to no additional spanning labels.
 
 - round_type:
 
-  (`string`)  
+  (`string`)\
   the type of rounding to perform. Allowed values are (`"iec"`
-  (default), `"iec_mod"` or `"sas"`).  
+  (default), `"iec_mod"` or `"sas"`).\
   See
   [`formatters::format_value()`](https://insightsengineering.github.io/formatters/latest-tag/reference/format_value.html)
   for details.
 
 - value:
 
-  (`string`)  
+  (`string`)\
   new value.
 
 - vec:
 
-  (`string`)  
+  (`string`)\
   name of a column vector from a `listing_df` object to be annotated as
   a key column.
 
 - new:
 
-  (`character`)  
+  (`character`)\
   vector of names of columns to be added to the set of display columns.
 
 - name:
 
-  (`string`)  
+  (`string`)\
   name of the existing or new column to be displayed when the listing is
   rendered.
 
 - fun:
 
-  (`function` or `NULL`)  
+  (`function` or `NULL`)\
   a function which accepts `df` and returns the vector for a new column,
   which is added to `df` as `name`, or `NULL` if marking an existing
   column as a listing column.
 
 - format:
 
-  (`string` or `function`)  
+  (`string` or `function`)\
   a format label (string) or formatter function.
 
 - na_str:
 
-  (`string`)  
+  (`string`)\
   string that should be displayed in place of missing values.
 
 - align:
 
-  (`string`)  
+  (`string`)\
   alignment values should be rendered with.
 
 ## Value

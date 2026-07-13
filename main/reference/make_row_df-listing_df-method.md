@@ -27,78 +27,78 @@ make_row_df(
 
 - tt:
 
-  (`listing_df`)  
+  (`listing_df`)\
   the listing to be rendered.
 
 - colwidths:
 
-  (`numeric`)  
+  (`numeric`)\
   internal detail, do not set manually.
 
 - visible_only:
 
-  (`flag`)  
+  (`flag`)\
   ignored, as listings do not have non-visible structural elements.
 
 - rownum:
 
-  (`numeric(1)`)  
+  (`numeric(1)`)\
   internal detail, do not set manually.
 
 - indent:
 
-  (`integer(1)`)  
+  (`integer(1)`)\
   internal detail, do not set manually.
 
 - path:
 
-  (`character`)  
+  (`character`)\
   path to the (sub)table represented by `tt`. Defaults to
   [`character()`](https://rdrr.io/r/base/character.html).
 
 - incontent:
 
-  (`flag`)  
+  (`flag`)\
   internal detail, do not set manually.
 
 - repr_ext:
 
-  (`integer(1)`)  
+  (`integer(1)`)\
   internal detail, do not set manually.
 
 - repr_inds:
 
-  (`integer`)  
+  (`integer`)\
   internal detail, do not set manually.
 
 - sibpos:
 
-  (`integer(1)`)  
+  (`integer(1)`)\
   internal detail, do not set manually.
 
 - nsibs:
 
-  (`integer(1)`)  
+  (`integer(1)`)\
   internal detail, do not set manually.
 
 - fontspec:
 
-  (`font_spec`)  
+  (`font_spec`)\
   a font_spec object specifying the font information to use for
   calculating string widths and heights, as returned by
   [`font_spec()`](https://insightsengineering.github.io/formatters/latest-tag/reference/font_spec.html).
 
 - round_type:
 
-  (`string`)  
-  .  
+  (`string`)\
+  .\
   The type of rounding to perform. Allowed values: (`"iec"`, `"iec_mod"`
-  or `"sas"`)  
+  or `"sas"`)\
   iec, the default, and iec_mod performs rounding compliant with IEC
   60559 (see notes in
   [`round_fmt()`](https://insightsengineering.github.io/formatters/latest-tag/reference/round_fmt.html)),
   while sas performs nearest-value rounding consistent with rounding
-  within SAS.  
+  within SAS.\
   In addition, the rounding of a negative number that rounds to zero
   will be presented as 0 (with the appropriate number of trailing zeros)
   for both `sas` and `iec_mod`, while for `iec`, it will be presented as

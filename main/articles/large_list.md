@@ -12,6 +12,7 @@ object into multiple pages.
 Consider the following example:
 
 ``` r
+
 library(rlistings)
 
 iris2 <- do.call(rbind, rep(list(iris), 40))
@@ -54,6 +55,7 @@ splitting the listing object by a grouping variable and exporting the
 output separately. Consider the following demonstration:
 
 ``` r
+
 iris3 <- cbind(iris2, gp = rep(c(1, 2, 3, 4, 5, 6), 1000))
 rlist3 <- as_listing(iris3,
   key_cols = "Species",
@@ -76,6 +78,7 @@ In principle, you could consider processing this work with
 multi-threading to further reduce the runtime.
 
 ``` r
+
 library(parallel)
 
 start.time <- Sys.time()

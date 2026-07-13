@@ -38,89 +38,89 @@ paginate_listing(
 
 - lsting:
 
-  (`listing_df` or `list`)  
+  (`listing_df` or `list`)\
   the listing or list of listings to paginate.
 
 - page_type:
 
-  (`string`)  
+  (`string`)\
   name of a page type. See
   [`page_types`](https://insightsengineering.github.io/formatters/latest-tag/reference/page_types.html).
   Ignored when `pg_width` and `pg_height` are set directly.
 
 - font_family:
 
-  (`string`)  
+  (`string`)\
   name of a font family. An error will be thrown if the family named is
   not monospaced. Defaults to `"Courier"`.
 
 - font_size:
 
-  (`numeric(1)`)  
+  (`numeric(1)`)\
   font size. Defaults to `12`.
 
 - lineheight:
 
-  (`numeric(1)`)  
+  (`numeric(1)`)\
   line height. Defaults to `1`.
 
 - landscape:
 
-  (`flag`)  
+  (`flag`)\
   whether the dimensions of `page_type` should be inverted for landscape
   orientation. Defaults to `FALSE`, ignored when `pg_width` and
   `pg_height` are set directly.
 
 - pg_width:
 
-  (`numeric(1)`)  
+  (`numeric(1)`)\
   page width in inches.
 
 - pg_height:
 
-  (`numeric(1)`)  
+  (`numeric(1)`)\
   page height in inches.
 
 - margins:
 
-  (`numeric(4)`)  
+  (`numeric(4)`)\
   named numeric vector containing `"bottom"`, `"left"`, `"top"`, and
   `"right"` margins in inches. Defaults to `.5` inches for both vertical
   margins and `.75` for both horizontal margins.
 
 - lpp:
 
-  (`numeric(1)` or `NULL`)  
+  (`numeric(1)` or `NULL`)\
   number of rows/lines (excluding titles and footers) to include per
   page. Standard is `70` while `NULL` disables vertical pagination.
 
 - cpp:
 
-  (`numeric(1)` or `NULL`)  
+  (`numeric(1)` or `NULL`)\
   width (in characters) of the pages for horizontal pagination. `NULL`
   (the default) indicates no horizontal pagination should be done.
 
 - colwidths:
 
-  (`numeric`)  
+  (`numeric`)\
   vector of column widths (in characters) for use in vertical
   pagination.
 
 - tf_wrap:
 
-  (`flag`)  
+  (`flag`)\
   whether the text for title, subtitles, and footnotes should be
   wrapped.
 
 - rep_cols:
 
-  (`numeric(1)`)  
+  (`numeric(1)`)\
   number of *columns* (not including row labels) to be repeated on every
   page. Defaults to 0.
 
 - max_width:
 
-  (`integer(1)`, `string` or `NULL`)  
+  (`integer(1)`, `string` or `NULL`)\
   width that title and footer (including footnotes) materials should be
   word-wrapped to. If `NULL`, it is set to the current print width of
   the session (`getOption("width")`). If set to `"auto"`, the width of
@@ -129,26 +129,26 @@ paginate_listing(
 
 - col_gap:
 
-  (`numeric(1)`)  
+  (`numeric(1)`)\
   width of gap between columns, in same units as extent in `pagdf`
   (spaces under a particular font specification).
 
 - fontspec:
 
-  (`font_spec`)  
+  (`font_spec`)\
   a font_spec object specifying the font information to use for
   calculating string widths and heights, as returned by
   [`font_spec()`](https://insightsengineering.github.io/formatters/latest-tag/reference/font_spec.html).
 
 - verbose:
 
-  (`flag`)  
+  (`flag`)\
   whether additional informative messages about the search for
   pagination breaks should be shown. Defaults to `FALSE`.
 
 - print_pages:
 
-  (`flag`)  
+  (`flag`)\
   whether the paginated listing should be printed to the console
   (`cat(toString(x))`).
 

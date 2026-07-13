@@ -52,6 +52,7 @@ In the R code below we will give a basic example of how to create an
 We first load in the `rlistings` package.
 
 ``` r
+
 library(rlistings)
 #> Loading required package: formatters
 #> 
@@ -68,6 +69,7 @@ consists of 48 columns of adverse event patient data, and one or more
 rows per patient.
 
 ``` r
+
 adae <- ex_adae
 ```
 
@@ -85,6 +87,7 @@ Since the dataset consists of 1934 rows in total, we will use the `head`
 function to print only the first 15 rows of the listing.
 
 ``` r
+
 lsting <- as_listing(
   df = adae,
   disp_cols = c("USUBJID", "AETOXGR", "ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
@@ -121,6 +124,7 @@ names of columns which will non be displayed. All other non-key columns
 are then displayed.
 
 ``` r
+
 lsting <- as_listing(
   df = adae,
   non_disp_cols = tail(names(adae), 8)
@@ -166,6 +170,7 @@ columns (with order defining the sort precedence). Below we specify
 trial arm and patient ID as key columns to improve readability.
 
 ``` r
+
 lsting <- as_listing(
   df = adae,
   disp_cols = c("ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),
@@ -203,6 +208,7 @@ footers, and provenance footers can be set by the `subtitles`,
 demonstrated in the following updated listing.
 
 ``` r
+
 lsting <- as_listing(
   df = adae,
   disp_cols = c("ARM", "AGE", "SEX", "RACE", "AEDECOD", "AESEV"),

@@ -57,6 +57,7 @@ formatting using the `default_formatting` parameter.
 We begin by loading in the `rlistings` package.
 
 ``` r
+
 library(rlistings)
 require(dplyr)
 ```
@@ -70,6 +71,7 @@ to showcase how `NA` values can be formatted, and sort the data by what
 will be our key columns.
 
 ``` r
+
 adae <- ex_adae[1:15, ]
 
 set.seed(1)
@@ -81,6 +83,7 @@ adae <- adae %>% dplyr::arrange(USUBJID, AGE, TRTSDTM)
 Now we will create a basic listing.
 
 ``` r
+
 lsting_1 <- as_listing(
   df = adae,
   key_cols = c("USUBJID", "AGE", "TRTSDTM"),
@@ -117,6 +120,7 @@ by setting the `all` element in the list supplied to
 `default_formatting`, as shown in the following example.
 
 ``` r
+
 default_fmt <- list(
   all = fmt_config(na_str = "<No data>", align = "left")
 )
@@ -154,6 +158,7 @@ can be done by adding a `"numeric"` element to the `default_formatting`
 list as follows:
 
 ``` r
+
 default_fmt <- list(
   all = fmt_config(na_str = "<No data>", align = "left"),
   numeric = fmt_config(format = "xx.xx", na_str = "<No data>", align = "decimal")
@@ -194,6 +199,7 @@ apply a custom format function to format date (`POSIXt` class) columns
 in our listing.
 
 ``` r
+
 # Custom format function - takes date format as input
 date_fmt <- function(fmt) {
   function(x, ...) do.call(format, list(x = x, fmt))
@@ -249,6 +255,7 @@ specified data class or an entire listing at once.
 Take, for example, `lsting_4` created in the previous section.
 
 ``` r
+
 lsting_4
 #> Unique Subject Identifier      Age      Datetime of First Exposure to Treatment   Continous Level Biomarker 1   Analysis Sequence Number   Severity/Intensity
 #> —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -288,6 +295,7 @@ used with the `BMRKR1` column. We will use the `"xx"` format and right
 alignment for the two remaining numeric columns.
 
 ``` r
+
 default_fmt <- list(
   all = fmt_config(na_str = "<No data>", align = "left"),
   numeric = fmt_config(format = "xx", na_str = "<No data>", align = "right"),
@@ -354,6 +362,7 @@ analysis (in days) by subtracting “Analysis Start Relative Day”
 as follows:
 
 ``` r
+
 lsting_6 <- lsting_5 %>%
   add_listing_col(
     name = "Length of\nAnalysis",

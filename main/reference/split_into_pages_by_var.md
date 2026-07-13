@@ -17,18 +17,18 @@ split_into_pages_by_var(lsting, var, page_prefix = var)
 
 - lsting:
 
-  (`listing_df`)  
+  (`listing_df`)\
   the listing to split.
 
 - var:
 
-  (`string`)  
+  (`string`)\
   name of the variable to split on. If the column is a factor, the
   resulting list follows the order of the levels.
 
 - page_prefix:
 
-  (`string`)  
+  (`string`)\
   prefix to be appended with the split value (`var` level), at the end
   of the subtitles, corresponding to each resulting list element
   (listing).

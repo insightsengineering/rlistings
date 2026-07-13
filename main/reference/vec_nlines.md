@@ -33,40 +33,40 @@ vec_nlines(
 
 - df:
 
-  (`listing_df`)  
+  (`listing_df`)\
   the listing.
 
 - colnm:
 
-  (`string`)  
+  (`string`)\
   column name.
 
 - colvec:
 
-  (`vector`)  
+  (`vector`)\
   column values based on `colnm`.
 
 - round_type:
 
-  (`string`)  
+  (`string`)\
   the type of rounding to perform. Allowed values are (`"iec"`
-  (default), `"iec_mod"` or `"sas"`).  
+  (default), `"iec_mod"` or `"sas"`).\
   See
   [`formatters::format_value()`](https://insightsengineering.github.io/formatters/latest-tag/reference/format_value.html)
   for details.
 
 - vec:
 
-  (`vector`)  
+  (`vector`)\
   a vector.
 
 - max_width:
 
-  (`numeric(1)` or `NULL`)  
+  (`numeric(1)` or `NULL`)\
   the width to render the column with.
 
 ## Value
 
-(`numeric`)  
+(`numeric`)\
 a vector of the number of lines element-wise that will be needed to
 render the elements of `vec` to width `max_width`.
