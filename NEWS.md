@@ -1,4 +1,4 @@
-## rlistings 0.2.13.9003
+## rlistings 0.2.13.9004
 
 ## rlistings 0.2.13
  * Fixed bug in `split_into_pages_by_var()` that prevented correct handling of some listings with trailing separators.
