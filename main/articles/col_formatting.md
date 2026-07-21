@@ -17,7 +17,7 @@ The following topics will be covered:
 
 To learn more about how listings are constructed using the `rlistings`
 package, see the [Getting Started
-vignette](https://insightsengineering.github.io/rlistings/articles/rlistings.md).
+vignette](https://pharmaverse.github.io/rlistings/articles/rlistings.md).
 
 ------------------------------------------------------------------------
 

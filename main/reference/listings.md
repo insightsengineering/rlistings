@@ -173,7 +173,7 @@ add_listing_col(
   the name of a variable for on the listing should be split into pages,
   with each page corresponding to one unique value/level of the
   variable. See
-  [`split_into_pages_by_var()`](https://insightsengineering.github.io/rlistings/reference/split_into_pages_by_var.md)
+  [`split_into_pages_by_var()`](https://pharmaverse.github.io/rlistings/reference/split_into_pages_by_var.md)
   for more details.
 
 - spanning_col_labels:

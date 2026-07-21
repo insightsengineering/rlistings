@@ -18,9 +18,9 @@ created using the `rlistings` package include:
 - Titles and footnotes
 
 For information on listing column formatting see the [Column Formatting
-vignette](https://insightsengineering.github.io/rlistings/articles/col_formatting.md).
+vignette](https://pharmaverse.github.io/rlistings/articles/col_formatting.md).
 To learn about listing pagination see the [Pagination
-vignette](https://insightsengineering.github.io/rlistings/articles/pagination.md).
+vignette](https://pharmaverse.github.io/rlistings/articles/pagination.md).
 
 The index of all available `rlistings` functions can be found on the
 [rlistings website functions

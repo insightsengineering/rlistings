@@ -34,7 +34,7 @@ within the project documentation for additional information.
 ## Code of Conduct
 
 A [Code of
-Conduct](https://insightsengineering.github.io/rlistings/CODE_OF_CONDUCT.md)
+Conduct](https://pharmaverse.github.io/rlistings/CODE_OF_CONDUCT.md)
 governs this project. Participants and contributors are expected to
 follow the rules outlined therein.
 

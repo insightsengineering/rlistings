@@ -7,7 +7,7 @@
 CRAN release: 2025-12-08
 
 - Fixed bug in
-  [`split_into_pages_by_var()`](https://insightsengineering.github.io/rlistings/reference/split_into_pages_by_var.md)
+  [`split_into_pages_by_var()`](https://pharmaverse.github.io/rlistings/reference/split_into_pages_by_var.md)
   that prevented correct handling of some listings with trailing
   separators.
 - Listings now carry around a rounding type to be used (by default) when
@@ -21,14 +21,14 @@ CRAN release: 2025-06-15
 
 - Added parameter `align_colnames` to `as_listings()`, along with
   post-processing functions
-  [`align_colnames()`](https://insightsengineering.github.io/rlistings/reference/listings.md)
+  [`align_colnames()`](https://pharmaverse.github.io/rlistings/reference/listings.md)
   and `align_colnames()<-`. This flag allows to align colnames as the
   column content is aligned.
 - `as_listing` now accepts a `spanning_col_labels` argument which can
   declare decorative spanning labels to appear above the individual
   column labels when a `listing_df` is rendered.
-  [\#263](https://github.com/insightsengineering/rlistings/issues/263)
-  by [@gmbecker](https://github.com/gmbecker)
+  [\#263](https://github.com/pharmaverse/rlistings/issues/263) by
+  [@gmbecker](https://github.com/gmbecker)
 
 ## rlistings 0.2.11
 

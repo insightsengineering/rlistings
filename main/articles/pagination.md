@@ -13,7 +13,7 @@ Specifically, the following topics will be covered:
 
 To learn more about how listings are constructed using the `rlistings`
 package, see the [Getting Started
-vignette](https://insightsengineering.github.io/rlistings/articles/rlistings.md).
+vignette](https://pharmaverse.github.io/rlistings/articles/rlistings.md).
 
 ------------------------------------------------------------------------
 
@@ -129,7 +129,7 @@ parameter specified in parentheses:
 
 These parameters, as well as some additional arguments not listed here
 (see
-[`?paginate_listing`](https://insightsengineering.github.io/rlistings/reference/paginate.md)
+[`?paginate_listing`](https://pharmaverse.github.io/rlistings/reference/paginate.md)
 for all options), can be set to fine-tune your pagination output.
 
 ``` r
@@ -1306,4 +1306,4 @@ using exporter functions. You have also seen learned how pagination can
 be applied with pages separated by value of a given parameter.
 
 **For more information on listings pagination please see
-[`?paginate_listing`](https://insightsengineering.github.io/rlistings/reference/paginate.md).**
+[`?paginate_listing`](https://pharmaverse.github.io/rlistings/reference/paginate.md).**
