@@ -1,5 +1,5 @@
 ---
-url: https://insightsengineering.github.io/rlistings
+url: https://pharmaverse.github.io/rlistings
 
 template:
   package: nesttemplate
@@ -20,7 +20,7 @@ navbar:
         href: unit-test-report-non-cran/
     github:
       icon: fa-github
-      href: https://github.com/insightsengineering/rlistings
+      href: https://github.com/pharmaverse/rlistings
 
 articles:
   - title: Articles

@@ -21,9 +21,9 @@ Description: Listings are often part of the submission of clinical trial
     formatting features often used when displaying large datasets in that
     context.
 License: Apache License 2.0
-URL: https://insightsengineering.github.io/rlistings/,
-    https://github.com/insightsengineering/rlistings/
-BugReports: https://github.com/insightsengineering/rlistings/issues
+URL: https://pharmaverse.github.io/rlistings/,
+    https://github.com/pharmaverse/rlistings/
+BugReports: https://github.com/pharmaverse/rlistings/issues
 Depends:
     formatters (>= 0.5.12),
     methods,
